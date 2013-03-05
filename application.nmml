@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<!-- NMML reference: https://gist.github.com/1763850 -->
+	
+	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
+	<meta title="HaxeUI" package="haxe.ui.test" version="1.0.0" company="Ian Harrigan" />
+	
+	<!-- output -->
+	<app main="haxe.ui.test.Main" file="HaxeUI" path="bin" />
+	
+	<window background="#FFFFFF" fps="30" />
+	<window width="800" height="480" unless="mobile" />
+	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
+	<window fullscreen="false" if="android" />
+	
+	<!-- classpath, haxe libs -->
+	<source path="src" />
+	<haxelib name="nme" />
+	
+	<!-- assets -->
+	<icon path="assets/nme.svg" />
+	<icon path="assets/icons/application_16.png" width="16" height="16"/>
+	<icon path="assets/icons/application_24.png" width="24" height="24"/>
+	<icon path="assets/icons/application_32.png" width="32" height="32"/>
+	<icon path="assets/icons/application_48.png" width="48" height="48"/>
+	
+	<assets path="assets/img" rename="img" />
+	<assets path="assets/skins" rename="skins" exclude="*.xml" if="html5" />
+	<assets path="assets/skins" rename="skins" unless="html5" />
+	<assets path="assets/icons" rename="icons" />
+
+	<assets path="assets/ui" rename="ui" exclude="*.xml" if="html5" />
+	<assets path="assets/ui" rename="ui" unless="html5" />
+	<!--assets path="assets/tests" rename="tests" unless="html5" /-->
+	
+	<!-- for skin sounds -->
+	<assets path="assets/skins/android/audio" rename="assets/skins/android/audio" type="sound" include="*"/>	
+	
+	<!-- DLLs -->
+	<ndll name="std" />
+	<ndll name="regexp" />
+	<ndll name="zlib" />
+	<ndll name="nme" haxelib="nme" />
+
+	<!-- optimize JS output -->
+	<haxeflag name="--dead-code-elimination" if="html5" />
+	<haxeflag name="--js-modern" if="html5" />
+	
+	<!-- Embed xml skin data (to avoid html5 xss loading issue -->
+	<haxedef name="embeddedXML" />
+	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
+	<haxeflag name="-resource" value="assets/ui/controlDemo.xml@ui/controlDemo.xml" />
+</project>

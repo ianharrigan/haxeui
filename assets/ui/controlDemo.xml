@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tabview>
+	<!-- TODO: padding doesnt work properly, probably button related -->
+	<style>
+		#myStyledButton {
+			color: 0xFF0000;
+		}
+		
+		#myStyledButton:over {
+			color: 0xFF00FF;
+		}
+		
+		#basic.tab {
+			icon: icons/fav_16.png;
+		}
+		
+		#scrolls.tab {
+			icon: icons/home_16.png;
+		}
+		
+		#selection.tab {
+			icon: icons/file_blank_16.png;
+		}
+		
+		#theme.tab {
+			icon: icons/application_16.png;
+		}
+
+		#list.tab {
+			icon: icons/settings_16.png;
+		}
+		
+		fixedWidth {
+			width: 100px;
+		}
+	</style>
+	
+	<vbox text="List" id="list">
+		<hbox>
+			<dropdown text="Dropdown 1" id="dropdownlist1" width="200" />
+			<dropdown text="Dropdown 2" id="dropdownlist2" />
+			<dropdown text="Dropdown 3" id="dropdownlist3" />
+		</hbox>
+		
+		<listview width="100%" height="100%" id="theList" />
+		
+		<hbox>
+			<label text="Text:" styles="fixedWidth" />
+			<textfield text="New item" id="newItemText" />
+		</hbox>
+		<hbox>
+			<label text="Sub Text:" styles="fixedWidth" />
+			<textfield text="New item subtext" id="newItemSubtext" />
+		</hbox>
+		<hbox>
+			<button text="Add Item" id="addListItem" />
+			<button text="Remove Item" id="removeListItem" />
+		</hbox>
+	</vbox>
+	
+	<vbox text="Selection" id="selection">
+		<dropdown width="200" text="Dropdown list 1" id="dropdown1" />
+		<hbox>
+			<button text="List Popup" id="listPopup" />
+			<dropdown text="Dropdown list 2" id="dropdown2" />
+		</hbox>
+		<hbox>
+			<button text="Simple Popup" id="simplePopup" />
+			<dropdown text="Dropdown list 3" id="dropdown3" />
+		</hbox>
+	</vbox>
+	
+	<vbox text="Basic" id="basic">
+		<hbox>
+			<button text="Button" id="myButton" />
+			<button text="Styled" id="myStyledButton" />
+			<button text="Toggle 1" toggle="true" />
+			<button text="Toggle 2" toggle="true" selected="true" />
+		</hbox>
+		<rating/>
+		<hbox>
+			<progress id="progressBar" />
+			<button text="-" id="minusButton" />
+			<button text="+" id="addButton" />
+		</hbox>
+		<hbox>
+			<checkbox text="Checkbox 1" />
+			<checkbox text="Checkbox 2" selected="true" />
+			<checkbox text="Checkbox 3" />
+		</hbox>
+		<hbox>
+			<optionbox text="Option 1A" group="A" />
+			<optionbox text="Option 2A" group="A" />
+			<optionbox text="Option 3A" group="A" />
+			<optionbox text="Option 1B" group="B" />
+			<optionbox text="Option 2B" group="B" selected="true" />
+			<optionbox text="Option 3B" group="B" />
+		</hbox>
+		<hbox>
+			<textfield text="Basic input" />
+			<textfield text="Multiline input" multiline="true" height="100" />
+		</hbox>
+	</vbox>
+
+	<vbox text="Scrolls" id="scrolls">
+		<hbox>
+			<vscroll/>
+			<vscroll height="200" />
+			<vscroll width="30" height="200" />
+			<scrollview width="200" height="200">
+				<image asset="img/slinky.jpg" />
+			</scrollview>
+		</hbox>
+		
+		<hscroll/>
+		<hscroll width="200" />
+		<hscroll width="200" height="30" />
+	</vbox>
+	
+	<vbox text="Theme" id="theme">
+		<label text="Change theme" />
+		<hbox>
+			<button text="Windows" id="windowsTheme" />
+			<button text="Android" id="androidTheme" />
+			<button text="Test" id="testTheme" />
+		</hbox>
+	</vbox>
+	
+	<component text="Page 1"/>
+	<component text="Page 2"/>
+	<component text="Page 3"/>
+	<component text="Page 4"/>
+	<component text="Page 5"/>
+	<component text="Page 6"/>
+	<component text="Page 7"/>
+	<component text="Page 8"/>
+	<component text="Page 9"/>
+	<component text="Page 10"/>
+</tabview>

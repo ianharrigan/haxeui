@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tabview id="mainTabs">
+	<!-- TODO: static, doesnt matter where you put it -->
+	<style> 
+		#mainTabs.tab1 {
+			icon: icons/fav_16.png;
+			color: 0xFF00FF;
+		}
+		
+		#tab2.tab {
+			icon: icons/user_16.png;
+			color: #FF0000;
+		}
+		
+		#button1 {
+			color: 0x00FF00;
+			icon: icons/home_16.png;
+		}
+	</style>
+	<datasource syncronous="?" />
+	<vbox text="Tab 1" id="tab1">
+		<button text="1" id="button1" />
+		<button text="2"/>
+		<button text="3"/>
+	</vbox>
+	<vbox text="Tab 2" id="tab2">
+		<button text="4"/>
+		<button text="5" id="button5" />
+		<button text="6"/>
+	</vbox>
+</tabview>
+<!--button width="100%" height="100%"></button-->
