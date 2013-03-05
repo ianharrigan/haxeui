@@ -1,22 +1,24 @@
-YAHUI (Yet Another Haxe UI)
+Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 ================================
-Cross platform/target set of skinnable UI components for Haxe NME with an aim of providing native user experience
+Cross platform/target set of styleable rich UI components for Haxe NME intended to be used "out the box".
 
-<img src="https://raw.github.com/ianharrigan/YAHUI/master/docs/screenshots/main.jpg" />
+<img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
 
-<a href="https://github.com/ianharrigan/YAHUI/blob/master/docs/demo/YAHUI.swf?raw=true">Compiled demo</a> (May be out of date)
+<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/YAHUI.swf?raw=true">Compiled demo</a> (May be out of date)
 
 Components
 -------------------------
 General components
 
 - Button
-- Checkbox
-- DropDownList (method is skin dependent, eg: "popup")
+- CheckBox
+- DropDownList (method is style dependent, eg: "popup")
 - HScroll
 - Image
 - Label
+- OptionBox
 - ProgressBar
+- RatingControl
 - Selector
 - TabBar
 - TextInput (can also be used as text area with TextInput.multiline)
