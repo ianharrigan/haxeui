@@ -57,6 +57,10 @@ class ControlDemoController extends Controller {
 			Main.startApp(Main.ANDROID_SKIN);
 		});
 
+		attachEvent("iosTheme", MouseEvent.CLICK, function (e) {
+			Main.startApp(Main.IOS_SKIN);
+		});
+		
 		attachEvent("testTheme", MouseEvent.CLICK, function (e) {
 			Main.startApp(Main.TEST_SKIN);
 		});

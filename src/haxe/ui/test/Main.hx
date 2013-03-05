@@ -34,10 +34,12 @@ import haxe.ui.style.android.AndroidStyles;
 import haxe.ui.style.StyleManager;
 import haxe.ui.style.test.TestStyles;
 import haxe.ui.style.windows.WindowsStyles;
+import haxe.ui.style.ios.IosStyles;
 
 class Main extends Sprite {
 	public static var WINDOWS_SKIN:String = "WINDOWS";
 	public static var ANDROID_SKIN:String = "ANDROID";
+	public static var IOS_SKIN:String = "IOS";
 	public static var TEST_SKIN:String = "TEST";
 	
 	public function new() {
@@ -64,6 +66,8 @@ class Main extends Sprite {
 			StyleManager.styles = new WindowsStyles();
 		} else if (skinId == ANDROID_SKIN) {
 			StyleManager.styles = new AndroidStyles();
+		} else if (skinId == IOS_SKIN) {
+			StyleManager.styles = new IosStyles();
 		} else if (skinId == TEST_SKIN) {
 			StyleManager.styles = new TestStyles();
 		}

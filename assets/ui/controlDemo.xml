@@ -122,6 +122,7 @@
 		<hbox>
 			<button text="Windows" id="windowsTheme" />
 			<button text="Android" id="androidTheme" />
+			<button text="IOS" id="iosTheme" />
 			<button text="Test" id="testTheme" />
 		</hbox>
 	</vbox>
