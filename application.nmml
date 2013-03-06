@@ -50,4 +50,7 @@
 	<haxedef name="embeddedXML" />
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/controlDemo.xml@ui/controlDemo.xml" />
+	<haxeflag name="-resource" value="assets/ui/controlDemo_androidStyles.xml@ui/controlDemo_androidStyles.xml" />
+	<haxeflag name="-resource" value="assets/ui/importTest.xml@ui/importTest.xml" />
+	<haxeflag name="-resource" value="assets/ui/importTestChild.xml@ui/importTestChild.xml" />
 </project>

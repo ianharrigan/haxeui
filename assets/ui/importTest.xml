@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<vbox>
+	<button text="button 1"/>
+	<import resource="ui/importTestChild.xml"/>
+	<button text="button 2"/>
+</vbox>

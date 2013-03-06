@@ -105,6 +105,9 @@ class Main extends Sprite {
 		*/
 		
 		root.addChild(new ControlDemoController().view);
+		
+		//root.addChild(ComponentParser.fromXMLAsset("ui/importTest.xml"));
+
 	}
 	
 	static public function main() {
