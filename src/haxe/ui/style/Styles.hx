@@ -10,6 +10,10 @@ class Styles {
 	}
 	
 	public function addStyle(styleName:String, style:Dynamic):Dynamic {
+		var currentStyle:Dynamic = getStyle(styleName);
+		if (currentStyle != null) {
+			style = StyleManager.mergeStyle(currentStyle, style);
+		}
 		styles.set(styleName, style);
 		return style;
 	}
