@@ -33,6 +33,10 @@ class ControlDemoController extends Controller {
 			Popup.showSimple(view.root, "The text", "The Title", true);
 		});
 
+		attachEvent("busyPopup", MouseEvent.CLICK, function (e) {
+			Popup.showBusy(view.root, "Please wait...", 3000);
+		});
+		
 		attachEvent("addListItem", MouseEvent.CLICK, function (e) {
 			var item:Dynamic = { };
 			if (getComponentAs("newItemText", TextInput).text.length > 0) {

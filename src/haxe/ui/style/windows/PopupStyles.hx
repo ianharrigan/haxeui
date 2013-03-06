@@ -46,5 +46,18 @@ class PopupStyles {
 			xxbackgroundColor: 0xFF0000,
 			xxcolor: 0xFF0000,
 		});
+		
+		styles.addStyle("BusyPopup", {
+			backgroundImage: "skins/windows/popup/popup_border_no_title.png",
+			backgroundImageScale9: "8,8,341,28",
+			width: 230,
+		});
+		
+		styles.addStyle("BusyPopup.content", {
+			paddingLeft: 8,
+			paddingTop: 12,
+			paddingRight: 8,
+			paddingBottom: 12,
+		});
 	}
 }

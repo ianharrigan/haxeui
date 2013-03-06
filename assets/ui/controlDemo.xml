@@ -68,6 +68,9 @@
 			<button text="Simple Popup" id="simplePopup" />
 			<dropdown text="Dropdown list 3" id="dropdown3" />
 		</hbox>
+		<hbox>
+			<button text="Busy Popup" id="busyPopup" />
+		</hbox>
 	</vbox>
 	
 	<vbox text="Basic" id="basic">

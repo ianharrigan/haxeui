@@ -7,7 +7,7 @@ import haxe.ui.core.Root;
 
 class Popup extends Component {
 	private var content:Component;
-	public var title:String = "YAHUI";
+	public var title:String = "HaxeUI";
 	private var titleComponent:Label;
 	
 	public function new() {
@@ -70,6 +70,17 @@ class Popup extends Component {
 		showPopup(p, modal);
 		
 		return p;
+	}
+	
+	public static function showBusy(root:Root, text:String, delay:Float = -1, modal:Bool = true):Void {
+		var p:BusyPopup = new BusyPopup();
+		p.root = root;
+		p.text = text;
+		p.title = "";
+		p.delay = delay;
+		
+		centerPopup(p);
+		showPopup(p, modal);
 	}
 	
 	private static function showPopup(p:Popup, modal:Bool = true):Void {

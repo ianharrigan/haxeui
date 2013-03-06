@@ -5,8 +5,8 @@ import haxe.ui.controls.Button;
 import haxe.ui.controls.Label;
 
 class SimplePopup extends Popup {
-	
 	private var textControl:Label;
+	
 	public function new() {
 		super();
 		inheritStylesFrom = "Popup";
