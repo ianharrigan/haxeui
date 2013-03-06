@@ -72,7 +72,7 @@ class Popup extends Component {
 		return p;
 	}
 	
-	public static function showBusy(root:Root, text:String, delay:Float = -1, modal:Bool = true):Void {
+	public static function showBusy(root:Root, text:String, delay:Float = -1, modal:Bool = true):Popup {
 		var p:BusyPopup = new BusyPopup();
 		p.root = root;
 		p.text = text;
@@ -81,9 +81,11 @@ class Popup extends Component {
 		
 		centerPopup(p);
 		showPopup(p, modal);
+		
+		return p;
 	}
 	
-	private static function showPopup(p:Popup, modal:Bool = true):Void {
+	public static function showPopup(p:Popup, modal:Bool = true):Void {
 		#if !android // performace goes down significantly
 		p.sprite.filters = [ new DropShadowFilter (5, 45, 0, 1, 20, 20, 1, 3) ];
 		#end
@@ -95,7 +97,7 @@ class Popup extends Component {
 		p.root.bringToFront(p);
 	}
 	
-	private static function hidePopup(p:Popup):Void {
+	public static function hidePopup(p:Popup):Void {
 		p.root.removeChild(p);
 		p.dispose();
 		p.root.enabled = true;
