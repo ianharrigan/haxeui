@@ -46,10 +46,12 @@ class HBox extends Component {
 		var ucx:Float = super.getUsableWidth();
 		for (child in childComponents) {
 			if (child.percentWidth <= 0 && child.width > 0) {
-				ucx -= child.width + spacingX;
+				ucx -= child.width;
 			}
 		}
-		ucx -= spacingX;
+		if (childComponents.length > 1) {
+			ucx -= spacingX * (childComponents.length - 1);
+		}
 		return ucx;
 	}
 }

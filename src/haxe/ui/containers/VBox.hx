@@ -45,10 +45,12 @@ class VBox extends Component {
 		var ucy:Float = super.getUsableHeight();
 		for (child in childComponents) {
 			if (child.percentHeight <= 0 && child.height > 0) {
-				ucy -= child.height + spacingY;
+				ucy -= child.height;
 			}
 		}
-		ucy -= spacingY;
+		if (childComponents.length > 1) {
+			ucy -= spacingY * (childComponents.length - 1);
+		}
 		return ucy;
 	}
 }
