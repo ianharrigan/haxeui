@@ -42,6 +42,13 @@ class ComponentParser {
 	}
 	
 	public static function fromXML(xml:Xml):Component {
+		if (xml.get("if") != null && xml.get("if").length > 0) { // make sure it satisfies the criteria
+			var ifValue = xml.get("if");
+			if (Globals.has(ifValue) == false) {
+				return null;
+			}
+		}
+		
 		if (hasComponentClass(xml.nodeName) == false) {
 			processInlineStyle(xml);
 		}

@@ -37,10 +37,10 @@ import haxe.ui.style.windows.WindowsStyles;
 import haxe.ui.style.ios.IosStyles;
 
 class Main extends Sprite {
-	public static var WINDOWS_SKIN:String = "WINDOWS";
-	public static var ANDROID_SKIN:String = "ANDROID";
-	public static var IOS_SKIN:String = "IOS";
-	public static var TEST_SKIN:String = "TEST";
+	public static var WINDOWS_SKIN:String = "windowsTheme";
+	public static var ANDROID_SKIN:String = "androidTheme";
+	public static var IOS_SKIN:String = "iosTheme";
+	public static var TEST_SKIN:String = "testTheme";
 	
 	public function new() {
 		super();
@@ -71,8 +71,8 @@ class Main extends Sprite {
 		} else if (skinId == TEST_SKIN) {
 			StyleManager.styles = new TestStyles();
 		}
-		Globals.themeName = skinId;
-
+		Globals.add(skinId);
+		
 		var stage = Lib.current.stage;
 		stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
 		stage.align = nme.display.StageAlign.TOP_LEFT;
