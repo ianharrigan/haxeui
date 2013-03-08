@@ -1,18 +1,30 @@
 package haxe.ui.core;
 
-import haxe.ui.containers.HBox;
-import haxe.ui.containers.VBox;
-import haxe.ui.controls.DropDownList;
-import haxe.ui.controls.Image;
-import haxe.ui.controls.TextInput;
 import haxe.ui.style.StyleManager;
 import haxe.ui.style.StyleParser;
 import haxe.ui.style.Styles;
 
-// TODO: have to include all the controls? (Dont think so)
+// TODO: all components must be expicitliy included if you want to use the at runtime from xml
+import haxe.ui.containers.HBox;
+import haxe.ui.containers.ListView;
+import haxe.ui.containers.ScrollView;
+import haxe.ui.containers.TabView;
+import haxe.ui.containers.VBox;
+
 import haxe.ui.controls.Button;
 import haxe.ui.controls.CheckBox;
+import haxe.ui.controls.DropDownList;
+import haxe.ui.controls.HScroll;
+import haxe.ui.controls.Image;
+import haxe.ui.controls.Label;
 import haxe.ui.controls.OptionBox;
+import haxe.ui.controls.ProgressBar;
+import haxe.ui.controls.RatingControl;
+import haxe.ui.controls.Selector;
+import haxe.ui.controls.TabBar;
+import haxe.ui.controls.TextInput;
+import haxe.ui.controls.ValueControl;
+import haxe.ui.controls.VScroll;
 
 
 class ComponentParser {
