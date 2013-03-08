@@ -85,6 +85,20 @@ class Popup extends Component {
 		return p;
 	}
 	
+	public static function showCustom(root:Root, content:Component, title:String = null, modal:Bool = true):Popup {
+		var p:CustomPopup = new CustomPopup();
+		p.root = root;
+		p.customContent = content;
+		if (title != null) {
+			p.title = title;
+		}
+		
+		centerPopup(p);
+		showPopup(p, modal);
+		
+		return p;
+	}
+	
 	public static function showPopup(p:Popup, modal:Bool = true):Void {
 		#if !android // performace goes down significantly
 		p.sprite.filters = [ new DropShadowFilter (5, 45, 0, 1, 20, 20, 1, 3) ];

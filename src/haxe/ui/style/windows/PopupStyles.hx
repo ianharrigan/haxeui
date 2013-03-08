@@ -59,5 +59,13 @@ class PopupStyles {
 			paddingRight: 8,
 			paddingBottom: 12,
 		});
+		
+		styles.addStyle("CustomPopup.content", {
+			paddingLeft: 10,
+			paddingTop: 32,
+			paddingRight: 10,
+			paddingBottom: 10,
+		});
+		
 	}
 }

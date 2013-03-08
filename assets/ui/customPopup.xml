@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<vbox width="100%">
+	<hbox width="100%">
+		<label text="First Name:" />
+		<textfield text="Ian" width="100%" id="firstName" />
+	</hbox>
+	<hbox width="100%">
+		<label text="Last Name:" />
+		<textfield text="Harrigan" width="100%" id="lastName" />
+	</hbox>
+	<hbox width="100%">
+		<button text="Cancel" id="cancelButton" />
+		<button text="Confirm" id="confirmButton" />
+	</hbox>
+</vbox>

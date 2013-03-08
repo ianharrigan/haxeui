@@ -74,6 +74,7 @@
 		</hbox>
 		<hbox>
 			<button text="Busy Popup" id="busyPopup" />
+			<button text="Custom Popup" id="customPopup" />
 		</hbox>
 	</vbox>
 	

@@ -36,6 +36,19 @@ class ControlDemoController extends Controller {
 		attachEvent("busyPopup", MouseEvent.CLICK, function (e) {
 			Popup.showBusy(view.root, "Please wait...", 3000);
 		});
+
+		attachEvent("customPopup", MouseEvent.CLICK, function (e) {
+			var popupController:Controller = new Controller(ComponentParser.fromXMLAsset("ui/customPopup.xml"));
+			var customPopup:Popup = Popup.showCustom(view.root, popupController.view, "Enter Name", true);
+			popupController.attachEvent("cancelButton", MouseEvent.CLICK, function (e) {
+				Popup.hidePopup(customPopup);
+			});
+			popupController.attachEvent("confirmButton", MouseEvent.CLICK, function (e) {
+				Popup.hidePopup(customPopup);
+				var text:String = "Hello, " + popupController.getComponent("firstName").text + " " + popupController.getComponent("lastName").text;
+				Popup.showSimple(view.root, text, "Welcome");
+			});
+		});
 		
 		attachEvent("addListItem", MouseEvent.CLICK, function (e) {
 			var item:Dynamic = { };
