@@ -4,7 +4,7 @@ Cross platform/target set of styleable rich UI components for Haxe NME intended 
 
 <img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
 
-<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/YAHUI.swf?raw=true">Compiled demo</a> (May be out of date)
+<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/HaxeUI.swf?raw=true">Compiled demo</a> (May be out of date)
 
 <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a> (Only tested on cpp targets because of multithreading)
 
