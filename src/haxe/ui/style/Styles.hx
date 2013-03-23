@@ -2,27 +2,31 @@ package haxe.ui.style;
 
 class Styles {
 	var styles:Hash<Dynamic>;
+	var styleRules:Array<String>;
 	
-	public var styleNames(getStyleNames, null):Iterator<String>;
+	public var rules(getStyleRules, null):Iterator<String>;
 	
 	public function new() {
 		styles = new Hash<Dynamic>();
+		styleRules = new Array<String>();
 	}
 	
-	public function addStyle(styleName:String, style:Dynamic):Dynamic {
-		var currentStyle:Dynamic = getStyle(styleName);
+	public function addStyle(rule:String, style:Dynamic):Dynamic {
+		var currentStyle:Dynamic = getStyle(rule);
 		if (currentStyle != null) {
 			style = StyleManager.mergeStyle(currentStyle, style);
+		} else {
+			styleRules.push(rule);
 		}
-		styles.set(styleName, style);
+		styles.set(rule, style);
 		return style;
 	}
 	
-	public function getStyle(styleName:String):Dynamic {
-		return styles.get(styleName);
+	public function getStyle(rule:String):Dynamic {
+		return styles.get(rule);
 	}
 	
-	public function getStyleNames():Iterator<String> {
-		return styles.keys();
+	public function getStyleRules():Iterator<String> {
+		return styleRules.iterator();
 	}
 }

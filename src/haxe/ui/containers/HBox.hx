@@ -5,7 +5,6 @@ import haxe.ui.core.Component;
 class HBox extends Component {
 	public function new() {
 		super();
-		addStyleName("HBox");
 	}
 	
 	private override function repositionChildren():Void {

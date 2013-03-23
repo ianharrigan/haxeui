@@ -31,11 +31,9 @@ class Component implements IEventDispatcher {
 	public var enabled(default, setEnabled):Bool = true;
 	public var text(getText, setText):String = "";
 	
-	public var inheritStylesFrom:String;
-	private var styleStateStrings:Dynamic;
-	private var styleString:String = "";
+	private var stateNames:Array<String>;
 	public var registeredStateNames(getRegisteredStateNames, null):Array<String>;
-	private var stateStyles:Dynamic;
+	private var stateStyles:Hash<Dynamic>;
 	public var currentStyle(getCurrentStyle, setCurrentStyle):Dynamic;
 	
 	public var stageX(getStageX, null):Float;
@@ -63,13 +61,10 @@ class Component implements IEventDispatcher {
 	private var eventListeners:Hash < List < Dynamic->Void >> ;
 	private var eventListenersCopy:Hash < List < Dynamic->Void >> ; // when we disable a component we will hold onto a subset of event listeners so if we reenable it everything works
 	
+	public var styles:String;
 	
 	public function new() {
-		var className:String = Type.getClassName(Type.getClass(this));
-		var x:Int = className.lastIndexOf(".") + 1;
-		className = className.substr(x, className.length);
-		inheritStylesFrom = className;
-		addStyleName("Component");
+		registerState("normal");
 		childComponents = new Array<Component>();
 		eventListeners = new Hash < List < Dynamic->Void >>();
 		sprite = new Sprite();
@@ -137,6 +132,7 @@ class Component implements IEventDispatcher {
 		var ucy:Float = height - (padding.top + padding.bottom);
 		return ucy;
 	}
+	
 	//************************************************************
 	//                  OVERRIDABLES
 	//************************************************************
@@ -243,43 +239,29 @@ class Component implements IEventDispatcher {
 	//                  STYLE FUNCTIONS
 	//************************************************************
 	public function getRegisteredStateNames():Array<String> {
-		var names:Array<String> = new Array<String>();
-		for (stateName in Reflect.fields(styleStateStrings)) {
-			names.push(stateName);
-		}
-		return names;
+		return stateNames;
 	}
 	
 	public function registerState(stateName:String):Void {
-		if (styleStateStrings == null) {
-			styleStateStrings = { };
+		if (stateNames == null) {
+			stateNames = new Array<String>();
 		}
-		Reflect.setField(styleStateStrings, stateName, "");
+		stateNames.push(stateName);
 	}
 	
-	public function applyStyle():Void {
+	private function applyStyle():Void {
 		if (currentStyle != null && ready == true) {
 			var rc:Rectangle = new Rectangle(0, 0, width, height);
 			StyleHelper.paintStyle(this.sprite.graphics, currentStyle, rc);
 		}
 	}
 	
-	public function addStyleName(styleId:String):Void {
-		styleString += " " + styleId;
-		for (stateName in Reflect.fields(styleStateStrings)) {
-			var stateString:Dynamic = Reflect.field(styleStateStrings, stateName);
-			stateString += " " + styleId + ":" + stateName;
-			Reflect.setField(styleStateStrings, stateName, stateString);
-		}
+	private function hasStateSyle(stateName:String):Bool {
+		return stateStyles.exists(stateName);
 	}
 	
-	public function hasStateSyle(stateName:String):Bool {
-		var stateStyle:Dynamic = Reflect.field(stateStyles, stateName);
-		return stateStyle != null;
-	}
-	
-	public function showStateStyle(stateName:String):Void {
-		var stateStyle:Dynamic = Reflect.field(stateStyles, stateName);
+	private function showStateStyle(stateName:String):Void {
+		var stateStyle:Dynamic = stateStyles.get(stateName);
 		if (stateStyle != null) {
 			currentStyle = stateStyle;
 			applyStyle();
@@ -292,39 +274,32 @@ class Component implements IEventDispatcher {
 	
 	public function setCurrentStyle(value:Dynamic):Dynamic {
 		currentStyle = value;
-		//applyStyle();
+		applyStyle();
 		return value;
 	}
 	
-	private function buildStyles():Void {
-		currentStyle = StyleManager.styleFromString(styleString, inheritStylesFrom);
-		stateStyles = { };
-		Reflect.setField(stateStyles, "normal", currentStyle);
-		if (styleStateStrings != null) {
-			for (stateName in Reflect.fields(styleStateStrings)) {
-				var stateStyle:Dynamic = StyleManager.styleFromString(Reflect.field(styleStateStrings, stateName), inheritStylesFrom);
-				var mergedStyle:Dynamic = StyleManager.mergeStyle(currentStyle, stateStyle);
-				Reflect.setField(stateStyles, stateName, mergedStyle);
-			}
-		}
-		//applyStyle();
-	}
-
 	//************************************************************
 	//                  EVENT HANDLERS
 	//************************************************************
 	private function onReady(event:Event) {
 		removeEventListener(Event.ADDED_TO_STAGE, onReady);
-		if (id != null) {
-			addStyleName("#" + id);
+		
+		currentStyle = StyleManager.buildStyle(this);
+		if (stateStyles == null) {
+			stateStyles = new Hash<Dynamic>();
 		}
-		buildStyles();
+		for (state in getRegisteredStateNames()) {
+			var stateStyle:Dynamic = StyleManager.buildStyle(this, state);
+			stateStyles.set(state, stateStyle);
+		}
+		
 		if (currentStyle.width != null && width == 0) {
 			width = currentStyle.width;
 		}
 		if (currentStyle.height != null && height == 0) {
 			height = currentStyle.height;
 		}
+		
 		calcSize();
 		ready = true;
 		initialize();
@@ -569,6 +544,10 @@ class Component implements IEventDispatcher {
 		if (ready == false) { // TODO: workaround, if there parent is not ready you can still add children and they will be added when ready
 			if (childrenToAdd == null) {
 				childrenToAdd = new Array<Dynamic>();
+			}
+			if (Std.is(c, Component)) {
+				c.root = this.root;
+				c.parent = this;
 			}
 			childrenToAdd.push(c);
 			return null;

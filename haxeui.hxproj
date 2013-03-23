@@ -16,16 +16,16 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="C:\Tools\Haxe\haxe\lib\nme/3,5,4/" />
+    <class path="C:\tools\Haxe\haxe\lib\nme/3,5,5/" />
     <class path="bin/flash/haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="embeddedXML&#xA;nme_install_tool&#xA;web" />
+    <option directives="nme_install_tool&#xA;web" />
     <option flashStrict="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="-resource assets/ui/test01.xml@ui/test01.xml&#xA;-resource assets/ui/controlDemo.xml@ui/controlDemo.xml&#xA;-swf-version 11" />
+    <option additional="-resource assets/ui/test01.xml@ui/test01.xml&#xA;-resource assets/ui/controlDemo.xml@ui/controlDemo.xml&#xA;-resource assets/ui/controlDemo_androidStyles.xml@ui/controlDemo_androidStyles.xml&#xA;-resource assets/ui/importTest.xml@ui/importTest.xml&#xA;-resource assets/ui/importTestChild.xml@ui/importTestChild.xml&#xA;-resource assets/ui/customPopup.xml@ui/customPopup.xml&#xA;-resource assets/skins/windows/popup.png@skins/windows/popup.png&#xA;-swf-version 11" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

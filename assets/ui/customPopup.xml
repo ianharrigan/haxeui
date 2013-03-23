@@ -2,11 +2,11 @@
 <vbox width="100%">
 	<hbox width="100%">
 		<label text="First Name:" />
-		<textfield text="Ian" width="100%" id="firstName" />
+		<textinput text="Ian" width="100%" id="firstName" />
 	</hbox>
 	<hbox width="100%">
 		<label text="Last Name:" />
-		<textfield text="Harrigan" width="100%" id="lastName" />
+		<textinput text="Harrigan" width="100%" id="lastName" />
 	</hbox>
 	<hbox width="100%">
 		<button text="Cancel" id="cancelButton" />

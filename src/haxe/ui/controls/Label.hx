@@ -16,7 +16,6 @@ class Label extends Component {
 	
 	public function new() {
 		super();
-		addStyleName("Label");
 		
 		textControl = new TextField();
 	}
@@ -46,7 +45,7 @@ class Label extends Component {
 		if (currentStyle.fontSize != null) {
 			textControl.setTextFormat(new TextFormat(currentStyle.fontName, currentStyle.fontSize, currentStyle.color));
 		}
-		
+
 		sizeTextControl();
 	}
 	
@@ -94,12 +93,15 @@ class Label extends Component {
 			}
 		}
 		
-		if (width == 0) {
+		//if (width == 0) {
 			width = textControl.width + (padding.left + padding.right);
-		}
-		if (height == 0) {
+		//}
+		//if (height == 0) {
 			height = textControl.height + (padding.top + padding.bottom);
-		}
+		//}
+		//trace(">>>>>>>>>> height = " + textControl.textHeight);
+		//trace(">>>>>>>>>> height = " + height);
+		
 		textControl.x = padding.left;
 		textControl.y = padding.top;
 	}

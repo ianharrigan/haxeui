@@ -1,5 +1,6 @@
 package haxe.ui.core;
 
+import haxe.ui.resources.ResourceManager;
 import haxe.ui.style.StyleManager;
 import haxe.ui.style.StyleParser;
 import haxe.ui.style.Styles;
@@ -28,23 +29,8 @@ import haxe.ui.controls.VScroll;
 
 
 class ComponentParser {
-	public function new() {
-		
-	}
-
-	private static function getXMLAssetString(xmlStringId:String):String {
-		#if embeddedXML
-			//trace("Using xml skin as resource");
-			var xmlString:String = haxe.Resource.getString(xmlStringId);
-		#else
-			//trace("Using xml skin as asset");
-			var xmlString:String = Assets.getText(xmlStringId);
-		#end
-		return xmlString;
-	}
-	
-	public static function fromXMLAsset(xmlStringId:String):Component {
-		return fromXMLString(getXMLAssetString(xmlStringId));
+	public static function fromXMLResource(resourceId:String):Component {
+		return fromXMLString(ResourceManager.getText(resourceId));
 	}
 	
 	public static function fromXMLString(xmlString:String):Component {
@@ -70,7 +56,7 @@ class ComponentParser {
 				processInlineStyle(xml);
 			} else if (xml.nodeName == "import") {
 				var importResId:String = xml.get("resource");
-				return fromXMLAsset(importResId);
+				return fromXMLResource(importResId);
 			}
 		}
 		
@@ -118,7 +104,8 @@ class ComponentParser {
 				c.text = xml.get("text");
 			}
 			if (xml.get("styles") != null) {
-				c.addStyleName(xml.get("styles"));
+				//c.addStyleName(xml.get("styles"));
+				c.styles = xml.get("styles");
 			}
 			
 			for (child in xml) {
@@ -174,8 +161,8 @@ class ComponentParser {
 				}
 				
 				if (Std.is(c, Image)) { // TODO: Ugly
-					if (xml.get("asset") != null) {
-						cast(c, Image).bitmapAssetPath = xml.get("asset");
+					if (xml.get("resource") != null) {
+						cast(c, Image).resourceId = xml.get("resource");
 					}
 				}
 			} catch (e:Dynamic) {
@@ -195,13 +182,14 @@ class ComponentParser {
 		progress: "haxe.ui.controls.ProgressBar",
 		optionbox: "haxe.ui.controls.OptionBox",
 		checkbox: "haxe.ui.controls.CheckBox",
-		textfield: "haxe.ui.controls.TextInput",
+		textinput: "haxe.ui.controls.TextInput",
 		vscroll: "haxe.ui.controls.VScroll",
 		hscroll: "haxe.ui.controls.HScroll",
 		scrollview: "haxe.ui.containers.ScrollView",
 		image: "haxe.ui.controls.Image",
 		dropdown: "haxe.ui.controls.DropDownList",
 		label: "haxe.ui.controls.Label",
+		valuecontrol: "haxe.ui.controls.ValueControl",
 		listview: "haxe.ui.containers.ListView",
 	}
 	
@@ -219,12 +207,17 @@ class ComponentParser {
 	
 	private static function processInlineStyle(xml:Xml):Bool {
 		if (xml.nodeName == "style") {
+			if (xml.get("resource") != null) {
+				var styleRes:String = xml.get("resource");
+				StyleManager.loadFromResource(styleRes);
+			}
+			
 			for (child in xml) {
 				if (Std.string(child.nodeType) == "pcdata") {
-					var inlineStyles:Styles = StyleParser.fromString(child.nodeValue);
-					if (inlineStyles != null) {
-						for (styleName in inlineStyles.styleNames) {
-							StyleManager.styles.addStyle(styleName, inlineStyles.getStyle(styleName));
+					var styles:Styles = StyleParser.fromString(child.nodeValue);
+					if (styles != null) {
+						for (rule in styles.rules) {
+							StyleManager.addStyle(rule, styles.getStyle(rule));
 						}
 					}
 				}

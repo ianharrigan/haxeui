@@ -7,8 +7,8 @@ class StyleParser { // TODO: easy to break
 		var styles = new Styles();
 
 		//trace(styleString);
-		var n1:Int = 0;
-		var n2:Int = styleString.indexOf("{", n1);
+		var n1:Int = -1;
+		var n2:Int = styleString.indexOf("{", 0);
 		while (n2 > -1) {
 			var n3:Int = styleString.indexOf("}", n2);
 			
@@ -22,8 +22,15 @@ class StyleParser { // TODO: easy to break
 					var temp:Array<String> = prop.split(":");
 					var propName = StringTools.trim(temp[0]);
 					var propValue = StringTools.trim(temp[1]);
-					if (!StringTools.startsWith(propValue, "#") && Std.string(Std.parseFloat(propValue)) == Std.string(Math.NaN)) { // TODO: must be a bad way of doing this
-						Reflect.setField(style, propName, propValue);
+					if (temp.length == 3) {
+						propValue += ":" + StringTools.trim(temp[2]);
+					}
+					if (propValue.indexOf(",") != -1 || !StringTools.startsWith(propValue, "#") && Std.string(Std.parseFloat(propValue)) == Std.string(Math.NaN)) { // TODO: must be a bad way of doing this
+						if (propValue == "true" || propValue == "false") {
+							Reflect.setField(style, propName, propValue == "true");
+						} else {
+							Reflect.setField(style, propName, propValue);
+						}
 					} else {
 						if (StringTools.startsWith(propValue, "#")) { // lazyness
 							propValue = "0x" + propValue.substr(1, propValue.length - 1);
@@ -38,7 +45,15 @@ class StyleParser { // TODO: easy to break
 			}
 			
 			if (Reflect.fields(style).length > 0) {
-				styles.addStyle(styleName, style);
+				if (styleName.indexOf(",") == -1) {
+					styles.addStyle(styleName, style);
+				} else {
+					var arr:Array<String> = styleName.split(",");
+					for (s in arr) {
+						s = StringTools.trim(s);
+						styles.addStyle(s, style);
+					}
+				}
 			}
 			
 			n1 = n3;

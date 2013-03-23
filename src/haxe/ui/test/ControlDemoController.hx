@@ -10,7 +10,7 @@ import haxe.ui.popup.Popup;
 
 class ControlDemoController extends Controller {
 	public function new() {
-		super(ComponentParser.fromXMLAsset("ui/controlDemo.xml"));
+		super(ComponentParser.fromXMLResource("ui/controlDemo.xml"));
 		
 		attachEvent("myButton", MouseEvent.CLICK, function (e) {
 			Popup.showSimple(view.root, "You clicked the button!", "Clicked!", true);
@@ -38,7 +38,7 @@ class ControlDemoController extends Controller {
 		});
 
 		attachEvent("customPopup", MouseEvent.CLICK, function (e) {
-			var popupController:Controller = new Controller(ComponentParser.fromXMLAsset("ui/customPopup.xml"));
+			var popupController:Controller = new Controller(ComponentParser.fromXMLResource("ui/customPopup.xml"));
 			var customPopup:Popup = Popup.showCustom(view.root, popupController.view, "Enter Name", true);
 			popupController.attachEvent("cancelButton", MouseEvent.CLICK, function (e) {
 				Popup.hidePopup(customPopup);
@@ -74,12 +74,8 @@ class ControlDemoController extends Controller {
 			Main.startApp(Main.ANDROID_SKIN);
 		});
 
-		attachEvent("iosTheme", MouseEvent.CLICK, function (e) {
-			Main.startApp(Main.IOS_SKIN);
-		});
-		
-		attachEvent("testTheme", MouseEvent.CLICK, function (e) {
-			Main.startApp(Main.TEST_SKIN);
+		attachEvent("gradientTheme", MouseEvent.CLICK, function (e) {
+			Main.startApp(Main.GRADIENT_SKIN);
 		});
 		
 		// TODO: temporary, will eventually come from datasource

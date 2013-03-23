@@ -7,18 +7,17 @@ import haxe.ui.core.Root;
 
 class Popup extends Component {
 	private var content:Component;
-	public var title:String = "HaxeUI";
+	public var title:String = "NME UI Toolkit";
 	private var titleComponent:Label;
 	
 	public function new() {
 		super();
-		addStyleName("Popup");
 		
 		content = new Component();
-		content.addStyleName("Popup.content");
+		content.id = "popupContent";
 
 		titleComponent = new Label();
-		titleComponent.addStyleName("Popup.title");
+		titleComponent.id = "popupTitle";
 	}
 	
 	//************************************************************
@@ -29,9 +28,6 @@ class Popup extends Component {
 		
 		content.percentWidth = 100;
 		content.percentHeight = 100;
-		if (this.id != null) {
-			content.id = id + ".content";
-		}
 		addChild(content);
 		
 		titleComponent.text = title;

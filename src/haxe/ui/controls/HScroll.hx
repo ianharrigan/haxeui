@@ -30,7 +30,6 @@ class HScroll extends Component {
 	
 	public function new() {
 		super();
-		addStyleName("HScroll");
 		autoSize = false;
 	}
 
@@ -43,10 +42,7 @@ class HScroll extends Component {
 		if (currentStyle.hasButtons != null && currentStyle.hasButtons == true) {
 			buttonLeft = new Button();
 			buttonLeft.width = buttonLeft.height = innerHeight;
-			buttonLeft.addStyleName("HScroll.leftButton");
-			if (id != null) {
-				buttonLeft.id = id + ".leftButton";
-			}
+			buttonLeft.id = "buttonLeft";
 			buttonLeft.autoSize = false;
 			buttonLeft.horizontalAlign = "left";
 			buttonLeft.addEventListener(MouseEvent.MOUSE_DOWN, onLeft);
@@ -54,10 +50,7 @@ class HScroll extends Component {
 
 			buttonRight = new Button();
 			buttonRight.width = buttonRight.height = innerHeight;
-			buttonRight.addStyleName("HScroll.rightButton");
-			if (id != null) {
-				buttonRight.id = id + ".rightButton";
-			}
+			buttonRight.id = "buttonRight";
 			buttonRight.autoSize = false;
 			buttonRight.horizontalAlign = "right";
 			buttonRight.addEventListener(MouseEvent.MOUSE_DOWN, onRight);
@@ -66,10 +59,7 @@ class HScroll extends Component {
 
 		thumb = new Button();
 		thumb.width = thumb.height = innerWidth;
-		thumb.addStyleName("HScroll.thumb");
-		if (id != null) {
-			thumb.id = id + ".thumb";
-		}
+		thumb.id = "thumb";
 		thumb.autoSize = false;
 		thumb.toggle = true;
 		thumb.allowSelection = false;

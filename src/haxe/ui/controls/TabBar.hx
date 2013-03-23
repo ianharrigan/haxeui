@@ -15,13 +15,13 @@ class TabBar extends ScrollView {
 	
 	public function new() {
 		super();
-		addStyleName("TabBar");
+		//addStyleName("TabBar");
 		
 		buttons = new Array<Button>();
 		
 		width = 300;
 		viewContent = new HBox();
-		viewContent.addStyleName("TabBar.content");
+		//viewContent.addStyleName("TabBar.content");
 
 		scrollSensitivity = 5;
 		showHorizontalScroll = false;
@@ -40,9 +40,9 @@ class TabBar extends ScrollView {
 	//************************************************************
 	public function addTab(title:String, additionalStyleNames:String = null):Button {
 		var button:Button = new Button();
-		button.inheritStylesFrom = "TabBar.tab";
-		button.addStyleName("TabBar.tab");
-		button.addStyleName(additionalStyleNames);
+		//button.inheritStylesFrom = "TabBar.tab";
+		//button.addStyleName("TabBar.tab");
+		//button.addStyleName(additionalStyleNames);
 		button.toggle = true;
 		button.text = title;
 		button.allowSelection = false;

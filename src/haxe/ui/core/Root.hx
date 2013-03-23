@@ -16,7 +16,7 @@ class Root {
 	public var width(getWidth, null):Float;
 	public var height(getHeight, null):Float;
 	
-	private var disabledOverlay:Sprite;
+	private var disabledOverlay:Component;
 	public var enabled(default, setEnabled):Bool = true;
 	
 	public static function createRoot(options:Dynamic = null):Root {
@@ -50,9 +50,9 @@ class Root {
 		
 		component = new Component();
 		component.root = this;
-		component.addStyleName("Root");
+		//component.addStyleName("Root");
 		if (initOptions.additionalStyles != null) {
-			component.addStyleName(initOptions.additionalStyles);
+			component.styles = initOptions.additionalStyles;
 		}
 		if (initOptions.id != null) {
 			component.id = initOptions.id;
@@ -79,11 +79,14 @@ class Root {
 	
 	public function destroy():Void {
 		cast(initOptions.parent, EventDispatcher).removeEventListener(Event.RESIZE, onResize); // if this doesnt work, its a good thing
-		if (disabledOverlay != null) {
+		if (disabledOverlay != null && component.contains(disabledOverlay)) { // TODO: shouldnt need "contains" clause
 			component.removeChild(disabledOverlay);
+			disabledOverlay = null;
 		}
 		if (component != null) {
 			component.dispose();
+			initOptions.parent.removeChild(component.sprite);
+			component = null;
 		}
 	}
 	
@@ -167,7 +170,9 @@ class Root {
 			}
 		} else {
 			if (disabledOverlay == null) {
-				disabledOverlay = new Sprite();
+				disabledOverlay = new Component();
+				disabledOverlay.id = "disabledOverlay";
+				disabledOverlay.sprite.alpha = .5;
 				//disabledOverlay.addEventListener(MouseEvent.CLICK, onDisabledOverlayClick);
 				component.addChild(disabledOverlay);
 			}
@@ -181,20 +186,8 @@ class Root {
 	
 	private function resizeDisabledOverlay():Void {
 		if (disabledOverlay != null) {
-			var style:Dynamic = StyleManager.styles.getStyle("#disabledOverlay");
-			var bgCol:Int = 0xFFFFFF;
-			if (style != null && style.backgroundColor != null) {
-				bgCol = style.backgroundColor;
-			}
-			var alpha:Float = 0.3;
-			if (style != null && style.alpha != null) {
-				alpha = style.alpha;
-			}
-			disabledOverlay.graphics.clear();
-			disabledOverlay.graphics.beginFill(bgCol, alpha);
-			disabledOverlay.graphics.lineStyle(0, bgCol ,alpha);
-			disabledOverlay.graphics.drawRect(0, 0, Std.int(component.width), Std.int(component.height));
-			disabledOverlay.graphics.endFill();
+			disabledOverlay.width = Std.int(component.width - (component.padding.left + component.padding.right));
+			disabledOverlay.height = Std.int(component.height - (component.padding.top + component.padding.bottom));
 		}
 	}
 }

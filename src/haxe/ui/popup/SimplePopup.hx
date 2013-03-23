@@ -9,8 +9,6 @@ class SimplePopup extends Popup {
 	
 	public function new() {
 		super();
-		inheritStylesFrom = "Popup";
-		addStyleName("SimplePopup");
 	}
 	
 	//************************************************************

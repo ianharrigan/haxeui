@@ -1,46 +1,20 @@
 package haxe.ui.test;
 
-import nme.Assets;
-import nme.display.Bitmap;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.events.TimerEvent;
-import nme.Lib;
-import nme.utils.Timer;
-import haxe.ui.containers.HBox;
 import haxe.ui.containers.ListView;
-import haxe.ui.containers.ScrollView;
-import haxe.ui.containers.TabView;
-import haxe.ui.containers.VBox;
-import haxe.ui.controls.Button;
-import haxe.ui.controls.CheckBox;
-import haxe.ui.controls.HScroll;
-import haxe.ui.controls.Image;
-import haxe.ui.controls.Label;
-import haxe.ui.controls.ProgressBar;
-import haxe.ui.controls.TextInput;
-import haxe.ui.controls.ValueControl;
-import haxe.ui.controls.TabBar;
-import haxe.ui.controls.VScroll;
 import haxe.ui.core.Component;
 import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
 import haxe.ui.core.Globals;
 import haxe.ui.core.Root;
-import haxe.ui.popup.ListPopup;
-import haxe.ui.popup.Popup;
-import haxe.ui.style.android.AndroidStyles;
 import haxe.ui.style.StyleManager;
-import haxe.ui.style.test.TestStyles;
-import haxe.ui.style.windows.WindowsStyles;
-import haxe.ui.style.ios.IosStyles;
+import nme.display.Sprite;
+import nme.events.Event;
+import nme.Lib;
 
 class Main extends Sprite {
 	public static var WINDOWS_SKIN:String = "windowsTheme";
 	public static var ANDROID_SKIN:String = "androidTheme";
-	public static var IOS_SKIN:String = "iosTheme";
-	public static var TEST_SKIN:String = "testTheme";
+	public static var GRADIENT_SKIN:String = "gradientTheme";
 	
 	public function new() {
 		super();
@@ -62,16 +36,31 @@ class Main extends Sprite {
 	}
 
 	public static function startApp(skinId:String):Void {
-		if (skinId == WINDOWS_SKIN) {
-			StyleManager.styles = new WindowsStyles();
-		} else if (skinId == ANDROID_SKIN) {
-			StyleManager.styles = new AndroidStyles();
-		} else if (skinId == IOS_SKIN) {
-			StyleManager.styles = new IosStyles();
-		} else if (skinId == TEST_SKIN) {
-			StyleManager.styles = new TestStyles();
-		}
+		
+		Globals.reset();
 		Globals.add(skinId);
+		
+		StyleManager.clear();
+		if (skinId == WINDOWS_SKIN) {
+			//StyleManager.styles = new WindowsStyles();
+			StyleManager.loadFromResource("skins/windows/windows.css");
+			StyleManager.loadFromResource("skins/windows/buttons.css");
+			StyleManager.loadFromResource("skins/windows/tabs.css");
+			StyleManager.loadFromResource("skins/windows/listview.css");
+			StyleManager.loadFromResource("skins/windows/scrolls.css");
+			StyleManager.loadFromResource("skins/windows/popups.css");
+		} else if (skinId == ANDROID_SKIN) {
+			StyleManager.loadFromResource("skins/android/android.css");
+			StyleManager.loadFromResource("skins/android/buttons.css");
+			StyleManager.loadFromResource("skins/android/tabs.css");
+			StyleManager.loadFromResource("skins/android/listview.css");
+			StyleManager.loadFromResource("skins/android/scrolls.css");
+			StyleManager.loadFromResource("skins/android/popups.css");
+		} else if (skinId == GRADIENT_SKIN) {
+			StyleManager.loadFromResource("skins/gradient/gradient.css");
+		}
+		
+		
 		
 		var stage = Lib.current.stage;
 		stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
@@ -79,35 +68,33 @@ class Main extends Sprite {
 
 		Root.destroyAll();
 		
-		// static floating panel
+		//var root:Root = openPopup();
+		var root:Root = openFullscreen();
+		
+		//var controller:Controller = new Controller(ComponentParser.fromXMLAsset("ui/test01.xml"));
+		//root.addChild(controller.view);
+
+		root.addChild(new ControlDemoController().view);
+	}
+	
+	private static function openFullscreen():Root {
+		var root:Root = Root.createRoot();
+		return root;
+	}
+	
+	private static function openPopup():Root {
+		var stage = Lib.current.stage;
 		//var background:Bitmap = new Bitmap(Assets.getBitmapData("img/slinky_large.jpg"));
 		var background:BackgroundTest = new BackgroundTest(); // just a more interactive background
 		stage.addChild(background);
 		
-		var root:Root = Root.createRoot( { x:50, y:50, width: 500, height: 400, additionalStyles: "Root.popupBorder", useShadow: true } );
-		
-		// full screen, 100% size, resizes
-//		var root:Root = Root.createRoot();
-
-		/*
-		var demo:ControlDemoNew = new ControlDemoNew();
-		demo.percentWidth = 100;
-		demo.percentHeight = 100;
-		root.addChild(demo);
-		*/
-
-		/*
-		var controller:Controller = new Controller(ComponentParser.fromXMLAsset("ui/test01.xml"));
-		controller.getComponentAs("button5", Button).addEventListener(MouseEvent.CLICK, function (e) {
-			trace("button 5 clicked");
-		});
-		root.addChild(controller.view);
-		*/
-		
-		root.addChild(new ControlDemoController().view);
-		
-		//root.addChild(ComponentParser.fromXMLAsset("ui/importTest.xml"));
-
+		var root:Root = Root.createRoot( { x:50, y:50, width: 500, height: 400, additionalStyles: "popup", useShadow: true } );
+		return root;
+	}
+	
+	private static function openTest():Root {
+		var root:Root = Root.createRoot();
+		return root;
 	}
 	
 	static public function main() {

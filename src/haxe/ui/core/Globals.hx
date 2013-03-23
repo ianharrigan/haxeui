@@ -3,6 +3,10 @@ package haxe.ui.core;
 class Globals {
 	private static var flags:Hash<String>;
 	
+	public static function reset():Void {
+		flags = null;
+	}
+	
 	public static function add(id:String):Void {
 		if (flags == null) {
 			flags = new Hash<String>();

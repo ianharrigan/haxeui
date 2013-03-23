@@ -1,0 +1,124 @@
+SimplePopup {
+	backgroundImage: skins/android/popup/popup_border.png;
+	backgroundImageScale9: 4,50,258,86;
+	width: 294;
+}
+
+SimplePopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 10;
+	paddingRight: 0;
+	paddingBottom: 0;
+	fontSize: 26;
+	color: 0xFFFFFF;
+}
+
+SimplePopup #popupContent {
+	paddingLeft: 5;
+	paddingTop: 55;
+	paddingRight: 5;
+	paddingBottom: 5;
+}
+
+ListPopup {
+	backgroundImage: skins/android/popup/popup_border.png;
+	backgroundImageScale9: 4,50,258,86;
+	width: 294;
+}
+
+ListPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 10;
+	paddingRight: 0;
+	paddingBottom: 0;
+	fontSize: 26;
+	color: 0xFFFFFF;
+}
+
+ListPopup #popupContent {
+	paddingLeft: 2;
+	paddingTop: 50;
+	paddingRight: 2;
+	paddingBottom: 2;
+}
+
+ListPopup ListView {
+	backgroundImage: null;
+	innerScrolls: true;
+}
+
+ListPopup ListViewItem {
+	backgroundImage: skins/android/list/list_item_popup_unselected.png;
+	paddingLeft: 0;
+	paddingTop: 12;
+	paddingRight: 12;
+	paddingBottom: 12;
+	icon: skins/android/optionbox/optionbox_unselected_up.png;
+	iconPosition: farRight;
+}
+
+ListPopup ListViewItem:selected {
+	backgroundImage: skins/android/list/list_item_selected.png;
+	icon: skins/android/optionbox/optionbox_selected_up.png;
+	iconPosition: farRight;
+}
+
+ListPopup ListViewItem Label {
+	fontSize: 22;
+	fontName: _sans;
+	color: 0x000000;
+}
+
+ListPopup ListViewItem Label:selected {
+	fontSize: 22;
+	fontName: _sans;
+	color: 0xFFFFFF;
+}
+
+ListViewItem #listViewSubtext {
+	fontSize: 14;
+	color: 0x3E9EEA;
+}
+
+ListViewItem #listViewSubtext:selected {
+	color: 0xFFFFFF;
+}
+
+CustomPopup {
+	backgroundImage: skins/android/popup/popup_border.png;
+	backgroundImageScale9: 4,50,258,86;
+	width: 294;
+}
+
+CustomPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 10;
+	paddingRight: 0;
+	paddingBottom: 0;
+	fontSize: 26;
+	color: 0xFFFFFF;
+}
+
+CustomPopup #popupContent {
+	paddingLeft: 5;
+	paddingTop: 55;
+	paddingRight: 5;
+	paddingBottom: 5;
+}
+
+BusyPopup {
+	backgroundImage: skins/android/popup/popup_border_no_title.png;
+	backgroundImageScale9: 5,5,15,15;
+	width: 294;
+}
+
+BusyPopup Label {
+	fontSize: 18;
+}
+
+BusyPopup #popupContent {
+	paddingLeft: 5;
+	paddingTop: 8;
+	paddingRight: 5;
+	paddingBottom: 8;
+}

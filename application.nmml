@@ -46,12 +46,13 @@
 	<haxeflag name="--dead-code-elimination" if="html5" />
 	<haxeflag name="--js-modern" if="html5" />
 	
-	<!-- Embed xml skin data (to avoid html5 xss loading issue -->
-	<haxedef name="embeddedXML" />
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/controlDemo.xml@ui/controlDemo.xml" />
 	<haxeflag name="-resource" value="assets/ui/controlDemo_androidStyles.xml@ui/controlDemo_androidStyles.xml" />
 	<haxeflag name="-resource" value="assets/ui/importTest.xml@ui/importTest.xml" />
 	<haxeflag name="-resource" value="assets/ui/importTestChild.xml@ui/importTestChild.xml" />
 	<haxeflag name="-resource" value="assets/ui/customPopup.xml@ui/customPopup.xml" />
+	
+	<haxeflag name="-resource" value="assets/skins/windows/popup.png@skins/windows/popup.png" />
+	
 </project>

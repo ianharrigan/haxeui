@@ -20,7 +20,6 @@ class DropDownList extends Selector {
 	
 	public function new() {
 		super();
-		addStyleName("DropDownList");
 		
 		toggle = true;
 		

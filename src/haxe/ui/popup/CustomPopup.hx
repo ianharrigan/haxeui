@@ -6,9 +6,6 @@ class CustomPopup extends Popup {
 	
 	public function new() {
 		super();
-		inheritStylesFrom = "Popup";
-		addStyleName("CustomPopup");
-		content.addStyleName("CustomPopup.content");
 	}
 	
 	//************************************************************

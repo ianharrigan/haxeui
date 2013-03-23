@@ -1,0 +1,14 @@
+-main haxe.ui.test.Main
+-swf build\test.swf
+-lib nme
+-cp src
+
+-D embeddedXML
+
+-resource assets/ui/test01.xml@ui/test01.xml
+-resource assets/ui/controlDemo.xml@ui/controlDemo.xml
+-resource assets/ui/controlDemo_androidStyles.xml@ui/controlDemo_androidStyles.xml
+-resource assets/ui/importTest.xml@ui/importTest.xml
+-resource assets/ui/importTestChild.xml@ui/importTestChild.xml
+-resource assets/ui/customPopup.xml@ui/customPopup.xml
+

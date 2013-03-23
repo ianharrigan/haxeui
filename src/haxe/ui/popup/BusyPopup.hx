@@ -12,9 +12,6 @@ class BusyPopup extends Popup {
 	
 	public function new() {
 		super();
-		inheritStylesFrom = "Popup";
-		addStyleName("BusyPopup");
-		content.addStyleName("BusyPopup.content");
 	}
 	
 	//************************************************************

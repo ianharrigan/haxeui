@@ -15,10 +15,8 @@ class CheckBox extends Component {
 		super();
 		registerState("over");
 		registerState("down");
-		addStyleName("CheckBox");
 		
 		valueControl = new ValueControl();
-		valueControl.inheritStylesFrom = "CheckBox.value";
 		valueControl.verticalAlign = "center";
 		valueControl.value = "unselected";
 	
@@ -34,15 +32,12 @@ class CheckBox extends Component {
 
 		valueControl.addValue("unselected");
 		valueControl.addValue("selected");
-		valueControl.addStyleName("CheckBox.value");
-		if (id != null) {
-			valueControl.id = id + ".value";
-		}
 		
 		sprite.useHandCursor = true;
 		sprite.buttonMode = true;
 		
 		textControl.text = text;
+		textControl.currentStyle = currentStyle;
 		
 		addChild(valueControl);
 		addChild(textControl);
@@ -69,14 +64,12 @@ class CheckBox extends Component {
 		valueControl.state = "over";
 		showStateStyle(valueControl.state);
 		textControl.currentStyle = currentStyle;
-		textControl.applyStyle();
 	}
 	
 	private function onMouseOut(event:MouseEvent):Void {
 		valueControl.state = "normal";
 		showStateStyle(valueControl.state);
 		textControl.currentStyle = currentStyle;
-		textControl.applyStyle();
 	}
 	
 	private function onMouseClick(event:MouseEvent):Void {

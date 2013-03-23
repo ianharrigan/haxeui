@@ -1,0 +1,43 @@
+TabBar {
+	paddingTop: 0;
+	paddingLeft: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	height: 64;
+	backgroundImage: skins/android/tabbar/tabbar_bg.png;
+}
+
+TabBar HBox {
+	spacingX: 0;
+}
+
+TabBar Button {
+	backgroundImage: skins/android/tabs/tab_unselected_bg.png;
+	backgroundImageScale9: 4,4,76,60;
+	paddingLeft: 5;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 5;
+	height: 64;
+	width: 80;
+	color: 0xFFFFFF;
+	fontSize: 12;
+	iconPosition: top;
+	textPosition: center;
+}
+
+TabBar Button:over {
+	backgroundImage: skins/android/tabs/tab_unselected_bg.png;
+}
+
+TabBar Button:down {
+	backgroundImage: skins/android/tabs/tab_selected_bg.png;
+}
+
+TabView TabViewContent {
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 1;
+}
+

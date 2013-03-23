@@ -1,6 +1,6 @@
 package haxe.ui.containers;
 
-import nme.Assets;
+import haxe.ui.resources.ResourceManager;
 import nme.display.Bitmap;
 import nme.display.DisplayObject;
 import nme.events.Event;
@@ -23,21 +23,17 @@ class ListView extends ScrollView {
 
 	public function new() {
 		super();
-		addStyleName("ListView");
 		
 		items = new Array<ListViewItem>();
 		
-		viewContent = new VBox();
+		viewContent = new ListViewContent();
 		viewContent.percentWidth = 100;
-		viewContent.addStyleName("ListView.content");
 	}
 
 	public override function initialize():Void {
 		super.initialize();
 		
-		if (id != null) {
-			viewContent.id = id + ".content";
-		}
+		viewContent.id = "listViewContent";
 	}
 	
 	//************************************************************
@@ -120,9 +116,6 @@ class ListView extends ScrollView {
 		itemData.fn = (item.fn != null) ? item.fn : null;
 		
 		var c:ListViewItem = new ListViewItem(this);
-		if (additionalStyleNames != null) {
-			c.addStyleName(additionalStyleNames);
-		}
 		c.percentWidth = 100;
 		c.itemData = itemData;
 		c.enabled = itemData.enabled;
@@ -186,6 +179,12 @@ class ListView extends ScrollView {
 //************************************************************
 //                  CHILD CLASSES
 //************************************************************
+class ListViewContent extends VBox { // makes content easier to style
+	public function new() {
+		super();
+	}
+}
+
 class ListViewItem extends Component {
 	public var itemData:Dynamic;
 	
@@ -204,15 +203,12 @@ class ListViewItem extends Component {
 	public function new(parentList:ListView) {
 		this.parentList = parentList;
 		super();
-		inheritStylesFrom = "ListView";
+		
+		//sprite.useHandCursor = true;
+		//sprite.buttonMode = true;
 		
 		registerState("over");
 		registerState("selected");
-		for (s in parentList.styleString.split(" ")) {
-			if (s != " " && s != "") {
-				addStyleName(s + ".item");
-			}
-		}
 	}
 
 	public override function initialize():Void {
@@ -222,16 +218,9 @@ class ListViewItem extends Component {
 			textComponent = new Label();
 			textComponent.registerState("over");
 			textComponent.registerState("selected");
-			for (s in parentList.styleString.split(" ")) {
-				if (s != " ") {
-					textComponent.addStyleName(s + ".item.text");
-				}
-			}
-			if (parentList.id != null) {
-				textComponent.id = id + ".item.text";
-			}
+			textComponent.id = "listViewText";
 			textComponent.text = itemData.text;
-			textComponent.percentWidth = 100;
+			//textComponent.percentWidth = 100;
 			addChild(textComponent);
 		}
 
@@ -239,22 +228,15 @@ class ListViewItem extends Component {
 			subTextComponent = new Label();
 			subTextComponent.registerState("over");
 			subTextComponent.registerState("selected");
-			for (s in parentList.styleString.split(" ")) {
-				if (s != " ") {
-					subTextComponent.addStyleName(s + ".item.subtext");
-				}
-			}
-			if (parentList.id != null) {
-				textComponent.id = id + ".subtext";
-			}
+			subTextComponent.id = "listViewSubtext";
 			subTextComponent.text = itemData.subtext;
-			subTextComponent.percentWidth = 100;
+			//subTextComponent.percentWidth = 100;
 			addChild(subTextComponent);
 		}
 		
 		var icon:String = currentStyle.icon;
 		if (icon != null) {
-			iconComponent = new Bitmap(Assets.getBitmapData(icon));
+			iconComponent = new Bitmap(ResourceManager.getBitmapData(icon));
 			if (iconComponent != null) {
 				currentIconAsset = icon;
 				addChild(iconComponent);
@@ -318,7 +300,7 @@ class ListViewItem extends Component {
 			if (iconComponent != null) {
 				removeChild(iconComponent);
 			}
-			iconComponent = new Bitmap(Assets.getBitmapData(currentStyle.icon));
+			iconComponent = new Bitmap(ResourceManager.getBitmapData(currentStyle.icon));
 			if (iconComponent != null) {
 				currentIconAsset = currentStyle.icon;
 				addChild(iconComponent);

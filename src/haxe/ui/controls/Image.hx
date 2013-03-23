@@ -1,19 +1,18 @@
 package haxe.ui.controls;
 
-import nme.Assets;
+import haxe.ui.resources.ResourceManager;
 import nme.display.Bitmap;
 import nme.display.BitmapData;
 import haxe.ui.core.Component;
 
 class Image extends Component {
-	public var bitmapAssetPath(null, setBitmapAssetPath):String;
+	public var resourceId(null, setResourceId):String;
 	
 	private var bmp:Bitmap;
 	private var bmpData:BitmapData;
 	
 	public function new() {
 		super();
-		addStyleName("Image");
 	}
 	
 	//************************************************************
@@ -26,7 +25,7 @@ class Image extends Component {
 	//************************************************************
 	//                  GETTERS AND SETTERS
 	//************************************************************
-	public function setBitmapAssetPath(value:String):String {
+	public function setResourceId(value:String):String {
 		if (bmp != null && contains(bmp)) {
 			removeChild(bmp);
 			bmpData.dispose();
@@ -34,7 +33,7 @@ class Image extends Component {
 			bmpData = null;
 		}
 		
-		bmpData = Assets.getBitmapData(value);
+		bmpData = ResourceManager.getBitmapData(value);
 		if (bmpData != null) {
 			bmp = new Bitmap(bmpData);
 			addChild(bmp);

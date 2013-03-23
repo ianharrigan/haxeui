@@ -22,7 +22,7 @@ class TabView extends Component {
 		tabs = new TabBar();
 		tabs.percentWidth = 100;
 		
-		content = new Component();
+		content = new TabViewContent();
 		content.percentWidth = 100;
 	}
 	
@@ -31,8 +31,7 @@ class TabView extends Component {
 	//************************************************************
 	public override function initialize():Void {
 		tabs.addEventListener(Event.CHANGE, onTabChange);
-		
-		content.addStyleName("TabView.content");
+		content.id = "tabViewContent";
 		
 		if (width <= 0 && percentWidth <= 0) { // TODO: shouldnt need to set this
 			percentWidth = 100;
@@ -70,12 +69,10 @@ class TabView extends Component {
 		}
 		
 		var additionalStyles:String = "";
-		if (id != null && comp.id != null) {
-			additionalStyles += "#" + id + "." + comp.id;
-		}
 		var button:Button = tabs.addTab(comp.text, additionalStyles);
+		button.styles = "tab";
 		if (comp.id != null) {
-			button.id = comp.id + ".tab";
+			button.id = comp.id;
 		}
 		
 		comp.percentWidth = 100;
@@ -132,5 +129,14 @@ class TabView extends Component {
 		var page:Component = pages[tabs.selectedIndex];
 		page.visible = true;
 		currentPage = page;
+	}
+}
+
+//************************************************************
+//                  CHILD CLASSES
+//************************************************************
+class TabViewContent extends Component { // makes content easier to style
+	public function new() {
+		super();
 	}
 }

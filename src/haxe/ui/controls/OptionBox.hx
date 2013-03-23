@@ -16,10 +16,8 @@ class OptionBox extends Component {
 		super();
 		registerState("over");
 		registerState("down");
-		addStyleName("OptionBox");
 		
 		valueControl = new ValueControl();
-		valueControl.inheritStylesFrom = "OptionBox.value";
 		valueControl.verticalAlign = "center";
 		valueControl.value = "unselected";
 		valueControl.interactive = false;
@@ -40,10 +38,6 @@ class OptionBox extends Component {
 
 		valueControl.addValue("unselected");
 		valueControl.addValue("selected");
-		valueControl.addStyleName("OptionBox.value");
-		if (id != null) {
-			valueControl.id = id + ".value";
-		}
 		
 		sprite.useHandCursor = true;
 		sprite.buttonMode = true;
@@ -75,14 +69,12 @@ class OptionBox extends Component {
 		valueControl.state = "over";
 		showStateStyle(valueControl.state);
 		textControl.currentStyle = currentStyle;
-		textControl.applyStyle();
 	}
 	
 	private function onMouseOut(event:MouseEvent):Void {
 		valueControl.state = "normal";
 		showStateStyle(valueControl.state);
 		textControl.currentStyle = currentStyle;
-		textControl.applyStyle();
 	}
 
 	private function onMouseClick(event:MouseEvent):Void {
@@ -121,7 +113,7 @@ class OptionBox extends Component {
 	}
 	
 	public function setGroup(value:String):String { 
-		if (value != null) { // TODO: remove from groups
+		if (value != null) {
 			var arr:Array<OptionBox> = groups.get(value);
 			if (arr != null) {
 				arr.remove(this);

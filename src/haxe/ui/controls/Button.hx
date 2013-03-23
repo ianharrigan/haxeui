@@ -1,6 +1,6 @@
 package haxe.ui.controls;
 
-import nme.Assets;
+import haxe.ui.resources.ResourceManager;
 import nme.display.Bitmap;
 import nme.display.BitmapData;
 import nme.display.Sprite;
@@ -27,7 +27,6 @@ class Button extends Component {
 		super();
 		registerState("over");
 		registerState("down");
-		addStyleName("Button");
 	}
 	
 	//************************************************************
@@ -35,6 +34,9 @@ class Button extends Component {
 	//************************************************************
 	public override function applyStyle():Void {
 		super.applyStyle();
+		if (ready == false) {
+			return;
+		}
 		
 		label.currentStyle = currentStyle;
 		label.applyStyle();
@@ -46,7 +48,7 @@ class Button extends Component {
 		
 		repositionLabel();
 		if (currentStyle.icon != null) {
-			var bitmapData:BitmapData = Assets.getBitmapData(currentStyle.icon);
+			var bitmapData:BitmapData = ResourceManager.getBitmapData(currentStyle.icon);
 			if (bitmapData != null) {
 				var lcx:Float = 0;
 				var lcy:Float = 0;
@@ -84,13 +86,13 @@ class Button extends Component {
 						iconX = (this.innerWidth / 2) - ((bitmapData.width) / 2) + padding.left;
 						iconY = (this.innerHeight / 2) - ((combinedHeight) / 2) + padding.top;
 						
-						label.y = iconY + bitmapData.height - padding.top;
+						label.y = Std.int(iconY + bitmapData.height - padding.top);
 					}
 				}
 
 				var srcRect:Rectangle = new Rectangle(0, 0, bitmapData.width, bitmapData.height);
 				var dstRect:Rectangle = new Rectangle(Std.int(iconX), Std.int(iconY), bitmapData.width, bitmapData.height);
-				StyleHelper.paintBitmapSection(sprite.graphics, currentStyle.icon, srcRect, dstRect);
+				StyleHelper.paintBitmapSection(sprite.graphics, currentStyle.icon, null, srcRect, dstRect);
 			}
 		}
 	}
@@ -215,8 +217,8 @@ class Button extends Component {
 				labelX = 0;
 			}
 			
-			label.x = labelX;
-			label.y = labelY;
+			label.x = Std.int(labelX);
+			label.y = Std.int(labelY);
 		}
 	}
 }

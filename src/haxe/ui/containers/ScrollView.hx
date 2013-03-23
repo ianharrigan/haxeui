@@ -35,7 +35,6 @@ class ScrollView extends Component {
 	
 	public function new() {
 		super();
-		addStyleName("ScrollView");
 		
 		viewContent = new Component();
 		scrollPos = new Point(0, 0);
@@ -242,29 +241,6 @@ class ScrollView extends Component {
 			hscroll.visible = false;
 		}
 	}
-	
-	//************************************************************
-	//                  GETTERS AND SETTERS
-	//************************************************************
-	/*
-	public function setContent(value:Component):Component {
-		if (viewContent != null) {
-			super.removeChild(viewContent);
-			content = null;
-		}
-		
-		viewContent = value;
-		if (ready) {
-			super.addChild(viewContent);
-		}
-		
-		return viewContent;
-	}
-	
-	public function getContent():Component {
-		return viewContent;
-	}
-	*/
 	
 	//************************************************************
 	//                  HELPERS

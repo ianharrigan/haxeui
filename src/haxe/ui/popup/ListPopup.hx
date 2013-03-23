@@ -19,8 +19,6 @@ class ListPopup extends Popup {
 	
 	public function new() {
 		super();
-		inheritStylesFrom = "Popup";
-		addStyleName("ListPopup");
 	}
 	
 	//************************************************************
@@ -30,10 +28,7 @@ class ListPopup extends Popup {
 		super.initialize();
 		
 		list = new ListView();
-		list.addStyleName("Popup.list");
-		if (this.id != null) {
-			list.id =  id + ".list";
-		}
+		list.id = "popupListView";
 		list.percentWidth = 100;
 		list.percentHeight = 100;
 		content.addChild(list);

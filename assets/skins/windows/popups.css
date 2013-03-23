@@ -1,0 +1,81 @@
+SimplePopup {
+	backgroundImage: skins/windows/popup.png;
+	backgroundImageScale9: 8,30,341,50;
+	backgroundImageRect: 0, 0, 349, 58;
+	width: 230;
+}
+
+SimplePopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 0;
+	paddingBottom: 0;
+}
+
+SimplePopup #popupContent {
+	paddingLeft: 10;
+	paddingTop: 32;
+	paddingRight: 10;
+	paddingBottom: 10;
+}
+
+ListPopup {
+	backgroundImage: skins/windows/popup.png;
+	backgroundImageScale9: 8,30,341,50;
+	backgroundImageRect: 0, 0, 349, 58;
+	width: 230;
+}
+
+ListPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 0;
+	paddingBottom: 0;
+}
+
+ListPopup #popupContent {
+	paddingLeft: 8;
+	paddingTop: 30;
+	paddingRight: 8;
+	paddingBottom: 8;
+}
+
+ListPopup ListView {
+	backgroundImage: null;
+	backgroundImageScale9: 2,2,4,4;
+}
+
+CustomPopup {
+	backgroundImage: skins/windows/popup.png;
+	backgroundImageScale9: 8,30,341,50;
+	backgroundImageRect: 0, 0, 349, 58;
+	width: 230;
+}
+
+CustomPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 0;
+	paddingBottom: 0;
+}
+
+CustomPopup #popupContent {
+	paddingLeft: 10;
+	paddingTop: 32;
+	paddingRight: 10;
+	paddingBottom: 10;
+}
+
+BusyPopup {
+	backgroundImage: skins/windows/popup.png;
+	backgroundImageScale9: 8,8,341,28;
+	backgroundImageRect: 0, 58, 349, 36;
+	width: 230;
+}
+
+BusyPopup #popupContent {
+	paddingLeft: 8;
+	paddingTop: 12;
+	paddingRight: 8;
+	paddingBottom: 12;
+}

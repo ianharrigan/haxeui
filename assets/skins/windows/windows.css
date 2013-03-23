@@ -1,0 +1,113 @@
+#root {
+	fontSize: 13;
+	fontName: _sans;
+	backgroundColor: 0xFFFFFF;
+}
+
+#root.popup {
+	backgroundImage: embedded://skins/windows/popup.png;
+	backgroundImageScale9: 8,30,341,50;
+	backgroundImageRect: 0, 0, 349, 58;
+	paddingLeft: 8;
+	paddingTop: 30;
+	paddingRight: 8;
+	paddingBottom: 8;
+	backgroundColor: -1;
+}
+
+#disabledOverlay {
+	backgroundColor: 0xFFFFFF;
+}
+
+Label {
+	color: 0x000000;
+	fontSize: 13;
+	fontName: _sans;
+}
+
+TextInput {
+	color: 0x000000;
+	fontSize: 13;
+	fontName: _sans;
+	backgroundImage: skins/windows/textinput.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 0,0,15,15;
+	width: 200;
+	height: 23;
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingRight: 2;
+	paddingBottom: 2;
+}
+
+TextInput:over {
+	backgroundImage: skins/windows/textinput.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 15,0,15,15;
+}
+
+VBox {
+	spacingY: 5;
+}
+
+HBox {
+	spacingX: 5;
+}
+
+ProgressBar {
+	width: 100;
+	height: 15;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	backgroundImage: skins/windows/progress.png;
+	backgroundImageScale9: 5,5,185,10;
+	backgroundImageRect: 0, 0, 190, 15;
+}
+
+ProgressBar #progressBarValue {
+	backgroundImage: skins/windows/progress.png;
+	backgroundImageScale9: 5,5,183,8;
+	backgroundImageRect: 0, 15, 188, 13;
+}
+
+RatingControl {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 5;
+	backgroundImage: skins/windows/textinput.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 0,0,15,15;
+	spacingX: 5;
+}
+
+RatingControl ValueControl {
+	width: 16;
+	height: 16;
+}
+
+RatingControl ValueControl:unselected:normal {
+	backgroundImage: skins/windows/icons/star-empty.png;
+}
+
+RatingControl ValueControl:unselected:over {
+	backgroundImage: skins/windows/icons/star.png;
+}
+
+RatingControl ValueControl:unselected:down {
+	backgroundImage: skins/windows/icons/star.png;
+}
+
+RatingControl ValueControl:selected:normal {
+	backgroundImage: skins/windows/icons/star.png;
+}
+
+RatingControl ValueControl:selected:over {
+	backgroundImage: skins/windows/icons/star.png;
+}
+
+RatingControl ValueControl:selected:down {
+	backgroundImage: skins/windows/icons/star.png;
+}

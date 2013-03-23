@@ -6,7 +6,7 @@ import haxe.ui.style.StyleManager;
 
 class ValueControl extends Component {
 	
-	private var valueStyles:Hash<Hash<Dynamic>>;
+	private var valueStyles:Hash<Dynamic>;
 	private var values:Array<String>;
 
 	public var value(default, setValue):String = "0";
@@ -18,11 +18,9 @@ class ValueControl extends Component {
 		super();
 		registerState("over");
 		registerState("down");
-		addStyleName("ValueControl");
 		
 		values = new Array<String>();
-		valueStyles = new Hash<Hash<Dynamic>>();
-		
+		valueStyles = new Hash<Dynamic>();
 	}
 	
 	//************************************************************
@@ -31,44 +29,16 @@ class ValueControl extends Component {
 	public override function initialize():Void {
 		super.initialize();
 
-		var styleArr:Array<String> = styleString.split(" ");
-		var addStyle:Bool = false;
-		for (s in styleArr) {
-			if (s == "ValueControl") {
-				addStyle = true;
-			}
-			
-			if (addStyle == false) {
-				continue;
-			}
-			
-			for (valueId in values) {
-				var valueStyleString:String = s + "." + valueId;
-				if (id != null) {
-					valueStyleString += " #" + id + "." + valueId;
-				}
-				var valueStyle:Dynamic = StyleManager.styleFromString(valueStyleString, inheritStylesFrom);
-				valueStyle = StyleManager.mergeStyle(currentStyle, valueStyle);
-				
-				var states:Hash<Dynamic> = valueStyles.get(valueId);
-				if (states == null) {
-					states = new Hash<Dynamic>();
-				}
-				states.set("normal", StyleManager.mergeStyle(valueStyle, states.get("normal")));
-				valueStyles.set(valueId, states);
-				
-				for (stateName in registeredStateNames) {
-					var valueStyleString:String = s + "." + valueId + ":" + stateName;
-					if (id != null) {
-						valueStyleString += " #" + id + "." + valueId + ":" + stateName;
-					}
-					var valueStateStyle:Dynamic = StyleManager.styleFromString(valueStyleString, inheritStylesFrom);
-					valueStateStyle = StyleManager.mergeStyle(valueStyle, valueStateStyle);
-					states.set(stateName, StyleManager.mergeStyle(valueStateStyle, states.get(stateName)));
+		for (valueId in values) {
+			for (valueState in getRegisteredStateNames()) {
+				var temp =  valueId + ":" + valueState;
+				var valueStyle:Dynamic = StyleManager.buildStyle(this, temp);
+				if (valueStyle != null) {
+					valueStyles.set(valueId + ":" + valueState, valueStyle);
 				}
 			}
 		}
-
+		
 		showValueStyle(value, state);
 		
 		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
@@ -147,15 +117,9 @@ class ValueControl extends Component {
 	}
 	
 	private function showValueStyle(value:String, state:String = "normal"):Void {
-		var states:Hash<Dynamic> = valueStyles.get(value);
-		if (states != null) {
-			var valueStyle:Dynamic = states.get(state);
-			if (valueStyle != null) {
-				currentStyle = valueStyle;
-			} else { // if you dont have the state show the normal state 
-				currentStyle = states.get("normal");
-			}
-			applyStyle();
+		var valueStyle:Dynamic = valueStyles.get(value + ":" + state);
+		if (valueStyle != null) {
+			currentStyle = valueStyle;
 		}
 	}
 	

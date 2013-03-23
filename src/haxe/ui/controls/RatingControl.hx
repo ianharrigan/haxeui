@@ -13,7 +13,6 @@ class RatingControl extends HBox {
 	
 	public function new() {
 		super();
-		addStyleName("RatingControl");
 		
 		valueControls = new Array<ValueControl>();
 	}
@@ -27,11 +26,9 @@ class RatingControl extends HBox {
 		for (n in 0...max) {
 			var vc:ValueControl = new ValueControl();
 			
-			vc.inheritStylesFrom = "RatingControl.value";
 			vc.verticalAlign = "center";
 			vc.addValue("unselected");
 			vc.addValue("selected");
-			vc.addStyleName("RatingControl.value");
 			vc.value = "unselected";
 			vc.interactive = false;
 			vc.sprite.useHandCursor = true;

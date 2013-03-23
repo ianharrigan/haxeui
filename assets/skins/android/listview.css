@@ -1,0 +1,45 @@
+ListView {
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingTop: 0;
+	autoHideScrolls: true;
+}
+
+ListViewItem {
+	backgroundImage: skins/android/list/list_item_unselected.png;
+	paddingLeft: 0;
+	paddingTop: 12;
+	paddingRight: 12;
+	paddingBottom: 12;
+}
+
+ListViewItem:over {
+	backgroundImage: skins/android/list/list_item_unselected.png;
+}
+
+ListViewItem:selected {
+	backgroundImage: skins/android/list/list_item_selected.png;
+}
+
+ListViewItem Button {
+	paddingLeft: 6;
+	paddingTop: 6;
+	paddingBottom: 6;
+	paddingRight: 6;
+}
+
+ListViewItem Label {
+	fontSize: 22;
+	fontName: _sans;
+	color: 0xFFFFFF;
+}
+
+ListViewItem #listViewSubtext {
+	fontSize: 14;
+	color: 0x3E9EEA;
+}
+
+ListViewItem #listViewSubtext:selected {
+	color: 0xFFFFFF;
+}

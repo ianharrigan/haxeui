@@ -30,7 +30,6 @@ class VScroll extends Component {
 	
 	public function new() {
 		super();
-		addStyleName("VScroll");
 		autoSize = false;
 	}
 
@@ -43,10 +42,7 @@ class VScroll extends Component {
 		if (currentStyle.hasButtons != null && currentStyle.hasButtons == true) {
 			buttonUp = new Button();
 			buttonUp.width = buttonUp.height = innerWidth;
-			buttonUp.addStyleName("VScroll.upButton");
-			if (id != null) {
-				buttonUp.id = id + ".upButton";
-			}
+			buttonUp.id = "buttonUp";
 			buttonUp.autoSize = false;
 			buttonUp.verticalAlign = "top";
 			buttonUp.addEventListener(MouseEvent.MOUSE_DOWN, onUp);
@@ -54,10 +50,7 @@ class VScroll extends Component {
 			
 			buttonDown = new Button();
 			buttonDown.width = buttonDown.height = innerWidth;
-			buttonDown.addStyleName("VScroll.downButton");
-			if (id != null) {
-				buttonDown.id = id + ".downButton";
-			}
+			buttonDown.id = "buttonDown";
 			buttonDown.autoSize = false;
 			buttonDown.verticalAlign = "bottom";
 			buttonDown.addEventListener(MouseEvent.MOUSE_DOWN, onDown);
@@ -66,10 +59,7 @@ class VScroll extends Component {
 
 		thumb = new Button();
 		thumb.width = thumb.height = innerWidth;
-		thumb.addStyleName("VScroll.thumb");
-		if (id != null) {
-			thumb.id = id + ".thumb";
-		}
+		thumb.id = "thumb";
 		thumb.autoSize = false;
 		thumb.toggle = true;
 		thumb.allowSelection = false;

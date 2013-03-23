@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <style>
-	#basic.tab {
+	TabBar #basic {
 		icon: skins/android/icons/fav_32.png;
 	}
 	
-	#scrolls.tab {
+	TabBar #scrolls {
 		icon: skins/android/icons/home_32.png;
 	}
 	
-	#selection.tab {
+	TabBar #selection {
 		icon: skins/android/icons/search_32.png;
 	}
 	
-	#theme.tab {
+	TabBar #theme {
 		icon: skins/android/icons/settings_32.png;
 	}
 
-	#list.tab {
+	TabBar #list {
 		icon: skins/android/icons/user_32.png;
 	}
 </style>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <tabview>
-	<!-- TODO: padding doesnt work properly, probably button related -->
+	<style resource="ui/controlDemo.css"/>
+	<import resource="ui/controlDemo_androidStyles.xml" if="androidTheme"/>
+	<!-- Could also do something like this
+	<style resource="ui/controlDemo_android.css" if="androidTheme" />
+	-->
+	
 	<style>
 		#myStyledButton {
 			color: 0xFF0000;
@@ -10,32 +15,11 @@
 			color: 0xFF00FF;
 		}
 		
-		#basic.tab {
-			icon: icons/fav_16.png;
-		}
-		
-		#scrolls.tab {
-			icon: icons/home_16.png;
-		}
-		
-		#selection.tab {
-			icon: icons/file_blank_16.png;
-		}
-		
-		#theme.tab {
-			icon: icons/application_16.png;
-		}
-
-		#list.tab {
-			icon: icons/settings_16.png;
-		}
-		
-		fixedWidth {
+		Label.fixedWidth {
 			width: 100px;
 		}
 	</style>
 	
-	<import resource="ui/controlDemo_androidStyles.xml" if="androidTheme"/>
 	
 	<vbox text="List" id="list">
 		<hbox>
@@ -50,11 +34,11 @@
 		
 		<hbox>
 			<label text="Text:" styles="fixedWidth" />
-			<textfield text="New item" id="newItemText" />
+			<textinput text="New item" id="newItemText" />
 		</hbox>
 		<hbox>
 			<label text="Sub Text:" styles="fixedWidth" />
-			<textfield text="New item subtext" id="newItemSubtext" />
+			<textinput text="New item subtext" id="newItemSubtext" />
 		</hbox>
 		<hbox>
 			<button text="Add Item" id="addListItem" />
@@ -105,8 +89,8 @@
 			<optionbox text="Option 3B" group="B" />
 		</hbox>
 		<hbox>
-			<textfield text="Basic input" />
-			<textfield text="Multiline input" multiline="true" height="100" />
+			<textinput text="Basic input" />
+			<textinput text="Multiline input" multiline="true" height="100" />
 		</hbox>
 	</vbox>
 
@@ -116,7 +100,7 @@
 			<vscroll height="200" />
 			<vscroll width="30" height="200" />
 			<scrollview width="200" height="200">
-				<image asset="img/slinky.jpg" />
+				<image resource="img/slinky.jpg" />
 			</scrollview>
 		</hbox>
 		
@@ -130,8 +114,7 @@
 		<hbox>
 			<button text="Windows" id="windowsTheme" />
 			<button text="Android" id="androidTheme" />
-			<button text="IOS" id="iosTheme" />
-			<button text="Test" id="testTheme" />
+			<button text="Gradient" id="gradientTheme" />
 		</hbox>
 	</vbox>
 	

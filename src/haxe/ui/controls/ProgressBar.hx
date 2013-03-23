@@ -12,13 +12,9 @@ class ProgressBar extends Component {
 	
 	public function new() {
 		super();
-		addStyleName("ProgressBar");
 		
 		valueComponent = new Component();
-		valueComponent.addStyleName("ProgressBar.value");
-		if (id != null) {
-			valueComponent.id = id + ".value";
-		}
+		valueComponent.id = "progressBarValue";
 	}
 	
 	//************************************************************

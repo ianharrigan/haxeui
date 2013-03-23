@@ -5,7 +5,6 @@ import haxe.ui.core.Component;
 class VBox extends Component {
 	public function new() {
 		super();
-		addStyleName("VBox");
 	}
 
 	private override function repositionChildren():Void {
