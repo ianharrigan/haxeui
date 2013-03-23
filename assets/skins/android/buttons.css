@@ -102,7 +102,7 @@ DropDownList {
 	backgroundImageScale9: 5,5,146,38;
 	textPosition: left;
 	iconPosition: farRight;
-	icon: skins/windows/vscroll/vscroll_down_arrow.png;
+	icon: skins/windows/glyphs/down_arrow.png;
 	method: popup;
 }
 
