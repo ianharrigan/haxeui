@@ -116,6 +116,7 @@
 			<button text="Android" id="androidTheme" />
 			<button text="Gradient" id="gradientTheme" />
 		</hbox>
+		<checkbox id="asPopup" text="Run as popup"/>
 	</vbox>
 	
 	<component text="Page 1"/>

@@ -16,6 +16,8 @@ class Main extends Sprite {
 	public static var ANDROID_SKIN:String = "androidTheme";
 	public static var GRADIENT_SKIN:String = "gradientTheme";
 	
+	public static var asPopup:Bool = false;
+	
 	public function new() {
 		super();
 		#if iphone
@@ -35,7 +37,8 @@ class Main extends Sprite {
 		startApp(WINDOWS_SKIN);
 	}
 
-	public static function startApp(skinId:String):Void {
+	public static function startApp(skinId:String, asPopup:Bool = false):Void {
+		Main.asPopup = asPopup;
 		
 		Globals.reset();
 		Globals.add(skinId);
@@ -68,8 +71,12 @@ class Main extends Sprite {
 
 		Root.destroyAll();
 		
-		//var root:Root = openPopup();
-		var root:Root = openFullscreen();
+		var root:Root = null;
+		if (asPopup == true) {
+			root = openPopup();
+		} else {
+			root = openFullscreen();
+		}
 		
 		//var controller:Controller = new Controller(ComponentParser.fromXMLAsset("ui/test01.xml"));
 		//root.addChild(controller.view);

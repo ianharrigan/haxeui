@@ -1,4 +1,5 @@
 package haxe.ui.test;
+import haxe.ui.controls.CheckBox;
 import nme.events.MouseEvent;
 import haxe.ui.containers.ListView;
 import haxe.ui.controls.DropDownList;
@@ -67,16 +68,18 @@ class ControlDemoController extends Controller {
 		
 		// theme switching is just for testing at the moment, simply recreates the entire app
 		attachEvent("windowsTheme", MouseEvent.CLICK, function (e) {
-			Main.startApp(Main.WINDOWS_SKIN);
+			Main.startApp(Main.WINDOWS_SKIN, getComponentAs("asPopup", CheckBox).selected);
 		});
 
 		attachEvent("androidTheme", MouseEvent.CLICK, function (e) {
-			Main.startApp(Main.ANDROID_SKIN);
+			Main.startApp(Main.ANDROID_SKIN, getComponentAs("asPopup", CheckBox).selected);
 		});
 
 		attachEvent("gradientTheme", MouseEvent.CLICK, function (e) {
-			Main.startApp(Main.GRADIENT_SKIN);
+			Main.startApp(Main.GRADIENT_SKIN, getComponentAs("asPopup", CheckBox).selected);
 		});
+		
+		getComponentAs("asPopup", CheckBox).selected = Main.asPopup;
 		
 		// TODO: temporary, will eventually come from datasource
 		getComponentAs("dropdown1", DropDownList).addItem("Item 1");
