@@ -45,13 +45,13 @@ class Main extends Sprite {
 		
 		StyleManager.clear();
 		if (skinId == WINDOWS_SKIN) {
-			//StyleManager.styles = new WindowsStyles();
 			StyleManager.loadFromResource("skins/windows/windows.css");
 			StyleManager.loadFromResource("skins/windows/buttons.css");
 			StyleManager.loadFromResource("skins/windows/tabs.css");
 			StyleManager.loadFromResource("skins/windows/listview.css");
 			StyleManager.loadFromResource("skins/windows/scrolls.css");
 			StyleManager.loadFromResource("skins/windows/popups.css");
+			StyleManager.loadFromResource("skins/windows/sliders.css");
 		} else if (skinId == ANDROID_SKIN) {
 			StyleManager.loadFromResource("skins/android/android.css");
 			StyleManager.loadFromResource("skins/android/buttons.css");
@@ -59,6 +59,7 @@ class Main extends Sprite {
 			StyleManager.loadFromResource("skins/android/listview.css");
 			StyleManager.loadFromResource("skins/android/scrolls.css");
 			StyleManager.loadFromResource("skins/android/popups.css");
+			StyleManager.loadFromResource("skins/android/sliders.css");
 		} else if (skinId == GRADIENT_SKIN) {
 			StyleManager.loadFromResource("skins/gradient/gradient.css");
 		}
@@ -95,7 +96,7 @@ class Main extends Sprite {
 		var background:BackgroundTest = new BackgroundTest(); // just a more interactive background
 		stage.addChild(background);
 		
-		var root:Root = Root.createRoot( { x:50, y:50, width: 500, height: 400, additionalStyles: "popup", useShadow: true } );
+		var root:Root = Root.createRoot( { x:20, y:20, width: 550, height: 450, additionalStyles: "popup", useShadow: true } );
 		return root;
 	}
 	

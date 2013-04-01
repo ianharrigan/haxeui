@@ -1,5 +1,6 @@
 package haxe.ui.core;
 
+import haxe.ui.controls.VSlider;
 import haxe.ui.resources.ResourceManager;
 import haxe.ui.style.StyleManager;
 import haxe.ui.style.StyleParser;
@@ -16,6 +17,7 @@ import haxe.ui.controls.Button;
 import haxe.ui.controls.CheckBox;
 import haxe.ui.controls.DropDownList;
 import haxe.ui.controls.HScroll;
+import haxe.ui.controls.HSlider;
 import haxe.ui.controls.Image;
 import haxe.ui.controls.Label;
 import haxe.ui.controls.OptionBox;
@@ -191,6 +193,8 @@ class ComponentParser {
 		label: "haxe.ui.controls.Label",
 		valuecontrol: "haxe.ui.controls.ValueControl",
 		listview: "haxe.ui.containers.ListView",
+		hslider: "haxe.ui.controls.HSlider",
+		vslider: "haxe.ui.controls.VSlider",
 	}
 	
 	private static function getComponentClass(name:String):String {

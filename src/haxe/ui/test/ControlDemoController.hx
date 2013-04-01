@@ -1,5 +1,8 @@
 package haxe.ui.test;
 import haxe.ui.controls.CheckBox;
+import haxe.ui.controls.HSlider;
+import haxe.ui.controls.Label;
+import nme.events.Event;
 import nme.events.MouseEvent;
 import haxe.ui.containers.ListView;
 import haxe.ui.controls.DropDownList;
@@ -80,6 +83,13 @@ class ControlDemoController extends Controller {
 		});
 		
 		getComponentAs("asPopup", CheckBox).selected = Main.asPopup;
+	
+		var value = getComponentAs("hslider", HSlider).value;
+		getComponent("hsliderValue").text = "Value: " + value;
+		attachEvent("hslider", Event.CHANGE, function (e) {
+			var value = getComponentAs("hslider", HSlider).value;
+			getComponent("hsliderValue").text = "Value: " + value;
+		});
 		
 		// TODO: temporary, will eventually come from datasource
 		getComponentAs("dropdown1", DropDownList).addItem("Item 1");
@@ -120,6 +130,7 @@ class ControlDemoController extends Controller {
 		getComponentAs("theList", ListView).addItem( { text: "Alana Aikins", enabled: false } );
 		getComponentAs("theList", ListView).addItem( { text: "Lonnie Massengill" }, "favIcon");
 		getComponentAs("theList", ListView).addItem( { text: "Javier Rank", subtext: "4 item(s) uploading", type: "progress", value: 65 } );
+		getComponentAs("theList", ListView).addItem( { text: "Pearlie Caulkins", subtext: "Slider test", type: "hslider", value: 35 } );
 		getComponentAs("theList", ListView).addItem( { text: "Darcy Lanz", subtext: "Feedback requested", type:"rating", value: 4 }, "userIcon");
 		getComponentAs("theList", ListView).addItem( { text: "Jeanie Condron", subtext: "11 item(s) ready", type: "button", value: "Send", fn: function(e) {
 			Popup.showSimple(view.root, "You clicked 'Send'");

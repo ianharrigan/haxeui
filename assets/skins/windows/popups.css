@@ -1,5 +1,5 @@
 SimplePopup {
-	backgroundImage: skins/windows/popup.png;
+	backgroundImage: embedded://skins/windows/popup.png;
 	backgroundImageScale9: 8,30,341,50;
 	backgroundImageRect: 0, 0, 349, 58;
 	width: 230;
@@ -20,7 +20,7 @@ SimplePopup #popupContent {
 }
 
 ListPopup {
-	backgroundImage: skins/windows/popup.png;
+	backgroundImage: embedded://skins/windows/popup.png;
 	backgroundImageScale9: 8,30,341,50;
 	backgroundImageRect: 0, 0, 349, 58;
 	width: 230;
@@ -46,7 +46,7 @@ ListPopup ListView {
 }
 
 CustomPopup {
-	backgroundImage: skins/windows/popup.png;
+	backgroundImage: embedded://skins/windows/popup.png;
 	backgroundImageScale9: 8,30,341,50;
 	backgroundImageRect: 0, 0, 349, 58;
 	width: 230;
@@ -67,7 +67,7 @@ CustomPopup #popupContent {
 }
 
 BusyPopup {
-	backgroundImage: skins/windows/popup.png;
+	backgroundImage: embedded://skins/windows/popup.png;
 	backgroundImageScale9: 8,8,341,28;
 	backgroundImageRect: 0, 58, 349, 36;
 	width: 230;

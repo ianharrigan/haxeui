@@ -1,5 +1,6 @@
 package haxe.ui.containers;
 
+import haxe.ui.controls.HSlider;
 import haxe.ui.resources.ResourceManager;
 import nme.display.Bitmap;
 import nme.display.DisplayObject;
@@ -121,9 +122,11 @@ class ListView extends ScrollView {
 		c.enabled = itemData.enabled;
 		viewContent.addChild(c);
 		items.push(c);
+		/*
 		if (ready) {
 			invalidate(false); // TODO: this should probably happen automatically
 		}
+		*/
 		
 		c.addEventListener(MouseEvent.MOUSE_OVER, buildMouseOverFunction(items.length-1));
 		c.addEventListener(MouseEvent.MOUSE_OUT, buildMouseOutFunction(items.length-1));
@@ -257,6 +260,10 @@ class ListViewItem extends Component {
 				var rating:RatingControl = new RatingControl();
 				rating.rating = itemData.value;
 				typeComponent = rating;
+			} else if (itemData.type = "hslider") {
+				var hslider:HSlider = new HSlider();
+				hslider.value = itemData.value;
+				typeComponent = hslider;
 			}
 			
 			if (typeComponent != null) {

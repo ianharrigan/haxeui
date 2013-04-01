@@ -1,0 +1,64 @@
+ProgressBar {
+	width: 100;
+	height: 15;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	backgroundImage: embedded://skins/windows/progress.png;
+	backgroundImageScale9: 5,5,185,10;
+	backgroundImageRect: 0, 0, 190, 15;
+}
+
+ProgressBar #progressBarValue {
+	backgroundImage: embedded://skins/windows/progress.png;
+	backgroundImageScale9: 5,5,183,8;
+	backgroundImageRect: 0, 15, 188, 13;
+}
+
+HSlider {
+	width: 100;
+	height: 20;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+}
+
+HSlider #hsliderValue {
+	height: 10;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+}
+
+HSlider #hsliderButton {
+	width: 10;
+	percentHeight: 100;
+	backgroundImage: embedded://skins/windows/hscroll.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 0, 0, 15, 15;
+}
+
+HSlider #hsliderButton:over {
+	backgroundImage: embedded://skins/windows/hscroll.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 15, 0, 15, 15;
+}
+
+HSlider #hsliderButton:down {
+	backgroundImage: embedded://skins/windows/hscroll.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 30, 0, 15, 15;
+}
+
+VSlider {
+	width: 20;
+	height: 100;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	backgroundColor: 0xFF0000;
+}

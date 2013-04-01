@@ -10,6 +10,7 @@ class ResourceManager {
 	public static function getBitmapData(resourceId:String):BitmapData {
 		var resInfo:ResourceInfo = processResourceId(resourceId);
 		var bmp:BitmapData = null;
+		//trace(">>>>>> " + resourceId);
 		
 		if (resInfo.type == "asset") {
 			bmp = Assets.getBitmapData(resInfo.id);
@@ -24,7 +25,7 @@ class ResourceManager {
 		return bmp;
 	}
 	
-	public static function getText(resourceId:String):String {
+	public static function getText(resourceId:String, locale:String = null):String {
 		var resInfo:ResourceInfo = processResourceId(resourceId);
 		var str:String = null;
 

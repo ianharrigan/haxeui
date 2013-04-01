@@ -68,6 +68,9 @@ class Label extends Component {
 		rawText = value;
 		if (ready == true) {
 			textControl.text = value;
+			if (autoSize == true) {
+				sizeTextControl();
+			}
 		}
 		return value;
 	}
@@ -93,14 +96,8 @@ class Label extends Component {
 			}
 		}
 		
-		//if (width == 0) {
-			width = textControl.width + (padding.left + padding.right);
-		//}
-		//if (height == 0) {
-			height = textControl.height + (padding.top + padding.bottom);
-		//}
-		//trace(">>>>>>>>>> height = " + textControl.textHeight);
-		//trace(">>>>>>>>>> height = " + height);
+		width = textControl.width + (padding.left + padding.right);
+		height = textControl.height + (padding.top + padding.bottom);
 		
 		textControl.x = padding.left;
 		textControl.y = padding.top;

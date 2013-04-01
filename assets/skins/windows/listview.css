@@ -3,7 +3,7 @@ ListView {
 	paddingRight: 2;
 	paddingBottom: 2;
 	paddingTop: 2;
-	backgroundImage: skins/windows/container.png;
+	backgroundImage: embedded://skins/windows/container.png;
 	backgroundImageScale9: 2,2,4,4;
 	backgroundImageRect: 0,0,6,6;
 }
@@ -19,13 +19,13 @@ ListViewItem {
 }
 
 ListViewItem:over {
-	backgroundImage: skins/windows/listview.png;
+	backgroundImage: embedded://skins/windows/listview.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 }
 
 ListViewItem:selected {
-	backgroundImage: skins/windows/listview.png;
+	backgroundImage: embedded://skins/windows/listview.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }

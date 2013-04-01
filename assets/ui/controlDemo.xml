@@ -75,6 +75,9 @@
 			<button text="-" id="minusButton" />
 			<button text="+" id="addButton" />
 		</hbox>
+		<progress width="200" />
+		<progress width="200" height="30" />
+		<progress width="200" height="10" />
 		<hbox>
 			<checkbox text="Checkbox 1" />
 			<checkbox text="Checkbox 2" selected="true" />
@@ -102,11 +105,22 @@
 			<scrollview width="200" height="200">
 				<image resource="img/slinky.jpg" />
 			</scrollview>
+			<vslider height="200" />
+			<vslider width="30" height="200" />
+			<vslider/>
+			<label text="Value:" id="vsliderValue"/> <!-- TODO: problem with ids overwriting each other? -->
 		</hbox>
 		
 		<hscroll/>
 		<hscroll width="200" />
 		<hscroll width="200" height="30" />
+
+		<hbox>
+			<hslider id="hslider" />
+			<label text="Value:" id="hsliderValue"/> <!-- TODO: problem with ids overwriting each other? -->
+		</hbox>
+		<hslider width="200" />
+		<hslider width="200" height="30" />
 	</vbox>
 	
 	<vbox text="Theme" id="theme">

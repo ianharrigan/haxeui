@@ -14,7 +14,6 @@ import haxe.ui.core.Component;
 
 class ScrollView extends Component {
 	private var viewContent:Component;
-	//private var content(getContent, setContent):Component;
 	
 	private var scrollPos:Point;
 	

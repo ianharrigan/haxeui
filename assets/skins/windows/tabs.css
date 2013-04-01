@@ -4,7 +4,7 @@ TabBar {
 	paddingBottom: 0;
 	paddingRight: 5;
 	height: 45;
-	backgroundImage: skins/windows/tab.png;
+	backgroundImage: embedded://skins/windows/tab.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 60, 0, 20, 20;
 }
@@ -14,7 +14,7 @@ TabBar HBox {
 }
 
 TabBar Button {
-	backgroundImage: skins/windows/tab.png;
+	backgroundImage: embedded://skins/windows/tab.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20, 0, 20, 20;
 	paddingLeft: 5;
@@ -25,13 +25,13 @@ TabBar Button {
 }
 
 TabBar Button:over {
-	backgroundImage: skins/windows/tab.png;
+	backgroundImage: embedded://skins/windows/tab.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40, 0, 20, 20;
 }
 
 TabBar Button:down {
-	backgroundImage: skins/windows/tab.png;
+	backgroundImage: embedded://skins/windows/tab.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0, 0, 20, 20;
 }

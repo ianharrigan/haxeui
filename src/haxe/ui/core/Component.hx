@@ -253,6 +253,9 @@ class Component implements IEventDispatcher {
 		if (currentStyle != null && ready == true) {
 			var rc:Rectangle = new Rectangle(0, 0, width, height);
 			StyleHelper.paintStyle(this.sprite.graphics, currentStyle, rc);
+			if (currentStyle.alpha != null) {
+				sprite.alpha = currentStyle.alpha;
+			}
 		}
 	}
 	
@@ -298,6 +301,13 @@ class Component implements IEventDispatcher {
 		}
 		if (currentStyle.height != null && height == 0) {
 			height = currentStyle.height;
+		}
+
+		if (currentStyle.percentWidth != null && percentWidth == -1) {
+			percentWidth = currentStyle.percentWidth;
+		}
+		if (currentStyle.percentHeight != null && percentHeight == -1) {
+			percentHeight = currentStyle.percentHeight;
 		}
 		
 		calcSize();

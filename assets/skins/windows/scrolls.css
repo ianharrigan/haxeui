@@ -1,5 +1,5 @@
 VScroll {
-	backgroundImage: skins/windows/vscroll.png;
+	backgroundImage: embedded://skins/windows/vscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 45, 0, 17, 17;
 	width: 17;
@@ -13,19 +13,19 @@ VScroll {
 }
 			
 VScroll Button {
-	backgroundImage: skins/windows/vscroll.png;
+	backgroundImage: embedded://skins/windows/vscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 0, 0, 15, 15;
 }
 
 VScroll Button:over {
-	backgroundImage: skins/windows/vscroll.png;
+	backgroundImage: embedded://skins/windows/vscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 15, 0, 15, 15;
 }
 
 VScroll Button:down {
-	backgroundImage: skins/windows/vscroll.png;
+	backgroundImage: embedded://skins/windows/vscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 30, 0, 15, 15;
 }
@@ -52,7 +52,7 @@ VScroll #thumb:down {
 			
 
 HScroll {
-	backgroundImage: skins/windows/hscroll.png;
+	backgroundImage: embedded://skins/windows/hscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 45, 0, 17, 17;
 	width: 100;
@@ -66,19 +66,19 @@ HScroll {
 }
 			
 HScroll Button {
-	backgroundImage: skins/windows/hscroll.png;
+	backgroundImage: embedded://skins/windows/hscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 0, 0, 15, 15;
 }
 
 HScroll Button:over {
-	backgroundImage: skins/windows/hscroll.png;
+	backgroundImage: embedded://skins/windows/hscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 15, 0, 15, 15;
 }
 
 HScroll Button:down {
-	backgroundImage: skins/windows/hscroll.png;
+	backgroundImage: embedded://skins/windows/hscroll.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 30, 0, 15, 15;
 }

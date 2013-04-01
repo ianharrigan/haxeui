@@ -53,6 +53,30 @@
 	<haxeflag name="-resource" value="assets/ui/importTestChild.xml@ui/importTestChild.xml" />
 	<haxeflag name="-resource" value="assets/ui/customPopup.xml@ui/customPopup.xml" />
 	
+	<!-- embed windows theme assets -->
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/down_arrow.png@skins/windows/glyphs/down_arrow.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/hscroll_thumb_gripper_down.png@skins/windows/glyphs/hscroll_thumb_gripper_down.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/hscroll_thumb_gripper_over.png@skins/windows/glyphs/hscroll_thumb_gripper_over.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/hscroll_thumb_gripper_up.png@skins/windows/glyphs/hscroll_thumb_gripper_up.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/left_arrow.png@skins/windows/glyphs/left_arrow.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/right_arrow.png@skins/windows/glyphs/right_arrow.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/up_arrow.png@skins/windows/glyphs/up_arrow.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/vscroll_thumb_gripper_down.png@skins/windows/glyphs/vscroll_thumb_gripper_down.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/vscroll_thumb_gripper_over.png@skins/windows/glyphs/vscroll_thumb_gripper_over.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/glyphs/vscroll_thumb_gripper_up.png@skins/windows/glyphs/vscroll_thumb_gripper_up.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/icons/star.png@skins/windows/icons/star.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/icons/star-empty.png@skins/windows/icons/star-empty.png" />
+
+	<haxeflag name="-resource" value="assets/skins/windows/button.png@skins/windows/button.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/checkbox.png@skins/windows/checkbox.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/container.png@skins/windows/container.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/hscroll.png@skins/windows/hscroll.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/listview.png@skins/windows/listview.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/optionbox.png@skins/windows/optionbox.png" />
 	<haxeflag name="-resource" value="assets/skins/windows/popup.png@skins/windows/popup.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/progress.png@skins/windows/progress.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/tab.png@skins/windows/tab.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/textinput.png@skins/windows/textinput.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/vscroll.png@skins/windows/vscroll.png" />
 	
 </project>
