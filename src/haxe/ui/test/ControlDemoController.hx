@@ -2,6 +2,9 @@ package haxe.ui.test;
 import haxe.ui.controls.CheckBox;
 import haxe.ui.controls.HSlider;
 import haxe.ui.controls.Label;
+import haxe.ui.data.ArrayDataSource;
+import haxe.ui.data.DataSource;
+import haxe.ui.data.JSONDataSource;
 import nme.events.Event;
 import nme.events.MouseEvent;
 import haxe.ui.containers.ListView;
@@ -11,6 +14,7 @@ import haxe.ui.controls.TextInput;
 import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
 import haxe.ui.popup.Popup;
+import nme.system.Capabilities;
 
 class ControlDemoController extends Controller {
 	public function new() {
@@ -62,7 +66,7 @@ class ControlDemoController extends Controller {
 			if (getComponentAs("newItemSubtext", TextInput).text.length > 0) {
 				item.subtext = getComponentAs("newItemSubtext", TextInput).text;
 			}
-			getComponentAs("theList", ListView).addItem(item); // TODO: should just append to data source
+			getComponentAs("theList", ListView).dataSource.add(item);
 		});
 
 		attachEvent("removeListItem", MouseEvent.CLICK, function (e) {
@@ -91,95 +95,40 @@ class ControlDemoController extends Controller {
 			getComponent("hsliderValue").text = "Value: " + value;
 		});
 		
-		// TODO: temporary, will eventually come from datasource
-		getComponentAs("dropdown1", DropDownList).addItem("Item 1");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 2");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 3");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 4");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 5");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 6");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 7");
-		getComponentAs("dropdown1", DropDownList).addItem("Item 8");
-		
-		getComponentAs("dropdown2", DropDownList).addItem("Item 1");
-		
-		getComponentAs("dropdown3", DropDownList).addItem("Item 1");
-		getComponentAs("dropdown3", DropDownList).addItem("Item 2");
-		getComponentAs("dropdown3", DropDownList).addItem("Item 3");
-		getComponentAs("dropdown3", DropDownList).addItem("Item 4");
-		
-		
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 1");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 2");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 3");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 4");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 5");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 6");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 7");
-		getComponentAs("dropdownlist1", DropDownList).addItem("Item 8");
-		
-		getComponentAs("dropdownlist2", DropDownList).addItem("Item 1");
-		
-		getComponentAs("dropdownlist3", DropDownList).addItem("Item 1");
-		getComponentAs("dropdownlist3", DropDownList).addItem("Item 2");
-		getComponentAs("dropdownlist3", DropDownList).addItem("Item 3");
-		getComponentAs("dropdownlist3", DropDownList).addItem("Item 4");
+		getComponent("capsLang").text = "Capabilities.language: " + Capabilities.language;
+		#if !(cpp || neko)
+		getComponent("capsOS").text = "Capabilities.os: " + Capabilities.os;
+		#end
+		getComponent("capsAspectRatio").text = "Capabilities.pixelAspectRatio: " + Capabilities.pixelAspectRatio;
+		getComponent("capsDPI").text = "Capabilities.screenDPI: " + Capabilities.screenDPI;
+		getComponent("capsResX").text = "Capabilities.screenResolutionX: " + Capabilities.screenResolutionX;
+		getComponent("capsResY").text = "Capabilities.screenResolutionY: " + Capabilities.screenResolutionY;
 
-		// list data
-		getComponentAs("theList", ListView).addItem( { text: "Louisa Iman" } );
-		getComponentAs("theList", ListView).addItem( { text: "Alana Aikins", enabled: false } );
-		getComponentAs("theList", ListView).addItem( { text: "Lonnie Massengill" }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Javier Rank", subtext: "4 item(s) uploading", type: "progress", value: 65 } );
-		getComponentAs("theList", ListView).addItem( { text: "Pearlie Caulkins", subtext: "Slider test", type: "hslider", value: 35 } );
-		getComponentAs("theList", ListView).addItem( { text: "Darcy Lanz", subtext: "Feedback requested", type:"rating", value: 4 }, "userIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Jeanie Condron", subtext: "11 item(s) ready", type: "button", value: "Send", fn: function(e) {
-			Popup.showSimple(view.root, "You clicked 'Send'");
-		}}, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Tia Luiz", subtext: "Not available", enabled: false } , "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Kurt Jamal", subtext: "Not available", enabled: false } );
-		
-		// button type
-		getComponentAs("theList", ListView).addItem( { text: "Basic button", type: "button", value: "Do It!" } );
-		getComponentAs("theList", ListView).addItem( { text: "Disabled button", enabled: false, type: "button", value: "Do It!" } );
-		getComponentAs("theList", ListView).addItem( { text: "Button + icon", type: "button", value: "Do It!" }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Button + subtext", subtext: "Some subtext", type: "button", value: "Do It!" } );
-		getComponentAs("theList", ListView).addItem( { text: "Button + subtext + icon", subtext: "Some subtext", type: "button", value: "Do It!" }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Disabled button + subtext + icon", subtext: "Disabled subtext", enabled: false, type: "button", value: "Do It!" } , "favIcon");
+		getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/theList.json");
+		//getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/dropdown.json");
+		getComponent("theList").addEventListener(Event.SCROLL, function(e) {
+			if (getComponentAs("theList", ListView).vscrollPosition >= getComponentAs("theList", ListView).vscrollMax - 20) {
+				// TODO: append more to data source if available (test network/db)
+			}
+		});
 
-		// progress type
-		getComponentAs("theList", ListView).addItem( { text: "Basic progress", type: "progress", value: 75 } );
-		getComponentAs("theList", ListView).addItem( { text: "Disabled progress", enabled: false, type: "progress", value: 35 } );
-		getComponentAs("theList", ListView).addItem( { text: "Progress + icon", type: "progress", value: 95 }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Progress + subtext", subtext: "Some subtext", type: "progress", value: 50 } );
-		getComponentAs("theList", ListView).addItem( { text: "Progress + subtext + icon", subtext: "Some subtext", type: "progress", value: 45 }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Disabled progress + subtext + icon", subtext: "Disabled subtext", enabled: false, type: "progress", value: 55 } , "favIcon");
-
-		// rating type
-		getComponentAs("theList", ListView).addItem( { text: "Basic rating", type: "rating", value: 3 } );
-		getComponentAs("theList", ListView).addItem( { text: "Disabled rating", enabled: false, type: "rating", value: 4 } );
-		getComponentAs("theList", ListView).addItem( { text: "Rating + icon", type: "rating", value: 1 }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Rating + subtext", subtext: "Some subtext", type: "rating", value: 0 } );
-		getComponentAs("theList", ListView).addItem( { text: "Rating + subtext + icon", subtext: "Some subtext", type: "rating", value: 1 }, "favIcon");
-		getComponentAs("theList", ListView).addItem( { text: "Disabled rating + subtext + icon", subtext: "Disabled subtext", enabled: false, type: "rating", value: 5 } , "favIcon");
+		getComponentAs("dropdown1", DropDownList).dataSource = JSONDataSource.fromResource("data/dropdown.json");
+		getComponentAs("dropdown2", DropDownList).dataSource.add( { text: "Item 1" } );
+		getComponentAs("dropdown3", DropDownList).dataSource = new ArrayDataSource([
+			{ text: "Item 1" },
+			{ text: "Item 2" },
+			{ text: "Item 3" },
+			{ text: "Item 4" }
+		]);
 		
-		
-		getComponentAs("theList", ListView).addItem( { text: "Katy Doster" } );
-		getComponentAs("theList", ListView).addItem( { text: "Allan Sok" } );
-		getComponentAs("theList", ListView).addItem( { text: "Rae Platero" } );
-		getComponentAs("theList", ListView).addItem( { text: "Gay Hardimon" } );
-		getComponentAs("theList", ListView).addItem( { text: "Lonnie Brekke" } );
-		getComponentAs("theList", ListView).addItem( { text: "Clayton Fothergill" } );
-		getComponentAs("theList", ListView).addItem( { text: "Jessie Jacquemin" } );
-		getComponentAs("theList", ListView).addItem( { text: "Lonnie Lakes" } );
-		getComponentAs("theList", ListView).addItem( { text: "Clinton Venturi" } );
-		getComponentAs("theList", ListView).addItem( { text: "Neil Lawhon" } );
-		getComponentAs("theList", ListView).addItem( { text: "Noemi Crowden" } );
-		getComponentAs("theList", ListView).addItem( { text: "Pearlie Caulkins" } );
-		getComponentAs("theList", ListView).addItem( { text: "Jeanie Condron" } );
-		for (n in 0...30) {
-			getComponentAs("theList", ListView).addItem("Item " + n);
-		}
-		
+		getComponentAs("dropdownlist1", DropDownList).dataSource = JSONDataSource.fromResource("data/dropdown.json");
+		getComponentAs("dropdownlist2", DropDownList).dataSource.add( { text: "Item 1" } );
+		getComponentAs("dropdownlist3", DropDownList).dataSource = new ArrayDataSource([
+			{ text: "Item 1" },
+			{ text: "Item 2" },
+			{ text: "Item 3" },
+			{ text: "Item 4" }
+		]);
 	}
 	
 }

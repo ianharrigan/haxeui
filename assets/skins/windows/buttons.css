@@ -53,12 +53,22 @@ CheckBox ValueControl:unselected:over {
 	backgroundImageRect: 13,0,13,13;
 }
 
+CheckBox ValueControl:unselected:down {
+	backgroundImage: embedded://skins/windows/checkbox.png;
+	backgroundImageRect: 13,0,13,13;
+}
+
 CheckBox ValueControl:selected:normal {
 	backgroundImage: embedded://skins/windows/checkbox.png;
 	backgroundImageRect: 26,0,13,13;
 }
 
 CheckBox ValueControl:selected:over {
+	backgroundImage: embedded://skins/windows/checkbox.png;
+	backgroundImageRect: 39,0,13,13;
+}
+
+CheckBox ValueControl:selected:down {
 	backgroundImage: embedded://skins/windows/checkbox.png;
 	backgroundImageRect: 39,0,13,13;
 }
@@ -91,12 +101,22 @@ OptionBox ValueControl:unselected:over {
 	backgroundImageRect: 12,0,12,12;
 }
 
+OptionBox ValueControl:unselected:down {
+	backgroundImage: embedded://skins/windows/optionbox.png;
+	backgroundImageRect: 12,0,12,12;
+}
+
 OptionBox ValueControl:selected:normal {
 	backgroundImage: embedded://skins/windows/optionbox.png;
 	backgroundImageRect: 24,0,12,12;
 }
 
 OptionBox ValueControl:selected:over {
+	backgroundImage: embedded://skins/windows/optionbox.png;
+	backgroundImageRect: 36,0,12,12;
+}
+
+OptionBox ValueControl:selected:down {
 	backgroundImage: embedded://skins/windows/optionbox.png;
 	backgroundImageRect: 36,0,12,12;
 }

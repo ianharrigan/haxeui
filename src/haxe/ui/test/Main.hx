@@ -1,11 +1,13 @@
 package haxe.ui.test;
 
+import haxe.Json;
 import haxe.ui.containers.ListView;
 import haxe.ui.core.Component;
 import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
 import haxe.ui.core.Globals;
 import haxe.ui.core.Root;
+import haxe.ui.resources.ResourceManager;
 import haxe.ui.style.StyleManager;
 import nme.display.Sprite;
 import nme.events.Event;
@@ -42,6 +44,7 @@ class Main extends Sprite {
 		
 		Globals.reset();
 		Globals.add(skinId);
+		Globals.add("en_UK");
 		
 		StyleManager.clear();
 		if (skinId == WINDOWS_SKIN) {
@@ -63,8 +66,6 @@ class Main extends Sprite {
 		} else if (skinId == GRADIENT_SKIN) {
 			StyleManager.loadFromResource("skins/gradient/gradient.css");
 		}
-		
-		
 		
 		var stage = Lib.current.stage;
 		stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;

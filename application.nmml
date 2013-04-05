@@ -31,7 +31,8 @@
 
 	<assets path="assets/ui" rename="ui" exclude="*.xml" if="html5" />
 	<assets path="assets/ui" rename="ui" unless="html5" />
-	<!--assets path="assets/tests" rename="tests" unless="html5" /-->
+	
+	<assets path="assets/data" rename="data"/>
 	
 	<!-- for skin sounds -->
 	<assets path="assets/skins/android/audio" rename="assets/skins/android/audio" type="sound" include="*"/>	
@@ -78,5 +79,6 @@
 	<haxeflag name="-resource" value="assets/skins/windows/tab.png@skins/windows/tab.png" />
 	<haxeflag name="-resource" value="assets/skins/windows/textinput.png@skins/windows/textinput.png" />
 	<haxeflag name="-resource" value="assets/skins/windows/vscroll.png@skins/windows/vscroll.png" />
+	<haxeflag name="-resource" value="assets/skins/windows/vslider.png@skins/windows/vslider.png" />
 	
 </project>

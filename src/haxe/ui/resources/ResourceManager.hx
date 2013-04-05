@@ -10,13 +10,11 @@ class ResourceManager {
 	public static function getBitmapData(resourceId:String):BitmapData {
 		var resInfo:ResourceInfo = processResourceId(resourceId);
 		var bmp:BitmapData = null;
-		//trace(">>>>>> " + resourceId);
 		
 		if (resInfo.type == "asset") {
 			bmp = Assets.getBitmapData(resInfo.id);
 		} else if (resInfo.type == "embedded") {
 			#if !(flash || neko)
-			bmp = Assets.getBitmapData(resourceId);
 			var bytes:haxe.io.Bytes = Resource.getBytes(resInfo.id);
 			bmp = BitmapData.loadFromHaxeBytes(ByteArray.fromBytes(bytes));
 			#end

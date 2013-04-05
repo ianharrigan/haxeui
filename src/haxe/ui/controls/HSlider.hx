@@ -115,18 +115,5 @@ class HSlider extends Component {
 		var pos:Float = ((value - min) / m) * innerWidth;
 		pos -= sliderButton.width / 2;
 		sliderButton.x = pos;
-		/*
-		var cx:Float = (innerWidth * value) / 100;
-		if (cx < 0) {
-			cx = 0;
-		}
-		if (cx > 0) {
-			valueComponent.width = Std.int(cx);
-			valueComponent.height = innerHeight;
-			valueComponent.visible = true;
-		} else {
-			valueComponent.visible = false;
-		}
-		*/
 	}
 }

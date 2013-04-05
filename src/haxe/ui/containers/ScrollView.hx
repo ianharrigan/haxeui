@@ -32,6 +32,11 @@ class ScrollView extends Component {
 	public var scrollSensitivity:Int = 0; // there are times when you dont want things to scroll instantly
 	private var innerScrolls:Bool = false;
 	
+	public var vscrollPosition(getVScrollPosition, setVScrollPosition):Float;
+	public var hscrollPosition(getHScrollPosition, setHScrollPosition):Float;
+	public var vscrollMax(getVScrollMax, null):Float;
+	public var hscrollMax(getHScrollMax, null):Float;
+	
 	public function new() {
 		super();
 		
@@ -102,6 +107,51 @@ class ScrollView extends Component {
 	
 	public override function listChildComponents():Array<Component> {
 		return viewContent.listChildComponents();
+	}
+
+	//************************************************************
+	//                  GETTERS / SETTERS
+	//************************************************************
+	public function getVScrollPosition():Float {
+		if (vscroll == null) {
+			return 0;
+		}
+		return vscroll.value;
+	}
+	
+	public function setVScrollPosition(value:Float):Float {
+		if (vscroll != null) {
+			vscroll.value = value;
+		}
+		return value;
+	}
+
+	public function getHScrollPosition():Float {
+		if (hscroll == null) {
+			return 0;
+		}
+		return hscroll.value;
+	}
+	
+	public function setHScrollPosition(value:Float):Float {
+		if (hscroll != null) {
+			hscroll.value = value;
+		}
+		return value;
+	}
+	
+	public function getVScrollMax():Float {
+		if (vscroll == null) {
+			return -1;
+		}
+		return vscroll.max;
+	}
+	
+	public function getHScrollMax():Float {
+		if (hscroll == null) {
+			return -1;
+		}
+		return hscroll.max;
 	}
 	
 	//************************************************************
@@ -207,11 +257,13 @@ class ScrollView extends Component {
 	private function onVScrollChange(event:Event):Void {
 		scrollPos.y = vscroll.value;
 		updateScrollRect();
+		dispatchEvent(new Event(Event.SCROLL));
 	}
 	
 	private function onHScrollChange(event:Event):Void {
 		scrollPos.x = hscroll.value;
 		updateScrollRect();
+		dispatchEvent(new Event(Event.SCROLL));
 	}
 	
 	private function onMouseWheel(event:MouseEvent):Void {
@@ -228,6 +280,7 @@ class ScrollView extends Component {
 					hideScrollsWithDelay();
 				}
 			}
+			dispatchEvent(event);
 		}
 	}
 	

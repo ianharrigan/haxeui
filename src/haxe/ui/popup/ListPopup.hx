@@ -1,5 +1,6 @@
 package haxe.ui.popup;
 
+import haxe.ui.data.DataSource;
 import nme.events.Event;
 import nme.events.TimerEvent;
 import nme.Lib;
@@ -7,7 +8,7 @@ import nme.utils.Timer;
 import haxe.ui.containers.ListView;
 
 class ListPopup extends Popup {
-	public var items:Array<Dynamic>;
+	public var dataSource:DataSource;
 	
 	private var list:ListView;
 	public var maxSize:Int = 5;
@@ -28,16 +29,11 @@ class ListPopup extends Popup {
 		super.initialize();
 		
 		list = new ListView();
+		list.dataSource = dataSource;
 		list.id = "popupListView";
 		list.percentWidth = 100;
 		list.percentHeight = 100;
 		content.addChild(list);
-		
-		if (items != null) {
-			for (item in items) {
-				list.addItem(item);
-			}
-		}
 		
 		list.selectedIndex = selectedIndex;
 		var n:Int = maxSize;

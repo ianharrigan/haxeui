@@ -1,6 +1,8 @@
 package haxe.ui.containers;
 
 import haxe.ui.controls.HSlider;
+import haxe.ui.data.ArrayDataSource;
+import haxe.ui.data.DataSource;
 import haxe.ui.resources.ResourceManager;
 import nme.display.Bitmap;
 import nme.display.DisplayObject;
@@ -17,11 +19,15 @@ import haxe.ui.style.StyleManager;
 
 class ListView extends ScrollView {
 	private var items:Array<ListViewItem>;
+	private var itemMap:Hash<ListViewItem>;
+	
 	public var selectedIndex(default, setSelectedIndex):Int = -1;
 
 	public var listSize(getListSize, null):Int;
 	public var itemHeight(getItemHeight, null):Float;
 
+	public var dataSource:DataSource;
+	
 	public function new() {
 		super();
 		
@@ -29,12 +35,19 @@ class ListView extends ScrollView {
 		
 		viewContent = new ListViewContent();
 		viewContent.percentWidth = 100;
+		
+		if (dataSource == null) {
+			dataSource = new ArrayDataSource();
+		}
 	}
 
 	public override function initialize():Void {
 		super.initialize();
 		
+		dataSource.addEventListener(Event.CHANGE, onDataSourceChange);
+		
 		viewContent.id = "listViewContent";
+		synchronizeUI();
 	}
 	
 	//************************************************************
@@ -78,7 +91,78 @@ class ListView extends ScrollView {
 		}
 	}
 	
-	public function removeItem(index:Int):Void {
+	private function onDataSourceChange(event:Event):Void {
+		synchronizeUI();
+	}
+	
+	private function synchronizeUI():Void {
+		if (dataSource != null) {
+			var pos:Int = 0;
+			if (dataSource.moveFirst()) {
+				do {
+					var dataId:String = dataSource.id();
+					var data:Dynamic = dataSource.get();
+					var item:ListViewItem = items[pos];
+					if (item == null) { // add item
+						addItemUI(dataId, data, pos);
+						pos++;
+					} else {
+						if (item.dataId == dataId) { // item is in the right position
+							pos++;
+						} else { // if not remove items 
+							while (item != null && item.dataId != dataId) { // keep on removing until we find a match
+								removeItemUI(pos);
+								item = items[pos];
+							}
+							pos++;
+						}
+					}
+				} while (dataSource.moveNext());
+			}
+			
+			for (n in pos...items.length) { // remove anything left over
+				removeItemUI(n);
+			}
+		}
+	}
+	
+	private function addItemUI(dataId:String, data:Dynamic, index:Int = -1):Void {
+		var itemData:Dynamic = data;
+		if (Std.is(data, String)) {
+			var itemString:String = cast(data, String);
+			itemData = { };
+			itemData.text = itemString;
+		}
+		itemData.text = (itemData.text != null) ? itemData.text : "";
+		itemData.subtext = (itemData.subtext != null) ? itemData.subtext : null;
+		itemData.enabled = (itemData.enabled != null) ? itemData.enabled : true;
+		itemData.type = (itemData.type != null) ? itemData.type : null;
+		itemData.value = (itemData.value != null) ? itemData.value : null;
+		itemData.id = (itemData.id != null) ? itemData.id : null;
+		
+		var c:ListViewItem = new ListViewItem(this);
+		c.id = itemData.id;
+		c.dataId = dataId;
+		c.percentWidth = 100;
+		c.itemData = itemData;
+		c.enabled = itemData.enabled;
+		if (index == -1) {
+			viewContent.addChild(c);
+			items.push(c);
+		} else {
+			viewContent.addChildAt(c, index);
+			items.insert(index, c);
+		}
+		if (ready) {
+			invalidate(false); // TODO: this should probably happen automatically
+		}
+		
+		c.addEventListener(MouseEvent.MOUSE_OVER, buildMouseOverFunction(items.length-1));
+		c.addEventListener(MouseEvent.MOUSE_OUT, buildMouseOutFunction(items.length-1));
+		c.addEventListener(MouseEvent.CLICK, buildMouseClickFunction(items.length-1));
+	}
+	
+	private function removeItemUI(index:Int):Void {
 		var listItem:ListViewItem = items[index];
 		if (listItem != null) {
 			if (index == selectedIndex) {
@@ -86,6 +170,7 @@ class ListView extends ScrollView {
 			}
 			items.remove(listItem);
 			viewContent.removeChild(listItem);
+			listItem.dispose();
 			if (ready) {
 				invalidate(false); // TODO: this should probably happen automatically
 			}
@@ -102,39 +187,21 @@ class ListView extends ScrollView {
 		}
 	}
 	
-	public function addItem(item:Dynamic, additionalStyleNames:String = null):Component {
-		var itemData:Dynamic = { };
-		if (Std.is(item, String)) {
-			var itemString:String = cast(item, String);
-			item = { };
-			item.text = itemString;
+	public function removeItem(index:Int):Void { // TODO: shouldnt exist, should just remove from data source
+		if (dataSource  != null) {
+			if (dataSource.moveFirst()) {
+				var pos:Int = 0;
+				do {
+					if (pos == index) {
+						dataSource.remove();
+						break;
+					}
+					pos++;
+				} while (dataSource.moveNext());
+			}
 		}
-		itemData.text = (item.text != null) ? item.text : "";
-		itemData.subtext = (item.subtext != null) ? item.subtext : null;
-		itemData.enabled = (item.enabled != null) ? item.enabled : true;
-		itemData.type = (item.type != null) ? item.type : null;
-		itemData.value = (item.value != null) ? item.value : null;
-		itemData.fn = (item.fn != null) ? item.fn : null;
-		
-		var c:ListViewItem = new ListViewItem(this);
-		c.percentWidth = 100;
-		c.itemData = itemData;
-		c.enabled = itemData.enabled;
-		viewContent.addChild(c);
-		items.push(c);
-		/*
-		if (ready) {
-			invalidate(false); // TODO: this should probably happen automatically
-		}
-		*/
-		
-		c.addEventListener(MouseEvent.MOUSE_OVER, buildMouseOverFunction(items.length-1));
-		c.addEventListener(MouseEvent.MOUSE_OUT, buildMouseOutFunction(items.length-1));
-		c.addEventListener(MouseEvent.CLICK, buildMouseClickFunction(items.length-1));
-		
-		return c;
 	}
-
+	
 	public function getListItem(index:Int):ListViewItem {
 		return items[index];
 	}
@@ -190,6 +257,7 @@ class ListViewContent extends VBox { // makes content easier to style
 
 class ListViewItem extends Component {
 	public var itemData:Dynamic;
+	public var dataId:String;
 	
 	private var textComponent:Label;
 	private var subTextComponent:Label;
@@ -260,7 +328,7 @@ class ListViewItem extends Component {
 				var rating:RatingControl = new RatingControl();
 				rating.rating = itemData.value;
 				typeComponent = rating;
-			} else if (itemData.type = "hslider") {
+			} else if (itemData.type == "hslider") {
 				var hslider:HSlider = new HSlider();
 				hslider.value = itemData.value;
 				typeComponent = hslider;

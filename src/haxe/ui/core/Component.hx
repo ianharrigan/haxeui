@@ -481,7 +481,7 @@ class Component implements IEventDispatcher {
 		return text;
 	}
 	
-	public function setText(value:String):String {
+	public function setText(value:String):String { // TODO: potential localization here. Something like @#helloWorld
 		text = value;
 		return value;
 	}
@@ -546,7 +546,7 @@ class Component implements IEventDispatcher {
 	//************************************************************
 	//                  DISPLAY LIST OPERATIONS
 	//************************************************************
-	public function addChild(c:Dynamic):Dynamic {
+	public function addChildAt(c:Dynamic, index:Int):Dynamic {
 		if (c == null) {
 			return c;
 		}
@@ -570,10 +570,14 @@ class Component implements IEventDispatcher {
 			c = untyped c.sprite;
 		}
 		
-		sprite.addChild(c);
+		sprite.addChildAt(c, index);
 		calcSize();
 		repositionChildren();
 		return c;
+	}
+	
+	public function addChild(c:Dynamic):Dynamic {
+		return addChildAt(c, sprite.numChildren);
 	}
 	
 	public function contains(c:Dynamic):Bool {

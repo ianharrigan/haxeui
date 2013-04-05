@@ -48,11 +48,19 @@ CheckBox ValueControl:unselected:over {
 	backgroundImage: skins/android/checkbox/checkbox_unchecked_up.png;
 }
 
+CheckBox ValueControl:unselected:down {
+	backgroundImage: skins/android/checkbox/checkbox_unchecked_up.png;
+}
+
 CheckBox ValueControl:selected:normal {
 	backgroundImage: skins/android/checkbox/checkbox_checked_up.png;
 }
 
 CheckBox ValueControl:selected:over {
+	backgroundImage: skins/android/checkbox/checkbox_checked_up.png;
+}
+
+CheckBox ValueControl:selected:down {
 	backgroundImage: skins/android/checkbox/checkbox_checked_up.png;
 }
 
@@ -82,11 +90,19 @@ OptionBox ValueControl:unselected:over {
 	backgroundImage: skins/android/optionbox/optionbox_unselected_up.png;
 }
 
+OptionBox ValueControl:unselected:down {
+	backgroundImage: skins/android/optionbox/optionbox_unselected_up.png;
+}
+
 OptionBox ValueControl:selected:normal {
 	backgroundImage: skins/android/optionbox/optionbox_selected_up.png;
 }
 
 OptionBox ValueControl:selected:over {
+	backgroundImage: skins/android/optionbox/optionbox_selected_up.png;
+}
+
+OptionBox ValueControl:selected:down {
 	backgroundImage: skins/android/optionbox/optionbox_selected_up.png;
 }
 

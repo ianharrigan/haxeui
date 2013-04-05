@@ -123,7 +123,7 @@
 		<hslider width="200" height="30" />
 	</vbox>
 	
-	<vbox text="Theme" id="theme">
+	<vbox text="Demo" id="theme">
 		<label text="Change theme" />
 		<hbox>
 			<button text="Windows" id="windowsTheme" />
@@ -131,6 +131,12 @@
 			<button text="Gradient" id="gradientTheme" />
 		</hbox>
 		<checkbox id="asPopup" text="Run as popup"/>
+		<label id="capsLang" text="Capabilities.language: "/>
+		<label id="capsOS" text="Capabilities.os: "/>
+		<label id="capsAspectRatio" text="Capabilities.pixelAspectRatio: "/>
+		<label id="capsDPI" text="Capabilities.screenDPI: "/>
+		<label id="capsResX" text="Capabilities.screenResolutionX: "/>
+		<label id="capsResY" text="Capabilities.screenResolutionY: "/>
 	</vbox>
 	
 	<component text="Page 1"/>
