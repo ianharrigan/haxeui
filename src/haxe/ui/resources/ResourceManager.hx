@@ -14,7 +14,7 @@ class ResourceManager {
 		if (resInfo.type == "asset") {
 			bmp = Assets.getBitmapData(resInfo.id);
 		} else if (resInfo.type == "embedded") {
-			#if !(flash || neko)
+			#if !(flash || neko || html5)
 			var bytes:haxe.io.Bytes = Resource.getBytes(resInfo.id);
 			bmp = BitmapData.loadFromHaxeBytes(ByteArray.fromBytes(bytes));
 			#end

@@ -23,13 +23,14 @@
 	
 	<vbox text="List" id="list">
 		<hbox>
-			<dropdown text="Dropdown 1" id="dropdownlist1" width="200" />
-			<dropdown text="Dropdown 2" id="dropdownlist2" />
-			<dropdown text="Dropdown 3" id="dropdownlist3" />
+			<dropdown text="Dropdown 1" id="dropdownlist1" width="200" dataSource="json://resource://data/dropdown.json" />
+			<dropdown text="Dropdown 2" id="dropdownlist2" dataSource="json://data/dropdown2.json" />
+			<dropdown text="Dropdown 3" id="dropdownlist3" dataSource="json://data/dropdown3.json"/>
+			<dropdown text="MySQL Data" id="mysqlData" dataSource="mysql://localhost:3306/haxe_db?user=root&pass=root&q=SELECT * FROM datasource1" if="neko" />
 		</hbox>
 
 		<hbox width="100%" height="100%">
-			<listview width="100%" height="100%" id="theList" />
+			<listview width="100%" height="100%" id="theList" dataSource="json://resource://asset://data/theList.json" />
 		</hbox>
 		
 		<hbox>

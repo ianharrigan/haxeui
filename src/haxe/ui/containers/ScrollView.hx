@@ -280,7 +280,6 @@ class ScrollView extends Component {
 					hideScrollsWithDelay();
 				}
 			}
-			dispatchEvent(event);
 		}
 	}
 	

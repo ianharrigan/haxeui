@@ -1,6 +1,9 @@
 package haxe.ui.core;
 
 import haxe.ui.controls.VSlider;
+import haxe.ui.data.DataSource;
+import haxe.ui.data.JSONDataSource;
+import haxe.ui.data.MySQLDataSource;
 import haxe.ui.resources.ResourceManager;
 import haxe.ui.style.StyleManager;
 import haxe.ui.style.StyleParser;
@@ -167,6 +170,20 @@ class ComponentParser {
 						cast(c, Image).resourceId = xml.get("resource");
 					}
 				}
+				
+				if (Std.is(c, ListView)) { // TODO: Ugly
+					if (xml.get("dataSource") != null) {
+						var dsString:String = xml.get("dataSource");
+						cast(c, ListView).dataSource = createDataSource(dsString);
+					}
+				}
+				
+				if (Std.is(c, DropDownList)) { // TODO: Ugly
+					if (xml.get("dataSource") != null) {
+						var dsString:String = xml.get("dataSource");
+						cast(c, DropDownList).dataSource = createDataSource(dsString);
+					}
+				}
 			} catch (e:Dynamic) {
 				trace("Problem creating class '" + className + "': " + Std.string(e));
 			}
@@ -229,5 +246,31 @@ class ComponentParser {
 			return true;
 		}
 		return false;
+	}
+	
+	private static function createDataSource(dsString:String):DataSource {
+		var ds:DataSource = null;
+		var n:Int = dsString.indexOf("://");
+		if (n == -1) {
+			return null;
+		}
+
+		var dsType:String = dsString.substr(0, n);
+		dsString = dsString.substr(n + 3, dsString.length);
+		if (dsType == "json") {
+			var sourceType:String = "resource";
+			n = dsString.indexOf("://");
+			if (n != -1) {
+				sourceType = dsString.substr(0, n);
+				dsString = dsString.substr(n + 3, dsString.length);
+			}
+			if (sourceType == "resource") {
+				ds = JSONDataSource.fromResource(dsString);
+			}
+		} else if (dsType == "mysql") {
+			ds = MySQLDataSource.fromConnectionString(dsString);
+		}
+		
+		return ds;
 	}
 }

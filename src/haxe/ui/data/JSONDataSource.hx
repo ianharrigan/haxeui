@@ -11,6 +11,9 @@ class JSONDataSource extends ArrayDataSource {
 		super(array);
 	}
 	
+	//************************************************************
+	//                  HELPERS
+	//************************************************************
 	public static function fromResource(resourceId:String):JSONDataSource {
 		var jsonString:String = ResourceManager.getText(resourceId);
 		var ds = new JSONDataSource(jsonString);

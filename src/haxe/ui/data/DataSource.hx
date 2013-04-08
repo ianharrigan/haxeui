@@ -59,12 +59,32 @@ class DataSource extends EventDispatcher {
 		return b;
 	}
 	
-	public function id():String {
+	public function open():Bool {
+		return true;
+	}
+	
+	public function close():Bool {
+		return true;
+	}
+	
+	public function hash():String {
 		var o:Dynamic = get();
 		if (o == null) {
 			return null;
 		}
 		return "" + getObjectId(o);
+	}
+	
+	public function addAll(ds:DataSource):Void {
+		if (ds.moveFirst()) {
+			var originalFlag:Bool = allowEvents;
+			allowEvents = false;
+			do {
+				add(ds.get());
+			} while (ds.moveNext());
+			allowEvents = originalFlag;
+			dispatchChanged();
+		}
 	}
 	
 	// OVERRIDES

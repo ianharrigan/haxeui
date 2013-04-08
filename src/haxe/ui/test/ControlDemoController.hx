@@ -5,6 +5,7 @@ import haxe.ui.controls.Label;
 import haxe.ui.data.ArrayDataSource;
 import haxe.ui.data.DataSource;
 import haxe.ui.data.JSONDataSource;
+import haxe.ui.data.MySQLDataSource;
 import nme.events.Event;
 import nme.events.MouseEvent;
 import haxe.ui.containers.ListView;
@@ -96,7 +97,7 @@ class ControlDemoController extends Controller {
 		});
 		
 		getComponent("capsLang").text = "Capabilities.language: " + Capabilities.language;
-		#if !(cpp || neko)
+		#if !(cpp || neko || html5)
 		getComponent("capsOS").text = "Capabilities.os: " + Capabilities.os;
 		#end
 		getComponent("capsAspectRatio").text = "Capabilities.pixelAspectRatio: " + Capabilities.pixelAspectRatio;
@@ -104,26 +105,18 @@ class ControlDemoController extends Controller {
 		getComponent("capsResX").text = "Capabilities.screenResolutionX: " + Capabilities.screenResolutionX;
 		getComponent("capsResY").text = "Capabilities.screenResolutionY: " + Capabilities.screenResolutionY;
 
-		getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/theList.json");
+		//getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/theList.json");
 		//getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/dropdown.json");
 		getComponent("theList").addEventListener(Event.SCROLL, function(e) {
-			if (getComponentAs("theList", ListView).vscrollPosition >= getComponentAs("theList", ListView).vscrollMax - 20) {
+			if (getComponentAs("theList", ListView).vscrollPosition >= getComponentAs("theList", ListView).vscrollMax) {
 				// TODO: append more to data source if available (test network/db)
+				getComponentAs("theList", ListView).dataSource.addAll(JSONDataSource.fromResource("data/dropdown.json"));
 			}
 		});
 
 		getComponentAs("dropdown1", DropDownList).dataSource = JSONDataSource.fromResource("data/dropdown.json");
 		getComponentAs("dropdown2", DropDownList).dataSource.add( { text: "Item 1" } );
 		getComponentAs("dropdown3", DropDownList).dataSource = new ArrayDataSource([
-			{ text: "Item 1" },
-			{ text: "Item 2" },
-			{ text: "Item 3" },
-			{ text: "Item 4" }
-		]);
-		
-		getComponentAs("dropdownlist1", DropDownList).dataSource = JSONDataSource.fromResource("data/dropdown.json");
-		getComponentAs("dropdownlist2", DropDownList).dataSource.add( { text: "Item 1" } );
-		getComponentAs("dropdownlist3", DropDownList).dataSource = new ArrayDataSource([
 			{ text: "Item 1" },
 			{ text: "Item 2" },
 			{ text: "Item 3" },

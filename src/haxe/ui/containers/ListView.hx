@@ -19,7 +19,6 @@ import haxe.ui.style.StyleManager;
 
 class ListView extends ScrollView {
 	private var items:Array<ListViewItem>;
-	private var itemMap:Hash<ListViewItem>;
 	
 	public var selectedIndex(default, setSelectedIndex):Int = -1;
 
@@ -45,6 +44,7 @@ class ListView extends ScrollView {
 		super.initialize();
 		
 		dataSource.addEventListener(Event.CHANGE, onDataSourceChange);
+		dataSource.open();
 		
 		viewContent.id = "listViewContent";
 		synchronizeUI();
@@ -96,21 +96,21 @@ class ListView extends ScrollView {
 	}
 	
 	private function synchronizeUI():Void {
+		var pos:Int = 0;
 		if (dataSource != null) {
-			var pos:Int = 0;
 			if (dataSource.moveFirst()) {
 				do {
-					var dataId:String = dataSource.id();
+					var dataHash:String = dataSource.hash();
 					var data:Dynamic = dataSource.get();
 					var item:ListViewItem = items[pos];
 					if (item == null) { // add item
-						addItemUI(dataId, data, pos);
+						addItemUI(dataHash, data, pos);
 						pos++;
 					} else {
-						if (item.dataId == dataId) { // item is in the right position
+						if (item.dataHash == dataHash) { // item is in the right position
 							pos++;
 						} else { // if not remove items 
-							while (item != null && item.dataId != dataId) { // keep on removing until we find a match
+							while (item != null && item.dataHash != dataHash) { // keep on removing until we find a match
 								removeItemUI(pos);
 								item = items[pos];
 							}
@@ -119,14 +119,18 @@ class ListView extends ScrollView {
 					}
 				} while (dataSource.moveNext());
 			}
-			
-			for (n in pos...items.length) { // remove anything left over
-				removeItemUI(n);
-			}
+		}
+		
+		for (n in pos...items.length) { // remove anything left over
+			removeItemUI(n);
 		}
 	}
 	
-	private function addItemUI(dataId:String, data:Dynamic, index:Int = -1):Void {
+	private function addItemUI(dataHash:String, data:Dynamic, index:Int = -1):Void {
+		if (data == null) {
+			return;
+		}
+		
 		var itemData:Dynamic = data;
 		if (Std.is(data, String)) {
 			var itemString:String = cast(data, String);
@@ -142,7 +146,7 @@ class ListView extends ScrollView {
 		
 		var c:ListViewItem = new ListViewItem(this);
 		c.id = itemData.id;
-		c.dataId = dataId;
+		c.dataHash = dataHash;
 		c.percentWidth = 100;
 		c.itemData = itemData;
 		c.enabled = itemData.enabled;
@@ -244,6 +248,14 @@ class ListView extends ScrollView {
 		}
 		return value;
 	}
+	
+	//************************************************************
+	//                  OVERRIDES
+	//************************************************************
+	public override function dispose():Void {
+		super.dispose();
+		dataSource.close();
+	}
 }
 
 //************************************************************
@@ -257,7 +269,7 @@ class ListViewContent extends VBox { // makes content easier to style
 
 class ListViewItem extends Component {
 	public var itemData:Dynamic;
-	public var dataId:String;
+	public var dataHash:String;
 	
 	private var textComponent:Label;
 	private var subTextComponent:Label;

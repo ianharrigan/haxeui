@@ -1,13 +1,7 @@
 package haxe.ui.test;
 
-import haxe.Json;
-import haxe.ui.containers.ListView;
-import haxe.ui.core.Component;
-import haxe.ui.core.ComponentParser;
-import haxe.ui.core.Controller;
 import haxe.ui.core.Globals;
 import haxe.ui.core.Root;
-import haxe.ui.resources.ResourceManager;
 import haxe.ui.style.StyleManager;
 import nme.display.Sprite;
 import nme.events.Event;
@@ -45,6 +39,12 @@ class Main extends Sprite {
 		Globals.reset();
 		Globals.add(skinId);
 		Globals.add("en_UK");
+		#if flash Globals.add("flash"); #end
+		#if html5 Globals.add("html5"); #end
+		#if windows Globals.add("windows"); #end
+		#if neko Globals.add("neko"); #end
+		#if android Globals.add("android"); #end
+		
 		
 		StyleManager.clear();
 		if (skinId == WINDOWS_SKIN) {
