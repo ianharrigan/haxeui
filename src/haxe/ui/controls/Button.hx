@@ -27,6 +27,7 @@ class Button extends Component {
 		super();
 		registerState("over");
 		registerState("down");
+		label = new Label();
 	}
 	
 	//************************************************************
@@ -106,7 +107,6 @@ class Button extends Component {
 		//addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		addEventListener(MouseEvent.CLICK, onClick);
 		
-		label = new Label();
 		if (this.id != null) {
 			label.id = this.id;
 		}

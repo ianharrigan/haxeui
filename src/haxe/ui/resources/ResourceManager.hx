@@ -48,6 +48,9 @@ class ResourceManager {
 		#if (flash || neko)
 			resType = "asset";
 		#end
+		#if (html5)
+			resType = "embedded";
+		#end
 		
 		var info:ResourceInfo = new ResourceInfo();
 		info.type = resType;

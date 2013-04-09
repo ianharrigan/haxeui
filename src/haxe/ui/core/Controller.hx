@@ -38,7 +38,7 @@ class Controller {
 	}
 
 	private function addNamedComponentsFrom(parent:Component):Void {
-		if (parent.id != null) {
+		if (parent != null && parent.id != null) {
 			namedComponents.set(parent.id, parent);
 		}
 		

@@ -25,14 +25,17 @@
 	<icon path="assets/icons/application_48.png" width="48" height="48"/>
 	
 	<assets path="assets/img" rename="img" />
-	<assets path="assets/skins" rename="skins" exclude="*.xml" if="html5" />
+	
+	<assets path="assets/skins" rename="skins" exclude="*.xml|*.css" if="html5" />
 	<assets path="assets/skins" rename="skins" unless="html5" />
+	
 	<assets path="assets/icons" rename="icons" />
 
-	<assets path="assets/ui" rename="ui" exclude="*.xml" if="html5" />
+	<assets path="assets/ui" rename="ui" exclude="*.xml|*.css" if="html5" />
 	<assets path="assets/ui" rename="ui" unless="html5" />
-	
-	<assets path="assets/data" rename="data"/>
+
+	<assets path="assets/data" rename="data" exclude="*.json" if="html5" />
+	<assets path="assets/data" rename="data" unless="html5" />
 	
 	<!-- for skin sounds -->
 	<assets path="assets/skins/android/audio" rename="assets/skins/android/audio" type="sound" include="*"/>	
@@ -53,8 +56,23 @@
 	<haxeflag name="-resource" value="assets/ui/importTest.xml@ui/importTest.xml" />
 	<haxeflag name="-resource" value="assets/ui/importTestChild.xml@ui/importTestChild.xml" />
 	<haxeflag name="-resource" value="assets/ui/customPopup.xml@ui/customPopup.xml" />
+
+	<haxeflag name="-resource" value="assets/skins/gradient/gradient.css@skins/gradient/gradient.css" />
+	
+	<haxeflag name="-resource" value="assets/data/dropdown.json@data/dropdown.json" />
+	<haxeflag name="-resource" value="assets/data/dropdown2.json@data/dropdown2.json" />
+	<haxeflag name="-resource" value="assets/data/dropdown3.json@data/dropdown3.json" />
+	<haxeflag name="-resource" value="assets/data/theList.json@data/theList.json" />
 	
 	<!-- embed windows theme assets -->
+	<haxeflag name="-resource" value="assets/skins/windows/windows.css@skins/windows/windows.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/buttons.css@skins/windows/buttons.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/tabs.css@skins/windows/tabs.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/listview.css@skins/windows/listview.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/scrolls.css@skins/windows/scrolls.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/popups.css@skins/windows/popups.css" />
+	<haxeflag name="-resource" value="assets/skins/windows/sliders.css@skins/windows/sliders.css" />
+	
 	<haxeflag name="-resource" value="assets/skins/windows/glyphs/down_arrow.png@skins/windows/glyphs/down_arrow.png" />
 	<haxeflag name="-resource" value="assets/skins/windows/glyphs/hscroll_thumb_gripper_down.png@skins/windows/glyphs/hscroll_thumb_gripper_down.png" />
 	<haxeflag name="-resource" value="assets/skins/windows/glyphs/hscroll_thumb_gripper_over.png@skins/windows/glyphs/hscroll_thumb_gripper_over.png" />

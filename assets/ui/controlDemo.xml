@@ -23,7 +23,7 @@
 	
 	<vbox text="List" id="list">
 		<hbox>
-			<dropdown text="Dropdown 1" id="list1" width="200" dataSource="json://resource://data/dropdown.json" />
+			<dropdown text="Dropdown 1" id="list1" width="200" dataSource="json://data/dropdown.json" />
 			<dropdown text="Dropdown 2" id="list2" dataSource="json://data/dropdown2.json" />
 			<dropdown text="Dropdown 3" id="list3" dataSource="json://data/dropdown3.json"/>
 			<dropdown text="MySQL Data" id="mysqlData" dataSource="mysql://localhost:3306/haxe_db?user=root&pass=root&q=SELECT * FROM datasource1" if="neko" />
@@ -128,7 +128,7 @@
 		<label text="Change theme" />
 		<hbox>
 			<button text="Windows" id="windowsTheme" />
-			<button text="Android" id="androidTheme" />
+			<button text="Android" id="androidTheme" unless="html5" />
 			<button text="Gradient" id="gradientTheme" />
 		</hbox>
 		<checkbox id="asPopup" text="Run as popup"/>

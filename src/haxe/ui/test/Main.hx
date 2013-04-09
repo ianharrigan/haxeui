@@ -1,5 +1,7 @@
 package haxe.ui.test;
 
+import haxe.ui.core.ComponentParser;
+import haxe.ui.core.Controller;
 import haxe.ui.core.Globals;
 import haxe.ui.core.Root;
 import haxe.ui.style.StyleManager;
@@ -45,7 +47,6 @@ class Main extends Sprite {
 		#if neko Globals.add("neko"); #end
 		#if android Globals.add("android"); #end
 		
-		
 		StyleManager.clear();
 		if (skinId == WINDOWS_SKIN) {
 			StyleManager.loadFromResource("skins/windows/windows.css");
@@ -80,8 +81,9 @@ class Main extends Sprite {
 			root = openFullscreen();
 		}
 		
-		//var controller:Controller = new Controller(ComponentParser.fromXMLAsset("ui/test01.xml"));
+		//var controller:Controller = new Controller(ComponentParser.fromXMLResource("ui/test01.xml"));
 		//root.addChild(controller.view);
+		//root.addChild(ComponentParser.fromXMLResource("ui/test01.xml"));
 
 		root.addChild(new ControlDemoController().view);
 	}

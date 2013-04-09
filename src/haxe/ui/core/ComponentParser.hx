@@ -56,6 +56,13 @@ class ComponentParser {
 			}
 		}
 		
+		if (xml.get("unless") != null && xml.get("unless").length > 0) { // make sure it satisfies the criteria
+			var unlessValue = xml.get("unless");
+			if (!Globals.has(unlessValue) == false) {
+				return null;
+			}
+		}
+		
 		if (hasComponentClass(xml.nodeName) == false) {
 			if (xml.nodeName == "style") {
 				processInlineStyle(xml);
@@ -126,14 +133,58 @@ class ComponentParser {
 		
 		return c;
 	}
-	
+
 	private static function createComponent(xml:Xml):Component {
 		var c:Component = null;
 		var nodeName:String = xml.nodeName;
 		var className:String = getComponentClass(xml.nodeName);
 		if (className != null) {
 			try {
+				#if !html5
 				c = Type.createInstance(Type.resolveClass(className), []);
+				#else // TODO: no idea why, but new() is never called if createInstance method is used, visible here: http://try.haxe.org/#db121 (add trace to constructors)
+				if (nodeName == "component") {
+					c = new Component();
+				} else if (nodeName == "button") {
+					c = new Button();
+				} else if (nodeName == "vbox") {
+					c = new VBox();
+				} else if (nodeName == "hbox") {
+					c = new HBox();
+				} else if (nodeName == "tabview") {
+					c = new TabView();
+				} else if (nodeName == "rating") {
+					c = new RatingControl();
+				} else if (nodeName == "progress") {
+					c = new ProgressBar();
+				} else if (nodeName == "optionbox") {
+					c = new OptionBox();
+				} else if (nodeName == "checkbox") {
+					c = new CheckBox(); 
+				} else if (nodeName == "textinput") {
+					c = new TextInput();
+				} else if (nodeName == "vscroll") {
+					c = new VScroll();
+				} else if (nodeName == "hscroll") {
+					c = new HScroll();
+				} else if (nodeName == "scrollview") {
+					c = new ScrollView();
+				} else if (nodeName == "image") {
+					c = new Image();
+				} else if (nodeName == "dropdown") {
+					c = new DropDownList();
+				} else if (nodeName == "label") {
+					c = new Label();
+				} else if (nodeName == "valuecontrol") {
+					c = new ValueControl();
+				} else if (nodeName == "listview") {
+					c = new ListView();
+				} else if (nodeName == "hslider") {
+					c = new HSlider();
+				} else if (nodeName == "vslider") {
+					c = new VSlider();
+				}
+				#end
 				
 				if (Std.is(c, Button)) { // TODO: Ugly
 					if (xml.get("toggle") != null) {
