@@ -23,6 +23,22 @@
 		"type": "hslider",
 		"value": 35
 	},
+
+	{
+		"text": "Kurt Jamal",
+		"subtext": "Dropdown test",
+		"type": "dropdown",
+		"dataSource": [
+			{ "text": "Option 1" },
+			{ "text": "Option 2" },
+			{ "text": "Option 3" },
+			{ "text": "Option 4" },
+			{ "text": "Option 5" },
+			{ "text": "Option 6" },
+			{ "text": "Option 7" },
+			{ "text": "Option 8" }
+		]
+	},
 	
 	{
 		"text": "Darcy Lanz",

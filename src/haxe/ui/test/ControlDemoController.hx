@@ -1,7 +1,9 @@
 package haxe.ui.test;
+import haxe.ui.controls.Button;
 import haxe.ui.controls.CheckBox;
 import haxe.ui.controls.HSlider;
 import haxe.ui.controls.Label;
+import haxe.ui.controls.RatingControl;
 import haxe.ui.data.ArrayDataSource;
 import haxe.ui.data.DataSource;
 import haxe.ui.data.JSONDataSource;
@@ -105,9 +107,27 @@ class ControlDemoController extends Controller {
 		getComponent("capsResX").text = "Capabilities.screenResolutionX: " + Capabilities.screenResolutionX;
 		getComponent("capsResY").text = "Capabilities.screenResolutionY: " + Capabilities.screenResolutionY;
 
+		attachEvent("list1", ListViewEvent.COMPONENT_EVENT, function(e:ListViewEvent) {
+			if (e.typeComponent.id == "sendButton") {
+				Popup.showSimple(view.root, "You clicked the send button", "Send");
+			}
+		});
+
+		attachEvent("theList", ListViewEvent.COMPONENT_EVENT, function(e:ListViewEvent) {
+			if (Std.is(e.typeComponent, HSlider)) {
+				e.item.subtext = "Slider value: " + cast(e.typeComponent, HSlider).value;
+			} else if (Std.is(e.typeComponent, DropDownList)) {
+				e.item.subtext = "Option selected: " + cast(e.typeComponent, DropDownList).text;
+			} else if (Std.is(e.typeComponent, Button)) {
+				Popup.showSimple(view.root, "You clicked: " + e.typeComponent.text, "Click!");
+			} else if (Std.is(e.typeComponent, RatingControl)) {
+				e.item.subtext = "Rating set to: " + cast(e.typeComponent, RatingControl).rating;
+			}
+		});
+		
 		//getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/theList.json");
-		//getComponentAs("theList", ListView).dataSource = JSONDataSource.fromResource("data/dropdown.json");
-		getComponent("theList").addEventListener(Event.SCROLL, function(e) {
+		//getComponentAs("theList", ListView).dataSource =v JSONDataSource.fromResource("data/dropdown.json");
+		attachEvent("theList", Event.SCROLL, function(e) {
 			if (getComponentAs("theList", ListView).vscrollPosition >= getComponentAs("theList", ListView).vscrollMax) {
 				// TODO: append more to data source if available (test network/db)
 				getComponentAs("theList", ListView).dataSource.addAll(JSONDataSource.fromResource("data/dropdown.json"));

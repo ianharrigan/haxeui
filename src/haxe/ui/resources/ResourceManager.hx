@@ -17,6 +17,8 @@ class ResourceManager {
 			#if !(flash || neko || html5)
 			var bytes:haxe.io.Bytes = Resource.getBytes(resInfo.id);
 			bmp = BitmapData.loadFromHaxeBytes(ByteArray.fromBytes(bytes));
+			#else
+			bmp = Assets.getBitmapData(resInfo.id);
 			#end
 		}
 		

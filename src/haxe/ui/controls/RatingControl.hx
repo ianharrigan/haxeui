@@ -1,5 +1,6 @@
 package haxe.ui.controls;
 
+import nme.events.Event;
 import nme.events.MouseEvent;
 import haxe.ui.containers.HBox;
 import haxe.ui.core.Component;
@@ -89,6 +90,9 @@ class RatingControl extends HBox {
 			} else {
 				vc.value = "unselected";
 			}
+		}
+		if (ready) {
+			dispatchEvent(new Event(Event.CHANGE));
 		}
 		return value;
 	}

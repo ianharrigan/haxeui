@@ -138,11 +138,12 @@ class VScroll extends Component {
 	}
 	
 	private function onMouseDown(event:MouseEvent):Void {
-		var performPaging:Bool = !thumb.hitTest(event.stageX, event.stageY);
-		if (buttonUp != null && buttonUp.hitTest(event.stageX, event.stageY) == true) {
+		// TODO: ugly hack, see Component::getStageY
+		var performPaging:Bool = !thumb.hitTest(event.stageX, event.stageY - value);
+		if (buttonUp != null && buttonUp.hitTest(event.stageX, event.stageY - value) == true) {
 			performPaging = false;
 		}
-		if (buttonDown != null && buttonDown.hitTest(event.stageX, event.stageY) == true) {
+		if (buttonDown != null && buttonDown.hitTest(event.stageX, event.stageY - value) == true) {
 			performPaging = false;
 		}
 		if (performPaging == true) {

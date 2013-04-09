@@ -71,7 +71,10 @@ class DropDownList extends Selector {
 			this.selected = false;
 		}
 	}
-	
+
+	private function onComponentEvent(event:ListViewEvent):Void {
+		dispatchEvent(new ListViewEvent(event.type, event.item, event.typeComponent)); // TODO: not sure why i have to recreate the event, just dispatching the old event causes rte
+	}
 	//************************************************************
 	//                  LIST FUNCTIONS
 	//************************************************************
@@ -89,6 +92,7 @@ class DropDownList extends Selector {
 				list.sprite.filters = [ new DropShadowFilter (4, 45, 0x808080, .7, 4, 4, 1, 3) ];
 				
 				list.addEventListener(Event.CHANGE, onListChange);
+				list.addEventListener(ListViewEvent.COMPONENT_EVENT, onComponentEvent);
 				root.addChild(list);
 			}
 

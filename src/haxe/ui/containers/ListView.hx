@@ -1,5 +1,6 @@
 package haxe.ui.containers;
 
+import haxe.ui.controls.DropDownList;
 import haxe.ui.controls.HSlider;
 import haxe.ui.data.ArrayDataSource;
 import haxe.ui.data.DataSource;
@@ -143,6 +144,7 @@ class ListView extends ScrollView {
 		itemData.type = (itemData.type != null) ? itemData.type : null;
 		itemData.value = (itemData.value != null) ? itemData.value : null;
 		itemData.id = (itemData.id != null) ? itemData.id : null;
+		itemData.controlId = (itemData.controlId != null) ? itemData.controlId : null;
 		
 		var c:ListViewItem = new ListViewItem(this);
 		c.id = itemData.id;
@@ -233,8 +235,16 @@ class ListView extends ScrollView {
 		if (items.length == 0) {
 			return 0;
 		}
-		
-		return items[0].height;
+		var n:Int = 0;
+		var cy:Float = 0;
+		for (item in items) {
+			cy += item.height;
+			n++;
+			if (n > 100) {
+				break;
+			}
+		}
+		return Std.int(cy / n);
 	}
 	
 	public function setSelectedIndex(value:Int):Int {
@@ -264,6 +274,30 @@ class ListView extends ScrollView {
 class ListViewContent extends VBox { // makes content easier to style
 	public function new() {
 		super();
+	}
+}
+
+class ListViewEvent extends Event {
+	public static var COMPONENT_EVENT:String = "ComponentEvent";
+	
+	private var li:ListViewItem;
+	private var c:Component;
+	
+	public var item(getItem, null):ListViewItem;
+	public var typeComponent(getTypeComponent, null):Component;
+	
+	public function new(type:String, listItem:ListViewItem, component:Component) {
+		super(type);
+		li = listItem;
+		c = component;
+	}
+	
+	public function getItem():ListViewItem {
+		return li;
+	}
+	
+	public function getTypeComponent():Component {
+		return c;
 	}
 }
 
@@ -330,7 +364,10 @@ class ListViewItem extends Component {
 			if (itemData.type == "button") {
 				var button:Button = new Button();
 				button.text = itemData.value;
-				button.addEventListener(MouseEvent.CLICK, itemData.fn);
+				button.addEventListener(MouseEvent.CLICK, function(e) {
+					var event:ListViewEvent = new ListViewEvent(ListViewEvent.COMPONENT_EVENT, this, button);
+					parentList.dispatchEvent(event);
+				});
 				typeComponent = button;
 			} else if (itemData.type == "progress") {
 				var progress:ProgressBar = new ProgressBar();
@@ -339,16 +376,43 @@ class ListViewItem extends Component {
 			} else if (itemData.type == "rating") {
 				var rating:RatingControl = new RatingControl();
 				rating.rating = itemData.value;
+				rating.addEventListener(Event.CHANGE, function(e) {
+					var event:ListViewEvent = new ListViewEvent(ListViewEvent.COMPONENT_EVENT, this, rating);
+					parentList.dispatchEvent(event);
+				});
 				typeComponent = rating;
 			} else if (itemData.type == "hslider") {
 				var hslider:HSlider = new HSlider();
 				hslider.value = itemData.value;
+				hslider.addEventListener(Event.CHANGE, function(e) {
+					var event:ListViewEvent = new ListViewEvent(ListViewEvent.COMPONENT_EVENT, this, hslider);
+					parentList.dispatchEvent(event);
+				});
 				typeComponent = hslider;
+			} else if (itemData.type == "dropdown") {
+				var dropdown:DropDownList = new DropDownList();
+				dropdown.text = "Select Option"; // TODO: shouldnt be here
+				var ds:DataSource = null;
+				if (itemData.dataSource != null) {
+					if (Std.is(itemData.dataSource, Array)) {
+						ds = new ArrayDataSource(itemData.dataSource);
+					}
+				}
+				dropdown.dataSource = ds;
+				dropdown.addEventListener(Event.CHANGE, function(e) {
+					var event:ListViewEvent = new ListViewEvent(ListViewEvent.COMPONENT_EVENT, this, dropdown);
+					parentList.dispatchEvent(event);
+				});
+				
+				typeComponent = dropdown;
 			}
 			
 			if (typeComponent != null) {
 				typeComponent.verticalAlign = "center";
 				typeComponent.horizontalAlign = "farRight";
+				if (itemData.controlId != null) {
+					typeComponent.id = itemData.controlId;
+				}
 				addChild(typeComponent);
 			}
 		}
@@ -412,7 +476,9 @@ class ListViewItem extends Component {
 	}
 	
 	public function setSubText(value:String):String {
-		subTextComponent.text = value;
+		if (subTextComponent != null) {
+			subTextComponent.text = value;
+		}
 		return value;
 	}
 	

@@ -22,7 +22,7 @@ class ArrayDataSource extends DataSource {
 	}
 	
 	private override function internalMoveNext():Bool {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return false;
 		}
 		var b:Bool = false;
@@ -35,7 +35,7 @@ class ArrayDataSource extends DataSource {
 	}
 	
 	private override function internalGet():Dynamic {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
 		return array[pos];

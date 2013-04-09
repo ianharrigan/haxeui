@@ -1,5 +1,7 @@
 package haxe.ui.core;
 
+import haxe.ui.containers.ListView;
+import haxe.ui.containers.ScrollView;
 import nme.Assets;
 import nme.display.BitmapData;
 import nme.display.DisplayObject;
@@ -424,6 +426,9 @@ class Component implements IEventDispatcher {
 		var p:Component = this.parent;
 		while (p != null) {
 			ypos += p.y + p.padding.top;
+			if (Std.is(p, ScrollView)) { // TODO: ugly hack. Without drop down list inside scroll view displays wrong position
+				ypos -= cast(p, ScrollView).vscrollPosition;
+			}
 			p = p.parent;
 		}
 		return ypos;
