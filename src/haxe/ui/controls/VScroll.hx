@@ -100,11 +100,11 @@ class VScroll extends Component {
 		var ypos:Float = event.stageY - mouseDownOffset;
 		var minY:Float = 0;
 		if (buttonUp != null) {
-			minY = buttonUp.height + spacingY;
+			minY = buttonUp.height + layout.spacingY;
 		}
 		var maxY:Float = getUsableHeight() - thumb.height;
 		if (buttonUp != null) {
-			maxY += buttonUp.height + spacingY;
+			maxY += buttonUp.height + layout.spacingY;
 		}
 		if (ypos < minY) {
 			ypos = minY;
@@ -138,12 +138,11 @@ class VScroll extends Component {
 	}
 	
 	private function onMouseDown(event:MouseEvent):Void {
-		// TODO: ugly hack, see Component::getStageY
-		var performPaging:Bool = !thumb.hitTest(event.stageX, event.stageY - value);
-		if (buttonUp != null && buttonUp.hitTest(event.stageX, event.stageY - value) == true) {
+		var performPaging:Bool = !thumb.hitTest(event.stageX, event.stageY);
+		if (buttonUp != null && buttonUp.hitTest(event.stageX, event.stageY) == true) {
 			performPaging = false;
 		}
-		if (buttonDown != null && buttonDown.hitTest(event.stageX, event.stageY - value) == true) {
+		if (buttonDown != null && buttonDown.hitTest(event.stageX, event.stageY) == true) {
 			performPaging = false;
 		}
 		if (performPaging == true) {
@@ -251,19 +250,19 @@ class VScroll extends Component {
 			var m:Int = Std.int(max - min);
 			var thumbPos:Float = ((value - min) / m) * ucy;
 			if (buttonUp != null) {
-				thumbPos += buttonUp.height + spacingY;
+				thumbPos += buttonUp.height + layout.spacingY;
 			}
 			thumb.y = Std.int(thumbPos);
 		}
 	}
 	
-	public override function getUsableHeight():Float {
+	private override function getUsableHeight(c:Component = null):Float {
 		var ucy:Float = innerHeight;
 		if (buttonUp != null) {
-			ucy -= buttonUp.height + spacingY;
+			ucy -= buttonUp.height + layout.spacingY;
 		}
 		if (buttonDown != null) {
-			ucy -= buttonDown.height + spacingY;
+			ucy -= buttonDown.height + layout.spacingY;
 		}
 		return ucy;
 	}

@@ -1,5 +1,6 @@
 package haxe.ui.controls;
 
+import haxe.ui.layout.HorizonalLayout;
 import nme.events.MouseEvent;
 import haxe.ui.core.Component;
 
@@ -28,6 +29,8 @@ class OptionBox extends Component {
 		if (groups == null) {
 			groups = new Hash<Array<OptionBox>>();
 		}
+
+		layout = new HorizonalLayout();
 	}
 	
 	//************************************************************
@@ -47,21 +50,15 @@ class OptionBox extends Component {
 		addChild(valueControl);
 		addChild(textControl);
 		
-		width = valueControl.width + textControl.width + padding.left + padding.right;
+		width = valueControl.width + textControl.width + layout.padding.left + layout.padding.right;
 		var cy:Float = Math.max(valueControl.height, textControl.height);
-		height = cy + padding.top + padding.bottom;
+		height = cy + layout.padding.top + layout.padding.bottom;
 		
 		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
 		addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 		addEventListener(MouseEvent.CLICK, onMouseClick);
 	}
 	
-	public override function resize():Void {
-		super.resize();
-		
-		textControl.x = valueControl.width;// spacingX;
-	}
-
 	//************************************************************
 	//                  EVENT HANDLERS
 	//************************************************************

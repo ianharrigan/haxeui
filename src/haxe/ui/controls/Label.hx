@@ -79,6 +79,10 @@ class Label extends Component {
 	//                  HELPERS
 	//************************************************************
 	private function sizeTextControl():Void {
+		if (ready == false) {
+			return;
+		}
+		
 		if (wordWrap == false) {
 			if (text.length == 0) {
 				textControl.width = 0;
@@ -89,17 +93,17 @@ class Label extends Component {
 			}
 		} else {
 			if (width != 0) {
-				textControl.width = width - (padding.left + padding.right);
+				textControl.width = width - (layout.padding.left + layout.padding.right);
 			}
 			if (height != 0) {
-				textControl.height = height - (padding.top + padding.bottom);
+				textControl.height = height - (layout.padding.top + layout.padding.bottom);
 			}
 		}
 		
-		width = textControl.width + (padding.left + padding.right);
-		height = textControl.height + (padding.top + padding.bottom);
+		width = textControl.width + (layout.padding.left + layout.padding.right);
+		height = textControl.height + (layout.padding.top + layout.padding.bottom);
 		
-		textControl.x = padding.left;
-		textControl.y = padding.top;
+		textControl.x = layout.padding.left;
+		textControl.y = layout.padding.top;
 	}
 }

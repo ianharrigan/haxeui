@@ -97,13 +97,13 @@ class TextInput extends Component {
 	//                  HELPERS
 	//************************************************************
 	private function sizeTextControl():Void {
-		textControl.x = padding.left;
-		textControl.y = padding.top;
+		textControl.x = layout.padding.left;
+		textControl.y = layout.padding.top;
 		if (width != 0) {
-			textControl.width = width - (padding.left + padding.right);
+			textControl.width = width - (layout.padding.left + layout.padding.right);
 		}
 		if (height != 0) {
-			textControl.height = height - (padding.top + padding.bottom);
+			textControl.height = height - (layout.padding.top + layout.padding.bottom);
 		}
 		
 		if (multiline == true && textControl.textHeight > innerHeight) {

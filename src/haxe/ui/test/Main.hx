@@ -1,5 +1,10 @@
 package haxe.ui.test;
 
+import haxe.ui.containers.HBox;
+import haxe.ui.containers.TabView;
+import haxe.ui.controls.Button;
+import haxe.ui.controls.TabBar;
+import haxe.ui.core.Component;
 import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
 import haxe.ui.core.Globals;
@@ -7,6 +12,7 @@ import haxe.ui.core.Root;
 import haxe.ui.style.StyleManager;
 import nme.display.Sprite;
 import nme.events.Event;
+import nme.events.MouseEvent;
 import nme.Lib;
 
 class Main extends Sprite {
@@ -31,8 +37,12 @@ class Main extends Sprite {
 		#else
 			removeEventListener(Event.ADDED_TO_STAGE, initialize);
 		#end
-		
-		startApp(WINDOWS_SKIN);
+
+		#if android
+			startApp(ANDROID_SKIN);
+		#else
+			startApp(WINDOWS_SKIN);
+		#end
 	}
 
 	public static function startApp(skinId:String, asPopup:Bool = false):Void {
@@ -81,11 +91,12 @@ class Main extends Sprite {
 			root = openFullscreen();
 		}
 		
-		//var controller:Controller = new Controller(ComponentParser.fromXMLResource("ui/test01.xml"));
-		//root.addChild(controller.view);
-		//root.addChild(ComponentParser.fromXMLResource("ui/test01.xml"));
+		var controller:Controller = new Controller(ComponentParser.fromXMLResource("ui/test01.xml"));
+//		root.addChild(controller.view);
+//		root.addChild(ComponentParser.fromXMLResource("ui/test01.xml"));
 
 		root.addChild(new ControlDemoController().view);
+		
 	}
 	
 	private static function openFullscreen():Root {

@@ -25,7 +25,7 @@ class BusyPopup extends Popup {
 		textControl.horizontalAlign = "left";
 		content.addChild(textControl);
 		
-		height = content.padding.top + content.padding.bottom + textControl.height;
+		height = content.layout.padding.top + content.layout.padding.bottom + textControl.height;
 		Popup.centerPopup(this);
 		
 		if (delay > 0) {

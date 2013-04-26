@@ -51,6 +51,10 @@ class ProgressBar extends Component {
 	//                  HELPERS
 	//************************************************************
 	private function resizeValue():Void {
+		if (ready == false) {
+			return;
+		}
+		
 		var m:Float = (max - min);
 		var cx:Float = (innerWidth * value) / 100;
 		if (cx < 0) {

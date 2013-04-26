@@ -1,6 +1,5 @@
 package haxe.ui.core;
 
-import haxe.ui.controls.VSlider;
 import haxe.ui.data.DataSource;
 import haxe.ui.data.JSONDataSource;
 import haxe.ui.data.MySQLDataSource;
@@ -31,6 +30,8 @@ import haxe.ui.controls.TabBar;
 import haxe.ui.controls.TextInput;
 import haxe.ui.controls.ValueControl;
 import haxe.ui.controls.VScroll;
+import haxe.ui.containers.GridBox;
+import haxe.ui.controls.VSlider;
 
 
 class ComponentParser {
@@ -183,6 +184,10 @@ class ComponentParser {
 					c = new HSlider();
 				} else if (nodeName == "vslider") {
 					c = new VSlider();
+				} else if (nodeName == "grid") {
+					c = new GridBox()
+				} else if (nodeName == "gridbox") {
+					c = new GridBox();
 				}
 				#end
 				
@@ -263,6 +268,8 @@ class ComponentParser {
 		listview: "haxe.ui.containers.ListView",
 		hslider: "haxe.ui.controls.HSlider",
 		vslider: "haxe.ui.controls.VSlider",
+		grid: "haxe.ui.containers.GridBox",
+		gridbox: "haxe.ui.containers.GridBox",
 	}
 	
 	private static function getComponentClass(name:String):String {

@@ -100,11 +100,11 @@ class HScroll extends Component {
 		var xpos:Float = event.stageX - mouseDownOffset;
 		var minX:Float = 0;
 		if (buttonLeft != null) {
-			minX = buttonLeft.height + spacingX;
+			minX = buttonLeft.height + layout.spacingX;
 		}
 		var maxX:Float = getUsableWidth() - thumb.width;
 		if (buttonLeft != null) {
-			maxX += buttonLeft.height + spacingX;
+			maxX += buttonLeft.height + layout.spacingX;
 		}
 		if (xpos < minX) {
 			xpos = minX;
@@ -249,19 +249,19 @@ class HScroll extends Component {
 			var m:Int = Std.int(max - min);
 			var thumbPos:Float = ((value - min) / m) * ucx;
 			if (buttonLeft != null) {
-				thumbPos += buttonLeft.width + spacingX;
+				thumbPos += buttonLeft.width + layout.spacingX;
 			}
 			thumb.x = Std.int(thumbPos);
 		}
 	}
 	
-	public override function getUsableWidth():Float {
+	private override function getUsableWidth(c:Component = null):Float {
 		var ucx:Float = innerWidth;
 		if (buttonLeft != null) {
-			ucx -= buttonLeft.width + spacingX;
+			ucx -= buttonLeft.width + layout.spacingX;
 		}
 		if (buttonRight != null) {
-			ucx -= buttonLeft.width + spacingX;
+			ucx -= buttonLeft.width + layout.spacingX;
 		}
 
 		return ucx;

@@ -2,6 +2,7 @@ package haxe.ui.core;
 
 import haxe.ui.containers.ListView;
 import haxe.ui.containers.ScrollView;
+import haxe.ui.layout.Layout;
 import nme.Assets;
 import nme.display.BitmapData;
 import nme.display.DisplayObject;
@@ -41,9 +42,6 @@ class Component implements IEventDispatcher {
 	public var stageX(getStageX, null):Float;
 	public var stageY(getStageY, null):Float;
 
-	public var padding:Rectangle;
-	public var spacingX:Int = 0;
-	public var spacingY:Int = 0;
 	public var horizontalAlign:String;
 	public var verticalAlign:String;
 	
@@ -64,6 +62,7 @@ class Component implements IEventDispatcher {
 	private var eventListenersCopy:Hash < List < Dynamic->Void >> ; // when we disable a component we will hold onto a subset of event listeners so if we reenable it everything works
 	
 	public var styles:String;
+	public var layout:Layout;
 	
 	public function new() {
 		registerState("normal");
@@ -71,8 +70,8 @@ class Component implements IEventDispatcher {
 		eventListeners = new Hash < List < Dynamic->Void >>();
 		sprite = new Sprite();
 		
-		padding = new Rectangle();
 		addEventListener(Event.ADDED_TO_STAGE, onReady);
+		layout = new Layout();
 	}
 	
 	public function invalidate(recursive:Bool = true):Void {
@@ -87,7 +86,7 @@ class Component implements IEventDispatcher {
 		var skipInvalidate:Bool = false;
 		if (parent != null) {
 			if (percentWidth > 0) {
-				var ucx:Float = parent.getUsableWidth();
+				var ucx:Float = parent.getUsableWidth(this);
 				var newWidth:Float = Std.int(ucx * percentWidth / 100);
 				if (newWidth != width && newWidth > -1) {
 					skipInvalidate = true;
@@ -96,7 +95,7 @@ class Component implements IEventDispatcher {
 			}
 			
 			if (percentHeight > 0) {
-				var ucy:Float = parent.getUsableHeight();
+				var ucy:Float = parent.getUsableHeight(this);
 				var newHeight:Float = Std.int(ucy * percentHeight / 100);
 				if (newHeight != height && newHeight > -1) {
 					skipInvalidate = true;
@@ -119,19 +118,19 @@ class Component implements IEventDispatcher {
 			}
 
 			resize();
-			repositionChildren();
+			layout.repositionChildren();
 			
 			invalidationCount++;
 		}
 	}
 	
-	public function getUsableWidth():Float {
-		var ucx:Float = width - (padding.left + padding.right);
+	private function getUsableWidth(c:Component = null):Float {
+		var ucx:Float = width - (layout.padding.left + layout.padding.right);
 		return ucx;
 	}
 	
-	public function getUsableHeight():Float {
-		var ucy:Float = height - (padding.top + padding.bottom);
+	private function getUsableHeight(c:Component = null):Float {
+		var ucy:Float = height - (layout.padding.top + layout.padding.bottom);
 		return ucy;
 	}
 	
@@ -139,26 +138,6 @@ class Component implements IEventDispatcher {
 	//                  OVERRIDABLES
 	//************************************************************
 	public function initialize():Void {
-		if (currentStyle != null) {
-			if (currentStyle.paddingLeft != null) {
-				padding.left = currentStyle.paddingLeft;
-			}
-			if (currentStyle.paddingTop != null) {
-				padding.top = currentStyle.paddingTop;
-			}
-			if (currentStyle.paddingRight != null) {
-				padding.right = currentStyle.paddingRight;
-			}
-			if (currentStyle.paddingBottom != null) {
-				padding.bottom = currentStyle.paddingBottom;
-			}
-			if (currentStyle.spacingX != null) {
-				spacingX = currentStyle.spacingX;
-			}
-			if (currentStyle.spacingY != null) {
-				spacingY = currentStyle.spacingY;
-			}
-		}
 	}
 	
 	public function resize():Void {
@@ -168,57 +147,13 @@ class Component implements IEventDispatcher {
 	private function calcSize():Point {
 		var size:Point = new Point(width, height);
 		if (autoSize == true) {
-			size.x = calcWidth();
-			size.y = calcHeight();
+			size.x = layout.calcWidth();
+			size.y = layout.calcHeight();
 		}
 
 		width = size.x;
 		height = size.y;
 		return size;
-	}
-	
-	private function calcWidth():Float {
-		var maxWidth:Float = width;
-		for (child in childComponents) {
-			if (child.width + (padding.left + padding.right) > maxWidth) {
-				maxWidth = child.width + (padding.left + padding.right);
-			}
-		}
-		return maxWidth;
-	}
-	
-	private function calcHeight():Float {
-		var maxHeight:Float = height;
-		for (child in childComponents) {
-			if (child.height + (padding.top + padding.bottom) > maxHeight) {
-				maxHeight = child.height + (padding.top + padding.bottom);
-			}
-		}
-		return maxHeight;
-	}
-	
-	private function repositionChildren():Void {
-		for (child in childComponents) {
-			var childX:Float = child.x;
-			if (child.horizontalAlign == "left") {
-				childX = 0;
-			} else if (child.horizontalAlign == "right") {
-				childX = width - (padding.left + padding.right + child.width);
-			} else if (child.horizontalAlign == "center") {
-				childX = ((width - padding.left - padding.right) / 2) - (child.width / 2);
-			}
-			child.x = Std.int(childX);
-			
-			var childY:Float = child.y;
-			if (child.verticalAlign == "top") {
-				childY = 0;
-			} else if (child.verticalAlign == "bottom") {
-				childY = height - (padding.top + padding.bottom + child.height);
-			} else if (child.verticalAlign == "center") {
-				childY = ((height - padding.top - padding.bottom) / 2) - (child.height / 2);
-			}
-			child.y = Std.int(childY);
-		}
 	}
 	
 	public function dispose():Void {
@@ -312,6 +247,7 @@ class Component implements IEventDispatcher {
 			percentHeight = currentStyle.percentHeight;
 		}
 		
+		layout.component = this;
 		calcSize();
 		ready = true;
 		initialize();
@@ -325,6 +261,9 @@ class Component implements IEventDispatcher {
 					childComponents.push(c);
 					c.root = this.root;
 					c.parent = this;
+					if (this.enabled == false) {
+						cast(c, Component).enabled = this.enabled;
+					}
 					c = untyped c.sprite;
 				}
 			}
@@ -338,7 +277,7 @@ class Component implements IEventDispatcher {
 			childrenToAdd = null;
 		}
 		calcSize();
-		repositionChildren();
+		layout.repositionChildren();
 	}
 	
 	//************************************************************
@@ -354,8 +293,8 @@ class Component implements IEventDispatcher {
 
 	public function setX(value:Float):Float {
 		rawX = value;
-		if (parent != null) {
-			value += parent.padding.left;
+		if (parent != null && parent.layout != null) {
+			value += parent.layout.padding.left;
 		}
 		sprite.x = value;
 		return rawX;
@@ -367,8 +306,8 @@ class Component implements IEventDispatcher {
 
 	public function setY(value:Float):Float {
 		rawY = value;
-		if (parent != null) {
-			value += parent.padding.top;
+		if (parent != null && parent.layout != null) {
+			value += parent.layout.padding.top;
 		}
 		sprite.y = value;
 		return rawY;
@@ -415,7 +354,7 @@ class Component implements IEventDispatcher {
 		var xpos:Float = x;// + (root.component.x + root.component.padding.left);
 		var p:Component = this.parent;
 		while (p != null) {
-			xpos += p.x + p.padding.left;
+			xpos += p.x + p.layout.padding.left;
 			p = p.parent;
 		}
 		return xpos;
@@ -425,21 +364,18 @@ class Component implements IEventDispatcher {
 		var ypos:Float = y;// + (root.component.y + root.component.padding.top);
 		var p:Component = this.parent;
 		while (p != null) {
-			ypos += p.y + p.padding.top;
-			if (Std.is(p, ScrollView)) { // TODO: ugly hack. Without drop down list inside scroll view displays wrong position
-				ypos -= cast(p, ScrollView).vscrollPosition;
-			}
+			ypos += p.y + p.layout.padding.top;
 			p = p.parent;
 		}
 		return ypos;
 	}
 	
 	public function getInnerWidth():Float {
-		return width - (padding.left + padding.right);
+		return width - (layout.padding.left + layout.padding.right);
 	}
 	
 	public function getInnerHeight():Float {
-		return height - (padding.top + padding.bottom);
+		return height - (layout.padding.top + layout.padding.bottom);
 	}
 	
 	public function setEnabled(value:Bool):Bool {
@@ -449,7 +385,9 @@ class Component implements IEventDispatcher {
 		
 		enabled = value;
 		if (value == false) {
-			sprite.alpha = .5;
+			if (parent == null || parent.enabled == true) {
+				sprite.alpha = .5;
+			}
 
 			copyEventListeners(MouseEvent.MOUSE_OVER);
 			copyEventListeners(MouseEvent.MOUSE_DOWN);
@@ -464,6 +402,10 @@ class Component implements IEventDispatcher {
 			removeEventListenerType(MouseEvent.MOUSE_MOVE);
 			removeEventListenerType(MouseEvent.CLICK);
 			removeEventListenerType(Event.CHANGE);
+			
+			for (child in listChildComponents()) {
+				child.enabled = false;
+			}
 		} else {
 			sprite.alpha = 1;
 			if (eventListenersCopy != null) {
@@ -572,12 +514,15 @@ class Component implements IEventDispatcher {
 			childComponents.push(c);
 			c.root = this.root;
 			c.parent = this;
+			if (this.enabled == false) {
+				cast(c, Component).enabled = false;
+			}
 			c = untyped c.sprite;
 		}
 		
 		sprite.addChildAt(c, index);
 		calcSize();
-		repositionChildren();
+		layout.repositionChildren();
 		return c;
 	}
 	
@@ -605,7 +550,7 @@ class Component implements IEventDispatcher {
 		var r:Dynamic = null;
 		r = sprite.removeChild(c);
 		calcSize();
-		repositionChildren();
+		layout.repositionChildren();
 		return r;
 	}
 	
@@ -668,6 +613,7 @@ class Component implements IEventDispatcher {
 		}
 		return arr;
 	}
+	
 	//************************************************************
 	//                  HELPERS
 	//************************************************************

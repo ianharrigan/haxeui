@@ -16,7 +16,7 @@ class CustomPopup extends Popup {
 		
 		content.addChild(customContent);
 		
-		height = content.padding.top + content.padding.bottom + customContent.height;
+		height = content.layout.padding.top + content.layout.padding.bottom + customContent.height;
 		Popup.centerPopup(this);
 	}
 }

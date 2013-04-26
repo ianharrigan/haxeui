@@ -186,8 +186,8 @@ class Root {
 	
 	private function resizeDisabledOverlay():Void {
 		if (disabledOverlay != null) {
-			disabledOverlay.width = Std.int(component.width - (component.padding.left + component.padding.right));
-			disabledOverlay.height = Std.int(component.height - (component.padding.top + component.padding.bottom));
+			disabledOverlay.width = Std.int(component.width - (component.layout.padding.left + component.layout.padding.right));
+			disabledOverlay.height = Std.int(component.height - (component.layout.padding.top + component.layout.padding.bottom));
 		}
 	}
 }

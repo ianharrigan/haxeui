@@ -38,10 +38,10 @@ class Image extends Component {
 			bmp = new Bitmap(bmpData);
 			addChild(bmp);
 			if (autoSize == true) {
-				bmp.x = padding.left;
-				bmp.y = padding.top;
-				width = Std.int(bmpData.width + padding.left + padding.right);
-				height = Std.int(bmpData.height + padding.top + padding.bottom);
+				bmp.x = layout.padding.left;
+				bmp.y = layout.padding.top;
+				width = Std.int(bmpData.width + layout.padding.left + layout.padding.right);
+				height = Std.int(bmpData.height + layout.padding.top + layout.padding.bottom);
 			}
 		}
 		return value;

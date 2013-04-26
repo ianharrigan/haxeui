@@ -111,6 +111,10 @@ class HSlider extends Component {
 	//                  HELPERS
 	//************************************************************
 	private function repositionButton():Void {
+		if (ready == false) {
+			return;
+		}
+		
 		var m:Float = (max - min);
 		var pos:Float = ((value - min) / m) * innerWidth;
 		pos -= sliderButton.width / 2;

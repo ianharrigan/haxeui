@@ -40,8 +40,8 @@ class ListPopup extends Popup {
 		if (n > list.listSize) {
 			n = list.listSize;
 		}
-		var listHeight:Float = (n * list.itemHeight) + list.padding.top + list.padding.bottom;
-		height = content.padding.top + content.padding.bottom + listHeight;
+		var listHeight:Float = (n * list.itemHeight) + list.layout.padding.top + list.layout.padding.bottom;
+		height = content.layout.padding.top + content.layout.padding.bottom + listHeight;
 		
 		list.addEventListener(Event.CHANGE, onListChange);
 		

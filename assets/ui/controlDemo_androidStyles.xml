@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <style>
-	TabBar #basic {
+	TabBar #basic, TabBar #layout {
 		icon: skins/android/icons/fav_32.png;
 	}
 	

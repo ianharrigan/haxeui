@@ -17,6 +17,7 @@ import haxe.ui.controls.ProgressBar;
 import haxe.ui.controls.RatingControl;
 import haxe.ui.core.Component;
 import haxe.ui.style.StyleManager;
+import haxe.ui.layout.Layout;
 
 class ListView extends ScrollView {
 	private var items:Array<ListViewItem>;
@@ -305,9 +306,9 @@ class ListViewItem extends Component {
 	public var itemData:Dynamic;
 	public var dataHash:String;
 	
-	private var textComponent:Label;
-	private var subTextComponent:Label;
-	private var iconComponent:DisplayObject;
+	public var textComponent:Label;
+	public var subTextComponent:Label;
+	public var iconComponent:DisplayObject;
 	
 	private var parentList:ListView;
 	
@@ -320,6 +321,7 @@ class ListViewItem extends Component {
 	public function new(parentList:ListView) {
 		this.parentList = parentList;
 		super();
+		layout = new ListViewItemLayout();
 		
 		//sprite.useHandCursor = true;
 		//sprite.buttonMode = true;
@@ -431,7 +433,7 @@ class ListViewItem extends Component {
 
 		var newHeight = height;
 		if (totalHeight > innerHeight) {
-			newHeight = totalHeight + padding.top + padding.bottom;
+			newHeight = totalHeight + layout.padding.top + layout.padding.bottom;
 		}
 		
 		this.height = newHeight;
@@ -481,58 +483,65 @@ class ListViewItem extends Component {
 		}
 		return value;
 	}
+}
+
+class ListViewItemLayout extends Layout { // TODO: needs a complete clean up
+	public function new() {
+		super();
+	}
 	
-	private override function repositionChildren():Void {
+	public override function repositionChildren():Void {
 		var iconPosition:String = "left";
-		if (currentStyle.iconPosition != null) {
-			iconPosition = currentStyle.iconPosition;
+		var listItem:ListViewItem = cast(c, ListViewItem);
+		if (c.currentStyle.iconPosition != null) {
+			iconPosition = c.currentStyle.iconPosition;
 		}
 
 		var contentHeight:Float = 0;
-		if (textComponent != null) {
-			contentHeight += textComponent.height;
+		if (listItem.textComponent != null) {
+			contentHeight += listItem.textComponent.height;
 		}
-		if (subTextComponent != null) {
-			contentHeight += subTextComponent.height;
+		if (listItem.subTextComponent != null) {
+			contentHeight += listItem.subTextComponent.height;
 		}
 		
 		
-		var ypos = Std.int((innerHeight / 2) - (contentHeight / 2));
-		if (textComponent != null) {
-			textComponent.y = ypos;
-			if (iconComponent != null && iconPosition == "left") {
-				textComponent.x = iconComponent.width;
+		var ypos = Std.int((c.innerHeight / 2) - (contentHeight / 2));
+		if (listItem.textComponent != null) {
+			listItem.textComponent.y = ypos;
+			if (listItem.iconComponent != null && iconPosition == "left") {
+				listItem.textComponent.x = listItem.iconComponent.width;
 			}
 		}
-		if (subTextComponent != null) {
-			subTextComponent.x = textComponent.x;
-			subTextComponent.y = ypos + textComponent.height;
+		if (listItem.subTextComponent != null) {
+			listItem.subTextComponent.x = listItem.textComponent.x;
+			listItem.subTextComponent.y = ypos + listItem.textComponent.height;
 		}
 		
-		if (iconComponent != null) {
+		if (listItem.iconComponent != null) {
 			if (iconPosition == "farRight") {
-				iconComponent.x = width - iconComponent.width - padding.right;
+				listItem.iconComponent.x = c.width - listItem.iconComponent.width - padding.right;
 			} else {
-				iconComponent.x = padding.right;
+				listItem.iconComponent.x = padding.right;
 			}
 			
-			if (subTextComponent == null) {
-				iconComponent.y = Std.int((height / 2) - (iconComponent.height / 2));
+			if (listItem.subTextComponent == null) {
+				listItem.iconComponent.y = Std.int((c.height / 2) - (listItem.iconComponent.height / 2));
 			} else {
-				iconComponent.y = padding.top;
+				listItem.iconComponent.y = padding.top;
 			}
 			
 		}
 		
-		if (typeComponent != null) {
-			if (typeComponent.horizontalAlign == "farRight") {
-				typeComponent.x = innerWidth - typeComponent.width;
+		if (listItem.typeComponent != null) {
+			if (listItem.typeComponent.horizontalAlign == "farRight") {
+				listItem.typeComponent.x = c.innerWidth - listItem.typeComponent.width;
 			}
 			
-			if (typeComponent.verticalAlign == "top") {
-				typeComponent.y = textComponent.y;
-			}else if (typeComponent.verticalAlign == "center") {
-				typeComponent.y = Std.int((innerHeight / 2) - (typeComponent.height / 2));
+			if (listItem.typeComponent.verticalAlign == "top") {
+				listItem.typeComponent.y = listItem.textComponent.y;
+			}else if (listItem.typeComponent.verticalAlign == "center") {
+				listItem.typeComponent.y = Std.int((c.innerHeight / 2) - (listItem.typeComponent.height / 2));
 			}
 		}
 	}

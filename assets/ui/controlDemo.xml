@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<tabview>
+<tabview id="mainTabs">
 	<style resource="ui/controlDemo.css"/>
 	<import resource="ui/controlDemo_androidStyles.xml" if="androidTheme"/>
 	<!-- Could also do something like this
@@ -45,6 +45,47 @@
 			<button text="Add Item" id="addListItem" />
 			<button text="Remove Item" id="removeListItem" />
 		</hbox>
+	</vbox>
+
+	<vbox text="Layout" id="layout">
+		<label text="Horizontal:"/>
+		<hbox>
+			<button text="Button 1"/>
+			<button text="Button 2"/>
+			<button text="Button 3"/>
+		</hbox>
+		<hbox width="50%">
+			<button text="50px" width="50" />
+			<button text="25%" width="25%"/>
+			<button text="75%" width="75%"/>
+			<button text="75px" width="75" />
+		</hbox>
+		<label text="Vertical:"/>
+		<vbox>
+			<button text="Button 1"/>
+			<button text="Button 2"/>
+			<button text="Button 3"/>
+		</vbox>
+		<label text="Grid:"/>
+		<!--scrollview width="200" height="100"-->
+			<grid columns="3" width="50%">
+				<button text="100x50" width="100" height="50" />
+				<button text="200x30" width="100%" height="30" />
+				<button text="70x40" width="70" height="40" />
+				
+				<button text="80x30" width="80" height="30" />
+				<button text="100%x100%" width="100%" height="100%" />
+				<button text="100x70" width="100" height="70" />
+				
+				<button text="70x50" width="70" height="50" />
+				<button text="150x40" width="100%" height="40" />
+				<button text="80x30" width="80" height="30" />
+				<!--
+				<button text="Button 10" width="180" height="30" />
+				<button text="Button 11" width="80" height="30" />
+				-->
+			</grid>
+		<!--/scrollview-->
 	</vbox>
 	
 	<vbox text="Selection" id="selection">

@@ -14,6 +14,7 @@ import haxe.ui.core.Component;
 
 class ScrollView extends Component {
 	private var viewContent:Component;
+	private var viewContentContainer:Component;
 	
 	private var scrollPos:Point;
 	
@@ -41,6 +42,8 @@ class ScrollView extends Component {
 		super();
 		
 		viewContent = new Component();
+		viewContentContainer = new Component();
+		viewContentContainer.percentWidth = 100;
 		scrollPos = new Point(0, 0);
 		eventTarget = new Sprite();
 		eventTarget.visible = false;
@@ -62,7 +65,8 @@ class ScrollView extends Component {
 			innerScrolls = currentStyle.innerScrolls;
 		}
 
-		super.addChild(viewContent);
+		viewContentContainer.addChild(viewContent);
+		super.addChild(viewContentContainer);
 		super.addChild(eventTarget);
 		addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 		addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
@@ -86,9 +90,9 @@ class ScrollView extends Component {
 			super.removeChild(hscroll);
 			hscroll.dispose();
 		}
-		if (viewContent != null) {
-			super.removeChild(viewContent);
-			viewContent.dispose();
+		if (viewContentContainer != null) {
+			super.removeChild(viewContentContainer);
+			viewContentContainer.dispose();
 		}
 		super.removeChild(eventTarget);
 		super.dispose();
@@ -105,9 +109,11 @@ class ScrollView extends Component {
 		return viewContent.removeChild(c);
 	}
 	
+	/*
 	public override function listChildComponents():Array<Component> {
 		return viewContent.listChildComponents();
 	}
+	*/
 
 	//************************************************************
 	//                  GETTERS / SETTERS
@@ -197,7 +203,7 @@ class ScrollView extends Component {
 					}
 					var maxY:Float = viewContent.height - innerHeight;
 					if (hscroll != null) {
-						maxY += hscroll.height + spacingY;
+						maxY += hscroll.height + layout.spacingY;
 					}
 					if (scrollPos.y > maxY) {
 						scrollPos.y = maxY;
@@ -215,7 +221,7 @@ class ScrollView extends Component {
 					}
 					var maxX:Float = viewContent.width - innerWidth;
 					if (vscroll != null) {
-						maxX += vscroll.width + spacingX;
+						maxX += vscroll.width + layout.spacingX;
 					}
 					if (scrollPos.x > maxX) {
 						scrollPos.x = maxX;
@@ -232,6 +238,7 @@ class ScrollView extends Component {
 				if (hscroll != null) {
 					hscroll.value = Std.int(scrollPos.x);
 				}
+				
 				downPos = new Point(event.stageX, event.stageY);
 				updateScrollRect();
 			}
@@ -307,6 +314,7 @@ class ScrollView extends Component {
 	}
 	
 	private function repositionScrolls():Void {
+		resizeViewContent();
 		if (viewContent.height > innerHeight && showVerticalScroll == true) {
 			if (vscroll == null) {
 				vscroll = new VScroll();
@@ -314,9 +322,9 @@ class ScrollView extends Component {
 				super.addChild(vscroll);
 			}
 			
-			if (innerScrolls == false && viewContent.padding.right != vscroll.width + spacingX) {
-				viewContent.padding.right = vscroll.width + spacingX;
-				viewContent.invalidate();
+			if (innerScrolls == false && viewContentContainer.layout.padding.right != vscroll.width + layout.spacingX) {
+				viewContentContainer.layout.padding.right = vscroll.width + layout.spacingX;
+				viewContentContainer.invalidate();
 			}
 			vscroll.height = innerHeight;
 			vscroll.x = innerWidth - vscroll.width;
@@ -326,9 +334,9 @@ class ScrollView extends Component {
 				vscroll.visible = false;
 			}
 			
-			if (viewContent.padding.right != 0) {
-				viewContent.padding.right = 0;
-				viewContent.invalidate();
+			if (viewContentContainer.layout.padding.right != 0) {
+				viewContentContainer.layout.padding.right = 0;
+				viewContentContainer.invalidate();
 			}
 		}
 
@@ -339,9 +347,9 @@ class ScrollView extends Component {
 				super.addChild(hscroll);
 			}
 			
-			if (innerScrolls == false && viewContent.padding.bottom != hscroll.height + spacingY) {
-				viewContent.padding.bottom = hscroll.height + spacingY;
-				viewContent.invalidate();
+			if (innerScrolls == false && viewContentContainer.layout.padding.bottom != hscroll.height + layout.spacingY) {
+				viewContentContainer.layout.padding.bottom = hscroll.height + layout.spacingY;
+				viewContentContainer.invalidate();
 			}
 			
 			hscroll.width = innerWidth;
@@ -351,9 +359,10 @@ class ScrollView extends Component {
 			if (hscroll != null) {
 				hscroll.visible = false;
 			}
-			if (viewContent.padding.bottom != 0) {
-				viewContent.padding.bottom = 0;
-				viewContent.invalidate();
+			
+			if (viewContentContainer.layout.padding.bottom != 0) {
+				viewContentContainer.layout.padding.bottom = 0;
+				viewContentContainer.invalidate();
 			}
 		}
 		
@@ -366,7 +375,7 @@ class ScrollView extends Component {
 		if (vscroll != null) {
 			var maxY:Float = viewContent.height - innerHeight;
 			if (hscroll != null) {
-				maxY += hscroll.height + spacingY;
+				maxY += hscroll.height + layout.spacingY;
 			}
 			vscroll.max = maxY;
 			vscroll.pageSize = (innerHeight / viewContent.height) * vscroll.max;
@@ -375,7 +384,7 @@ class ScrollView extends Component {
 		if (hscroll != null) {
 			var maxX:Float = viewContent.width - innerWidth;
 			if (vscroll != null) {
-				maxX += vscroll.width + spacingX;
+				maxX += vscroll.width + layout.spacingX;
 			}
 			hscroll.max = maxX;
 			hscroll.pageSize = (innerWidth / viewContent.width) * hscroll.max;
@@ -384,10 +393,10 @@ class ScrollView extends Component {
 	
 	private function resizeEventTarget():Void {
 		if (eventTarget != null) {
-			var targetX:Float = padding.left;
-			var targetY:Float = padding.top;
-			var targetCX:Float = width - (padding.left + padding.right);
-			var targetCY:Float = height - (padding.top + padding.bottom);
+			var targetX:Float = layout.padding.left;
+			var targetY:Float = layout.padding.top;
+			var targetCX:Float = width - (layout.padding.left + layout.padding.right);
+			var targetCY:Float = height - (layout.padding.top + layout.padding.bottom);
 			if (vscroll != null) {
 				targetCX -= vscroll.width;
 			}
@@ -404,18 +413,36 @@ class ScrollView extends Component {
 		}
 	}
 	
-	private function updateScrollRect():Void {
+	private function resizeViewContent():Void {
 		if (viewContent != null) {
-			var scrollWidth = width - (padding.left + padding.right);
-			var scrollHeight = height - (padding.top + padding.bottom);
+			if (viewContent.percentWidth >= 0) {
+				viewContent.width = Std.int((viewContentContainer.width * viewContent.percentWidth) / 100) - viewContentContainer.layout.padding.right;
+			}
+			if (viewContent.percentHeight >= 0) {
+				viewContent.height = Std.int((viewContentContainer.height * viewContent.percentHeight) / 100) - viewContentContainer.layout.padding.bottom;
+			}
+		}
+	}
+	
+	private function updateScrollRect():Void {
+		resizeViewContent();
+		if (viewContent != null) {
+			var scrollWidth = width - (layout.padding.left + layout.padding.right);
+			var scrollHeight = height - (layout.padding.top + layout.padding.bottom);
 			if (vscroll != null && vscroll.visible == true && innerScrolls == false) {
-				scrollWidth -= vscroll.width + spacingX;
+				scrollWidth -= vscroll.width + layout.spacingX;
 			}
 			
 			if (hscroll != null && hscroll.visible == true && innerScrolls == false) {
-				scrollHeight -= hscroll.height + spacingY;
+				scrollHeight -= hscroll.height + layout.spacingY;
 			}
-			viewContent.setScrollRect(scrollPos.x, scrollPos.y, scrollWidth, scrollHeight);
+			viewContentContainer.setScrollRect(0, 0, scrollWidth, scrollHeight);
+			var ypos:Int = 0;
+			ypos = -Std.int(scrollPos.y);//-Std.int(vscroll.value);
+			var xpos:Int = 0;
+			xpos = -Std.int(scrollPos.x);//Std.int(hscroll.value);
+			viewContent.y = ypos;
+			viewContent.x = xpos;
 		}
 	}
 }

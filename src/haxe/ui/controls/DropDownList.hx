@@ -67,6 +67,7 @@ class DropDownList extends Selector {
 		var mouseIn:Bool = hitTest(event.stageX, event.stageY);
 		if (mouseInList == false && list != null && mouseIn == false) {
 			root.removeEventListener(MouseEvent.MOUSE_DOWN, onScreenMouseDown);
+			root.removeEventListener(MouseEvent.MOUSE_WHEEL, onScreenMouseDown);
 			hideList();
 			this.selected = false;
 		}
@@ -97,17 +98,18 @@ class DropDownList extends Selector {
 			}
 
 			root.addEventListener(MouseEvent.MOUSE_DOWN, onScreenMouseDown);
+			root.addEventListener(MouseEvent.MOUSE_WHEEL, onScreenMouseDown);
 			
 			var n:Int = maxSize;
 			if (n > list.listSize) {
 				n = list.listSize;
 			}
-			var listHeight:Float = n * list.itemHeight + (list.padding.top + list.padding.bottom);
+			var listHeight:Float = n * list.itemHeight + (list.layout.padding.top + list.layout.padding.bottom);
 			
 			list.height = listHeight;
 			list.width = this.width;
-			list.x = this.stageX - (root.component.x + root.component.padding.left);
-			list.y = this.stageY + this.height - (root.component.y + root.component.padding.top);
+			list.x = this.stageX - (root.component.x + root.component.layout.padding.left);
+			list.y = this.stageY + this.height - (root.component.y + root.component.layout.padding.top);
 			list.visible = true;
 		}
 	}

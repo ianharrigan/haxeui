@@ -47,8 +47,8 @@ class TabView extends Component {
 	public override function resize():Void {
 		super.resize();
 		
-		content.height = innerHeight - tabs.height - spacingY;
-		content.y = tabs.height + padding.top + spacingY;
+		content.height = innerHeight - tabs.height - layout.spacingY;
+		content.y = tabs.height + layout.padding.top + layout.spacingY;
 	}
 	
 	public override function dispose():Void {
@@ -95,30 +95,6 @@ class TabView extends Component {
 	
 	public override function listChildComponents():Array<Component> {
 		return content.listChildComponents();
-	}
-	//************************************************************
-	//                  TABVIEW FUNCTIONS
-	//************************************************************
-	
-	// DEPRICATED
-	public function addPage(title:String, page:Component = null, additionalStyleNames:String = null):Component {
-		if (page == null) {
-			page = new Component();
-		}
-
-		var button:Button = tabs.addTab(title, additionalStyleNames);
-		
-		page.percentWidth = 100;
-		page.percentHeight = 100;
-		pages.push(page);
-		page.visible = button.selected;
-		if (button.selected == true) {
-			currentPage = page;
-		}
-		
-		content.addChild(page);
-		
-		return page;
 	}
 	
 	//************************************************************

@@ -34,7 +34,7 @@ class Popup extends Component {
 		
 		titleComponent.text = title;
 		addChild(titleComponent);
-		height = content.padding.top + content.padding.bottom + 10;
+		height = content.layout.padding.top + content.layout.padding.bottom + 10;
 	}
 	
 	//************************************************************

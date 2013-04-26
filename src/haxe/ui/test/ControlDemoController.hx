@@ -1,22 +1,19 @@
 package haxe.ui.test;
+import haxe.ui.containers.ListView;
 import haxe.ui.controls.Button;
 import haxe.ui.controls.CheckBox;
-import haxe.ui.controls.HSlider;
-import haxe.ui.controls.Label;
-import haxe.ui.controls.RatingControl;
-import haxe.ui.data.ArrayDataSource;
-import haxe.ui.data.DataSource;
-import haxe.ui.data.JSONDataSource;
-import haxe.ui.data.MySQLDataSource;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import haxe.ui.containers.ListView;
 import haxe.ui.controls.DropDownList;
+import haxe.ui.controls.HSlider;
 import haxe.ui.controls.ProgressBar;
+import haxe.ui.controls.RatingControl;
 import haxe.ui.controls.TextInput;
 import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
+import haxe.ui.data.ArrayDataSource;
+import haxe.ui.data.JSONDataSource;
 import haxe.ui.popup.Popup;
+import nme.events.Event;
+import nme.events.MouseEvent;
 import nme.system.Capabilities;
 
 class ControlDemoController extends Controller {
@@ -130,7 +127,7 @@ class ControlDemoController extends Controller {
 		attachEvent("theList", Event.SCROLL, function(e) {
 			if (getComponentAs("theList", ListView).vscrollPosition >= getComponentAs("theList", ListView).vscrollMax) {
 				// TODO: append more to data source if available (test network/db)
-				getComponentAs("theList", ListView).dataSource.addAll(JSONDataSource.fromResource("data/dropdown.json"));
+				//getComponentAs("theList", ListView).dataSource.addAll(JSONDataSource.fromResource("data/dropdown.json"));
 			}
 		});
 

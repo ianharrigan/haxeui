@@ -21,6 +21,7 @@ class TabBar extends ScrollView {
 		
 		width = 300;
 		viewContent = new HBox();
+		//viewContent.width = 500;
 		//viewContent.addStyleName("TabBar.content");
 
 		scrollSensitivity = 5;
