@@ -240,6 +240,13 @@ class ComponentParser {
 						cast(c, DropDownList).dataSource = createDataSource(dsString);
 					}
 				}
+				
+				if (Std.is(c, GridBox)) { // TODO: Ugly
+					if (xml.get("columns") != null) {
+						var columnsString:String = xml.get("columns");
+						cast(c, GridBox).columns = Std.parseInt(columnsString);
+					}
+				}
 			} catch (e:Dynamic) {
 				trace("Problem creating class '" + className + "': " + Std.string(e));
 			}

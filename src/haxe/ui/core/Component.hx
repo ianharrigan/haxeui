@@ -248,9 +248,9 @@ class Component implements IEventDispatcher {
 		}
 		
 		layout.component = this;
-		calcSize();
 		ready = true;
 		initialize();
+		calcSize();
 		invalidate();
 		
 		// we want a bulk add here, we want to add all the sprites AFTER all the components have been added in childComponents

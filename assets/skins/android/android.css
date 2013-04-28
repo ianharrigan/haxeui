@@ -46,6 +46,11 @@ HBox {
 	spacingX: 5;
 }
 
+GridBox {
+	spacingX: 5;
+	spacingY: 5;
+}
+
 RatingControl {
 	paddingLeft: 0;
 	paddingTop: 0;

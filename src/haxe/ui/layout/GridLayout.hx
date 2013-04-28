@@ -3,7 +3,7 @@ package haxe.ui.layout;
 import haxe.ui.core.Component;
 
 class GridLayout extends Layout {
-	public var columns:Int = 3;
+	public var columns:Int = 1;
 	
 	public function new() {
 		super();

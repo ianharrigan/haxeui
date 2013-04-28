@@ -4,9 +4,16 @@ import haxe.ui.core.Component;
 import haxe.ui.layout.GridLayout;
 
 class GridBox extends Component {
+	public var columns:Int = 1;
+	
 	public function new() {
 		super();
 		layout = new GridLayout();
+	}
+	
+	public override function initialize():Void {
+		super.initialize();
+		cast(layout, GridLayout).columns = columns;
 	}
 	
 	private override function getUsableWidth(c:Component = null):Float {

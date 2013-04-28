@@ -32,6 +32,11 @@ HBox {
 	spacingX: 5;
 }
 
+GridBox {
+	spacingX: 5;
+	spacingY: 5;
+}
+
 #disabledOverlay {
 	backgroundColor: 0xFFFFFF;
 }
