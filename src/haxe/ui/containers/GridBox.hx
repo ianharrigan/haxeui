@@ -11,7 +11,6 @@ class GridBox extends Component {
 	
 	private override function getUsableWidth(c:Component = null):Float {
 		var ucx:Float = super.getUsableWidth();
-		
 		var gridLayout:GridLayout = cast(layout, GridLayout);
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
@@ -27,23 +26,20 @@ class GridBox extends Component {
 			}
 		}
 
-		for (child in listChildComponents()) {
-			
+		var columnWidths:Array<Int> = gridLayout.calcColumnWidths();
+		var n:Int = 0;
+		for (cx in columnWidths) {
+			if (n != columnIndex) {
+				ucx -= cx + gridLayout.spacingX;
+			}
+			n++;
 		}
 		
-		ucx = ucx - (80 + 5 + 5 + 100);
-		/*
-		if (ucx < gridLayout.calcColumnWidths()[columnIndex]) {
-			ucx = gridLayout.calcColumnWidths()[columnIndex];
-		}
-		*/
-		
-		return ucx;//gridLayout.calcColumnWidths()[columnIndex];
+		return ucx;
 	}
 
 	private override function getUsableHeight(c:Component = null):Float {
-		var ucx:Float = super.getUsableWidth();
-		
+		var ucy:Float = super.getUsableHeight();
 		var gridLayout:GridLayout = cast(layout, GridLayout);
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
@@ -59,6 +55,15 @@ class GridBox extends Component {
 			}
 		}
 		
-		return gridLayout.calcRowHeights()[rowIndex];
+		var rowHeights:Array<Int> = gridLayout.calcRowHeights();
+		var n:Int = 0;
+		for (cy in rowHeights) {
+			if (n != rowIndex) {
+				ucy -= cy + gridLayout.spacingY;
+			}
+			n++;
+		}
+		
+		return ucy;
 	}
 }

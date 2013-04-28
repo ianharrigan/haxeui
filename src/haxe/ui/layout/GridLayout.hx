@@ -34,8 +34,8 @@ class GridLayout extends Layout {
 	}
 	
 	public function calcRowHeights():Array<Int> {
-		var rowCount:Int = Std.int((c.listChildComponents().length / 3));
-		if (c.listChildComponents().length % 3 != 0) {
+		var rowCount:Int = Std.int((c.listChildComponents().length / columns));
+		if (c.listChildComponents().length % columns != 0) {
 			rowCount++;
 		}
 		var rowHeights:Array<Int> = new Array<Int>();
