@@ -41,7 +41,7 @@ class Main extends Sprite {
 		#if android
 			startApp(ANDROID_SKIN);
 		#else
-			startApp(WINDOWS_SKIN);
+			startApp(ANDROID_SKIN);
 		#end
 	}
 
@@ -91,7 +91,7 @@ class Main extends Sprite {
 			root = openFullscreen();
 		}
 		
-		var controller:Controller = new Controller(ComponentParser.fromXMLResource("ui/test01.xml"));
+//		var controller:Controller = new Controller(ComponentParser.fromXMLResource("ui/test01.xml"));
 //		root.addChild(controller.view);
 //		root.addChild(ComponentParser.fromXMLResource("ui/test01.xml"));
 

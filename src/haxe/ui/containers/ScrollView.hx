@@ -38,6 +38,13 @@ class ScrollView extends Component {
 	public var vscrollMax(getVScrollMax, null):Float;
 	public var hscrollMax(getHScrollMax, null):Float;
 	
+	// kinetic scrolling, adapted from: http://www.nbilyk.com/kinetic-scrolling-example
+	private var kineticPreviousPoints:Array<Point>;
+	private var kineticPreviousTimes:Array<Int>;
+	private var kineticVelocity:Point;
+	private static var KINETIC_HISTORY_LENGTH:Int = 5; // The amount of mouse move events to keep track of
+	private var kineticScrolling:Bool = true;
+	
 	public function new() {
 		super();
 		
@@ -173,6 +180,12 @@ class ScrollView extends Component {
 		}
 		
 		if (inScroll == false && (viewContent.height > innerHeight || viewContent.width > innerWidth)) {
+			if (kineticScrolling) {
+				stopKineticScroll();
+				kineticPreviousPoints = [new Point(event.stageX, event.stageY)];
+				kineticPreviousTimes = [Lib.getTimer()];
+			}
+			
 			downPos = new Point(event.stageX, event.stageY);
 			mouseDown = true;
 			root.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
@@ -181,6 +194,22 @@ class ScrollView extends Component {
 	}
 	
 	private function onMouseMove(event:MouseEvent):Void {
+		if (kineticScrolling) {
+			var currPoint:Point = new Point(event.stageX, event.stageY);
+			var currTime:Int = Lib.getTimer();
+			var previousPoint:Point = cast(kineticPreviousPoints[kineticPreviousPoints.length - 1], Point);
+			var previousTime:Int = cast(kineticPreviousTimes[kineticPreviousTimes.length - 1], Int);
+			var diff:Point = currPoint.subtract(previousPoint);		
+			
+			// Keep track of a set amount of positions and times so that on release, we can always look back a consistant amount.
+			kineticPreviousPoints.push(currPoint);
+			kineticPreviousTimes.push(currTime);
+			if (kineticPreviousPoints.length >= KINETIC_HISTORY_LENGTH) {
+				kineticPreviousPoints.shift();
+				kineticPreviousTimes.shift();
+			}
+		}
+		
 		var inScroll:Bool = false;
 		if (vscroll != null) {
 			inScroll = vscroll.mouseOver;
@@ -198,16 +227,6 @@ class ScrollView extends Component {
 
 				if (ypos != 0 && viewContent.height > innerHeight) {
 					scrollPos.y -= ypos;
-					if (scrollPos.y < 0) {
-						scrollPos.y = 0;
-					}
-					var maxY:Float = viewContent.height - innerHeight;
-					if (hscroll != null) {
-						maxY += hscroll.height + layout.spacingY;
-					}
-					if (scrollPos.y > maxY) {
-						scrollPos.y = maxY;
-					}
 					
 					if (vscroll != null) {
 						vscroll.visible = true;
@@ -216,42 +235,102 @@ class ScrollView extends Component {
 
 				if (xpos != 0 && viewContent.width > innerWidth) {
 					scrollPos.x -= xpos;
-					if (scrollPos.x < 0) {
-						scrollPos.x = 0;
-					}
-					var maxX:Float = viewContent.width - innerWidth;
-					if (vscroll != null) {
-						maxX += vscroll.width + layout.spacingX;
-					}
-					if (scrollPos.x > maxX) {
-						scrollPos.x = maxX;
-					}
 					
 					if (hscroll != null) {
 						hscroll.visible = true;
 					}
 				}
 				
+				validateScrollPos();
 				if (vscroll != null) {
 					vscroll.value = Std.int(scrollPos.y);
 				}
 				if (hscroll != null) {
 					hscroll.value = Std.int(scrollPos.x);
 				}
-				
 				downPos = new Point(event.stageX, event.stageY);
 				updateScrollRect();
 			}
 		}
 	}
 	
+	private function validateScrollPos():Void {
+		if (scrollPos.y < 0) {
+			scrollPos.y = 0;
+		}
+		var maxY:Float = viewContent.height - innerHeight;
+		if (hscroll != null) {
+			maxY += hscroll.height + layout.spacingY;
+		}
+		if (scrollPos.y > maxY) {
+			scrollPos.y = maxY;
+		}
+		
+		if (scrollPos.x < 0) {
+			scrollPos.x = 0;
+		}
+		var maxX:Float = viewContent.width - innerWidth;
+		if (vscroll != null) {
+			maxX += vscroll.width + layout.spacingX;
+		}
+		if (scrollPos.x > maxX) {
+			scrollPos.x = maxX;
+		}
+	}
+	
+	private function onEnterFrame(event:Event):Void {
+			kineticVelocity = new Point(kineticVelocity.x * .6, kineticVelocity.y * .6);
+			if (Math.abs(kineticVelocity.x) < .1) {
+				kineticVelocity.x = 0;
+			}
+			if (Math.abs(kineticVelocity.y) < .1) {
+				kineticVelocity.y = 0;
+			}
+
+			if (hscroll != null) {
+				hscroll.visible = true;
+			}
+ 					
+			if (vscroll != null) {
+				vscroll.visible = true;
+			}
+			
+			if (kineticVelocity.x == 0 && kineticVelocity.y == 0) {
+				stopKineticScroll();
+			}
+
+			scrollPos.y -= kineticVelocity.y * 3;
+			scrollPos.x -= kineticVelocity.x * 3;
+			validateScrollPos();
+		
+			if (vscroll != null) {
+				vscroll.value = Std.int(scrollPos.y);
+			}
+			if (hscroll != null) {
+				hscroll.value = Std.int(scrollPos.x);
+			}
+			
+			updateScrollRect();
+	}
+	
 	private function onMouseUp(event:MouseEvent):Void {
+		if (kineticScrolling) {
+			var currPoint:Point = new Point(event.stageX, event.stageY);
+			var currTime:Int = Lib.getTimer();
+			var firstPoint:Point = cast(kineticPreviousPoints[0], Point);
+			var firstTime:Int = cast(kineticPreviousTimes[0], Int);
+			var diff:Point = currPoint.subtract(firstPoint);
+			var time:Float = (currTime - firstTime) / (1000 / 24);
+			kineticVelocity = new Point(diff.x / time, diff.y / time);		
+			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+		}
+		
 		eventTarget.visible = false;
 		mouseDown = false;
 		root.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 		root.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		
-		if (autoHideScrolls == true) {
+		if (autoHideScrolls == true && kineticScrolling == false) {
 			if (vscroll != null) {
 				vscroll.visible = false;
 			}
@@ -443,6 +522,19 @@ class ScrollView extends Component {
 			xpos = -Std.int(scrollPos.x);//Std.int(hscroll.value);
 			viewContent.y = ypos;
 			viewContent.x = xpos;
+		}
+	}
+	
+	private function stopKineticScroll():Void {
+		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+		kineticVelocity = new Point();
+		if (autoHideScrolls == true) {
+			if (vscroll != null) {
+				vscroll.visible = false;
+			}
+			if (hscroll != null) {
+				hscroll.visible = false;
+			}
 		}
 	}
 }
