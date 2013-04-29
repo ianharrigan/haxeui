@@ -279,7 +279,7 @@ class ScrollView extends Component {
 	}
 	
 	private function onEnterFrame(event:Event):Void {
-			kineticVelocity = new Point(kineticVelocity.x * .6, kineticVelocity.y * .6);
+			kineticVelocity = new Point(kineticVelocity.x * .75, kineticVelocity.y * .75);
 			if (Math.abs(kineticVelocity.x) < .1) {
 				kineticVelocity.x = 0;
 			}
@@ -299,8 +299,8 @@ class ScrollView extends Component {
 				stopKineticScroll();
 			}
 
-			scrollPos.y -= kineticVelocity.y * 3;
-			scrollPos.x -= kineticVelocity.x * 3;
+			scrollPos.y -= kineticVelocity.y * 2.5;
+			scrollPos.x -= kineticVelocity.x * 2.5;
 			validateScrollPos();
 		
 			if (vscroll != null) {
