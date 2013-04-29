@@ -41,7 +41,7 @@ class Main extends Sprite {
 		#if android
 			startApp(ANDROID_SKIN);
 		#else
-			startApp(ANDROID_SKIN);
+			startApp(WINDOWS_SKIN);
 		#end
 	}
 
