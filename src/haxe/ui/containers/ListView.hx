@@ -514,15 +514,24 @@ class ListViewItem extends Component {
 			subTextComponent.width = innerWidth;
 		}
 		
-		var contentHeight:Float = 0;
+		// calculate new height
+		var totalHeight:Float = 0;
 		if (textComponent != null) {
-			contentHeight += textComponent.height;
+			totalHeight += textComponent.height;
 		}
 		if (subTextComponent != null) {
-			contentHeight += subTextComponent.height;
+			totalHeight += subTextComponent.height;
 		}
+		if (typeComponent != null) {
+			totalHeight = Math.max(totalHeight, typeComponent.height);
+		}
+
+		var newHeight = height;
+		if (totalHeight > innerHeight) {
+			newHeight = totalHeight + layout.padding.top + layout.padding.bottom;
+		}
+		this.height = newHeight;
 		
-		height = contentHeight + layout.padding.top + layout.padding.bottom;
 	}
 }
 
