@@ -278,6 +278,7 @@ class Component implements IEventDispatcher {
 			}
 			childrenToAdd = null;
 		}
+		
 		calcSize();
 		layout.repositionChildren();
 		
@@ -549,14 +550,19 @@ class Component implements IEventDispatcher {
 		}
 		
 		if (Std.is(c, Component)) {
-			childComponents.remove(c);
+			var b:Bool = childComponents.remove(c);
+			if (childrenToAdd != null) {
+				childrenToAdd.remove(c);
+			}
 			c = untyped c.sprite;
+			
 		}
 
 		var r:Dynamic = null;
 		r = sprite.removeChild(c);
 		calcSize();
 		layout.repositionChildren();
+		
 		return r;
 	}
 	

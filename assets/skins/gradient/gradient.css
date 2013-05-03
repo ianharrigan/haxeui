@@ -292,7 +292,7 @@ TextInput {
 	cornerRadius: 2;
 }
 
-SimplePopup, ListPopup, CustomPopup, BusyPopup {
+SimplePopup, ListPopup, CustomPopup, BusyPopup, FileOpenPopup {
 	backgroundColor: 0xa5b8da;
 	borderColor: 0x7d99ca;
 	cornerRadius: 3;
@@ -300,7 +300,7 @@ SimplePopup, ListPopup, CustomPopup, BusyPopup {
 	width: 230;
 }
 
-SimplePopup #popupTitle, ListPopup #popupTitle, CustomPopup #popupTitle {
+SimplePopup #popupTitle, ListPopup #popupTitle, CustomPopup #popupTitle, FileOpenPopup #popupTitle {
 	paddingLeft: 5;
 	paddingTop: 5;
 	paddingRight: 0;
@@ -310,7 +310,7 @@ SimplePopup #popupTitle, ListPopup #popupTitle, CustomPopup #popupTitle {
 	fontName: _sans;
 }
 
-SimplePopup #popupContent, ListPopup #popupContent, CustomPopup #popupContent  {
+SimplePopup #popupContent, ListPopup #popupContent, CustomPopup #popupContent, FileOpenPopup #popupContent  {
 	paddingLeft: 10;
 	paddingTop: 32;
 	paddingRight: 10;
@@ -328,6 +328,11 @@ BusyPopup #popupContent {
 	color: 0xFFFFFF;
 	fontSize: 13;
 	fontName: _sans;
+}
+
+FileOpenPopup {
+	width: 430;
+	hieght: 250;
 }
 
 SimplePopup #popupContent Label, BusyPopup #popupContent Label  {

@@ -21,11 +21,12 @@ class FileOpenPopup extends Popup {
 	private var selectButton:Button;
 	private var cancelButton:Button;
 	private var upButton:Button;
-	private var currentDirLabel:Label;
 	public var fnCallback:Dynamic->Void;
 	
 	private var currentDir:String;
 
+	private var pathBox:HBox;
+	
 	public function new(dir:String = null) {
 		super();
 		title = "Select File";
@@ -60,29 +61,16 @@ class FileOpenPopup extends Popup {
 			
 		#if !(flash)
 		{
-			var hbox:HBox = new HBox();
-			hbox.percentWidth  = 100;
+			pathBox = new HBox();
+			pathBox.percentWidth = 100;
+			pathBox.id = "pathControl";
 			
-			upButton = new Button();
-			upButton.text = "Up";
-			upButton.addEventListener(MouseEvent.CLICK, onUp);
-			hbox.addChild(upButton);
-			
-			var label:Label = new Label();
-			label.text = "Current Dir:";
-			label.verticalAlign = "center";
-			hbox.addChild(label);
-			
-			currentDirLabel = new Label();
-			currentDirLabel.text = currentDir;
-			currentDirLabel.verticalAlign = "center";
-			hbox.addChild(currentDirLabel);
-
-			vbox.addChild(hbox);
+			vbox.addChild(pathBox);
 		}
 		
 		{
 			fileList = new ListView();
+			fileList.id = "list";
 			fileList.percentWidth = fileList.percentHeight = 100;
 			vbox.addChild(fileList);
 			fileList.addEventListener(Event.CHANGE, function (e:Event) {
@@ -142,7 +130,6 @@ class FileOpenPopup extends Popup {
 			} while (fileList.dataSource.moveFirst());
 		}
 		
-		currentDirLabel.text = currentDir;
 		if (isDir(currentDir)) {
 			var files:Array<String> = FileSystem.readDirectory(currentDir);
 			
@@ -168,9 +155,11 @@ class FileOpenPopup extends Popup {
 		fileList.vscrollPosition = 0;
 		
 		//fileList.enabled = true; // TODO: problem with reenabling list items, events lost
+		refreshPathUI();
 		#end
 	}
 	
+	/*
 	private function onUp(event:MouseEvent):Void {
 		var arr:Array<String> = currentDir.split("/");
 		var s:String = arr.pop();
@@ -183,6 +172,7 @@ class FileOpenPopup extends Popup {
 		currentDir = fixDir(newPath);
 		refreshList();
 	}
+	*/
 	
 	private function onOpen(event:MouseEvent):Void {
 		#if !(flash)
@@ -258,6 +248,32 @@ class FileOpenPopup extends Popup {
 			}
 		}
 		return s;
+	}
+	
+	private function refreshPathUI():Void {
+		while (pathBox.getNumChildren() > 0) {
+			pathBox.removeChild(pathBox.listChildComponents()[0]); // TODO: ugly
+		}
+		
+		var paths:Array<String> = currentDir.split("/");
+		var fullPath:String = "";
+		for (path in paths) {
+			fullPath += path + "/";
+			
+			var button:Button = new Button();
+			button.text = path;
+			pathBox.addChild(button);
+			button.addEventListener(MouseEvent.CLICK, buildPathClickFunction(fullPath));
+		}
+	}
+	
+	public function buildPathClickFunction(path:String) {
+		return function(event:MouseEvent) { setPath(path); };
+	}
+	
+	private function setPath(path:String):Void {
+		currentDir = fixDir(path);
+		refreshList();
 	}
 	
 	public static function show(root:Root, dir:String = null, fnCallback:Dynamic->Void = null):FileOpenPopup {

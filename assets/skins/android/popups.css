@@ -122,3 +122,63 @@ BusyPopup #popupContent {
 	paddingRight: 5;
 	paddingBottom: 8;
 }
+
+
+FileOpenPopup {
+	backgroundImage: skins/android/popup/popup_border.png;
+	backgroundImageScale9: 4,50,258,86;
+	width: 430;
+	hieght: 250;
+}
+
+FileOpenPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 10;
+	paddingRight: 0;
+	paddingBottom: 0;
+	fontSize: 26;
+	color: 0xFFFFFF;
+}
+
+FileOpenPopup #popupContent {
+	paddingLeft: 2;
+	paddingTop: 50;
+	paddingRight: 2;
+	paddingBottom: 2;
+}
+
+FileOpenPopup ListView {
+	backgroundImage: null;
+	innerScrolls: true;
+}
+
+FileOpenPopup ListViewItem {
+	backgroundImage: skins/android/list/list_item_popup_unselected.png;
+	paddingLeft: 0;
+	paddingTop: 12;
+	paddingRight: 12;
+	paddingBottom: 12;
+}
+
+FileOpenPopup ListViewItem:selected {
+	backgroundImage: skins/android/list/list_item_selected.png;
+}
+
+FileOpenPopup ListViewItem Label {
+	fontSize: 22;
+	fontName: _sans;
+	color: 0x000000;
+}
+
+FileOpenPopup ListViewItem Label:selected {
+	fontSize: 22;
+	fontName: _sans;
+	color: 0xFFFFFF;
+}
+
+FileOpenPopup #popupContent HBox {
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 2;
+}

@@ -88,6 +88,22 @@ FileOpenPopup #popupContent {
 	paddingBottom: 10;
 }
 
+FileOpenPopup #pathControl Button {
+	backgroundImage: embedded://skins/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 20, 0, 20, 20;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 5;
+}
+
+FileOpenPopup #pathControl Button:over {
+	backgroundImage: embedded://skins/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 40, 0, 20, 20;
+}
+
 FileOpenPopup #dir {
 	icon: icons/folder_open_16.png;
 }
