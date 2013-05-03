@@ -1,4 +1,5 @@
 package haxe.ui.containers;
+import haxe.ui.style.StyleManager;
 import nme.display.DisplayObject;
 import nme.events.Event;
 import haxe.ui.controls.Button;
@@ -13,6 +14,9 @@ class TabView extends Component {
 	private var pages:Array<Component>;
 	
 	private var currentPage:Component;
+	
+	public var selectedIndex(getSelectedIndex, setSelectedIndex):Int;
+	public var pageCount(getPageCount, null):Int;
 	
 	public function new() {
 		super();
@@ -68,12 +72,7 @@ class TabView extends Component {
 			comp.addChild(c);
 		}
 		
-		var additionalStyles:String = "";
-		var button:Button = tabs.addTab(comp.text, additionalStyles);
-		button.styles = "tab";
-		if (comp.id != null) {
-			button.id = comp.id;
-		}
+		var button:Button = tabs.addTab(comp.text, comp.id);
 		
 		comp.percentWidth = 100;
 		comp.percentHeight = 100;
@@ -103,8 +102,28 @@ class TabView extends Component {
 	private function onTabChange(event:Event):Void {
 		currentPage.visible = false;
 		var page:Component = pages[tabs.selectedIndex];
-		page.visible = true;
-		currentPage = page;
+		if (page != null) {
+			page.visible = true;
+			currentPage = page;
+		}
+	}
+	
+	private function getSelectedIndex():Int {
+		return tabs.selectedIndex;
+	}
+	
+	public function setSelectedIndex(value:Int):Int {
+		tabs.selectedIndex = value;
+		var page:Component = pages[tabs.selectedIndex];
+		if (page != null) {
+			page.visible = true;
+			currentPage = page;
+		}
+		return value;
+	}
+	
+	private function getPageCount():Int {
+		return pages.length;
 	}
 }
 

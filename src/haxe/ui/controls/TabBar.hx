@@ -39,11 +39,12 @@ class TabBar extends ScrollView {
 	//************************************************************
 	//                  TAB FUNCTIONS
 	//************************************************************
-	public function addTab(title:String, additionalStyleNames:String = null):Button {
+	public function addTab(title:String, buttonId:String = null):Button {
 		var button:Button = new Button();
-		//button.inheritStylesFrom = "TabBar.tab";
-		//button.addStyleName("TabBar.tab");
-		//button.addStyleName(additionalStyleNames);
+		if (buttonId != null) {
+			button.id = buttonId;
+		}
+		button.styles = "tab";
 		button.toggle = true;
 		button.text = title;
 		button.allowSelection = false;
@@ -63,26 +64,27 @@ class TabBar extends ScrollView {
 	}
 	
 	private function mouseClickButton(index:Int):Void {
-		if (index != selectedIndex) {
+		setSelectedIndex(index);
+	}
+	
+	//************************************************************
+	//                  GETTERS AND SETTERS
+	//************************************************************
+	public function setSelectedIndex(value:Int):Int {
+		if (value != selectedIndex) {
 			for (n in 0...buttons.length) {
 				var button:Button = buttons[n];
-				if (n == index) {
+				if (n == value) {
 					button.selected = true;
 				} else {
 					button.selected = false;
 				}
 			}
-			selectedIndex = index;
+			selectedIndex = value;
 			
 			var event:Event = new Event(Event.CHANGE);
 			dispatchEvent(event);
 		}
-	}
-	//************************************************************
-	//                  GETTERS AND SETTERS
-	//************************************************************
-	public function setSelectedIndex(value:Int):Int {
-		selectedIndex = value;
 		return value;
 	}
 }

@@ -1,0 +1,15 @@
+openGL:
+https://github.com/deltaluca/hx-ogl - opengl lib is like using stage3d in as3
+https://github.com/deltaluca/hx-glfw3 - gives you window/monitor/mouse/keyboard management
+
+Starling
+https://github.com/jgranick/starling
+
+NME
+https://github.com/haxenme/NME
+
+Waxe:
+https://github.com/mockey/waxe
+
+CSS:
+https://code.google.com/p/selecthx

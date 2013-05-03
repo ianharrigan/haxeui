@@ -1,13 +1,15 @@
 package haxe.ui.popup;
 
+import haxe.ui.core.interfaces.IDraggable;
 import haxe.ui.data.ArrayDataSource;
 import haxe.ui.data.DataSource;
+import nme.events.MouseEvent;
 import nme.filters.DropShadowFilter;
 import haxe.ui.controls.Label;
 import haxe.ui.core.Component;
 import haxe.ui.core.Root;
 
-class Popup extends Component {
+class Popup extends Component, implements IDraggable {
 	private var content:Component;
 	public var title:String = "NME UI Toolkit";
 	private var titleComponent:Label;
@@ -135,5 +137,14 @@ class Popup extends Component {
 	public static function centerPopup(p:Popup):Void {
 		p.x = Std.int((p.root.width / 2) - (p.width / 2));
 		p.y = Std.int((p.root.height / 2) - (p.height / 2));
+	}
+	
+	public function allowDrag(event:MouseEvent):Bool {
+		if (event.target == titleComponent.sprite) {
+			return true;
+		} else if (event.target == this.sprite) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -325,6 +325,7 @@ class ListViewItem extends Component {
 		
 		//sprite.useHandCursor = true;
 		//sprite.buttonMode = true;
+		autoSize = false;
 		
 		registerState("over");
 		registerState("selected");
@@ -349,7 +350,9 @@ class ListViewItem extends Component {
 			subTextComponent.registerState("selected");
 			subTextComponent.id = "listViewSubtext";
 			subTextComponent.text = itemData.subtext;
+			subTextComponent.wordWrap = true;
 			//subTextComponent.percentWidth = 100;
+			//subTextComponent.height = 75;
 			addChild(subTextComponent);
 		}
 		
@@ -435,7 +438,6 @@ class ListViewItem extends Component {
 		if (totalHeight > innerHeight) {
 			newHeight = totalHeight + layout.padding.top + layout.padding.bottom;
 		}
-		
 		this.height = newHeight;
 	}
 	
@@ -482,6 +484,23 @@ class ListViewItem extends Component {
 			subTextComponent.text = value;
 		}
 		return value;
+	}
+	
+	public override function resize():Void {
+		super.resize();
+		if (subTextComponent != null) {
+			subTextComponent.width = innerWidth;
+		}
+		
+		var contentHeight:Float = 0;
+		if (textComponent != null) {
+			contentHeight += textComponent.height;
+		}
+		if (subTextComponent != null) {
+			contentHeight += subTextComponent.height;
+		}
+		
+		height = contentHeight + layout.padding.top + layout.padding.bottom;
 	}
 }
 

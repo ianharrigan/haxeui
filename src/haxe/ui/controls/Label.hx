@@ -92,12 +92,20 @@ class Label extends Component {
 				textControl.height = textControl.textHeight + 4;
 			}
 		} else {
+			//textControl.width = textControl.textWidth + 4;
+			//textControl.height = textControl.textHeight + 4;
 			if (width != 0) {
 				textControl.width = width - (layout.padding.left + layout.padding.right);
 			}
+			/*
 			if (height != 0) {
 				textControl.height = height - (layout.padding.top + layout.padding.bottom);
+				if (height > textControl.textHeight + 4) {
+					textControl.height = textControl.textHeight;
+				}
 			}
+			*/
+			textControl.height = textControl.textHeight + 4;
 		}
 		
 		width = textControl.width + (layout.padding.left + layout.padding.right);

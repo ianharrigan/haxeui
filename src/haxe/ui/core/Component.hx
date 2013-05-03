@@ -2,6 +2,7 @@ package haxe.ui.core;
 
 import haxe.ui.containers.ListView;
 import haxe.ui.containers.ScrollView;
+import haxe.ui.core.interfaces.IDraggable;
 import haxe.ui.layout.Layout;
 import nme.Assets;
 import nme.display.BitmapData;
@@ -16,6 +17,7 @@ import haxe.ui.containers.HBox;
 import haxe.ui.containers.VBox;
 import haxe.ui.style.StyleHelper;
 import haxe.ui.style.StyleManager;
+import nme.ui.Mouse;
 
 class Component implements IEventDispatcher {
 	private var childComponents:Array<Component>;
@@ -278,6 +280,10 @@ class Component implements IEventDispatcher {
 		}
 		calcSize();
 		layout.repositionChildren();
+		
+		if (Std.is(this, IDraggable)) {
+			addEventListener(MouseEvent.MOUSE_DOWN, onComponentMouseDown);
+		}
 	}
 	
 	//************************************************************
@@ -666,5 +672,27 @@ class Component implements IEventDispatcher {
 				eventListenersCopy.set(type, dst);
 			}
 		}
+	}
+	
+	// DRAG FUNCTIONS
+	private var mouseDownPos:Point;
+	private function onComponentMouseDown(event:MouseEvent):Void {
+		if (cast(this, IDraggable).allowDrag(event) == false) {
+			return;
+		}
+		
+		mouseDownPos = new Point(event.stageX - stageX, event.stageY - stageY);
+		root.addEventListener(MouseEvent.MOUSE_MOVE, onComponentMouseMove);
+		root.addEventListener(MouseEvent.MOUSE_UP, onComponentMouseUp);
+	}
+	
+	private function onComponentMouseUp(event:MouseEvent):Void {
+		root.removeEventListener(MouseEvent.MOUSE_MOVE, onComponentMouseMove);
+		root.removeEventListener(MouseEvent.MOUSE_UP, onComponentMouseUp);
+	}
+	
+	private function onComponentMouseMove(event:MouseEvent):Void {
+		this.x = event.stageX - mouseDownPos.x;
+		this.y = event.stageY - mouseDownPos.y;
 	}
 }

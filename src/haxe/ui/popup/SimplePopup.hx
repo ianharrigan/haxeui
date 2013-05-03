@@ -18,8 +18,10 @@ class SimplePopup extends Popup {
 		super.initialize();
 
 		textControl = new Label();
+		textControl.wordWrap = true;
 		textControl.text = text;
 		textControl.horizontalAlign = "left";
+		textControl.percentWidth = 100;
 		content.addChild(textControl);
 		
 		var button:Button = new Button();
