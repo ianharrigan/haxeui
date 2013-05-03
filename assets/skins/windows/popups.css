@@ -83,9 +83,17 @@ FileOpenPopup #popupTitle {
 
 FileOpenPopup #popupContent {
 	paddingLeft: 10;
-	paddingTop: 32;
+	paddingTop: 30;
 	paddingRight: 10;
 	paddingBottom: 10;
+}
+
+FileOpenPopup #popupContent VBox {
+	spacingY: 2;
+}
+
+FileOpenPopup #pathControl {
+	spacingX: 0;
 }
 
 FileOpenPopup #pathControl Button {
