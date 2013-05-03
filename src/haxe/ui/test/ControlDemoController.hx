@@ -11,6 +11,7 @@ import haxe.ui.core.ComponentParser;
 import haxe.ui.core.Controller;
 import haxe.ui.data.ArrayDataSource;
 import haxe.ui.data.JSONDataSource;
+import haxe.ui.extension.files.FileOpenPopup;
 import haxe.ui.popup.Popup;
 import nme.events.Event;
 import nme.events.MouseEvent;
@@ -34,6 +35,12 @@ class ControlDemoController extends Controller {
 		attachEvent("listPopup", MouseEvent.CLICK, function (e) {
 			Popup.showList(view.root, ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"], "Select Item", 2, function(item) {
 				Popup.showSimple(view.root, "You selected: " + item.text, "Selection", true);
+			});
+		});
+		
+		attachEvent("selectFileButton", MouseEvent.CLICK, function (e) {
+			FileOpenPopup.show(view.root, getComponent("selectFileDir").text, function (item:Dynamic) {
+				Popup.showSimple(view.root, "You selected file: " + item, "File Selected");
 			});
 		});
 		

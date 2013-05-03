@@ -66,6 +66,52 @@ CustomPopup #popupContent {
 	paddingBottom: 10;
 }
 
+FileOpenPopup {
+	backgroundImage: embedded://skins/windows/popup.png;
+	backgroundImageScale9: 8,30,341,50;
+	backgroundImageRect: 0, 0, 349, 58;
+	width: 430;
+	hieght: 250;
+}
+
+FileOpenPopup #popupTitle {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 0;
+	paddingBottom: 0;
+}
+
+FileOpenPopup #popupContent {
+	paddingLeft: 10;
+	paddingTop: 32;
+	paddingRight: 10;
+	paddingBottom: 10;
+}
+
+FileOpenPopup #dir {
+	icon: icons/folder_open_16.png;
+}
+
+FileOpenPopup #file {
+	icon: icons/file_blank_16.png;
+}
+
+FileOpenPopup #app {
+	icon: icons/application_16.png;
+}
+
+FileOpenPopup #image {
+	icon: icons/image_16.png;
+}
+
+FileOpenPopup #text {
+	icon: icons/file_text_16.png;
+}
+
+FileOpenPopup #video {
+	icon: icons/video_16.png;
+}
+
 BusyPopup {
 	backgroundImage: embedded://skins/windows/popup.png;
 	backgroundImageScale9: 8,8,341,28;

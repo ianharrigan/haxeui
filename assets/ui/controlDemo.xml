@@ -89,6 +89,10 @@
 	</vbox>
 	
 	<vbox text="Selection" id="selection">
+		<hbox>
+			<button text="Select File" id="selectFileButton" />
+			<textinput text="C:\temp\files" id="selectFileDir" />
+		</hbox>
 		<dropdown width="200" text="Dropdown list 1" id="dropdown1" />
 		<hbox>
 			<button text="List Popup" id="listPopup" />

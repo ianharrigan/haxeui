@@ -9,6 +9,7 @@ import nme.display.Bitmap;
 import nme.display.DisplayObject;
 import nme.events.Event;
 import nme.events.MouseEvent;
+import nme.events.TimerEvent;
 import nme.media.Sound;
 import nme.media.SoundChannel;
 import haxe.ui.controls.Button;
@@ -18,6 +19,7 @@ import haxe.ui.controls.RatingControl;
 import haxe.ui.core.Component;
 import haxe.ui.style.StyleManager;
 import haxe.ui.layout.Layout;
+import nme.utils.Timer;
 
 class ListView extends ScrollView {
 	private var items:Array<ListViewItem>;
@@ -71,7 +73,19 @@ class ListView extends ScrollView {
 		}
 	}
 
+	private var doubleClickTimer:Timer; // TODO: have to emulate double click, doesnt seem to work
+	private function onDoubleClickerTimerComplete(event:TimerEvent):Void {
+		doubleClickTimer.stop();
+		doubleClickTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, onDoubleClickerTimerComplete);
+		doubleClickTimer = null;
+	}
+	
 	private function mouseClickItem(index:Int, e:MouseEvent):Void {
+		var isDoubleClick:Bool = false;
+		if (index == selectedIndex && doubleClickTimer != null) {
+			isDoubleClick = true;
+		}
+		
 		var item:ListViewItem = items[index];
 		var allowSelection:Bool = true;
 		var testX:Float = e.stageX;
@@ -90,6 +104,14 @@ class ListView extends ScrollView {
 			selectedIndex = index;
 			var changeEvent:Event = new Event(Event.CHANGE);
 			dispatchEvent(changeEvent);
+		}
+		
+		if (isDoubleClick == false) {
+			doubleClickTimer = new Timer(200, 1);
+			doubleClickTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onDoubleClickerTimerComplete);
+			doubleClickTimer.start();
+		} else {
+			dispatchEvent(new MouseEvent(MouseEvent.DOUBLE_CLICK));
 		}
 	}
 	
@@ -249,7 +271,7 @@ class ListView extends ScrollView {
 	}
 	
 	public function setSelectedIndex(value:Int):Int {
-		if (selectedIndex != -1) {
+		if (selectedIndex != -1 && items[selectedIndex] != null) {
 			items[selectedIndex].showStateStyle("normal");
 		}
 		selectedIndex = value;
