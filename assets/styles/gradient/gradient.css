@@ -1,0 +1,787 @@
+#popupRoot {
+	width: 760;
+	height: 560;
+	backgroundColor: 0xFFFFFF;
+	borderColor: 0xa5b8da;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	spacingY: 0;
+	cornerRadius: 3;
+	filter: dropShadow(4, 45, 0x808080, 1, 4, 4, 1, 3);
+	____alpha: .8;
+}
+
+#modalOverlay {
+	backgroundColor: 0xE9EDF5;
+	filter: blur;
+	alpha: .6;
+}
+
+Text {
+	fontSize: 13;
+	fontName: _sans;
+}
+
+VBox {
+	borderColor: 0xa5b8da;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingY: 5;
+	cornerRadius: 2;
+	borderSize: 0;
+}
+
+HBox {
+	borderColor: 0xa5b8da;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingX: 5;
+	cornerRadius: 2;
+	borderSize: 0;
+}
+
+Grid {
+	borderColor: 0xa5b8da;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingX: 5;
+	spacingY: 5;
+	cornerRadius: 2;
+	borderSize: 0;
+}
+
+ScrollView {
+	borderColor: 0xa5b8da;
+	color: 0x000000;
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 2;
+	borderSize: 1;
+	spacingX: 2;
+	spacingY: 2;
+	cornerRadius: 2;
+}
+
+ScrollView VBox {
+	backgroundColor: 0xFFFFFF;
+	borderColor: 0x000000;
+	color: 0x000000;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	borderSize: 0;
+	spacingX: 5;
+	spacingY: 5;
+}
+
+Button {
+	paddingLeft: 8;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 8;
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+	cornerRadius: 3;
+	borderSize: 1;
+	fontSize: 13;
+	fontName: _sans;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	iconPosition: left;
+}
+
+Button:over {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x2c354b;
+	color: 0xFFFFFF;
+	borderColor: 0x363d4c;
+}
+
+Button:down {
+	backgroundColor: 0x8C95A9;
+	backgroundColorGradientEnd: 0x767F95;
+	color: 0xFFFFFF;
+	borderColor: 0x363d4c;
+}
+
+VScroll {
+	width: 17;
+	height: 100;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	spacingY: 1;
+	hasButtons: true;
+	backgroundColor: 0xa5b8da;
+	cornerRadius: 2;
+}
+
+VScroll Button {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x606c88;
+	borderColor: 0x606c88;
+	cornerRadius: 1;
+	filter: null;
+	iconPosition: center;
+}
+
+VScroll Button:over {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x4b546a;
+	borderColor: 0x4b546a;
+}
+
+VScroll Button:down {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x4b546a;
+	borderColor: 0x4b546a;
+}
+
+VScroll #deinc {
+	icon: styles/gradient/arrow_up.png;
+}
+
+VScroll #inc {
+	icon: styles/gradient/arrow_down.png;
+}
+
+VScroll #thumb {
+	icon: styles/gradient/gripper_vertical.png;
+}
+
+HScroll {
+	width: 100;
+	height: 17;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	spacingX: 1;
+	hasButtons: true;
+	backgroundColor: 0xa5b8da;
+	cornerRadius: 2;
+}
+			
+HScroll Button {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x606c88;
+	borderColor: 0x606c88;
+	cornerRadius: 1;
+	filter: null;
+	iconPosition: center;
+}
+
+HScroll Button:over {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x4b546a;
+	borderColor: 0x4b546a;
+}
+
+HScroll Button:down {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x4b546a;
+	borderColor: 0x4b546a;
+}
+			
+HScroll #deinc {
+	icon: styles/gradient/arrow_left.png;
+}
+
+HScroll #inc {
+	icon: styles/gradient/arrow_right.png;
+}
+
+HScroll #thumb {
+	icon: styles/gradient/gripper_horizontal.png;
+}
+
+HProgress {
+	width: 100;
+	height: 20;
+	backgroundColor: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+}
+
+HProgress #background {
+	width: 100%;
+	height: 100%;
+	backgroundColor: 0xa5b8da;
+	borderColor: 0xa5b8da;
+	cornerRadius: 3;
+}
+
+HProgress #value {
+	height: 100%;
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	borderColor: 0xa5b8da;
+	cornerRadius: 3;
+}
+
+VProgress {
+	width: 20;
+	height: 100;
+	backgroundColor: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+}
+
+VProgress #background {
+	width: 100%;
+	height: 100%;
+	backgroundColor: 0xa5b8da;
+	borderColor: 0xa5b8da;
+	cornerRadius: 3;
+}
+
+VProgress #value {
+	width: 100%;
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	borderColor: 0xa5b8da;
+	cornerRadius: 3;
+	gradientType: horizontal;
+}
+
+HSlider {
+	width: 100;
+	height: 24;
+}
+
+HSlider #background {
+	width: 100%;
+	height: 10;
+	backgroundColor: 0xa5b8da;
+	borderColor: 0x363d4c;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, false);
+}
+
+HSlider #value {
+	height: 10;
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	borderColor: 0x363d4c;
+	cornerRadius: 3;
+	cornerRadiusTopRight: 0;
+	cornerRadiusBottomRight: 0;
+}
+
+HSlider Button {
+	width: 30;
+	height: 100%;
+	icon: styles/gradient/gripper_horizontal.png;
+	iconPosition: center;
+}
+
+VSlider {
+	width: 24;
+	height: 100;
+}
+
+VSlider #background {
+	width: 10;
+	height: 100%;
+	backgroundColor: 0xa5b8da;
+	borderColor: 0x363d4c;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, false);
+}
+
+VSlider #value {
+	width: 10;
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	borderColor: 0x363d4c;
+	cornerRadius: 3;
+	cornerRadiusTopRight: 0;
+	cornerRadiusTopLeft: 0;
+	gradientType: horizontal;
+}
+
+VSlider Button {
+	width: 100%;
+	height: 30;
+	icon: styles/gradient/gripper_vertical.png;
+	iconPosition: center;
+}
+
+ListView {
+	borderColor: 0xa5b8da;
+	color: 0x000000;
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 2;
+	borderSize: 1;
+	spacingX: 2;
+	spacingY: 2;
+	cornerRadius: 2;
+	backgroundColor: 0xFFFFFF;
+}
+
+ListView VBox {
+	color: 0x000000;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	borderSize: 0;
+	spacingX: 0;
+	spacingY: 0;
+	cornerRadius: 0;
+}
+
+ListViewItem {
+	color: 0x000000;
+	paddingLeft: 2;
+	paddingTop: 4;
+	paddingBottom: 4;
+	paddingRight: 2;
+	borderSize: 0;
+	spacingX: 2;
+	spacingY: 2;
+	cornerRadius: 2;
+}
+
+
+ListView #even {
+	backgroundColor: 0xE9EDF5;
+	color: 0x000000;
+	cornerRadius: 2;
+}
+
+ListView #odd {
+	backgroundColor: 0xFFFFFF;
+	color: 0x000000;
+	cornerRadius: 2;
+}
+
+ListViewItem:over {
+	backgroundColor: 0x606c88;
+}
+
+ListViewItem #text {
+	color: 0x000000;
+}
+
+ListViewItem #text:over {
+	color: 0xFFFFFF;
+}
+
+ListViewItem #subtext {
+	color: 0x606c88;
+	fontSize: 11;
+}
+
+ListViewItem #subtext:over {
+	color: 0xFFFFFF;
+}
+
+ListViewItem:selected {
+	backgroundColor: 0x3f4c6b;
+}
+
+ListViewItem #text:selected {
+	color: 0xFFFFFF;
+}
+
+ListViewItem #subtext:selected {
+	color: 0xFFFFFF;
+}
+
+CheckBox {
+	spacingX: 2;
+}
+
+CheckBoxValue {
+	width: 18;
+	height: 18;
+}
+
+CheckBoxValue #unselected {
+	backgroundColor: 0xFFFFFF;
+	backgroundColorGradientEnd: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+}
+
+CheckBoxValue #selected {
+	backgroundColor: 0xFFFFFF;
+	backgroundColorGradientEnd: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+	icon: styles/gradient/cross_dark.png;
+	iconPosition: center;
+}
+
+OptionBox {
+	spacingX: 2;
+}
+
+OptionBoxValue {
+	width: 18;
+	height: 18;
+}
+
+OptionBoxValue #unselected {
+	backgroundColor: 0xFFFFFF;
+	backgroundColorGradientEnd: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+}
+
+OptionBoxValue #selected {
+	backgroundColor: 0xFFFFFF;
+	backgroundColorGradientEnd: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	paddingTop: 1;
+	paddingLeft: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	cornerRadius: 3;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+	icon: styles/gradient/circle_dark.png;
+	iconPosition: center;
+}
+
+TextInput {
+	width: 150;
+	height: 30;
+	borderColor: 0x363d4c;
+	backgroundColor: 0xFFFFFF;
+	paddingTop: 2;
+	paddingLeft: 2;
+	paddingBottom: 2;
+	paddingRight: 2;
+	cornerRadius: 2;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
+	fontSize: 13;
+	fontName: _sans;
+}
+
+TabBar {
+	backgroundColor: 0xFFFFFF;
+	height: 45;
+	paddingTop: 15;
+	paddingLeft: 5;
+	paddingRight: 5;
+}
+
+TabBar HBox {
+	spacingX: 3;
+}
+
+TabBar Button {
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 5;
+	height: 30;
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x7d99ca;
+	cornerRadiusBottomLeft: 0;
+	cornerRadiusBottomRight: 0;
+	cornerRadius: 2;
+}
+
+TabBar Button:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x5d7fbc;
+}
+
+TabBar Button:down {
+	backgroundColor: 0xf4f5f5;
+	backgroundColorGradientEnd: 0xdfdddd;
+	color: 0x363d4c;
+	borderColor: 0xdfdddd;
+}
+
+TabView {
+	backgroundColor: 0xdfdddd;
+}
+
+Stack {
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingBottom: 5;
+	paddingTop: 5;
+}
+
+TabView Stack {
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingBottom: 10;
+	paddingTop: 10;
+}
+
+MenuBar {
+	backgroundColor: 0xdfdddd;
+	width: 100%;
+	height: 40;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 5;
+	paddingBottom: 5;
+	cornerRadius: 0;
+	filter: dropShadow(2, 90, 0x808080, 1, 0, 4, 1, 3);
+}
+
+MenuBar Button {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+MenuBar Button:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+MenuBar Button:down {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+List {
+	paddingLeft: 8;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 8;
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+	cornerRadius: 3;
+	borderSize: 1;
+	fontSize: 13;
+	fontName: _sans;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	icon: styles/gradient/arrow_down.png;
+	iconPosition: farRight;
+	labelPosition: left;
+}
+
+List:over {
+	backgroundColor: 0x4b546a;
+	backgroundColorGradientEnd: 0x2c354b;
+	color: 0xFFFFFF;
+	borderColor: 0x363d4c;
+}
+
+List:down {
+	backgroundColor: 0x8C95A9;
+	backgroundColorGradientEnd: 0x767F95;
+	color: 0xFFFFFF;
+	borderColor: 0x363d4c;
+}
+
+MenuBar List {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+MenuBar List:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+MenuBar List:down {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+DropDownList {
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+}
+
+ListView VBox Button {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+ListView VBox Button:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+ListView VBox Button:down {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+ListView VBox List {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+ListView VBox List:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+ListView VBox List:down {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+Popup {
+	backgroundColor: 0xE9EDF5;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	borderColor: 0x495267;
+	cornerRadius: 3;
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	width: 300;
+}
+
+Popup #titleBar {
+	backgroundColor: 0x4b546a;
+	height: 30;
+	paddingTop: 4;
+	paddingLeft: 5;
+}
+
+Popup #content {
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+}
+
+Popup #titleBar Text {
+	color: 0xFFFFFF;
+}
+
+Popup #buttonBar {
+	paddingTop: 10;
+	paddingBottom: 5;
+	height: 45;
+}
+
+ListPopupContent {
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+}
+
+ListPopupContent ListView {
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	borderSize: 0;
+}
+
+Accordion {
+	backgroundColor: 0xdfdddd;
+}
+
+Accordion VBox, Accordion HBox, Accordion Grid {
+	paddingLeft : 5;
+	paddingTop : 5;
+	paddingBottom : 5;
+	paddingRight : 5;
+}
+
+AccordionButton {
+	paddingLeft: 8;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 8;
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+	cornerRadius: 0;
+	borderSize: 1;
+	fontSize: 13;
+	fontName: _sans;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	iconPosition: farLeft;
+	labelPosition: left;
+	icon: styles/gradient/arrow_right2.png;
+}
+
+AccordionButton:over {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+}
+
+AccordionButton:down {
+	backgroundColor: 0x606c88;
+	backgroundColorGradientEnd: 0x3f4c6b;
+	color: 0xFFFFFF;
+	borderColor: 0x495267;
+	icon: styles/gradient/arrow_down.png;
+}

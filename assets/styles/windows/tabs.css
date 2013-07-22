@@ -1,0 +1,48 @@
+TabBar {
+	paddingTop: 15;
+	paddingLeft: 5;
+	paddingBottom: 0;
+	paddingRight: 5;
+	height: 45;
+	backgroundImage: styles/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 60, 0, 20, 20;
+}
+
+TabBar HBox {
+	spacingX: 0;
+}
+
+TabBar Button {
+	backgroundImage: styles/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 20, 0, 20, 20;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 5;
+	height: 30;
+}
+
+TabBar Button:over {
+	backgroundImage: styles/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 40, 0, 20, 20;
+}
+
+TabBar Button:down {
+	backgroundImage: styles/windows/tab.png;
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 0, 0, 20, 20;
+}
+
+TabView {
+	___backgroundColor: 0xdfdddd;
+}
+
+TabView Stack {
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingBottom: 10;
+	paddingTop: 10;
+}

@@ -1,0 +1,4 @@
+<ui:vbox>
+	<ui:text text="Hello World from XML!" id="label" />
+	<ui:button text="Click Me!" id="button" />
+</ui:vbox>

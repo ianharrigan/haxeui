@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<vbox width="100%">
-	<hbox width="100%">
-		<label text="First Name:" />
-		<textinput text="Ian" width="100%" id="firstName" />
-	</hbox>
-	<hbox width="100%">
-		<label text="Last Name:" />
-		<textinput text="Harrigan" width="100%" id="lastName" />
-	</hbox>
-	<hbox width="100%">
-		<button text="Cancel" id="cancelButton" />
-		<button text="Confirm" id="confirmButton" />
-	</hbox>
-</vbox>
+<ui:grid width="100%" columns="2" id="myCustomPopup">
+	<style:css>
+		#222myCustomPopup {
+			spacingY: 0;
+		}
+	</style:css>
+	<ui:text text="First Name: "/>
+	<ui:textinput text="Ian" width="100%" id="firstName" />
+	
+	<ui:text text="Last Name: " />
+	<ui:textinput text="Harrigan" width="100%" id="lastName" />
+</ui:grid>

@@ -1,0 +1,10 @@
+Root {
+	backgroundColor: 0xFF0000;
+	borderColor: 0xa5b8da;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 5;
+	spacingY: 5;
+	cornerRadius: 2;
+}

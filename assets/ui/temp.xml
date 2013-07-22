@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:vbox id="main" width="400" height="400" autoSize="true">
+	<import resource="ui/importedDataSource.xml"/>
+	<import resource="ui/importedUI.xml"/>
+	
+	<data:array resource="data/data.txt" delimeter="\n"/>
+	
+	<data:json resource="data/data.json" id="dataSource1" fieldMap="?">
+		[
+			{"text": "Appended Item 1"},
+			{"text": "Appended Item 2"}
+		]
+	</data:json>
+
+	<data:xml resource="data/data.xml" id="dataSource2" styleSheet="?">
+		<item text="Appended Item 1"/>
+		<item text="Appended Item 2"/>
+	</data:xml>
+	
+	<data:mysql connectionString="localhost:3306/haxe_db?user=root&pass=root&q=SELECT * FROM datasource1" id="dataSource3" fieldMap="?"/>
+	
+	<!--
+	<style:css resource="ui/test.css">
+		Button.myStyle {
+			backgroundColor: 0xFF00FF;
+			color: #000000;
+		}
+		
+		Button.myStyle:over {
+			backgroundColor: 0xFF00FF;
+			color: #000000;
+		}
+		
+		#main ScrollView Button:over {
+		}
+	</style:css>
+	
+	<style:custom>
+		
+	</style:custom>
+	-->
+	<style:custom resource="ui/style.custom"> <!-- Temp method for speed -->
+		
+	</style:custom>
+
+	
+	<ui:button text="50%" width="50%" />
+	<ui:button text="75%" width="75%" />
+	<ui:button text="25%" width="25%" />
+	
+	<ui:hprogress width="200" height="30" />
+	
+	<ui:scrollview width="100%" height="100%">
+		<!--
+		<ui:hbox width="100%">
+			<ui:button width="100%" />
+			<ui:button/>
+		</ui:hbox>
+		-->
+		<ui:vbox width="100%" height="100%">
+			<ui:button text="Button 1" width="100" height="30" />
+			<ui:button text="Button 1" width="100" height="30" />
+			<ui:button text="Button 2" width="100%" height="30" />
+			<ui:button text="Button 3" width="100%" height="30" />
+			<ui:button text="Button 4" width="100%" height="30" />
+		</ui:vbox>
+	</ui:scrollview>
+	
+	<!--
+	<custom:button/>
+	
+	<ui:listview dataSource="json:://data/data.json" />
+	<ui:listview dataSourceId="dataSource1" />
+	
+	<ui:listview>
+		<data:array delimeter="," trim="true">
+			First Item,  Second Item, Third Item   , Fourth Item   , Fifth Item
+		</data:array>
+	</ui:listview>
+	-->
+</ui:vbox>

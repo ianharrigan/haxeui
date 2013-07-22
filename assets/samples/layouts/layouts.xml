@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:vbox width="100%" height="100%">
+	<style:css>
+		#box {
+			backgroundColor: 0xEEEEEE;
+			paddingLeft: 5;
+			paddingRight: 5;
+			paddingTop: 5;
+			paddingBottom: 5;
+			borderColor: 0x888888;
+			borderSize: 1;
+			spacingX: 5;
+			spacingY: 5;
+		}
+	</style:css>
+	
+	<ui:text text="Horizontal:" />
+	<ui:hbox id="box">
+		<ui:button width="50" height="50" />
+		<ui:button width="50" height="50" />
+		<ui:button width="50" height="50" />
+	</ui:hbox>
+	<ui:hbox id="box" width="100%">
+		<ui:button width="50" height="50" />
+		<ui:button width="100%" height="50" />
+		<ui:button width="50" height="50" />
+	</ui:hbox>
+	
+	<ui:text text="Vertical:" />
+	<ui:hbox height="100%">
+		<ui:vbox id="box">
+			<ui:button width="50" height="50" />
+			<ui:button width="50" height="50" />
+			<ui:button width="50" height="50" />
+		</ui:vbox>
+		<ui:vbox id="box" height="100%">
+			<ui:button width="50" height="50" />
+			<ui:button width="50" height="100%" />
+			<ui:button width="50" height="50" />
+		</ui:vbox>
+		
+		<ui:vbox>
+			<ui:text text="Grid:" />
+			<ui:grid columns="3" id="box">
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+				<ui:button width="50" height="50" />
+			</ui:grid>
+		</ui:vbox>
+	</ui:hbox>
+</ui:vbox>

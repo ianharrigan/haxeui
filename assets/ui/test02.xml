@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ui:vbox width="100%" height="100%" id="main">
+	<style:css>
+		TabBar #tabButton {
+			icon: img/fav_16.png
+		}
+		
+		#main {
+			spacingY: 5;
+		}
+	</style:css>
+	
+	<style:css>
+		#styled {
+			width: 140;
+			height: 100;
+			icon: img/fav_32.png;
+			iconPosition: top;
+			color: 0xFF0000;
+		}
+		
+		#styled:over {
+			color: 0xFF00FF;
+		}
+	</style:css>
+
+	<style:css>
+		#nopadding {
+			paddingLeft: 0;
+			paddingTop: 0;
+			paddingBottom: 0;
+			paddingRight: 0;
+		}
+	</style:css>
+	
+	<ui:menubar>
+		<ui:button text="Menubar Button" />
+		<ui:spacer width="100%" />
+		<selection:list text="Select Style" id="styleList">
+			<data:array>Gradient, Gradient Mobile, Windows</data:array>
+		</selection:list>
+	</ui:menubar>
+	
+	<ui:tabview width="100%" height="100%">
+		<ui:vbox text="List" width="100%" height="100%">
+			<ui:hbox>
+				<selection:list text="Select Item 1">
+					<data:array>Item 1, Item 2, Item 3, Item 4, Item 5</data:array>
+				</selection:list>
+				<selection:list text="Select Item 2">
+					<data:array>Item 1, Item 2</data:array>
+				</selection:list>
+				<selection:list text="Select Item 3">
+					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
+				</selection:list>
+			</ui:hbox>
+			<ui:hbox text="List" width="100%" height="100%">
+				<ui:listview width="50%" height="100%" id="theList">
+					<data:json>
+						[
+							{"text": "Item 1", "controlId": "sendButton", "type": "button", "value": "Send", "subtext": "Sub text 1"},
+							{"text": "Item 2", "subtext": "Subtext 2"},
+							{"text": "Item 3", "subtext": "Subtext + icon", "icon": "img/fav_32.png"},
+							{"text": "Item 4 + icon + button", "icon": "img/fav_16.png", "controlId": "someAction", "type": "button", "value": "Some Action"},
+							{"text": "Item 5 + slider", "subtext": "something", "type": "slider", "value": 25},
+							{"text": "Item 6 + progress", "type": "progress", "value": 75},
+							{"text": "Item 7 + select", "type": "list", "dataSource": [
+																			{ "text": "Option 1" },
+																			{ "text": "Option 2" },
+																			{ "text": "Option 3" },
+																			{ "text": "Option 4" },
+																			{ "text": "Option 5" },
+																			{ "text": "Option 6" },
+																			{ "text": "Option 7" },
+																			{ "text": "Option 8" }
+																		]},
+							{"text": "Item 8", "subtext": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil)"},
+							{"text": "Item 9"},
+							{"text": "Item 10"},
+							{"text": "Item 11"},
+							{"text": "Item 12"},
+							{"text": "Item 13"},
+							{"text": "Item 14"},
+							{"text": "Item 15"},
+							{"text": "Item 16"},
+							{"text": "Item 17"},
+							{"text": "Item 18"},
+							{"text": "Item 19"},
+							{"text": "Item 20"},
+							{"text": "Item 21"},
+							{"text": "Item 22"},
+							{"text": "Item 23"},
+							{"text": "Item 24"},
+							{"text": "Item 25"},
+							{"text": "Item 26"},
+							{"text": "Item 27"},
+							{"text": "Item 28"},
+							{"text": "Item 29"},
+							{"text": "Item 30"}
+						]
+					</data:json>
+				</ui:listview>
+				
+				<ui:accordion width="50%" height="100%">
+					<ui:grid text="Buttons" columns="9">
+						<ui:button text="Some Button" />
+						<!-- for performance testing, noticable delay (esp. on flash) when opening the panel -->
+						<!-- 
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						<ui:button text="1" />
+						
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						<ui:button text="2" />
+						
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						<ui:button text="3" />
+						
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						<ui:button text="4" />
+						
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						<ui:button text="5" />
+						
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						<ui:button text="6" />
+						
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						<ui:button text="7" />
+						
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						<ui:button text="8" />
+						
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						<ui:button text="9" />
+						-->
+					</ui:grid>
+					<ui:vbox text="Image Panel" id="nopadding">
+						<ui:scrollview width="100%" height="100%">
+							<ui:image resource="img/slinky.jpg" />
+						</ui:scrollview>
+					</ui:vbox>
+					<ui:vbox text="List Panel" id="nopadding">
+						<ui:listview width="100%" height="100%">
+							<data:array>
+								Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10,
+								Item 11, Item 12, Item 13, Item 14, Item 15, Item 16, Item 17, Item 18, Item 19, Item 20
+							</data:array>
+						</ui:listview>
+					</ui:vbox>
+					<ui:vbox text="Panel 4">
+						<ui:button text="Button 4" />
+					</ui:vbox>
+				</ui:accordion>
+
+				
+			</ui:hbox>
+		</ui:vbox>
+		
+		<ui:vbox text="Selection" width="100%">
+			<ui:hbox>
+				<ui:button text="Simple Popup" id="showSimplePopup" />
+				<ui:button text="Confirm Popup" id="showConfirmPopup" />
+				<ui:button text="Custom Popup" id="showCustomPopup" />
+				<ui:button text="List Popup" id="showListPopup" />
+			</ui:hbox>
+			<ui:hbox>
+				<selection:list text="Select Item 1">
+					<data:array>Item 1, Item 2, Item 3, Item 4, Item 5</data:array>
+				</selection:list>
+				<selection:list text="Select Item 2">
+					<data:array>Item 1, Item 2</data:array>
+				</selection:list>
+				<selection:list text="Select Item 3">
+					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
+				</selection:list>
+			</ui:hbox>
+		</ui:vbox>
+		
+		<ui:vbox text="Basic" width="100%">
+			<ui:hbox>
+				<ui:button text="Button" />
+				<ui:button text="Styled" id="styled" />
+				<ui:button text="Toggle 1" toggle="true" selected="true" />
+				<ui:button text="Toggle 2" toggle="true" />
+			</ui:hbox>
+			
+			<ui:hprogress pos="50" />
+			<ui:progress pos="75" direction="horizontal" width="200" height="40" />
+			
+			<ui:hbox>
+				<ui:checkbox text="Checkbox 1"/>
+				<ui:checkbox text="Checkbox 2" selected="true" />
+				<ui:checkbox text="Checkbox 3"/>
+			</ui:hbox>
+			
+			<ui:hbox>
+				<ui:optionbox text="Optionbox 1" group="group1" />
+				<ui:optionbox text="Optionbox 2" group="group1" />
+				<ui:optionbox text="Optionbox 3" group="group1" selected="true" />
+			</ui:hbox>
+			
+			<ui:hbox width="100%">
+				<ui:textinput text="Basic input" />
+				<ui:textinput text="Multiline input" multiline="true" width="100%" height="100"/>
+			</ui:hbox>
+		</ui:vbox>
+		
+		<ui:vbox text="Scrolls">
+			<ui:hbox>
+				<ui:vscroll />
+				<ui:vscroll height="200" />
+				<ui:vscroll width="30" height="200" />
+				
+				<ui:scrollview width="200" height="200">
+					<ui:image resource="img/slinky.jpg" />
+				</ui:scrollview>
+				
+				<ui:vprogress pos="25" />
+				<ui:vprogress height="200" pos="75" />
+				<ui:vprogress width="30" height="200" pos="50" />
+
+				<ui:vslider pos="25" />
+				<ui:vslider height="200" pos="75" />
+				<ui:vslider width="30" height="200" pos="50" />
+				
+			</ui:hbox>
+			
+			<ui:hscroll />
+			<ui:hscroll width="200" />
+			<ui:hscroll width="200" height="30" />
+			
+			<ui:hprogress pos="25" />
+			<ui:hprogress width="200" pos="75" />
+			<ui:hprogress width="200" height="30" pos="50" />
+			
+			<ui:hslider pos="25" />
+			<ui:hslider width="200" pos="75" />
+			<ui:hslider width="200" height="30" pos="50" />
+		</ui:vbox>
+		
+		<ui:vbox text="Demo" width="100%">
+			<ui:text text="Transitions:"/>
+			<ui:grid columns="4">
+				<ui:text text="Accordion: "/>
+				<ui:optionbox text="None" group="accordionTrans" id="accordionTransNone" />
+				<ui:optionbox text="Fade" group="accordionTrans" id="accordionTransFade" />
+				<ui:optionbox text="Slide" group="accordionTrans" id="accordionTransSlide" />
+				
+				<ui:text text="Tab view: "/>
+				<ui:optionbox text="None" group="tabViewTrans" id="tabViewTransNone" />
+				<ui:optionbox text="Fade" group="tabViewTrans" id="tabViewTransFade" />
+				<ui:optionbox text="Slide" group="tabViewTrans" id="tabViewTransSlide"/>
+				
+				<ui:text text="Dropdowns: "/>
+				<ui:optionbox text="None" group="dropDownTrans" id="dropDownTransNone" />
+				<ui:optionbox text="Fade" group="dropDownTrans" id="dropDownTransFade" />
+				<ui:optionbox text="Slide" group="dropDownTrans" id="dropDownTransSlide" />
+				
+				<ui:text text="Popups: "/>
+				<ui:optionbox text="None" group="popupsTrans" id="popupsTransNone" />
+				<ui:optionbox text="Fade" group="popupsTrans" id="popupsTransFade" />
+				<ui:optionbox text="Slide" group="popupsTrans" id="popupsTransSlide" />
+			</ui:grid>
+		</ui:vbox>
+		
+		<ui:vbox text="Tab 1" />
+		<ui:vbox text="Tab 2" />
+		<ui:vbox text="Tab 3" />
+		<ui:vbox text="Tab 4" />
+		<ui:vbox text="Tab 5" />
+		<ui:vbox text="Tab 6" />
+		<ui:vbox text="Tab 7" />
+		<ui:vbox text="Tab 8" />
+		<ui:vbox text="Tab 9" />
+		<ui:vbox text="Tab 10" />
+		<ui:vbox text="Tab 11" />
+		<ui:vbox text="Tab 12" />
+		<ui:vbox text="Tab 13" />
+		<ui:vbox text="Tab 14" />
+		<ui:vbox text="Tab 15" />
+	</ui:tabview>
+</ui:vbox>

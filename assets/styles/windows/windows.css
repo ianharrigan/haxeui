@@ -1,0 +1,86 @@
+#popupRoot {
+	width: 760;
+	height: 560;
+	backgroundColor: 0xFFFFFF;
+	borderColor: 0xa5b8da;
+	paddingLeft: 1;
+	paddingTop: 1;
+	paddingBottom: 1;
+	paddingRight: 1;
+	spacingY: 0;
+	cornerRadius: 3;
+	filter: dropShadow(4, 45, 0x808080, 1, 4, 4, 1, 3);
+	____alpha: .8;
+}
+
+#modalOverlay {
+	backgroundColor: 0xE9EDF5;
+	filter: blur;
+	alpha: .6;
+}
+
+Text {
+	fontSize: 13;
+	fontName: _sans;
+}
+
+VBox {
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingY: 5;
+	borderSize: 0;
+}
+
+HBox {
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingX: 5;
+	borderSize: 0;
+}
+
+Grid {
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingX: 5;
+	spacingY: 5;
+	borderSize: 0;
+}
+
+Stack {
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingBottom: 5;
+	paddingTop: 5;
+}
+
+TextInput {
+	backgroundImage: styles/windows/textinput.png;
+	backgroundImageScale9: 5,5,10,10;
+	backgroundImageRect: 0,0,15,15;
+	width: 200;
+	height: 23;
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingRight: 2;
+	paddingBottom: 2;
+	fontSize: 13;
+	fontName: _sans;
+}
+
+MenuBar {
+	backgroundColor: 0xF5F5F5;
+	width: 100%;
+	height: 33;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingRight: 5;
+	paddingBottom: 5;
+	cornerRadius: 0;
+	filter: dropShadow(2, 90, 0x808080, 1, 0, 4, 1, 3);
+}
