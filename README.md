@@ -1,47 +1,59 @@
 Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 ================================
-Cross platform/target set of styleable rich UI components for Haxe NME intended to be used "out the box".
+Haxe/OpenFL set of styleable application centric rich UI components for Haxe NME intended to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
 
-<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/HaxeUI.swf?raw=true">Compiled demo</a> (May be out of date)
+<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/haxeuitoolkit.swf?raw=true">Compiled demo</a> (May be out of date)
 
-<a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a> (Only tested on cpp targets because of multithreading)
+<a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
+
+
+<a href="https://github.com/ianharrigan/haxeui/tree/master/src/haxe/ui/samples">Samples</a>
 
 Components
 -------------------------
 General components
 
 - Button
-- CheckBox
-- DropDownList (method is style dependent, eg: "popup")
-- HScroll
+- Check box
 - Image
-- Label
-- OptionBox
-- ProgressBar
-- RatingControl
-- Selector
-- TabBar
-- TextInput (can also be used as text area with TextInput.multiline)
-- ValueControl
-- VScroll
+- Option box
+- Progress bars (horizontal & vertical)
+- Scroll bars (horizontal & vertical)
+- Sliders (horizontal & vertical)
+- Tab bars
+- Text (static, input, multiline)
+- List selection (drop downs, popup lists)
 
 Layout, position and containment components
 
+- Accordion
+- Grid
 - HBox
-- VBox
 - ListView
+- MenuBar
 - ScrollView
+- Stack
 - TabView
+- VBox
 
 Popups
-- SimplePopup
-- ListPopup
+- Busy
+- Simple
+- List
+- Custom
+
+Data Sources
+- Array
+- JSON
+- XML (not yet implemented)
+- MySQL (not yet implemented)
+- Files (not yet implemented)
 
 Notes
 -------------------------
-The html5 target works to a point, however, scroll views, list views, text inputs do not currently work due to limitations.
+html5 is still being tested, but functions to a degree.
 
 
 Licence
