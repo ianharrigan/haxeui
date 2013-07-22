@@ -1,6 +1,6 @@
 Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 ================================
-Haxe/OpenFL set of styleable application centric rich UI components for Haxe NME intended to be used "out the box". Supports css type styling/skinning.
+Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
 
