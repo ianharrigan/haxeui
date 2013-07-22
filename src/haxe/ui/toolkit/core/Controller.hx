@@ -1,10 +1,11 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 
 class Controller {
 	private var _view:IDisplayObjectContainer;
-	private var _namedComponents:Hash<IDisplayObjectContainer>;
+	private var _namedComponents:StringMap<IDisplayObjectContainer>;
 	
 	public var view(get, null):IDisplayObjectContainer;
 	public var root(get, null):Root;
@@ -35,7 +36,7 @@ class Controller {
 	}
 	
 	private function refereshNamedComponents():Void {
-		_namedComponents = new Hash<IDisplayObjectContainer>();
+		_namedComponents = new StringMap<IDisplayObjectContainer>();
 		addNamedComponentsFrom(_view);
 	}
 

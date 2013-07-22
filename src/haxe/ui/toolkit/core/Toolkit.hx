@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core;
 
 import flash.Lib;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
@@ -36,11 +37,11 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 	}
-	
-	private static var _registeredProcessors:Hash<String>;
+
+	private static var _registeredProcessors:StringMap<String>;
 	public static function registerXMLProcessor(cls:Class<IXMLProcessor>, prefix:String):Void {
 		if (_registeredProcessors == null) {
-			_registeredProcessors = new Hash<String>();
+			_registeredProcessors = new StringMap<String>();
 		}
 		_registeredProcessors.set(prefix, Type.getClassName(cls));
 	}
@@ -128,7 +129,7 @@ class Toolkit {
 	// Animation defaults
 	//******************************************************************************************
 	private static var _defaultTransition:String;
-	private static var _transitionRegister:Hash<String>;
+	private static var _transitionRegister:StringMap<String>;
 	
 	public static var defaultTransition(get, set):String;
 	
@@ -152,7 +153,7 @@ class Toolkit {
 	
 	public static function setTransitionForClass(cls:Class<IDisplayObject>, transition:String):Void {
 		if (_transitionRegister == null) {
-			_transitionRegister = new Hash<String>();
+			_transitionRegister = new StringMap<String>();
 		}
 		var className:String = Type.getClassName(cls);
 		_transitionRegister.set(className, transition);

@@ -3,6 +3,7 @@ package haxe.ui.toolkit.core;
 import flash.display.Graphics;
 import flash.display.Sprite;
 import flash.events.Event;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDrawable;
@@ -24,8 +25,8 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _sprite:Sprite;
 	private var _halign:String = "left";
 	private var _valign:String = "center";
-	
-	private var _eventListeners:Hash < List < Dynamic->Void >> ;
+
+	private var _eventListeners:StringMap < List < Dynamic->Void >> ;
 	
 	public function new() {
 		_sprite = new Sprite();
@@ -286,7 +287,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	//******************************************************************************************
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
 		if (_eventListeners == null) {
-			_eventListeners = new Hash < List < Dynamic->Void >> ();
+			_eventListeners = new StringMap < List < Dynamic->Void >> ();
 			var list:List < Dynamic->Void > = _eventListeners.get(type);
 			if (list == null) {
 				list = new List < Dynamic->Void > ();

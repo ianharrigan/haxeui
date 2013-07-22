@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.data.IDataSource;
 
@@ -30,8 +31,8 @@ class ClassManager {
 	//******************************************************************************************
 	// Component class registry
 	//******************************************************************************************
-	private var componentClassPrefixMap:Hash<String>;
-	private var componentClassMap:Hash<ComponentRegistryEntry>;
+	private var componentClassPrefixMap:StringMap<String>;
+	private var componentClassMap:StringMap<ComponentRegistryEntry>;
 	
 	public function getComponentClassName(simpleName:String, prefix:String):String {
 		if (componentClassMap == null) {
@@ -57,10 +58,10 @@ class ClassManager {
 	
 	private function registerComponentClassName(className:String, simpleName:String, prefix:String):Void {
 		if (componentClassPrefixMap == null) {
-			componentClassPrefixMap = new Hash<String>();
+			componentClassPrefixMap = new StringMap<String>();
 		}
 		if (componentClassMap == null) {
-			componentClassMap = new Hash<ComponentRegistryEntry>();
+			componentClassMap = new StringMap<ComponentRegistryEntry>();
 		}
 		
 		var entry:ComponentRegistryEntry = new ComponentRegistryEntry();
@@ -74,7 +75,7 @@ class ClassManager {
 	//******************************************************************************************
 	// Data source class registry
 	//******************************************************************************************
-	private var dataSourceClassMap:Hash<DataSourceRegistryEntry>;
+	private var dataSourceClassMap:StringMap<DataSourceRegistryEntry>;
 	
 	public function getDataSourceClassName(simpleName:String):String {
 		if (dataSourceClassMap == null) {
@@ -96,7 +97,7 @@ class ClassManager {
 	
 	private function registerDataSourceClassName(className:String, simpleName:String):Void {
 		if (dataSourceClassMap == null) {
-			dataSourceClassMap = new Hash<DataSourceRegistryEntry>();
+			dataSourceClassMap = new StringMap<DataSourceRegistryEntry>();
 		}
 		
 		var entry:DataSourceRegistryEntry = new DataSourceRegistryEntry();

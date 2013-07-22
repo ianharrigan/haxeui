@@ -1,16 +1,17 @@
 package haxe.ui.toolkit.style;
+import haxe.ds.StringMap.StringMap;
 
 class Styles {
-	private var _styles:Hash<Dynamic>;
+	private var _styles:StringMap<Dynamic>;
 	private var _styleRules:Array<String>;
 	
 	public var rules(get, null):Iterator<String>;
 	
 	public function new() {
-		_styles = new Hash<Dynamic>();
+		_styles = new StringMap<Dynamic>();
 		_styleRules = new Array<String>();
 	}
-	
+
 	public function addStyle(rule:String, style:Dynamic):Dynamic {
 		var currentStyle:Dynamic = getStyle(rule);
 		if (currentStyle != null) {

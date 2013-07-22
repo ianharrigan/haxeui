@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.style;
 
 import flash.display.DisplayObjectContainer;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 
@@ -17,11 +18,11 @@ class StyleManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	private var _styles:Hash<Dynamic>;
+	private var _styles:StringMap<Dynamic>;
 	private var _rules:Array<Dynamic>; // the order the rules are added is important, hence an array to hold them
 	
 	public function new() {
-		_styles = new Hash<Dynamic>();
+		_styles = new StringMap<Dynamic>();
 		_rules = new Array<Dynamic>();
 	}
 	
@@ -37,7 +38,7 @@ class StyleManager {
 	}
 	
 	public function clear():Void {
-		_styles = new Hash<Dynamic>();
+		_styles = new StringMap<Dynamic>();
 		_rules = new Array<Dynamic>();
 		StyleHelper.clearCache();
 	}

@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.data;
 
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.util.Identifier;
 
 class DataManager {
@@ -15,7 +16,7 @@ class DataManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	private var _dataSourceMap:Hash<IDataSource>;
+	private var _dataSourceMap:StringMap<IDataSource>;
 	
 	/**
 	 *		List of registered data sources.
@@ -23,7 +24,7 @@ class DataManager {
 	public var dataSources(get, null):Array<IDataSource>;
 	
 	public function new() {
-		_dataSourceMap = new Hash<IDataSource>();
+		_dataSourceMap = new StringMap<IDataSource>();
 	}
 	
 	/**

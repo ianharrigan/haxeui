@@ -2,6 +2,7 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 
@@ -10,14 +11,14 @@ class OptionBox extends Component {
 	private var _label:Text;
 	
 	private var _group:String;
-	private static var _groups:Hash<Array<OptionBox>>;
+	private static var _groups:StringMap<Array<OptionBox>>;
 	
 	public function new() {
 		super();
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		if (_groups == null) {
-			_groups = new Hash<Array<OptionBox>>();
+			_groups = new StringMap<Array<OptionBox>>();
 		}
 		
 		_value = new OptionBoxValue();

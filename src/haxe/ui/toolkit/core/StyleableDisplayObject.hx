@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core;
 
 import flash.filters.BitmapFilter;
 import flash.geom.Rectangle;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 import haxe.ui.toolkit.layout.GridLayout;
@@ -11,8 +12,8 @@ import haxe.ui.toolkit.util.FilterParser;
 
 class StyleableDisplayObject extends DisplayObjectContainer implements IStyleable  {
 	private var _style:Dynamic;
-	private var _storedStyles:Hash<Dynamic>; // styles stored for ease later
-	
+	private var _storedStyles:StringMap<Dynamic>; // styles stored for ease later
+
 	private var _currentFilterString:String = null;
 	
 	public function new() {
@@ -110,7 +111,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	public function storeStyle(id:String, value:Dynamic):Void {
 		if (_storedStyles == null) {
-			_storedStyles = new Hash<Dynamic>();
+			_storedStyles = new StringMap<Dynamic>();
 		}
 		_storedStyles.set(id, value);
 	}

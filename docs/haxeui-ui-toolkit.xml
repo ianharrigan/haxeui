@@ -500,29 +500,6 @@
 	See `Type` for the Haxe Reflection API.</haxe_doc>
 		<meta><m n=":coreType"/></meta>
 	</abstract>
-	<class path="Hash" params="T" file="C:\Tools\Haxe\haxe/std/flash/_std/Hash.hx">
-		<iterator public="1" set="method" line="57"><f a=""><t path="Iterator"><c path="Hash.T"/></t></f></iterator>
-		<keys public="1" set="method" line="53"><f a=""><t path="Iterator"><c path="String"/></t></f></keys>
-		<exists public="1" set="method" line="42"><f a="key">
-	<c path="String"/>
-	<x path="Bool"/>
-</f></exists>
-		<get public="1" set="method" line="38"><f a="key">
-	<c path="String"/>
-	<t path="Null"><c path="Hash.T"/></t>
-</f></get>
-		<set public="1" set="method" line="34"><f a="key:value">
-	<c path="String"/>
-	<c path="Hash.T"/>
-	<x path="Void"/>
-</f></set>
-		<h><c path="flash.utils.Dictionary"/></h>
-		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":keep"/>
-			<m n=":core_api"/>
-		</meta>
-	</class>
 	<class path="IntIterator" params="" file="C:\Tools\Haxe\haxe/std/IntIterator.hx">
 		<max><x path="Int"/></max>
 		<min><x path="Int"/></min>
@@ -17974,6 +17951,10 @@
 			<c path="String"/>
 			<c path="haxe.ds.StringMap.T"/>
 		</implements>
+		<iterator public="1" set="method" line="55">
+			<f a=""><t path="Iterator"><c path="haxe.ds.StringMap.T"/></t></f>
+			<haxe_doc>See `Map.iterator`</haxe_doc>
+		</iterator>
 		<keys public="1" set="method" line="51">
 			<f a=""><t path="Iterator"><c path="String"/></t></f>
 			<haxe_doc>See `Map.keys`</haxe_doc>
@@ -18480,23 +18461,23 @@
 		<new public="1" set="method" line="8"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Controller" params="" file="src/haxe/ui/toolkit/core/Controller.hx">
-		<get_root set="method" line="60"><f a=""><c path="haxe.ui.toolkit.core.Root"/></f></get_root>
-		<get_view set="method" line="56"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></f></get_view>
-		<addNamedComponentsFrom set="method" line="42"><f a="parent">
+		<get_root set="method" line="61"><f a=""><c path="haxe.ui.toolkit.core.Root"/></f></get_root>
+		<get_view set="method" line="57"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></f></get_view>
+		<addNamedComponentsFrom set="method" line="43"><f a="parent">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<x path="Void"/>
 </f></addNamedComponentsFrom>
-		<refereshNamedComponents set="method" line="37"><f a=""><x path="Void"/></f></refereshNamedComponents>
-		<getComponentAs public="1" params="T" set="method" line="28"><f a="id:type">
+		<refereshNamedComponents set="method" line="38"><f a=""><x path="Void"/></f></refereshNamedComponents>
+		<getComponentAs public="1" params="T" set="method" line="29"><f a="id:type">
 	<c path="String"/>
 	<x path="Class"><c path="getComponentAs.T"/></x>
 	<t path="Null"><c path="getComponentAs.T"/></t>
 </f></getComponentAs>
-		<getComponent public="1" set="method" line="24"><f a="id">
+		<getComponent public="1" set="method" line="25"><f a="id">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.core.Component"/>
 </f></getComponent>
-		<attachEvent public="1" set="method" line="17"><f a="id:type:listener">
+		<attachEvent public="1" set="method" line="18"><f a="id:type:listener">
 	<c path="String"/>
 	<c path="String"/>
 	<f a="">
@@ -18507,9 +18488,9 @@
 </f></attachEvent>
 		<root public="1" get="accessor" set="null"><c path="haxe.ui.toolkit.core.Root"/></root>
 		<view public="1" get="accessor" set="null"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></view>
-		<_namedComponents><c path="Hash"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></c></_namedComponents>
+		<_namedComponents><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></c></_namedComponents>
 		<_view><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></_view>
-		<new public="1" set="method" line="12"><f a="view">
+		<new public="1" set="method" line="13"><f a="view">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<x path="Void"/>
 </f></new>
@@ -18715,20 +18696,20 @@
 		<implements path="haxe.ui.toolkit.core.interfaces.IDrawable"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IEventDispatcher"/>
-		<invalidationCount line="266" static="1"><x path="Int"/></invalidationCount>
-		<removeAllEventListeners set="method" line="354"><f a=""><x path="Void"/></f></removeAllEventListeners>
-		<removeEventListenerType public="1" set="method" line="343"><f a="eventType">
+		<invalidationCount line="267" static="1"><x path="Int"/></invalidationCount>
+		<removeAllEventListeners set="method" line="355"><f a=""><x path="Void"/></f></removeAllEventListeners>
+		<removeEventListenerType public="1" set="method" line="344"><f a="eventType">
 	<c path="String"/>
 	<x path="Void"/>
 </f></removeEventListenerType>
-		<paint set="method" line="331"><f a=""><x path="Void"/></f></paint>
-		<get_graphics set="method" line="327"><f a=""><c path="flash.display.Graphics"/></f></get_graphics>
+		<paint set="method" line="332"><f a=""><x path="Void"/></f></paint>
+		<get_graphics set="method" line="328"><f a=""><c path="flash.display.Graphics"/></f></get_graphics>
 		<graphics public="1" get="accessor" set="null"><c path="flash.display.Graphics"/></graphics>
-		<willTrigger public="1" set="method" line="318"><f a="type">
+		<willTrigger public="1" set="method" line="319"><f a="type">
 	<c path="String"/>
 	<x path="Bool"/>
 </f></willTrigger>
-		<removeEventListener public="1" set="method" line="308"><f a="type:listener:?useCapture">
+		<removeEventListener public="1" set="method" line="309"><f a="type:listener:?useCapture">
 	<c path="String"/>
 	<f a="">
 		<d/>
@@ -18737,15 +18718,15 @@
 	<x path="Bool"/>
 	<x path="Void"/>
 </f></removeEventListener>
-		<hasEventListener public="1" set="method" line="304"><f a="type">
+		<hasEventListener public="1" set="method" line="305"><f a="type">
 	<c path="String"/>
 	<x path="Bool"/>
 </f></hasEventListener>
-		<dispatchEvent public="1" set="method" line="300"><f a="event">
+		<dispatchEvent public="1" set="method" line="301"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Bool"/>
 </f></dispatchEvent>
-		<addEventListener public="1" set="method" line="287"><f a="type:listener:?useCapture:?priority:?useWeakReference">
+		<addEventListener public="1" set="method" line="288"><f a="type:listener:?useCapture:?priority:?useWeakReference">
 	<c path="String"/>
 	<f a="">
 		<d/>
@@ -18756,80 +18737,80 @@
 	<x path="Bool"/>
 	<x path="Void"/>
 </f></addEventListener>
-		<dispose public="1" set="method" line="279"><f a=""><x path="Void"/></f></dispose>
-		<invalidate public="1" set="method" line="267"><f a="?type">
+		<dispose public="1" set="method" line="280"><f a=""><x path="Void"/></f></dispose>
+		<invalidate public="1" set="method" line="268"><f a="?type">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></invalidate>
-		<hitTest public="1" set="method" line="255"><f a="xpos:ypos">
+		<hitTest public="1" set="method" line="256"><f a="xpos:ypos">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></hitTest>
-		<set_verticalAlign set="method" line="250"><f a="value">
+		<set_verticalAlign set="method" line="251"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_verticalAlign>
-		<get_verticalAlign set="method" line="246"><f a=""><c path="String"/></f></get_verticalAlign>
-		<set_horizontalAlign set="method" line="241"><f a="value">
+		<get_verticalAlign set="method" line="247"><f a=""><c path="String"/></f></get_verticalAlign>
+		<set_horizontalAlign set="method" line="242"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_horizontalAlign>
-		<get_horizontalAlign set="method" line="237"><f a=""><c path="String"/></f></get_horizontalAlign>
-		<set_visible set="method" line="232"><f a="value">
+		<get_horizontalAlign set="method" line="238"><f a=""><c path="String"/></f></get_horizontalAlign>
+		<set_visible set="method" line="233"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_visible>
-		<get_visible set="method" line="228"><f a=""><x path="Bool"/></f></get_visible>
-		<get_stageY set="method" line="214"><f a=""><x path="Float"/></f></get_stageY>
-		<get_stageX set="method" line="200"><f a=""><x path="Float"/></f></get_stageX>
-		<get_sprite set="method" line="195"><f a=""><c path="flash.display.Sprite"/></f></get_sprite>
-		<get_ready set="method" line="191"><f a=""><x path="Bool"/></f></get_ready>
-		<set_percentHeight set="method" line="181"><f a="value">
+		<get_visible set="method" line="229"><f a=""><x path="Bool"/></f></get_visible>
+		<get_stageY set="method" line="215"><f a=""><x path="Float"/></f></get_stageY>
+		<get_stageX set="method" line="201"><f a=""><x path="Float"/></f></get_stageX>
+		<get_sprite set="method" line="196"><f a=""><c path="flash.display.Sprite"/></f></get_sprite>
+		<get_ready set="method" line="192"><f a=""><x path="Bool"/></f></get_ready>
+		<set_percentHeight set="method" line="182"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_percentHeight>
-		<get_percentHeight set="method" line="177"><f a=""><x path="Float"/></f></get_percentHeight>
-		<set_percentWidth set="method" line="167"><f a="value">
+		<get_percentHeight set="method" line="178"><f a=""><x path="Float"/></f></get_percentHeight>
+		<set_percentWidth set="method" line="168"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_percentWidth>
-		<get_percentWidth set="method" line="163"><f a=""><x path="Float"/></f></get_percentWidth>
-		<set_height set="method" line="149"><f a="value">
+		<get_percentWidth set="method" line="164"><f a=""><x path="Float"/></f></get_percentWidth>
+		<set_height set="method" line="150"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_height>
-		<get_height set="method" line="145"><f a=""><x path="Float"/></f></get_height>
-		<set_width set="method" line="131"><f a="value">
+		<get_height set="method" line="146"><f a=""><x path="Float"/></f></get_height>
+		<set_width set="method" line="132"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_width>
-		<get_width set="method" line="127"><f a=""><x path="Float"/></f></get_width>
-		<set_y set="method" line="121"><f a="value">
+		<get_width set="method" line="128"><f a=""><x path="Float"/></f></get_width>
+		<set_y set="method" line="122"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_y>
-		<get_y set="method" line="117"><f a=""><x path="Float"/></f></get_y>
-		<set_x set="method" line="111"><f a="value">
+		<get_y set="method" line="118"><f a=""><x path="Float"/></f></get_y>
+		<set_x set="method" line="112"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_x>
-		<get_x set="method" line="107"><f a=""><x path="Float"/></f></get_x>
-		<set_id set="method" line="102"><f a="value">
+		<get_x set="method" line="108"><f a=""><x path="Float"/></f></get_x>
+		<set_id set="method" line="103"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_id>
-		<get_id set="method" line="98"><f a=""><c path="String"/></f></get_id>
-		<set_root set="method" line="93"><f a="value">
+		<get_id set="method" line="99"><f a=""><c path="String"/></f></get_id>
+		<set_root set="method" line="94"><f a="value">
 	<c path="haxe.ui.toolkit.core.Root"/>
 	<c path="haxe.ui.toolkit.core.Root"/>
 </f></set_root>
-		<get_root set="method" line="89"><f a=""><c path="haxe.ui.toolkit.core.Root"/></f></get_root>
-		<set_parent set="method" line="84"><f a="value">
+		<get_root set="method" line="90"><f a=""><c path="haxe.ui.toolkit.core.Root"/></f></get_root>
+		<set_parent set="method" line="85"><f a="value">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 </f></set_parent>
-		<get_parent set="method" line="80"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></f></get_parent>
+		<get_parent set="method" line="81"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></f></get_parent>
 		<verticalAlign public="1" get="accessor" set="accessor"><c path="String"/></verticalAlign>
 		<horizontalAlign public="1" get="accessor" set="accessor"><c path="String"/></horizontalAlign>
 		<visible public="1" get="accessor" set="accessor"><x path="Bool"/></visible>
@@ -18846,13 +18827,13 @@
 		<id public="1" get="accessor" set="accessor"><c path="String"/></id>
 		<root public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.core.Root"/></root>
 		<parent public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></parent>
-		<_onAddedToStage set="method" line="48"><f a="event">
+		<_onAddedToStage set="method" line="49"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></_onAddedToStage>
-		<initialize set="method" line="42"><f a=""><x path="Void"/></f></initialize>
-		<preInitialize set="method" line="39"><f a=""><x path="Void"/></f></preInitialize>
-		<_eventListeners><c path="Hash"><c path="List"><f a="">
+		<initialize set="method" line="43"><f a=""><x path="Void"/></f></initialize>
+		<preInitialize set="method" line="40"><f a=""><x path="Void"/></f></preInitialize>
+		<_eventListeners><c path="haxe.ds.StringMap"><c path="List"><f a="">
 	<d/>
 	<x path="Void"/>
 </f></c></c></_eventListeners>
@@ -18869,7 +18850,7 @@
 		<_id><c path="String"/></_id>
 		<_root><c path="haxe.ui.toolkit.core.Root"/></_root>
 		<_parent><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></_parent>
-		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer" params="" file="src/haxe/ui/toolkit/core/interfaces/IDisplayObjectContainer.hx" interface="1">
 		<extends path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
@@ -18992,33 +18973,33 @@
 	<class path="haxe.ui.toolkit.core.StyleableDisplayObject" params="" file="src/haxe/ui/toolkit/core/StyleableDisplayObject.hx">
 		<extends path="haxe.ui.toolkit.core.DisplayObjectContainer"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IStyleable"/>
-		<buildStyles public="1" set="method" line="150"><f a=""><x path="Void"/></f></buildStyles>
-		<applyStyle set="method" line="125"><f a=""><x path="Void"/></f></applyStyle>
-		<retrieveStyle public="1" set="method" line="118"><f a="id">
+		<buildStyles public="1" set="method" line="151"><f a=""><x path="Void"/></f></buildStyles>
+		<applyStyle set="method" line="126"><f a=""><x path="Void"/></f></applyStyle>
+		<retrieveStyle public="1" set="method" line="119"><f a="id">
 	<c path="String"/>
 	<d/>
 </f></retrieveStyle>
-		<storeStyle public="1" set="method" line="111"><f a="id:value">
+		<storeStyle public="1" set="method" line="112"><f a="id:value">
 	<c path="String"/>
 	<d/>
 	<x path="Void"/>
 </f></storeStyle>
-		<set_style set="method" line="105"><f a="value">
+		<set_style set="method" line="106"><f a="value">
 	<d/>
 	<d/>
 </f></set_style>
-		<get_style set="method" line="101"><f a=""><d/></f></get_style>
+		<get_style set="method" line="102"><f a=""><d/></f></get_style>
 		<style public="1" get="accessor" set="accessor"><d/></style>
-		<set_id set="method" line="88" override="1"><f a="value">
+		<set_id set="method" line="89" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_id>
-		<paint public="1" set="method" line="77" override="1"><f a=""><x path="Void"/></f></paint>
-		<preInitialize set="method" line="25" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<paint public="1" set="method" line="78" override="1"><f a=""><x path="Void"/></f></paint>
+		<preInitialize set="method" line="26" override="1"><f a=""><x path="Void"/></f></preInitialize>
 		<_currentFilterString><c path="String"/></_currentFilterString>
-		<_storedStyles><c path="Hash"><d/></c></_storedStyles>
+		<_storedStyles><c path="haxe.ds.StringMap"><d/></c></_storedStyles>
 		<_style><d/></_style>
-		<new public="1" set="method" line="18"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Component" params="" file="src/haxe/ui/toolkit/core/Component.hx">
 		<extends path="haxe.ui.toolkit.core.StyleableDisplayObject"/>
@@ -19867,38 +19848,38 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.OptionBox" params="" file="src/haxe/ui/toolkit/controls/OptionBox.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
-		<_groups static="1"><c path="Hash"><c path="Array"><c path="haxe.ui.toolkit.controls.OptionBox"/></c></c></_groups>
-		<optionInGroup set="method" line="121" static="1"><f a="value:option">
+		<_groups static="1"><c path="haxe.ds.StringMap"><c path="Array"><c path="haxe.ui.toolkit.controls.OptionBox"/></c></c></_groups>
+		<optionInGroup set="method" line="122" static="1"><f a="value:option">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.controls.OptionBox"/>
 	<x path="Bool"/>
 </f></optionInGroup>
-		<set_group set="method" line="96"><f a="value">
+		<set_group set="method" line="97"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_group>
-		<get_group set="method" line="92"><f a=""><c path="String"/></f></get_group>
-		<set_selected set="method" line="69"><f a="value">
+		<get_group set="method" line="93"><f a=""><c path="String"/></f></get_group>
+		<set_selected set="method" line="70"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<get_selected set="method" line="65"><f a=""><x path="Bool"/></f></get_selected>
+		<get_selected set="method" line="66"><f a=""><x path="Bool"/></f></get_selected>
 		<group public="1" get="accessor" set="accessor"><c path="String"/></group>
 		<selected public="1" get="accessor" set="accessor"><x path="Bool"/></selected>
-		<set_text set="method" line="53" override="1"><f a="value">
+		<set_text set="method" line="54" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<get_text set="method" line="49" override="1"><f a=""><c path="String"/></f></get_text>
-		<initialize set="method" line="33" override="1"><f a=""><x path="Void"/></f></initialize>
+		<get_text set="method" line="50" override="1"><f a=""><c path="String"/></f></get_text>
+		<initialize set="method" line="34" override="1"><f a=""><x path="Void"/></f></initialize>
 		<_group><c path="String"/></_group>
 		<_label><c path="haxe.ui.toolkit.controls.Text"/></_label>
 		<_value><c path="haxe.ui.toolkit.controls.OptionBoxValue"/></_value>
-		<new public="1" set="method" line="15"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="16"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.OptionBoxValue" params="" file="src/haxe/ui/toolkit/controls/OptionBox.hx" module="haxe.ui.toolkit.controls.OptionBox">
 		<extends path="haxe.ui.toolkit.controls.Value"/>
-		<new public="1" set="method" line="137"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="138"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls._Progress.HProgressLayout" params="" file="src/haxe/ui/toolkit/controls/Progress.hx" private="1" module="haxe.ui.toolkit.controls.Progress">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
@@ -20245,57 +20226,57 @@
 	<class path="haxe.ui.toolkit.core.ClassManager" params="" file="src/haxe/ui/toolkit/core/ClassManager.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.core.ClassManager"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.core.ClassManager"/></instance>
-		<get_instance set="method" line="9" static="1"><f a=""><c path="haxe.ui.toolkit.core.ClassManager"/></f></get_instance>
-		<registerDataSourceClassName set="method" line="97"><f a="className:simpleName">
+		<get_instance set="method" line="10" static="1"><f a=""><c path="haxe.ui.toolkit.core.ClassManager"/></f></get_instance>
+		<registerDataSourceClassName set="method" line="98"><f a="className:simpleName">
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Void"/>
 </f></registerDataSourceClassName>
-		<registerDataSourceClass public="1" set="method" line="92"><f a="cls:simpleName">
+		<registerDataSourceClass public="1" set="method" line="93"><f a="cls:simpleName">
 	<x path="Class"><c path="haxe.ui.toolkit.data.IDataSource"/></x>
 	<c path="String"/>
 	<x path="Void"/>
 </f></registerDataSourceClass>
-		<getDataSourceClassName public="1" set="method" line="79"><f a="simpleName">
+		<getDataSourceClassName public="1" set="method" line="80"><f a="simpleName">
 	<c path="String"/>
 	<c path="String"/>
 </f></getDataSourceClassName>
-		<dataSourceClassMap><c path="Hash"><c path="haxe.ui.toolkit.core._ClassManager.DataSourceRegistryEntry"/></c></dataSourceClassMap>
-		<registerComponentClassName set="method" line="58"><f a="className:simpleName:prefix">
+		<dataSourceClassMap><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.core._ClassManager.DataSourceRegistryEntry"/></c></dataSourceClassMap>
+		<registerComponentClassName set="method" line="59"><f a="className:simpleName:prefix">
 	<c path="String"/>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Void"/>
 </f></registerComponentClassName>
-		<registerComponentClass public="1" set="method" line="53"><f a="cls:simpleName:prefix">
+		<registerComponentClass public="1" set="method" line="54"><f a="cls:simpleName:prefix">
 	<x path="Class"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></x>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Void"/>
 </f></registerComponentClass>
-		<getComponentClassName public="1" set="method" line="36"><f a="simpleName:prefix">
+		<getComponentClassName public="1" set="method" line="37"><f a="simpleName:prefix">
 	<c path="String"/>
 	<c path="String"/>
 	<c path="String"/>
 </f></getComponentClassName>
-		<componentClassMap><c path="Hash"><c path="haxe.ui.toolkit.core._ClassManager.ComponentRegistryEntry"/></c></componentClassMap>
-		<componentClassPrefixMap><c path="Hash"><c path="String"/></c></componentClassPrefixMap>
-		<registerDefaults set="method" line="23"><f a=""><x path="Void"/></f></registerDefaults>
-		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
+		<componentClassMap><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.core._ClassManager.ComponentRegistryEntry"/></c></componentClassMap>
+		<componentClassPrefixMap><c path="haxe.ds.StringMap"><c path="String"/></c></componentClassPrefixMap>
+		<registerDefaults set="method" line="24"><f a=""><x path="Void"/></f></registerDefaults>
+		<new public="1" set="method" line="20"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core._ClassManager.ClassRegistryEntry" params="" file="src/haxe/ui/toolkit/core/ClassManager.hx" private="1" module="haxe.ui.toolkit.core.ClassManager">
 		<className public="1"><c path="String"/></className>
 		<simpleName public="1"><c path="String"/></simpleName>
-		<new public="1" set="method" line="110"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="111"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core._ClassManager.ComponentRegistryEntry" params="" file="src/haxe/ui/toolkit/core/ClassManager.hx" private="1" module="haxe.ui.toolkit.core.ClassManager">
 		<extends path="haxe.ui.toolkit.core._ClassManager.ClassRegistryEntry"/>
 		<prefix public="1"><c path="String"/></prefix>
-		<new public="1" set="method" line="118"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="119"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core._ClassManager.DataSourceRegistryEntry" params="" file="src/haxe/ui/toolkit/core/ClassManager.hx" private="1" module="haxe.ui.toolkit.core.ClassManager">
 		<extends path="haxe.ui.toolkit.core._ClassManager.ClassRegistryEntry"/>
-		<new public="1" set="method" line="122"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="123"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Client" params="" file="src/haxe/ui/toolkit/core/Client.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.core.Client"/></_instance>
@@ -20475,41 +20456,41 @@
 	<class path="haxe.ui.toolkit.core.Toolkit" params="" file="src/haxe/ui/toolkit/core/Toolkit.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.core.Toolkit"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.core.Toolkit"/></instance>
-		<get_instance public="1" set="method" line="23" static="1"><f a=""><c path="haxe.ui.toolkit.core.Toolkit"/></f></get_instance>
-		<init public="1" set="method" line="32" static="1"><f a=""><x path="Void"/></f></init>
-		<_registeredProcessors static="1"><c path="Hash"><c path="String"/></c></_registeredProcessors>
-		<registerXMLProcessor public="1" set="method" line="41" static="1"><f a="cls:prefix">
+		<get_instance public="1" set="method" line="24" static="1"><f a=""><c path="haxe.ui.toolkit.core.Toolkit"/></f></get_instance>
+		<init public="1" set="method" line="33" static="1"><f a=""><x path="Void"/></f></init>
+		<_registeredProcessors static="1"><c path="haxe.ds.StringMap"><c path="String"/></c></_registeredProcessors>
+		<registerXMLProcessor public="1" set="method" line="42" static="1"><f a="cls:prefix">
 	<x path="Class"><c path="haxe.ui.toolkit.core.xml.IXMLProcessor"/></x>
 	<c path="String"/>
 	<x path="Void"/>
 </f></registerXMLProcessor>
-		<processXml public="1" set="method" line="52" static="1"><f a="xml">
+		<processXml public="1" set="method" line="53" static="1"><f a="xml">
 	<c path="Xml"/>
 	<d/>
 </f></processXml>
-		<processXmlNode set="method" line="60" static="1"><f a="node">
+		<processXmlNode set="method" line="61" static="1"><f a="node">
 	<c path="Xml"/>
 	<d/>
 </f></processXmlNode>
 		<_defaultTransition static="1"><c path="String"/></_defaultTransition>
-		<_transitionRegister static="1"><c path="Hash"><c path="String"/></c></_transitionRegister>
+		<_transitionRegister static="1"><c path="haxe.ds.StringMap"><c path="String"/></c></_transitionRegister>
 		<defaultTransition public="1" get="accessor" set="accessor" static="1"><c path="String"/></defaultTransition>
-		<get_defaultTransition set="method" line="135" static="1"><f a=""><c path="String"/></f></get_defaultTransition>
-		<set_defaultTransition set="method" line="139" static="1"><f a="value">
+		<get_defaultTransition set="method" line="136" static="1"><f a=""><c path="String"/></f></get_defaultTransition>
+		<set_defaultTransition set="method" line="140" static="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_defaultTransition>
-		<getTransitionForClass public="1" set="method" line="144" static="1"><f a="cls">
+		<getTransitionForClass public="1" set="method" line="145" static="1"><f a="cls">
 	<x path="Class"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></x>
 	<c path="String"/>
 </f></getTransitionForClass>
-		<setTransitionForClass public="1" set="method" line="153" static="1"><f a="cls:transition">
+		<setTransitionForClass public="1" set="method" line="154" static="1"><f a="cls:transition">
 	<x path="Class"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></x>
 	<c path="String"/>
 	<x path="Void"/>
 </f></setTransitionForClass>
-		<initInstance set="method" line="168"><f a=""><x path="Void"/></f></initInstance>
-		<new public="1" set="method" line="164"><f a=""><x path="Void"/></f></new>
+		<initInstance set="method" line="169"><f a=""><x path="Void"/></f></initInstance>
+		<new public="1" set="method" line="165"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.Direction" params="" file="src/haxe/ui/toolkit/core/interfaces/Direction.hx">
 		<HORIZONTAL public="1" get="inline" set="null" line="4" static="1"><c path="String"/></HORIZONTAL>
@@ -20675,9 +20656,9 @@
 	<class path="haxe.ui.toolkit.data.DataManager" params="" file="src/haxe/ui/toolkit/data/DataManager.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.data.DataManager"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.data.DataManager"/></instance>
-		<get_instance set="method" line="8" static="1"><f a=""><c path="haxe.ui.toolkit.data.DataManager"/></f></get_instance>
-		<get_dataSources set="method" line="42"><f a=""><c path="Array"><c path="haxe.ui.toolkit.data.IDataSource"/></c></f></get_dataSources>
-		<registerDataSource public="1" set="method" line="33">
+		<get_instance set="method" line="9" static="1"><f a=""><c path="haxe.ui.toolkit.data.DataManager"/></f></get_instance>
+		<get_dataSources set="method" line="43"><f a=""><c path="Array"><c path="haxe.ui.toolkit.data.IDataSource"/></c></f></get_dataSources>
+		<registerDataSource public="1" set="method" line="34">
 			<f a="dataSource">
 				<c path="haxe.ui.toolkit.data.IDataSource"/>
 				<x path="Void"/>
@@ -20689,8 +20670,8 @@
 			<c path="Array"><c path="haxe.ui.toolkit.data.IDataSource"/></c>
 			<haxe_doc>*		List of registered data sources.</haxe_doc>
 		</dataSources>
-		<_dataSourceMap><c path="Hash"><c path="haxe.ui.toolkit.data.IDataSource"/></c></_dataSourceMap>
-		<new public="1" set="method" line="25"><f a=""><x path="Void"/></f></new>
+		<_dataSourceMap><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.data.IDataSource"/></c></_dataSourceMap>
+		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.data.JSONDataSource" params="" file="src/haxe/ui/toolkit/data/JSONDataSource.hx">
 		<extends path="haxe.ui.toolkit.data.ArrayDataSource"/>
@@ -20778,15 +20759,15 @@
 		<new public="1" set="method" line="20"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.style.StyleHelper" params="" file="src/haxe/ui/toolkit/style/StyleHelper.hx">
-		<sectionCache static="1"><c path="Hash"><c path="flash.display.BitmapData"/></c></sectionCache>
-		<clearCache public="1" set="method" line="16" static="1"><f a=""><x path="Void"/></f></clearCache>
-		<paintStyle public="1" set="method" line="20" static="1"><f a="g:style:rc">
+		<sectionCache static="1"><c path="haxe.ds.StringMap"><c path="flash.display.BitmapData"/></c></sectionCache>
+		<clearCache public="1" set="method" line="17" static="1"><f a=""><x path="Void"/></f></clearCache>
+		<paintStyle public="1" set="method" line="21" static="1"><f a="g:style:rc">
 	<c path="flash.display.Graphics"/>
 	<d/>
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintStyle>
-		<paintScale9 public="1" set="method" line="118" static="1"><f a="g:resourceId:resourceRect:scale9:rc">
+		<paintScale9 public="1" set="method" line="119" static="1"><f a="g:resourceId:resourceRect:scale9:rc">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
@@ -20794,15 +20775,15 @@
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintScale9>
-		<paintCompoundBitmap public="1" set="method" line="151" static="1"><f a="g:resourceId:resourceRect:sourceRects:targetRect">
+		<paintCompoundBitmap public="1" set="method" line="152" static="1"><f a="g:resourceId:resourceRect:sourceRects:targetRect">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
-	<c path="Hash"><c path="flash.geom.Rectangle"/></c>
+	<c path="haxe.ds.StringMap"><c path="flash.geom.Rectangle"/></c>
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintCompoundBitmap>
-		<paintBitmapSection public="1" set="method" line="224" static="1"><f a="g:resourceId:resourceRect:src:dst">
+		<paintBitmapSection public="1" set="method" line="225" static="1"><f a="g:resourceId:resourceRect:src:dst">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
@@ -20810,7 +20791,7 @@
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintBitmapSection>
-		<getBitmapSection set="method" line="262" static="1"><f a="resourceId:?rc">
+		<getBitmapSection set="method" line="263" static="1"><f a="resourceId:?rc">
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
 	<c path="flash.display.BitmapData"/>
@@ -20819,68 +20800,68 @@
 	<class path="haxe.ui.toolkit.style.StyleManager" params="" file="src/haxe/ui/toolkit/style/StyleManager.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></instance>
-		<get_instance set="method" line="10" static="1"><f a=""><c path="haxe.ui.toolkit.style.StyleManager"/></f></get_instance>
-		<buildStyleFor public="1" set="method" line="183"><f a="c:?state">
+		<get_instance set="method" line="11" static="1"><f a=""><c path="haxe.ui.toolkit.style.StyleManager"/></f></get_instance>
+		<buildStyleFor public="1" set="method" line="184"><f a="c:?state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
 	<d/>
 </f></buildStyleFor>
-		<mergeStyle public="1" set="method" line="153"><f a="oldStyle:newStyle">
+		<mergeStyle public="1" set="method" line="154"><f a="oldStyle:newStyle">
 	<d/>
 	<d/>
 	<d/>
 </f></mergeStyle>
-		<ruleMatch set="method" line="104"><f a="c:rule:state">
+		<ruleMatch set="method" line="105"><f a="c:rule:state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Bool"/>
 </f></ruleMatch>
-		<rulePartMatch set="method" line="63"><f a="c:rulePart:state">
+		<rulePartMatch set="method" line="64"><f a="c:rulePart:state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Bool"/>
 </f></rulePartMatch>
-		<findAncestor set="method" line="45"><f a="c:rulePart">
+		<findAncestor set="method" line="46"><f a="c:rulePart">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 </f></findAncestor>
-		<clear public="1" set="method" line="39"><f a=""><x path="Void"/></f></clear>
-		<addStyles public="1" set="method" line="33"><f a="styles">
+		<clear public="1" set="method" line="40"><f a=""><x path="Void"/></f></clear>
+		<addStyles public="1" set="method" line="34"><f a="styles">
 	<c path="haxe.ui.toolkit.style.Styles"/>
 	<x path="Void"/>
 </f></addStyles>
-		<addStyle public="1" set="method" line="28"><f a="rule:style">
+		<addStyle public="1" set="method" line="29"><f a="rule:style">
 	<c path="String"/>
 	<d/>
 	<x path="Void"/>
 </f></addStyle>
 		<_rules><c path="Array"><d/></c></_rules>
-		<_styles><c path="Hash"><d/></c></_styles>
-		<new public="1" set="method" line="23"><f a=""><x path="Void"/></f></new>
+		<_styles><c path="haxe.ds.StringMap"><d/></c></_styles>
+		<new public="1" set="method" line="24"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.style.StyleParser" params="" file="src/haxe/ui/toolkit/style/StyleParser.hx"><fromString public="1" set="method" line="6" static="1"><f a="styleString">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Styles"/>
 </f></fromString></class>
 	<class path="haxe.ui.toolkit.style.Styles" params="" file="src/haxe/ui/toolkit/style/Styles.hx">
-		<dump public="1" set="method" line="34"><f a=""><x path="Void"/></f></dump>
-		<get_rules set="method" line="30"><f a=""><t path="Iterator"><c path="String"/></t></f></get_rules>
-		<getStyle public="1" set="method" line="26"><f a="rule">
+		<dump public="1" set="method" line="35"><f a=""><x path="Void"/></f></dump>
+		<get_rules set="method" line="31"><f a=""><t path="Iterator"><c path="String"/></t></f></get_rules>
+		<getStyle public="1" set="method" line="27"><f a="rule">
 	<c path="String"/>
 	<d/>
 </f></getStyle>
-		<addStyle public="1" set="method" line="14"><f a="rule:style">
+		<addStyle public="1" set="method" line="15"><f a="rule:style">
 	<c path="String"/>
 	<d/>
 	<d/>
 </f></addStyle>
 		<rules public="1" get="accessor" set="null"><t path="Iterator"><c path="String"/></t></rules>
 		<_styleRules><c path="Array"><c path="String"/></c></_styleRules>
-		<_styles><c path="Hash"><d/></c></_styles>
-		<new public="1" set="method" line="9"><f a=""><x path="Void"/></f></new>
+		<_styles><c path="haxe.ds.StringMap"><d/></c></_styles>
+		<new public="1" set="method" line="10"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.text.ITextDisplay" params="" file="src/haxe/ui/toolkit/text/ITextDisplay.hx" interface="1">
 		<multiline public="1" get="null" set="null"><x path="Bool"/></multiline>

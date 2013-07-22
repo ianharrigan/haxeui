@@ -8,13 +8,14 @@ import flash.display.SpreadMethod;
 import flash.geom.Matrix;
 import flash.geom.Point;
 import flash.geom.Rectangle;
+import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.resources.ResourceManager;
 
 class StyleHelper {
-	private static var sectionCache:Hash<BitmapData>;
-	
+	private static var sectionCache:StringMap<BitmapData>;
+
 	public static function clearCache():Void {
-		sectionCache = new Hash<BitmapData>();
+		sectionCache = new StringMap<BitmapData>();
 	}
 	
 	public static function paintStyle(g:Graphics, style:Dynamic, rc:Rectangle):Void {
@@ -107,7 +108,7 @@ class StyleHelper {
 			if (style.backgroundImageScale9 != null) {
 				paintScale9(g, style.backgroundImage, backgroundImageRect, style.backgroundImageScale9, rc);
 			} else {
-				var rects:Hash<Rectangle> = new Hash<Rectangle>();
+				var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
 				var bitmapData:BitmapData = getBitmapSection(style.backgroundImage, backgroundImageRect);
 				rects.set("middle", new Rectangle(0, 0, bitmapData.width, bitmapData.height));
 				paintCompoundBitmap(g, style.backgroundImage, backgroundImageRect, rects, rc);
@@ -130,7 +131,7 @@ class StyleHelper {
 			var x2:Int = Std.parseInt(coords[2]);
 			var y2:Int = Std.parseInt(coords[3]);
 			
-			var rects:Hash<Rectangle> = new Hash<Rectangle>();
+			var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
 			
 			rects.set("top.left", new Rectangle(0, 0, x1, y1));
 			rects.set("top", new Rectangle(x1, 0, x2 - x1, y1));
@@ -148,7 +149,7 @@ class StyleHelper {
 		}
 	}
 	
-	public static function paintCompoundBitmap(g:Graphics, resourceId:String, resourceRect:Rectangle, sourceRects:Hash<Rectangle>, targetRect:Rectangle):Void {
+	public static function paintCompoundBitmap(g:Graphics, resourceId:String, resourceRect:Rectangle, sourceRects:StringMap<Rectangle>, targetRect:Rectangle):Void {
 		targetRect.left = Std.int(targetRect.left);
 		targetRect.top = Std.int(targetRect.top);
 		targetRect.right = Std.int(targetRect.right);
@@ -261,7 +262,7 @@ class StyleHelper {
 	
 	private static function getBitmapSection(resourceId:String, rc:Rectangle = null):BitmapData {
 		if (sectionCache == null) {
-			sectionCache = new Hash<BitmapData>();
+			sectionCache = new StringMap<BitmapData>();
 		}
 		
 		if (rc == null) {
