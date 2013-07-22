@@ -2,7 +2,7 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 

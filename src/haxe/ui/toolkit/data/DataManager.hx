@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.data;
 
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.util.Identifier;
 
 class DataManager {

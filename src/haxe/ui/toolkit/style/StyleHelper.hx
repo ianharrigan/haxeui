@@ -8,7 +8,7 @@ import flash.display.SpreadMethod;
 import flash.geom.Matrix;
 import flash.geom.Point;
 import flash.geom.Rectangle;
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.resources.ResourceManager;
 
 class StyleHelper {

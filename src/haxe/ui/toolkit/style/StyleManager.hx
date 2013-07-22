@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.style;
 
 import flash.display.DisplayObjectContainer;
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 

@@ -2,7 +2,7 @@ package haxe.ui.toolkit.core;
 
 import flash.filters.BitmapFilter;
 import flash.geom.Rectangle;
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 import haxe.ui.toolkit.layout.GridLayout;

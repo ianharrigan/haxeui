@@ -3,7 +3,7 @@ package haxe.ui.toolkit.core;
 import flash.display.Graphics;
 import flash.display.Sprite;
 import flash.events.Event;
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDrawable;

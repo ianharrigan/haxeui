@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.style;
-import haxe.ds.StringMap.StringMap;
+
+import haxe.ds.StringMap;
 
 class Styles {
 	private var _styles:StringMap<Dynamic>;

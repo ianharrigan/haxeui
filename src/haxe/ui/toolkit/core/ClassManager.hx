@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core;
 
-import haxe.ds.StringMap.StringMap;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.data.IDataSource;
 
