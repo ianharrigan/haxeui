@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Rectangle - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.geom.Rectangle</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>A Rectangle object is an area defined by its position, as indicated by its
+<em> top-left corner point(<i>x</i>, <i>y</i>) and by its width and its height.
+</em>
+<em>
+</em> <p>The <code>x</code>, <code>y</code>, <code>width</code>, and
+<em> <code>height</code> properties of the Rectangle class are independent of
+</em> each other; changing the value of one property has no effect on the others.
+<em> However, the <code>right</code> and <code>bottom</code> properties are
+</em> integrally related to those four properties. For example, if you change the
+<em> value of the <code>right</code> property, the value of the
+</em> <code>width</code> property changes; if you change the <code>bottom</code>
+<em> property, the value of the <code>height</code> property changes. </p>
+</em>
+<em> <p>The following methods and properties use Rectangle objects:</p>
+</em>
+<em> <ul>
+</em>   <li>The <code>applyFilter()</code>, <code>colorTransform()</code>,
+<em> <code>copyChannel()</code>, <code>copyPixels()</code>, <code>draw()</code>,
+</em> <code>fillRect()</code>, <code>generateFilterRect()</code>,
+<em> <code>getColorBoundsRect()</code>, <code>getPixels()</code>,
+</em> <code>merge()</code>, <code>paletteMap()</code>,
+<em> <code>pixelDisolve()</code>, <code>setPixels()</code>, and
+</em> <code>threshold()</code> methods, and the <code>rect</code> property of the
+<em> BitmapData class</li>
+</em>   <li>The <code>getBounds()</code> and <code>getRect()</code> methods, and
+<em> the <code>scrollRect</code> and <code>scale9Grid</code> properties of the
+</em> DisplayObject class</li>
+<em>   <li>The <code>getCharBoundaries()</code> method of the TextField
+</em> class</li>
+<em>   <li>The <code>pixelBounds</code> property of the Transform class</li>
+</em>   <li>The <code>bounds</code> parameter for the <code>startDrag()</code>
+<em> method of the Sprite class</li>
+</em>   <li>The <code>printArea</code> parameter of the <code>addPage()</code>
+<em> method of the PrintJob class</li>
+</em> </ul>
+<em>
+</em> <p>You can use the <code>new Rectangle()</code> constructor to create a
+<em> Rectangle object.</p>
+</em>
+<em> <p><b>Note:</b> The Rectangle class does not define a rectangular Shape
+</em> display object. To draw a rectangular Shape object onscreen, use the
+* <code>drawRect()</code> method of the Graphics class.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="bottom"></a><h3><code><span class="keyword">var</span> <a href="#bottom"><span class="identifier">bottom</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The sum of the <code>y</code> and <code>height</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bottomRight"></a><h3><code><span class="keyword">var</span> <a href="#bottomRight"><span class="identifier">bottomRight</span></a>:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>The location of the Rectangle object's bottom-right corner, determined by
+the values of the <code>right</code> and <code>bottom</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="height"></a><h3><code><span class="keyword">var</span> <a href="#height"><span class="identifier">height</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The height of the rectangle, in pixels. Changing the <code>height</code>
+value of a Rectangle object has no effect on the <code>x</code>,
+<code>y</code>, and <code>width</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="left"></a><h3><code><span class="keyword">var</span> <a href="#left"><span class="identifier">left</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The <i>x</i> coordinate of the top-left corner of the rectangle. Changing
+the <code>left</code> property of a Rectangle object has no effect on the
+<code>y</code> and <code>height</code> properties. However it does affect
+the <code>width</code> property, whereas changing the <code>x</code> value
+does <i>not</i> affect the <code>width</code> property.
+*
+<p>The value of the <code>left</code> property is equal to the value of
+the <code>x</code> property.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="right"></a><h3><code><span class="keyword">var</span> <a href="#right"><span class="identifier">right</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The sum of the <code>x</code> and <code>width</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="size"></a><h3><code><span class="keyword">var</span> <a href="#size"><span class="identifier">size</span></a>:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>The size of the Rectangle object, expressed as a Point object with the
+values of the <code>width</code> and <code>height</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="top"></a><h3><code><span class="keyword">var</span> <a href="#top"><span class="identifier">top</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The <i>y</i> coordinate of the top-left corner of the rectangle. Changing
+the <code>top</code> property of a Rectangle object has no effect on the
+<code>x</code> and <code>width</code> properties. However it does affect
+the <code>height</code> property, whereas changing the <code>y</code>
+value does <i>not</i> affect the <code>height</code> property.
+*
+<p>The value of the <code>top</code> property is equal to the value of the
+<code>y</code> property.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="topLeft"></a><h3><code><span class="keyword">var</span> <a href="#topLeft"><span class="identifier">topLeft</span></a>:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>The location of the Rectangle object's top-left corner, determined by the
+<i>x</i> and <i>y</i> coordinates of the point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="width"></a><h3><code><span class="keyword">var</span> <a href="#width"><span class="identifier">width</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The width of the rectangle, in pixels. Changing the <code>width</code>
+value of a Rectangle object has no effect on the <code>x</code>,
+<code>y</code>, and <code>height</code> properties.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="x"></a><h3><code><span class="keyword">var</span> <a href="#x"><span class="identifier">x</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The <i>x</i> coordinate of the top-left corner of the rectangle. Changing
+the value of the <code>x</code> property of a Rectangle object has no
+effect on the <code>y</code>, <code>width</code>, and <code>height</code>
+properties.
+*
+<p>The value of the <code>x</code> property is equal to the value of the
+<code>left</code> property.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="y"></a><h3><code><span class="keyword">var</span> <a href="#y"><span class="identifier">y</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The <i>y</i> coordinate of the top-left corner of the rectangle. Changing
+the value of the <code>y</code> property of a Rectangle object has no
+effect on the <code>x</code>, <code>width</code>, and <code>height</code>
+properties.
+*
+<p>The value of the <code>y</code> property is equal to the value of the
+<code>top</code> property.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(x:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, y:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, width:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, height:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a new Rectangle object with the top-left corner specified by the
+<code>x</code> and <code>y</code> parameters and with the specified
+<code>width</code> and <code>height</code> parameters. If you call this
+function without parameters, a rectangle with <code>x</code>,
+<code>y</code>, <code>width</code>, and <code>height</code> properties set
+to 0 is created.</p>
+<p>@param x      The <i>x</i> coordinate of the top-left corner of the
+rectangle.
+@param y      The <i>y</i> coordinate of the top-left corner of the
+rectangle.
+@param width  The width of the rectangle, in pixels.
+@param height The height of the rectangle, in pixels.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="clone"></a><h3><code><span class="keyword">function</span> <a href="#clone"><span class="identifier">clone</span></a>():<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a></code></h3><div class="doc"><p>Returns a new Rectangle object with the same values for the
+<code>x</code>, <code>y</code>, <code>width</code>, and
+<code>height</code> properties as the original Rectangle object.</p>
+<p>@return A new Rectangle object with the same values for the
+<code>x</code>, <code>y</code>, <code>width</code>, and
+<code>height</code> properties as the original Rectangle object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="contains"></a><h3><code><span class="keyword">function</span> <a href="#contains"><span class="identifier">contains</span></a>(x:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, y:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether the specified point is contained within the rectangular
+region defined by this Rectangle object.</p>
+<p>@param x The <i>x</i> coordinate(horizontal position) of the point.
+@param y The <i>y</i> coordinate(vertical position) of the point.
+@return A value of <code>true</code> if the Rectangle object contains the
+specified point; otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="containsPoint"></a><h3><code><span class="keyword">function</span> <a href="#containsPoint"><span class="identifier">containsPoint</span></a>(point:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether the specified point is contained within the rectangular
+region defined by this Rectangle object. This method is similar to the
+<code>Rectangle.contains()</code> method, except that it takes a Point
+object as a parameter.</p>
+<p>@param point The point, as represented by its <i>x</i> and <i>y</i>
+coordinates.
+@return A value of <code>true</code> if the Rectangle object contains the
+specified point; otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="containsRect"></a><h3><code><span class="keyword">function</span> <a href="#containsRect"><span class="identifier">containsRect</span></a>(rect:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether the Rectangle object specified by the <code>rect</code>
+parameter is contained within this Rectangle object. A Rectangle object is
+said to contain another if the second Rectangle object falls entirely
+within the boundaries of the first.</p>
+<p>@param rect The Rectangle object being checked.
+@return A value of <code>true</code> if the Rectangle object that you
+specify is contained by this Rectangle object; otherwise
+<code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyFrom"></a><h3><code><span class="keyword">function</span> <a href="#copyFrom"><span class="identifier">copyFrom</span></a>(sourceRect:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="equals"></a><h3><code><span class="keyword">function</span> <a href="#equals"><span class="identifier">equals</span></a>(toCompare:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether the object specified in the <code>toCompare</code>
+parameter is equal to this Rectangle object. This method compares the
+<code>x</code>, <code>y</code>, <code>width</code>, and
+<code>height</code> properties of an object against the same properties of
+this Rectangle object.</p>
+<p>@param toCompare The rectangle to compare to this Rectangle object.
+@return A value of <code>true</code> if the object has exactly the same
+values for the <code>x</code>, <code>y</code>, <code>width</code>,
+and <code>height</code> properties as this Rectangle object;
+otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="inflate"></a><h3><code><span class="keyword">function</span> <a href="#inflate"><span class="identifier">inflate</span></a>(dx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, dy:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Increases the size of the Rectangle object by the specified amounts, in
+pixels. The center point of the Rectangle object stays the same, and its
+size increases to the left and right by the <code>dx</code> value, and to
+the top and the bottom by the <code>dy</code> value.</p>
+<p>@param dx The value to be added to the left and the right of the Rectangle
+object. The following equation is used to calculate the new
+width and position of the rectangle:
+@param dy The value to be added to the top and the bottom of the
+Rectangle. The following equation is used to calculate the new
+height and position of the rectangle:</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="inflatePoint"></a><h3><code><span class="keyword">function</span> <a href="#inflatePoint"><span class="identifier">inflatePoint</span></a>(point:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Increases the size of the Rectangle object. This method is similar to the
+<code>Rectangle.inflate()</code> method except it takes a Point object as
+a parameter.
+*
+<p>The following two code examples give the same result:</p></p>
+<p>@param point The <code>x</code> property of this Point object is used to
+increase the horizontal dimension of the Rectangle object.
+The <code>y</code> property is used to increase the vertical
+dimension of the Rectangle object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="intersection"></a><h3><code><span class="keyword">function</span> <a href="#intersection"><span class="identifier">intersection</span></a>(toIntersect:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a></code></h3><div class="doc"><p>If the Rectangle object specified in the <code>toIntersect</code>
+parameter intersects with this Rectangle object, returns the area of
+intersection as a Rectangle object. If the rectangles do not intersect,
+this method returns an empty Rectangle object with its properties set to
+0.</p>
+<p>@param toIntersect The Rectangle object to compare against to see if it
+intersects with this Rectangle object.
+@return A Rectangle object that equals the area of intersection. If the
+rectangles do not intersect, this method returns an empty
+Rectangle object; that is, a rectangle with its <code>x</code>,
+<code>y</code>, <code>width</code>, and <code>height</code>
+properties set to 0.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="intersects"></a><h3><code><span class="keyword">function</span> <a href="#intersects"><span class="identifier">intersects</span></a>(toIntersect:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether the object specified in the <code>toIntersect</code>
+parameter intersects with this Rectangle object. This method checks the
+<code>x</code>, <code>y</code>, <code>width</code>, and
+<code>height</code> properties of the specified Rectangle object to see if
+it intersects with this Rectangle object.</p>
+<p>@param toIntersect The Rectangle object to compare against this Rectangle
+object.
+@return A value of <code>true</code> if the specified object intersects
+with this Rectangle object; otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="isEmpty"></a><h3><code><span class="keyword">function</span> <a href="#isEmpty"><span class="identifier">isEmpty</span></a>():<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether or not this Rectangle object is empty.</p>
+<p>@return A value of <code>true</code> if the Rectangle object's width or
+height is less than or equal to 0; otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="offset"></a><h3><code><span class="keyword">function</span> <a href="#offset"><span class="identifier">offset</span></a>(dx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, dy:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Adjusts the location of the Rectangle object, as determined by its
+top-left corner, by the specified amounts.</p>
+<p>@param dx Moves the <i>x</i> value of the Rectangle object by this amount.
+@param dy Moves the <i>y</i> value of the Rectangle object by this amount.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="offsetPoint"></a><h3><code><span class="keyword">function</span> <a href="#offsetPoint"><span class="identifier">offsetPoint</span></a>(point:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Adjusts the location of the Rectangle object using a Point object as a
+parameter. This method is similar to the <code>Rectangle.offset()</code>
+method, except that it takes a Point object as a parameter.</p>
+<p>@param point A Point object to use to offset this Rectangle object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="setEmpty"></a><h3><code><span class="keyword">function</span> <a href="#setEmpty"><span class="identifier">setEmpty</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Sets all of the Rectangle object's properties to 0. A Rectangle object is
+empty if its width or height is less than or equal to 0.
+*
+<p> This method sets the values of the <code>x</code>, <code>y</code>,
+<code>width</code>, and <code>height</code> properties to 0.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="setTo"></a><h3><code><span class="keyword">function</span> <a href="#setTo"><span class="identifier">setTo</span></a>(xa:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ya:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, widtha:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, heighta:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="toString"></a><h3><code><span class="keyword">function</span> <a href="#toString"><span class="identifier">toString</span></a>():<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Builds and returns a string that lists the horizontal and vertical
+positions and the width and height of the Rectangle object.</p>
+<p>@return A string listing the value of each of the following properties of
+the Rectangle object: <code>x</code>, <code>y</code>,
+<code>width</code>, and <code>height</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="union"></a><h3><code><span class="keyword">function</span> <a href="#union"><span class="identifier">union</span></a>(toUnion:<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Rectangle.html">Rectangle</a></code></h3><div class="doc"><p>Adds two rectangles together to create a new Rectangle object, by filling
+in the horizontal and vertical space between the two rectangles.
+*
+<p><b>Note:</b> The <code>union()</code> method ignores rectangles with
+<code>0</code> as the height or width value, such as: <code>var
+rect2:Rectangle = new Rectangle(300,300,50,0);</code></p></p>
+<p>@param toUnion A Rectangle object to add to this Rectangle object.
+@return A new Rectangle object that is the union of the two rectangles.</p></div></div></div></div></div></body></html>

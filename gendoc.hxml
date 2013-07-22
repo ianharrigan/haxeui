@@ -1,0 +1,1 @@
+-cmd haxelib run dox -o docs/api -i docs -r /haxeui/docs/api --title HaxeUI -in "haxe"

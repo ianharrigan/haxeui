@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Point - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.geom.Point</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The Point object represents a location in a two-dimensional coordinate
+<em> system, where <i>x</i> represents the horizontal axis and <i>y</i>
+</em> represents the vertical axis.
+<em>
+</em> <p>The following code creates a point at(0,0):</p>
+<em>
+</em> <p>Methods and properties of the following classes use Point objects:</p>
+<em>
+</em> <ul>
+<em>   <li>BitmapData</li>
+</em>   <li>DisplayObject</li>
+<em>   <li>DisplayObjectContainer</li>
+</em>   <li>DisplacementMapFilter</li>
+<em>   <li>NativeWindow</li>
+</em>   <li>Matrix</li>
+<em>   <li>Rectangle</li>
+</em> </ul>
+<em>
+</em> <p>You can use the <code>new Point()</code> constructor to create a Point
+* object.</p></p></div><h2>Class Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="distance"></a><h3><code><span class="keyword">static</span> <span class="keyword">function</span> <a href="#distance"><span class="identifier">distance</span></a>(pt1:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>, pt2:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>Returns the distance between <code>pt1</code> and <code>pt2</code>.</p>
+<p>@param pt1 The first point.
+@param pt2 The second point.
+@return The distance between the first and second points.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="interpolate"></a><h3><code><span class="keyword">static</span> <span class="keyword">function</span> <a href="#interpolate"><span class="identifier">interpolate</span></a>(pt1:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>, pt2:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>, f:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Determines a point between two specified points. The parameter
+<code>f</code> determines where the new interpolated point is located
+relative to the two end points specified by parameters <code>pt1</code>
+and <code>pt2</code>. The closer the value of the parameter <code>f</code>
+is to <code>1.0</code>, the closer the interpolated point is to the first
+point(parameter <code>pt1</code>). The closer the value of the parameter
+<code>f</code> is to 0, the closer the interpolated point is to the second
+point(parameter <code>pt2</code>).</p>
+<p>@param pt1 The first point.
+@param pt2 The second point.
+@param f   The level of interpolation between the two points. Indicates
+where the new point will be, along the line between
+<code>pt1</code> and <code>pt2</code>. If <code>f</code>=1,
+<code>pt1</code> is returned; if <code>f</code>=0,
+<code>pt2</code> is returned.
+@return The new, interpolated point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="polar"></a><h3><code><span class="keyword">static</span> <span class="keyword">function</span> <a href="#polar"><span class="identifier">polar</span></a>(len:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, angle:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Converts a pair of polar coordinates to a Cartesian point coordinate.</p>
+<p>@param len   The length coordinate of the polar pair.
+@param angle The angle, in radians, of the polar pair.
+@return The Cartesian point.</p></div></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="length"></a><h3><code><span class="keyword">var</span> <a href="#length"><span class="identifier">length</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The length of the line segment from(0,0) to this point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="x"></a><h3><code><span class="keyword">var</span> <a href="#x"><span class="identifier">x</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The horizontal coordinate of the point. The default value is 0.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="y"></a><h3><code><span class="keyword">var</span> <a href="#y"><span class="identifier">y</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The vertical coordinate of the point. The default value is 0.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(x:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, y:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a new point. If you pass no parameters to this method, a point is
+created at(0,0).</p>
+<p>@param x The horizontal coordinate.
+@param y The vertical coordinate.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="add"></a><h3><code><span class="keyword">function</span> <a href="#add"><span class="identifier">add</span></a>(v:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Adds the coordinates of another point to the coordinates of this point to
+create a new point.</p>
+<p>@param v The point to be added.
+@return The new point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="clone"></a><h3><code><span class="keyword">function</span> <a href="#clone"><span class="identifier">clone</span></a>():<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Creates a copy of this Point object.</p>
+<p>@return The new Point object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyFrom"></a><h3><code><span class="keyword">function</span> <a href="#copyFrom"><span class="identifier">copyFrom</span></a>(sourcePoint:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="equals"></a><h3><code><span class="keyword">function</span> <a href="#equals"><span class="identifier">equals</span></a>(toCompare:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Determines whether two points are equal. Two points are equal if they have
+the same <i>x</i> and <i>y</i> values.</p>
+<p>@param toCompare The point to be compared.
+@return A value of <code>true</code> if the object is equal to this Point
+object; <code>false</code> if it is not equal.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="normalize"></a><h3><code><span class="keyword">function</span> <a href="#normalize"><span class="identifier">normalize</span></a>(thickness:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Scales the line segment between(0,0) and the current point to a set
+length.</p>
+<p>@param thickness The scaling value. For example, if the current point is
+(0,5), and you normalize it to 1, the point returned is
+at(0,1).
+@return The normalized point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="offset"></a><h3><code><span class="keyword">function</span> <a href="#offset"><span class="identifier">offset</span></a>(dx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, dy:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Offsets the Point object by the specified amount. The value of
+<code>dx</code> is added to the original value of <i>x</i> to create the
+new <i>x</i> value. The value of <code>dy</code> is added to the original
+value of <i>y</i> to create the new <i>y</i> value.</p>
+<p>@param dx The amount by which to offset the horizontal coordinate,
+<i>x</i>.
+@param dy The amount by which to offset the vertical coordinate, <i>y</i>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="setTo"></a><h3><code><span class="keyword">function</span> <a href="#setTo"><span class="identifier">setTo</span></a>(xa:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ya:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="subtract"></a><h3><code><span class="keyword">function</span> <a href="#subtract"><span class="identifier">subtract</span></a>(v:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Subtracts the coordinates of another point from the coordinates of this
+point to create a new point.</p>
+<p>@param v The point to be subtracted.
+@return The new point.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="toString"></a><h3><code><span class="keyword">function</span> <a href="#toString"><span class="identifier">toString</span></a>():<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Returns a string that contains the values of the <i>x</i> and <i>y</i>
+coordinates. The string has the form <code>"(x=<i>x</i>,
+y=<i>y</i>)"</code>, so calling the <code>toString()</code> method for a
+point at 23,17 would return <code>"(x=23, y=17)"</code>.</p>
+<p>@return The string representation of the coordinates.</p></div></div></div></div></div></body></html>

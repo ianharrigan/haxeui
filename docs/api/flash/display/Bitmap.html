@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Bitmap - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.display.Bitmap</span><span class="keyword"> extends</span> <a class="type" href="/haxeui/docs/api/flash/display/DisplayObject.html">DisplayObject</a></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The Bitmap class represents display objects that represent bitmap images.
+<em> These can be images that you load with the <code>flash.Assets</code> or 
+</em> <code>flash.display.Loader</code> classes, or they can be images that you 
+<em> create with the <code>Bitmap()</code> constructor.
+</em>
+<em> <p>The <code>Bitmap()</code> constructor allows you to create a Bitmap
+</em> object that contains a reference to a BitmapData object. After you create a
+<em> Bitmap object, use the <code>addChild()</code> or <code>addChildAt()</code>
+</em> method of the parent DisplayObjectContainer instance to place the bitmap on
+<em> the display list.</p>
+</em>
+<em> <p>A Bitmap object can share its BitmapData reference among several Bitmap
+</em> objects, independent of translation or rotation properties. Because you can
+<em> create multiple Bitmap objects that reference the same BitmapData object,
+</em> multiple display objects can use the same complex BitmapData object without
+<em> incurring the memory overhead of a BitmapData object for each display
+</em> object instance.</p>
+<em>
+</em> <p>A BitmapData object can be drawn to the screen by a Bitmap object in one
+<em> of two ways: by using the default hardware renderer with a single hardware surface, 
+</em> or by using the slower software renderer when 3D acceleration is not available.</p>
+<em> 
+</em> <p>If you would prefer to perform a batch rendering command, rather than using a
+<em> single surface for each Bitmap object, you can also draw to the screen using the
+</em> <code>drawTiles()</code> or <code>drawTriangles()</code> methods which are
+<em> available to <code>flash.display.Tilesheet</code> and <code>flash.display.Graphics
+</em> objects.</code></p>
+<em>
+</em> <p><b>Note:</b> The Bitmap class is not a subclass of the InteractiveObject
+<em> class, so it cannot dispatch mouse events. However, you can use the
+</em> <code>addEventListener()</code> method of the display object container that
+* contains the Bitmap object.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="bitmapData"></a><h3><code><span class="keyword">var</span> <a href="#bitmapData"><span class="identifier">bitmapData</span></a>:<a class="type" href="/haxeui/docs/api/flash/display/BitmapData.html">BitmapData</a></code></h3><div class="doc"><p>The BitmapData object being referenced.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="pixelSnapping"></a><h3><code><span class="keyword">var</span> <a href="#pixelSnapping"><span class="identifier">pixelSnapping</span></a>:<a class="type" href="/haxeui/docs/api/flash/display/PixelSnapping.html">PixelSnapping</a></code></h3><div class="doc"><p>Controls whether or not the Bitmap object is snapped to the nearest pixel.
+This value is ignored in the native and HTML5 targets.
+The PixelSnapping class includes possible values:
+<ul>
+<li><code>PixelSnapping.NEVER</code> - No pixel snapping occurs.</li>
+<li><code>PixelSnapping.ALWAYS</code> - The image is always snapped to
+the nearest pixel, independent of transformation.</li>
+<li><code>PixelSnapping.AUTO</code> - The image is snapped to the
+nearest pixel if it is drawn with no rotation or skew and it is drawn at a
+scale factor of 99.9% to 100.1%. If these conditions are satisfied, the
+bitmap image is drawn at 100% scale, snapped to the nearest pixel.
+When targeting Flash Player, this value allows the image to be drawn as fast 
+as possible using the internal vector renderer.</li>
+</ul></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="smoothing"></a><h3><code><span class="keyword">var</span> <a href="#smoothing"><span class="identifier">smoothing</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Controls whether or not the bitmap is smoothed when scaled. If
+<code>true</code>, the bitmap is smoothed when scaled. If
+<code>false</code>, the bitmap is not smoothed when scaled.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(bitmapData:<a class="type" href="/haxeui/docs/api/flash/display/BitmapData.html">BitmapData</a>, pixelSnapping:<a class="type" href="/haxeui/docs/api/flash/display/PixelSnapping.html">PixelSnapping</a>, smoothing:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div></div></div></div></body></html>

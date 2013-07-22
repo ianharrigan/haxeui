@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Matrix - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.geom.Matrix</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The Matrix class represents a transformation matrix that determines how to
+<em> map points from one coordinate space to another. You can perform various
+</em> graphical transformations on a display object by setting the properties of
+<em> a Matrix object, applying that Matrix object to the <code>matrix</code>
+</em> property of a Transform object, and then applying that Transform object as
+<em> the <code>transform</code> property of the display object. These
+</em> transformation functions include translation(<i>x</i> and <i>y</i>
+<em> repositioning), rotation, scaling, and skewing.
+</em>
+<em> <p>Together these types of transformations are known as <i>affine
+</em> transformations</i>. Affine transformations preserve the straightness of
+<em> lines while transforming, so that parallel lines stay parallel.</p>
+</em>
+<em> <p>To apply a transformation matrix to a display object, you create a
+</em> Transform object, set its <code>matrix</code> property to the
+<em> transformation matrix, and then set the <code>transform</code> property of
+</em> the display object to the Transform object. Matrix objects are also used as
+<em> parameters of some methods, such as the following:</p>
+</em>
+<em> <ul>
+</em>   <li>The <code>draw()</code> method of a BitmapData object</li>
+<em>   <li>The <code>beginBitmapFill()</code> method,
+</em> <code>beginGradientFill()</code> method, or
+<em> <code>lineGradientStyle()</code> method of a Graphics object</li>
+</em> </ul>
+<em>
+</em> <p>A transformation matrix object is a 3 x 3 matrix with the following
+<em> contents:</p>
+</em>
+<em> <p>In traditional transformation matrixes, the <code>u</code>,
+</em> <code>v</code>, and <code>w</code> properties provide extra capabilities.
+<em> The Matrix class can only operate in two-dimensional space, so it always
+</em> assumes that the property values <code>u</code> and <code>v</code> are 0.0,
+<em> and that the property value <code>w</code> is 1.0. The effective values of
+</em> the matrix are as follows:</p>
+<em>
+</em> <p>You can get and set the values of all six of the other properties in a
+<em> Matrix object: <code>a</code>, <code>b</code>, <code>c</code>,
+</em> <code>d</code>, <code>tx</code>, and <code>ty</code>.</p>
+<em>
+</em> <p>The Matrix class supports the four major types of transformations:
+<em> translation, scaling, rotation, and skewing. You can set three of these
+</em> transformations by using specialized methods, as described in the following
+<em> table: </p>
+</em>
+<em> <p>Each transformation function alters the current matrix properties so
+</em> that you can effectively combine multiple transformations. To do this, you
+<em> call more than one transformation function before applying the matrix to
+</em> its display object target(by using the <code>transform</code> property of
+<em> that display object).</p>
+</em>
+<em> <p>Use the <code>new Matrix()</code> constructor to create a Matrix object
+</em> before you can call the methods of the Matrix object.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="a"></a><h3><code><span class="keyword">var</span> <a href="#a"><span class="identifier">a</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The value that affects the positioning of pixels along the <i>x</i> axis
+when scaling or rotating an image.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="b"></a><h3><code><span class="keyword">var</span> <a href="#b"><span class="identifier">b</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The value that affects the positioning of pixels along the <i>y</i> axis
+when rotating or skewing an image.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="c"></a><h3><code><span class="keyword">var</span> <a href="#c"><span class="identifier">c</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The value that affects the positioning of pixels along the <i>x</i> axis
+when rotating or skewing an image.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="d"></a><h3><code><span class="keyword">var</span> <a href="#d"><span class="identifier">d</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The value that affects the positioning of pixels along the <i>y</i> axis
+when scaling or rotating an image.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="tx"></a><h3><code><span class="keyword">var</span> <a href="#tx"><span class="identifier">tx</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The distance by which to translate each point along the <i>x</i> axis.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="ty"></a><h3><code><span class="keyword">var</span> <a href="#ty"><span class="identifier">ty</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The distance by which to translate each point along the <i>y</i> axis.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(a:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, b:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, c:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, d:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, tx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ty:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a new Matrix object with the specified parameters. In matrix
+notation, the properties are organized like this:
+<em>
+<p>If you do not provide any parameters to the <code>new Matrix()</code>
+constructor, it creates an <i>identity matrix</i> with the following
+values:</p>
+</em>
+<p>In matrix notation, the identity matrix looks like this:</p></p>
+<p>@param a  The value that affects the positioning of pixels along the
+<i>x</i> axis when scaling or rotating an image.
+@param b  The value that affects the positioning of pixels along the
+<i>y</i> axis when rotating or skewing an image.
+@param c  The value that affects the positioning of pixels along the
+<i>x</i> axis when rotating or skewing an image.
+@param d  The value that affects the positioning of pixels along the
+<i>y</i> axis when scaling or rotating an image..
+@param tx The distance by which to translate each point along the <i>x</i>
+axis.
+@param ty The distance by which to translate each point along the <i>y</i>
+axis.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="clone"></a><h3><code><span class="keyword">function</span> <a href="#clone"><span class="identifier">clone</span></a>():<a class="type" href="/haxeui/docs/api/flash/geom/Matrix.html">Matrix</a></code></h3><div class="doc"><p>Returns a new Matrix object that is a clone of this matrix, with an exact
+copy of the contained object.</p>
+<p>@return A Matrix object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="concat"></a><h3><code><span class="keyword">function</span> <a href="#concat"><span class="identifier">concat</span></a>(m:<a class="type" href="/haxeui/docs/api/flash/geom/Matrix.html">Matrix</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Concatenates a matrix with the current matrix, effectively combining the
+geometric effects of the two. In mathematical terms, concatenating two
+matrixes is the same as combining them using matrix multiplication.
+<em>
+<p>For example, if matrix <code>m1</code> scales an object by a factor of
+four, and matrix <code>m2</code> rotates an object by 1.5707963267949
+radians(<code>Math.PI/2</code>), then <code>m1.concat(m2)</code>
+transforms <code>m1</code> into a matrix that scales an object by a factor
+of four and rotates the object by <code>Math.PI/2</code> radians. </p>
+</em>
+<p>This method replaces the source matrix with the concatenated matrix. If
+you want to concatenate two matrixes without altering either of the two
+source matrixes, first copy the source matrix by using the
+<code>clone()</code> method, as shown in the Class Examples section.</p></p>
+<p>@param m The matrix to be concatenated to the source matrix.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyColumnFrom"></a><h3><code><span class="keyword">function</span> <a href="#copyColumnFrom"><span class="identifier">copyColumnFrom</span></a>(column:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, vector3D:<a class="type" href="/haxeui/docs/api/flash/geom/Vector3D.html">Vector3D</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyColumnTo"></a><h3><code><span class="keyword">function</span> <a href="#copyColumnTo"><span class="identifier">copyColumnTo</span></a>(column:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, vector3D:<a class="type" href="/haxeui/docs/api/flash/geom/Vector3D.html">Vector3D</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyFrom"></a><h3><code><span class="keyword">function</span> <a href="#copyFrom"><span class="identifier">copyFrom</span></a>(sourceMatrix:<a class="type" href="/haxeui/docs/api/flash/geom/Matrix.html">Matrix</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyRowFrom"></a><h3><code><span class="keyword">function</span> <a href="#copyRowFrom"><span class="identifier">copyRowFrom</span></a>(row:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, vector3D:<a class="type" href="/haxeui/docs/api/flash/geom/Vector3D.html">Vector3D</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="copyRowTo"></a><h3><code><span class="keyword">function</span> <a href="#copyRowTo"><span class="identifier">copyRowTo</span></a>(row:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, vector3D:<a class="type" href="/haxeui/docs/api/flash/geom/Vector3D.html">Vector3D</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="createBox"></a><h3><code><span class="keyword">function</span> <a href="#createBox"><span class="identifier">createBox</span></a>(scaleX:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, scaleY:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, rotation:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, tx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ty:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Includes parameters for scaling, rotation, and translation. When applied
+to a matrix it sets the matrix's values based on those parameters.
+*
+<p>Using the <code>createBox()</code> method lets you obtain the same
+matrix as you would if you applied the <code>identity()</code>,
+<code>rotate()</code>, <code>scale()</code>, and <code>translate()</code>
+methods in succession. For example, <code>mat1.createBox(2,2,Math.PI/4,
+100, 100)</code> has the same effect as the following:</p></p>
+<p>@param scaleX   The factor by which to scale horizontally.
+@param scaleY   The factor by which scale vertically.
+@param rotation The amount to rotate, in radians.
+@param tx       The number of pixels to translate(move) to the right
+along the <i>x</i> axis.
+@param ty       The number of pixels to translate(move) down along the
+<i>y</i> axis.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="createGradientBox"></a><h3><code><span class="keyword">function</span> <a href="#createGradientBox"><span class="identifier">createGradientBox</span></a>(width:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, height:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, rotation:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, tx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ty:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates the specific style of matrix expected by the
+<code>beginGradientFill()</code> and <code>lineGradientStyle()</code>
+methods of the Graphics class. Width and height are scaled to a
+<code>scaleX</code>/<code>scaleY</code> pair and the
+<code>tx</code>/<code>ty</code> values are offset by half the width and
+height.
+<em>
+<p>For example, consider a gradient with the following
+characteristics:</p>
+</em>
+<ul>
+<li><code>GradientType.LINEAR</code></li>
+<li>Two colors, green and blue, with the ratios array set to <code>[0,
+255]</code></li>
+<li><code>SpreadMethod.PAD</code></li>
+<li><code>InterpolationMethod.LINEAR_RGB</code></li>
+</ul>
+*
+<p>The following illustrations show gradients in which the matrix was
+defined using the <code>createGradientBox()</code> method with different
+parameter settings:</p></p>
+<p>@param width    The width of the gradient box.
+@param height   The height of the gradient box.
+@param rotation The amount to rotate, in radians.
+@param tx       The distance, in pixels, to translate to the right along
+the <i>x</i> axis. This value is offset by half of the
+<code>width</code> parameter.
+@param ty       The distance, in pixels, to translate down along the
+<i>y</i> axis. This value is offset by half of the
+<code>height</code> parameter.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="deltaTransformPoint"></a><h3><code><span class="keyword">function</span> <a href="#deltaTransformPoint"><span class="identifier">deltaTransformPoint</span></a>(point:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Given a point in the pretransform coordinate space, returns the
+coordinates of that point after the transformation occurs. Unlike the
+standard transformation applied using the <code>transformPoint()</code>
+method, the <code>deltaTransformPoint()</code> method's transformation
+does not consider the translation parameters <code>tx</code> and
+<code>ty</code>.</p>
+<p>@param point The point for which you want to get the result of the matrix
+transformation.
+@return The point resulting from applying the matrix transformation.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="identity"></a><h3><code><span class="keyword">function</span> <a href="#identity"><span class="identifier">identity</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Sets each matrix property to a value that causes a null transformation. An
+object transformed by applying an identity matrix will be identical to the
+original.
+<em>
+<p>After calling the <code>identity()</code> method, the resulting matrix
+has the following properties: <code>a</code>=1, <code>b</code>=0,
+<code>c</code>=0, <code>d</code>=1, <code>tx</code>=0,
+<code>ty</code>=0.</p>
+</em>
+<p>In matrix notation, the identity matrix looks like this:</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="invert"></a><h3><code><span class="keyword">function</span> <a href="#invert"><span class="identifier">invert</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Performs the opposite transformation of the original matrix. You can apply
+an inverted matrix to an object to undo the transformation performed when
+applying the original matrix.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="rotate"></a><h3><code><span class="keyword">function</span> <a href="#rotate"><span class="identifier">rotate</span></a>(angle:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Applies a rotation transformation to the Matrix object.
+<em>
+</em> <p>The <code>rotate()</code> method alters the <code>a</code>,
+<em> <code>b</code>, <code>c</code>, and <code>d</code> properties of the
+</em> Matrix object. In matrix notation, this is the same as concatenating the
+<em> current matrix with the following:</p>
+</em> 
+* @param angle The rotation angle in radians.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="scale"></a><h3><code><span class="keyword">function</span> <a href="#scale"><span class="identifier">scale</span></a>(sx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, sy:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Applies a scaling transformation to the matrix. The <i>x</i> axis is
+multiplied by <code>sx</code>, and the <i>y</i> axis it is multiplied by
+<code>sy</code>.
+*
+<p>The <code>scale()</code> method alters the <code>a</code> and
+<code>d</code> properties of the Matrix object. In matrix notation, this
+is the same as concatenating the current matrix with the following
+matrix:</p></p>
+<p>@param sx A multiplier used to scale the object along the <i>x</i> axis.
+@param sy A multiplier used to scale the object along the <i>y</i> axis.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="setTo"></a><h3><code><span class="keyword">function</span> <a href="#setTo"><span class="identifier">setTo</span></a>(aa:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ba:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, ca:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, da:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, txa:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, tya:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="toString"></a><h3><code><span class="keyword">function</span> <a href="#toString"><span class="identifier">toString</span></a>():<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Returns a text value listing the properties of the Matrix object.</p>
+<p>@return A string containing the values of the properties of the Matrix
+object: <code>a</code>, <code>b</code>, <code>c</code>,
+<code>d</code>, <code>tx</code>, and <code>ty</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="transformPoint"></a><h3><code><span class="keyword">function</span> <a href="#transformPoint"><span class="identifier">transformPoint</span></a>(point:<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a>):<a class="type" href="/haxeui/docs/api/flash/geom/Point.html">Point</a></code></h3><div class="doc"><p>Returns the result of applying the geometric transformation represented by
+the Matrix object to the specified point.</p>
+<p>@param point The point for which you want to get the result of the Matrix
+transformation.
+@return The point resulting from applying the Matrix transformation.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="translate"></a><h3><code><span class="keyword">function</span> <a href="#translate"><span class="identifier">translate</span></a>(dx:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, dy:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Translates the matrix along the <i>x</i> and <i>y</i> axes, as specified
+by the <code>dx</code> and <code>dy</code> parameters.</p>
+<p>@param dx The amount of movement along the <i>x</i> axis to the right, in
+pixels.
+@param dy The amount of movement down along the <i>y</i> axis, in pixels.</p></div></div></div></div></div></body></html>

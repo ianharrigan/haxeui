@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>SoundLoaderContext - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.media.SoundLoaderContext</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The SoundLoaderContext class provides security checks for files that load
+<em> sound. SoundLoaderContext objects are passed as an argument to the
+</em> constructor and the <code>load()</code> method of the Sound class.
+<em>
+</em> <p>When you use this class, consider the following security model: </p>
+<em>
+</em> <ul>
+<em>   <li>Loading and playing a sound is not allowed if the calling file is in
+</em> a network sandbox and the sound file to be loaded is local.</li>
+<em>   <li>By default, loading and playing a sound is not allowed if the calling
+</em> is local and tries to load and play a remote sound. A user must grant
+<em> explicit permission to allow this.</li>
+</em>   <li>Certain operations dealing with sound are restricted. The data in a
+<em> loaded sound cannot be accessed by a file in a different domain unless you
+</em> implement a URL policy file. Sound-related APIs that fall under this
+<em> restriction are the <code>Sound.id3</code> property and the
+</em> <code>SoundMixer.computeSpectrum()</code>,
+<em> <code>SoundMixer.bufferTime</code>, and <code>SoundTransform()</code>
+</em> methods.</li>
+<em> </ul>
+</em>
+<em> <p>However, in Adobe AIR, content in the <code>application</code> security
+</em> sandbox(content installed with the AIR application) are not restricted by
+<em> these security limitations.</p>
+</em>
+<em> <p>For more information related to security, see the Flash Player Developer
+</em> Center Topic: &lt;a href="http://www.adobe.com/go/devnet<em>security</em>en"
+* scope="external">Security</a>.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="bufferTime"></a><h3><code><span class="keyword">var</span> <a href="#bufferTime"><span class="identifier">bufferTime</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The number of milliseconds to preload a streaming sound into a buffer
+before the sound starts to stream.
+*
+<p>Note that you cannot override the value of
+<code>SoundLoaderContext.bufferTime</code> by setting the global
+<code>SoundMixer.bufferTime</code> property. The
+<code>SoundMixer.bufferTime</code> property affects the buffer time for
+embedded streaming sounds in a SWF file and is independent of dynamically
+created Sound objects(that is, Sound objects created in
+ActionScript).</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="checkPolicyFile"></a><h3><code><span class="keyword">var</span> <a href="#checkPolicyFile"><span class="identifier">checkPolicyFile</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Specifies whether the application should try to download a URL policy file
+from the loaded sound's server before beginning to load the sound. This
+property applies to sound that is loaded from outside the calling file's
+own domain using the <code>Sound.load()</code> method.
+<em>
+<p>Set this property to <code>true</code> when you load a sound from
+outside the calling file's own domain and code in the calling file needs
+low-level access to the sound's data. Examples of low-level access to a
+sound's data include referencing the <code>Sound.id3</code> property to
+get an ID3Info object or calling the
+<code>SoundMixer.computeSpectrum()</code> method to get sound samples from
+the loaded sound. If you try to access sound data without setting the
+<code>checkPolicyFile</code> property to <code>true</code> at loading
+time, you may get a SecurityError exception because the required policy
+file has not been downloaded.</p>
+</em>
+<p>If you don't need low-level access to the sound data that you are
+loading, avoid setting <code>checkPolicyFile</code> to <code>true</code>.
+Checking for a policy file consumes network bandwidth and might delay the
+start of your download, so it should only be done when necessary.</p>
+<em>
+<p>When you call <code>Sound.load()</code> with
+<code>SoundLoaderContext.checkPolicyFile</code> set to <code>true</code>,
+Flash Player or AIR must either successfully download a relevant URL
+policy file or determine that no such policy file exists before it begins
+downloading the specified sound. Flash Player or AIR performs the
+following actions, in this order, to verify the existence of a policy
+file:</p>
+</em>
+<ul>
+<li>Flash Player or AIR considers policy files that have already been
+downloaded.</li>
+<li>Flash Player or AIR tries to download any pending policy files
+specified in calls to <code>Security.loadPolicyFile()</code>.</li>
+<li>Flash Player or AIR tries to download a policy file from the default
+location that corresponds to the sound's URL, which is
+<code>/crossdomain.xml</code> on the same server as
+<code>URLRequest.url</code>.(The sound's URL is specified in the
+<code>url</code> property of the URLRequest object passed to
+<code>Sound.load()</code> or the Sound() constructor function.)</li>
+</ul>
+<em>
+<p>In all cases, Flash Player or AIR requires that an appropriate policy
+file exist on the sound's server, that it provide access to the sound file
+at <code>URLRequest.url</code> by virtue of the policy file's location,
+and that it allow the domain of the calling file to access the sound,
+through one or more <code><allow-access-from></code> tags. </p>
+</em>
+<p>If you set <code>checkPolicyFile</code> to <code>true</code>, Flash
+Player or AIR waits until the policy file is verified before loading the
+sound. You should wait to perform any low-level operations on the sound
+data, such as calling <code>Sound.id3</code> or
+<code>SoundMixer.computeSpectrum()</code>, until <code>progress</code> and
+<code>complete</code> events are dispatched from the Sound object. </p>
+<em>
+<p>If you set <code>checkPolicyFile</code> to <code>true</code> but no
+appropriate policy file is found, you will not receive an error until you
+perform an operation that requires a policy file, and then Flash Player or
+AIR throws a <code>SecurityError</code> exception. After you receive a
+<code>complete</code> event, you can test whether a relevant policy file
+was found by getting the value of <code>Sound.id3</code> within a
+<code>try</code> block and seeing if a <code>SecurityError</code> is
+thrown.</p>
+</em>
+<p>Be careful with <code>checkPolicyFile</code> if you are downloading
+sound from a URL that uses server-side HTTP redirects. Flash Player or AIR
+tries to retrieve policy files that correspond to the <code>url</code>
+property of the URLRequest object passed to <code>Sound.load()</code>. If
+the final sound file comes from a different URL because of HTTP redirects,
+then the initially downloaded policy files might not be applicable to the
+sound's final URL, which is the URL that matters in security
+decisions.</p>
+<em>
+<p>If you find yourself in this situation, here is one possible solution.
+After you receive a <code>progress</code> or <code>complete</code> event,
+you can examine the value of the <code>Sound.url</code> property, which
+contains the sound's final URL. Then call the
+<code>Security.loadPolicyFile()</code> method with a policy file URL that
+you calculate based on the sound's final URL. Finally, poll the value of
+<code>Sound.id3</code> until no exception is thrown.</p>
+</em>
+<p>This does not apply to content in the AIR application sandbox. Content
+in the application sandbox always has programatic access to sound content,
+regardless of its origin.</p>
+*
+<p>For more information related to security, see the Flash Player
+Developer Center Topic: &lt;a
+href="http://www.adobe.com/go/devnet<em>security</em>en"
+scope="external">Security</a>.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(bufferTime:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, checkPolicyFile:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a new sound loader context object.</p>
+<p>@param bufferTime      The number of seconds to preload a streaming sound
+into a buffer before the sound starts to stream.
+@param checkPolicyFile Specifies whether the existence of a URL policy
+file should be checked upon loading the object
+(<code>true</code>) or not.</p></div></div></div></div></div></body></html>

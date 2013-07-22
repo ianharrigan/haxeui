@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>TextFormat - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.text.TextFormat</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The TextFormat class represents character formatting information. Use the
+<em> TextFormat class to create specific text formatting for text fields. You
+</em> can apply text formatting to both static and dynamic text fields. The
+<em> properties of the TextFormat class apply to device and embedded fonts.
+</em> However, for embedded fonts, bold and italic text actually require specific
+<em> fonts. If you want to display bold or italic text with an embedded font,
+</em> you need to embed the bold and italic variations of that font.
+<em>
+</em> <p> You must use the constructor <code>new TextFormat()</code> to create a
+<em> TextFormat object before setting its properties. When you apply a
+</em> TextFormat object to a text field using the
+<em> <code>TextField.defaultTextFormat</code> property or the
+</em> <code>TextField.setTextFormat()</code> method, only its defined properties
+<em> are applied. Use the <code>TextField.defaultTextFormat</code> property to
+</em> apply formatting BEFORE you add text to the <code>TextField</code>, and the
+<em> <code>setTextFormat()</code> method to add formatting AFTER you add text to
+</em> the <code>TextField</code>. The TextFormat properties are <code>null</code>
+<em> by default because if you don't provide values for the properties, Flash
+</em> Player uses its own default formatting. The default formatting that Flash
+<em> Player uses for each property(if property's value is <code>null</code>) is
+</em> as follows:</p>
+<em>
+</em> <p>The default formatting for each property is also described in each
+* property description.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="align"></a><h3><code><span class="keyword">var</span> <a href="#align"><span class="identifier">align</span></a>:<a class="type" href="/haxeui/docs/api/flash/text/TextFormatAlign.html">TextFormatAlign</a></code></h3><div class="doc"><p>Indicates the alignment of the paragraph. Valid values are TextFormatAlign
+constants.</p>
+<p>@default TextFormatAlign.LEFT
+@throws ArgumentError The <code>align</code> specified is not a member of
+flash.text.TextFormatAlign.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="blockIndent"></a><h3><code><span class="keyword">var</span> <a href="#blockIndent"><span class="identifier">blockIndent</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>Indicates the block indentation in pixels. Block indentation is applied to
+an entire block of text; that is, to all lines of the text. In contrast,
+normal indentation(<code>TextFormat.indent</code>) affects only the first
+line of each paragraph. If this property is <code>null</code>, the
+TextFormat object does not specify block indentation(block indentation is
+0).</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bold"></a><h3><code><span class="keyword">var</span> <a href="#bold"><span class="identifier">bold</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>&gt;</code></h3><div class="doc"><p>Specifies whether the text is boldface. The default value is
+<code>null</code>, which means no boldface is used. If the value is
+<code>true</code>, then the text is boldface.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bullet"></a><h3><code><span class="keyword">var</span> <a href="#bullet"><span class="identifier">bullet</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>&gt;</code></h3><div class="doc"><p>Indicates that the text is part of a bulleted list. In a bulleted list,
+each paragraph of text is indented. To the left of the first line of each
+paragraph, a bullet symbol is displayed. The default value is
+<code>null</code>, which means no bulleted list is used.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="color"></a><h3><code><span class="keyword">var</span> <a href="#color"><span class="identifier">color</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Int.html">Int</a>&gt;</code></h3><div class="doc"><p>Indicates the color of the text. A number containing three 8-bit RGB
+components; for example, 0xFF0000 is red, and 0x00FF00 is green. The
+default value is <code>null</code>, which means that Flash Player uses the
+color black(0x000000).</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="display"></a><h3><code><span class="keyword">var</span> <a href="#display"><span class="identifier">display</span></a>:<a class="type" href="/haxeui/docs/api/flash/text/TextFormatDisplay.html">TextFormatDisplay</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="font"></a><h3><code><span class="keyword">var</span> <a href="#font"><span class="identifier">font</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The name of the font for text in this text format, as a string. The
+default value is <code>null</code>, which means that Flash Player uses
+Times New Roman font for the text.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="indent"></a><h3><code><span class="keyword">var</span> <a href="#indent"><span class="identifier">indent</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>Indicates the indentation from the left margin to the first character in
+the paragraph. The default value is <code>null</code>, which indicates
+that no indentation is used.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="italic"></a><h3><code><span class="keyword">var</span> <a href="#italic"><span class="identifier">italic</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>&gt;</code></h3><div class="doc"><p>Indicates whether text in this text format is italicized. The default
+value is <code>null</code>, which means no italics are used.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="kerning"></a><h3><code><span class="keyword">var</span> <a href="#kerning"><span class="identifier">kerning</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>&gt;</code></h3><div class="doc"><p>A Boolean value that indicates whether kerning is enabled
+(<code>true</code>) or disabled(<code>false</code>). Kerning adjusts the
+pixels between certain character pairs to improve readability, and should
+be used only when necessary, such as with headings in large fonts. Kerning
+is supported for embedded fonts only.
+<em>
+<p>Certain fonts such as Verdana and monospaced fonts, such as Courier
+New, do not support kerning.</p>
+</em>
+<p>The default value is <code>null</code>, which means that kerning is not
+enabled.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="leading"></a><h3><code><span class="keyword">var</span> <a href="#leading"><span class="identifier">leading</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>An integer representing the amount of vertical space(called
+<i>leading</i>) between lines. The default value is <code>null</code>,
+which indicates that the amount of leading used is 0.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="leftMargin"></a><h3><code><span class="keyword">var</span> <a href="#leftMargin"><span class="identifier">leftMargin</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>The left margin of the paragraph, in pixels. The default value is
+<code>null</code>, which indicates that the left margin is 0 pixels.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="letterSpacing"></a><h3><code><span class="keyword">var</span> <a href="#letterSpacing"><span class="identifier">letterSpacing</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>A number representing the amount of space that is uniformly distributed
+between all characters. The value specifies the number of pixels that are
+added to the advance after each character. The default value is
+<code>null</code>, which means that 0 pixels of letter spacing is used.
+You can use decimal values such as <code>1.75</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="rightMargin"></a><h3><code><span class="keyword">var</span> <a href="#rightMargin"><span class="identifier">rightMargin</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>The right margin of the paragraph, in pixels. The default value is
+<code>null</code>, which indicates that the right margin is 0 pixels.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="size"></a><h3><code><span class="keyword">var</span> <a href="#size"><span class="identifier">size</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Float.html">Float</a>&gt;</code></h3><div class="doc"><p>The size in pixels of text in this text format. The default value is
+<code>null</code>, which means that a size of 12 is used.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="tabStops"></a><h3><code><span class="keyword">var</span> <a href="#tabStops"><span class="identifier">tabStops</span></a>:<a class="type" href="/haxeui/docs/api/Array.html">Array</a>&lt;<a class="type" href="/haxeui/docs/api/Int.html">Int</a>&gt;</code></h3><div class="doc"><p>Specifies custom tab stops as an array of non-negative integers. Each tab
+stop is specified in pixels. If custom tab stops are not specified
+(<code>null</code>), the default tab stop is 4(average character width).</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="target"></a><h3><code><span class="keyword">var</span> <a href="#target"><span class="identifier">target</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Indicates the target window where the hyperlink is displayed. If the
+target window is an empty string, the text is displayed in the default
+target window <code><em>self</code>. You can choose a custom name or one of
+the following four names: <code></em>self</code> specifies the current frame
+in the current window, <code><em>blank</code> specifies a new window,
+<code></em>parent</code> specifies the parent of the current frame, and
+<code>_top</code> specifies the top-level frame in the current window. If
+the <code>TextFormat.url</code> property is an empty string or
+<code>null</code>, you can get or set this property, but the property will
+have no effect.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="underline"></a><h3><code><span class="keyword">var</span> <a href="#underline"><span class="identifier">underline</span></a>:<a class="type" href="/haxeui/docs/api/Null.html">Null</a>&lt;<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>&gt;</code></h3><div class="doc"><p>Indicates whether the text that uses this text format is underlined
+(<code>true</code>) or not(<code>false</code>). This underlining is
+similar to that produced by the <code><U></code> tag, but the latter is
+not true underlining, because it does not skip descenders correctly. The
+default value is <code>null</code>, which indicates that underlining is
+not used.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="url"></a><h3><code><span class="keyword">var</span> <a href="#url"><span class="identifier">url</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Indicates the target URL for the text in this text format. If the
+<code>url</code> property is an empty string, the text does not have a
+hyperlink. The default value is <code>null</code>, which indicates that
+the text does not have a hyperlink.
+*
+<p><b>Note:</b> The text with the assigned text format must be set with
+the <code>htmlText</code> property for the hyperlink to work.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(font:<a class="type" href="/haxeui/docs/api/String.html">String</a>, size:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, color:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, bold:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>, italic:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>, underline:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>, url:<a class="type" href="/haxeui/docs/api/String.html">String</a>, target:<a class="type" href="/haxeui/docs/api/String.html">String</a>, align:<a class="type" href="/haxeui/docs/api/flash/text/TextFormatAlign.html">TextFormatAlign</a>, leftMargin:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, rightMargin:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, indent:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, leading:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a TextFormat object with the specified properties. You can then
+change the properties of the TextFormat object to change the formatting of
+text fields.
+*
+<p>Any parameter may be set to <code>null</code> to indicate that it is
+not defined. All of the parameters are optional; any omitted parameters
+are treated as <code>null</code>.</p></p>
+<p>@param font        The name of a font for text as a string.
+@param size        An integer that indicates the size in pixels.
+@param color       The color of text using this text format. A number
+containing three 8-bit RGB components; for example,
+0xFF0000 is red, and 0x00FF00 is green.
+@param bold        A Boolean value that indicates whether the text is
+boldface.
+@param italic      A Boolean value that indicates whether the text is
+italicized.
+@param underline   A Boolean value that indicates whether the text is
+underlined.
+@param url         The URL to which the text in this text format
+hyperlinks. If <code>url</code> is an empty string, the
+text does not have a hyperlink.
+@param target      The target window where the hyperlink is displayed. If
+the target window is an empty string, the text is
+displayed in the default target window
+<code>_self</code>. If the <code>url</code> parameter
+is set to an empty string or to the value
+<code>null</code>, you can get or set this property,
+but the property will have no effect.
+@param align       The alignment of the paragraph, as a TextFormatAlign
+value.
+@param leftMargin  Indicates the left margin of the paragraph, in pixels.
+@param rightMargin Indicates the right margin of the paragraph, in pixels.
+@param indent      An integer that indicates the indentation from the left
+margin to the first character in the paragraph.
+@param leading     A number that indicates the amount of leading vertical
+space between lines.</p></div></div></div></div></div></body></html>

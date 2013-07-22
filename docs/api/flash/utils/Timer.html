@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Timer - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.utils.Timer</span><span class="keyword"> extends</span> <a class="type" href="/haxeui/docs/api/flash/events/EventDispatcher.html">EventDispatcher</a></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The Timer class is the interface to timers, which let you run code on a
+<em> specified time sequence. Use the <code>start()</code> method to start a
+</em> timer. Add an event listener for the <code>timer</code> event to set up
+<em> code to be run on the timer interval.
+</em>
+<em> <p>You can create Timer objects to run once or repeat at specified
+</em> intervals to execute code on a schedule. Depending on the SWF file's
+<em> framerate or the runtime environment(available memory and other factors),
+</em> the runtime may dispatch events at slightly offset intervals. For example,
+<em> if a SWF file is set to play at 10 frames per second(fps), which is 100
+</em> millisecond intervals, but your timer is set to fire an event at 80
+<em> milliseconds, the event will be dispatched close to the 100 millisecond
+</em> interval. Memory-intensive scripts may also offset the events.</p>
+<em> 
+</em> @event timer         Dispatched whenever a Timer object reaches an interval
+<em>                      specified according to the <code>Timer.delay</code>
+</em>                      property.
+<em> @event timerComplete Dispatched whenever it has completed the number of
+</em>                      requests set by <code>Timer.repeatCount</code>.</p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="currentCount"></a><h3><code><span class="keyword">var</span> <a href="#currentCount"><span class="identifier">currentCount</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The total number of times the timer has fired since it started at zero. If
+the timer has been reset, only the fires since the reset are counted.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="delay"></a><h3><code><span class="keyword">var</span> <a href="#delay"><span class="identifier">delay</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The delay, in milliseconds, between timer events. If you set the delay
+interval while the timer is running, the timer will restart at the same
+<code>repeatCount</code> iteration.
+*
+<p><b>Note:</b> A <code>delay</code> lower than 20 milliseconds is not
+recommended. Timer frequency is limited to 60 frames per second, meaning a
+delay lower than 16.6 milliseconds causes runtime problems.</p></p>
+<p>@throws Error Throws an exception if the delay specified is negative or
+not a finite number.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="repeatCount"></a><h3><code><span class="keyword">var</span> <a href="#repeatCount"><span class="identifier">repeatCount</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The total number of times the timer is set to run. If the repeat count is
+set to 0, the timer continues forever or until the <code>stop()</code>
+method is invoked or the program stops. If the repeat count is nonzero,
+the timer runs the specified number of times. If <code>repeatCount</code>
+is set to a total that is the same or less then <code>currentCount</code>
+the timer stops and will not fire again.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="running"></a><h3><code><span class="keyword">var</span> <a href="#running"><span class="identifier">running</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>The timer's current state; <code>true</code> if the timer is running,
+otherwise <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(delay:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, repeatCount:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Constructs a new Timer object with the specified <code>delay</code> and
+<code>repeatCount</code> states.
+*
+<p>The timer does not start automatically; you must call the
+<code>start()</code> method to start it.</p></p>
+<p>@param delay       The delay between timer events, in milliseconds. A
+<code>delay</code> lower than 20 milliseconds is not
+recommended. Timer frequency is limited to 60 frames
+per second, meaning a delay lower than 16.6
+milliseconds causes runtime problems.
+@param repeatCount Specifies the number of repetitions. If zero, the timer
+repeats infinitely. If nonzero, the timer runs the
+specified number of times and then stops.
+@throws Error if the delay specified is negative or not a finite number</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="reset"></a><h3><code><span class="keyword">function</span> <a href="#reset"><span class="identifier">reset</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Stops the timer, if it is running, and sets the <code>currentCount</code>
+property back to 0, like the reset button of a stopwatch. Then, when
+<code>start()</code> is called, the timer instance runs for the specified
+number of repetitions, as set by the <code>repeatCount</code> value.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="start"></a><h3><code><span class="keyword">function</span> <a href="#start"><span class="identifier">start</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Starts the timer, if it is not already running.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="stop"></a><h3><code><span class="keyword">function</span> <a href="#stop"><span class="identifier">stop</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Stops the timer. When <code>start()</code> is called after
+<code>stop()</code>, the timer instance runs for the <i>remaining</i>
+number of repetitions, as set by the <code>repeatCount</code> property.</p></div></div></div></div></div></body></html>

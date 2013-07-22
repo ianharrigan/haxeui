@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>package display - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><h1><span class="directive">package</span> flash.display</h1><table class="table table-condensed"><tbody><tr><td width="200"><a href="/haxeui/docs/api/flash/display/ActionScriptVersion.html">ActionScriptVersion</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Bitmap.html">Bitmap</a></td><td><p>The Bitmap class represents display objects that represent bitmap images.
+<em> These can be images that you load with the <code>flash.Assets</code> or 
+</em> <code>flash.display.Loader</code> classes, or they can be images that you 
+<em> create with the <code>Bitmap()</code> constructor.
+</em>
+<em> <p>The <code>Bitmap()</code> constructor allows you to create a Bitmap
+</em> object that contains a reference to a BitmapData object. After you create a
+<em> Bitmap object, use the <code>addChild()</code> or <code>addChildAt()</code>
+</em> method of the parent DisplayObjectContainer instance to place the bitmap on
+<em> the display list.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/BitmapData.html">BitmapData</a></td><td><p>The BitmapData class lets you work with the data(pixels) of a Bitmap
+<em> object. You can use the methods of the BitmapData class to create
+</em> arbitrarily sized transparent or opaque bitmap images and manipulate them
+<em> in various ways at runtime. You can also access the BitmapData for a bitmap
+</em> image that you load with the <code>flash.Assets</code> or 
+<em> <code>flash.display.Loader</code> classes.
+</em>
+<em> <p>This class lets you separate bitmap rendering operations from the
+</em> internal display updating routines of flash. By manipulating a
+<em> BitmapData object directly, you can create complex images without incurring
+</em> the per-frame overhead of constantly redrawing the content from vector
+<em> data.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/BlendMode.html">BlendMode</a></td><td><p>A class that provides constant values for visual blend mode effects. These
+<em> constants are used in the following:
+</em> <ul>
+<em>   <li> The <code>blendMode</code> property of the
+</em> flash.display.DisplayObject class.</li>
+<em>   <li> The <code>blendMode</code> parameter of the <code>draw()</code>
+</em> method of the flash.display.BitmapData class</li>
+* </ul></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/CapsStyle.html">CapsStyle</a></td><td><p>The CapsStyle class is an enumeration of constant values that specify the
+<em> caps style to use in drawing lines. The constants are provided for use as
+</em> values in the <code>caps</code> parameter of the
+<em> <code>flash.display.Graphics.lineStyle()</code> method. You can specify the
+</em> following three types of caps:</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/ColorCorrection.html">ColorCorrection</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/ColorCorrectionSupport.html">ColorCorrectionSupport</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/DisplayObject.html">DisplayObject</a></td><td><p>The DisplayObject class is the base class for all objects that can be
+<em> placed on the display list. The display list manages all objects displayed
+</em> in flash. Use the DisplayObjectContainer class to arrange the
+<em> display objects in the display list. DisplayObjectContainer objects can
+</em> have child display objects, while other display objects, such as Shape and
+<em> TextField objects, are "leaf" nodes that have only parents and siblings, no
+</em> children.
+<em>
+</em> <p>The DisplayObject class supports basic functionality like the <i>x</i>
+<em> and <i>y</i> position of an object, as well as more advanced properties of
+</em> the object such as its transformation matrix. </p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/DisplayObjectContainer.html">DisplayObjectContainer</a></td><td><p>The DisplayObjectContainer class is the base class for all objects that can
+<em> serve as display object containers on the display list. The display list
+</em> manages all objects displayed in the Flash runtimes. Use the
+<em> DisplayObjectContainer class to arrange the display objects in the display
+</em> list. Each DisplayObjectContainer object has its own child list for
+<em> organizing the z-order of the objects. The z-order is the front-to-back
+</em> order that determines which object is drawn in front, which is behind, and
+<em> so on.
+</em>
+<em> <p>DisplayObject is an abstract base class; therefore, you cannot call
+</em> DisplayObject directly. Invoking <code>new DisplayObject()</code> throws an
+<em> <code>ArgumentError</code> exception.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/FrameLabel.html">FrameLabel</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/GradientType.html">GradientType</a></td><td><p>The GradientType class provides values for the <code>type</code> parameter
+<em> in the <code>beginGradientFill()</code> and
+</em> <code>lineGradientStyle()</code> methods of the flash.display.Graphics
+* class.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Graphics.html">Graphics</a></td><td><p>The Graphics class contains a set of methods that you can use to create a
+<em> vector shape. Display objects that support drawing include Sprite and Shape
+</em> objects. Each of these classes includes a <code>graphics</code> property
+<em> that is a Graphics object. The following are among those helper functions
+</em> provided for ease of use: <code>drawRect()</code>,
+<em> <code>drawRoundRect()</code>, <code>drawCircle()</code>, and
+</em> <code>drawEllipse()</code>.
+<em>
+</em> <p>You cannot create a Graphics object directly from ActionScript code. If
+<em> you call <code>new Graphics()</code>, an exception is thrown.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/GraphicsPathWinding.html">GraphicsPathWinding</a></td><td><p>The GraphicsPathWinding class provides values for the
+<em> <code>flash.display.GraphicsPath.winding</code> property and the
+</em> <code>flash.display.Graphics.drawPath()</code> method to determine the
+<em> direction to draw a path. A clockwise path is positively wound, and a
+</em> counter-clockwise path is negatively wound:
+<em>
+</em> <p> When paths intersect or overlap, the winding direction determines the
+* rules for filling the areas created by the intersection or overlap:</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/IBitmapDrawable.html">IBitmapDrawable</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/IGraphicsData.html">IGraphicsData</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/InteractiveObject.html">InteractiveObject</a></td><td><p>The InteractiveObject class is the abstract base class for all display
+<em> objects with which the user can interact, using the mouse, keyboard, or
+</em> other user input device.
+<em>
+</em> <p>You cannot instantiate the InteractiveObject class directly. A call to
+<em> the <code>new InteractiveObject()</code> constructor throws an
+</em> <code>ArgumentError</code> exception.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/InterpolationMethod.html">InterpolationMethod</a></td><td><p>The InterpolationMethod class provides values for the
+<em> <code>interpolationMethod</code> parameter in the
+</em> <code>Graphics.beginGradientFill()</code> and
+<em> <code>Graphics.lineGradientStyle()</code> methods. This parameter
+</em> determines the RGB space to use when rendering the gradient.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/JointStyle.html">JointStyle</a></td><td><p>The JointStyle class is an enumeration of constant values that specify the
+<em> joint style to use in drawing lines. These constants are provided for use
+</em> as values in the <code>joints</code> parameter of the
+<em> <code>flash.display.Graphics.lineStyle()</code> method. The method supports
+</em> three types of joints: miter, round, and bevel, as the following example
+* shows:</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/LineScaleMode.html">LineScaleMode</a></td><td><p>The LineScaleMode class provides values for the <code>scaleMode</code>
+* parameter in the <code>Graphics.lineStyle()</code> method.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Loader.html">Loader</a></td><td><p>The Loader class is used to load SWF files or image(JPG, PNG, or GIF)
+<em> files. Use the <code>load()</code> method to initiate loading. The loaded
+</em> display object is added as a child of the Loader object.
+<em>
+</em> <p>Use the URLLoader class to load text or binary data.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/LoaderInfo.html">LoaderInfo</a></td><td><p>The LoaderInfo class provides information about a loaded SWF file or a
+<em> loaded image file(JPEG, GIF, or PNG). LoaderInfo objects are available for
+</em> any display object. The information provided includes load progress, the
+<em> URLs of the loader and loaded content, the number of bytes total for the
+</em> media, and the nominal height and width of the media.
+<em>
+</em> <p>You can access LoaderInfo objects in two ways: </p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/MovieClip.html">MovieClip</a></td><td><p>The MovieClip class inherits from the following classes: Sprite,
+<em> DisplayObjectContainer, InteractiveObject, DisplayObject, and
+</em> EventDispatcher.
+<em>
+</em> <p>Unlike the Sprite object, a MovieClip object has a timeline.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/NativeMenu.html">NativeMenu</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/PixelSnapping.html">PixelSnapping</a></td><td><p>The PixelSnapping class is an enumeration of constant values for setting
+<em> the pixel snapping options by using the <code>pixelSnapping</code> property
+</em> of a Bitmap object.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Scene.html">Scene</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Shader.html">Shader</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/ShaderData.html">ShaderData</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/ShaderPrecision.html">ShaderPrecision</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/SpreadMethod.html">SpreadMethod</a></td><td><p>The SpreadMethod class provides values for the <code>spreadMethod</code>
+<em> parameter in the <code>beginGradientFill()</code> and
+</em> <code>lineGradientStyle()</code> methods of the Graphics class.
+<em>
+</em> <p>The following example shows the same gradient fill using various spread
+* methods:</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Sprite.html">Sprite</a></td><td><p>The Sprite class is a basic display list building block: a display list
+<em> node that can display graphics and can also contain children.
+</em>
+<em> <p>A Sprite object is similar to a movie clip, but does not have a
+</em> timeline. Sprite is an appropriate base class for objects that do not
+<em> require timelines. For example, Sprite would be a logical base class for
+</em> user interface(UI) components that typically do not use the timeline.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Stage.html">Stage</a></td><td><p>The Stage class represents the main drawing area.
+<em>
+</em> <p>For SWF content running in the browser(in Flash<sup>®</sup> Player),
+<em> the Stage represents the entire area where Flash content is shown. For
+</em> content running in AIR on desktop operating systems, each NativeWindow
+<em> object has a corresponding Stage object.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Stage3D.html">Stage3D</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/StageAlign.html">StageAlign</a></td><td><p>The StageAlign class provides constant values to use for the
+* <code>Stage.align</code> property.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/StageDisplayState.html">StageDisplayState</a></td><td><p>The StageDisplayState class provides values for the
+* <code>Stage.displayState</code> property.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/StageQuality.html">StageQuality</a></td><td><p>The StageQuality class provides values for the <code>Stage.quality</code>
+* property.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/StageScaleMode.html">StageScaleMode</a></td><td><p>The StageScaleMode class provides values for the
+* <code>Stage.scaleMode</code> property.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/TriangleCulling.html">TriangleCulling</a></td><td><p>Defines codes for culling algorithms that determine which triangles not to
+<em> render when drawing triangle paths.
+</em>
+<em> <p> The terms <code>POSITIVE</code> and <code>NEGATIVE</code> refer to the
+</em> sign of a triangle's normal along the z-axis. The normal is a 3D vector
+<em> that is perpendicular to the surface of the triangle. </p></td></tr></tbody></table></div></div></body></html>

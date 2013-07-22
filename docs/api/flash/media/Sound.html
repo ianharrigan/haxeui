@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>Sound - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.media.Sound</span><span class="keyword"> extends</span> <a class="type" href="/haxeui/docs/api/flash/events/EventDispatcher.html">EventDispatcher</a></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The Sound class lets you work with sound in an application. The Sound class
+<em> lets you create a Sound object, load and play an external MP3 file into
+</em> that object, close the sound stream, and access data about the sound, such
+<em> as information about the number of bytes in the stream and ID3 metadata.
+</em> More detailed control of the sound is performed through the sound source
+<em>  -  the SoundChannel or Microphone object for the sound  -  and through the
+</em> properties in the SoundTransform class that control the output of the sound
+<em> to the computer's speakers.
+</em>
+<em> <p>In Flash Player 10 and later and AIR 1.5 and later, you can also use
+</em> this class to work with sound that is generated dynamically. In this case,
+<em> the Sound object uses the function you assign to a <code>sampleData</code>
+</em> event handler to poll for sound data. The sound is played as it is
+<em> retrieved from a ByteArray object that you populate with sound data. You
+</em> can use <code>Sound.extract()</code> to extract sound data from a Sound
+<em> object, after which you can manipulate it before writing it back to the
+</em> stream for playback.</p>
+<em>
+</em> <p>To control sounds that are embedded in a SWF file, use the properties in
+<em> the SoundMixer class.</p>
+</em>
+<em> <p><b>Note</b>: The ActionScript 3.0 Sound API differs from ActionScript
+</em> 2.0. In ActionScript 3.0, you cannot take sound objects and arrange them in
+<em> a hierarchy to control their properties.</p>
+</em>
+<em> <p>When you use this class, consider the following security model: </p>
+</em>
+<em> <ul>
+</em>   <li>Loading and playing a sound is not allowed if the calling file is in
+<em> a network sandbox and the sound file to be loaded is local.</li>
+</em>   <li>By default, loading and playing a sound is not allowed if the calling
+<em> file is local and tries to load and play a remote sound. A user must grant
+</em> explicit permission to allow this type of access.</li>
+<em>   <li>Certain operations dealing with sound are restricted. The data in a
+</em> loaded sound cannot be accessed by a file in a different domain unless you
+<em> implement a cross-domain policy file. Sound-related APIs that fall under
+</em> this restriction are <code>Sound.id3</code>,
+<em> <code>SoundMixer.computeSpectrum()</code>,
+</em> <code>SoundMixer.bufferTime</code>, and the <code>SoundTransform</code>
+<em> class.</li>
+</em> </ul>
+<em>
+</em> <p>However, in Adobe AIR, content in the <code>application</code> security
+<em> sandbox(content installed with the AIR application) are not restricted by
+</em> these security limitations.</p>
+<em>
+</em> <p>For more information related to security, see the Flash Player Developer
+<em> Center Topic: &lt;a href="http://www.adobe.com/go/devnet<em>security</em>en"
+</em> scope="external">Security</a>.</p>
+<em> 
+</em> @event complete   Dispatched when data has loaded successfully.
+<em> @event id3        Dispatched by a Sound object when ID3 data is available
+</em>                   for an MP3 sound.
+<em> @event ioError    Dispatched when an input/output error occurs that causes
+</em>                   a load operation to fail.
+<em> @event open       Dispatched when a load operation starts.
+</em> @event progress   Dispatched when data is received as a load operation
+<em>                   progresses.
+</em> @event sampleData Dispatched when the runtime requests new audio data.</p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="bytesLoaded"></a><h3><code><span class="keyword">var</span> <a href="#bytesLoaded"><span class="identifier">bytesLoaded</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>Returns the currently available number of bytes in this sound object. This
+property is usually useful only for externally loaded files.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bytesTotal"></a><h3><code><span class="keyword">var</span> <a href="#bytesTotal"><span class="identifier">bytesTotal</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>Returns the total number of bytes in this sound object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="id3"></a><h3><code><span class="keyword">var</span> <a href="#id3"><span class="identifier">id3</span></a>:<a class="type" href="/haxeui/docs/api/flash/media/ID3Info.html">ID3Info</a></code></h3><div class="doc"><p>Provides access to the metadata that is part of an MP3 file.
+<em>
+</em> <p>MP3 sound files can contain ID3 tags, which provide metadata about the
+<em> file. If an MP3 sound that you load using the <code>Sound.load()</code>
+</em> method contains ID3 tags, you can query these properties. Only ID3 tags
+<em> that use the UTF-8 character set are supported.</p>
+</em>
+<em> <p>Flash Player 9 and later and AIR support ID3 2.0 tags, specifically 2.3
+</em> and 2.4. The following tables list the standard ID3 2.0 tags and the type
+<em> of content the tags represent. The <code>Sound.id3</code> property
+</em> provides access to these tags through the format
+<em> <code>my<em>sound.id3.COMM</code>, <code>my</em>sound.id3.TIME</code>, and so on.
+</em> The first table describes tags that can be accessed either through the ID3
+<em> 2.0 property name or the ActionScript property name. The second table
+</em> describes ID3 tags that are supported but do not have predefined
+<em> properties in ActionScript. </p>
+</em>
+<em> <p>When using this property, consider the Flash Player security model:</p>
+</em>
+<em> <ul>
+</em>   <li>The <code>id3</code> property of a Sound object is always permitted
+<em> for SWF files that are in the same security sandbox as the sound file. For
+</em> files in other sandboxes, there are security checks.</li>
+<em>   <li>When you load the sound, using the <code>load()</code> method of the
+</em> Sound class, you can specify a <code>context</code> parameter, which is a
+<em> SoundLoaderContext object. If you set the <code>checkPolicyFile</code>
+</em> property of the SoundLoaderContext object to <code>true</code>, Flash
+<em> Player checks for a URL policy file on the server from which the sound is
+</em> loaded. If a policy file exists and permits access from the domain of the
+<em> loading SWF file, then the file is allowed to access the <code>id3</code>
+</em> property of the Sound object; otherwise it is not.</li>
+<em> </ul>
+</em>
+<em> <p>However, in Adobe AIR, content in the <code>application</code> security
+</em> sandbox(content installed with the AIR application) are not restricted by
+<em> these security limitations.</p>
+</em>
+<em> <p>For more information related to security, see the Flash Player
+</em> Developer Center Topic: &lt;a
+<em> href="http://www.adobe.com/go/devnet<em>security</em>en"
+</em> scope="external">Security</a>.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="isBuffering"></a><h3><code><span class="keyword">var</span> <a href="#isBuffering"><span class="identifier">isBuffering</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Returns the buffering state of external MP3 files. If the value is
+<code>true</code>, any playback is currently suspended while the object
+waits for more data.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="isURLInaccessible"></a><h3><code><span class="keyword">var</span> <a href="#isURLInaccessible"><span class="identifier">isURLInaccessible</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Indicates if the <code>Sound.url</code> property has been truncated. When
+the <code>isURLInaccessible</code> value is <code>true</code> the
+<code>Sound.url</code> value is only the domain of the final URL from
+which the sound loaded. For example, the property is truncated if the
+sound is loaded from <code>http://www.adobe.com/assets/hello.mp3</code>,
+and the <code>Sound.url</code> property has the value
+<code>http://www.adobe.com</code>. The <code>isURLInaccessible</code>
+value is <code>true</code> only when all of the following are also true:
+<ul>
+<li>An HTTP redirect occurred while loading the sound file.</li>
+<li>The SWF file calling <code>Sound.load()</code> is from a different
+domain than the sound file's final URL.</li>
+<li>The SWF file calling <code>Sound.load()</code> does not have
+permission to access the sound file. Permission is granted to access the
+sound file the same way permission is granted for the
+<code>Sound.id3</code> property: establish a policy file and use the
+<code>SoundLoaderContext.checkPolicyFile</code> property.</li>
+</ul>
+<em>
+<p><b>Note:</b> The <code>isURLInaccessible</code> property was added for
+Flash Player 10.1 and AIR 2.0. However, this property is made available to
+SWF files of all versions when the Flash runtime supports it. So, using
+some authoring tools in "strict mode" causes a compilation error. To work
+around the error use the indirect syntax
+<code>mySound["isURLInaccessible"]</code>, or disable strict mode. If you
+are using Flash Professional CS5 or Flex SDK 4.1, you can use and compile
+this API for runtimes released before Flash Player 10.1 and AIR 2.</p>
+</em>
+<p>For application content in AIR, the value of this property is always
+<code>false</code>.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="length"></a><h3><code><span class="keyword">var</span> <a href="#length"><span class="identifier">length</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The length of the current sound in milliseconds.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="url"></a><h3><code><span class="keyword">var</span> <a href="#url"><span class="identifier">url</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The URL from which this sound was loaded. This property is applicable only
+to Sound objects that were loaded using the <code>Sound.load()</code>
+method. For Sound objects that are associated with a sound asset from a
+SWF file's library, the value of the <code>url</code> property is
+<code>null</code>.
+<em>
+<p>When you first call <code>Sound.load()</code>, the <code>url</code>
+property initially has a value of <code>null</code>, because the final URL
+is not yet known. The <code>url</code> property will have a non-null value
+as soon as an <code>open</code> event is dispatched from the Sound
+object.</p>
+</em>
+<p>The <code>url</code> property contains the final, absolute URL from
+which a sound was loaded. The value of <code>url</code> is usually the
+same as the value passed to the <code>stream</code> parameter of
+<code>Sound.load()</code>. However, if you passed a relative URL to
+<code>Sound.load()</code> the value of the <code>url</code> property
+represents the absolute URL. Additionally, if the original URL request is
+redirected by an HTTP server, the value of the <code>url</code> property
+reflects the final URL from which the sound file was actually downloaded.
+This reporting of an absolute, final URL is equivalent to the behavior of
+<code>LoaderInfo.url</code>.</p>
+*
+<p>In some cases, the value of the <code>url</code> property is truncated;
+see the <code>isURLInaccessible</code> property for details.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(stream:<a class="type" href="/haxeui/docs/api/flash/net/URLRequest.html">URLRequest</a>, context:<a class="type" href="/haxeui/docs/api/flash/media/SoundLoaderContext.html">SoundLoaderContext</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a new Sound object. If you pass a valid URLRequest object to the
+Sound constructor, the constructor automatically calls the
+<code>load()</code> function for the Sound object. If you do not pass a
+valid URLRequest object to the Sound constructor, you must call the
+<code>load()</code> function for the Sound object yourself, or the stream
+will not load.
+*
+<p>Once <code>load()</code> is called on a Sound object, you can't later
+load a different sound file into that Sound object. To load a different
+sound file, create a new Sound object.</p>
+In Flash Player 10 and later and AIR 1.5 and later, instead of using
+<code>load()</code>, you can use the <code>sampleData</code> event handler
+to load sound dynamically into the Sound object.</p>
+<p>@param stream  The URL that points to an external MP3 file.
+@param context An optional SoundLoader context object, which can define
+the buffer time(the minimum number of milliseconds of MP3
+data to hold in the Sound object's buffer) and can specify
+whether the application should check for a cross-domain
+policy file prior to loading the sound.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="close"></a><h3><code><span class="keyword">function</span> <a href="#close"><span class="identifier">close</span></a>():<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Closes the stream, causing any download of data to cease. No data may be
+read from the stream after the <code>close()</code> method is called.</p>
+<p>@throws IOError The stream could not be closed, or the stream was not
+open.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="extract"></a><h3><code><span class="keyword">function</span> <a href="#extract"><span class="identifier">extract</span></a>(target:<a class="type" href="/haxeui/docs/api/flash/utils/ByteArray.html">ByteArray</a>, length:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, startPosition:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>Extracts raw sound data from a Sound object.
+<em>
+</em> <p>This method is designed to be used when you are working with
+<em> dynamically generated audio, using a function you assign to the
+</em> <code>sampleData</code> event for a different Sound object. That is, you
+<em> can use this method to extract sound data from a Sound object. Then you
+</em> can write the data to the byte array that another Sound object is using to
+<em> stream dynamic audio.</p>
+</em>
+<em> <p>The audio data is placed in the target byte array starting from the
+</em> current position of the byte array. The audio data is always exposed as
+<em> 44100 Hz Stereo. The sample type is a 32-bit floating-point value, which
+</em> can be converted to a Number using <code>ByteArray.readFloat()</code>.
+<em> </p>
+</em> 
+<em> @param target A ByteArray object in which the extracted sound samples are
+</em>               placed.
+<em> @param length The number of sound samples to extract. A sample contains
+</em>               both the left and right channels  -  that is, two 32-bit
+<em>               floating-point values.
+</em> @return The number of samples written to the ByteArray specified in the
+*         <code>target</code> parameter.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="load"></a><h3><code><span class="keyword">function</span> <a href="#load"><span class="identifier">load</span></a>(stream:<a class="type" href="/haxeui/docs/api/flash/net/URLRequest.html">URLRequest</a>, context:<a class="type" href="/haxeui/docs/api/flash/media/SoundLoaderContext.html">SoundLoaderContext</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Initiates loading of an external MP3 file from the specified URL. If you
+provide a valid URLRequest object to the Sound constructor, the
+constructor calls <code>Sound.load()</code> for you. You only need to call
+<code>Sound.load()</code> yourself if you don't pass a valid URLRequest
+object to the Sound constructor or you pass a <code>null</code> value.
+<em>
+<p>Once <code>load()</code> is called on a Sound object, you can't later
+load a different sound file into that Sound object. To load a different
+sound file, create a new Sound object.</p>
+</em>
+<p>When using this method, consider the following security model:</p>
+<em>
+<ul>
+<li>Calling <code>Sound.load()</code> is not allowed if the calling file
+is in the local-with-file-system sandbox and the sound is in a network
+sandbox.</li>
+<li>Access from the local-trusted or local-with-networking sandbox
+requires permission from a website through a URL policy file.</li>
+<li>You cannot connect to commonly reserved ports. For a complete list
+of blocked ports, see "Restricting Networking APIs" in the <i>ActionScript
+3.0 Developer's Guide</i>.</li>
+<li>You can prevent a SWF file from using this method by setting the
+<code>allowNetworking</code> parameter of the <code>object</code> and
+<code>embed</code> tags in the HTML page that contains the SWF
+content.</li>
+</ul>
+</em>
+<p> In Flash Player 10 and later, if you use a multipart Content-Type(for
+example "multipart/form-data") that contains an upload(indicated by a
+"filename" parameter in a "content-disposition" header within the POST
+body), the POST operation is subject to the security rules applied to
+uploads:</p>
+<em>
+<ul>
+<li>The POST operation must be performed in response to a user-initiated
+action, such as a mouse click or key press.</li>
+<li>If the POST operation is cross-domain(the POST target is not on the
+same server as the SWF file that is sending the POST request), the target
+server must provide a URL policy file that permits cross-domain
+access.</li>
+</ul>
+</em>
+<p>Also, for any multipart Content-Type, the syntax must be valid
+(according to the RFC2046 standards). If the syntax appears to be invalid,
+the POST operation is subject to the security rules applied to
+uploads.</p>
+<em>
+<p>In Adobe AIR, content in the <code>application</code> security sandbox
+(content installed with the AIR application) are not restricted by these
+security limitations.</p>
+</em>
+<p>For more information related to security, see the Flash Player
+Developer Center Topic: &lt;a
+href="http://www.adobe.com/go/devnet<em>security</em>en"
+scope="external">Security</a>.</p></p>
+<p>@param stream  A URL that points to an external MP3 file.
+@param context An optional SoundLoader context object, which can define
+the buffer time(the minimum number of milliseconds of MP3
+data to hold in the Sound object's buffer) and can specify
+whether the application should check for a cross-domain
+policy file prior to loading the sound.
+@throws IOError       A network error caused the load to fail.
+@throws IOError       The <code>digest</code> property of the
+<code>stream</code> object is not <code>null</code>.
+You should only set the <code>digest</code> property
+of a URLRequest object when calling the
+<code>URLLoader.load()</code> method when loading a
+SWZ file(an Adobe platform component).
+@throws SecurityError Local untrusted files may not communicate with the
+Internet. You can work around this by reclassifying
+this file as local-with-networking or trusted.
+@throws SecurityError You cannot connect to commonly reserved ports. For a
+complete list of blocked ports, see "Restricting
+Networking APIs" in the <i>ActionScript 3.0
+Developer's Guide</i>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="loadCompressedDataFromByteArray"></a><h3><code><span class="keyword">function</span> <a href="#loadCompressedDataFromByteArray"><span class="identifier">loadCompressedDataFromByteArray</span></a>(bytes:<a class="type" href="/haxeui/docs/api/flash/utils/ByteArray.html">ByteArray</a>, bytesLength:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="loadPCMFromByteArray"></a><h3><code><span class="keyword">function</span> <a href="#loadPCMFromByteArray"><span class="identifier">loadPCMFromByteArray</span></a>(bytes:<a class="type" href="/haxeui/docs/api/flash/utils/ByteArray.html">ByteArray</a>, samples:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, format:<a class="type" href="/haxeui/docs/api/String.html">String</a>, stereo:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>, sampleRate:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="play"></a><h3><code><span class="keyword">function</span> <a href="#play"><span class="identifier">play</span></a>(startTime:<a class="type" href="/haxeui/docs/api/Float.html">Float</a>, loops:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, sndTransform:<a class="type" href="/haxeui/docs/api/flash/media/SoundTransform.html">SoundTransform</a>):<a class="type" href="/haxeui/docs/api/flash/media/SoundChannel.html">SoundChannel</a></code></h3><div class="doc"><p>Generates a new SoundChannel object to play back the sound. This method
+returns a SoundChannel object, which you access to stop the sound and to
+monitor volume.(To control the volume, panning, and balance, access the
+SoundTransform object assigned to the sound channel.)</p>
+<p>@param startTime    The initial position in milliseconds at which playback
+should start.
+@param loops        Defines the number of times a sound loops back to the
+<code>startTime</code> value before the sound channel
+stops playback.
+@param sndTransform The initial SoundTransform object assigned to the
+sound channel.
+@return A SoundChannel object, which you use to control the sound. This
+method returns <code>null</code> if you have no sound card or if
+you run out of available sound channels. The maximum number of
+sound channels available at once is 32.</p></div></div></div></div></div></body></html>

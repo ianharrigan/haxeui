@@ -101,7 +101,7 @@ class Accordion extends VBox {
 				c.percentHeight = -1;
 				c.clipHeight = c.height;
 				Actuate.tween(c, .2, { height: 0, clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
-					//c.clearClip();
+					c.clearClip();
 					panel.percentHeight = 100;
 					invalidate(InvalidationFlag.SIZE);
 					button.selected = false;
@@ -146,6 +146,7 @@ class Accordion extends VBox {
 			c.visible = true;
 			
 			Actuate.tween(c, .2, { height: ucy, clipHeight: ucy }, true).ease(Linear.easeNone).onComplete(function() {
+				c.clearClip();
 				c.percentHeight = 100;
 				invalidate(InvalidationFlag.SIZE);
 				if (buttonToHide != null) {

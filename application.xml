@@ -34,7 +34,7 @@
 	<haxeflag name="-dce std" if="haxe3" />
 
 	<haxeflag name="-lib" value="hscript" />
-	<!--haxeflag name="-xml" value="docs/nme-ui-toolkit.xml" /-->
+	<haxeflag name="-xml" value="docs/haxeui-ui-toolkit.xml" />
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/test02.xml@ui/test02.xml" />
 

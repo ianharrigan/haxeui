@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>URLRequest - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.net.URLRequest</span></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The URLRequest class captures all of the information in a single HTTP
+<em> request. URLRequest objects are passed to the <code>load()</code> methods
+</em> of the Loader, URLStream, and URLLoader classes, and to other loading
+<em> operations, to initiate URL downloads. They are also passed to the
+</em> <code>upload()</code> and <code>download()</code> methods of the
+<em> FileReference class.
+</em>
+<em> <p>A SWF file in the local-with-filesystem sandbox may not load data from,
+</em> or provide data to, a resource that is in the network sandbox. </p>
+<em>
+</em> <p>By default, the calling SWF file and the URL you load must be in the
+<em> same domain. For example, a SWF file at www.adobe.com can load data only
+</em> from sources that are also at www.adobe.com. To load data from a different
+<em> domain, place a URL policy file on the server hosting the data.</p>
+</em>
+<em> <p> However, in Adobe AIR, content in the application security sandbox
+</em> (content installed with the AIR application) is not restricted by these
+<em> security limitations. For content running in Adobe AIR, files in the
+</em> application security sandbox can access URLs using any of the following URL
+<em> schemes:</p>
+</em>
+<em> <ul>
+</em>   <li><code>http</code> and <code>https</code> </li>
+<em>   <li><code>file</code> </li>
+</em>   <li><code>app-storage</code> </li>
+<em>   <li><code>app</code> </li>
+</em> </ul>
+<em>
+</em> <p>Content running in Adobe AIR that is not in the application security
+<em> sandbox observes the same restrictions as content running in the browser
+</em> (in Flash Player), and loading is governed by the content's domain and any
+<em> permissions granted in URL policy files.</p>
+</em>
+<em> <p>For more information related to security, see the Flash Player Developer
+</em> Center Topic: &lt;a href="http://www.adobe.com/go/devnet<em>security</em>en"
+* scope="external">Security</a>.</p></p></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="contentType"></a><h3><code><span class="keyword">var</span> <a href="#contentType"><span class="identifier">contentType</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The MIME content type of the content in the the <code>data</code>
+property.
+<em>
+<p>The default value is
+<code>application/x-www-form-urlencoded</code>.</p>
+</em>
+<p><b>Note</b>:The <code>FileReference.upload()</code>,
+<code>FileReference.download()</code>, and <code>HTMLLoader.load()</code>
+methods do not support the <code>URLRequest.contentType</code>
+property.</p>
+<em>
+<p>When sending a POST request, the values of the <code>contentType</code>
+and <code>data</code> properties must correspond properly. The value of
+the <code>contentType</code> property instructs servers on how to
+interpret the value of the <code>data</code> property. </p>
+</em>
+<ul>
+<li>If the value of the <code>data</code> property is a URLVariables
+object, the value of <code>contentType</code> must be
+<code>application/x-www-form-urlencoded</code>. </li>
+<li> If the value of the <code>data</code> property is any other type,
+the value of <code>contentType</code> should indicate the type of the POST
+data that will be sent(which is the binary or string data contained in
+the value of the <code>data</code> property). </li>
+<li>For <code>FileReference.upload()</code>, the Content-Type of the
+request is set automatically to <code>multipart/form-data</code>, and the
+value of the <code>contentType</code> property is ignored.</li>
+</ul>
+<em>
+<p> In Flash Player 10 and later, if you use a multipart Content-Type(for
+example "multipart/form-data") that contains an upload(indicated by a
+"filename" parameter in a "content-disposition" header within the POST
+body), the POST operation is subject to the security rules applied to
+uploads:</p>
+</em>
+<ul>
+<li>The POST operation must be performed in response to a user-initiated
+action, such as a mouse click or key press.</li>
+<li>If the POST operation is cross-domain(the POST target is not on the
+same server as the SWF file that is sending the POST request), the target
+server must provide a URL policy file that permits cross-domain
+access.</li>
+</ul>
+*
+<p>Also, for any multipart Content-Type, the syntax must be valid
+(according to the RFC2046 standards). If the syntax appears to be invalid,
+the POST operation is subject to the security rules applied to
+uploads.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="data"></a><h3><code><span class="keyword">var</span> <a href="#data"><span class="identifier">data</span></a>:<a class="type" href="/haxeui/docs/api/Dynamic.html">Dynamic</a></code></h3><div class="doc"><p>An object containing data to be transmitted with the URL request.
+<em>
+</em> <p>This property is used in conjunction with the <code>method</code>
+<em> property. When the value of <code>method</code> is <code>GET</code>, the
+</em> value of <code>data</code> is appended to the value of
+<em> <code>URLRequest.url</code>, using HTTP query-string syntax. When the
+</em> <code>method</code> value is <code>POST</code>(or any value other than
+<em> <code>GET</code>), the value of <code>data</code> is transmitted in the
+</em> body of the HTTP request.</p>
+<em>
+</em> <p>The URLRequest API offers binary <code>POST</code> support and support
+<em> for URL-encoded variables, as well as support for strings. The data object
+</em> can be a ByteArray, URLVariables, or String object.</p>
+<em>
+</em> <p>The way in which the data is used depends on the type of object
+<em> used:</p>
+</em>
+<em> <ul>
+</em>   <li>If the object is a ByteArray object, the binary data of the
+<em> ByteArray object is used as <code>POST</code> data. For <code>GET</code>,
+</em> data of ByteArray type is not supported. Also, data of ByteArray type is
+<em> not supported for <code>FileReference.upload()</code> and
+</em> <code>FileReference.download()</code>.</li>
+<em>   <li>If the object is a URLVariables object and the method is
+</em> <code>POST</code>, the variables are encoded using
+<em> <i>x-www-form-urlencoded</i> format and the resulting string is used as
+</em> <code>POST</code> data. An exception is a call to
+<em> <code>FileReference.upload()</code>, in which the variables are sent as
+</em> separate fields in a <code>multipart/form-data</code> post.</li>
+<em>   <li>If the object is a URLVariables object and the method is
+</em> <code>GET</code>, the URLVariables object defines variables to be sent
+<em> with the URLRequest object.</li>
+</em>   <li>Otherwise, the object is converted to a string, and the string is
+<em> used as the <code>POST</code> or <code>GET</code> data.</li>
+</em> </ul>
+<em>
+</em> <p>This data is not sent until a method, such as
+<em> <code>navigateToURL()</code> or <code>FileReference.upload()</code>, uses
+</em> the URLRequest object.</p>
+<em>
+</em> <p><b>Note</b>: The value of <code>contentType</code> must correspond to
+<em> the type of data in the <code>data</code> property. See the note in the
+</em> description of the <code>contentType</code> property.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="digest"></a><h3><code><span class="keyword">var</span> <a href="#digest"><span class="identifier">digest</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>A string that uniquely identifies the signed Adobe platform component to
+be stored to(or retrieved from) the Flash Player cache. An Adobe platform
+component is a signed file(a SWZ file) that contains SWF content that is
+cached persistently on a user's machine. All SWZ files are signed by
+Adobe. A digest corresponds to a single cached file; if you change the
+file in any way, its digest will change in an unpredictable way. By using
+a digest, you can verify the cached file across multiple domains. Two
+files with the same digest are the same file, and two files with different
+digests are not the same file. A file cannot(practically) be created to
+"spoof" a digest and pretend to be another digest.
+<em>
+<p>The digest is based on an SHA-256 message digest algorithm(64
+characters long in hexadecimal format).</p>
+</em>
+<p>For example, the Flex SDK includes a SWZ for the Flex framework(and it
+provides the digest string for that SWZ file). You can post this SWZ on
+your web server and load it in your SWF file(using the
+<code>load()</code> method of a URLLoader object). If the end user's
+machine already has the matching SWZ file cached, the application uses the
+cached SWZ file.(A SWZ file matches if its <code>digest</code> matches
+the one you provide.) Otherwise, the application downloads the SWZ file
+from the URL you specify. </p>
+*
+<p>Only set the <code>digest</code> parameter in a URLRequest object used
+in a call to the <code>URLLoader.load()</code> method to load a SWZ file.
+If the <code>digest</code> property of a a URLRequest object is set when
+it is used in other methods, the application throws an IOError
+exception.</p></p>
+<p>@throws ArgumentError The digest provided does not match the digest of the
+file that is extracted from the downloaded signed
+file or the signed file loaded out of the cache. The
+application also throws this error if the provided
+digest is the wrong length or contains invalid
+(nonhexadecimal) characters.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="method"></a><h3><code><span class="keyword">var</span> <a href="#method"><span class="identifier">method</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>Controls the HTTP form submission method.
+<em>
+</em> <p>For SWF content running in Flash Player(in the browser), this property
+<em> is limited to GET or POST operations, and valid values are
+</em> <code>URLRequestMethod.GET</code> or
+<em> <code>URLRequestMethod.POST</code>.</p>
+</em>
+<em> <p>For content running in Adobe AIR, you can use any string value if the
+</em> content is in the application security sandbox. Otherwise, as with content
+<em> running in Flash Player, you are restricted to using GET or POST
+</em> operations.</p>
+<em>
+</em> <p>For content running in Adobe AIR, when using the
+<em> <code>navigateToURL()</code> function, the runtime treats a URLRequest
+</em> that uses the POST method(one that has its <code>method</code> property
+<em> set to <code>URLRequestMethod.POST</code>) as using the GET method.</p>
+</em>
+<em> <p><b>Note:</b> If running in Flash Player and the referenced form has no
+</em> body, Flash Player automatically uses a GET operation, even if the method
+<em> is set to <code>URLRequestMethod.POST</code>. For this reason, it is
+</em> recommended to always include a "dummy" body to ensure that the correct
+<em> method is used.</p>
+</em> 
+<em> @default URLRequestMethod.GET
+</em> @throws ArgumentError If the <code>value</code> parameter is not
+<em>                       <code>URLRequestMethod.GET</code> or
+</em>                       <code>URLRequestMethod.POST</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="requestHeaders"></a><h3><code><span class="keyword">var</span> <a href="#requestHeaders"><span class="identifier">requestHeaders</span></a>:<a class="type" href="/haxeui/docs/api/Array.html">Array</a>&lt;<a class="type" href="/haxeui/docs/api/flash/net/URLRequestHeader.html">URLRequestHeader</a>&gt;</code></h3><div class="doc"><p>The array of HTTP request headers to be appended to the HTTP request. The
+array is composed of URLRequestHeader objects. Each object in the array
+must be a URLRequestHeader object that contains a name string and a value
+string, as follows:
+<em>
+<p>Flash Player and the AIR runtime impose certain restrictions on request
+headers; for more information, see the URLRequestHeader class
+description.</p>
+</em>
+<p>Not all methods that accept URLRequest parameters support the
+<code>requestHeaders</code> property, consult the documentation for the
+method you are calling. For example, the
+<code>FileReference.upload()</code> and
+<code>FileReference.download()</code> methods do not support the
+<code>URLRequest.requestHeaders</code> property.</p>
+*
+<p>Due to browser limitations, custom HTTP request headers are only
+supported for <code>POST</code> requests, not for <code>GET</code>
+requests.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="url"></a><h3><code><span class="keyword">var</span> <a href="#url"><span class="identifier">url</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The URL to be requested.
+<em>
+</em> <p>Be sure to encode any characters that are either described as unsafe in
+<em> the Uniform Resource Locator specification(see
+</em> http://www.faqs.org/rfcs/rfc1738.html) or that are reserved in the URL
+<em> scheme of the URLRequest object(when not used for their reserved
+</em> purpose). For example, use <code>"%25"</code> for the percent(%) symbol
+<em> and <code>"%23"</code> for the number sign(#), as in
+</em> <code>"http://www.example.com/orderForm.cfm?item=%23B-3&amp;discount=50%25"</code>.</p>
+<em>
+</em> <p>By default, the URL must be in the same domain as the calling file,
+<em> unless the content is running in the Adobe AIR application security
+</em> sandbox. If you need to load data from a different domain, put a URL
+<em> policy file on the server that is hosting the data. For more information,
+</em> see the description of the URLRequest class.</p>
+<em>
+</em> <p>For content running in Adobe AIR, files in the application security
+<em> sandobx  -  files installed with the AIR application  -  can access URLs
+</em> using any of the following URL schemes:</p>
+<em>
+</em> <ul>
+<em>   <li><code>http</code> and <code>https</code> </li>
+</em>   <li><code>file</code> </li>
+<em>   <li><code>app-storage</code> </li>
+</em>   <li><code>app</code> </li>
+<em> </ul>
+</em>
+<em> <p><b>Note:</b> IPv6(Internet Protocol version 6) is supported in AIR and
+</em> in Flash Player 9.0.115.0 and later. IPv6 is a version of Internet
+<em> Protocol that supports 128-bit addresses(an improvement on the earlier
+</em> IPv4 protocol that supports 32-bit addresses). You might need to activate
+<em> IPv6 on your networking interfaces. For more information, see the Help for
+</em> the operating system hosting the data. If IPv6 is supported on the hosting
+<em> system, you can specify numeric IPv6 literal addresses in URLs enclosed in
+</em> brackets([]), as in the following. </p>
+<em> <pre xml:space="preserve">
+</em> rtmp://[2001:db8:ccc3:ffff:0:444d:555e:666f]:1935/test </pre></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(url:<a class="type" href="/haxeui/docs/api/String.html">String</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Creates a URLRequest object. If <code>System.useCodePage</code> is
+<code>true</code>, the request is encoded using the system code page,
+rather than Unicode. If <code>System.useCodePage</code> is
+<code>false</code>, the request is encoded using Unicode, rather than the
+system code page.</p>
+<p>@param url The URL to be requested. You can set the URL later by using the
+<code>url</code> property.</p></div></div></div></div></div></body></html>

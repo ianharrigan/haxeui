@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>EventDispatcher - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.events.EventDispatcher</span><span class="keyword"> implements</span> <a class="type" href="/haxeui/docs/api/flash/events/IEventDispatcher.html">IEventDispatcher</a></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The EventDispatcher class is the base class for all classes that dispatch
+<em> events. The EventDispatcher class implements the IEventDispatcher interface
+</em> and is the base class for the DisplayObject class. The EventDispatcher
+<em> class allows any object on the display list to be an event target and as
+</em> such, to use the methods of the IEventDispatcher interface.
+<em>
+</em> <p>Event targets are an important part of the Flash<sup>®</sup> Player and
+<em> Adobe<sup>®</sup> AIR<sup>®</sup> event model. The event target serves as
+</em> the focal point for how events flow through the display list hierarchy.
+<em> When an event such as a mouse click or a keypress occurs, Flash Player or
+</em> the AIR application dispatches an event object into the event flow from the
+<em> root of the display list. The event object then makes its way through the
+</em> display list until it reaches the event target, at which point it begins
+<em> its return trip through the display list. This round-trip journey to the
+</em> event target is conceptually divided into three phases: the capture phase
+<em> comprises the journey from the root to the last node before the event
+</em> target's node, the target phase comprises only the event target node, and
+<em> the bubbling phase comprises any subsequent nodes encountered on the return
+</em> trip to the root of the display list.</p>
+<em>
+</em> <p>In general, the easiest way for a user-defined class to gain event
+<em> dispatching capabilities is to extend EventDispatcher. If this is
+</em> impossible(that is, if the class is already extending another class), you
+<em> can instead implement the IEventDispatcher interface, create an
+</em> EventDispatcher member, and write simple hooks to route calls into the
+<em> aggregated EventDispatcher.</p>
+</em> 
+<em> @event activate   [broadcast event] Dispatched when the Flash Player or AIR
+</em>                   application gains operating system focus and becomes
+<em>                   active. This event is a broadcast event, which means that
+</em>                   it is dispatched by all EventDispatcher objects with a
+<em>                   listener registered for this event. For more information
+</em>                   about broadcast events, see the DisplayObject class.
+<em> @event deactivate [broadcast event] Dispatched when the Flash Player or AIR
+</em>                   application operating loses system focus and is becoming
+<em>                   inactive. This event is a broadcast event, which means
+</em>                   that it is dispatched by all EventDispatcher objects with
+<em>                   a listener registered for this event. For more
+</em>                   information about broadcast events, see the DisplayObject
+*                   class.</p></div><div><h2>Sub classes:</h2><table class="table table-condensed"><tbody><tr><td width="200"><a href="/haxeui/docs/api/flash/display/DisplayObject.html">DisplayObject</a></td><td><p>The DisplayObject class is the base class for all objects that can be
+<em> placed on the display list. The display list manages all objects displayed
+</em> in flash. Use the DisplayObjectContainer class to arrange the
+<em> display objects in the display list. DisplayObjectContainer objects can
+</em> have child display objects, while other display objects, such as Shape and
+<em> TextField objects, are "leaf" nodes that have only parents and siblings, no
+</em> children.
+<em>
+</em> <p>The DisplayObject class supports basic functionality like the <i>x</i>
+<em> and <i>y</i> position of an object, as well as more advanced properties of
+</em> the object such as its transformation matrix. </p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/FrameLabel.html">FrameLabel</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/LoaderInfo.html">LoaderInfo</a></td><td><p>The LoaderInfo class provides information about a loaded SWF file or a
+<em> loaded image file(JPEG, GIF, or PNG). LoaderInfo objects are available for
+</em> any display object. The information provided includes load progress, the
+<em> URLs of the loader and loaded content, the number of bytes total for the
+</em> media, and the nominal height and width of the media.
+<em>
+</em> <p>You can access LoaderInfo objects in two ways: </p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/NativeMenu.html">NativeMenu</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display/Stage3D.html">Stage3D</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display3D/textures/TextureBase.html">TextureBase</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/display3D/Context3D.html">Context3D</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/events/UncaughtErrorEvents.html">UncaughtErrorEvents</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/AVSource.html">AVSource</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/AVStream.html">AVStream</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/Camera.html">Camera</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/Microphone.html">Microphone</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/Sound.html">Sound</a></td><td><p>The Sound class lets you work with sound in an application. The Sound class
+<em> lets you create a Sound object, load and play an external MP3 file into
+</em> that object, close the sound stream, and access data about the sound, such
+<em> as information about the number of bytes in the stream and ID3 metadata.
+</em> More detailed control of the sound is performed through the sound source
+<em>  -  the SoundChannel or Microphone object for the sound  -  and through the
+</em> properties in the SoundTransform class that control the output of the sound
+<em> to the computer's speakers.
+</em>
+<em> <p>In Flash Player 10 and later and AIR 1.5 and later, you can also use
+</em> this class to work with sound that is generated dynamically. In this case,
+<em> the Sound object uses the function you assign to a <code>sampleData</code>
+</em> event handler to poll for sound data. The sound is played as it is
+<em> retrieved from a ByteArray object that you populate with sound data. You
+</em> can use <code>Sound.extract()</code> to extract sound data from a Sound
+<em> object, after which you can manipulate it before writing it back to the
+</em> stream for playback.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/SoundChannel.html">SoundChannel</a></td><td><p>The SoundChannel class controls a sound in an application. Every sound is
+<em> assigned to a sound channel, and the application can have multiple sound
+</em> channels that are mixed together. The SoundChannel class contains a
+<em> <code>stop()</code> method, properties for monitoring the amplitude
+</em> (volume) of the channel, and a property for assigning a SoundTransform
+<em> object to the channel.
+</em> 
+* @event soundComplete Dispatched when a sound has finished playing.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/media/StageVideo.html">StageVideo</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/net/NetConnection.html">NetConnection</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/net/NetStream.html">NetStream</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/net/NetStreamPlayOptions.html">NetStreamPlayOptions</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/text/StyleSheet.html">StyleSheet</a></td><td><p></p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/flash/utils/Timer.html">Timer</a></td><td><p>The Timer class is the interface to timers, which let you run code on a
+<em> specified time sequence. Use the <code>start()</code> method to start a
+</em> timer. Add an event listener for the <code>timer</code> event to set up
+<em> code to be run on the timer interval.
+</em>
+<em> <p>You can create Timer objects to run once or repeat at specified
+</em> intervals to execute code on a schedule. Depending on the SWF file's
+<em> framerate or the runtime environment(available memory and other factors),
+</em> the runtime may dispatch events at slightly offset intervals. For example,
+<em> if a SWF file is set to play at 10 frames per second(fps), which is 100
+</em> millisecond intervals, but your timer is set to fire an event at 80
+<em> milliseconds, the event will be dispatched close to the 100 millisecond
+</em> interval. Memory-intensive scripts may also offset the events.</p></td></tr><tr><td width="200"><a href="/haxeui/docs/api/haxe/ui/toolkit/data/DataSource.html">DataSource</a></td><td><p></p></td></tr></tbody></table></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="new"></a><h3><code><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(target:<a class="type" href="/haxeui/docs/api/flash/events/IEventDispatcher.html">IEventDispatcher</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Aggregates an instance of the EventDispatcher class.
+<em>
+</em> <p>The EventDispatcher class is generally used as a base class, which
+<em> means that most developers do not need to use this constructor function.
+</em> However, advanced developers who are implementing the IEventDispatcher
+<em> interface need to use this constructor. If you are unable to extend the
+</em> EventDispatcher class and must instead implement the IEventDispatcher
+<em> interface, use this constructor to aggregate an instance of the
+</em> EventDispatcher class.</p>
+<em> 
+</em> @param target The target object for events dispatched to the
+<em>               EventDispatcher object. This parameter is used when the
+</em>               EventDispatcher instance is aggregated by a class that
+<em>               implements IEventDispatcher; it is necessary so that the
+</em>               containing object can be the target for events. Do not use
+<em>               this parameter in simple cases in which a class extends
+</em>               EventDispatcher.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="addEventListener"></a><h3><code><span class="keyword">function</span> <a href="#addEventListener"><span class="identifier">addEventListener</span></a>(type:<a class="type" href="/haxeui/docs/api/String.html">String</a>, listener:<a class="type" href="/haxeui/docs/api/Dynamic.html">Dynamic</a> -&gt; <a class="type" href="/haxeui/docs/api/Void.html">Void</a>useCapture:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>, priority:<a class="type" href="/haxeui/docs/api/Int.html">Int</a>, useWeakReference:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Registers an event listener object with an EventDispatcher object so that
+the listener receives notification of an event. You can register event
+listeners on all nodes in the display list for a specific type of event,
+phase, and priority.
+<em>
+<p>After you successfully register an event listener, you cannot change
+its priority through additional calls to <code>addEventListener()</code>.
+To change a listener's priority, you must first call
+<code>removeListener()</code>. Then you can register the listener again
+with the new priority level. </p>
+</em>
+<p>Keep in mind that after the listener is registered, subsequent calls to
+<code>addEventListener()</code> with a different <code>type</code> or
+<code>useCapture</code> value result in the creation of a separate
+listener registration. For example, if you first register a listener with
+<code>useCapture</code> set to <code>true</code>, it listens only during
+the capture phase. If you call <code>addEventListener()</code> again using
+the same listener object, but with <code>useCapture</code> set to
+<code>false</code>, you have two separate listeners: one that listens
+during the capture phase and another that listens during the target and
+bubbling phases. </p>
+<em>
+<p>You cannot register an event listener for only the target phase or the
+bubbling phase. Those phases are coupled during registration because
+bubbling applies only to the ancestors of the target node.</p>
+</em>
+<p>If you no longer need an event listener, remove it by calling
+<code>removeEventListener()</code>, or memory problems could result. Event
+listeners are not automatically removed from memory because the garbage
+collector does not remove the listener as long as the dispatching object
+exists(unless the <code>useWeakReference</code> parameter is set to
+<code>true</code>).</p>
+<em>
+<p>Copying an EventDispatcher instance does not copy the event listeners
+attached to it.(If your newly created node needs an event listener, you
+must attach the listener after creating the node.) However, if you move an
+EventDispatcher instance, the event listeners attached to it move along
+with it.</p>
+</em>
+<p>If the event listener is being registered on a node while an event is
+being processed on this node, the event listener is not triggered during
+the current phase but can be triggered during a later phase in the event
+flow, such as the bubbling phase.</p>
+*
+<p>If an event listener is removed from a node while an event is being
+processed on the node, it is still triggered by the current actions. After
+it is removed, the event listener is never invoked again(unless
+registered again for future processing). </p></p>
+<p>@param type             The type of event.
+@param useCapture       Determines whether the listener works in the
+capture phase or the target and bubbling phases.
+If <code>useCapture</code> is set to
+<code>true</code>, the listener processes the
+event only during the capture phase and not in the
+target or bubbling phase. If
+<code>useCapture</code> is <code>false</code>, the
+listener processes the event only during the
+target or bubbling phase. To listen for the event
+in all three phases, call
+<code>addEventListener</code> twice, once with
+<code>useCapture</code> set to <code>true</code>,
+then again with <code>useCapture</code> set to
+<code>false</code>.
+@param priority         The priority level of the event listener. The
+priority is designated by a signed 32-bit integer.
+The higher the number, the higher the priority.
+All listeners with priority <i>n</i> are processed
+before listeners of priority <i>n</i>-1. If two or
+more listeners share the same priority, they are
+processed in the order in which they were added.
+The default priority is 0.
+@param useWeakReference Determines whether the reference to the listener
+is strong or weak. A strong reference(the
+default) prevents your listener from being
+garbage-collected. A weak reference does not.
+*
+<p>Class-level member functions are not subject to
+garbage collection, so you can set
+<code>useWeakReference</code> to <code>true</code>
+for class-level member functions without
+subjecting them to garbage collection. If you set
+<code>useWeakReference</code> to <code>true</code>
+for a listener that is a nested inner function,
+the function will be garbage-collected and no
+longer persistent. If you create references to the
+inner function(save it in another variable) then
+it is not garbage-collected and stays
+persistent.</p>
+@throws ArgumentError The <code>listener</code> specified is not a
+function.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="dispatchEvent"></a><h3><code><span class="keyword">function</span> <a href="#dispatchEvent"><span class="identifier">dispatchEvent</span></a>(event:<a class="type" href="/haxeui/docs/api/flash/events/Event.html">Event</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Dispatches an event into the event flow. The event target is the
+EventDispatcher object upon which the <code>dispatchEvent()</code> method
+is called.</p>
+<p>@param event The Event object that is dispatched into the event flow. If
+the event is being redispatched, a clone of the event is
+created automatically. After an event is dispatched, its
+<code>target</code> property cannot be changed, so you must
+create a new copy of the event for redispatching to work.
+@return A value of <code>true</code> if the event was successfully
+dispatched. A value of <code>false</code> indicates failure or
+that <code>preventDefault()</code> was called on the event.
+@throws Error The event dispatch recursion limit has been reached.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="hasEventListener"></a><h3><code><span class="keyword">function</span> <a href="#hasEventListener"><span class="identifier">hasEventListener</span></a>(type:<a class="type" href="/haxeui/docs/api/String.html">String</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Checks whether the EventDispatcher object has any listeners registered for
+a specific type of event. This allows you to determine where an
+EventDispatcher object has altered handling of an event type in the event
+flow hierarchy. To determine whether a specific event type actually
+triggers an event listener, use <code>willTrigger()</code>.
+<em>
+<p>The difference between <code>hasEventListener()</code> and
+<code>willTrigger()</code> is that <code>hasEventListener()</code>
+examines only the object to which it belongs, whereas
+<code>willTrigger()</code> examines the entire event flow for the event
+specified by the <code>type</code> parameter. </p>
+</em>
+<p>When <code>hasEventListener()</code> is called from a LoaderInfo
+object, only the listeners that the caller can access are considered.</p></p>
+<p>@param type The type of event.
+@return A value of <code>true</code> if a listener of the specified type
+is registered; <code>false</code> otherwise.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="removeEventListener"></a><h3><code><span class="keyword">function</span> <a href="#removeEventListener"><span class="identifier">removeEventListener</span></a>(type:<a class="type" href="/haxeui/docs/api/String.html">String</a>, listener:<a class="type" href="/haxeui/docs/api/Dynamic.html">Dynamic</a> -&gt; <a class="type" href="/haxeui/docs/api/Void.html">Void</a>useCapture:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a>):<a class="type" href="/haxeui/docs/api/Void.html">Void</a></code></h3><div class="doc"><p>Removes a listener from the EventDispatcher object. If there is no
+matching listener registered with the EventDispatcher object, a call to
+this method has no effect.</p>
+<p>@param type       The type of event.
+@param useCapture Specifies whether the listener was registered for the
+capture phase or the target and bubbling phases. If the
+listener was registered for both the capture phase and
+the target and bubbling phases, two calls to
+<code>removeEventListener()</code> are required to
+remove both, one call with <code>useCapture()</code> set
+to <code>true</code>, and another call with
+<code>useCapture()</code> set to <code>false</code>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="toString"></a><h3><code><span class="keyword">function</span> <a href="#toString"><span class="identifier">toString</span></a>():<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="willTrigger"></a><h3><code><span class="keyword">function</span> <a href="#willTrigger"><span class="identifier">willTrigger</span></a>(type:<a class="type" href="/haxeui/docs/api/String.html">String</a>):<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Checks whether an event listener is registered with this EventDispatcher
+object or any of its ancestors for the specified event type. This method
+returns <code>true</code> if an event listener is triggered during any
+phase of the event flow when an event of the specified type is dispatched
+to this EventDispatcher object or any of its descendants.
+<em>
+<p>The difference between the <code>hasEventListener()</code> and the
+<code>willTrigger()</code> methods is that <code>hasEventListener()</code>
+examines only the object to which it belongs, whereas the
+<code>willTrigger()</code> method examines the entire event flow for the
+event specified by the <code>type</code> parameter. </p>
+</em>
+<p>When <code>willTrigger()</code> is called from a LoaderInfo object,
+only the listeners that the caller can access are considered.</p></p>
+<p>@param type The type of event.
+@return A value of <code>true</code> if a listener of the specified type
+will be triggered; <code>false</code> otherwise.</p></div></div></div></div></div></body></html>

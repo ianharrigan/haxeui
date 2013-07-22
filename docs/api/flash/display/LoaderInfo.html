@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en"><head><link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"></link><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script><link href="/haxeui/docs/api/styles.css" rel="stylesheet"></link><script type="text/javascript">var dox = {rootPath: "/haxeui/docs/api",platforms: ["haxeui-ui-toolkit"]};</script><script type="text/javascript" src="/haxeui/docs/api/nav.js"></script><script type="text/javascript" src="/haxeui/docs/api/index.js"></script><link rel="icon" href="/haxeui/docs/api/favicon.ico" type="image/x-icon"></link><title>LoaderInfo - HaxeUI</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Search" autocomplete="off"></input></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxeui-ui-toolkit"><a href="#">haxeui-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">flash.display.LoaderInfo</span><span class="keyword"> extends</span> <a class="type" href="/haxeui/docs/api/flash/events/EventDispatcher.html">EventDispatcher</a></code></h1></div><div class="body"><p class="availability">Available on  all platforms</p><div class="doc"><p>The LoaderInfo class provides information about a loaded SWF file or a
+<em> loaded image file(JPEG, GIF, or PNG). LoaderInfo objects are available for
+</em> any display object. The information provided includes load progress, the
+<em> URLs of the loader and loaded content, the number of bytes total for the
+</em> media, and the nominal height and width of the media.
+<em>
+</em> <p>You can access LoaderInfo objects in two ways: </p>
+<em>
+</em> <ul>
+<em>   <li>The <code>contentLoaderInfo</code> property of a flash.display.Loader
+</em> object -  The <code>contentLoaderInfo</code> property is always available
+<em> for any Loader object. For a Loader object that has not called the
+</em> <code>load()</code> or <code>loadBytes()</code> method, or that has not
+<em> sufficiently loaded, attempting to access many of the properties of the
+</em> <code>contentLoaderInfo</code> property throws an error.</li>
+<em>   <li>The <code>loaderInfo</code> property of a display object. </li>
+</em> </ul>
+<em>
+</em> <p>The <code>contentLoaderInfo</code> property of a Loader object provides
+<em> information about the content that the Loader object is loading, whereas
+</em> the <code>loaderInfo</code> property of a DisplayObject provides
+<em> information about the root SWF file for that display object. </p>
+</em>
+<em> <p>When you use a Loader object to load a display object(such as a SWF
+</em> file or a bitmap), the <code>loaderInfo</code> property of the display
+<em> object is the same as the <code>contentLoaderInfo</code> property of the
+</em> Loader object(<code>DisplayObject.loaderInfo =
+<em> Loader.contentLoaderInfo</code>). Because the instance of the main class of
+</em> the SWF file has no Loader object, the <code>loaderInfo</code> property is
+<em> the only way to access the LoaderInfo for the instance of the main class of
+</em> the SWF file.</p>
+<em>
+</em> <p>The following diagram shows the different uses of the LoaderInfo
+<em> object - for the instance of the main class of the SWF file, for the
+</em> <code>contentLoaderInfo</code> property of a Loader object, and for the
+<em> <code>loaderInfo</code> property of a loaded object:</p>
+</em>
+<em> <p>When a loading operation is not complete, some properties of the
+</em> <code>contentLoaderInfo</code> property of a Loader object are not
+<em> available. You can obtain some properties, such as
+</em> <code>bytesLoaded</code>, <code>bytesTotal</code>, <code>url</code>,
+<em> <code>loaderURL</code>, and <code>applicationDomain</code>. When the
+</em> <code>loaderInfo</code> object dispatches the <code>init</code> event, you
+<em> can access all properties of the <code>loaderInfo</code> object and the
+</em> loaded image or SWF file.</p>
+<em>
+</em> <p><b>Note:</b> All properties of LoaderInfo objects are read-only.</p>
+<em>
+</em> <p>The <code>EventDispatcher.dispatchEvent()</code> method is not
+<em> applicable to LoaderInfo objects. If you call <code>dispatchEvent()</code>
+</em> on a LoaderInfo object, an IllegalOperationError exception is thrown.</p>
+<em> 
+</em> @event complete   Dispatched when data has loaded successfully. In other
+<em>                   words, it is dispatched when all the content has been
+</em>                   downloaded and the loading has finished. The
+<em>                   <code>complete</code> event is always dispatched after
+</em>                   the <code>init</code> event. The <code>init</code> event
+<em>                   is dispatched when the object is ready to access, though
+</em>                   the content may still be downloading.
+<em> @event httpStatus Dispatched when a network request is made over HTTP and
+</em>                   an HTTP status code can be detected.
+<em> @event init       Dispatched when the properties and methods of a loaded
+</em>                   SWF file are accessible and ready for use. The content,
+<em>                   however, can still be downloading. A LoaderInfo object
+</em>                   dispatches the <code>init</code> event when the following
+<em>                   conditions exist:
+</em>                   <ul>
+<em>                     <li>All properties and methods associated with the
+</em>                   loaded object and those associated with the LoaderInfo
+<em>                   object are accessible.</li>
+</em>                     <li>The constructors for all child objects have
+<em>                   completed.</li>
+</em>                     <li>All ActionScript code in the first frame of the
+<em>                   loaded SWF's main timeline has been executed.</li>
+</em>                   </ul>
+<em>
+</em>                   <p>For example, an <code>Event.INIT</code> is dispatched
+<em>                   when the first frame of a movie or animation is loaded.
+</em>                   The movie is then accessible and can be added to the
+<em>                   display list. The complete movie, however, can take
+</em>                   longer to download. The <code>Event.COMPLETE</code> is
+<em>                   only dispatched once the full movie is loaded.</p>
+</em>
+<em>                   <p>The <code>init</code> event always precedes the
+</em>                   <code>complete</code> event.</p>
+<em> @event ioError    Dispatched when an input or output error occurs that
+</em>                   causes a load operation to fail.
+<em> @event open       Dispatched when a load operation starts.
+</em> @event progress   Dispatched when data is received as the download
+<em>                   operation progresses.
+</em> @event unload     Dispatched by a LoaderInfo object whenever a loaded
+<em>                   object is removed by using the <code>unload()</code>
+</em>                   method of the Loader object, or when a second load is
+<em>                   performed by the same Loader object and the original
+</em>                   content is removed prior to the load beginning.</p></div><h2>Class Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="getLoaderInfoByDefinition"></a><h3><code><span class="keyword">static</span> <span class="keyword">function</span> <a href="#getLoaderInfoByDefinition"><span class="identifier">getLoaderInfoByDefinition</span></a>(object:<a class="type" href="/haxeui/docs/api/Dynamic.html">Dynamic</a>):<a class="type" href="/haxeui/docs/api/flash/display/LoaderInfo.html">LoaderInfo</a></code></h3><div class="doc"><p>Returns the LoaderInfo object associated with a SWF file defined as an
+object.</p>
+<p>@param object The object for which you want to get an associated
+LoaderInfo object.
+@return The associated LoaderInfo object. Returns <code>null</code> when
+called in non-debugger builds(or when debugging is not enabled)
+or if the referenced <code>object</code> does not have an
+associated LoaderInfo object(such as some objects used by the AIR
+runtime).
+@throws SecurityError The caller is not running in the local trusted
+sandbox.</p></div></div><h2>Instance Fields</h2><div class="platform platform-haxeui-ui-toolkit"><a name="actionScriptVersion"></a><h3><code><span class="keyword">var</span> <a href="#actionScriptVersion"><span class="identifier">actionScriptVersion</span></a>:<a class="type" href="/haxeui/docs/api/flash/display/ActionScriptVersion.html">ActionScriptVersion</a></code></h3><div class="doc"><p>The ActionScript version of the loaded SWF file. The language version is
+specified by using the enumerations in the ActionScriptVersion class, such
+as <code>ActionScriptVersion.ACTIONSCRIPT2</code> and
+<code>ActionScriptVersion.ACTIONSCRIPT3</code>.
+*
+<p><b>Note:</b> This property always has a value of either
+<code>ActionScriptVersion.ACTIONSCRIPT2</code> or
+<code>ActionScriptVersion.ACTIONSCRIPT3</code>. ActionScript 1.0 and 2.0
+are both reported as <code>ActionScriptVersion.ACTIONSCRIPT2</code>
+(version 2.0). This property only distinguishes ActionScript 1.0 and 2.0
+from ActionScript 3.0.</p></p>
+<p>@throws Error If the file is not downloaded sufficiently to retrieve the
+requested information.
+@throws Error If the file is not a SWF file.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="applicationDomain"></a><h3><code><span class="keyword">var</span> <a href="#applicationDomain"><span class="identifier">applicationDomain</span></a>:<a class="type" href="/haxeui/docs/api/flash/system/ApplicationDomain.html">ApplicationDomain</a></code></h3><div class="doc"><p>When an external SWF file is loaded, all ActionScript 3.0 definitions
+contained in the loaded class are stored in the
+<code>applicationDomain</code> property.
+<em>
+<p>All code in a SWF file is defined to exist in an application domain.
+The current application domain is where your main application runs. The
+system domain contains all application domains, including the current
+domain and all classes used by Flash Player or Adobe AIR.</p>
+</em>
+<p>All application domains, except the system domain, have an associated
+parent domain. The parent domain of your main application's
+<code>applicationDomain</code> is the system domain. Loaded classes are
+defined only when their parent doesn't already define them. You cannot
+override a loaded class definition with a newer definition.</p>
+*
+<p>For usage examples of application domains, see the "Client System
+Environment" chapter in the <i>ActionScript 3.0 Developer's Guide</i>.</p></p>
+<p>@throws SecurityError This security sandbox of the caller is not allowed
+to access this ApplicationDomain.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bytes"></a><h3><code><span class="keyword">var</span> <a href="#bytes"><span class="identifier">bytes</span></a>:<a class="type" href="/haxeui/docs/api/flash/utils/ByteArray.html">ByteArray</a></code></h3><div class="doc"><p>The bytes associated with a LoaderInfo object.</p>
+<p>@throws SecurityError If the object accessing this API is prevented from
+accessing the loaded object due to security
+restrictions. This situation can occur, for
+instance, when a Loader object attempts to access
+the <code>contentLoaderInfo.content</code> property
+and it is not granted security permission to access
+the loaded content.</p><p>For more information related to security, see the
+Flash Player Developer Center Topic: <a
+href="http://www.adobe.com/go/devnet_security_en"
+scope="external">Security</a>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bytesLoaded"></a><h3><code><span class="keyword">var</span> <a href="#bytesLoaded"><span class="identifier">bytesLoaded</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The number of bytes that are loaded for the media. When this number equals
+the value of <code>bytesTotal</code>, all of the bytes are loaded.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="bytesTotal"></a><h3><code><span class="keyword">var</span> <a href="#bytesTotal"><span class="identifier">bytesTotal</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The number of compressed bytes in the entire media file.
+<em>
+</em> <p>Before the first <code>progress</code> event is dispatched by this
+<em> LoaderInfo object's corresponding Loader object, <code>bytesTotal</code>
+</em> is 0. After the first <code>progress</code> event from the Loader object,
+<em> <code>bytesTotal</code> reflects the actual number of bytes to be
+</em> downloaded.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="childAllowsParent"></a><h3><code><span class="keyword">var</span> <a href="#childAllowsParent"><span class="identifier">childAllowsParent</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Expresses the trust relationship from content(child) to the Loader
+(parent). If the child has allowed the parent access, <code>true</code>;
+otherwise, <code>false</code>. This property is set to <code>true</code>
+if the child object has called the <code>allowDomain()</code> method to
+grant permission to the parent domain or if a URL policy is loaded at the
+child domain that grants permission to the parent domain. If child and
+parent are in the same domain, this property is set to <code>true</code>.
+*
+<p>For more information related to security, see the Flash Player
+Developer Center Topic: &lt;a
+href="http://www.adobe.com/go/devnet<em>security</em>en"
+scope="external">Security</a>.</p></p>
+<p>@throws Error Thrown if the file is not downloaded sufficiently to
+retrieve the requested information.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="content"></a><h3><code><span class="keyword">var</span> <a href="#content"><span class="identifier">content</span></a>:<a class="type" href="/haxeui/docs/api/flash/display/DisplayObject.html">DisplayObject</a></code></h3><div class="doc"><p>The loaded object associated with this LoaderInfo object.</p>
+<p>@throws SecurityError If the object accessing this API is prevented from
+accessing the loaded object due to security
+restrictions. This situation can occur, for
+instance, when a Loader object attempts to access
+the <code>contentLoaderInfo.content</code> property
+and it is not granted security permission to access
+the loaded content.</p><p>For more information related to security, see the
+Flash Player Developer Center Topic: <a
+href="http://www.adobe.com/go/devnet_security_en"
+scope="external">Security</a>.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="contentType"></a><h3><code><span class="keyword">var</span> <a href="#contentType"><span class="identifier">contentType</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The MIME type of the loaded file. The value is <code>null</code> if not
+enough of the file has loaded in order to determine the type. The
+following list gives the possible values:
+<ul>
+<li><code>"application/x-shockwave-flash"</code></li>
+<li><code>"image/jpeg"</code></li>
+<li><code>"image/gif"</code></li>
+<li><code>"image/png"</code></li>
+</ul></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="frameRate"></a><h3><code><span class="keyword">var</span> <a href="#frameRate"><span class="identifier">frameRate</span></a>:<a class="type" href="/haxeui/docs/api/Float.html">Float</a></code></h3><div class="doc"><p>The nominal frame rate, in frames per second, of the loaded SWF file. This
+number is often an integer, but need not be.
+*
+<p>This value may differ from the actual frame rate in use. Flash Player
+or Adobe AIR only uses a single frame rate for all loaded SWF files at any
+one time, and this frame rate is determined by the nominal frame rate of
+the main SWF file. Also, the main frame rate may not be able to be
+achieved, depending on hardware, sound synchronization, and other
+factors.</p></p>
+<p>@throws Error If the file is not downloaded sufficiently to retrieve the
+requested information.
+@throws Error If the file is not a SWF file.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="height"></a><h3><code><span class="keyword">var</span> <a href="#height"><span class="identifier">height</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The nominal height of the loaded file. This value might differ from the
+actual height at which the content is displayed, since the loaded content
+or its parent display objects might be scaled.</p>
+<p>@throws Error If the file is not downloaded sufficiently to retrieve the
+requested information.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="isURLInaccessible"></a><h3><code><span class="keyword">var</span> <a href="#isURLInaccessible"><span class="identifier">isURLInaccessible</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Indicates if the <code>LoaderInfo.url</code> property has been truncated.
+When the <code>isURLInaccessible</code> value is <code>true</code> the
+<code>LoaderInfo.url</code> value is only the domain of the final URL from
+which the content loaded. For example, the property is truncated if the
+content is loaded from <code>http://www.adobe.com/assets/hello.swf</code>,
+and the <code>LoaderInfo.url</code> property has the value
+<code>http://www.adobe.com</code>. The <code>isURLInaccessible</code>
+value is <code>true</code> only when all of the following are also true:
+<ul>
+<li>An HTTP redirect occurred while loading the content.</li>
+<li>The SWF file calling <code>Loader.load()</code> is from a different
+domain than the content's final URL.</li>
+<li>The SWF file calling <code>Loader.load()</code> does not have
+permission to access the content. Permission is granted to access the
+content the same way permission is granted for
+<code>BitmapData.draw()</code>: call <code>Security.allowDomain()</code>
+to access a SWF file(or for non-SWF file content, establish a policy file
+and use the <code>LoaderContext.checkPolicyFile</code> property).</li>
+</ul>
+<em>
+<p><b>Note:</b> The <code>isURLInaccessible</code> property was added for
+Flash Player 10.1 and AIR 2.0. However, this property is made available to
+SWF files of all versions when the Flash runtime supports it. So, using
+some authoring tools in "strict mode" causes a compilation error. To work
+around the error use the indirect syntax
+<code>myLoaderInfo["isURLInaccessible"]</code>, or disable strict mode. If
+you are using Flash Professional CS5 or Flex SDK 4.1, you can use and
+compile this API for runtimes released before Flash Player 10.1 and AIR
+2.</p>
+</em>
+<p>For application content in AIR, the value of this property is always
+<code>false</code>.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="loader"></a><h3><code><span class="keyword">var</span> <a href="#loader"><span class="identifier">loader</span></a>:<a class="type" href="/haxeui/docs/api/flash/display/Loader.html">Loader</a></code></h3><div class="doc"><p>The Loader object associated with this LoaderInfo object. If this
+LoaderInfo object is the <code>loaderInfo</code> property of the instance
+of the main class of the SWF file, no Loader object is associated.</p>
+<p>@throws SecurityError If the object accessing this API is prevented from
+accessing the Loader object because of security
+restrictions. This can occur, for instance, when a
+loaded SWF file attempts to access its
+<code>loaderInfo.loader</code> property and it is
+not granted security permission to access the
+loading SWF file.
+*
+<p>For more information related to security, see the
+Flash Player Developer Center Topic: &lt;a
+href="http://www.adobe.com/go/devnet<em>security</em>en"
+scope="external">Security</a>.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="loaderURL"></a><h3><code><span class="keyword">var</span> <a href="#loaderURL"><span class="identifier">loaderURL</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The URL of the SWF file that initiated the loading of the media described
+by this LoaderInfo object. For the instance of the main class of the SWF
+file, this URL is the same as the SWF file's own URL.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="parameters"></a><h3><code><span class="keyword">var</span> <a href="#parameters"><span class="identifier">parameters</span></a>:<a class="type" href="/haxeui/docs/api/Dynamic.html">Dynamic</a><a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>An object that contains name-value pairs that represent the parameters
+provided to the loaded SWF file.
+<em>
+<p>You can use a <code>for-in</code> loop to extract all the names and
+values from the <code>parameters</code> object.</p>
+</em>
+<p>The two sources of parameters are: the query string in the URL of the
+main SWF file, and the value of the <code>FlashVars</code> HTML parameter
+(this affects only the main SWF file).</p>
+<em>
+<p>The <code>parameters</code> property replaces the ActionScript 1.0 and
+2.0 technique of providing SWF file parameters as properties of the main
+timeline.</p>
+</em>
+<p>The value of the <code>parameters</code> property is null for Loader
+objects that contain SWF files that use ActionScript 1.0 or 2.0. It is
+only non-null for Loader objects that contain SWF files that use
+ActionScript 3.0.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="parentAllowsChild"></a><h3><code><span class="keyword">var</span> <a href="#parentAllowsChild"><span class="identifier">parentAllowsChild</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Expresses the trust relationship from Loader(parent) to the content
+(child). If the parent has allowed the child access, <code>true</code>;
+otherwise, <code>false</code>. This property is set to <code>true</code>
+if the parent object called the <code>allowDomain()</code> method to grant
+permission to the child domain or if a URL policy file is loaded at the
+parent domain granting permission to the child domain. If child and parent
+are in the same domain, this property is set to <code>true</code>.
+*
+<p>For more information related to security, see the Flash Player
+Developer Center Topic: &lt;a
+href="http://www.adobe.com/go/devnet<em>security</em>en"
+scope="external">Security</a>.</p></p>
+<p>@throws Error Thrown if the file is not downloaded sufficiently to
+retrieve the requested information.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="sameDomain"></a><h3><code><span class="keyword">var</span> <a href="#sameDomain"><span class="identifier">sameDomain</span></a>:<a class="type" href="/haxeui/docs/api/Bool.html">Bool</a></code></h3><div class="doc"><p>Expresses the domain relationship between the loader and the content:
+<code>true</code> if they have the same origin domain; <code>false</code>
+otherwise.</p>
+<p>@throws Error Thrown if the file is not downloaded sufficiently to
+retrieve the requested information.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="sharedEvents"></a><h3><code><span class="keyword">var</span> <a href="#sharedEvents"><span class="identifier">sharedEvents</span></a>:<a class="type" href="/haxeui/docs/api/flash/events/EventDispatcher.html">EventDispatcher</a></code></h3><div class="doc"><p>An EventDispatcher instance that can be used to exchange events across
+security boundaries. Even when the Loader object and the loaded content
+originate from security domains that do not trust one another, both can
+access <code>sharedEvents</code> and send and receive events via this
+object.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="swfVersion"></a><h3><code><span class="keyword">var</span> <a href="#swfVersion"><span class="identifier">swfVersion</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The file format version of the loaded SWF file. The file format is
+specified using the enumerations in the SWFVersion class, such as
+<code>SWFVersion.FLASH7</code> and <code>SWFVersion.FLASH9</code>.</p>
+<p>@throws Error If the file is not downloaded sufficiently to retrieve the
+requested information.
+@throws Error If the file is not a SWF file.</p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="uncaughtErrorEvents"></a><h3><code><span class="keyword">var</span> <a href="#uncaughtErrorEvents"><span class="identifier">uncaughtErrorEvents</span></a>:<a class="type" href="/haxeui/docs/api/flash/events/UncaughtErrorEvents.html">UncaughtErrorEvents</a></code></h3><div class="doc"><p>An object that dispatches an <code>uncaughtError</code> event when an
+unhandled error occurs in code in this LoaderInfo object's SWF file. An
+uncaught error happens when an error is thrown outside of any
+<code>try..catch</code> blocks or when an ErrorEvent object is dispatched
+with no registered listeners.
+*
+<p>This property is created when the SWF associated with this LoaderInfo
+has finished loading. Until then the <code>uncaughtErrorEvents</code>
+property is <code>null</code>. In an ActionScript-only project, you can
+access this property during or after the execution of the constructor
+function of the main class of the SWF file. For a Flex project, the
+<code>uncaughtErrorEvents</code> property is available after the
+<code>applicationComplete</code> event is dispatched.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="url"></a><h3><code><span class="keyword">var</span> <a href="#url"><span class="identifier">url</span></a>:<a class="type" href="/haxeui/docs/api/String.html">String</a></code></h3><div class="doc"><p>The URL of the media being loaded.
+<em>
+</em> <p>Before the first <code>progress</code> event is dispatched by this
+<em> LoaderInfo object's corresponding Loader object, the value of the
+</em> <code>url</code> property might reflect only the initial URL specified in
+<em> the call to the <code>load()</code> method of the Loader object. After the
+</em> first <code>progress</code> event, the <code>url</code> property reflects
+<em> the media's final URL, after any redirects and relative URLs are
+</em> resolved.</p>
+<em>
+</em> <p>In some cases, the value of the <code>url</code> property is truncated;
+* see the <code>isURLInaccessible</code> property for details.</p></p></div></div><div class="platform platform-haxeui-ui-toolkit"><a name="width"></a><h3><code><span class="keyword">var</span> <a href="#width"><span class="identifier">width</span></a>:<a class="type" href="/haxeui/docs/api/Int.html">Int</a></code></h3><div class="doc"><p>The nominal width of the loaded content. This value might differ from the
+actual width at which the content is displayed, since the loaded content
+or its parent display objects might be scaled.</p>
+<p>@throws Error If the file is not downloaded sufficiently to retrieve the
+requested information.</p></div></div></div></div></div></body></html>
