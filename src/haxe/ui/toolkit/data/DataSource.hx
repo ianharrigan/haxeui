@@ -3,6 +3,7 @@ package haxe.ui.toolkit.data;
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
+import haxe.ui.toolkit.resources.ResourceManager;
 
 class DataSource extends EventDispatcher implements IDataSource implements IEventDispatcher {
 	public var config(get, null):Xml;
@@ -43,18 +44,22 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 		return value;
 	}
 	
-	public function create(config:Xml):Void {
+	public function create(config:Xml = null):Void {
 		_config = config;
+		
+		if (_config == null) {
+			return;
+		}
 		
 		_id = config.get("id");
 	}
 	
 	public function open():Bool {
-		return true;
+		return _open();
 	}
 	
 	public function close():Bool {
-		return true;
+		return _close();
 	}
 	
 	public function moveFirst():Bool {
@@ -113,6 +118,14 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	//******************************************************************************************
 	// Overridables
 	//******************************************************************************************
+	private function _open():Bool {
+		return false;
+	}
+	
+	private function _close():Bool {
+		return false;
+	}
+	
 	private function _moveFirst():Bool {
 		return false;
 	}
@@ -140,6 +153,17 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	public function createFromString(data:String = null, config:Dynamic = null):Void {
+		
+	}
+	
+	public function createFromResource(resourceId:String, config:Dynamic = null):Void {
+		if (resourceId != null) {
+			var data:String = ResourceManager.instance.getText(resourceId);
+			createFromString(data, config);
+		}
+	}
+	
 	private function dispatchChanged():Void {
 		if (allowEvents == true) {
 			dispatchEvent(new Event(Event.CHANGE));

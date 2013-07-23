@@ -40,6 +40,10 @@ class DataManager {
 		_dataSourceMap.set(dataSourceId, dataSource);
 	}
 	
+	public function getRegisteredDataSource(id:String):IDataSource {
+		return _dataSourceMap.get(id);
+	}
+	
 	private function get_dataSources():Array<IDataSource> {
 		var arr:Array<IDataSource> = new Array<IDataSource>();
 		for (ds in _dataSourceMap) {

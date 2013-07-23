@@ -8,9 +8,45 @@ class XMLDataSource extends ArrayDataSource {
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
-	public override function create(config:Xml):Void {
-		super.create(config);
+	public override function create(config:Xml = null):Void {
+		//super.create(config);
+		if (config == null) {
+			return;
+		}
+		
+		_id = config.get("id");
 		
 		var resource:String = config.get("resource");
+		if (resource != null) {
+			createFromResource(resource);
+		}
+		
+		var nodeText:String = null;
+		if (config.firstChild() != null) {
+			nodeText = config.firstElement().toString();
+		}
+		
+		if (nodeText != null) {
+			createFromString(nodeText);
+		}
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	public override function createFromString(data:String = null, config:Dynamic = null):Void {
+		if (data != null) {
+			var xml:Xml = Xml.parse(data);
+			if (xml != null) {
+				var it:Iterator<Xml> = xml.firstElement().elements();
+				for (e in it) {
+					var text:String = e.get("text");
+					if (text != null) {
+						var o = { text: text };
+						add(o);
+					}
+				}
+			}
+		}
 	}
 }

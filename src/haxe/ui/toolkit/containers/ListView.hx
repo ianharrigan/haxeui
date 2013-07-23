@@ -46,9 +46,18 @@ class ListView extends ScrollView implements IDataComponent {
 			dataSource = new ArrayDataSource();
 		}
 		
+		_dataSource.open();
+		
 		syncUI();
 	}
 
+	public override function dispose():Void {
+		if (_dataSource != null) {
+			_dataSource.close();
+		}
+		super.dispose();
+	}
+	
 	//******************************************************************************************
 	// Instance properties
 	//******************************************************************************************

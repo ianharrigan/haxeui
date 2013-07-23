@@ -47,9 +47,9 @@ Popups
 Data Sources
 - Array
 - JSON
-- XML (not yet implemented)
-- MySQL (not yet implemented)
-- Files (not yet implemented)
+- XML
+- MySQL (Neko/Read-Only)
+- Files (Neko/Read-Only)
 
 Notes
 -------------------------

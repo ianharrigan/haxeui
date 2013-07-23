@@ -99,9 +99,11 @@ class Toolkit {
 		} else {
 			var p:IXMLProcessor = null;
 			if (_registeredProcessors != null) {
-				var processorClassName:String = _registeredProcessors.get(nodeNS);
-				if (processorClassName != null) {
-					p = Type.createInstance(Type.resolveClass(processorClassName), []);
+				if (nodeNS != null) {
+					var processorClassName:String = _registeredProcessors.get(nodeNS);
+					if (processorClassName != null) {
+						p = Type.createInstance(Type.resolveClass(processorClassName), []);
+					}
 				}
 			}
 		

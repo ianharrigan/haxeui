@@ -327,6 +327,113 @@
 			</ui:grid>
 		</ui:vbox>
 		
+		<ui:vbox text="Data">
+			<data:array id="arrayDS" resource="data/data.txt">
+				Append 1,Append 2,Append 3
+			</data:array>
+			
+			<data:json id="jsonDS" resource="data/data.json">
+				[
+					{"text": "Append 1"},
+					{"text": "Append 2"},
+					{"text": "Append 3"}
+				]
+			</data:json>
+
+			<data:xml id="xmlDS" resource="data/data.xml">
+				<xml>
+					<item text="Append 1" />
+					<item text="Append 2" />
+					<item text="Append 3" />
+				</xml>
+			</data:xml>
+			
+			<ui:grid columns="5">
+				<ui:text text="Array (Inline)"/>
+				<ui:text text="JSON (Inline)"/>
+				<ui:text text="XML (Inline)"/>
+				<ui:text text="Files (Neko)"/>
+				<ui:text text="MySQL (Neko)"/>
+
+				<selection:list text="Select Item">
+					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
+				</selection:list>
+
+				<selection:list text="Select Item">
+					<data:json>
+						[
+							{"text": "Item 1"},
+							{"text": "Item 2"},
+							{"text": "Item 3"},
+							{"text": "Item 4"}
+						]
+					</data:json>
+				</selection:list>
+				
+				<selection:list text="Select Item">
+					<data:xml>
+						<xml>
+							<item text="Item 1" />
+							<item text="Item 2" />
+							<item text="Item 3" />
+							<item text="Item 4" />
+						</xml>
+					</data:xml>
+				</selection:list>
+				
+				<selection:list text="Select File" condition="Client.target == 'neko'">
+					<data:files resource="C:\temp\files" />
+				</selection:list>
+				
+				<selection:list text="Select MySQL" condition="Client.target == 'neko'">
+					<data:mysql resource="localhost:3306/haxe_db?user=root&pass=root&q=SELECT * FROM datasource1" />
+				</selection:list>
+			</ui:grid>
+			
+			<ui:grid columns="3">
+				<ui:text text="Array (Resource)"/>
+				<ui:text text="JSON (Resource)"/>
+				<ui:text text="XML (Resource)"/>
+
+				<selection:list text="Select Item">
+					<data:array resource="data/data.txt" />
+				</selection:list>
+
+				<selection:list text="Select Item">
+					<data:json resource="data/data.json" />
+				</selection:list>
+				
+				<selection:list text="Select Item">
+					<data:xml resource="data/data.xml" />
+				</selection:list>
+			</ui:grid>
+			
+			<ui:grid columns="3">
+				<ui:text text="Array (Reference)"/>
+				<ui:text text="JSON (Reference)"/>
+				<ui:text text="XML (Reference)"/>
+
+				<selection:list text="Select Item" dataSource="arrayDS" />
+				<selection:list text="Select Item" dataSource="jsonDS" />
+				<selection:list text="Select Item" dataSource="xmlDS" />
+			</ui:grid>
+			
+			<ui:grid columns="5">
+				<ui:text text="Array (Proto)"/>
+				<ui:text text="JSON (Proto)"/>
+				<ui:text text="XML (Proto)"/>
+				<ui:text text="Files (Neko)"/>
+				<ui:text text="MySQL (Neko)"/>
+
+				<selection:list text="Select Item" dataSource="array://data/data.txt" />
+				<selection:list text="Select Item" dataSource="json://data/data.json" />
+				<selection:list text="Select Item" dataSource="xml://data/data.xml" />
+				<selection:list text="Select File" dataSource="files://C:/temp/files" condition="Client.target == 'neko'" />
+				<selection:list text="Select MySQL" dataSource="mysql://localhost:3306/haxe_db?user=root&pass=root&q=SELECT * FROM datasource1" condition="Client.target == 'neko'" />
+
+			</ui:grid>
+		</ui:vbox>
+		
 		<ui:vbox text="Tab 1" />
 		<ui:vbox text="Tab 2" />
 		<ui:vbox text="Tab 3" />

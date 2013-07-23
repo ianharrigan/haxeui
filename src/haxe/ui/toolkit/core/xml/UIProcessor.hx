@@ -1,8 +1,12 @@
 package haxe.ui.toolkit.core.xml;
 
+import flash.xml.XML;
 import haxe.ui.toolkit.core.ClassManager;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import haxe.ui.toolkit.data.DataManager;
+import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.util.TypeParser;
 
 class UIProcessor extends XMLProcessor {
@@ -77,6 +81,28 @@ class UIProcessor extends XMLProcessor {
 					c.percentHeight = percentHeight;
 				}
 			} else if (attr == "condition") { // ignore condition attr
+			} else if (attr == "dataSource") { // special handling
+				var value:String = config.get(attr);
+				if (Std.is(c, IDataComponent)) {
+					var dataComponent:IDataComponent = cast(c, IDataComponent);
+					var registeredDataSource:IDataSource = DataManager.instance.getRegisteredDataSource(value);
+					if (registeredDataSource != null) {
+						dataComponent.dataSource = registeredDataSource;
+					} else {
+						var n:Int = value.indexOf("://");
+						if (n != -1) {
+							var proto:String = value.substr(0, n);
+							value = value.substr(n + 3, value.length);
+							var className:String = ClassManager.instance.getDataSourceClassName(proto);
+							var ds:IDataSource = Type.createInstance(Type.resolveClass(className), []);
+							if (ds != null) {
+								ds.createFromResource(value);
+								DataManager.instance.registerDataSource(ds);
+								dataComponent.dataSource = ds;
+							}
+						}
+					}
+				}
 			} else {
 				try {
 					var value:String = config.get(attr);

@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.data;
+import haxe.ui.toolkit.resources.ResourceManager;
 
 class ArrayDataSource extends DataSource {
 	private var array:Array<Dynamic>;
@@ -12,27 +13,33 @@ class ArrayDataSource extends DataSource {
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
-	public override function create(config:Xml):Void {
+	public override function create(config:Xml = null):Void {
 		super.create(config);
 		
-		var resource:String = config.get("resource");
+		if (config == null) {
+			return;
+		}
+		
+		_id = config.get("id");
+		
 		var delimeter:String = config.get("delimeter");
 		if (delimeter == null) {
 			delimeter = ",";
 		}
+		delimeter = StringTools.replace(delimeter, "\\n", "\n");
+		
+		var resource:String = config.get("resource");
+		if (resource != null) {
+			createFromResource(resource, { delimeter: delimeter });
+		}
+		
 		var nodeText:String = null;
 		if (config.firstChild() != null) {
 			nodeText = config.firstChild().nodeValue;
 		}
 		
 		if (nodeText != null) {
-			var arr:Array<String> = nodeText.split(delimeter);
-			if (arr != null) {
-				for (s in arr) {
-					var o = { text: StringTools.trim(s) };
-					add(o);
-				}
-			}
+			createFromString(nodeText, { delimeter: delimeter });
 		}
 	}
 	
@@ -71,5 +78,28 @@ class ArrayDataSource extends DataSource {
 	
 	private override function _remove():Bool {
 		return array.remove(get());
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	public override function createFromString(data:String = null, config:Dynamic = null):Void {
+		if (data != null) {
+			if (config == null) {
+				config = { };
+			}
+			config.delimeter = (config.delimeter != null) ? config.delimeter : ",";
+			
+			var arr:Array<String> = data.split(config.delimeter);
+			if (arr != null) {
+				for (s in arr) {
+					s = StringTools.trim(s);
+					if (s.length > 0) {
+						var o = { text: s };
+						add(o);
+					}
+				}
+			}
+		}
 	}
 }

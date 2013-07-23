@@ -25,10 +25,11 @@ class Client {
 	
 	public var language(get, null):String;
 	public var dpi(get, null):Float;
-	public var target(get, null):String;
+	public var platform(get, null):String;
 	public var screenWidth(get, null):Float;
 	public var screenHeight(get, null):Float;
-
+	public var target(get, null):String;
+	
 	private function get_language():String {
 		return Capabilities.language;
 	}
@@ -37,12 +38,19 @@ class Client {
 		return Capabilities.screenDPI;
 	}
 
-	private function get_target():String {
+	private function get_platform():String {
 		#if flash return "flash"; #end
 		#if html5 return "html5"; #end
 		#if windows return "windows"; #end
 		#if neko return "neko"; #end
 		#if android return "android"; #end
+	}
+
+	private function get_target():String {
+		#if flash return "flash"; #end
+		#if html5 return "html5"; #end
+		#if cpp return "cpp"; #end
+		#if neko return "neko"; #end
 	}
 	
 	private function get_screenWidth():Float {

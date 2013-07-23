@@ -1,8 +1,36 @@
-				<ui:listview width="50%" height="100%" id="theList">
-					<data:json>
+		<ui:vbox text="Data">
+			<data:array id="arrayDS" resource="data/data.txt" delimeter="\n">
+				Append 1
+				Append 2
+				Append 3
+			</data:array>
+			<data:array id="test2" resource="data/data.txt" delimeter="\n">
+				Append 1
+				Append 2
+				Append 3
+			</data:array>
+			
+			<data:json id="jsonDS" resource="data/data.json"></data:json>
+					<data:json id="test">
 						[
-							{"text": "Item 2", "subtext": "Subtext 2"},
-							{"text": "Item 8", "subtext": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum'"}
+							{"text": "Item 1"},
+							{"text": "Item 2"},
+							{"text": "Item 3"},
+							{"text": "Item 4"}
 						]
 					</data:json>
-				</ui:listview>
+			
+			<ui:grid columns="3">
+				<ui:text text="Array (Reference)"/>
+				<ui:text text="JSON (Reference)"/>
+				<ui:text text="XML (Reference)"/>
+
+				<selection:list text="Select Item" dataSource="arrayDS" />
+
+				<selection:list text="Select Item" dataSource="jsonDS">
+				</selection:list>
+				
+				<selection:list text="Select Item">
+				</selection:list>
+			</ui:grid>
+		</ui:vbox>
