@@ -44,6 +44,9 @@ class Client {
 		#if windows return "windows"; #end
 		#if neko return "neko"; #end
 		#if android return "android"; #end
+		#if linux return "linux"; #end
+		
+		return null;
 	}
 
 	private function get_target():String {
@@ -51,6 +54,8 @@ class Client {
 		#if html5 return "html5"; #end
 		#if cpp return "cpp"; #end
 		#if neko return "neko"; #end
+		
+		return null;
 	}
 	
 	private function get_screenWidth():Float {
