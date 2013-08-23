@@ -54,6 +54,7 @@
 				<selection:list text="Select Item 3">
 					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
 				</selection:list>
+				<ui:button text="Perf" id="perfButton" />
 			</ui:hbox>
 			<ui:hbox text="List" width="100%" height="100%">
 				<ui:listview width="50%" height="100%" id="theList">

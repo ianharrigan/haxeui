@@ -84,7 +84,11 @@ class Accordion extends VBox {
 		
 		if (panel != null) {
 			panel.visible = false;
-			cast(panel, IEventDispatcher).addEventListener(Event.ADDED_TO_STAGE, _onPanelAdded);
+			if (panel.ready == false) {
+				cast(panel, IEventDispatcher).addEventListener(Event.INIT, _onPanelAdded);
+			} else {
+				cast(panel, IEventDispatcher).addEventListener(Event.ADDED_TO_STAGE, _onPanelAdded);
+			}
 			super.addChildAt(panel, buttonChildIndex + 1);
 			button.selected = true;
 		}
@@ -120,6 +124,7 @@ class Accordion extends VBox {
 	private function _onPanelAdded(event:Event):Void {
 		var panel:IDisplayObject = findPanelFromSprite(event.target);
 		cast(panel, IEventDispatcher).removeEventListener(Event.ADDED_TO_STAGE, _onPanelAdded);
+		cast(panel, IEventDispatcher).removeEventListener(Event.INIT, _onPanelAdded);
 		var panelIndex:Int = Lambda.indexOf(_panels, panel);
 		var button:Button = _buttons[panelIndex];
 	

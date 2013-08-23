@@ -41,7 +41,7 @@ class FilesDataSource extends ArrayDataSource {
 			}
 			
 			for (file in files) {
-				if (!FileSystem.isDirectory(_dir + "/" + file)) { // add dirs first
+				if (!FileSystem.isDirectory(_dir + "/" + file)) {
 					var o = { text: file };
 					add(o);
 				}

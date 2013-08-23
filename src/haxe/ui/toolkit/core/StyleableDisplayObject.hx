@@ -28,7 +28,14 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 
 		buildStyles();
 		if (Std.is(this, StateComponent)) {
-			_style = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			var state:String = cast(this, StateComponent).state;
+			if (state == null) {
+				state = "normal";
+			}
+			_style = retrieveStyle(state);//StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			if (_style == null) {
+				_style = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			}
 		} else {
 			_style = StyleManager.instance.buildStyleFor(this);
 		}
@@ -87,10 +94,15 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	
 	private override function set_id(value:String):String { // if id changes, rebuild styles
+		if (value == id) {
+			return value;
+		}
 		var v:String = super.set_id(value);
-		buildStyles();
-		_style = StyleManager.instance.buildStyleFor(this);
-		invalidate(InvalidationFlag.DISPLAY);
+		if (_ready) {
+			buildStyles();
+			_style = StyleManager.instance.buildStyleFor(this);
+			invalidate(InvalidationFlag.DISPLAY);
+		}
 		return v;
 	}
 	

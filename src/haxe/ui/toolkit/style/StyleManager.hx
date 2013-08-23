@@ -4,6 +4,7 @@ import flash.display.DisplayObjectContainer;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
+import haxe.ui.toolkit.util.PerfTimer;
 
 class StyleManager {
 	private static var _instance:StyleManager;
@@ -21,9 +22,13 @@ class StyleManager {
 	private var _styles:StringMap<Dynamic>;
 	private var _rules:Array<Dynamic>; // the order the rules are added is important, hence an array to hold them
 	
+	private var stylesBuilt:Int = 0; //debug helper
+	private var stylesBuiltFor:Map<String, Int>;
+	
 	public function new() {
 		_styles = new StringMap<Dynamic>();
 		_rules = new Array<Dynamic>();
+		stylesBuiltFor = new Map<String, Int>();
 	}
 	
 	public function addStyle(rule:String, style:Dynamic):Void {
@@ -186,6 +191,8 @@ class StyleManager {
 			state = null;
 		}
 		
+		//var pt:PerfTimer = new PerfTimer("buildStyleFor - " + Type.getClassName(Type.getClass(c)));
+		
 		var style:Dynamic = { };
 		for (rule in _rules) {
 			if (ruleMatch(c, rule, state) == true) {
@@ -194,6 +201,25 @@ class StyleManager {
 			}
 		}
 
+		stylesBuilt++;
+		var className:String = Type.getClassName(Type.getClass(c));
+		if (stylesBuiltFor.get(className) == null) {
+			stylesBuiltFor.set(className, 0);
+		}
+		var n:Int = stylesBuiltFor.get(className);
+		n++;
+		stylesBuiltFor.set(className, n);
+		//trace(stylesBuilt);
+		//pt.end();
+		//dump();
+		
 		return style;
+	}
+	
+	public function dump():Void {
+		for (key in stylesBuiltFor.keys()) {
+			trace("> " + key + " = " + stylesBuiltFor.get(key));
+		}
+		trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 }

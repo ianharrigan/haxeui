@@ -29,7 +29,9 @@ class StateComponent extends Component implements IStateComponent {
 		for (stateName in stateNames) {
 			_states.push(stateName);
 		}
-		buildStyles();
+		if (_ready) {
+			buildStyles();
+		}
 	}
 	
 	//******************************************************************************************

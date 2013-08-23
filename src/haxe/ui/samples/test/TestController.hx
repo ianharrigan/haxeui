@@ -19,6 +19,7 @@ import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.Main;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.controls.Progress;
+import haxe.ui.toolkit.style.StyleManager;
 
 class TestController extends XMLController {
 	public function new() {
@@ -28,6 +29,16 @@ class TestController extends XMLController {
 		if (resourceId != "ui/test02.xml") {
 			return;
 		}
+
+		attachEvent("perfButton", MouseEvent.CLICK, function(e) {
+			trace("perf");
+			var b:Button = getComponentAs("perfButton", Button);
+			for (x in 0...354) {
+				//StyleManager.instance.buildStyleFor(b);
+			}
+			
+			StyleManager.instance.dump();
+		});
 		
 		attachEvent("showSimplePopup", MouseEvent.CLICK, function(e) {
 			PopupManager.instance.showSimple(root, "Basic poup text", "Simple Popup");

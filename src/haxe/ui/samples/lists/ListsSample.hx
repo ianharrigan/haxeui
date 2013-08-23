@@ -19,9 +19,5 @@ class ListsSample extends Sample {
 			list.dataSource.add( { text:"Item " + n } );
 		}
 		root.addChild(list);
-		
-		root.addEventListener(MouseEvent.CLICK, function(e) {
-			list.invalidate();
-		});
 	}
 }

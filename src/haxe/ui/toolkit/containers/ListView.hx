@@ -199,6 +199,8 @@ class ListView extends ScrollView implements IDataComponent {
 		item.type = itemData.type;
 		item.value = itemData.value;
 		item.percentWidth = 100;
+		var id:String = (_content.numChildren % 2 == 0) ? "even" : "odd";
+		item.id = id;
 		if (index == -1) {
 			_content.addChild(item);
 		} else {
