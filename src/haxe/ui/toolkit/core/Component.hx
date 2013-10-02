@@ -6,6 +6,7 @@ import flash.geom.Rectangle;
 import haxe.ui.toolkit.core.Client;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.resources.ResourceManager;
 
 class Component extends StyleableDisplayObject {
 	private var _text:String;
@@ -49,6 +50,9 @@ class Component extends StyleableDisplayObject {
 	private function set_text(value:String):String {
 		if (StringTools.startsWith(value, "@#")) {
 			value = value.substr(2, value.length) + "_" + Client.instance.language;
+		} else if (StringTools.startsWith(value, "asset://")) {
+			var assetId:String = value.substr(8, value.length);
+			value = ResourceManager.instance.getText(assetId);
 		}
 		_text = value;
 		return value;

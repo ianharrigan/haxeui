@@ -34,6 +34,7 @@ class Toolkit {
 		get_instance();
 		registerXMLProcessor(UIProcessor, "ui");
 		registerXMLProcessor(UIProcessor, "selection");
+		registerXMLProcessor(UIProcessor, "ext");
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 	}

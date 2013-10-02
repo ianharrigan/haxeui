@@ -25,6 +25,7 @@ class ClassManager {
 		Macros.registerComponentPackage("haxe.ui.toolkit.containers", "ui");
 		Macros.registerComponentPackage("haxe.ui.toolkit.controls", "ui");
 		Macros.registerComponentPackage("haxe.ui.toolkit.controls.selection", "selection");
+		Macros.registerComponentPackage("haxe.ui.toolkit.controls.extended", "ext");
 		Macros.registerDataSourcePackage("haxe.ui.toolkit.data");
 	}
 

@@ -8,4 +8,5 @@ interface ITextDisplay {
 	public var display(get, null):DisplayObject;
 	public var interactive(get, set):Bool;
 	public var multiline(get, set):Bool;
+	public var wrapLines(get, set):Bool;
 }

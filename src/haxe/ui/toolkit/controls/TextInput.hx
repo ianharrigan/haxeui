@@ -3,6 +3,7 @@ package haxe.ui.toolkit.controls;
 import flash.events.Event;
 import flash.text.TextField;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.text.ITextDisplay;
@@ -13,6 +14,7 @@ class TextInput extends StateComponent {
 	private var _textDisplay:ITextDisplay;
 	
 	private var _vscroll:VScroll;
+	private var _hscroll:HScroll;
 	
 	public function new() {
 		super();
@@ -51,6 +53,17 @@ class TextInput extends StateComponent {
 		super.dispose();
 	}
 	
+	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
+		if (!_ready) {
+			return;
+		}
+		
+		super.invalidate(type);
+		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
+			checkScrolls();
+		}
+	}
+	
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
@@ -67,6 +80,13 @@ class TextInput extends StateComponent {
 		//trace("pos = " + _vscroll.pos + ", min = " + _vscroll.min + ", max = " + _vscroll.max);
 		#if !html5
 		tf.scrollV = Std.int(_vscroll.pos);
+		#end
+	}
+	
+	private function _onHScrollChange(event:Event):Void {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		#if !html5
+		tf.scrollH = Std.int(_hscroll.pos);
 		#end
 	}
 	//******************************************************************************************
@@ -116,7 +136,6 @@ class TextInput extends StateComponent {
 		if (multiline == false) {
 			return;
 		}
-		
 		#if !html5
 		var tf:TextField = cast(_textDisplay.display, TextField);
 		var visibleLines:Int = (tf.bottomScrollV - tf.scrollV) + 1;
@@ -139,6 +158,29 @@ class TextInput extends StateComponent {
 				_vscroll.pos = 0;
 			}
 		}
+		
+		if (tf.maxScrollH > 0) {
+			//trace("show h scroll!");
+			if (_hscroll == null) {
+				_hscroll = new HScroll();
+				_hscroll.percentWidth = 100;
+				_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
+				addChild(_hscroll);
+			}
+			_hscroll.pageSize = ((tf.width - tf.maxScrollH) / tf.width) * tf.maxScrollH;
+			_hscroll.min = 0;
+			_hscroll.max = tf.maxScrollH;
+			_hscroll.pos = tf.scrollH;
+			_hscroll.visible = true;
+		} else {
+			//trace("hide hscroll");
+			if (_hscroll != null) {
+				_hscroll.visible = false;
+				_hscroll.pos = 0;
+			}
+		}
+		
+		invalidate(InvalidationFlag.LAYOUT);
 		#end
 	}
 }
@@ -171,19 +213,32 @@ private class TextInputLayout extends DefaultLayout {
 	public override function repositionChildren():Void {
 		super.repositionChildren();
 		
-		var vscroll:VScroll =  container.findChildAs(VScroll);
+		var vscroll:VScroll = container.findChildAs(VScroll);
 		if (vscroll != null) {
 			vscroll.x = container.width - vscroll.width - padding.right;
+		}
+		var hscroll:HScroll = container.findChildAs(HScroll);
+		if (hscroll != null) {
+			hscroll.y = container.height - hscroll.height - padding.bottom;
 		}
 	}
 	
 	// usable width returns the amount of available space for % size components 
 	private override function get_usableWidth():Float {
 		var ucx:Float = innerWidth;
-		var vscroll:VScroll =  container.findChildAs(VScroll);
+		var vscroll:VScroll = container.findChildAs(VScroll);
 		if (vscroll != null && vscroll.visible == true) {
 			ucx -= vscroll.width + spacingX;
 		}
 		return ucx;
+	}
+	
+	private override function get_usableHeight():Float {
+		var ucy = innerHeight;
+		var hscroll:HScroll = container.findChildAs(HScroll);
+		if (hscroll != null && hscroll.visible == true) {
+			ucy -= hscroll.height - spacingY;
+		}
+		return ucy;
 	}
 }

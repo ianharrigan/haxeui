@@ -29,6 +29,7 @@ class TextDisplay implements ITextDisplay {
 	public var display(get, null):DisplayObject;
 	public var interactive(get, set):Bool;
 	public var multiline(get, set):Bool;
+	public var wrapLines(get, set):Bool;
 
 	private function get_text():String {
 		return _tf.text;
@@ -128,6 +129,15 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_multiline(value:Bool):Bool {
 		_tf.multiline = value;
+		_tf.wordWrap = value;
+		return value;
+	}
+	
+	private function get_wrapLines():Bool {
+		return _tf.wordWrap;
+	}
+	
+	private function set_wrapLines(value:Bool):Bool {
 		_tf.wordWrap = value;
 		return value;
 	}

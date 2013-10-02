@@ -20,6 +20,9 @@ class Macros {
 		var currentClassName:String = Context.getLocalClass().toString();
 		var arr:Array<String> = pack.split(".");
 		var dir:String = "src/" + arr.join("/"); // TODO: 'src' will be a problem
+		if (sys.FileSystem.exists(dir) == false) {
+			dir = arr.join("/");
+		}
 		var files:Array<String> = sys.FileSystem.readDirectory(dir);
 		if (files != null) {
 			for (file in files) {

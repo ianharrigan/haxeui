@@ -3,6 +3,7 @@ Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
+<img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/extended.jpg" />
 
 <a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/haxeuitoolkit.swf?raw=true">Compiled demo</a> (May be out of date)
 
@@ -25,6 +26,10 @@ General components
 - Tab bars
 - Text (static, input, multiline)
 - List selection (drop downs, popup lists)
+
+Extended components
+
+ - Code editor (supports basic syntax highlighting)
 
 Layout, position and containment components
 
