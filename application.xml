@@ -16,6 +16,7 @@
 	<source path="src" />
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
+	<haxelib name="hscript" />
 	
 	<!-- assets -->
 	<icon path="assets/openfl.svg" />
@@ -23,19 +24,17 @@
 	
 	<assets path="assets/ui" rename="ui" exclude="*.xml|*.css" if="html5" />
 	<assets path="assets/ui" rename="ui" unless="html5" />
-	<assets path="assets/data" rename="data" exclude="*.json|*.txt" if="html5" />
+	<assets path="assets/data" rename="data" exclude="*.json|*.txt|*.xml" if="html5" />
 	<assets path="assets/data" rename="data" unless="html5" />
 	<assets path="assets/styles" rename="styles" exclude="*.xml|*.css" if="html5" />
 	<assets path="assets/styles" rename="styles" unless="html5" />
-	<assets path="assets/samples" rename="samples" exclude="*.xml|*.css" if="html5" />
-	<assets path="assets/samples" rename="samples" unless="html5" />
 	
 	<!-- optimize output -->
 	<haxeflag name="-dce std" if="haxe3" />
 
-	<haxeflag name="-lib" value="hscript" />
 	<!-- haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" /-->
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/test02.xml@ui/test02.xml" />
+	<haxeflag name="-resource" value="assets/data/data.xml@data/data.xml" />
 
 </project>

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.data;
 
-#if !(flash)
+#if !(flash || html5)
 import sys.FileSystem;
 #end
 
@@ -29,7 +29,7 @@ class FilesDataSource extends ArrayDataSource {
 	}
 	
 	private override function _open():Bool {
-		#if !(flash)
+		#if !(flash || html5)
 		if (isDir(_dir)) {
 			var files:Array<String> = FileSystem.readDirectory(_dir);
 		
@@ -67,7 +67,7 @@ class FilesDataSource extends ArrayDataSource {
 	private function isDir(dir:String):Bool { // neko throws an exception on isDirectory, so move to a safer function
 		var isDir:Bool = false;
 		
-		#if !(flash)
+		#if !(flash || html5)
 		try {
 			if (isRoot(dir)) {
 				dir += "/";
@@ -84,7 +84,7 @@ class FilesDataSource extends ArrayDataSource {
 	private function isRoot(dir:String):Bool {
 		var isRoot:Bool = false;
 		
-		#if !(flash)
+		#if !(flash || html5)
 		isRoot = dir.split("/").length == 1;
 		#end
 		

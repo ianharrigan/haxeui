@@ -434,10 +434,15 @@
 
 			</ui:grid>
 		</ui:vbox>
+
+		<ui:vbox text="RTF Edit" width="100%" height="100%">
+			<ui:rtfview width="100%" height="100%" text="some text\n\nsome more text\n\neven some more text" />
+		</ui:vbox>
 		
 		<ui:vbox text="Code Edit" width="100%" height="100%">
-			<ext:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt"></ext:code>
+			<ext:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
 		</ui:vbox>
+
 		
 		<ui:vbox text="Tab 1" />
 		<ui:vbox text="Tab 2" />

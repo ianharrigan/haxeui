@@ -8,6 +8,7 @@ import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import motion.Actuate;
@@ -58,6 +59,9 @@ class List extends Button implements IDataComponent {
 	public var dataSource(get, set):IDataSource;
 	
 	private function get_dataSource():IDataSource {
+		if (_dataSource == null) {
+			_dataSource = new ArrayDataSource();
+		}
 		return _dataSource;
 	}
 	

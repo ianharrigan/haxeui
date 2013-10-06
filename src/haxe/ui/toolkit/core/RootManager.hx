@@ -17,8 +17,10 @@ class RootManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
+	private var _roots:Array<Root>;
+	
 	public function new() {
-		
+		_roots = new Array<Root>();
 	}
 	
 	public function createRoot(options:Dynamic = null, fn:Root->Void = null):Root {
@@ -49,7 +51,7 @@ class RootManager {
 		root.percentWidth = (options.percentWidth != null) ? options.percentWidth : -1;
 		root.percentHeight = (options.percentHeight != null) ? options.percentHeight : -1;
 		options.parent.addChild(root.sprite);
-		
+		_roots.push(root);
 		return root;
 	}
 	
@@ -62,5 +64,13 @@ class RootManager {
 		options.parent = (options.parent != null) ? options.parent : Lib.current.stage;
 		options.parent.removeChild(root.sprite);
 		root.dispose();
+		
+		_roots.remove(root);
+	}
+	
+	public function destroyAllRoots():Void {
+		for (root in _roots) {
+			destroyRoot(root);
+		}
 	}
 }

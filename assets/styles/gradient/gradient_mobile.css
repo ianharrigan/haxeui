@@ -462,7 +462,7 @@ OptionBoxValue #selected {
 	iconPosition: center;
 }
 
-TextInput, Code {
+TextInput, Code, RTF {
 	width: 150;
 	height: 30;
 	borderColor: 0x363d4c;

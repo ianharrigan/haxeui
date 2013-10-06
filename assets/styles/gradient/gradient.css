@@ -483,7 +483,7 @@ OptionBoxValue #selected {
 	iconPosition: center;
 }
 
-TextInput, Code {
+TextInput, Code, RTF {
 	width: 150;
 	height: 30;
 	borderColor: 0x363d4c;
@@ -607,6 +607,8 @@ List {
 	icon: styles/gradient/arrow_down.png;
 	iconPosition: farRight;
 	labelPosition: left;
+	__width: 120;
+	__height: 30;
 }
 
 List:over {
@@ -784,4 +786,8 @@ AccordionButton:down {
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 	icon: styles/gradient/arrow_down.png;
+}
+
+RTFView {
+	spacingY: 5;
 }

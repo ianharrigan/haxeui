@@ -15,31 +15,32 @@ class Macros {
 	}
 	
 	macro public static function registerComponentPackage(pack:String, prefix:String):Expr {
-		
+
 		var code:String = "function() {\n";
 		var currentClassName:String = Context.getLocalClass().toString();
 		var arr:Array<String> = pack.split(".");
-		var dir:String = "src/" + arr.join("/"); // TODO: 'src' will be a problem
-		if (sys.FileSystem.exists(dir) == false) {
-			dir = arr.join("/");
-		}
-		var files:Array<String> = sys.FileSystem.readDirectory(dir);
-		if (files != null) {
-			for (file in files) {
-				if (file.indexOf(".hx") != -1) {
-					var name:String = file.substr(0, file.length - 3);
-					var path:String = Context.resolvePath(dir + "/" + file);
-					
-					var types:Array<haxe.macro.Type> = Context.getModule(pack + "." + name);
-					
-					for (t in types) {
-						var className:String = getClassNameFromType(t);
-						if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
-							if (className == pack + "." + name) {
-								if (currentClassName.indexOf("ClassManager") != -1) {
-									code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
-								} else {
-									code += "\tClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
+		var paths:Array<String> = Context.getClassPath();
+		
+		for (path in paths) {
+			var dir:String = path + arr.join("/");
+			var files:Array<String> = sys.FileSystem.readDirectory(dir);
+			if (files != null) {
+				for (file in files) {
+					if (file.indexOf(".hx") != -1) {
+						var name:String = file.substr(0, file.length - 3);
+						var path:String = Context.resolvePath(dir + "/" + file);
+						
+						var types:Array<haxe.macro.Type> = Context.getModule(pack + "." + name);
+						
+						for (t in types) {
+							var className:String = getClassNameFromType(t);
+							if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
+								if (className == pack + "." + name) {
+									if (currentClassName.indexOf("ClassManager") != -1) {
+										code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
+									} else {
+										code += "\tClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
+									}
 								}
 							}
 						}
@@ -58,26 +59,30 @@ class Macros {
 		var code:String = "function() {\n";
 		var currentClassName:String = Context.getLocalClass().toString();
 		var arr:Array<String> = pack.split(".");
-		var dir:String = "src/" + arr.join("/");
-		var files:Array<String> = sys.FileSystem.readDirectory(dir);
-		if (files != null) {
-			for (file in files) {
-				if (file.indexOf(".hx") != -1) {
-					var name:String = file.substr(0, file.length - 3);
-					var path:String = Context.resolvePath(dir + "/" + file);
-					
-					var types:Array<haxe.macro.Type> = Context.getModule(pack + "." + name);
-					
-					for (t in types) {
-						var className:String = getClassNameFromType(t);
-						if (hasInterface(t, "haxe.ui.toolkit.data.IDataSource")) {
-							if (className == pack + "." + name) {
-								name = StringTools.replace(name, "DataSource", "");
-								if (name.length > 0) {
-									if (currentClassName.indexOf("ClassManager") != -1) {
-										code += "\tregisterDataSourceClass(" + className + ", '" + name.toLowerCase() + "');\n";
-									} else {
-										code += "\tClassManager.instance.registerDataSourceClass(" + className + ", '" + name.toLowerCase() + "');\n";
+		var paths:Array<String> = Context.getClassPath();
+
+		for (path in paths) {
+			var dir:String = path + arr.join("/");
+			var files:Array<String> = sys.FileSystem.readDirectory(dir);
+			if (files != null) {
+				for (file in files) {
+					if (file.indexOf(".hx") != -1) {
+						var name:String = file.substr(0, file.length - 3);
+						var path:String = Context.resolvePath(dir + "/" + file);
+						
+						var types:Array<haxe.macro.Type> = Context.getModule(pack + "." + name);
+						
+						for (t in types) {
+							var className:String = getClassNameFromType(t);
+							if (hasInterface(t, "haxe.ui.toolkit.data.IDataSource")) {
+								if (className == pack + "." + name) {
+									name = StringTools.replace(name, "DataSource", "");
+									if (name.length > 0) {
+										if (currentClassName.indexOf("ClassManager") != -1) {
+											code += "\tregisterDataSourceClass(" + className + ", '" + name.toLowerCase() + "');\n";
+										} else {
+											code += "\tClassManager.instance.registerDataSourceClass(" + className + ", '" + name.toLowerCase() + "');\n";
+										}
 									}
 								}
 							}
@@ -88,7 +93,7 @@ class Macros {
 		}
 		
 		code += "}()\n";
-//		trace(code);
+		//trace(code);
 		return Context.parseInlineString(code, Context.currentPos());
 	}
 	

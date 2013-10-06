@@ -67,7 +67,9 @@ class Code extends TextInput {
 	private function _onCodeKeyDown(event:KeyboardEvent):Void {
 		if (event.keyCode == 9) {
 			var tf:TextField = cast(_textDisplay.display, TextField);
+			#if flash
 			tf.replaceSelectedText("    ");
+			#end
 			applyRules();
 		}
 	}

@@ -35,6 +35,5 @@ class ResourceManager {
 	}
 	
 	public function reset():Void {
-		Assets.cachedBitmapData = new Map<String, BitmapData>();
 	}
 }

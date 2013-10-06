@@ -59,7 +59,7 @@ Stack {
 	paddingTop: 5;
 }
 
-TextInput, Code {
+TextInput, Code, RTF {
 	backgroundImage: styles/windows/textinput.png;
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 0,0,15,15;

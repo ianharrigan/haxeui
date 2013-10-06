@@ -37,6 +37,15 @@ class Toolkit {
 		registerXMLProcessor(UIProcessor, "ext");
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
+		
+		if (_defaultStyle == null) {
+			#if android
+				_defaultStyle = StyleManager.STYLE_GRADIENT_MOBILE;
+			#else
+				_defaultStyle = StyleManager.STYLE_GRADIENT;
+			#end
+		}
+		StyleManager.instance.loadStyle(_defaultStyle);
 	}
 
 	private static var _registeredProcessors:StringMap<String>;
@@ -131,11 +140,22 @@ class Toolkit {
 	//******************************************************************************************
 	// Animation defaults
 	//******************************************************************************************
-	private static var _defaultTransition:String;
+	private static var _defaultStyle:String;
+	private static var _defaultTransition:String = "slide";
 	private static var _transitionRegister:StringMap<String>;
 	
+	public static var defaultStyle(get, set):String;
 	public static var defaultTransition(get, set):String;
 	
+	private static function get_defaultStyle():String {
+		return _defaultStyle;
+	}
+	
+	private static function set_defaultStyle(value:String):String {
+		_defaultStyle = value;
+		return value;
+	}
+
 	private static function get_defaultTransition():String {
 		return _defaultTransition;
 	}
@@ -171,5 +191,15 @@ class Toolkit {
 	
 	private function initInstance() {
 		ClassManager.instance;
+	}
+	
+	public static function openFullscreen(fn:Root->Void = null):Root {
+		var root:Root = RootManager.instance.createRoot({x: 0, y: 0, percentWidth: 100, percentHeight: 100}, fn);
+		return root;
+	}
+	
+	public static function openPopup(fn:Root->Void = null):Root {
+		var root:Root = RootManager.instance.createRoot( { x: 20, y: 20, id: "popupRoot" }, fn);
+		return root;
 	}
 }
