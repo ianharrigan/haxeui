@@ -53,6 +53,7 @@ class Component extends StyleableDisplayObject {
 		} else if (StringTools.startsWith(value, "asset://")) {
 			var assetId:String = value.substr(8, value.length);
 			value = ResourceManager.instance.getText(assetId);
+			value = StringTools.replace(value, "\r", "");
 		}
 		_text = value;
 		return value;

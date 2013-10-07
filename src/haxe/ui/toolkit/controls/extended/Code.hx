@@ -36,7 +36,6 @@ class Code extends TextInput {
 	
 	public override function set_text(value:String):String {
 		value = super.set_text(value);
-		value = StringTools.replace(value, "\r", "");
 		value = StringTools.replace(value, "\t", "    ");
 		super.set_text(value);
 		applyRules();
@@ -66,10 +65,7 @@ class Code extends TextInput {
 	
 	private function _onCodeKeyDown(event:KeyboardEvent):Void {
 		if (event.keyCode == 9) {
-			var tf:TextField = cast(_textDisplay.display, TextField);
-			#if flash
-			tf.replaceSelectedText("    ");
-			#end
+			replaceSelectedText("    ");
 			applyRules();
 		}
 	}
@@ -84,7 +80,7 @@ class Code extends TextInput {
 			tf.setTextFormat(_syntax.defaultFormat, 0, txt.length);
 		}
 		for (rule in _syntax.rules.keys()) {
-			var r:EReg = new EReg(rule, "g");
+			var r:EReg = _syntax.getCompiledRule(rule);
 			r.map(txt, function(e:EReg):String {
 				var pos = e.matchedPos();
 				tf.setTextFormat(_syntax.rules.get(rule), pos.pos, pos.pos + pos.len);

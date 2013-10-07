@@ -1,127 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox id="main" width="100%" height="100%">
-	<style:css>
-		#someButton {
-			width: 160;
-			height: 80;
-			icon: img/application_32.png;
-			__filter: glow;
-			__filter: blur(4, 4, 1);
-			filter: dropShadow(4, 45, 0x808080, .7, 4, 4, 1, 3);
-			alpha: .8;
-			iconPosition: top;
-		}
 
-		#someButton:over {
-			filter: glow;
-		}
-		
-		#someButton:down {
-			icon: img/file_blank_32.png;
-			filter: blur;
-		}
-	</style:css>
-	
-	<ui:hbox>
-		<ui:button text="Icon & filter" id="someButton" />
-		<ui:scroll direction="horizontal" min="5" max="10" pageSize="1" incrementSize="1"/>
-		<ui:scroll direction="vertical" min="5" max="10" pageSize="1" incrementSize="1" id="vscroll" />
-		
-		<ui:vbox>
-			<ui:hbox>
-				<ui:progress id="hprogress" pos="25" direction="horizontal" />
-				<ui:button text="-" id="deincHProgress" height="100%" />
-				<ui:button text="+" id="incHProgress" height="100%" />
-			</ui:hbox>
-			<ui:slider direction="horizontal" id="hslider" width="100%" pos="50" />
-			<ui:text text="Slider value: 50" id="hsliderValue" />
-		</ui:vbox>
-		
-		<ui:hbox>
-			<ui:progress id="vprogress" pos="25" direction="vertical" />
-			<ui:vbox>
-				<ui:button text="+" id="incVProgress" />
-				<ui:button text="-" id="deincVProgress" width="100%" />
-			</ui:vbox>
-			<ui:slider id="vslider" pos="50" direction="vertical" />
-			<ui:text text="Slider value: 50" id="vsliderValue" />
-		</ui:hbox>
-			
-	</ui:hbox>
+<ui:rtfview width= "100%" height="100%" htmlText="asset://data/rtf.txt">
+</ui:rtfview>
 
-	<ui:hbox width="100%">
-		<ui:button text="Flash!" condition="Client.target == 'flash'" />
-		<ui:button text="Not Flash!" condition="Client.target != 'flash'" />
-		<ui:textinput text="Text input" />
-		
-		<ui:textinput multiline="true" text="Multiline\nline1\nline2\nline3\nline4\nline5\nline6\nline7\nline8" width="100%" height="100" />
-	</ui:hbox>
-	
-	<sys:import resource="ui/import01.xml" />
-	<sys:import resource="ui/import02.xml" condition="Client.language == 'en'" />
-	<sys:import resource="ui/import03.xml" condition="Client.dpi > 160" />
-	
-	
-	<ui:hbox>
-		<ui:button text="@#confirm" />
-		<ui:checkbox text="Check 1" />
-		<ui:checkbox text="Check 2" selected="true" />
-		<ui:checkbox text="Check 3" />
-		<ui:optionbox text="Option 1" group="group1" />
-		<ui:optionbox text="Option 2" selected="true" group="group1" />
-		<ui:optionbox text="Option 3" group="group1" />
-	</ui:hbox>
-	
-	<ui:hbox width="100%">
-		<ui:slider direction="horizontal" id="hslider2" width="100%" pos="50" />
-		<ui:text text="Value: 50" id="hsliderValue2" />
-	</ui:hbox>
-
-	<ui:hbox width="100%">
-		<ui:listview width="50%" height="200" id="theList">
-			<data:json>
-				[
-					{"text": "Item 1", "controlId": "sendButton", "type": "button", "value": "Send", "subtext": "Sub text 1"},
-					{"text": "Item 2", "subtext": "Subtext 2"},
-					{"text": "Item 3", "subtext": "Subtext + icon", "icon": "img/fav_32.png"},
-					{"text": "Item 4 + icon + button", "icon": "img/fav_16.png", "controlId": "someAction", "type": "button", "value": "Some Action"},
-					{"text": "Item 5 + slider", "subtext": "something", "type": "slider", "value": 25},
-					{"text": "Item 6 + progress", "type": "progress", "value": 75},
-					{"text": "Item 7"},
-					{"text": "Item 8"},
-					{"text": "Item 9"},
-					{"text": "Item 10"}
-				]
-			</data:json>
-		</ui:listview>
-		<ui:listview width="50%" height="200">
-			<data:array>
-				Item 1, Item 2, Item 3, Item 4, Item 5, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
-			</data:array>
-		</ui:listview>
-		<ui:vbox>
-			<ui:button text="Add Item" width="100%" id="addListItem" />
-			<ui:button text="Remove Item" />
-		</ui:vbox>
-	</ui:hbox>
-	
-	<ui:scrollview width="100%" height="100%" id="scrollView">
-		<ui:vbox width="1000">
-			<ui:button text="Button 1" width="200" />
-			<ui:button text="Button 2" width="100%" />
-			<ui:image resource="img/slinky_small.jpg" />
-			<ui:button text="Button 3" width="100%" />
-			<ui:button text="Button 4" width="100%" />
-			<ui:button text="Button 5" width="100%" />
-			<ui:button text="Button 6" width="100%" />
-			<ui:button text="Button 7" width="100%" />
-			<ui:button text="Button 8" width="100%" />
-			<ui:button text="Button 9" width="100%" />
-			<ui:button text="Button 10" width="100%" />
-			<ui:button text="Button 11" width="100%" />
-			<ui:button text="Button 12" width="100%" />
-			<ui:button text="Button 13" width="100%" />
-			<ui:button text="Button 14" width="100%" />
-		</ui:vbox>
-	</ui:scrollview>
+<!--
+<ui:vbox width="100%" height="100%">
+	<ui:textinput multiline="true" width="300" height="300" text="bob2" />
 </ui:vbox>
+-->
+
+<!--
+<ext:rtf width= "100%" height="100%" text="asset://data/code.txt">
+</ext:rtf>
+-->

@@ -2,6 +2,7 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
 import flash.text.TextField;
+import flash.text.TextFormat;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
@@ -89,6 +90,7 @@ class TextInput extends StateComponent {
 		tf.scrollH = Std.int(_hscroll.pos);
 		#end
 	}
+	
 	//******************************************************************************************
 	// Component overrides
 	//******************************************************************************************
@@ -119,6 +121,9 @@ class TextInput extends StateComponent {
 	// Component properties 
 	//******************************************************************************************
 	public var multiline(get, set):Bool;
+	public var selectionBeginIndex(get, null):Int;
+	public var selectionEndIndex(get, null):Int;
+	public var selectedTextFormat(get, null):TextFormat;
 	
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
@@ -128,14 +133,45 @@ class TextInput extends StateComponent {
 		_textDisplay.multiline = value;
 		return value;
 	}
+
+	private function get_selectionBeginIndex():Int {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		var n:Int = 0;
+		#if flash
+			n = tf.selectionBeginIndex;
+		#end
+		return n;
+	}
+
+	private function get_selectionEndIndex():Int {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		var n:Int = 0;
+		#if flash
+			n = tf.selectionEndIndex;
+		#end
+		return n;
+	}
+	
+	private function get_selectedTextFormat():TextFormat {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		return tf.getTextFormat(selectionBeginIndex - 1, selectionEndIndex);
+	}
 	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	public function replaceSelectedText(s:String):Void {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		#if flash
+			tf.replaceSelectedText(s);
+		#end
+	}
+	
 	private function checkScrolls():Void {
-		if (multiline == false) {
+		if (multiline == false || ready == false) {
 			return;
 		}
+		
 		#if !html5
 		var tf:TextField = cast(_textDisplay.display, TextField);
 		var visibleLines:Int = (tf.bottomScrollV - tf.scrollV) + 1;
@@ -160,7 +196,6 @@ class TextInput extends StateComponent {
 		}
 		
 		if (tf.maxScrollH > 0) {
-			//trace("show h scroll!");
 			if (_hscroll == null) {
 				_hscroll = new HScroll();
 				_hscroll.percentWidth = 100;
@@ -173,7 +208,6 @@ class TextInput extends StateComponent {
 			_hscroll.pos = tf.scrollH;
 			_hscroll.visible = true;
 		} else {
-			//trace("hide hscroll");
 			if (_hscroll != null) {
 				_hscroll.visible = false;
 				_hscroll.pos = 0;
@@ -200,12 +234,12 @@ private class TextInputLayout extends DefaultLayout {
 				text.x = padding.left;
 				if (text.multiline == true) {
 					text.y = padding.top;
-					text.height = innerHeight;
+					text.height = usableHeight;
 				} else {
 					text.height = text.defaultTextFormat.size + 8;
 					text.y = (container.height / 2) - (text.height / 2);
 				}
-				text.width = innerWidth;
+				text.width = usableWidth;
 			}
 		}
 	}

@@ -10,7 +10,7 @@ Cross platfrom Haxe/OpenFL set of styleable application centric rich UI componen
 <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
 
 
-<a href="https://github.com/ianharrigan/haxeui/tree/master/src/haxe/ui/samples">Samples</a>
+<a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a>
 
 Components
 -------------------------
@@ -30,6 +30,7 @@ General components
 Extended components
 
  - Code editor (supports basic syntax highlighting)
+ - RTF edtior (preliminary, only fully functional in flash due to neko/cpp limitations)
 
 Layout, position and containment components
 

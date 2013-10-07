@@ -34,6 +34,20 @@
 		}
 	</style:css>
 	
+	<style:css>
+		#warning1, #warning2 {
+			borderSize: 1;
+			borderColor: 0x808080;
+			backgroundColor: 0xFFFFFF;
+			cornerRadius: 3;
+			paddingLeft: 3;
+			paddingTop: 3;
+			paddingBottom: 3;
+			paddingRight: 3;
+			filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+		}
+	</style:css>
+	
 	<ui:menubar>
 		<ui:button text="Menubar Button" />
 		<ui:spacer width="100%" />
@@ -436,10 +450,18 @@
 		</ui:vbox>
 
 		<ui:vbox text="RTF Edit" width="100%" height="100%">
-			<ui:rtfview width="100%" height="100%" text="some text\n\nsome more text\n\neven some more text" />
+			<ui:hbox id="warning2" width="100%" condition="Client.target != 'flash'">
+				<ui:image resource="img/exclamation.png" height="100%" />
+				<ui:text text="Only functional in flash due to text selection limitations." width="100%" />	
+			</ui:hbox>
+			<ui:rtfview width="100%" height="100%" htmlText="asset://data/rtf.txt" />
 		</ui:vbox>
 		
 		<ui:vbox text="Code Edit" width="100%" height="100%">
+			<ui:hbox id="warning2" width="100%" condition="Client.target != 'flash'">
+				<ui:image resource="img/exclamation.png" height="100%" />
+				<ui:text text="Performance issues." width="100%" />	
+			</ui:hbox>
 			<ext:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
 		</ui:vbox>
 

@@ -3,13 +3,15 @@ import flash.text.TextFormat;
 
 class CodeSyntax {
 	private var _rules:Map<String, TextFormat>;
+	private var _compiledRules:Map<String, EReg>;
 	private var _defaultFormat:TextFormat;
 	private var _identifier:String;
 	
 	public function new() {
 		_identifier = "";
 		_rules = new Map<String, TextFormat>();
-		_defaultFormat = new TextFormat("_sans", 13, 0x000000);
+		_compiledRules = new Map<String, EReg>();
+		_defaultFormat = new TextFormat("_typewriter", 13, 0x000000);
 	}
 	
 	public function addRule(regex:String, color:Int):Void {
@@ -48,4 +50,17 @@ class CodeSyntax {
 	private function get_rules():Map<String, TextFormat> {
 		return _rules;
 	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	public function getCompiledRule(rule:String):EReg {
+		var r:EReg = _compiledRules.get(rule);
+		if (r == null) {
+			r = new EReg(rule, "g");
+			_compiledRules.set(rule, r);
+		}
+		return r;
+	}
+	
 }

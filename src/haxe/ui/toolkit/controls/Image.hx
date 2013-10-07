@@ -23,6 +23,9 @@ class Image extends Component {
 		
 		if (_bmp != null) {
 			sprite.addChild(_bmp);
+			if (this.height > _bmp.height) {
+				_bmp.y = Std.int((this.height / 2) - (_bmp.height / 2));
+			}
 		}
 	}
 	

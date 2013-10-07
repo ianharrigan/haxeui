@@ -14,6 +14,7 @@ import haxe.ui.toolkit.controls.Slider;
 import haxe.ui.toolkit.controls.VScroll;
 import haxe.ui.toolkit.core.Controller;
 import haxe.ui.toolkit.core.PopupManager;
+import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.RootManager;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.XMLController;
@@ -83,7 +84,10 @@ class TestController extends XMLController {
 			var style:String = getComponentAs("styleList", List).selectedItems[0].text.toLowerCase();
 			RootManager.instance.destroyAllRoots();
 			Toolkit.defaultStyle = style;
-			trace("bob");
+			StyleManager.instance.loadStyle(style);
+			Toolkit.openFullscreen(function(root:Root) {
+				root.addChild(new TestController().view);
+			});
 		});
 
 		// set demo tab values

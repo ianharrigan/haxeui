@@ -45,6 +45,7 @@ class StyleManager {
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/scrolls.css");
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/sliders.css");
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/accordion.css");
+		addStyleAsset(STYLE_WINDOWS, "styles/windows/rtf.css");
 	}
 	
 	public function addStyleAsset(style:String, assetId:String):Void {
