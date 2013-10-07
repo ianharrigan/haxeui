@@ -32,7 +32,7 @@
 	<!-- optimize output -->
 	<haxeflag name="-dce std" if="haxe3" />
 
-	<!-- haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" /-->
+	<haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" />
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/test02.xml@ui/test02.xml" />
 	<haxeflag name="-resource" value="assets/data/data.xml@data/data.xml" />

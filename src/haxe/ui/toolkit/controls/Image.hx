@@ -5,6 +5,9 @@ import flash.display.BitmapData;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.resources.ResourceManager;
 
+/**
+ General purpose image control
+ **/
 class Image extends Component {
 	private var _bmp:Bitmap;
 	private var _resource:String;
@@ -29,6 +32,9 @@ class Image extends Component {
 		}
 	}
 	
+	/**
+	 Destroy the image and free the resources (will be called by the framework automatically)
+	 **/
 	public override function dispose():Void {
 		if (_bmp != null) {
 			_bmp.bitmapData.dispose();
@@ -41,6 +47,9 @@ class Image extends Component {
 	//******************************************************************************************
 	// Methods/props
 	//******************************************************************************************
+	/**
+	 The resource asset for this image: eg `assets/myimage.jpeg`
+	 **/
 	public var resource(get, set):String;
 	
 	private function get_resource():String {

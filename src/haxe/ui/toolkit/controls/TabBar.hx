@@ -7,6 +7,13 @@ import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 
+/**
+ Horizontally scrollable tab bar
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when the selection is changed
+ **/
 class TabBar extends ScrollView {
 	private var _content:HBox;
 
@@ -32,6 +39,9 @@ class TabBar extends ScrollView {
 	//******************************************************************************************
 	// Getters/setters
 	//******************************************************************************************
+	/**
+	 Gets (or sets) the selected button index for the tab bar
+	 **/
 	public var selectedIndex(get, set):Int;
 	
 	private function get_selectedIndex():Int {
@@ -59,6 +69,9 @@ class TabBar extends ScrollView {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	/**
+	 Adds a new button to the tab bar with the specified `text`
+	 **/
 	public function addTab(text:String):Void {
 		var button:Button = new Button();
 		button.text = text;

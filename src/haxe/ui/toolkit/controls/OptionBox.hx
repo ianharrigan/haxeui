@@ -6,6 +6,14 @@ import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 
+/**
+ Simple two state option control (supports groups)
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the option group has changed
+ **/
+
 class OptionBox extends Component {
 	private var _value:OptionBoxValue;
 	private var _label:Text;
@@ -60,7 +68,13 @@ class OptionBox extends Component {
 	//******************************************************************************************
 	// Component getters/setters
 	//******************************************************************************************
+	/**
+	 Defines whether the option is checked or not, if set to `true` then other options of the same group will be deselected.
+	 **/
 	public var selected(get, set):Bool;
+	/**
+	 Defines the group for this option. Options belonging to the same group will only ever have a single option selected.
+	 **/
 	public var group(get, set):String;
 	
 	private function get_selected():Bool {
@@ -134,7 +148,7 @@ class OptionBox extends Component {
 	}
 }
 
-class OptionBoxValue extends Value {
+private class OptionBoxValue extends Value {
 	public function new() {
 		super();
 		_value = "unselected";

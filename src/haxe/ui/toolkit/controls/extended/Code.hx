@@ -7,6 +7,9 @@ import haxe.ui.toolkit.controls.extended.syntax.CodeSyntax;
 import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.resources.ResourceManager;
 
+/**
+ Simple regex based syntax highlighting component
+ **/
 class Code extends TextInput {
 	private var _syntax:CodeSyntax;
 	
@@ -34,7 +37,7 @@ class Code extends TextInput {
 		super.dispose();
 	}
 	
-	public override function set_text(value:String):String {
+	private override function set_text(value:String):String {
 		value = super.set_text(value);
 		value = StringTools.replace(value, "\t", "    ");
 		super.set_text(value);
@@ -45,6 +48,11 @@ class Code extends TextInput {
 	//******************************************************************************************
 	// Properties
 	//******************************************************************************************
+	/**
+	 Syntax to use for highlighting, valid options are:
+	
+	 * `haxe` - Haxe syntax
+	 **/
 	public var syntax(get, set):String;
 	private function get_syntax():String {
 		return _syntax.identifier;

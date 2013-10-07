@@ -6,6 +6,11 @@ import flash.text.TextFormatAlign;
 import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.resources.ResourceManager;
 
+/**
+ Basic rich text editor
+ 
+ Note - The `RTF` class does not contain the controls to apply styles to the text, merely the functions. For a full rich text editor (including controls) see `RTFView`.
+ **/
 class RTF extends TextInput {
 	public function new() {
 		super();
@@ -19,6 +24,9 @@ class RTF extends TextInput {
 	//******************************************************************************************
 	// Properties
 	//******************************************************************************************
+	/**
+	 Gets or sets the rich text of the editor from a html string
+	**/
 	public var htmlText(get, set):String;
 	
 	private function get_htmlText():String {
@@ -40,42 +48,72 @@ class RTF extends TextInput {
 	//******************************************************************************************
 	// Methods
 	//******************************************************************************************
+	/**
+	 Sets the currently selected text to bold
+	 **/
 	public function bold():Void {
 		applyRTFStyle("bold");
 	}
 	
+	/**
+	 Sets the currently selected text to italic
+	 **/
 	public function italic():Void {
 		applyRTFStyle("italic");
 	}
 
+	/**
+	 Sets the currently selected text to underlined
+	 **/
 	public function underline():Void {
 		applyRTFStyle("underline");
 	}
 	
+	/**
+	 Sets the currently selected text to the specified font size
+	 **/
 	public function fontSize(size:Int):Void {
 		applyRTFStyle("fontSize", size);
 	}
 	
+	/**
+	 Sets the currently selected text to the specified font name
+	 **/
 	public function fontName(name:String):Void {
 		applyRTFStyle("fontName", name);
 	}
 	
+	/**
+	 Formats the currently selected text as bullet points
+	 **/
 	public function bullet():Void {
 		applyRTFStyle("bullet");
 	}
 
+	/**
+	 Horizontally aligns the currently selected text to the left
+	 **/
 	public function alignLeft():Void {
 		applyRTFStyle("align", "left");
 	}
 
+	/**
+	 Horizontally aligns the currently selected text to the center
+	 **/
 	public function alignCenter():Void {
 		applyRTFStyle("align", "center");
 	}
 
+	/**
+	 Horizontally aligns the currently selected text to the right
+	 **/
 	public function alignRight():Void {
 		applyRTFStyle("align", "right");
 	}
 
+	/**
+	 Horizontally justifies the currently selected text
+	 **/
 	public function alignJustify():Void {
 		applyRTFStyle("align", "justify");
 	}

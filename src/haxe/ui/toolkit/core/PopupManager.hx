@@ -14,7 +14,7 @@ import motion.easing.Linear;
 class PopupManager {
 	private static var _instance:PopupManager;
 	public static var instance(get_instance, null):PopupManager;
-	public static function get_instance():PopupManager {
+	private static function get_instance():PopupManager {
 		if (_instance == null) {
 			_instance = new PopupManager();
 		}

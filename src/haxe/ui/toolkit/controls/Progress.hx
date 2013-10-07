@@ -12,6 +12,13 @@ import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.layout.Layout;
 
+/**
+ Progress bar control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the progess bar has changed
+ **/
 class Progress extends Component implements IScrollable implements IDirectional {
 	private var _direction:String;
 	private var _min:Float = 0;
@@ -46,11 +53,29 @@ class Progress extends Component implements IScrollable implements IDirectional 
 	//******************************************************************************************
 	// ProgressBar methods/properties
 	//******************************************************************************************
+	/**
+	 The direction of this progress bar. Can be `horizontal` or `vertical`
+	 **/
 	public var direction(get, set):String;
+	/**
+	 Minimum value allowed for the progress bar
+	 **/
 	public var min(get, set):Float;
+	/**
+	 Maximum value allowed for the progress bar
+	 **/
 	public var max(get, set):Float;
+	/**
+	 Value of the progress bar
+	 **/
 	public var pos(get, set):Float;
+	/**
+	 Not applicable to progress bar
+	 **/
 	public var pageSize(get, set):Float;
+	/**
+	 How much the scrollbar should increment (or deincrement)
+	 **/
 	public var incrementSize(get, set):Float;
 	
 	private function get_direction():String {
@@ -194,7 +219,7 @@ private class HProgressLayout extends DefaultLayout {
 	}
 }
 
-class VProgressLayout extends DefaultLayout {
+private class VProgressLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

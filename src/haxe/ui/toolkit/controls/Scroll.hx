@@ -4,6 +4,13 @@ import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.interfaces.IDirectional;
 
+/**
+ Scrollbar control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the scrollbar has changed
+ **/
 class Scroll extends Component implements IDirectional {
 	private var _direction:String = Direction.VERTICAL;
 	
@@ -14,6 +21,9 @@ class Scroll extends Component implements IDirectional {
 	//******************************************************************************************
 	// ProgressBar methods/properties
 	//******************************************************************************************
+	/**
+	 The direction of this progress bar. Can be `horizontal` or `vertical`
+	 **/
 	public var direction(get, set):String;
 	
 	private function get_direction():String {

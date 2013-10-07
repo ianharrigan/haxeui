@@ -5,6 +5,13 @@ import flash.geom.Point;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.Screen;
 
+/**
+ Horizontal slider bar control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the progess bar has changed
+ **/
 class HSlider extends Slider {
 	public function new() {
 		super();

@@ -5,6 +5,14 @@ import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 
+/**
+ Simple two state checkbox control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when the value of the checkbox is modified
+ **/
+
 class CheckBox extends Component {
 	private var _value:CheckBoxValue;
 	private var _label:Text;
@@ -49,6 +57,9 @@ class CheckBox extends Component {
 	//******************************************************************************************
 	// Component getters/setters
 	//******************************************************************************************
+	/**
+	 Defines whether the checkbox is checked or not
+	 **/
 	public var selected(get, set):Bool;
 	
 	private function get_selected():Bool {
@@ -69,7 +80,7 @@ class CheckBox extends Component {
 	}
 }
 
-class CheckBoxValue extends Value {
+private class CheckBoxValue extends Value {
 	public function new() {
 		super();
 		_value = "unselected";

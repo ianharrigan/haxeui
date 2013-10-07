@@ -6,6 +6,13 @@ import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.Screen;
 
+/**
+ Slider bar control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the slider bar has changed
+ **/
 class Slider extends Progress {
 	private var _thumb:Button;
 	

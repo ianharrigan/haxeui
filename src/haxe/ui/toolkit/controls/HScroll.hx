@@ -14,6 +14,14 @@ import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.util.TypeParser;
 
+/**
+ Horizontal scrollbar control
+ 
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when value of the slider bar has changed
+ **/
+
 class HScroll extends Scroll implements IScrollable {
 	private var _pos:Float = 0;
 	private var _min:Float = 0;
@@ -180,10 +188,25 @@ class HScroll extends Scroll implements IScrollable {
 	//******************************************************************************************
 	// IScrollable
 	//******************************************************************************************
+	/**
+	 Value of the scrollbar
+	 **/
 	public var pos(get, set):Float;
+	/**
+	 Minimum value allowed for the scrollbar
+	 **/
 	public var min(get, set):Float;
+	/**
+	 Maximum value allowed for the scrollbar
+	 **/
 	public var max(get, set):Float;
+	/**
+	 The size of one page for the scrollbar (affects the size of the thumb)
+	 **/
 	public var pageSize(get, set):Float;
+	/**
+	 How much the scrollbar should increment (or deincrement) when using the scroll buttons
+	 **/
 	public var incrementSize(get, set):Float;
 	
 	private function get_pos():Float {
@@ -260,10 +283,16 @@ class HScroll extends Scroll implements IScrollable {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	/**
+	 Deincrement the scrollbar value by `incrementSize`
+	 **/
 	public function deincrementValue():Void {
 		pos -= _incrementSize;
 	}
 	
+	/**
+	 Increment the scrollbar value by `incrementSize`
+	 **/
 	public function incrementValue():Void {
 		pos += _incrementSize;
 	}

@@ -1,5 +1,8 @@
 package haxe.ui.toolkit.controls.popups;
 
+/**
+ Text content for busy popups
+ **/
 class BusyPopupContent extends SimplePopupContent {
 
 	public function new(text:String) {

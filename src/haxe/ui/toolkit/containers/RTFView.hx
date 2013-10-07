@@ -12,6 +12,9 @@ import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.resources.ResourceManager;
 
+/**
+ Rich text editor container (contains style controls)
+ **/
 class RTFView extends VBox {
 	private var _rtf:RTF;
 	private var _fontNameList:List;
@@ -161,18 +164,21 @@ class RTFView extends VBox {
 	//******************************************************************************************
 	// Properties
 	//******************************************************************************************
+	/**
+	 Gets or sets the rich text of the editor from a html string
+	**/
 	public var htmlText(get, set):String;
 	
 	private function get_htmlText():String {
 		return _rtf.htmlText;
 	}
 	
-	public function set_htmlText(value:String):String {
+	private function set_htmlText(value:String):String {
 		_rtf.htmlText = value;
 		return value;
 	}
 
-	public override function set_text(value:String):String {
+	private override function set_text(value:String):String {
 		_rtf.text = value;
 		return value;
 	}
@@ -224,6 +230,6 @@ class RTFView extends VBox {
 	}
 }
 
-class RTFToolButton extends Button { // for styling
+private class RTFToolButton extends Button { // for styling
 	
 }

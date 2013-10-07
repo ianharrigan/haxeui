@@ -4,6 +4,9 @@ import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
 
+/**
+ Generic non-editable text component (supports multiline text)
+ **/
 class Text extends StateComponent {
 	private var _textDisplay:ITextDisplay;
 	
@@ -84,6 +87,9 @@ class Text extends StateComponent {
 	//******************************************************************************************
 	// Getters/setters
 	//******************************************************************************************
+	/**
+	 Defines whether or not the text can span more than a single line
+	 **/
 	public var multiline(get, set):Bool;
 	
 	private function get_multiline():Bool {

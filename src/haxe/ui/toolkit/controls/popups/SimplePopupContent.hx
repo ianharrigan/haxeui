@@ -2,6 +2,9 @@ package haxe.ui.toolkit.controls.popups;
 
 import haxe.ui.toolkit.controls.Text;
 
+/**
+ Basic text popup (resizes based on content)
+ **/
 class SimplePopupContent extends PopupContent {
 	private var _textControl:Text;
 	

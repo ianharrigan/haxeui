@@ -14,6 +14,9 @@ import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
 
+/**
+ Basic, animated accordion container
+ **/
 class Accordion extends VBox {
 	private var _panels:Array<IDisplayObject>;
 	private var _buttons:Array<AccordionButton>;
@@ -30,6 +33,9 @@ class Accordion extends VBox {
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
+	/**
+	 Adds a panel to the accordion, the childs `text` property will be used as the title
+	 **/
 	public override function addChild(child:IDisplayObject):IDisplayObject {
 		var r = null;
 		if (Std.is(child, AccordionButton)) {

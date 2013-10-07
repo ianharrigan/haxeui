@@ -7,6 +7,9 @@ import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.data.IDataSource;
 
+/**
+ List content for list popups
+ **/
 class ListPopupContent extends PopupContent {
 	private var _list:ListView;
 

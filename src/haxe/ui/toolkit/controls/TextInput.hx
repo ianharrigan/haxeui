@@ -11,6 +11,9 @@ import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
+/**
+ Generic editable text component (supports multiline text)
+ **/
 class TextInput extends StateComponent {
 	private var _textDisplay:ITextDisplay;
 	
@@ -120,9 +123,21 @@ class TextInput extends StateComponent {
 	//******************************************************************************************
 	// Component properties 
 	//******************************************************************************************
+	/**
+	 Defines whether or not the text can span more than a single line. Vertical and horizontal scrollbars will be added as needed.
+	 **/
 	public var multiline(get, set):Bool;
+	/**
+	 The start position of the selected text
+	 **/
 	public var selectionBeginIndex(get, null):Int;
+	/**
+	 The end position of the selected text
+	 **/
 	public var selectionEndIndex(get, null):Int;
+	/**
+	 Sets the currently selected text (if available) to the specified text format
+	 **/
 	public var selectedTextFormat(get, null):TextFormat;
 	
 	private function get_multiline():Bool {
@@ -160,6 +175,9 @@ class TextInput extends StateComponent {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	/**
+	 Replaces the selected text (if available) to with the specified string
+	 **/
 	public function replaceSelectedText(s:String):Void {
 		var tf:TextField = cast(_textDisplay.display, TextField);
 		#if flash

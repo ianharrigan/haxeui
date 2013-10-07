@@ -7,12 +7,25 @@ import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.Layout;
 
 /**
- * Basic button control
- */
-
+ General purpose multi-state button control with icon and toggle support (plus icon positioning)
+ 
+ <b>Events:</b>
+ 
+ * `MouseEvent.CLICK` - Dispatched when button is clicked
+ **/
+ 
 class Button extends StateComponent implements IFocusable {
+	/**
+	 Button state is "normal" (default state)
+	 **/
 	public static inline var STATE_NORMAL = "normal";
+	/**
+	 Button state is "over"
+	 **/
 	public static inline var STATE_OVER = "over";
+	/**
+	 Button state is "down"
+	 **/
 	public static inline var STATE_DOWN = "down";
 	
 	private var _allowFocus:Bool = true;
@@ -39,7 +52,13 @@ class Button extends StateComponent implements IFocusable {
 	//******************************************************************************************
 	// Properties
 	//******************************************************************************************
+	/**
+	 Defines whether this button should remain pressed even when the mouse cursor goes out of the control (and the left mouse button is pressed)
+	 **/
 	public var remainPressed(get, set):Bool;
+	/**
+	 Sets the icon asset. Eg: `assets/myicon.png`
+	 **/
 	public var icon(get, set):String;
 	
 	private function get_remainPressed():Bool {
@@ -66,6 +85,7 @@ class Button extends StateComponent implements IFocusable {
 		_icon.resource = value;
 		return value;
 	}
+	
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
@@ -185,6 +205,9 @@ class Button extends StateComponent implements IFocusable {
 	//******************************************************************************************
 	// IFocusable
 	//******************************************************************************************
+	/**
+	 Defines whether or not the button can receive focus by tabbing to it (not yet implemented)
+	 **/
 	public var allowFocus(get, set):Bool;
 	
 	private function get_allowFocus():Bool {
@@ -196,11 +219,29 @@ class Button extends StateComponent implements IFocusable {
 	}
 	
 	//******************************************************************************************
-	// IFocusable
+	// Properties
 	//******************************************************************************************
+	/**
+	 Defines where the icon (if available) should be positioned, valid values are:
+		 
+		 - `farLeft` - furthest left position possible (honours padding)
+		 - `left` - left of the label
+		 - `center` or `top` - centered in the button, if button has a label icon will be positioned ontop of the label
+		 - `right` - right of the label
+		 - `farRight` - furthest right position possible (honours padding)
+	 **/
 	public var iconPosition(get, set):String;
+	/**
+	 Defines whether this button should behave as a toggle button. Toggle buttons maintain thier selection, ie, one click to select, another to deselect
+	 **/
 	public var toggle(get, set):Bool;
+	/**
+	 Gets or sets the buttons selected state. Only applicable if the button is a toggle button.
+	 **/
 	public var selected(get, set):Bool;
+	/**
+	 Defines whether this buttons selected state can be modified by the user. Only applicable for toggle buttons.
+	 **/
 	public var allowSelection(get, set):Bool;
 	
 	private function get_iconPosition():String {

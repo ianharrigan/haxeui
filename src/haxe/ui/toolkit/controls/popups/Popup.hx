@@ -9,6 +9,9 @@ import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.PopupManager;
 
+/**
+ Simple modal, draggable popup component
+ **/
 class Popup extends VBox implements IDraggable {
 	private var _titleBar:HBox;
 	private var _title:Text;
@@ -17,6 +20,19 @@ class Popup extends VBox implements IDraggable {
 	private var _config:PopupConfig;
 	private var _fn:Dynamic->Void;
 	
+	/**
+	 Creates a new popup
+	 
+	 * `title` - The title of the popup
+
+	 * `content` - The content of the popup
+	 
+	 * `config` - Configuration options for the popup (buttons, etc)
+	 
+	 * `fn` - Callback invoked when buttons are clicked
+	 
+	 Note - Creating the popup does not display it, use `PopupManager.showPopup` to display it.
+	 **/
 	public function new(title:String = null, content:PopupContent = null, config:PopupConfig = null, fn:Dynamic->Void = null) {
 		super();
 		_autoSize = true;
@@ -97,6 +113,9 @@ class Popup extends VBox implements IDraggable {
 	//******************************************************************************************
 	// IDraggable
 	//******************************************************************************************
+	/**
+	 Determines if the popup can be dragged by ensuring the mouse is in the title bar
+	 **/
 	public function allowDrag(event:MouseEvent):Bool {
 		return _titleBar.hitTest(event.stageX, event.stageY);
 	}

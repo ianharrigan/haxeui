@@ -2,6 +2,9 @@ package haxe.ui.toolkit.controls.popups;
 
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 
+/**
+ Custom popup content that resizes based on size
+ **/
 class CustomPopupContent extends PopupContent {
 	private var _display:IDisplayObject;
 	

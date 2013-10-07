@@ -14,6 +14,20 @@ import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import motion.Actuate;
 import motion.easing.Linear;
 
+/**
+ Allows the user to select an item from a list
+
+ The way in which the list is displayed after the user clicks the button depends on the `method` property:
+ 
+ * `default` - The list will be displayed under the button, similar to a standard drop down box
+ * `popup` - The list will be a modal popup of the choices, this is more suited to mobile applications
+
+ <b>Events:</b>
+ 
+ * `Event.CHANGE` - Dispatched when the user selects a list item
+ 
+ **/
+
 class List extends Button implements IDataComponent {
 	private var _dataSource:IDataSource;
 	private var _list:ListView;
@@ -56,6 +70,9 @@ class List extends Button implements IDataComponent {
 	//******************************************************************************************
 	// IDataComponent
 	//******************************************************************************************
+	/**
+	 Specifies the data source where the list will get its options from
+	 **/
 	public var dataSource(get, set):IDataSource;
 	
 	private function get_dataSource():IDataSource {
@@ -73,6 +90,9 @@ class List extends Button implements IDataComponent {
 	//******************************************************************************************
 	// Instance methods
 	//******************************************************************************************
+	/**
+	 Displays the list to the user based on `method` (this will be called automatically when the user clicks the button)
+	 **/
 	public function showList():Void {
 		if (_method == "popup") {
 			PopupManager.instance.showList(root, dataSource, "Select", _selectedIndex, function(item:ListViewItem) {
@@ -135,6 +155,9 @@ class List extends Button implements IDataComponent {
 		}
 	}
 	
+	/**
+	 Hides the list from the user
+	 **/
 	public function hideList():Void {
 		if (_list != null) {
 			var transition:String = Toolkit.getTransitionForClass(List);
@@ -156,10 +179,34 @@ class List extends Button implements IDataComponent {
 			this.selected = false;
 		}
 	}
+
+	//******************************************************************************************
+	// Propreties
+	//******************************************************************************************
+	/**
+	 Specifies the method to display the list, valid values are:
+		 
+	 * `default` - The list will be displayed under the button, similar to a standard drop down box
+
+	 * `popup` - The list will be a modal popup of the choices, this is more suited to mobile applications
+	 **/
+	public var method(get, set):String;
+	
+	private function get_method():String {
+		return _method;
+	}
+	
+	private function set_method(value:String):String {
+		_method = value;
+		return value;
+	}
 	
 	//******************************************************************************************
 	// ListView props
 	//******************************************************************************************
+	/**
+	 Returns an array of the selected list items
+	 **/
 	public var selectedItems(get, null):Array<ListViewItem>;
 	
 	private function get_selectedItems():Array<ListViewItem> {

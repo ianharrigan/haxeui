@@ -4,6 +4,10 @@ import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.AbsoluteLayout;
 
+/**
+ N-state cyclic value control
+ **/
+
 class Value extends Component {
 	private var _values:Map<String, Button>;
 	private var _valuesList:Array<String>;
