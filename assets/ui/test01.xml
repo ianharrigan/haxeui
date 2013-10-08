@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
-<ui:rtfview width= "100%" height="100%" htmlText="asset://data/rtf.txt">
-</ui:rtfview>
-
-<!--
-<ui:vbox width="100%" height="100%">
-	<ui:textinput multiline="true" width="300" height="300" text="bob2" />
+<ui:vbox>
+	<ui:hbox>
+		<ui:calendarview id="calendar" /> 
+		<ui:calendar id="calendar2" /> 
+	</ui:hbox>
+	
+	<ui:hbox>
+		<selection:date />		
+		<selection:date method="popup" />		
+	</ui:hbox>
 </ui:vbox>
--->
-
-<!--
-<ext:rtf width= "100%" height="100%" text="asset://data/code.txt">
-</ext:rtf>
--->

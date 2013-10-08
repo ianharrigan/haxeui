@@ -241,6 +241,7 @@
 				<ui:button text="Confirm Popup" id="showConfirmPopup" />
 				<ui:button text="Custom Popup" id="showCustomPopup" />
 				<ui:button text="List Popup" id="showListPopup" />
+				<ui:button text="Calendar Popup" id="showCalendarPopup" />
 			</ui:hbox>
 			<ui:hbox>
 				<selection:list text="Select Item 1">
@@ -253,6 +254,10 @@
 					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
 				</selection:list>
 			</ui:hbox>
+			<ui:hbox>
+				<selection:date />
+				<selection:date method="popup" />
+			</ui:hbox>
 		</ui:vbox>
 		
 		<ui:vbox text="Basic" width="100%">
@@ -261,6 +266,10 @@
 				<ui:button text="Styled" id="styled" />
 				<ui:button text="Toggle 1" toggle="true" selected="true" />
 				<ui:button text="Toggle 2" toggle="true" />
+				
+				<ui:calendar id="calendar"> 
+					
+				</ui:calendar>
 			</ui:hbox>
 			
 			<ui:hprogress pos="50" />
@@ -340,6 +349,10 @@
 				<ui:optionbox text="Fade" group="popupsTrans" id="popupsTransFade" />
 				<ui:optionbox text="Slide" group="popupsTrans" id="popupsTransSlide" />
 			</ui:grid>
+		</ui:vbox>
+		
+		<ui:vbox text="Calendar" width="100%" height="100%">
+			<ui:calendarview width="100%" height="100%"/>
 		</ui:vbox>
 		
 		<ui:vbox text="Data">
@@ -462,7 +475,7 @@
 				<ui:image resource="img/exclamation.png" height="100%" />
 				<ui:text text="Performance issues." width="100%" />	
 			</ui:hbox>
-			<ext:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
+			<ui:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
 		</ui:vbox>
 
 		

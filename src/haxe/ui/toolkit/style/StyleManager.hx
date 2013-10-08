@@ -46,6 +46,8 @@ class StyleManager {
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/sliders.css");
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/accordion.css");
 		addStyleAsset(STYLE_WINDOWS, "styles/windows/rtf.css");
+		addStyleAsset(STYLE_WINDOWS, "styles/windows/calendar.css");
+		addStyleAsset(STYLE_WINDOWS, "styles/windows/popups.css");
 	}
 	
 	public function addStyleAsset(style:String, assetId:String):Void {

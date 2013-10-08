@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.controls.popups.BusyPopupContent;
+import haxe.ui.toolkit.controls.popups.CalendarPopupContent;
 import haxe.ui.toolkit.controls.popups.CustomPopupContent;
 import haxe.ui.toolkit.controls.popups.ListPopupContent;
 import haxe.ui.toolkit.controls.popups.Popup;
@@ -99,6 +100,29 @@ class PopupManager {
 		return p;
 	}
 
+	public function showCalendar(root:Root, title:String = null, fn:Dynamic->Date->Void = null):Popup {
+		var content:CalendarPopupContent = new CalendarPopupContent();
+		var tempFn = function(button:Dynamic) {
+			if (fn != null) {
+				if (button == PopupButtonType.CONFIRM) {
+					fn(button, content.selectedDate);
+				} else {
+					fn(button, null);
+				}
+			}
+		}
+		var p:Popup = new Popup(title, content, getPopupConfig(PopupButtonType.CONFIRM |PopupButtonType.CANCEL), tempFn);
+		
+		p.root = root;
+		p.visible = false;
+		centerPopup(p);
+		root.showModalOverlay();
+		root.addChild(p);
+		showPopup(p);
+		
+		return p;
+	}
+	
 	public function showPopup(p:Popup):Void {
 		var transition:String = Toolkit.getTransitionForClass(Popup);
 		if (transition == "slide") {

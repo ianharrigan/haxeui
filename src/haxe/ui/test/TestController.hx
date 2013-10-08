@@ -71,6 +71,10 @@ class TestController extends XMLController {
 				PopupManager.instance.showSimple(root, "You selected '" + item.text + "'", "Selection");
 			});
 		});
+
+		attachEvent("showCalendarPopup", MouseEvent.CLICK, function(e) {
+			PopupManager.instance.showCalendar(root, "Select Date");
+		});
 		
 		attachEvent("theList", ListViewEvent.COMPONENT_EVENT, function (e:ListViewEvent) {
 			if (Std.is(e.component, Button)) {

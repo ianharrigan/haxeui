@@ -48,7 +48,7 @@ ListViewItem #subtext {
 	fontSize: 11;
 }
 
-List {
+List, Date {
 	fontSize: 13;
 	fontName: _sans;
 	color: 0x000000;
@@ -64,13 +64,13 @@ List {
 	labelPosition: left;
 }
 
-List:over {
+List:over, Date:over {
 	backgroundImage: styles/windows/button.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
 
-List:down {
+List:down, Date:down {
 	backgroundImage: styles/windows/button.png;
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
