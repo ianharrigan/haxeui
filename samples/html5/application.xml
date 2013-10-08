@@ -22,5 +22,6 @@
 	
 	<haxeflag name="-resource" value="../../assets/styles/gradient/gradient.css@styles/gradient/gradient.css" />
 	<haxeflag name="-resource" value="assets/buttons.xml@assets/buttons.xml" />
+	<haxeflag name="-resource" value="assets/tabs.xml@assets/tabs.xml" />
 	
 </project>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<!--
+<ui:scrollview width="200" height="200">
+	<style:css>
+		#hbox {
+			backgroundColor: 0xFF0000;
+		}
+	</style:css>
+	<ui:hbox width="500" height="500" autoSize="false" id="hbox">
+		<ui:button text="button" width="50" height="50" />
+	</ui:hbox>
+</ui:scrollview>
+-->
+
+<!--
+<ui:scrollview width="200" height="200">
+	<ui:image resource="assets/slinky.jpg" />
+</ui:scrollview>
+-->
+
+<ui:tabview width="100%" height="100%" id="main">
+	<style:css>
+		TabBar #tabButton {
+			icon: assets/fav_16.png
+		}
+	</style:css>
+	
+	<ui:vbox text="Tab 1">
+		<ui:button text="Button 1" />
+	</ui:vbox>
+	<ui:vbox text="Tab 2">
+		<ui:button text="Button 2" />
+	</ui:vbox>
+	<ui:vbox text="Tab 3">
+		<ui:button text="Button 3" />
+	</ui:vbox>
+	<ui:vbox text="Tab 4">
+		<ui:button text="Button 4" />
+	</ui:vbox>
+</ui:tabview>
+

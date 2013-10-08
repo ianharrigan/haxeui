@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:grid columns="3">
+	<style:css>
+		#styled {
+			width: 140;
+			height: 100;
+			icon: assets/fav_32.png;
+			iconPosition: top;
+			color: 0xFF0000;
+		}
+		
+		#styled:over {
+			color: 0xFF00FF;
+		}
+	</style:css>
+	
+	<ui:button text="Basic"/>
+	<ui:button text="Toggle" toggle="true" selected="true" />
+	
+	<ui:button text="Left Icon" icon="assets/fav_16.png" />
+	<ui:button text="Right Icon" icon="assets/fav_16.png" iconPosition="right" />
+	<ui:button text="Styled" id="styled" />
+</ui:grid>

@@ -23,6 +23,9 @@ class Macros {
 		
 		for (path in paths) {
 			var dir:String = path + arr.join("/");
+			if(!sys.FileSystem.exists(dir) || !sys.FileSystem.isDirectory(dir)) {
+				continue;
+			}
 			var files:Array<String> = sys.FileSystem.readDirectory(dir);
 			if (files != null) {
 				for (file in files) {
@@ -63,6 +66,9 @@ class Macros {
 
 		for (path in paths) {
 			var dir:String = path + arr.join("/");
+			if(!sys.FileSystem.exists(dir) || !sys.FileSystem.isDirectory(dir)) {
+				continue;
+			}
 			var files:Array<String> = sys.FileSystem.readDirectory(dir);
 			if (files != null) {
 				for (file in files) {

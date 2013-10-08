@@ -27,6 +27,15 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		super.initialize();
 		
 		_layout.container = this;
+		
+		#if html5
+		if (_childrenToAdd != null) {
+			for (child in _childrenToAdd) {
+				addChild(child);
+			}
+			_childrenToAdd = null;
+		}
+		#end
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
@@ -66,10 +75,24 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return _children[index];
 	}
 	
+	#if html5
+	private var _childrenToAdd:Array<IDisplayObject>;
+	#end
+	
 	public function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
 		if (child == null) {
 			return null;
 		}
+		
+		#if html5
+		if (_ready == false) {
+			if (_childrenToAdd == null) {
+				_childrenToAdd = new Array<IDisplayObject>();
+			}
+			_childrenToAdd.insert(index, child);
+			return child;
+		}
+		#end
 		
 		var childSprite:Sprite = child.sprite;
 		
@@ -88,6 +111,16 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		if (child == null) {
 			return null;
 		}
+		
+		#if html5
+		if (_ready == false) {
+			if (_childrenToAdd == null) {
+				_childrenToAdd = new Array<IDisplayObject>();
+			}
+			_childrenToAdd.push(child);
+			return child;
+		}
+		#end
 		
 		var childSprite:Sprite = child.sprite;
 		

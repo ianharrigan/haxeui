@@ -143,7 +143,7 @@ class RTF extends TextInput {
 			case "bullet":
 					format.bullet = !format.bullet;
 			case "align":
-					#if flash
+					#if (flash || html5)
 						var align:TextFormatAlign = TextFormatAlign.LEFT;
 						var textAlign:String = cast(value, String);
 						if (textAlign == "center") {

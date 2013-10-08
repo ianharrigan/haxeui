@@ -18985,59 +18985,59 @@
 	<class path="haxe.ui.toolkit.core.DisplayObjectContainer" params="" file="src/haxe/ui/toolkit/core/DisplayObjectContainer.hx">
 		<extends path="haxe.ui.toolkit.core.DisplayObject"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
-		<set_root set="method" line="178" override="1"><f a="value">
+		<set_root set="method" line="211" override="1"><f a="value">
 	<c path="haxe.ui.toolkit.core.Root"/>
 	<c path="haxe.ui.toolkit.core.Root"/>
 </f></set_root>
-		<dispose public="1" set="method" line="167" override="1"><f a=""><x path="Void"/></f></dispose>
-		<set_autoSize set="method" line="159"><f a="value">
+		<dispose public="1" set="method" line="200" override="1"><f a=""><x path="Void"/></f></dispose>
+		<set_autoSize set="method" line="192"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_autoSize>
-		<get_autoSize set="method" line="155"><f a=""><x path="Bool"/></f></get_autoSize>
-		<set_layout set="method" line="148"><f a="value">
+		<get_autoSize set="method" line="188"><f a=""><x path="Bool"/></f></get_autoSize>
+		<set_layout set="method" line="181"><f a="value">
 	<c path="haxe.ui.toolkit.core.interfaces.ILayout"/>
 	<c path="haxe.ui.toolkit.core.interfaces.ILayout"/>
 </f></set_layout>
-		<get_layout set="method" line="144"><f a=""><c path="haxe.ui.toolkit.core.interfaces.ILayout"/></f></get_layout>
-		<findChild public="1" params="T" set="method" line="133"><f a="id:?type">
+		<get_layout set="method" line="177"><f a=""><c path="haxe.ui.toolkit.core.interfaces.ILayout"/></f></get_layout>
+		<findChild public="1" params="T" set="method" line="166"><f a="id:?type">
 	<c path="String"/>
 	<x path="Class"><c path="findChild.T"/></x>
 	<t path="Null"><c path="findChild.T"/></t>
 </f></findChild>
-		<findChildAs public="1" params="T" set="method" line="122"><f a="type">
+		<findChildAs public="1" params="T" set="method" line="155"><f a="type">
 	<x path="Class"><c path="findChildAs.T"/></x>
 	<t path="Null"><c path="findChildAs.T"/></t>
 </f></findChildAs>
-		<removeChild public="1" set="method" line="105"><f a="child:?dispose">
+		<removeChild public="1" set="method" line="138"><f a="child:?dispose">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 	<x path="Bool"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 </f></removeChild>
-		<addChild public="1" set="method" line="87"><f a="child">
+		<addChild public="1" set="method" line="110"><f a="child">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 </f></addChild>
-		<addChildAt public="1" set="method" line="69"><f a="child:index">
+		<addChildAt public="1" set="method" line="82"><f a="child:index">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 	<x path="Int"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 </f></addChildAt>
-		<getChildAt public="1" set="method" line="65"><f a="index">
+		<getChildAt public="1" set="method" line="74"><f a="index">
 	<x path="Int"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 </f></getChildAt>
-		<indexOfChild public="1" set="method" line="60"><f a="child">
+		<indexOfChild public="1" set="method" line="69"><f a="child">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 	<x path="Int"/>
 </f></indexOfChild>
-		<get_children set="method" line="56"><f a=""><c path="Array"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></c></f></get_children>
-		<get_numChildren set="method" line="52"><f a=""><x path="Int"/></f></get_numChildren>
+		<get_children set="method" line="65"><f a=""><c path="Array"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></c></f></get_children>
+		<get_numChildren set="method" line="61"><f a=""><x path="Int"/></f></get_numChildren>
 		<autoSize public="1" get="accessor" set="accessor"><x path="Bool"/></autoSize>
 		<children public="1" get="accessor" set="null"><c path="Array"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></c></children>
 		<layout public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.core.interfaces.ILayout"/></layout>
 		<numChildren public="1" get="accessor" set="null"><x path="Int"/></numChildren>
-		<invalidate public="1" set="method" line="32" override="1"><f a="?type">
+		<invalidate public="1" set="method" line="41" override="1"><f a="?type">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></invalidate>
@@ -20906,11 +20906,11 @@
 		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Macros" params="" file="src/haxe/ui/toolkit/core/Macros.hx">
-		<getClassNameFromType set="method" line="100" static="1"><f a="t">
+		<getClassNameFromType set="method" line="106" static="1"><f a="t">
 	<e path="haxe.macro.Type"/>
 	<c path="String"/>
 </f></getClassNameFromType>
-		<hasInterface set="method" line="116" static="1"><f a="t:interfaceRequired">
+		<hasInterface set="method" line="122" static="1"><f a="t:interfaceRequired">
 	<e path="haxe.macro.Type"/>
 	<c path="String"/>
 	<x path="Bool"/>
