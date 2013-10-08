@@ -26,6 +26,8 @@ General components
 - Tab bars
 - Text (static, input, multiline)
 - List selection (drop downs, popup lists)
+- Date selection (drop downs, popup calendar)
+- Calendar 
 
 Extended components
 
@@ -49,6 +51,7 @@ Popups
 - Simple
 - List
 - Custom
+- Calendar
 
 Data Sources
 - Array
