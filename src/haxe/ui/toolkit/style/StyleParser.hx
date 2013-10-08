@@ -4,6 +4,10 @@ import flash.Lib;
 
 class StyleParser {
 	public static function fromString(styleString:String):Styles {
+		if (styleString == null || styleString.length == 0) {
+			return new Styles();
+		}
+		
 		var styles = new Styles();
 
 		var n1:Int = -1;

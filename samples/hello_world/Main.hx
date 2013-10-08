@@ -6,9 +6,11 @@ import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.Text;
 import flash.events.MouseEvent;
+import haxe.ui.toolkit.core.Macros;
 
 class Main {
 	public static function main() {
+		Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			var vbox:VBox = new VBox();

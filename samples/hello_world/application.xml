@@ -13,6 +13,4 @@
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
 	<haxelib name="hscript" />	
-	
-	<assets path="../../assets/styles" rename="styles" />
 </project>

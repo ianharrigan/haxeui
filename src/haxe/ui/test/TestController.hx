@@ -13,6 +13,7 @@ import haxe.ui.toolkit.controls.selection.List;
 import haxe.ui.toolkit.controls.Slider;
 import haxe.ui.toolkit.controls.VScroll;
 import haxe.ui.toolkit.core.Controller;
+import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.RootManager;
@@ -87,8 +88,25 @@ class TestController extends XMLController {
 		attachEvent("styleList", Event.CHANGE, function(e) {
 			var style:String = getComponentAs("styleList", List).selectedItems[0].text.toLowerCase();
 			RootManager.instance.destroyAllRoots();
-			Toolkit.defaultStyle = style;
-			StyleManager.instance.loadStyle(style);
+			//Toolkit.defaultStyle = style;
+			StyleManager.instance.clear();
+			ResourceManager.instance.reset();
+			if (style == "gradient") {
+				Macros.addStyleSheet("assets/styles/gradient/gradient.css");
+			} else if (style == "gradient mobile") {
+				Macros.addStyleSheet("assets/styles/gradient/gradient_mobile.css");				
+			} else if (style == "windows") {
+				Macros.addStyleSheet("assets/styles/windows/windows.css");
+				Macros.addStyleSheet("assets/styles/windows/buttons.css");
+				Macros.addStyleSheet("assets/styles/windows/tabs.css");
+				Macros.addStyleSheet("assets/styles/windows/listview.css");
+				Macros.addStyleSheet("assets/styles/windows/scrolls.css");
+				Macros.addStyleSheet("assets/styles/windows/sliders.css");
+				Macros.addStyleSheet("assets/styles/windows/accordion.css");
+				Macros.addStyleSheet("assets/styles/windows/rtf.css");
+				Macros.addStyleSheet("assets/styles/windows/calendar.css");
+				Macros.addStyleSheet("assets/styles/windows/popups.css");
+			}
 			Toolkit.openFullscreen(function(root:Root) {
 				root.addChild(new TestController().view);
 			});

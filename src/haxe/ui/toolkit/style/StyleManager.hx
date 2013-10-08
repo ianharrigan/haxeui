@@ -9,10 +9,6 @@ import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.util.PerfTimer;
 
 class StyleManager {
-	public static var STYLE_WINDOWS:String = "windows";
-	public static var STYLE_GRADIENT:String = "gradient";
-	public static var STYLE_GRADIENT_MOBILE:String = "gradient mobile";
-	
 	private static var _instance:StyleManager;
 	public static var instance(get, null):StyleManager;
 	private static function get_instance():StyleManager {
@@ -25,57 +21,18 @@ class StyleManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	private var _styleAssets:StringMap<Array<String>>;
 	private var _styles:StringMap<Dynamic>;
 	private var _rules:Array<Dynamic>; // the order the rules are added is important, hence an array to hold them
 	
 	private var stylesBuilt:Int = 0; //debug helper
 	private var stylesBuiltFor:Map<String, Int>;
 	
+	public var hasStyles(get, null):Bool;
+	
 	public function new() {
 		_styles = new StringMap<Dynamic>();
 		_rules = new Array<Dynamic>();
 		stylesBuiltFor = new Map<String, Int>();
-		addStyleAsset(STYLE_GRADIENT, "styles/gradient/gradient.css");
-		addStyleAsset(STYLE_GRADIENT_MOBILE, "styles/gradient/gradient_mobile.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/windows.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/buttons.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/tabs.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/listview.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/scrolls.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/sliders.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/accordion.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/rtf.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/calendar.css");
-		addStyleAsset(STYLE_WINDOWS, "styles/windows/popups.css");
-	}
-	
-	public function addStyleAsset(style:String, assetId:String):Void {
-		if (_styleAssets == null) {
-			_styleAssets = new StringMap<Array<String>>();
-		}
-		var list:Array<String> = _styleAssets.get(style);
-		if (list == null) {
-			list = new Array<String>();
-			_styleAssets.set(style, list);
-		}
-		list.push(assetId);
-	}
-	
-	public function loadStyle(style:String):Void {
-		if (_styleAssets == null) {
-			return;
-		}
-		var list:Array<String> = _styleAssets.get(style);
-		if (list == null) {
-			return;
-		}
-		clear();
-		ResourceManager.instance.reset();
-		var assetId:String;
-		for (assetId in list) {
-			addStyles(StyleParser.fromString(ResourceManager.instance.getText(assetId)));
-		}
 	}
 	
 	public function addStyle(rule:String, style:Dynamic):Void {
@@ -238,8 +195,6 @@ class StyleManager {
 			state = null;
 		}
 		
-		//var pt:PerfTimer = new PerfTimer("buildStyleFor - " + Type.getClassName(Type.getClass(c)));
-		
 		var style:Dynamic = { };
 		for (rule in _rules) {
 			if (ruleMatch(c, rule, state) == true) {
@@ -256,9 +211,6 @@ class StyleManager {
 		var n:Int = stylesBuiltFor.get(className);
 		n++;
 		stylesBuiltFor.set(className, n);
-		//trace(stylesBuilt);
-		//pt.end();
-		//dump();
 		
 		return style;
 	}
@@ -268,5 +220,12 @@ class StyleManager {
 			trace("> " + key + " = " + stylesBuiltFor.get(key));
 		}
 		trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	}
+	
+	private function get_hasStyles():Bool {
+		if (_styles == null) {
+			return false;
+		}
+		return _styles.keys().hasNext();
 	}
 }

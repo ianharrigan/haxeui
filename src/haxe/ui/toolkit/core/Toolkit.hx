@@ -13,6 +13,7 @@ import haxe.ui.toolkit.data.DataManager;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.hscript.ClientWrapper;
 import haxe.ui.toolkit.resources.ResourceManager;
+import haxe.ui.toolkit.style.DefaultStyles;
 import haxe.ui.toolkit.style.StyleManager;
 import haxe.ui.toolkit.style.StyleParser;
 import haxe.ui.toolkit.style.Styles;
@@ -37,14 +38,9 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 		
-		if (_defaultStyle == null) {
-			#if android
-				_defaultStyle = StyleManager.STYLE_GRADIENT_MOBILE;
-			#else
-				_defaultStyle = StyleManager.STYLE_GRADIENT;
-			#end
+		if (StyleManager.instance.hasStyles == false) {
+			StyleManager.instance.addStyles(new DefaultStyles());
 		}
-		StyleManager.instance.loadStyle(_defaultStyle);
 	}
 
 	private static var _registeredProcessors:StringMap<String>;
@@ -139,22 +135,11 @@ class Toolkit {
 	//******************************************************************************************
 	// Animation defaults
 	//******************************************************************************************
-	private static var _defaultStyle:String;
 	private static var _defaultTransition:String = "slide";
 	private static var _transitionRegister:StringMap<String>;
 	
-	public static var defaultStyle(get, set):String;
 	public static var defaultTransition(get, set):String;
 	
-	private static function get_defaultStyle():String {
-		return _defaultStyle;
-	}
-	
-	private static function set_defaultStyle(value:String):String {
-		_defaultStyle = value;
-		return value;
-	}
-
 	private static function get_defaultTransition():String {
 		return _defaultTransition;
 	}

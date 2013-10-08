@@ -14,6 +14,15 @@ class Styles {
 	}
 
 	public function addStyle(rule:String, style:Dynamic):Dynamic {
+		if (rule.indexOf(",") != -1) {
+			var rules:Array<String> = rule.split(",");
+			for (r in rules) {
+				r = StringTools.trim(r);
+				addStyle(r, style);
+			}
+			return null;
+		}
+		
 		var currentStyle:Dynamic = getStyle(rule);
 		if (currentStyle != null) {
 			style = StyleManager.instance.mergeStyle(currentStyle, style);

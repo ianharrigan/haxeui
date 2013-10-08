@@ -4,8 +4,8 @@ import haxe.macro.Context;
 import haxe.macro.Expr;
 
 class Macros {
-	macro public static function addStyleSheet(resourceId:String):Expr {
-		var contents:String = sys.io.File.getContent("assets/" + resourceId);
+	macro public static function addStyleSheet(resourcePath:String):Expr {
+		var contents:String = sys.io.File.getContent(resourcePath);
 		var code:String = "function() {\n";
 		code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + contents + "\");\n";
 		//code += "\tstyles.dump();\n";

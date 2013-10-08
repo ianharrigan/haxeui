@@ -3,9 +3,11 @@ package;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.containers.ListView;
+import haxe.ui.toolkit.core.Macros;
 
 class Main {
 	public static function main() {
+		Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			var list:ListView = new ListView();

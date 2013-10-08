@@ -7,9 +7,11 @@ import haxe.ui.toolkit.controls.TabBar;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.XMLController;
+import haxe.ui.toolkit.core.Macros;
 
 class Main {
 	public static function main() {
+		Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			root.addChild(new SampleController().view);
