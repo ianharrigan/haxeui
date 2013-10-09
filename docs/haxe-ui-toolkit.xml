@@ -4074,18 +4074,6 @@
 		
 		If `o` is null, the result is unspecified.</haxe_doc>
 		</fields>
-		<deleteField public="1" set="method" line="114" static="1">
-			<f a="o:field">
-				<d/>
-				<c path="String"/>
-				<x path="Bool"/>
-			</f>
-			<haxe_doc>Removes the field named `field` from structure `o`.
-		
-		This method is only guaranteed to work on anonymous structures.
-		
-		If `o` or `field` are null, the result is unspecified.</haxe_doc>
-		</deleteField>
 		<makeVarArgs public="1" set="method" line="128" static="1">
 			<f a="f">
 				<f a="">
@@ -19100,46 +19088,48 @@
 		<applyStyle set="method"><f a=""><x path="Void"/></f></applyStyle>
 		<retrieveStyle set="method"><f a="id">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></retrieveStyle>
 		<storeStyle set="method"><f a="id:value">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 	<x path="Void"/>
 </f></storeStyle>
-		<style public="1" get="null" set="null"><d/></style>
+		<style public="1" get="null" set="null"><c path="haxe.ui.toolkit.style.Style"/></style>
 		<id public="1" get="null" set="null"><c path="String"/></id>
 	</class>
 	<class path="haxe.ui.toolkit.core.StyleableDisplayObject" params="" file="src/haxe/ui/toolkit/core/StyleableDisplayObject.hx">
 		<extends path="haxe.ui.toolkit.core.DisplayObjectContainer"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IStyleable"/>
-		<buildStyles public="1" set="method" line="163"><f a=""><x path="Void"/></f></buildStyles>
-		<applyStyle set="method" line="138"><f a=""><x path="Void"/></f></applyStyle>
-		<retrieveStyle public="1" set="method" line="131"><f a="id">
+		<buildStyles public="1" set="method" line="156"><f a=""><x path="Void"/></f></buildStyles>
+		<applyStyle set="method" line="138">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":allow"><e>'???'</e></m></meta>
+		</applyStyle>
+		<retrieveStyle public="1" set="method" line="130"><f a="id">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></retrieveStyle>
-		<storeStyle public="1" set="method" line="124"><f a="id:value">
+		<storeStyle public="1" set="method" line="123"><f a="id:value">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 	<x path="Void"/>
 </f></storeStyle>
-		<set_style set="method" line="118"><f a="value">
-	<d/>
+		<set_style set="method" line="117"><f a="value">
+	<c path="haxe.ui.toolkit.style.Style"/>
 	<d/>
 </f></set_style>
-		<get_style set="method" line="114"><f a=""><d/></f></get_style>
-		<style public="1" get="accessor" set="accessor"><d/></style>
-		<set_id set="method" line="96" override="1"><f a="value">
+		<get_style set="method" line="113"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
+		<style public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.style.Style"/></style>
+		<set_id set="method" line="95" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_id>
-		<paint public="1" set="method" line="85" override="1"><f a=""><x path="Void"/></f></paint>
-		<preInitialize set="method" line="26" override="1"><f a=""><x path="Void"/></f></preInitialize>
-		<_currentFilterString><c path="String"/></_currentFilterString>
-		<_storedStyles><c path="haxe.ds.StringMap"><d/></c></_storedStyles>
-		<_style><d/></_style>
-		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
+		<paint public="1" set="method" line="84" override="1"><f a=""><x path="Void"/></f></paint>
+		<preInitialize set="method" line="25" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<_storedStyles><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.style.Style"/></c></_storedStyles>
+		<_style><c path="haxe.ui.toolkit.style.Style"/></_style>
+		<new public="1" set="method" line="18"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Component" params="" file="src/haxe/ui/toolkit/core/Component.hx">
 		<extends path="haxe.ui.toolkit.core.StyleableDisplayObject"/>
@@ -19264,39 +19254,39 @@
 	<class path="haxe.ui.toolkit.controls.Button" params="" file="src/haxe/ui/toolkit/controls/Button.hx">
 		<extends path="haxe.ui.toolkit.core.StateComponent"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IFocusable"/>
-		<STATE_NORMAL public="1" get="inline" set="null" line="21" static="1">
+		<STATE_NORMAL public="1" get="inline" set="null" line="22" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "normal" (default state)</haxe_doc>
 		</STATE_NORMAL>
-		<STATE_OVER public="1" get="inline" set="null" line="25" static="1">
+		<STATE_OVER public="1" get="inline" set="null" line="26" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "over"</haxe_doc>
 		</STATE_OVER>
-		<STATE_DOWN public="1" get="inline" set="null" line="29" static="1">
+		<STATE_DOWN public="1" get="inline" set="null" line="30" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "down"</haxe_doc>
 		</STATE_DOWN>
-		<applyStyle set="method" line="299" override="1"><f a=""><x path="Void"/></f></applyStyle>
-		<set_allowSelection set="method" line="291"><f a="value">
+		<applyStyle set="method" line="300" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<set_allowSelection set="method" line="292"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowSelection>
-		<get_allowSelection set="method" line="287"><f a=""><x path="Bool"/></f></get_allowSelection>
-		<set_selected set="method" line="269"><f a="value">
+		<get_allowSelection set="method" line="288"><f a=""><x path="Bool"/></f></get_allowSelection>
+		<set_selected set="method" line="270"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<get_selected set="method" line="265"><f a=""><x path="Bool"/></f></get_selected>
-		<set_toggle set="method" line="260"><f a="value">
+		<get_selected set="method" line="266"><f a=""><x path="Bool"/></f></get_selected>
+		<set_toggle set="method" line="261"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_toggle>
-		<get_toggle set="method" line="256"><f a=""><x path="Bool"/></f></get_toggle>
-		<set_iconPosition set="method" line="251"><f a="value">
+		<get_toggle set="method" line="257"><f a=""><x path="Bool"/></f></get_toggle>
+		<set_iconPosition set="method" line="252"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_iconPosition set="method" line="247"><f a=""><c path="String"/></f></get_iconPosition>
+		<get_iconPosition set="method" line="248"><f a=""><c path="String"/></f></get_iconPosition>
 		<allowSelection public="1" get="accessor" set="accessor">
 			<x path="Bool"/>
 			<haxe_doc>Defines whether this buttons selected state can be modified by the user. Only applicable for toggle buttons.</haxe_doc>
@@ -19319,53 +19309,53 @@
 		 - `right` - right of the label
 		 - `farRight` - furthest right position possible (honours padding)</haxe_doc>
 		</iconPosition>
-		<set_allowFocus set="method" line="217"><f a="value">
+		<set_allowFocus set="method" line="218"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowFocus>
-		<get_allowFocus set="method" line="213"><f a=""><x path="Bool"/></f></get_allowFocus>
+		<get_allowFocus set="method" line="214"><f a=""><x path="Bool"/></f></get_allowFocus>
 		<allowFocus public="1" get="accessor" set="accessor">
 			<x path="Bool"/>
 			<haxe_doc>Defines whether or not the button can receive focus by tabbing to it (not yet implemented)</haxe_doc>
 		</allowFocus>
-		<get_states set="method" line="201" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
-		<_onMouseClick set="method" line="187"><f a="event">
+		<get_states set="method" line="202" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
+		<_onMouseClick set="method" line="188"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseClick>
-		<_onMouseUp set="method" line="168"><f a="event">
+		<_onMouseUp set="method" line="169"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseUp>
-		<_onMouseDown set="method" line="160"><f a="event">
+		<_onMouseDown set="method" line="161"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onMouseOut set="method" line="150"><f a="event">
+		<_onMouseOut set="method" line="151"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOut>
-		<_onMouseOver set="method" line="140"><f a="event">
+		<_onMouseOver set="method" line="141"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOver>
-		<set_text set="method" line="131" override="1"><f a="value">
+		<set_text set="method" line="132" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<get_text set="method" line="127" override="1"><f a=""><c path="String"/></f></get_text>
-		<initialize set="method" line="112" override="1"><f a=""><x path="Void"/></f></initialize>
-		<preInitialize set="method" line="92" override="1"><f a=""><x path="Void"/></f></preInitialize>
-		<set_icon set="method" line="80"><f a="value">
+		<get_text set="method" line="128" override="1"><f a=""><c path="String"/></f></get_text>
+		<initialize set="method" line="113" override="1"><f a=""><x path="Void"/></f></initialize>
+		<preInitialize set="method" line="93" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<set_icon set="method" line="81"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_icon>
-		<get_icon set="method" line="73"><f a=""><c path="String"/></f></get_icon>
-		<set_remainPressed set="method" line="68"><f a="value">
+		<get_icon set="method" line="74"><f a=""><c path="String"/></f></get_icon>
+		<set_remainPressed set="method" line="69"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_remainPressed>
-		<get_remainPressed set="method" line="64"><f a=""><x path="Bool"/></f></get_remainPressed>
+		<get_remainPressed set="method" line="65"><f a=""><x path="Bool"/></f></get_remainPressed>
 		<icon public="1" get="accessor" set="accessor">
 			<c path="String"/>
 			<haxe_doc>Sets the icon asset. Eg: `assets/myicon.png`</haxe_doc>
@@ -19382,7 +19372,7 @@
 		<_label><c path="haxe.ui.toolkit.controls.Text"/></_label>
 		<_remainPressed><x path="Bool"/></_remainPressed>
 		<_allowFocus><x path="Bool"/></_allowFocus>
-		<new public="1" set="method" line="42"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="43"><f a=""><x path="Void"/></f></new>
 		<haxe_doc><![CDATA[General purpose multi-state button control with icon and toggle support (plus icon positioning)
  
  <b>Events:</b>
@@ -19449,63 +19439,63 @@
 	</class>
 	<class path="haxe.ui.toolkit.containers.ScrollView" params="" file="src/haxe/ui/toolkit/containers/ScrollView.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
-		<resizeEventTarget set="method" line="378"><f a=""><x path="Void"/></f></resizeEventTarget>
-		<updateScrollRect set="method" line="361"><f a=""><x path="Void"/></f></updateScrollRect>
-		<checkScrolls set="method" line="275"><f a=""><x path="Void"/></f></checkScrolls>
-		<_onMouseUp set="method" line="258"><f a="event">
+		<resizeEventTarget set="method" line="377"><f a=""><x path="Void"/></f></resizeEventTarget>
+		<updateScrollRect set="method" line="360"><f a=""><x path="Void"/></f></updateScrollRect>
+		<checkScrolls set="method" line="274"><f a=""><x path="Void"/></f></checkScrolls>
+		<_onMouseUp set="method" line="257"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseUp>
-		<_onMouseMove set="method" line="226"><f a="event">
+		<_onMouseMove set="method" line="225"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseMove>
-		<_onMouseDown set="method" line="207"><f a="event">
+		<_onMouseDown set="method" line="206"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onMouseWheel set="method" line="182"><f a="event">
+		<_onMouseWheel set="method" line="181"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseWheel>
-		<_onVScrollChange set="method" line="178"><f a="event">
+		<_onVScrollChange set="method" line="177"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></_onVScrollChange>
-		<_onHScrollChange set="method" line="174"><f a="event">
+		<_onHScrollChange set="method" line="173"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></_onHScrollChange>
-		<invalidate public="1" set="method" line="158" override="1"><f a="?type">
+		<invalidate public="1" set="method" line="157" override="1"><f a="?type">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></invalidate>
-		<get_vscrollPageSize set="method" line="148"><f a=""><x path="Float"/></f></get_vscrollPageSize>
-		<get_vscrollMax set="method" line="141"><f a=""><x path="Float"/></f></get_vscrollMax>
-		<get_vscrollMin set="method" line="134"><f a=""><x path="Float"/></f></get_vscrollMin>
-		<set_vscrollPos set="method" line="127"><f a="value">
+		<get_vscrollPageSize set="method" line="147"><f a=""><x path="Float"/></f></get_vscrollPageSize>
+		<get_vscrollMax set="method" line="140"><f a=""><x path="Float"/></f></get_vscrollMax>
+		<get_vscrollMin set="method" line="133"><f a=""><x path="Float"/></f></get_vscrollMin>
+		<set_vscrollPos set="method" line="126"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_vscrollPos>
-		<get_vscrollPos set="method" line="120"><f a=""><x path="Float"/></f></get_vscrollPos>
+		<get_vscrollPos set="method" line="119"><f a=""><x path="Float"/></f></get_vscrollPos>
 		<vscrollPageSize public="1" get="accessor" set="null"><x path="Float"/></vscrollPageSize>
 		<vscrollMax public="1" get="accessor" set="null"><x path="Float"/></vscrollMax>
 		<vscrollMin public="1" get="accessor" set="null"><x path="Float"/></vscrollMin>
 		<vscrollPos public="1" get="accessor" set="accessor"><x path="Float"/></vscrollPos>
-		<get_hscrollPageSize set="method" line="108"><f a=""><x path="Float"/></f></get_hscrollPageSize>
-		<get_hscrollMax set="method" line="101"><f a=""><x path="Float"/></f></get_hscrollMax>
-		<get_hscrollMin set="method" line="94"><f a=""><x path="Float"/></f></get_hscrollMin>
-		<set_hscrollPos set="method" line="87"><f a="value">
+		<get_hscrollPageSize set="method" line="107"><f a=""><x path="Float"/></f></get_hscrollPageSize>
+		<get_hscrollMax set="method" line="100"><f a=""><x path="Float"/></f></get_hscrollMax>
+		<get_hscrollMin set="method" line="93"><f a=""><x path="Float"/></f></get_hscrollMin>
+		<set_hscrollPos set="method" line="86"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_hscrollPos>
-		<get_hscrollPos set="method" line="80"><f a=""><x path="Float"/></f></get_hscrollPos>
+		<get_hscrollPos set="method" line="79"><f a=""><x path="Float"/></f></get_hscrollPos>
 		<hscrollPageSize public="1" get="accessor" set="null"><x path="Float"/></hscrollPageSize>
 		<hscrollMax public="1" get="accessor" set="null"><x path="Float"/></hscrollMax>
 		<hscrollMin public="1" get="accessor" set="null"><x path="Float"/></hscrollMin>
 		<hscrollPos public="1" get="accessor" set="accessor"><x path="Float"/></hscrollPos>
-		<dispose public="1" set="method" line="67" override="1"><f a=""><x path="Void"/></f></dispose>
-		<initialize set="method" line="51" override="1"><f a=""><x path="Void"/></f></initialize>
+		<dispose public="1" set="method" line="66" override="1"><f a=""><x path="Void"/></f></dispose>
+		<initialize set="method" line="50" override="1"><f a=""><x path="Void"/></f></initialize>
 		<preInitialize set="method" line="41" override="1"><f a=""><x path="Void"/></f></preInitialize>
 		<_autoHideScrolls><x path="Bool"/></_autoHideScrolls>
 		<_scrollSensitivity><x path="Int"/></_scrollSensitivity>
@@ -19816,18 +19806,18 @@
 	</class>
 	<class path="haxe.ui.toolkit.containers._ScrollView.ScrollViewLayout" params="" file="src/haxe/ui/toolkit/containers/ScrollView.hx" private="1" module="haxe.ui.toolkit.containers.ScrollView">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<set_inlineScrolls set="method" line="452"><f a="value">
+		<set_inlineScrolls set="method" line="451"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_inlineScrolls>
-		<get_inlineScrolls set="method" line="448"><f a=""><x path="Bool"/></f></get_inlineScrolls>
+		<get_inlineScrolls set="method" line="447"><f a=""><x path="Bool"/></f></get_inlineScrolls>
 		<inlineScrolls public="1" get="accessor" set="accessor"><x path="Bool"/></inlineScrolls>
-		<get_usableHeight set="method" line="434" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
-		<get_usableWidth set="method" line="424" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
-		<repositionChildren public="1" set="method" line="410" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="406" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<get_usableHeight set="method" line="433" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
+		<get_usableWidth set="method" line="423" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
+		<repositionChildren public="1" set="method" line="409" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="405" override="1"><f a=""><x path="Void"/></f></resizeChildren>
 		<_inlineScrolls><x path="Bool"/></_inlineScrolls>
-		<new public="1" set="method" line="402"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="401"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.containers.Stack" params="" file="src/haxe/ui/toolkit/containers/Stack.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
@@ -19868,22 +19858,22 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._Button.ButtonLayout" params="" file="src/haxe/ui/toolkit/controls/Button.hx" private="1" module="haxe.ui.toolkit.controls.Button">
 		<extends path="haxe.ui.toolkit.layout.Layout"/>
-		<repositionChildren set="method" line="352" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<set_labelPosition set="method" line="344"><f a="value">
+		<repositionChildren set="method" line="365" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<set_labelPosition set="method" line="357"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_labelPosition>
-		<get_labelPosition set="method" line="340"><f a=""><c path="String"/></f></get_labelPosition>
-		<set_iconPosition set="method" line="335"><f a="value">
+		<get_labelPosition set="method" line="353"><f a=""><c path="String"/></f></get_labelPosition>
+		<set_iconPosition set="method" line="348"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_iconPosition set="method" line="331"><f a=""><c path="String"/></f></get_iconPosition>
+		<get_iconPosition set="method" line="344"><f a=""><c path="String"/></f></get_iconPosition>
 		<labelPosition public="1" get="accessor" set="accessor"><c path="String"/></labelPosition>
 		<iconPosition public="1" get="accessor" set="accessor"><c path="String"/></iconPosition>
 		<_labelPos><c path="String"/></_labelPos>
 		<_iconPos><c path="String"/></_iconPos>
-		<new public="1" set="method" line="321"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="334"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Calendar" params="" file="src/haxe/ui/toolkit/controls/Calendar.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
@@ -20111,39 +20101,39 @@
 	<class path="haxe.ui.toolkit.controls.HScroll" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx">
 		<extends path="haxe.ui.toolkit.controls.Scroll"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IScrollable"/>
-		<incrementValue public="1" set="method" line="296">
+		<incrementValue public="1" set="method" line="294">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
-		<deincrementValue public="1" set="method" line="289">
+		<deincrementValue public="1" set="method" line="287">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<set_incrementSize set="method" line="278"><f a="value">
+		<set_incrementSize set="method" line="276"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<get_incrementSize set="method" line="274"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_pageSize set="method" line="266"><f a="value">
+		<get_incrementSize set="method" line="272"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_pageSize set="method" line="264"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_pageSize set="method" line="262"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_max set="method" line="251"><f a="value">
+		<get_pageSize set="method" line="260"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_max set="method" line="249"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_max set="method" line="247"><f a=""><x path="Float"/></f></get_max>
-		<set_min set="method" line="236"><f a="value">
+		<get_max set="method" line="245"><f a=""><x path="Float"/></f></get_max>
+		<set_min set="method" line="234"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_min set="method" line="232"><f a=""><x path="Float"/></f></get_min>
-		<set_pos set="method" line="216"><f a="value">
+		<get_min set="method" line="230"><f a=""><x path="Float"/></f></get_min>
+		<set_pos set="method" line="214"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_pos set="method" line="212"><f a=""><x path="Float"/></f></get_pos>
+		<get_pos set="method" line="210"><f a=""><x path="Float"/></f></get_pos>
 		<incrementSize public="1" get="accessor" set="accessor">
 			<x path="Float"/>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
@@ -20164,35 +20154,35 @@
 			<x path="Float"/>
 			<haxe_doc>Value of the scrollbar</haxe_doc>
 		</pos>
-		<_onMouseDown set="method" line="171"><f a="event">
+		<_onMouseDown set="method" line="169"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScrollTimerComplete set="method" line="159"><f a="event">
+		<_onScrollTimerComplete set="method" line="157"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onInc set="method" line="147"><f a="event">
+		<_onInc set="method" line="145"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onDeinc set="method" line="135"><f a="event">
+		<_onDeinc set="method" line="133"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onScreenMouseUp set="method" line="126"><f a="event">
+		<_onScreenMouseUp set="method" line="124"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onScreenMouseMove set="method" line="102"><f a="event">
+		<_onScreenMouseMove set="method" line="100"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onThumbMouseDown set="method" line="94"><f a="event">
+		<_onThumbMouseDown set="method" line="92"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
-		<initialize set="method" line="61" override="1"><f a=""><x path="Void"/></f></initialize>
+		<initialize set="method" line="59" override="1"><f a=""><x path="Void"/></f></initialize>
 		<preInitialize set="method" line="51" override="1"><f a=""><x path="Void"/></f></preInitialize>
 		<_hasButtons><x path="Bool"/></_hasButtons>
 		<_scrollTimer><c path="flash.utils.Timer"/></_scrollTimer>
@@ -20215,10 +20205,10 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._HScroll.HScrollLayout" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx" private="1" module="haxe.ui.toolkit.controls.HScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<get_usableWidth set="method" line="351" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
-		<repositionChildren public="1" set="method" line="324" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="306" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<new public="1" set="method" line="302"><f a=""><x path="Void"/></f></new>
+		<get_usableWidth set="method" line="349" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
+		<repositionChildren public="1" set="method" line="322" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="304" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<new public="1" set="method" line="300"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Slider" params="" file="src/haxe/ui/toolkit/controls/Slider.hx">
 		<extends path="haxe.ui.toolkit.controls.Progress"/>
@@ -20504,39 +20494,39 @@
 	<class path="haxe.ui.toolkit.controls.VScroll" params="" file="src/haxe/ui/toolkit/controls/VScroll.hx">
 		<extends path="haxe.ui.toolkit.controls.Scroll"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IScrollable"/>
-		<incrementValue public="1" set="method" line="295">
+		<incrementValue public="1" set="method" line="293">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
-		<deincrementValue public="1" set="method" line="288">
+		<deincrementValue public="1" set="method" line="286">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<set_incrementSize set="method" line="277"><f a="value">
+		<set_incrementSize set="method" line="275"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<get_incrementSize set="method" line="273"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_pageSize set="method" line="265"><f a="value">
+		<get_incrementSize set="method" line="271"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_pageSize set="method" line="263"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_pageSize set="method" line="261"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_max set="method" line="250"><f a="value">
+		<get_pageSize set="method" line="259"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_max set="method" line="248"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_max set="method" line="246"><f a=""><x path="Float"/></f></get_max>
-		<set_min set="method" line="235"><f a="value">
+		<get_max set="method" line="244"><f a=""><x path="Float"/></f></get_max>
+		<set_min set="method" line="233"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_min set="method" line="231"><f a=""><x path="Float"/></f></get_min>
-		<set_pos set="method" line="215"><f a="value">
+		<get_min set="method" line="229"><f a=""><x path="Float"/></f></get_min>
+		<set_pos set="method" line="213"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_pos set="method" line="211"><f a=""><x path="Float"/></f></get_pos>
+		<get_pos set="method" line="209"><f a=""><x path="Float"/></f></get_pos>
 		<incrementSize public="1" get="accessor" set="accessor">
 			<x path="Float"/>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
@@ -20557,35 +20547,35 @@
 			<x path="Float"/>
 			<haxe_doc>Value of the scrollbar</haxe_doc>
 		</pos>
-		<_onMouseDown set="method" line="170"><f a="event">
+		<_onMouseDown set="method" line="168"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScrollTimerComplete set="method" line="158"><f a="event">
+		<_onScrollTimerComplete set="method" line="156"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onInc set="method" line="146"><f a="event">
+		<_onInc set="method" line="144"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onDeinc set="method" line="134"><f a="event">
+		<_onDeinc set="method" line="132"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onScreenMouseUp set="method" line="125"><f a="event">
+		<_onScreenMouseUp set="method" line="123"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onScreenMouseMove set="method" line="101"><f a="event">
+		<_onScreenMouseMove set="method" line="99"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onThumbMouseDown set="method" line="93"><f a="event">
+		<_onThumbMouseDown set="method" line="91"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
-		<initialize set="method" line="60" override="1"><f a=""><x path="Void"/></f></initialize>
+		<initialize set="method" line="58" override="1"><f a=""><x path="Void"/></f></initialize>
 		<preInitialize set="method" line="50" override="1"><f a=""><x path="Void"/></f></preInitialize>
 		<_hasButtons><x path="Bool"/></_hasButtons>
 		<_scrollTimer><c path="flash.utils.Timer"/></_scrollTimer>
@@ -20608,10 +20598,10 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._VScroll.VScrollLayout" params="" file="src/haxe/ui/toolkit/controls/VScroll.hx" private="1" module="haxe.ui.toolkit.controls.VScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<get_usableHeight set="method" line="350" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
-		<repositionChildren public="1" set="method" line="323" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="305" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<new public="1" set="method" line="301"><f a=""><x path="Void"/></f></new>
+		<get_usableHeight set="method" line="348" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
+		<repositionChildren public="1" set="method" line="321" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="303" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<new public="1" set="method" line="299"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.VSlider" params="" file="src/haxe/ui/toolkit/controls/VSlider.hx">
 		<extends path="haxe.ui.toolkit.controls.Slider"/>
@@ -20905,19 +20895,19 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.selection.Date" params="" file="src/haxe/ui/toolkit/controls/selection/Date.hx">
 		<extends path="haxe.ui.toolkit.controls.Button"/>
-		<onDateChange set="method" line="162"><f a="event">
+		<onDateChange set="method" line="172"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></onDateChange>
-		<_onRootMouseDown set="method" line="148"><f a="event">
+		<_onRootMouseDown set="method" line="158"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onRootMouseDown>
-		<set_method set="method" line="140"><f a="value">
+		<set_method set="method" line="150"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_method>
-		<get_method set="method" line="136"><f a=""><c path="String"/></f></get_method>
+		<get_method set="method" line="146"><f a=""><c path="String"/></f></get_method>
 		<method public="1" get="accessor" set="accessor">
 			<c path="String"/>
 			<haxe_doc>Specifies the method to display the calendar, valid values are:
@@ -20926,8 +20916,9 @@
 
 	 * `popup` - The calendar will be a modal popup of the choices, this is more suited to mobile applications</haxe_doc>
 		</method>
-		<hideCalendar public="1" set="method" line="102"><f a=""><x path="Void"/></f></hideCalendar>
-		<showCalendar public="1" set="method" line="53"><f a=""><x path="Void"/></f></showCalendar>
+		<hideCalendar public="1" set="method" line="112"><f a=""><x path="Void"/></f></hideCalendar>
+		<showCalendar public="1" set="method" line="63"><f a=""><x path="Void"/></f></showCalendar>
+		<applyStyle set="method" line="50" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<_onMouseClick set="method" line="41" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
@@ -20941,24 +20932,24 @@
 	<class path="haxe.ui.toolkit.controls.selection.List" params="" file="src/haxe/ui/toolkit/controls/selection/List.hx">
 		<extends path="haxe.ui.toolkit.controls.Button"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IDataComponent"/>
-		<_onListChange set="method" line="233"><f a="event">
+		<_onListChange set="method" line="243"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></_onListChange>
-		<_onRootMouseDown set="method" line="219"><f a="event">
+		<_onRootMouseDown set="method" line="229"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onRootMouseDown>
-		<get_selectedItems set="method" line="212"><f a=""><c path="Array"><c path="haxe.ui.toolkit.containers.ListViewItem"/></c></f></get_selectedItems>
+		<get_selectedItems set="method" line="222"><f a=""><c path="Array"><c path="haxe.ui.toolkit.containers.ListViewItem"/></c></f></get_selectedItems>
 		<selectedItems public="1" get="accessor" set="null">
 			<c path="Array"><c path="haxe.ui.toolkit.containers.ListViewItem"/></c>
 			<haxe_doc>Returns an array of the selected list items</haxe_doc>
 		</selectedItems>
-		<set_method set="method" line="199"><f a="value">
+		<set_method set="method" line="209"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_method>
-		<get_method set="method" line="195"><f a=""><c path="String"/></f></get_method>
+		<get_method set="method" line="205"><f a=""><c path="String"/></f></get_method>
 		<method public="1" get="accessor" set="accessor">
 			<c path="String"/>
 			<haxe_doc>Specifies the method to display the list, valid values are:
@@ -20967,23 +20958,24 @@
 
 	 * `popup` - The list will be a modal popup of the choices, this is more suited to mobile applications</haxe_doc>
 		</method>
-		<hideList public="1" set="method" line="161">
+		<hideList public="1" set="method" line="171">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Hides the list from the user</haxe_doc>
 		</hideList>
-		<showList public="1" set="method" line="96">
+		<showList public="1" set="method" line="106">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Displays the list to the user based on `method` (this will be called automatically when the user clicks the button)</haxe_doc>
 		</showList>
-		<set_dataSource set="method" line="85"><f a="value">
+		<set_dataSource set="method" line="95"><f a="value">
 	<c path="haxe.ui.toolkit.data.IDataSource"/>
 	<c path="haxe.ui.toolkit.data.IDataSource"/>
 </f></set_dataSource>
-		<get_dataSource set="method" line="78"><f a=""><c path="haxe.ui.toolkit.data.IDataSource"/></f></get_dataSource>
+		<get_dataSource set="method" line="88"><f a=""><c path="haxe.ui.toolkit.data.IDataSource"/></f></get_dataSource>
 		<dataSource public="1" get="accessor" set="accessor">
 			<c path="haxe.ui.toolkit.data.IDataSource"/>
 			<haxe_doc>Specifies the data source where the list will get its options from</haxe_doc>
 		</dataSource>
+		<applyStyle set="method" line="70" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<_onMouseClick set="method" line="61" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
@@ -21009,7 +21001,7 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.selection._List.DropDownList" params="" file="src/haxe/ui/toolkit/controls/selection/List.hx" private="1" module="haxe.ui.toolkit.controls.selection.List">
 		<extends path="haxe.ui.toolkit.containers.ListView"/>
-		<new public="1" set="method" line="246"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="256"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.ClassManager" params="" file="src/haxe/ui/toolkit/core/ClassManager.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.core.ClassManager"/></_instance>
@@ -21086,11 +21078,11 @@
 		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Macros" params="" file="src/haxe/ui/toolkit/core/Macros.hx">
-		<getClassNameFromType set="method" line="106" static="1"><f a="t">
+		<getClassNameFromType set="method" line="110" static="1"><f a="t">
 	<e path="haxe.macro.Type"/>
 	<c path="String"/>
 </f></getClassNameFromType>
-		<hasInterface set="method" line="122" static="1"><f a="t:interfaceRequired">
+		<hasInterface set="method" line="126" static="1"><f a="t:interfaceRequired">
 	<e path="haxe.macro.Type"/>
 	<c path="String"/>
 	<x path="Bool"/>
@@ -21662,44 +21654,326 @@
 		<new public="1" set="method" line="20"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.style.Styles" params="" file="src/haxe/ui/toolkit/style/Styles.hx">
-		<dump public="1" set="method" line="45"><f a=""><x path="Void"/></f></dump>
-		<get_rules set="method" line="41"><f a=""><t path="Iterator"><c path="String"/></t></f></get_rules>
-		<getStyle public="1" set="method" line="37"><f a="rule">
+		<dump public="1" set="method" line="46"><f a=""><x path="Void"/></f></dump>
+		<get_rules set="method" line="42"><f a=""><t path="Iterator"><c path="String"/></t></f></get_rules>
+		<getStyle public="1" set="method" line="38"><f a="rule">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></getStyle>
 		<addStyle public="1" set="method" line="16"><f a="rule:style">
 	<c path="String"/>
-	<d/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></addStyle>
 		<rules public="1" get="accessor" set="null"><t path="Iterator"><c path="String"/></t></rules>
 		<_styleRules><c path="Array"><c path="String"/></c></_styleRules>
-		<_styles><c path="haxe.ds.StringMap"><d/></c></_styles>
+		<_styles><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.style.Style"/></c></_styles>
 		<new public="1" set="method" line="11"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.style.DefaultStyles" params="" file="src/haxe/ui/toolkit/style/DefaultStyles.hx">
 		<extends path="haxe.ui.toolkit.style.Styles"/>
 		<new public="1" set="method" line="4"><f a=""><x path="Void"/></f></new>
 	</class>
+	<class path="haxe.ui.toolkit.style.Style" params="" file="src/haxe/ui/toolkit/style/Style.hx">
+		<merge public="1" set="method" line="580"><f a="with">
+	<c path="haxe.ui.toolkit.style.Style"/>
+	<x path="Void"/>
+</f></merge>
+		<apply set="method" line="572"><f a=""><x path="Void"/></f></apply>
+		<set_inlineScrolls set="method" line="566"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_inlineScrolls>
+		<get_inlineScrolls set="method" line="559"><f a=""><x path="Bool"/></f></get_inlineScrolls>
+		<set_autoHideScrolls set="method" line="553"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_autoHideScrolls>
+		<get_autoHideScrolls set="method" line="546"><f a=""><x path="Bool"/></f></get_autoHideScrolls>
+		<set_selectionMethod set="method" line="538"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_selectionMethod>
+		<get_selectionMethod set="method" line="534"><f a=""><c path="String"/></f></get_selectionMethod>
+		<set_gradientType set="method" line="526"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_gradientType>
+		<get_gradientType set="method" line="522"><f a=""><c path="String"/></f></get_gradientType>
+		<set_hasButtons set="method" line="516"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_hasButtons>
+		<get_hasButtons set="method" line="509"><f a=""><x path="Bool"/></f></get_hasButtons>
+		<set_icon set="method" line="501"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_icon>
+		<get_icon set="method" line="497"><f a=""><c path="String"/></f></get_icon>
+		<set_labelPosition set="method" line="489"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_labelPosition>
+		<get_labelPosition set="method" line="485"><f a=""><c path="String"/></f></get_labelPosition>
+		<set_iconPosition set="method" line="477"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_iconPosition>
+		<get_iconPosition set="method" line="473"><f a=""><c path="String"/></f></get_iconPosition>
+		<set_fontSize set="method" line="465"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_fontSize>
+		<get_fontSize set="method" line="461"><f a=""><x path="Int"/></f></get_fontSize>
+		<set_fontName set="method" line="453"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_fontName>
+		<get_fontName set="method" line="449"><f a=""><c path="String"/></f></get_fontName>
+		<set_alpha set="method" line="441"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_alpha>
+		<get_alpha set="method" line="437"><f a=""><x path="Float"/></f></get_alpha>
+		<set_filter set="method" line="428"><f a="value">
+	<c path="flash.filters.BitmapFilter"/>
+	<c path="flash.filters.BitmapFilter"/>
+</f></set_filter>
+		<get_filter set="method" line="424"><f a=""><c path="flash.filters.BitmapFilter"/></f></get_filter>
+		<set_cornerRadius set="method" line="413"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_cornerRadius>
+		<get_cornerRadius set="method" line="409"><f a=""><x path="Int"/></f></get_cornerRadius>
+		<set_cornerRadiusBottomRight set="method" line="401"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_cornerRadiusBottomRight>
+		<get_cornerRadiusBottomRight set="method" line="397"><f a=""><x path="Int"/></f></get_cornerRadiusBottomRight>
+		<set_cornerRadiusBottomLeft set="method" line="389"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_cornerRadiusBottomLeft>
+		<get_cornerRadiusBottomLeft set="method" line="385"><f a=""><x path="Int"/></f></get_cornerRadiusBottomLeft>
+		<set_cornerRadiusTopRight set="method" line="377"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_cornerRadiusTopRight>
+		<get_cornerRadiusTopRight set="method" line="373"><f a=""><x path="Int"/></f></get_cornerRadiusTopRight>
+		<set_cornerRadiusTopLeft set="method" line="365"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_cornerRadiusTopLeft>
+		<get_cornerRadiusTopLeft set="method" line="361"><f a=""><x path="Int"/></f></get_cornerRadiusTopLeft>
+		<set_spacing set="method" line="352"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_spacing>
+		<get_spacing set="method" line="348"><f a=""><x path="Int"/></f></get_spacing>
+		<set_spacingY set="method" line="340"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_spacingY>
+		<get_spacingY set="method" line="336"><f a=""><x path="Int"/></f></get_spacingY>
+		<set_spacingX set="method" line="328"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_spacingX>
+		<get_spacingX set="method" line="324"><f a=""><x path="Int"/></f></get_spacingX>
+		<set_padding set="method" line="313"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_padding>
+		<get_padding set="method" line="309"><f a=""><x path="Int"/></f></get_padding>
+		<set_paddingBottom set="method" line="301"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_paddingBottom>
+		<get_paddingBottom set="method" line="297"><f a=""><x path="Int"/></f></get_paddingBottom>
+		<set_paddingTop set="method" line="289"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_paddingTop>
+		<get_paddingTop set="method" line="285"><f a=""><x path="Int"/></f></get_paddingTop>
+		<set_paddingRight set="method" line="277"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_paddingRight>
+		<get_paddingRight set="method" line="273"><f a=""><x path="Int"/></f></get_paddingRight>
+		<set_paddingLeft set="method" line="265"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_paddingLeft>
+		<get_paddingLeft set="method" line="261"><f a=""><x path="Int"/></f></get_paddingLeft>
+		<set_color set="method" line="253"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_color>
+		<get_color set="method" line="249"><f a=""><x path="Int"/></f></get_color>
+		<set_borderSize set="method" line="241"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_borderSize>
+		<get_borderSize set="method" line="237"><f a=""><x path="Int"/></f></get_borderSize>
+		<set_borderColor set="method" line="229"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_borderColor>
+		<get_borderColor set="method" line="225"><f a=""><x path="Int"/></f></get_borderColor>
+		<set_backgroundColorGradientEnd set="method" line="217"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_backgroundColorGradientEnd>
+		<get_backgroundColorGradientEnd set="method" line="213"><f a=""><x path="Int"/></f></get_backgroundColorGradientEnd>
+		<set_backgroundColor set="method" line="205"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_backgroundColor>
+		<get_backgroundColor set="method" line="201"><f a=""><x path="Int"/></f></get_backgroundColor>
+		<set_backgroundImageRect set="method" line="193"><f a="value">
+	<c path="flash.geom.Rectangle"/>
+	<c path="flash.geom.Rectangle"/>
+</f></set_backgroundImageRect>
+		<get_backgroundImageRect set="method" line="189"><f a=""><c path="flash.geom.Rectangle"/></f></get_backgroundImageRect>
+		<set_backgroundImageScale9 set="method" line="181"><f a="value">
+	<c path="flash.geom.Rectangle"/>
+	<c path="flash.geom.Rectangle"/>
+</f></set_backgroundImageScale9>
+		<get_backgroundImageScale9 set="method" line="177"><f a=""><c path="flash.geom.Rectangle"/></f></get_backgroundImageScale9>
+		<set_backgroundImage set="method" line="169"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_backgroundImage>
+		<get_backgroundImage set="method" line="165"><f a=""><c path="String"/></f></get_backgroundImage>
+		<set_percentHeight set="method" line="157"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_percentHeight>
+		<get_percentHeight set="method" line="153"><f a=""><x path="Int"/></f></get_percentHeight>
+		<set_percentWidth set="method" line="145"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_percentWidth>
+		<get_percentWidth set="method" line="141"><f a=""><x path="Int"/></f></get_percentWidth>
+		<set_height set="method" line="133"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_height>
+		<get_height set="method" line="129"><f a=""><x path="Int"/></f></get_height>
+		<set_width set="method" line="121"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_width>
+		<get_width set="method" line="117"><f a=""><x path="Int"/></f></get_width>
+		<set_autoApply set="method" line="112"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_autoApply>
+		<get_autoApply set="method" line="108"><f a=""><x path="Bool"/></f></get_autoApply>
+		<set_target set="method" line="102"><f a="value">
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+</f></set_target>
+		<get_target set="method" line="98"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></f></get_target>
+		<autoApply public="1" get="accessor" set="accessor"><x path="Bool"/></autoApply>
+		<target public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></target>
+		<inlineScrolls public="1" get="accessor" set="accessor"><x path="Bool"/></inlineScrolls>
+		<autoHideScrolls public="1" get="accessor" set="accessor"><x path="Bool"/></autoHideScrolls>
+		<selectionMethod public="1" get="accessor" set="accessor"><c path="String"/></selectionMethod>
+		<gradientType public="1" get="accessor" set="accessor"><c path="String"/></gradientType>
+		<hasButtons public="1" get="accessor" set="accessor"><x path="Bool"/></hasButtons>
+		<icon public="1" get="accessor" set="accessor"><c path="String"/></icon>
+		<labelPosition public="1" get="accessor" set="accessor"><c path="String"/></labelPosition>
+		<iconPosition public="1" get="accessor" set="accessor"><c path="String"/></iconPosition>
+		<fontSize public="1" get="accessor" set="accessor"><x path="Int"/></fontSize>
+		<fontName public="1" get="accessor" set="accessor"><c path="String"/></fontName>
+		<alpha public="1" get="accessor" set="accessor"><x path="Float"/></alpha>
+		<filter public="1" get="accessor" set="accessor"><c path="flash.filters.BitmapFilter"/></filter>
+		<cornerRadius public="1" get="accessor" set="accessor"><x path="Int"/></cornerRadius>
+		<cornerRadiusBottomRight public="1" get="accessor" set="accessor"><x path="Int"/></cornerRadiusBottomRight>
+		<cornerRadiusBottomLeft public="1" get="accessor" set="accessor"><x path="Int"/></cornerRadiusBottomLeft>
+		<cornerRadiusTopRight public="1" get="accessor" set="accessor"><x path="Int"/></cornerRadiusTopRight>
+		<cornerRadiusTopLeft public="1" get="accessor" set="accessor"><x path="Int"/></cornerRadiusTopLeft>
+		<spacing public="1" get="accessor" set="accessor"><x path="Int"/></spacing>
+		<spacingY public="1" get="accessor" set="accessor"><x path="Int"/></spacingY>
+		<spacingX public="1" get="accessor" set="accessor"><x path="Int"/></spacingX>
+		<padding public="1" get="accessor" set="accessor"><x path="Int"/></padding>
+		<paddingBottom public="1" get="accessor" set="accessor"><x path="Int"/></paddingBottom>
+		<paddingTop public="1" get="accessor" set="accessor"><x path="Int"/></paddingTop>
+		<paddingRight public="1" get="accessor" set="accessor"><x path="Int"/></paddingRight>
+		<paddingLeft public="1" get="accessor" set="accessor"><x path="Int"/></paddingLeft>
+		<color public="1" get="accessor" set="accessor"><x path="Int"/></color>
+		<borderSize public="1" get="accessor" set="accessor"><x path="Int"/></borderSize>
+		<borderColor public="1" get="accessor" set="accessor"><x path="Int"/></borderColor>
+		<backgroundColorGradientEnd public="1" get="accessor" set="accessor"><x path="Int"/></backgroundColorGradientEnd>
+		<backgroundColor public="1" get="accessor" set="accessor"><x path="Int"/></backgroundColor>
+		<backgroundImageRect public="1" get="accessor" set="accessor"><c path="flash.geom.Rectangle"/></backgroundImageRect>
+		<backgroundImageScale9 public="1" get="accessor" set="accessor"><c path="flash.geom.Rectangle"/></backgroundImageScale9>
+		<backgroundImage public="1" get="accessor" set="accessor"><c path="String"/></backgroundImage>
+		<percentHeight public="1" get="accessor" set="accessor"><x path="Int"/></percentHeight>
+		<percentWidth public="1" get="accessor" set="accessor"><x path="Int"/></percentWidth>
+		<height public="1" get="accessor" set="accessor"><x path="Int"/></height>
+		<width public="1" get="accessor" set="accessor"><x path="Int"/></width>
+		<_inlineScrolls><x path="Int"/></_inlineScrolls>
+		<_autoHideScrolls><x path="Int"/></_autoHideScrolls>
+		<_selectionMethod><c path="String"/></_selectionMethod>
+		<_gradientType><c path="String"/></_gradientType>
+		<_hasButtons><x path="Int"/></_hasButtons>
+		<_icon><c path="String"/></_icon>
+		<_labelPosition><c path="String"/></_labelPosition>
+		<_iconPosition><c path="String"/></_iconPosition>
+		<_fontSize><x path="Int"/></_fontSize>
+		<_fontName><c path="String"/></_fontName>
+		<_alpha><x path="Float"/></_alpha>
+		<_filterSet><x path="Bool"/></_filterSet>
+		<_filter><c path="flash.filters.BitmapFilter"/></_filter>
+		<_cornerRadiusBottomRight><x path="Int"/></_cornerRadiusBottomRight>
+		<_cornerRadiusBottomLeft><x path="Int"/></_cornerRadiusBottomLeft>
+		<_cornerRadiusTopRight><x path="Int"/></_cornerRadiusTopRight>
+		<_cornerRadiusTopLeft><x path="Int"/></_cornerRadiusTopLeft>
+		<_spacingY><x path="Int"/></_spacingY>
+		<_spacingX><x path="Int"/></_spacingX>
+		<_paddingBottom><x path="Int"/></_paddingBottom>
+		<_paddingTop><x path="Int"/></_paddingTop>
+		<_paddingRight><x path="Int"/></_paddingRight>
+		<_paddingLeft><x path="Int"/></_paddingLeft>
+		<_color><x path="Int"/></_color>
+		<_borderSize><x path="Int"/></_borderSize>
+		<_borderColor><x path="Int"/></_borderColor>
+		<_backgroundColorGradientEnd><x path="Int"/></_backgroundColorGradientEnd>
+		<_backgroundColor><x path="Int"/></_backgroundColor>
+		<_backgroundImageRect><c path="flash.geom.Rectangle"/></_backgroundImageRect>
+		<_backgroundImageScale9><c path="flash.geom.Rectangle"/></_backgroundImageScale9>
+		<_backgroundImage><c path="String"/></_backgroundImage>
+		<_percentHeight><x path="Int"/></_percentHeight>
+		<_percentWidth><x path="Int"/></_percentWidth>
+		<_height><x path="Int"/></_height>
+		<_width><x path="Int"/></_width>
+		<_autoApply><x path="Bool"/></_autoApply>
+		<_target><c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/></_target>
+		<new public="1" set="method" line="89"><f a="?defaults">
+	<d/>
+	<x path="Void"/>
+</f></new>
+	</class>
 	<class path="haxe.ui.toolkit.style.StyleHelper" params="" file="src/haxe/ui/toolkit/style/StyleHelper.hx">
 		<sectionCache static="1"><c path="haxe.ds.StringMap"><c path="flash.display.BitmapData"/></c></sectionCache>
 		<clearCache public="1" set="method" line="17" static="1"><f a=""><x path="Void"/></f></clearCache>
 		<paintStyle public="1" set="method" line="21" static="1"><f a="g:style:rc">
 	<c path="flash.display.Graphics"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintStyle>
-		<paintScale9 public="1" set="method" line="119" static="1"><f a="g:resourceId:resourceRect:scale9:rc">
+		<paintScale9 public="1" set="method" line="114" static="1"><f a="g:resourceId:resourceRect:scale9:rc">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
-	<c path="String"/>
+	<c path="flash.geom.Rectangle"/>
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintScale9>
-		<paintCompoundBitmap public="1" set="method" line="152" static="1"><f a="g:resourceId:resourceRect:sourceRects:targetRect">
+		<paintCompoundBitmap public="1" set="method" line="146" static="1"><f a="g:resourceId:resourceRect:sourceRects:targetRect">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
@@ -21707,7 +21981,7 @@
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintCompoundBitmap>
-		<paintBitmapSection public="1" set="method" line="225" static="1"><f a="g:resourceId:resourceRect:src:dst">
+		<paintBitmapSection public="1" set="method" line="219" static="1"><f a="g:resourceId:resourceRect:src:dst">
 	<c path="flash.display.Graphics"/>
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
@@ -21715,7 +21989,7 @@
 	<c path="flash.geom.Rectangle"/>
 	<x path="Void"/>
 </f></paintBitmapSection>
-		<getBitmapSection set="method" line="263" static="1"><f a="resourceId:?rc">
+		<getBitmapSection set="method" line="257" static="1"><f a="resourceId:?rc">
 	<c path="String"/>
 	<c path="flash.geom.Rectangle"/>
 	<c path="flash.display.BitmapData"/>
@@ -21725,18 +21999,13 @@
 		<_instance static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></instance>
 		<get_instance set="method" line="14" static="1"><f a=""><c path="haxe.ui.toolkit.style.StyleManager"/></f></get_instance>
-		<get_hasStyles set="method" line="225"><f a=""><x path="Bool"/></f></get_hasStyles>
-		<dump public="1" set="method" line="218"><f a=""><x path="Void"/></f></dump>
-		<buildStyleFor public="1" set="method" line="193"><f a="c:?state">
+		<get_hasStyles set="method" line="198"><f a=""><x path="Bool"/></f></get_hasStyles>
+		<dump public="1" set="method" line="191"><f a=""><x path="Void"/></f></dump>
+		<buildStyleFor public="1" set="method" line="163"><f a="c:?state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></buildStyleFor>
-		<mergeStyle public="1" set="method" line="163"><f a="oldStyle:newStyle">
-	<d/>
-	<d/>
-	<d/>
-</f></mergeStyle>
 		<ruleMatch set="method" line="114"><f a="c:rule:state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
@@ -21774,7 +22043,7 @@
 		<_styles><c path="haxe.ds.StringMap"><d/></c></_styles>
 		<new public="1" set="method" line="32"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="haxe.ui.toolkit.style.StyleParser" params="" file="src/haxe/ui/toolkit/style/StyleParser.hx"><fromString public="1" set="method" line="6" static="1"><f a="styleString">
+	<class path="haxe.ui.toolkit.style.StyleParser" params="" file="src/haxe/ui/toolkit/style/StyleParser.hx"><fromString public="1" set="method" line="8" static="1"><f a="styleString">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Styles"/>
 </f></fromString></class>
@@ -21783,46 +22052,46 @@
 		<multiline public="1" get="null" set="null"><x path="Bool"/></multiline>
 		<interactive public="1" get="null" set="null"><x path="Bool"/></interactive>
 		<display public="1" get="null" set="null"><c path="flash.display.DisplayObject"/></display>
-		<style public="1" get="null" set="null"><d/></style>
+		<style public="1" get="null" set="null"><c path="haxe.ui.toolkit.style.Style"/></style>
 		<text public="1" get="null" set="null"><c path="String"/></text>
 	</class>
 	<class path="haxe.ui.toolkit.text.TextDisplay" params="" file="src/haxe/ui/toolkit/text/TextDisplay.hx">
 		<implements path="haxe.ui.toolkit.text.ITextDisplay"/>
-		<set_wrapLines set="method" line="140"><f a="value">
+		<set_wrapLines set="method" line="141"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_wrapLines>
-		<get_wrapLines set="method" line="136"><f a=""><x path="Bool"/></f></get_wrapLines>
-		<set_multiline set="method" line="130"><f a="value">
+		<get_wrapLines set="method" line="137"><f a=""><x path="Bool"/></f></get_wrapLines>
+		<set_multiline set="method" line="131"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_multiline>
-		<get_multiline set="method" line="126"><f a=""><x path="Bool"/></f></get_multiline>
-		<set_interactive set="method" line="113"><f a="value">
+		<get_multiline set="method" line="127"><f a=""><x path="Bool"/></f></get_multiline>
+		<set_interactive set="method" line="114"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_interactive>
-		<get_interactive set="method" line="109"><f a=""><x path="Bool"/></f></get_interactive>
-		<get_display set="method" line="105"><f a=""><c path="flash.display.DisplayObject"/></f></get_display>
-		<set_style set="method" line="71"><f a="value">
-	<d/>
-	<d/>
+		<get_interactive set="method" line="110"><f a=""><x path="Bool"/></f></get_interactive>
+		<get_display set="method" line="106"><f a=""><c path="flash.display.DisplayObject"/></f></get_display>
+		<set_style set="method" line="72"><f a="value">
+	<c path="haxe.ui.toolkit.style.Style"/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></set_style>
-		<get_style set="method" line="67"><f a=""><d/></f></get_style>
-		<set_text set="method" line="38"><f a="value">
+		<get_style set="method" line="68"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
+		<set_text set="method" line="39"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<get_text set="method" line="34"><f a=""><c path="String"/></f></get_text>
+		<get_text set="method" line="35"><f a=""><c path="String"/></f></get_text>
 		<wrapLines public="1" get="accessor" set="accessor"><x path="Bool"/></wrapLines>
 		<multiline public="1" get="accessor" set="accessor"><x path="Bool"/></multiline>
 		<interactive public="1" get="accessor" set="accessor"><x path="Bool"/></interactive>
 		<display public="1" get="accessor" set="null"><c path="flash.display.DisplayObject"/></display>
-		<style public="1" get="accessor" set="accessor"><d/></style>
+		<style public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.style.Style"/></style>
 		<text public="1" get="accessor" set="accessor"><c path="String"/></text>
 		<_tf><c path="flash.text.TextField"/></_tf>
-		<_style><d/></_style>
-		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<_style><c path="haxe.ui.toolkit.style.Style"/></_style>
+		<new public="1" set="method" line="14"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.util.FilterParser" params="" file="src/haxe/ui/toolkit/util/FilterParser.hx">
 		<filterParamDefaults line="9" static="1"><a>

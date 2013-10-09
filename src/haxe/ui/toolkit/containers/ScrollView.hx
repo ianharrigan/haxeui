@@ -42,9 +42,8 @@ class ScrollView extends Component {
 		super.preInitialize();
 		
 		if (_style != null) {
-			if (_style.autoHideScrolls != null) {
-				_autoHideScrolls = TypeParser.parseBool(_style.autoHideScrolls);
-			}
+			_autoHideScrolls = _style.autoHideScrolls;
+			cast(_layout, ScrollViewLayout).inlineScrolls = _style.inlineScrolls;
 		}
 	}
 	

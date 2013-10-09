@@ -28,8 +28,8 @@ class Date extends Button {
 		super.preInitialize();
 		
 		if (_style != null) {
-			if (_style.method != null) {
-				_method = _style.method;
+			if (_style.selectionMethod != null) {
+				_method = _style.selectionMethod;
 			}
 		}
 	}
@@ -44,6 +44,16 @@ class Date extends Button {
 			showCalendar();
 		} else {
 			hideCalendar();
+		}
+	}
+	
+	private override function applyStyle():Void {
+		super.applyStyle();
+		
+		if (_style != null) {
+			if (_style.selectionMethod != null) {
+				_method = _style.selectionMethod;
+			}
 		}
 	}
 	

@@ -10,7 +10,7 @@ Button {
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 	iconPosition: left;
-	textPosition: center;
+	labelPosition: center;
 }
 
 Button:over {

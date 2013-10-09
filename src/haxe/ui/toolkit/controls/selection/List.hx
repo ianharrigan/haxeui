@@ -52,8 +52,8 @@ class List extends Button implements IDataComponent {
 		super.preInitialize();
 		
 		if (_style != null) {
-			if (_style.method != null) {
-				_method = _style.method;
+			if (_style.selectionMethod != null) {
+				_method = _style.selectionMethod;
 			}
 		}
 	}
@@ -64,6 +64,16 @@ class List extends Button implements IDataComponent {
 			showList();
 		} else {
 			hideList();
+		}
+	}
+	
+	private override function applyStyle():Void {
+		super.applyStyle();
+		
+		if (_style != null) {
+			if (_style.selectionMethod != null) {
+				_method = _style.selectionMethod;
+			}
 		}
 	}
 	

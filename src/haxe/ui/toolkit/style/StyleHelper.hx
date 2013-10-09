@@ -18,16 +18,16 @@ class StyleHelper {
 		sectionCache = new StringMap<BitmapData>();
 	}
 	
-	public static function paintStyle(g:Graphics, style:Dynamic, rc:Rectangle):Void {
+	public static function paintStyle(g:Graphics, style:Style, rc:Rectangle):Void {
 		g.clear();
 		if (style == null || rc.width == 0 || rc.height == 0) {
 			return;
 		}
 		
-		if (style.backgroundColor != null || style.borderColor != null) {
-			if (style.borderColor != null) {
+		if (style.backgroundColor != -1 || style.borderColor != -1) {
+			if (style.borderColor != -1) {
 				var borderSize:Int = 1;
-				if (style.borderSize != null) {
+				if (style.borderSize != -1) {
 					borderSize = style.borderSize;
 				}
 				if (borderSize > 0) {
@@ -36,8 +36,8 @@ class StyleHelper {
 				}
 			}
 			
-			if (style.backgroundColor != null) {
-				if (style.backgroundColorGradientEnd != null) {
+			if (style.backgroundColor != -1) {
+				if (style.backgroundColorGradientEnd != -1) {
 					var w:Int = Std.int(rc.width);
 					var h:Int = Std.int(rc.height);
 					var colors:Array<Int> = [style.backgroundColor, style.backgroundColorGradientEnd];
@@ -69,15 +69,11 @@ class StyleHelper {
 				}
 			}
 			
-			if (style.cornerRadius != null || style.cornerRadiusTopLeft != null || style.cornerRadiusTopRight != null || style.cornerRadiusBottomLeft != null || style.cornerRadiusBottomRight != null) {
-				var radiusTopLeft:Float = (style.cornerRadius != null) ? style.cornerRadius : 0;
-				var radiusTopRight:Float = (style.cornerRadius != null) ? style.cornerRadius : 0;
-				var radiusBottomLeft:Float = (style.cornerRadius != null) ? style.cornerRadius : 0;
-				var radiusBottomRight:Float = (style.cornerRadius != null) ? style.cornerRadius : 0;
-				radiusTopLeft = (style.cornerRadiusTopLeft != null) ? style.cornerRadiusTopLeft : radiusTopLeft;
-				radiusTopRight = (style.cornerRadiusTopRight != null) ? style.cornerRadiusTopRight : radiusTopRight;
-				radiusBottomLeft = (style.cornerRadiusBottomLeft != null) ? style.cornerRadiusBottomLeft : radiusBottomLeft;
-				radiusBottomRight = (style.cornerRadiusBottomRight != null) ? style.cornerRadiusBottomRight : radiusBottomRight;
+			if (style.cornerRadiusTopLeft != -1 || style.cornerRadiusTopRight != -1 || style.cornerRadiusBottomLeft != -1 || style.cornerRadiusBottomRight != -1) {
+				var radiusTopLeft:Float = style.cornerRadiusTopLeft;
+				var radiusTopRight:Float = style.cornerRadiusTopRight;
+				var radiusBottomLeft:Float = style.cornerRadiusBottomLeft;
+				var radiusBottomRight:Float = style.cornerRadiusBottomRight;
 				
 				#if !(cpp || neko || html5)
 					g.drawRoundRectComplex(rc.left, rc.top, rc.width, rc.height, radiusTopLeft, radiusTopRight, radiusBottomLeft, radiusBottomRight);
@@ -101,8 +97,7 @@ class StyleHelper {
 		if (style.backgroundImage != null) {
 			var backgroundImageRect:Rectangle = null;
 			if (style.backgroundImageRect != null) {
-				var arr:Array<String> = style.backgroundImageRect.split(",");
-				backgroundImageRect = new Rectangle(Std.parseInt(arr[0]), Std.parseInt(arr[1]), Std.parseInt(arr[2]), Std.parseInt(arr[3]));
+				backgroundImageRect = style.backgroundImageRect;
 			}
 			
 			if (style.backgroundImageScale9 != null) {
@@ -116,7 +111,7 @@ class StyleHelper {
 		}
 	}
 
-	public static function paintScale9(g:Graphics, resourceId:String, resourceRect:Rectangle, scale9:String, rc:Rectangle):Void {
+	public static function paintScale9(g:Graphics, resourceId:String, resourceRect:Rectangle, scale9:Rectangle, rc:Rectangle):Void {
 		if (scale9 != null) { // create parts
 			var resource:BitmapData = getBitmapSection(resourceId, resourceRect);
 			if (resource == null) {
@@ -125,11 +120,10 @@ class StyleHelper {
 			
 			var w:Int = resource.width;
 			var h:Int = resource.height;
-			var coords:Array<String> = scale9.split(",");
-			var x1:Int = Std.parseInt(coords[0]);
-			var y1:Int = Std.parseInt(coords[1]);
-			var x2:Int = Std.parseInt(coords[2]);
-			var y2:Int = Std.parseInt(coords[3]);
+			var x1:Int = Std.int(scale9.left);
+			var y1:Int = Std.int(scale9.top);
+			var x2:Int = Std.int(scale9.right);
+			var y2:Int = Std.int(scale9.bottom);
 			
 			var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
 			

@@ -7,9 +7,13 @@ class Macros {
 	macro public static function addStyleSheet(resourcePath:String):Expr {
 		var contents:String = sys.io.File.getContent(resourcePath);
 		var code:String = "function() {\n";
-		code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + contents + "\");\n";
+		var arr:Array<String> = contents.split("}");
+		for (s in arr) {
+			code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + s + "}\");\n";
+			code += "\thaxe.ui.toolkit.style.StyleManager.instance.addStyles(styles);\n";
+		}
+		//code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + contents + "\");\n";
 		//code += "\tstyles.dump();\n";
-		code += "\thaxe.ui.toolkit.style.StyleManager.instance.addStyles(styles);\n";
 		code += "}()\n";
 		return Context.parseInlineString(code, Context.currentPos());
 	}

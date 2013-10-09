@@ -97,7 +97,7 @@ class StyleManager {
 		} else {
 			rulePartClassName = rulePart;
 		}
-		
+		var s:Style = new Style();
 		if (rulePartId != null) {
 			match = (rulePartId == id);
 		} else if (rulePartClassName != null) {
@@ -160,46 +160,17 @@ class StyleManager {
 		return match;
 	}
 	
-	public function mergeStyle(oldStyle:Dynamic, newStyle:Dynamic):Dynamic {
-		var mergedStyle:Dynamic = { };
-		
-		for (fieldName in Reflect.fields(oldStyle)) {
-			Reflect.setField(mergedStyle, fieldName, Reflect.field(oldStyle, fieldName));
-		}
-
-		for (fieldName in Reflect.fields(newStyle)) {
-			if (Reflect.hasField(newStyle, "backgroundImage")) {
-				Reflect.deleteField(mergedStyle, "backgroundImageScale9");
-				Reflect.deleteField(mergedStyle, "backgroundImageRect");
-			}
-
-			if (Reflect.hasField(newStyle, "backgroundColor")) {
-				Reflect.deleteField(mergedStyle, "backgroundColorGradientEnd");
-			}
-			
-			for (field in Reflect.fields(newStyle)) {
-				var value:Dynamic = Reflect.field(newStyle, field);
-				if (value == "null") {
-					Reflect.deleteField(mergedStyle, field);
-				} else {
-					Reflect.setField(mergedStyle, field, value);
-				}
-			}
-		}
-		
-		return mergedStyle;
-	}
-	
-	public function buildStyleFor(c:IDisplayObjectContainer, state:String = null):Dynamic {
+	public function buildStyleFor(c:IDisplayObjectContainer, state:String = null):Style {
 		if (state == "normal") {
 			state = null;
 		}
 		
-		var style:Dynamic = { };
+		var style:Style = new Style();
+		style.autoApply = false;
 		for (rule in _rules) {
 			if (ruleMatch(c, rule, state) == true) {
-				var matchedStyle:Dynamic = _styles.get(rule);
-				style = mergeStyle(style, matchedStyle);
+				var matchedStyle:Style = _styles.get(rule);
+				style.merge(matchedStyle);
 			}
 		}
 
@@ -212,6 +183,8 @@ class StyleManager {
 		n++;
 		stylesBuiltFor.set(className, n);
 		
+		style.target = c;
+		style.autoApply = true;
 		return style;
 	}
 	

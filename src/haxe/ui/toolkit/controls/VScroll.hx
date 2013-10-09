@@ -51,9 +51,7 @@ class VScroll extends Scroll implements IScrollable {
 		super.preInitialize();
 		
 		if (_style != null) {
-			if (_style.hasButtons != null) {
-				_hasButtons = _style.hasButtons;
-			}
+			_hasButtons = _style.hasButtons;
 		}
 	}
 	

@@ -5,6 +5,7 @@ import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.Layout;
+import haxe.ui.toolkit.style.Style;
 
 /**
  General purpose multi-state button control with icon and toggle support (plus icon positioning)
@@ -301,15 +302,27 @@ class Button extends StateComponent implements IFocusable {
 		
 		// apply style to label
 		if (_label != null) {
-			var labelStyle:Dynamic = { };
-			labelStyle.fontName = _style.fontName;
-			labelStyle.fontSize = _style.fontSize;
-			labelStyle.color = _style.color;
+			var labelStyle:Style = new Style();
+			if (_style != null) {
+				labelStyle.fontName = _style.fontName;
+				labelStyle.fontSize = _style.fontSize;
+				labelStyle.color = _style.color;
+			}
 			_label.style = labelStyle;
 		}
 		
-		if (_style.icon != null) {
-			icon = _style.icon;
+		if (_style != null) {
+			if (_style.icon != null) {
+				icon = _style.icon;
+			}
+			
+			if (_style.iconPosition != null) {
+				cast(_layout, ButtonLayout).iconPosition = _style.iconPosition;
+			}
+
+			if (_style.labelPosition != null) {
+				cast(_layout, ButtonLayout).labelPosition = _style.labelPosition;
+			}
 		}
 	}
 }
@@ -359,7 +372,7 @@ private class ButtonLayout extends Layout {
 		
 		var label:Text = container.findChildAs(Text);
 		var icon:Image = container.findChildAs(Image);
-		
+
 		if (label != null) {
 			if (_labelPos == "center") {
 				labelX = (container.width / 2) - (label.width / 2);

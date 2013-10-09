@@ -3,17 +3,17 @@ package haxe.ui.toolkit.style;
 import haxe.ds.StringMap;
 
 class Styles {
-	private var _styles:StringMap<Dynamic>;
+	private var _styles:StringMap<Style>;
 	private var _styleRules:Array<String>;
 	
 	public var rules(get, null):Iterator<String>;
 	
 	public function new() {
-		_styles = new StringMap<Dynamic>();
+		_styles = new StringMap<Style>();
 		_styleRules = new Array<String>();
 	}
 
-	public function addStyle(rule:String, style:Dynamic):Dynamic {
+	public function addStyle(rule:String, style:Style):Style {
 		if (rule.indexOf(",") != -1) {
 			var rules:Array<String> = rule.split(",");
 			for (r in rules) {
@@ -23,9 +23,10 @@ class Styles {
 			return null;
 		}
 		
-		var currentStyle:Dynamic = getStyle(rule);
+		var currentStyle:Style = getStyle(rule);
 		if (currentStyle != null) {
-			style = StyleManager.instance.mergeStyle(currentStyle, style);
+			currentStyle.merge(style);
+			style = currentStyle;
 		} else {
 			_styleRules.push(rule);
 		}
@@ -34,7 +35,7 @@ class Styles {
 		return style;
 	}
 	
-	public function getStyle(rule:String):Dynamic {
+	public function getStyle(rule:String):Style {
 		return _styles.get(rule);
 	}
 	

@@ -16,7 +16,7 @@ RTFView RTFToolButton {
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 	iconPosition: center;
-	textPosition: center;
+	labelPosition: center;
 }
 
 RTFView RTFToolButton:over {

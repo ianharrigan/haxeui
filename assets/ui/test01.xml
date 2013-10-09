@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox>
-	<ui:hbox>
-		<ui:calendarview id="calendar" /> 
-		<ui:calendar id="calendar2" /> 
-	</ui:hbox>
-	
-	<ui:hbox>
-		<selection:date />		
-		<selection:date method="popup" />		
-	</ui:hbox>
-</ui:vbox>
+<ui:button text="test 0000000000000000" />

@@ -5,9 +5,10 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFieldType;
 import flash.text.TextFormat;
+import haxe.ui.toolkit.style.Style;
 
 class TextDisplay implements ITextDisplay {
-	private var _style:Dynamic;
+	private var _style:Style;
 	private var _tf:TextField; 
 	
 	public function new() {
@@ -25,7 +26,7 @@ class TextDisplay implements ITextDisplay {
 	// ITextDisplay
 	//******************************************************************************************
 	public var text(get, set):String;
-	public var style(get, set):Dynamic;
+	public var style(get, set):Style;
 	public var display(get, null):DisplayObject;
 	public var interactive(get, set):Bool;
 	public var multiline(get, set):Bool;
@@ -64,11 +65,11 @@ class TextDisplay implements ITextDisplay {
 		return value;
 	}
 	
-	private function get_style():Dynamic {
+	private function get_style():Style {
 		return _style;
 	}
 	
-	private function set_style(value:Dynamic):Dynamic {
+	private function set_style(value:Style):Style {
 		if (value == null) {
 			return value;
 		}
@@ -77,13 +78,13 @@ class TextDisplay implements ITextDisplay {
 		if (_style.fontName != null) {
 			format.font = _style.fontName;
 		}
-		if (_style.fontSize != null) {
+		if (_style.fontSize != -1) {
 			format.size = _style.fontSize;
 		}
-		if (_style.color != null) {
+		if (_style.color != -1) {
 			format.color = _style.color;
 		}
-		
+
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
 		

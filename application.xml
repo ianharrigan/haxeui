@@ -36,6 +36,5 @@
 	<haxeflag name="-resource" value="assets/ui/test01.xml@ui/test01.xml" />
 	<haxeflag name="-resource" value="assets/ui/test02.xml@ui/test02.xml" />
 	<haxeflag name="-resource" value="assets/data/data.xml@data/data.xml" />
-	<haxeflag name="-resource" value="assets/styles/gradient/gradient.css@styles/gradient/gradient.css" />
 
 </project>

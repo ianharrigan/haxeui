@@ -37,7 +37,6 @@ TabBar Button:down {
 }
 
 TabView {
-	___backgroundColor: 0xdfdddd;
 }
 
 TabView Stack {
