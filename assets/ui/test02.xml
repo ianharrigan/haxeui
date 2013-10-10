@@ -475,7 +475,8 @@
 				<ui:image resource="img/exclamation.png" height="100%" />
 				<ui:text text="Performance issues." width="100%" />	
 			</ui:hbox>
-			<ui:code width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
+			<ui:checkbox text="Asynchronous" id="codeAsync" />
+			<ui:code id="code" width="100%" height="100%" syntax="haxe" text="asset://data/code.txt" />
 		</ui:vbox>
 
 		

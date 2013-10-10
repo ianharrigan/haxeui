@@ -6,15 +6,14 @@ import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 import haxe.ui.toolkit.layout.GridLayout;
+import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleHelper;
 import haxe.ui.toolkit.style.StyleManager;
 import haxe.ui.toolkit.util.FilterParser;
 
 class StyleableDisplayObject extends DisplayObjectContainer implements IStyleable  {
-	private var _style:Dynamic;
-	private var _storedStyles:StringMap<Dynamic>; // styles stored for ease later
-
-	private var _currentFilterString:String = null;
+	private var _style:Style;
+	private var _storedStyles:StringMap<Style>; // styles stored for ease later
 	
 	public function new() {
 		super();
@@ -42,39 +41,39 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		
 		if (_style != null) {
 			// get props from style if they exist
-			if (_style.width != null && width == 0) {
+			if (_style.width != -1 && width == 0) {
 				width = _style.width;
 			}
-			if (_style.height != null && height == 0) {
+			if (_style.height != -1 && height == 0) {
 				height = _style.height;
 			}
 
-			if (_style.percentWidth != null && percentWidth == -1) {
+			if (_style.percentWidth != -1 && percentWidth == -1) {
 				percentWidth = _style.percentWidth;
 			}
-			if (_style.percentHeight != null && percentHeight == -1) {
+			if (_style.percentHeight != -1 && percentHeight == -1) {
 				percentHeight = _style.percentHeight;
 			}
 			
 			// set layout props from style
 			if (layout != null) {
-				if (_style.paddingLeft != null) {
+				if (_style.paddingLeft != -1) {
 					layout.padding.left = _style.paddingLeft;
 				}
-				if (_style.paddingTop != null) {
+				if (_style.paddingTop != -1) {
 					layout.padding.top = _style.paddingTop;
 				}
-				if (_style.paddingRight != null) {
+				if (_style.paddingRight != -1) {
 					layout.padding.right = _style.paddingRight;
 				}
-				if (_style.paddingBottom != null) {
+				if (_style.paddingBottom != -1) {
 					layout.padding.bottom = _style.paddingBottom;
 				}
-				
-				for (field in Reflect.fields(_style)) {
-					if (Reflect.field(_layout, "set_" + field) != null) {
-						Reflect.setProperty(_layout, field, Reflect.field(_style, field));
-					}
+				if (_style.spacingX != -1) {
+					_layout.spacingX = _style.spacingX;
+				}
+				if (_style.spacingY != -1) {
+					_layout.spacingY = _style.spacingY;
 				}
 			}
 		}
@@ -109,52 +108,45 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
-	public var style(get, set):Dynamic;
+	public var style(get, set):Style;
 	
-	private function get_style():Dynamic {
+	private function get_style():Style {
 		return _style;
 	}
 	
-	private function set_style(value:Dynamic):Dynamic {
+	private function set_style(value:Style):Style {
 		_style = value;
 		applyStyle();
 		return value;
 	}
 	
-	public function storeStyle(id:String, value:Dynamic):Void {
+	public function storeStyle(id:String, value:Style):Void {
 		if (_storedStyles == null) {
-			_storedStyles = new StringMap<Dynamic>();
+			_storedStyles = new StringMap<Style>();
 		}
 		_storedStyles.set(id, value);
 	}
 	
-	public function retrieveStyle(id:String):Dynamic {
+	public function retrieveStyle(id:String):Style {
 		if (_storedStyles == null) {
 			return null;
 		}
 		return _storedStyles.get(id);
 	}
 	
-	private function applyStyle():Void {
-		if (_style.alpha != null) {
-			_sprite.alpha = _style.alpha;
-		} else {
-			_sprite.alpha = 1;
-		}
-		
-		if (_style.filter != null) {
-			if (_currentFilterString != _style.filter) {
-				var filter:BitmapFilter = FilterParser.parseFilter(_style.filter);
-				if (filter != null) {
-					_sprite.filters = [filter];
-				} else {
-					_sprite.filters = [];
-				}
-				_currentFilterString = _style.filter;
+	public function applyStyle():Void {
+		if (_style != null) {
+			if (_style.alpha != -1) {
+				_sprite.alpha = _style.alpha;
+			} else {
+				_sprite.alpha = 1;
 			}
-		} else {
-			_sprite.filters = [];
-			_currentFilterString = null;
+			
+			if (_style.filter != null) {
+				_sprite.filters = [_style.filter];
+			} else {
+				_sprite.filters = [];
+			}
 		}
 		
 		invalidate(InvalidationFlag.DISPLAY);

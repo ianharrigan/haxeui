@@ -9,6 +9,6 @@ interface IStyleable {
 	private function storeStyle(id:String, value:Style):Void; // hold onto a style
 	private function retrieveStyle(id:String):Style; // get style back
 	
-	private function applyStyle():Void;
+	public function applyStyle():Void;
 	private function buildStyles():Void;
 }

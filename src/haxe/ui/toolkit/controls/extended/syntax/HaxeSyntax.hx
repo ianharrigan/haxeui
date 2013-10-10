@@ -4,7 +4,7 @@ class HaxeSyntax extends CodeSyntax {
 	public function new() {
 		super();
 		_identifier = "haxe";
-		addRule("(class )|(extends )|(function)|(package )|(import )|(var )|(null)|(if)|(while)|(trace)|(return)", 0x0000FF);
+		addRule("(class )|(extends )|(implements )|(function)|(package )|(import )|(var )|(null)|(if)|(while)|(trace)|(return)", 0x0000FF);
 		addRule("(public )|(private )|(static )|(Void)|(Bool)|(Int)|(Dynamic)|(String)|(Float)", 0x3A99FF);
 		addRule("(?:#.*)", 0x888888);
 		addRule("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)", 0x008800);

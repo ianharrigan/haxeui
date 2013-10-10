@@ -10706,6 +10706,69 @@
  * mouse event you want to detect.</p>
  *]]></haxe_doc>
 	</class>
+	<class path="flash.events.ProgressEvent" params="" file="C:\tools\Haxe\haxe/lib\openfl/1,0,6/flash/events/ProgressEvent.hx" extern="1">
+		<extends path="flash.events.Event"/>
+		<PROGRESS public="1" static="1">
+			<c path="String"/>
+			<haxe_doc><![CDATA[* Defines the value of the <code>type</code> property of a
+	 * <code>progress</code> event object.
+	 *
+	 * <p>This event has the following properties:</p>]]></haxe_doc>
+		</PROGRESS>
+		<SOCKET_DATA public="1" static="1">
+			<c path="String"/>
+			<haxe_doc><![CDATA[* Defines the value of the <code>type</code> property of a
+	 * <code>socketData</code> event object.
+	 *
+	 * <p>This event has the following properties:</p>]]></haxe_doc>
+		</SOCKET_DATA>
+		<bytesTotal public="1">
+			<x path="Float"/>
+			<haxe_doc>* The total number of items or bytes that will be loaded if the loading
+	 * process succeeds. If the progress event is dispatched/attached to a Socket
+	 * object, the bytesTotal will always be 0 unless a value is specified in the
+	 * bytesTotal parameter of the constructor. The actual number of bytes sent
+	 * back or forth is not set and is up to the application developer.</haxe_doc>
+		</bytesTotal>
+		<bytesLoaded public="1">
+			<x path="Float"/>
+			<haxe_doc>* The number of items or bytes loaded when the listener processes the event.</haxe_doc>
+		</bytesLoaded>
+		<new public="1" set="method">
+			<f a="type:?bubbles:?cancelable:?bytesLoaded:?bytesTotal">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[* Creates an Event object that contains information about progress events.
+	 * Event objects are passed as parameters to event listeners.
+	 * 
+	 * @param type        The type of the event. Possible values
+	 *                    are:<code>ProgressEvent.PROGRESS</code>,
+	 *                    <code>ProgressEvent.SOCKET_DATA</code>,
+	 *                    <code>ProgressEvent.STANDARD_ERROR_DATA</code>,
+	 *                    <code>ProgressEvent.STANDARD_INPUT_PROGRESS</code>, and
+	 *                    <code>ProgressEvent.STANDARD_OUTPUT_DATA</code>.
+	 * @param bubbles     Determines whether the Event object participates in the
+	 *                    bubbling stage of the event flow.
+	 * @param cancelable  Determines whether the Event object can be canceled.
+	 * @param bytesLoaded The number of items or bytes loaded at the time the
+	 *                    listener processes the event.
+	 * @param bytesTotal  The total number of items or bytes that will be loaded
+	 *                    if the loading process succeeds.]]></haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[* A ProgressEvent object is dispatched when a load operation has begun or a
+ * socket has received data. These events are usually generated when SWF
+ * files, images or data are loaded into an application. There are two types
+ * of progress events: <code>ProgressEvent.PROGRESS</code> and
+ * <code>ProgressEvent.SOCKET_DATA</code>. Additionally, in AIR ProgressEvent
+ * objects are dispatched when a data is sent to or from a child process using
+ * the NativeProcess class.
+ *]]></haxe_doc>
+	</class>
 	<class path="flash.events.TimerEvent" params="" file="C:\tools\Haxe\haxe/lib\openfl/1,0,6/flash/events/TimerEvent.hx" extern="1">
 		<extends path="flash.events.Event"/>
 		<TIMER public="1" static="1">
@@ -18752,7 +18815,7 @@
 	</class>
 	<class path="haxe.ui.test.TestController" params="" file="src/haxe/ui/test/TestController.hx">
 		<extends path="haxe.ui.toolkit.core.XMLController"/>
-		<new public="1" set="method" line="28"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.IDrawable" params="" file="src/haxe/ui/toolkit/core/interfaces/IDrawable.hx" interface="1">
 		<paint set="method"><f a=""><x path="Void"/></f></paint>
@@ -19085,7 +19148,7 @@
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.IStyleable" params="" file="src/haxe/ui/toolkit/core/interfaces/IStyleable.hx" interface="1">
 		<buildStyles set="method"><f a=""><x path="Void"/></f></buildStyles>
-		<applyStyle set="method"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method"><f a=""><x path="Void"/></f></applyStyle>
 		<retrieveStyle set="method"><f a="id">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
@@ -19101,11 +19164,8 @@
 	<class path="haxe.ui.toolkit.core.StyleableDisplayObject" params="" file="src/haxe/ui/toolkit/core/StyleableDisplayObject.hx">
 		<extends path="haxe.ui.toolkit.core.DisplayObjectContainer"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IStyleable"/>
-		<buildStyles public="1" set="method" line="156"><f a=""><x path="Void"/></f></buildStyles>
-		<applyStyle set="method" line="138">
-			<f a=""><x path="Void"/></f>
-			<meta><m n=":allow"><e>'???'</e></m></meta>
-		</applyStyle>
+		<buildStyles public="1" set="method" line="155"><f a=""><x path="Void"/></f></buildStyles>
+		<applyStyle public="1" set="method" line="137"><f a=""><x path="Void"/></f></applyStyle>
 		<retrieveStyle public="1" set="method" line="130"><f a="id">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
@@ -19117,7 +19177,7 @@
 </f></storeStyle>
 		<set_style set="method" line="117"><f a="value">
 	<c path="haxe.ui.toolkit.style.Style"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 </f></set_style>
 		<get_style set="method" line="113"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
 		<style public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.style.Style"/></style>
@@ -19266,7 +19326,7 @@
 			<c path="String"/>
 			<haxe_doc>Button state is "down"</haxe_doc>
 		</STATE_DOWN>
-		<applyStyle set="method" line="300" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="300" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<set_allowSelection set="method" line="292"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
@@ -20389,7 +20449,7 @@
 			<x path="Bool"/>
 			<haxe_doc>Defines whether or not the text can span more than a single line</haxe_doc>
 		</multiline>
-		<applyStyle set="method" line="74" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="74" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<set_width set="method" line="62" override="1"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
@@ -20439,7 +20499,7 @@
 			<x path="Bool"/>
 			<haxe_doc>Defines whether or not the text can span more than a single line. Vertical and horizontal scrollbars will be added as needed.</haxe_doc>
 		</multiline>
-		<applyStyle set="method" line="114" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="114" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<set_text set="method" line="104" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
@@ -20622,35 +20682,99 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.extended.Code" params="" file="src/haxe/ui/toolkit/controls/extended/Code.hx">
 		<extends path="haxe.ui.toolkit.controls.TextInput"/>
-		<applyRules set="method" line="84"><f a=""><x path="Void"/></f></applyRules>
-		<_onCodeKeyDown set="method" line="74"><f a="event">
+		<applyRules set="method" line="100"><f a=""><x path="Void"/></f></applyRules>
+		<_caller><c path="haxe.ui.toolkit.util.psuedothreads.AsyncThreadCaller"/></_caller>
+		<_onCodeKeyDown set="method" line="88"><f a="event">
 	<c path="flash.events.KeyboardEvent"/>
 	<x path="Void"/>
 </f></_onCodeKeyDown>
-		<_onCodeChange set="method" line="70"><f a="event">
+		<_onCodeChange set="method" line="84"><f a="event">
 	<c path="flash.events.Event"/>
 	<x path="Void"/>
 </f></_onCodeChange>
-		<set_syntax set="method" line="61"><f a="value">
+		<set_async set="method" line="76"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_async>
+		<get_async set="method" line="72"><f a=""><x path="Bool"/></f></get_async>
+		<set_syntax set="method" line="66"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_syntax>
-		<get_syntax set="method" line="57"><f a=""><c path="String"/></f></get_syntax>
+		<get_syntax set="method" line="62"><f a=""><c path="String"/></f></get_syntax>
+		<async public="1" get="accessor" set="accessor"><x path="Bool"/></async>
 		<syntax public="1" get="accessor" set="accessor">
 			<c path="String"/>
 			<haxe_doc>Syntax to use for highlighting, valid options are:
 	
 	 * `haxe` - Haxe syntax</haxe_doc>
 		</syntax>
-		<set_text set="method" line="40" override="1"><f a="value">
+		<set_text set="method" line="43" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<dispose public="1" set="method" line="34" override="1"><f a=""><x path="Void"/></f></dispose>
-		<initialize set="method" line="26" override="1"><f a=""><x path="Void"/></f></initialize>
+		<dispose public="1" set="method" line="37" override="1"><f a=""><x path="Void"/></f></dispose>
+		<initialize set="method" line="29" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_async><x path="Bool"/></_async>
 		<_syntax><c path="haxe.ui.toolkit.controls.extended.syntax.CodeSyntax"/></_syntax>
-		<new public="1" set="method" line="16"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>Simple regex based syntax highlighting component</haxe_doc>
+	</class>
+	<class path="haxe.ui.toolkit.util.psuedothreads.IRunnable" params="" file="src/haxe/ui/toolkit/util/psuedothreads/IRunnable.hx" interface="1">
+		<data public="1" get="null" set="null"><d/></data>
+		<needToExit public="1" get="null" set="null"><f a=""><x path="Bool"/></f></needToExit>
+		<runningTimeShare public="1" get="null" set="null"><x path="Float"/></runningTimeShare>
+		<total public="1" get="null" set="null"><x path="Int"/></total>
+		<progress public="1" get="null" set="null"><x path="Int"/></progress>
+		<isComplete public="1" get="null" set="null"><x path="Bool"/></isComplete>
+		<run public="1" set="method"><f a=""><x path="Void"/></f></run>
+	</class>
+	<class path="haxe.ui.toolkit.util.psuedothreads.Runner" params="" file="src/haxe/ui/toolkit/util/psuedothreads/Runner.hx">
+		<implements path="haxe.ui.toolkit.util.psuedothreads.IRunnable"/>
+		<get_data public="1" set="method" line="45"><f a=""><d/></f></get_data>
+		<data public="1" get="accessor" set="null"><d/></data>
+		<_data><d/></_data>
+		<set_needToExit public="1" set="method" line="38"><f a="value">
+	<f a=""><x path="Bool"/></f>
+	<f a=""><x path="Bool"/></f>
+</f></set_needToExit>
+		<needToExit public="1" get="null" set="accessor"><f a=""><x path="Bool"/></f></needToExit>
+		<_needToExit><f a=""><x path="Bool"/></f></_needToExit>
+		<get_runningTimeShare public="1" set="method" line="32"><f a=""><x path="Float"/></f></get_runningTimeShare>
+		<runningTimeShare public="1" get="accessor" set="null"><x path="Float"/></runningTimeShare>
+		<_runningTimeShare><x path="Float"/></_runningTimeShare>
+		<get_total public="1" set="method" line="26"><f a=""><x path="Int"/></f></get_total>
+		<total public="1" get="accessor" set="null"><x path="Int"/></total>
+		<_total><x path="Int"/></_total>
+		<get_progress public="1" set="method" line="20"><f a=""><x path="Int"/></f></get_progress>
+		<progress public="1" get="accessor" set="null"><x path="Int"/></progress>
+		<_progress><x path="Int"/></_progress>
+		<get_isComplete public="1" set="method" line="14"><f a=""><x path="Bool"/></f></get_isComplete>
+		<isComplete public="1" get="accessor" set="null"><x path="Bool"/></isComplete>
+		<_isComplete><x path="Bool"/></_isComplete>
+		<run public="1" set="method" line="8"><f a=""><x path="Void"/></f></run>
+		<new public="1" set="method" line="4"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="haxe.ui.toolkit.controls.extended._Code.SyntaxHighlightRunner" params="" file="src/haxe/ui/toolkit/controls/extended/Code.hx" private="1" module="haxe.ui.toolkit.controls.extended.Code">
+		<extends path="haxe.ui.toolkit.util.psuedothreads.Runner"/>
+		<run public="1" set="method" line="145" override="1"><f a=""><x path="Void"/></f></run>
+		<_ruleIndex><x path="Int"/></_ruleIndex>
+		<_matchIndex><x path="Int"/></_matchIndex>
+		<_matchedSyntax><x path="Bool"/></_matchedSyntax>
+		<_txt><c path="String"/></_txt>
+		<_matches><x path="Map">
+	<c path="String"/>
+	<c path="Array"><d/></c>
+</x></_matches>
+		<_syntaxRules><c path="Array"><c path="String"/></c></_syntaxRules>
+		<_syntax><c path="haxe.ui.toolkit.controls.extended.syntax.CodeSyntax"/></_syntax>
+		<_tf><c path="flash.text.TextField"/></_tf>
+		<new public="1" set="method" line="126"><f a="tf:syntax:?timeShare">
+	<c path="flash.text.TextField"/>
+	<c path="haxe.ui.toolkit.controls.extended.syntax.CodeSyntax"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.extended.RTF" params="" file="src/haxe/ui/toolkit/controls/extended/RTF.hx">
 		<extends path="haxe.ui.toolkit.controls.TextInput"/>
@@ -20918,7 +21042,7 @@
 		</method>
 		<hideCalendar public="1" set="method" line="112"><f a=""><x path="Void"/></f></hideCalendar>
 		<showCalendar public="1" set="method" line="63"><f a=""><x path="Void"/></f></showCalendar>
-		<applyStyle set="method" line="50" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="50" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<_onMouseClick set="method" line="41" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
@@ -20975,7 +21099,7 @@
 			<c path="haxe.ui.toolkit.data.IDataSource"/>
 			<haxe_doc>Specifies the data source where the list will get its options from</haxe_doc>
 		</dataSource>
-		<applyStyle set="method" line="70" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="70" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<_onMouseClick set="method" line="61" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
@@ -22157,6 +22281,34 @@
 	<c path="String"/>
 	<x path="Int"/>
 </f></parseColor>
+	</class>
+	<class path="haxe.ui.toolkit.util.psuedothreads.AsyncThreadCaller" params="" file="src/haxe/ui/toolkit/util/psuedothreads/AsyncThreadCaller.hx">
+		<extends path="flash.events.EventDispatcher"/>
+		<get_executionTime set="method" line="76"><f a=""><x path="Float"/></f></get_executionTime>
+		<executionTime public="1" get="accessor" set="null"><x path="Float"/></executionTime>
+		<get_runs set="method" line="71"><f a=""><x path="Int"/></f></get_runs>
+		<runs public="1" get="accessor" set="null"><x path="Int"/></runs>
+		<get_data set="method" line="66"><f a=""><d/></f></get_data>
+		<data public="1" get="accessor" set="null"><d/></data>
+		<dispose set="method" line="60"><f a=""><x path="Void"/></f></dispose>
+		<run set="method" line="39"><f a="event">
+	<c path="flash.events.Event"/>
+	<x path="Void"/>
+</f></run>
+		<needToExit public="1" set="method" line="35"><f a=""><x path="Bool"/></f></needToExit>
+		<cancel public="1" set="method" line="31"><f a=""><x path="Void"/></f></cancel>
+		<start public="1" set="method" line="25"><f a=""><x path="Void"/></f></start>
+		<_cancel><x path="Bool"/></_cancel>
+		<_endTime><x path="Float"/></_endTime>
+		<_startTime><x path="Float"/></_startTime>
+		<_runs><x path="Int"/></_runs>
+		<_data><d/></_data>
+		<_runnableWorker><c path="haxe.ui.toolkit.util.psuedothreads.IRunnable"/></_runnableWorker>
+		<_workerExitTime><x path="Float"/></_workerExitTime>
+		<new public="1" set="method" line="19"><f a="runnable">
+	<c path="haxe.ui.toolkit.util.psuedothreads.IRunnable"/>
+	<x path="Void"/>
+</f></new>
 	</class>
 	<enum path="hscript.Const" params="" file="C:\tools\Haxe\haxe/lib\hscript/2,0,1/hscript/Expr.hx" module="hscript.Expr">
 		<CInt a="v"><x path="Int"/></CInt>

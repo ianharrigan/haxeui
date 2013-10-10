@@ -6,6 +6,8 @@ import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.containers.Stack;
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.controls.CheckBox;
+import haxe.ui.toolkit.controls.extended.Code;
 import haxe.ui.toolkit.controls.HSlider;
 import haxe.ui.toolkit.controls.OptionBox;
 import haxe.ui.toolkit.controls.popups.Popup;
@@ -218,6 +220,12 @@ class TestController extends XMLController {
 				if (getComponentAs("popupsTransSlide", OptionBox).selected == true) {
 					Toolkit.setTransitionForClass(Popup, "slide");
 				}
+			});
+		}
+		
+		{
+			attachEvent("codeAsync", MouseEvent.CLICK, function(e:Event) {
+				getComponentAs("code", Code).async = getComponentAs("codeAsync", CheckBox).selected;
 			});
 		}
 	}

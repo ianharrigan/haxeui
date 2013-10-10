@@ -111,7 +111,7 @@ class TextInput extends StateComponent {
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
-	private override function applyStyle():Void {
+	public override function applyStyle():Void {
 		super.applyStyle();
 		
 		// apply style to TextDisplay

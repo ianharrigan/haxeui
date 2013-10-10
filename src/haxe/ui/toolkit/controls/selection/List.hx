@@ -67,7 +67,7 @@ class List extends Button implements IDataComponent {
 		}
 	}
 	
-	private override function applyStyle():Void {
+	public override function applyStyle():Void {
 		super.applyStyle();
 		
 		if (_style != null) {

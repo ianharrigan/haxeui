@@ -47,7 +47,7 @@ class Date extends Button {
 		}
 	}
 	
-	private override function applyStyle():Void {
+	public override function applyStyle():Void {
 		super.applyStyle();
 		
 		if (_style != null) {

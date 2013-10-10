@@ -17,15 +17,15 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="bin/html5/haxe" />
+    <class path="bin/flash/haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1&#xA;openfl_ver=1.0.10&#xA;openfl&#xA;display&#xA;html5&#xA;web&#xA;html5&#xA;html" />
+    <option directives="tools=1&#xA;openfl_ver=1.0.10&#xA;openfl&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;-xml docs/haxe-ui-toolkit.xml&#xA;-resource assets/ui/test01.xml@ui/test01.xml&#xA;-resource assets/ui/test02.xml@ui/test02.xml&#xA;-resource assets/data/data.xml@data/data.xml&#xA;-resource assets/styles/gradient/gradient.css@styles/gradient/gradient.css&#xA;--remap flash:flash" />
+    <option additional="--no-output&#xA;-dce std&#xA;-xml docs/haxe-ui-toolkit.xml&#xA;-resource assets/ui/test01.xml@ui/test01.xml&#xA;-resource assets/ui/test02.xml@ui/test02.xml&#xA;-resource assets/data/data.xml@data/data.xml&#xA;-swf-version 11&#xA;#--remap nme:flash" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

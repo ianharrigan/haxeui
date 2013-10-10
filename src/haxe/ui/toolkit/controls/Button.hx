@@ -297,7 +297,7 @@ class Button extends StateComponent implements IFocusable {
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
-	private override function applyStyle():Void {
+	public override function applyStyle():Void {
 		super.applyStyle();
 		
 		// apply style to label
