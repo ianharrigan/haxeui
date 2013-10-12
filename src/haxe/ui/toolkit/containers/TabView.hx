@@ -51,6 +51,21 @@ class TabView extends Component {
 		}
 		return r;
 	}
+
+	public override function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
+		var r = null;
+		if (child.id == "tabs" || child.id == "stack") {
+			r = super.addChildAt(child, index);
+		} else {
+			r = _stack.addChildAt(child, index);
+			var label:String = "";
+			if (Std.is(child, Component)) {
+				label = cast(child, Component).text;
+			}
+			_tabs.addTab(label);
+		}
+		return r;
+	}
 	
 	//******************************************************************************************
 	// Getters/setters
@@ -69,5 +84,12 @@ class TabView extends Component {
 	
 	private function get_pageCount():Int {
 		return _stack.children.length;
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	public function setTabText(index:Int, text:String):Void {
+		_tabs.setTabText(index, text);
 	}
 }

@@ -674,6 +674,7 @@ Popup {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 	borderColor: 0x495267;
 	cornerRadius: 3;
+	borderSize: 1;
 	paddingLeft: 2;
 	paddingRight: 2;
 	paddingTop: 2;

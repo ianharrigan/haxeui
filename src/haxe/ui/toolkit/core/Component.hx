@@ -48,14 +48,16 @@ class Component extends StyleableDisplayObject {
 	}
 	
 	private function set_text(value:String):String {
-		if (StringTools.startsWith(value, "@#")) {
-			value = value.substr(2, value.length) + "_" + Client.instance.language;
-		} else if (StringTools.startsWith(value, "asset://")) {
-			var assetId:String = value.substr(8, value.length);
-			value = ResourceManager.instance.getText(assetId);
-			value = StringTools.replace(value, "\r", "");
+		if (value != null) {
+			if (StringTools.startsWith(value, "@#")) {
+				value = value.substr(2, value.length) + "_" + Client.instance.language;
+			} else if (StringTools.startsWith(value, "asset://")) {
+				var assetId:String = value.substr(8, value.length);
+				value = ResourceManager.instance.getText(assetId);
+				value = StringTools.replace(value, "\r", "");
+			}
+			_text = value;
 		}
-		_text = value;
 		return value;
 	}
 	

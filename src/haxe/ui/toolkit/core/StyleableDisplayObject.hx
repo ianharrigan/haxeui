@@ -14,6 +14,7 @@ import haxe.ui.toolkit.util.FilterParser;
 class StyleableDisplayObject extends DisplayObjectContainer implements IStyleable  {
 	private var _style:Style;
 	private var _storedStyles:StringMap<Style>; // styles stored for ease later
+	private var _styleName:String;
 	
 	public function new() {
 		super();
@@ -109,6 +110,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	// IStyleable
 	//******************************************************************************************
 	public var style(get, set):Style;
+	public var styleName(get, set):String;
 	
 	private function get_style():Style {
 		return _style;
@@ -117,6 +119,20 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private function set_style(value:Style):Style {
 		_style = value;
 		applyStyle();
+		return value;
+	}
+	
+	private function get_styleName():String {
+		return _styleName;
+	}
+	
+	private function set_styleName(value:String):String {
+		_styleName = value;
+		if (_ready) {
+			buildStyles();
+			_style = StyleManager.instance.buildStyleFor(this);
+			invalidate(InvalidationFlag.DISPLAY);
+		}
 		return value;
 	}
 	

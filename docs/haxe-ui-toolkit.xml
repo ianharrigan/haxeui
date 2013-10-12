@@ -4597,6 +4597,19 @@
 		
 		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
 		</getClass>
+		<getSuperClass public="1" set="method" line="62" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<x path="Class"><d/></x>
+			</f>
+			<haxe_doc>Returns the super-class of class `c`.
+		
+		If `c` has no super class, null is returned.
+		
+		If `c` is null, the result is unspecified.
+		
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getSuperClass>
 		<getClassName public="1" set="method" line="69" static="1">
 			<f a="c">
 				<x path="Class"><d/></x>
@@ -18771,6 +18784,15 @@
 	metadata to and remove metadata from its origin.</haxe_doc>
 	</typedef>
 	<enum path="haxe.macro.TypedExpr" params="" file="C:\Tools\Haxe\haxe/std/haxe/macro/Type.hx" module="haxe.macro.Type"><meta><m n=":flatEnum"/></meta></enum>
+	<class path="haxe.ui.events.MenuEvent" params="" file="src/haxe/ui/events/MenuEvent.hx">
+		<extends path="flash.events.Event"/>
+		<SELECT public="1" line="7" static="1"><c path="String"/></SELECT>
+		<menuItem public="1"><c path="haxe.ui.toolkit.controls.MenuItem"/></menuItem>
+		<new public="1" set="method" line="11"><f a="?menuItem">
+	<c path="haxe.ui.toolkit.controls.MenuItem"/>
+	<x path="Void"/>
+</f></new>
+	</class>
 	<class path="haxe.ui.toolkit.core.Controller" params="" file="src/haxe/ui/toolkit/core/Controller.hx">
 		<get_root set="method" line="61"><f a=""><c path="haxe.ui.toolkit.core.Root"/></f></get_root>
 		<get_view set="method" line="57"><f a=""><c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/></f></get_view>
@@ -18815,7 +18837,7 @@
 	</class>
 	<class path="haxe.ui.test.TestController" params="" file="src/haxe/ui/test/TestController.hx">
 		<extends path="haxe.ui.toolkit.core.XMLController"/>
-		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="32"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.IDrawable" params="" file="src/haxe/ui/toolkit/core/interfaces/IDrawable.hx" interface="1">
 		<paint set="method"><f a=""><x path="Void"/></f></paint>
@@ -19158,70 +19180,78 @@
 	<c path="haxe.ui.toolkit.style.Style"/>
 	<x path="Void"/>
 </f></storeStyle>
+		<styleName public="1" get="null" set="null"><c path="String"/></styleName>
 		<style public="1" get="null" set="null"><c path="haxe.ui.toolkit.style.Style"/></style>
 		<id public="1" get="null" set="null"><c path="String"/></id>
 	</class>
 	<class path="haxe.ui.toolkit.core.StyleableDisplayObject" params="" file="src/haxe/ui/toolkit/core/StyleableDisplayObject.hx">
 		<extends path="haxe.ui.toolkit.core.DisplayObjectContainer"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IStyleable"/>
-		<buildStyles public="1" set="method" line="155"><f a=""><x path="Void"/></f></buildStyles>
-		<applyStyle public="1" set="method" line="137"><f a=""><x path="Void"/></f></applyStyle>
-		<retrieveStyle public="1" set="method" line="130"><f a="id">
+		<buildStyles public="1" set="method" line="171"><f a=""><x path="Void"/></f></buildStyles>
+		<applyStyle public="1" set="method" line="153"><f a=""><x path="Void"/></f></applyStyle>
+		<retrieveStyle public="1" set="method" line="146"><f a="id">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
 </f></retrieveStyle>
-		<storeStyle public="1" set="method" line="123"><f a="id:value">
+		<storeStyle public="1" set="method" line="139"><f a="id:value">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
 	<x path="Void"/>
 </f></storeStyle>
-		<set_style set="method" line="117"><f a="value">
+		<set_styleName set="method" line="129"><f a="value">
+	<c path="String"/>
+	<c path="String"/>
+</f></set_styleName>
+		<get_styleName set="method" line="125"><f a=""><c path="String"/></f></get_styleName>
+		<set_style set="method" line="119"><f a="value">
 	<c path="haxe.ui.toolkit.style.Style"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
 </f></set_style>
-		<get_style set="method" line="113"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
+		<get_style set="method" line="115"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
+		<styleName public="1" get="accessor" set="accessor"><c path="String"/></styleName>
 		<style public="1" get="accessor" set="accessor"><c path="haxe.ui.toolkit.style.Style"/></style>
-		<set_id set="method" line="95" override="1"><f a="value">
+		<set_id set="method" line="96" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_id>
-		<paint public="1" set="method" line="84" override="1"><f a=""><x path="Void"/></f></paint>
-		<preInitialize set="method" line="25" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<paint public="1" set="method" line="85" override="1"><f a=""><x path="Void"/></f></paint>
+		<preInitialize set="method" line="26" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<_styleName><c path="String"/></_styleName>
 		<_storedStyles><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.style.Style"/></c></_storedStyles>
 		<_style><c path="haxe.ui.toolkit.style.Style"/></_style>
-		<new public="1" set="method" line="18"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.Component" params="" file="src/haxe/ui/toolkit/core/Component.hx">
 		<extends path="haxe.ui.toolkit.core.StyleableDisplayObject"/>
-		<_onComponentMouseMove set="method" line="121"><f a="event">
+		<_onComponentMouseMove set="method" line="123"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onComponentMouseMove>
-		<_onComponentMouseUp set="method" line="116"><f a="event">
+		<_onComponentMouseUp set="method" line="118"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onComponentMouseUp>
-		<_onComponentMouseDown set="method" line="104"><f a="event">
+		<_onComponentMouseDown set="method" line="106"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onComponentMouseDown>
 		<mouseDownPos><c path="flash.geom.Point"/></mouseDownPos>
-		<clearClip public="1" set="method" line="97"><f a=""><x path="Void"/></f></clearClip>
-		<set_clipContent set="method" line="91"><f a="value">
+		<clearClip public="1" set="method" line="99"><f a=""><x path="Void"/></f></clearClip>
+		<set_clipContent set="method" line="93"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_clipContent>
-		<get_clipContent set="method" line="87"><f a=""><x path="Bool"/></f></get_clipContent>
-		<set_clipHeight set="method" line="82"><f a="value">
+		<get_clipContent set="method" line="89"><f a=""><x path="Bool"/></f></get_clipContent>
+		<set_clipHeight set="method" line="84"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_clipHeight>
-		<get_clipHeight set="method" line="75"><f a=""><x path="Float"/></f></get_clipHeight>
-		<set_clipWidth set="method" line="70"><f a="value">
+		<get_clipHeight set="method" line="77"><f a=""><x path="Float"/></f></get_clipHeight>
+		<set_clipWidth set="method" line="72"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_clipWidth>
-		<get_clipWidth set="method" line="63"><f a=""><x path="Float"/></f></get_clipWidth>
+		<get_clipWidth set="method" line="65"><f a=""><x path="Float"/></f></get_clipWidth>
 		<set_text set="method" line="50"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
@@ -19293,22 +19323,22 @@
 	<class path="haxe.ui.toolkit.core.StateComponent" params="" file="src/haxe/ui/toolkit/core/StateComponent.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IStateComponent"/>
-		<get_states set="method" line="59"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
-		<set_state set="method" line="47"><f a="value">
+		<get_states set="method" line="60"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
+		<set_state set="method" line="48"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_state>
-		<get_state set="method" line="43"><f a=""><c path="String"/></f></get_state>
+		<get_state set="method" line="44"><f a=""><c path="String"/></f></get_state>
 		<states public="1" get="accessor" set="null"><c path="Array"><c path="String"/></c></states>
 		<state public="1" get="accessor" set="accessor"><c path="String"/></state>
-		<addStates public="1" set="method" line="28"><f a="stateNames">
+		<addStates public="1" set="method" line="29"><f a="stateNames">
 	<c path="Array"><c path="String"/></c>
 	<x path="Void"/>
 </f></addStates>
-		<buildStyles public="1" set="method" line="19" override="1"><f a=""><x path="Void"/></f></buildStyles>
+		<buildStyles public="1" set="method" line="20" override="1"><f a=""><x path="Void"/></f></buildStyles>
 		<_states><c path="Array"><c path="String"/></c></_states>
 		<_state><c path="String"/></_state>
-		<new public="1" set="method" line="11"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="12"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.core.interfaces.IFocusable" params="" file="src/haxe/ui/toolkit/core/interfaces/IFocusable.hx" interface="1"><allowFocus public="1" get="null" set="null"><x path="Bool"/></allowFocus></class>
 	<class path="haxe.ui.toolkit.controls.Button" params="" file="src/haxe/ui/toolkit/controls/Button.hx">
@@ -19326,27 +19356,31 @@
 			<c path="String"/>
 			<haxe_doc>Button state is "down"</haxe_doc>
 		</STATE_DOWN>
-		<applyStyle public="1" set="method" line="300" override="1"><f a=""><x path="Void"/></f></applyStyle>
-		<set_allowSelection set="method" line="292"><f a="value">
+		<resizeButton set="method" line="320"><f a="?force">
+	<x path="Bool"/>
+	<x path="Void"/>
+</f></resizeButton>
+		<applyStyle public="1" set="method" line="288" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<set_allowSelection set="method" line="280"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowSelection>
-		<get_allowSelection set="method" line="288"><f a=""><x path="Bool"/></f></get_allowSelection>
-		<set_selected set="method" line="270"><f a="value">
+		<get_allowSelection set="method" line="276"><f a=""><x path="Bool"/></f></get_allowSelection>
+		<set_selected set="method" line="258"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<get_selected set="method" line="266"><f a=""><x path="Bool"/></f></get_selected>
-		<set_toggle set="method" line="261"><f a="value">
+		<get_selected set="method" line="254"><f a=""><x path="Bool"/></f></get_selected>
+		<set_toggle set="method" line="249"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_toggle>
-		<get_toggle set="method" line="257"><f a=""><x path="Bool"/></f></get_toggle>
-		<set_iconPosition set="method" line="252"><f a="value">
+		<get_toggle set="method" line="245"><f a=""><x path="Bool"/></f></get_toggle>
+		<set_iconPosition set="method" line="240"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_iconPosition set="method" line="248"><f a=""><c path="String"/></f></get_iconPosition>
+		<get_iconPosition set="method" line="236"><f a=""><c path="String"/></f></get_iconPosition>
 		<allowSelection public="1" get="accessor" set="accessor">
 			<x path="Bool"/>
 			<haxe_doc>Defines whether this buttons selected state can be modified by the user. Only applicable for toggle buttons.</haxe_doc>
@@ -19369,42 +19403,42 @@
 		 - `right` - right of the label
 		 - `farRight` - furthest right position possible (honours padding)</haxe_doc>
 		</iconPosition>
-		<set_allowFocus set="method" line="218"><f a="value">
+		<set_allowFocus set="method" line="206"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowFocus>
-		<get_allowFocus set="method" line="214"><f a=""><x path="Bool"/></f></get_allowFocus>
+		<get_allowFocus set="method" line="202"><f a=""><x path="Bool"/></f></get_allowFocus>
 		<allowFocus public="1" get="accessor" set="accessor">
 			<x path="Bool"/>
 			<haxe_doc>Defines whether or not the button can receive focus by tabbing to it (not yet implemented)</haxe_doc>
 		</allowFocus>
-		<get_states set="method" line="202" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
-		<_onMouseClick set="method" line="188"><f a="event">
+		<get_states set="method" line="190" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
+		<_onMouseClick set="method" line="176"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseClick>
-		<_onMouseUp set="method" line="169"><f a="event">
+		<_onMouseUp set="method" line="157"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseUp>
-		<_onMouseDown set="method" line="161"><f a="event">
+		<_onMouseDown set="method" line="149"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onMouseOut set="method" line="151"><f a="event">
+		<_onMouseOut set="method" line="139"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOut>
-		<_onMouseOver set="method" line="141"><f a="event">
+		<_onMouseOver set="method" line="129"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOver>
-		<set_text set="method" line="132" override="1"><f a="value">
+		<set_text set="method" line="117" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<get_text set="method" line="128" override="1"><f a=""><c path="String"/></f></get_text>
-		<initialize set="method" line="113" override="1"><f a=""><x path="Void"/></f></initialize>
+		<get_text set="method" line="113" override="1"><f a=""><c path="String"/></f></get_text>
+		<initialize set="method" line="98" override="1"><f a=""><x path="Void"/></f></initialize>
 		<preInitialize set="method" line="93" override="1"><f a=""><x path="Void"/></f></preInitialize>
 		<set_icon set="method" line="81"><f a="value">
 	<c path="String"/>
@@ -19896,14 +19930,24 @@
 	</class>
 	<class path="haxe.ui.toolkit.containers.TabView" params="" file="src/haxe/ui/toolkit/containers/TabView.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
-		<get_pageCount set="method" line="70"><f a=""><x path="Int"/></f></get_pageCount>
-		<set_selectedIndex set="method" line="65"><f a="value">
+		<setTabText public="1" set="method" line="92"><f a="index:text">
+	<x path="Int"/>
+	<c path="String"/>
+	<x path="Void"/>
+</f></setTabText>
+		<get_pageCount set="method" line="85"><f a=""><x path="Int"/></f></get_pageCount>
+		<set_selectedIndex set="method" line="80"><f a="value">
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_selectedIndex>
-		<get_selectedIndex set="method" line="61"><f a=""><x path="Int"/></f></get_selectedIndex>
+		<get_selectedIndex set="method" line="76"><f a=""><x path="Int"/></f></get_selectedIndex>
 		<pageCount public="1" get="accessor" set="null"><x path="Int"/></pageCount>
 		<selectedIndex public="1" get="accessor" set="accessor"><x path="Int"/></selectedIndex>
+		<addChildAt public="1" set="method" line="55" override="1"><f a="child:index">
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+	<x path="Int"/>
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+</f></addChildAt>
 		<addChild public="1" set="method" line="40" override="1"><f a="child">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
@@ -19918,22 +19962,22 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._Button.ButtonLayout" params="" file="src/haxe/ui/toolkit/controls/Button.hx" private="1" module="haxe.ui.toolkit.controls.Button">
 		<extends path="haxe.ui.toolkit.layout.Layout"/>
-		<repositionChildren set="method" line="365" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<set_labelPosition set="method" line="357"><f a="value">
+		<repositionChildren set="method" line="375" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<set_labelPosition set="method" line="367"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_labelPosition>
-		<get_labelPosition set="method" line="353"><f a=""><c path="String"/></f></get_labelPosition>
-		<set_iconPosition set="method" line="348"><f a="value">
+		<get_labelPosition set="method" line="363"><f a=""><c path="String"/></f></get_labelPosition>
+		<set_iconPosition set="method" line="358"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_iconPosition set="method" line="344"><f a=""><c path="String"/></f></get_iconPosition>
+		<get_iconPosition set="method" line="354"><f a=""><c path="String"/></f></get_iconPosition>
 		<labelPosition public="1" get="accessor" set="accessor"><c path="String"/></labelPosition>
 		<iconPosition public="1" get="accessor" set="accessor"><c path="String"/></iconPosition>
 		<_labelPos><c path="String"/></_labelPos>
 		<_iconPos><c path="String"/></_iconPos>
-		<new public="1" set="method" line="334"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="344"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Calendar" params="" file="src/haxe/ui/toolkit/controls/Calendar.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
@@ -20161,39 +20205,39 @@
 	<class path="haxe.ui.toolkit.controls.HScroll" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx">
 		<extends path="haxe.ui.toolkit.controls.Scroll"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IScrollable"/>
-		<incrementValue public="1" set="method" line="294">
+		<incrementValue public="1" set="method" line="297">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
-		<deincrementValue public="1" set="method" line="287">
+		<deincrementValue public="1" set="method" line="290">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<set_incrementSize set="method" line="276"><f a="value">
+		<set_incrementSize set="method" line="279"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<get_incrementSize set="method" line="272"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_pageSize set="method" line="264"><f a="value">
+		<get_incrementSize set="method" line="275"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_pageSize set="method" line="267"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_pageSize set="method" line="260"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_max set="method" line="249"><f a="value">
+		<get_pageSize set="method" line="263"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_max set="method" line="252"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_max set="method" line="245"><f a=""><x path="Float"/></f></get_max>
-		<set_min set="method" line="234"><f a="value">
+		<get_max set="method" line="248"><f a=""><x path="Float"/></f></get_max>
+		<set_min set="method" line="237"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_min set="method" line="230"><f a=""><x path="Float"/></f></get_min>
-		<set_pos set="method" line="214"><f a="value">
+		<get_min set="method" line="233"><f a=""><x path="Float"/></f></get_min>
+		<set_pos set="method" line="217"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_pos set="method" line="210"><f a=""><x path="Float"/></f></get_pos>
+		<get_pos set="method" line="213"><f a=""><x path="Float"/></f></get_pos>
 		<incrementSize public="1" get="accessor" set="accessor">
 			<x path="Float"/>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
@@ -20214,31 +20258,31 @@
 			<x path="Float"/>
 			<haxe_doc>Value of the scrollbar</haxe_doc>
 		</pos>
-		<_onMouseDown set="method" line="169"><f a="event">
+		<_onMouseDown set="method" line="172"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScrollTimerComplete set="method" line="157"><f a="event">
+		<_onScrollTimerComplete set="method" line="160"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onInc set="method" line="145"><f a="event">
+		<_onInc set="method" line="148"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onDeinc set="method" line="133"><f a="event">
+		<_onDeinc set="method" line="136"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onScreenMouseUp set="method" line="124"><f a="event">
+		<_onScreenMouseUp set="method" line="127"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onScreenMouseMove set="method" line="100"><f a="event">
+		<_onScreenMouseMove set="method" line="103"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onThumbMouseDown set="method" line="92"><f a="event">
+		<_onThumbMouseDown set="method" line="95"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
@@ -20265,10 +20309,10 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._HScroll.HScrollLayout" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx" private="1" module="haxe.ui.toolkit.controls.HScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<get_usableWidth set="method" line="349" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
-		<repositionChildren public="1" set="method" line="322" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="304" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<new public="1" set="method" line="300"><f a=""><x path="Void"/></f></new>
+		<get_usableWidth set="method" line="352" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
+		<repositionChildren public="1" set="method" line="325" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="307" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<new public="1" set="method" line="303"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Slider" params="" file="src/haxe/ui/toolkit/controls/Slider.hx">
 		<extends path="haxe.ui.toolkit.controls.Progress"/>
@@ -20336,6 +20380,86 @@
 		<new public="1" set="method" line="15"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>General purpose image control</haxe_doc>
 	</class>
+	<class path="haxe.ui.toolkit.controls.Menu" params="" file="src/haxe/ui/toolkit/controls/Menu.hx">
+		<extends path="haxe.ui.toolkit.containers.VBox"/>
+		<currentMenu public="1" static="1"><c path="haxe.ui.toolkit.controls.Menu"/></currentMenu>
+		<get_rootMenu set="method" line="131"><f a=""><c path="haxe.ui.toolkit.controls.Menu"/></f></get_rootMenu>
+		<get_parentMenu set="method" line="127"><f a=""><c path="haxe.ui.toolkit.controls.Menu"/></f></get_parentMenu>
+		<get_currentSubMenu set="method" line="123"><f a=""><c path="haxe.ui.toolkit.controls.Menu"/></f></get_currentSubMenu>
+		<rootMenu public="1" get="accessor" set="null"><c path="haxe.ui.toolkit.controls.Menu"/></rootMenu>
+		<parentMenu public="1" get="accessor" set="null"><c path="haxe.ui.toolkit.controls.Menu"/></parentMenu>
+		<currentSubMenu public="1" get="accessor" set="null"><c path="haxe.ui.toolkit.controls.Menu"/></currentSubMenu>
+		<hideSubMenus public="1" set="method" line="105"><f a=""><x path="Void"/></f></hideSubMenus>
+		<mouseOverItem set="method" line="80"><f a="index">
+	<x path="Int"/>
+	<x path="Void"/>
+</f></mouseOverItem>
+		<mouseClickItem set="method" line="73"><f a="index">
+	<x path="Int"/>
+	<x path="Void"/>
+</f></mouseClickItem>
+		<buildMouseClickFunction set="method" line="69"><f a="index">
+	<x path="Int"/>
+	<f a="event">
+		<c path="flash.events.MouseEvent"/>
+		<x path="Void"/>
+	</f>
+</f></buildMouseClickFunction>
+		<buildMouseOverFunction set="method" line="65"><f a="index">
+	<x path="Int"/>
+	<f a="event">
+		<c path="flash.events.MouseEvent"/>
+		<x path="Void"/>
+	</f>
+</f></buildMouseOverFunction>
+		<_onRootMouseDown set="method" line="49"><f a="event">
+	<c path="flash.events.MouseEvent"/>
+	<x path="Void"/>
+</f></_onRootMouseDown>
+		<addChild public="1" set="method" line="30" override="1"><f a="child">
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+</f></addChild>
+		<initialize set="method" line="22" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_parentMenu><c path="haxe.ui.toolkit.controls.Menu"/></_parentMenu>
+		<_currentSubMenu><c path="haxe.ui.toolkit.controls.Menu"/></_currentSubMenu>
+		<_currentItem><c path="haxe.ui.toolkit.controls.MenuItem"/></_currentItem>
+		<_subMenus><x path="Map">
+	<c path="haxe.ui.toolkit.controls.MenuItem"/>
+	<c path="haxe.ui.toolkit.controls.Menu"/>
+</x></_subMenus>
+		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="haxe.ui.toolkit.controls.MenuButton" params="" file="src/haxe/ui/toolkit/controls/MenuButton.hx">
+		<extends path="haxe.ui.toolkit.controls.Button"/>
+		<_onMenuSelect set="method" line="83"><f a="event">
+	<c path="haxe.ui.events.MenuEvent"/>
+	<x path="Void"/>
+</f></_onMenuSelect>
+		<_onRootMouseDown set="method" line="57"><f a="event">
+	<c path="flash.events.MouseEvent"/>
+	<x path="Void"/>
+</f></_onRootMouseDown>
+		<_onMouseClick set="method" line="41" override="1"><f a="event">
+	<c path="flash.events.MouseEvent"/>
+	<x path="Void"/>
+</f></_onMouseClick>
+		<addChild public="1" set="method" line="23" override="1"><f a="child">
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+</f></addChild>
+		<initialize public="1" set="method" line="15" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_menu><c path="haxe.ui.toolkit.controls.Menu"/></_menu>
+		<new public="1" set="method" line="9"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="haxe.ui.toolkit.controls.MenuItem" params="" file="src/haxe/ui/toolkit/controls/MenuItem.hx">
+		<extends path="haxe.ui.toolkit.controls.Button"/>
+		<set_selected set="method" line="12" override="1"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_selected>
+		<new public="1" set="method" line="6"><f a=""><x path="Void"/></f></new>
+	</class>
 	<class path="haxe.ui.toolkit.controls.OptionBox" params="" file="src/haxe/ui/toolkit/controls/OptionBox.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
 		<_groups static="1"><c path="haxe.ds.StringMap"><c path="Array"><c path="haxe.ui.toolkit.controls.OptionBox"/></c></c></_groups>
@@ -20401,17 +20525,22 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.TabBar" params="" file="src/haxe/ui/toolkit/controls/TabBar.hx">
 		<extends path="haxe.ui.toolkit.containers.ScrollView"/>
-		<mouseClickButton set="method" line="90"><f a="index">
+		<mouseClickButton set="method" line="95"><f a="index">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></mouseClickButton>
-		<buildMouseClickFunction set="method" line="86"><f a="index">
+		<buildMouseClickFunction set="method" line="91"><f a="index">
 	<x path="Int"/>
 	<f a="event">
 		<c path="flash.events.MouseEvent"/>
 		<x path="Void"/>
 	</f>
 </f></buildMouseClickFunction>
+		<setTabText public="1" set="method" line="86"><f a="index:text">
+	<x path="Int"/>
+	<c path="String"/>
+	<x path="Void"/>
+</f></setTabText>
 		<addTab public="1" set="method" line="75">
 			<f a="text">
 				<c path="String"/>
@@ -20437,6 +20566,47 @@
  <b>Events:</b>
  
  * `Event.CHANGE` - Dispatched when the selection is changed]]></haxe_doc>
+	</class>
+	<class path="haxe.ui.toolkit.controls.Test" params="" file="src/haxe/ui/toolkit/controls/Test.hx">
+		<extends path="haxe.ui.toolkit.containers.VBox"/>
+		<mouseClickItem set="method" line="35"><f a="index">
+	<x path="Int"/>
+	<x path="Void"/>
+</f></mouseClickItem>
+		<buildMouseOverFunction set="method" line="31"><f a="index">
+	<x path="Int"/>
+	<f a="event">
+		<c path="flash.events.MouseEvent"/>
+		<x path="Void"/>
+	</f>
+</f></buildMouseOverFunction>
+		<_button><c path="Array"><c path="haxe.ui.toolkit.controls.Button"/></c></_button>
+		<new public="1" set="method" line="10"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="haxe.ui.toolkit.controls.TestButton" params="" file="src/haxe/ui/toolkit/controls/TestButton.hx">
+		<extends path="haxe.ui.toolkit.controls.Button"/>
+		<mouseClickItem set="method" line="44"><f a="index">
+	<x path="Int"/>
+	<x path="Void"/>
+</f></mouseClickItem>
+		<buildMouseOverFunction set="method" line="40"><f a="index">
+	<x path="Int"/>
+	<f a="event">
+		<c path="flash.events.MouseEvent"/>
+		<x path="Void"/>
+	</f>
+</f></buildMouseOverFunction>
+		<addChild public="1" set="method" line="25" override="1"><f a="child">
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObject"/>
+</f></addChild>
+		<_onMouseClick set="method" line="19" override="1"><f a="event">
+	<c path="flash.events.MouseEvent"/>
+	<x path="Void"/>
+</f></_onMouseClick>
+		<initialize public="1" set="method" line="13" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_test><c path="haxe.ui.toolkit.controls.Test"/></_test>
+		<new public="1" set="method" line="8"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Text" params="" file="src/haxe/ui/toolkit/controls/Text.hx">
 		<extends path="haxe.ui.toolkit.core.StateComponent"/>
@@ -20554,39 +20724,39 @@
 	<class path="haxe.ui.toolkit.controls.VScroll" params="" file="src/haxe/ui/toolkit/controls/VScroll.hx">
 		<extends path="haxe.ui.toolkit.controls.Scroll"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IScrollable"/>
-		<incrementValue public="1" set="method" line="293">
+		<incrementValue public="1" set="method" line="296">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
-		<deincrementValue public="1" set="method" line="286">
+		<deincrementValue public="1" set="method" line="289">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<set_incrementSize set="method" line="275"><f a="value">
+		<set_incrementSize set="method" line="278"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<get_incrementSize set="method" line="271"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_pageSize set="method" line="263"><f a="value">
+		<get_incrementSize set="method" line="274"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_pageSize set="method" line="266"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_pageSize set="method" line="259"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_max set="method" line="248"><f a="value">
+		<get_pageSize set="method" line="262"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_max set="method" line="251"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_max set="method" line="244"><f a=""><x path="Float"/></f></get_max>
-		<set_min set="method" line="233"><f a="value">
+		<get_max set="method" line="247"><f a=""><x path="Float"/></f></get_max>
+		<set_min set="method" line="236"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_min set="method" line="229"><f a=""><x path="Float"/></f></get_min>
-		<set_pos set="method" line="213"><f a="value">
+		<get_min set="method" line="232"><f a=""><x path="Float"/></f></get_min>
+		<set_pos set="method" line="216"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_pos set="method" line="209"><f a=""><x path="Float"/></f></get_pos>
+		<get_pos set="method" line="212"><f a=""><x path="Float"/></f></get_pos>
 		<incrementSize public="1" get="accessor" set="accessor">
 			<x path="Float"/>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
@@ -20607,31 +20777,31 @@
 			<x path="Float"/>
 			<haxe_doc>Value of the scrollbar</haxe_doc>
 		</pos>
-		<_onMouseDown set="method" line="168"><f a="event">
+		<_onMouseDown set="method" line="171"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScrollTimerComplete set="method" line="156"><f a="event">
+		<_onScrollTimerComplete set="method" line="159"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onInc set="method" line="144"><f a="event">
+		<_onInc set="method" line="147"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onDeinc set="method" line="132"><f a="event">
+		<_onDeinc set="method" line="135"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onScreenMouseUp set="method" line="123"><f a="event">
+		<_onScreenMouseUp set="method" line="126"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onScreenMouseMove set="method" line="99"><f a="event">
+		<_onScreenMouseMove set="method" line="102"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onThumbMouseDown set="method" line="91"><f a="event">
+		<_onThumbMouseDown set="method" line="94"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
@@ -20658,10 +20828,10 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._VScroll.VScrollLayout" params="" file="src/haxe/ui/toolkit/controls/VScroll.hx" private="1" module="haxe.ui.toolkit.controls.VScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<get_usableHeight set="method" line="348" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
-		<repositionChildren public="1" set="method" line="321" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="303" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<new public="1" set="method" line="299"><f a=""><x path="Void"/></f></new>
+		<get_usableHeight set="method" line="351" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
+		<repositionChildren public="1" set="method" line="324" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="306" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<new public="1" set="method" line="302"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.VSlider" params="" file="src/haxe/ui/toolkit/controls/VSlider.hx">
 		<extends path="haxe.ui.toolkit.controls.Slider"/>
@@ -22122,39 +22292,41 @@
 	<class path="haxe.ui.toolkit.style.StyleManager" params="" file="src/haxe/ui/toolkit/style/StyleManager.hx">
 		<_instance static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></_instance>
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe.ui.toolkit.style.StyleManager"/></instance>
-		<get_instance set="method" line="14" static="1"><f a=""><c path="haxe.ui.toolkit.style.StyleManager"/></f></get_instance>
-		<get_hasStyles set="method" line="198"><f a=""><x path="Bool"/></f></get_hasStyles>
-		<dump public="1" set="method" line="191"><f a=""><x path="Void"/></f></dump>
-		<buildStyleFor public="1" set="method" line="163"><f a="c:?state">
+		<get_instance set="method" line="18" static="1"><f a=""><c path="haxe.ui.toolkit.style.StyleManager"/></f></get_instance>
+		<get_hasStyles set="method" line="255"><f a=""><x path="Bool"/></f></get_hasStyles>
+		<dump public="1" set="method" line="248"><f a=""><x path="Void"/></f></dump>
+		<buildStyleFor public="1" set="method" line="198"><f a="c:?state">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
 </f></buildStyleFor>
-		<ruleMatch set="method" line="114"><f a="c:rule:state">
+		<ruleMatch set="method" line="128"><f a="c:rule:state:?overriddenClassName">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
+	<c path="String"/>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Bool"/>
 </f></ruleMatch>
-		<rulePartMatch set="method" line="73"><f a="c:rulePart:state">
+		<rulePartMatch set="method" line="78"><f a="c:rulePart:state:?overriddenClassName">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
+	<c path="haxe.ui.toolkit.style._StyleManager.StyleRulePart"/>
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Bool"/>
 </f></rulePartMatch>
-		<findAncestor set="method" line="55"><f a="c:rulePart">
+		<findAncestor set="method" line="60"><f a="c:rulePart">
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
-	<c path="String"/>
+	<c path="haxe.ui.toolkit.style._StyleManager.StyleRulePart"/>
 	<c path="haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer"/>
 </f></findAncestor>
-		<clear public="1" set="method" line="49"><f a=""><x path="Void"/></f></clear>
-		<addStyles public="1" set="method" line="43"><f a="styles">
+		<clear public="1" set="method" line="54"><f a=""><x path="Void"/></f></clear>
+		<addStyles public="1" set="method" line="48"><f a="styles">
 	<c path="haxe.ui.toolkit.style.Styles"/>
 	<x path="Void"/>
 </f></addStyles>
-		<addStyle public="1" set="method" line="38"><f a="rule:style">
+		<addStyle public="1" set="method" line="42"><f a="rule:style">
 	<c path="String"/>
-	<d/>
+	<c path="haxe.ui.toolkit.style.Style"/>
 	<x path="Void"/>
 </f></addStyle>
 		<hasStyles public="1" get="accessor" set="null"><x path="Bool"/></hasStyles>
@@ -22163,9 +22335,39 @@
 	<x path="Int"/>
 </x></stylesBuiltFor>
 		<stylesBuilt><x path="Int"/></stylesBuilt>
-		<_rules><c path="Array"><d/></c></_rules>
-		<_styles><c path="haxe.ds.StringMap"><d/></c></_styles>
-		<new public="1" set="method" line="32"><f a=""><x path="Void"/></f></new>
+		<_rules><c path="Array"><c path="String"/></c></_rules>
+		<_styles><c path="haxe.ds.StringMap"><c path="haxe.ui.toolkit.style._StyleManager.StyleRule"/></c></_styles>
+		<new public="1" set="method" line="36"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="haxe.ui.toolkit.style._StyleManager.StyleRule" params="" file="src/haxe/ui/toolkit/style/StyleManager.hx" private="1" module="haxe.ui.toolkit.style.StyleManager">
+		<isRelevant public="1" set="method" line="288"><f a="id:className:state:styleName">
+	<c path="String"/>
+	<c path="String"/>
+	<c path="String"/>
+	<c path="String"/>
+	<x path="Bool"/>
+</f></isRelevant>
+		<containsClassName public="1" set="method" line="277"><f a="className">
+	<c path="String"/>
+	<x path="Bool"/>
+</f></containsClassName>
+		<style public="1"><c path="haxe.ui.toolkit.style.Style"/></style>
+		<ruleParts public="1"><c path="Array"><c path="haxe.ui.toolkit.style._StyleManager.StyleRulePart"/></c></ruleParts>
+		<new public="1" set="method" line="267"><f a="rule:style">
+	<c path="String"/>
+	<c path="haxe.ui.toolkit.style.Style"/>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<class path="haxe.ui.toolkit.style._StyleManager.StyleRulePart" params="" file="src/haxe/ui/toolkit/style/StyleManager.hx" private="1" module="haxe.ui.toolkit.style.StyleManager">
+		<styleName public="1"><c path="String"/></styleName>
+		<state public="1"><c path="String"/></state>
+		<className public="1"><c path="String"/></className>
+		<id public="1"><c path="String"/></id>
+		<new public="1" set="method" line="317"><f a="rulePart">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
 	</class>
 	<class path="haxe.ui.toolkit.style.StyleParser" params="" file="src/haxe/ui/toolkit/style/StyleParser.hx"><fromString public="1" set="method" line="8" static="1"><f a="styleString">
 	<c path="String"/>
@@ -22181,27 +22383,27 @@
 	</class>
 	<class path="haxe.ui.toolkit.text.TextDisplay" params="" file="src/haxe/ui/toolkit/text/TextDisplay.hx">
 		<implements path="haxe.ui.toolkit.text.ITextDisplay"/>
-		<set_wrapLines set="method" line="141"><f a="value">
+		<set_wrapLines set="method" line="142"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_wrapLines>
-		<get_wrapLines set="method" line="137"><f a=""><x path="Bool"/></f></get_wrapLines>
-		<set_multiline set="method" line="131"><f a="value">
+		<get_wrapLines set="method" line="138"><f a=""><x path="Bool"/></f></get_wrapLines>
+		<set_multiline set="method" line="132"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_multiline>
-		<get_multiline set="method" line="127"><f a=""><x path="Bool"/></f></get_multiline>
-		<set_interactive set="method" line="114"><f a="value">
+		<get_multiline set="method" line="128"><f a=""><x path="Bool"/></f></get_multiline>
+		<set_interactive set="method" line="115"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_interactive>
-		<get_interactive set="method" line="110"><f a=""><x path="Bool"/></f></get_interactive>
-		<get_display set="method" line="106"><f a=""><c path="flash.display.DisplayObject"/></f></get_display>
-		<set_style set="method" line="72"><f a="value">
+		<get_interactive set="method" line="111"><f a=""><x path="Bool"/></f></get_interactive>
+		<get_display set="method" line="107"><f a=""><c path="flash.display.DisplayObject"/></f></get_display>
+		<set_style set="method" line="73"><f a="value">
 	<c path="haxe.ui.toolkit.style.Style"/>
 	<c path="haxe.ui.toolkit.style.Style"/>
 </f></set_style>
-		<get_style set="method" line="68"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
+		<get_style set="method" line="69"><f a=""><c path="haxe.ui.toolkit.style.Style"/></f></get_style>
 		<set_text set="method" line="39"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
@@ -23581,303 +23783,315 @@
 	</class>
 	<class path="nme.NME_img_application_32_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="183"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="189"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_exclamation_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="184"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="190"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_fav_16_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="185"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="191"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_fav_32_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="186"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="192"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_file_blank_32_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="187"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="193"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_alignment_center_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="188"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="194"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_alignment_justify_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="189"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="195"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_alignment_left_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="190"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="196"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_alignment_right_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="191"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="197"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_bold_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="192"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="198"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_italic_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="193"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="199"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_list_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="194"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="200"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_rtfview_edit_underline_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="195"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="201"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_slinky_jpg" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="196"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="202"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_slinky_large_jpg" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="197"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="203"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_img_slinky_small_jpg" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
-		<new public="1" set="method" line="198"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="204"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_ui_custompopup_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="199"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="205"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_ui_import01_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="200"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="206"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_ui_import02_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="201"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="207"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_ui_import03_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="202"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="208"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="nme.NME_ui_importeddatasource_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="203"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_ui_temp_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="204"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_ui_test_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="205"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_ui_test01_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="206"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_ui_test02_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="207"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_ui_test03_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
-		<new public="1" set="method" line="208"><f a=""><x path="Void"/></f></new>
-	</class>
-	<class path="nme.NME_data_code_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="209"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_data_data_json" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_ui_menu_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="210"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_data_data_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_ui_temp_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="211"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_data_data_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_ui_test_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="212"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_data_rtf_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_ui_test01_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="213"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_ui_test02_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="214"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_down_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_ui_test03_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="215"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_left_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_data_code_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="216"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_right_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_data_data_json" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="217"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_right2_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_data_data_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="218"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_arrow_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_data_data_xml" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="219"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_circle_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_data_rtf_txt" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="220"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_cross_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_arrow_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="221"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_gradient_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_gradient_arrow_down_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="222"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_gradient_mobile_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_gradient_arrow_left_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="223"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_gripper_horizontal_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_arrow_right_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="224"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_gradient_gripper_vertical_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_arrow_right2_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="225"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_accordion_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_gradient_arrow_right_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="226"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_button_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_arrow_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="227"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_buttons_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_gradient_circle_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="228"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_calendar_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_gradient_cross_dark_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="229"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_checkbox_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_gradient_gradient_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="230"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_container_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_gradient_gradient_mobile_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="231"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_down_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_gradient_gradient_test_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="232"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_gripper_horizontal_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="233"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_over_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_gradient_gripper_vertical_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="234"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_windows_accordion_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="235"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_left_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_button_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="236"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_right_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_windows_buttons_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="237"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_up_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.display.BitmapData"/>
+	<class path="nme.NME_styles_windows_calendar_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="238"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_checkbox_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="239"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_over_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_container_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="240"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_down_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="241"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_hprogress_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="242"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_hscroll_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_over_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="243"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_listview_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_windows_glyphs_hscroll_thumb_gripper_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="244"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_listview_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_left_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="245"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_optionbox_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_right_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="246"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_popup_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_glyphs_up_arrow_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="247"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_popups_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_down_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="248"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_rtf_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_over_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="249"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_scrolls_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_windows_glyphs_vscroll_thumb_gripper_up_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="250"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_sliders_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
-		<extends path="flash.utils.ByteArray"/>
+	<class path="nme.NME_styles_windows_hprogress_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="251"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_tab_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_hscroll_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="252"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_tabs_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_listview_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="253"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_textinput_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_listview_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="254"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_vprogress_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_optionbox_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="255"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_vscroll_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_popup_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.display.BitmapData"/>
 		<new public="1" set="method" line="256"><f a=""><x path="Void"/></f></new>
 	</class>
-	<class path="nme.NME_styles_windows_windows_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+	<class path="nme.NME_styles_windows_popups_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
 		<extends path="flash.utils.ByteArray"/>
 		<new public="1" set="method" line="257"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_rtf_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
+		<new public="1" set="method" line="258"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_scrolls_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
+		<new public="1" set="method" line="259"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_sliders_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
+		<new public="1" set="method" line="260"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_tab_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
+		<new public="1" set="method" line="261"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_tabs_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
+		<new public="1" set="method" line="262"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_textinput_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
+		<new public="1" set="method" line="263"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_vprogress_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
+		<new public="1" set="method" line="264"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_vscroll_png" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.display.BitmapData"/>
+		<new public="1" set="method" line="265"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="nme.NME_styles_windows_windows_css" params="" file="bin/flash/haxe/nme/AssetData.hx" module="nme.AssetData">
+		<extends path="flash.utils.ByteArray"/>
+		<new public="1" set="method" line="266"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="openfl.Assets" params="" file="C:\tools\Haxe\haxe/lib\openfl/1,0,6/openfl/Assets.hx">
 		<cachedBitmapData public="1" line="50" static="1"><x path="Map">

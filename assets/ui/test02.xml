@@ -49,6 +49,15 @@
 	</style:css>
 	
 	<ui:menubar>
+		<ui:menubutton text="Menu 1" id="menu1">
+			<sys:import resource="ui/menu.xml" />
+		</ui:menubutton>
+		<ui:menubutton text="Menu 2">
+			<sys:import resource="ui/menu.xml" />
+		</ui:menubutton>
+		<ui:menubutton text="Menu 3">
+			<sys:import resource="ui/menu.xml" />
+		</ui:menubutton>
 		<ui:button text="Menubar Button" />
 		<ui:spacer width="100%" />
 		<selection:list text="Select Style" id="styleList">
@@ -56,7 +65,7 @@
 		</selection:list>
 	</ui:menubar>
 	
-	<ui:tabview width="100%" height="100%">
+	<ui:tabview width="100%" height="100%" id="mainTabs">
 		<ui:vbox text="List" width="100%" height="100%">
 			<ui:hbox>
 				<selection:list text="Select Item 1">
@@ -68,7 +77,7 @@
 				<selection:list text="Select Item 3">
 					<data:array>Item 1, Item 2, Item 3, Item 4</data:array>
 				</selection:list>
-				<ui:button text="Perf" id="perfButton" />
+				<ui:button text="Test" id="perfButton" />
 			</ui:hbox>
 			<ui:hbox text="List" width="100%" height="100%">
 				<ui:listview width="50%" height="100%" id="theList">
@@ -90,6 +99,17 @@
 																			{ "text": "Option 7" },
 																			{ "text": "Option 8" }
 																		]},
+							{"text": "Item 7 + select", "type": "list", "dataSource": [
+																			{ "text": "Option 1" },
+																			{ "text": "Option 2" },
+																			{ "text": "Option 3" },
+																			{ "text": "Option 4" },
+																			{ "text": "Option 5" },
+																			{ "text": "Option 6" },
+																			{ "text": "Option 7" },
+																			{ "text": "Option 8" }
+																		]},
+							{"text": "Item 6 + progress", "type": "progress", "value": 75},
 							{"text": "Item 8", "subtext": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil)"},
 							{"text": "Item 9"},
 							{"text": "Item 10"},

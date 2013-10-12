@@ -257,7 +257,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		var b:Bool = false;
 		var sx:Float = stageX;
 		var sy:Float = stageY;
-		if (xpos >= sx && xpos <= sx + width && ypos >= sy && ypos <= sy + height) {
+		if (xpos > sx && xpos < sx + width && ypos > sy && ypos < sy + height) {
 			b = true;
 		}
 		

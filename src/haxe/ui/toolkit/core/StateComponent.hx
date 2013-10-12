@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
+import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 
 class StateComponent extends Component implements IStateComponent {
@@ -18,7 +19,7 @@ class StateComponent extends Component implements IStateComponent {
 	//******************************************************************************************
 	public override function buildStyles():Void {
 		for (s in states) {
-			var stateStyle:Dynamic = StyleManager.instance.buildStyleFor(this, s);
+			var stateStyle:Style = StyleManager.instance.buildStyleFor(this, s);
 			if (stateStyle != null) {
 				storeStyle(s, stateStyle);
 			}

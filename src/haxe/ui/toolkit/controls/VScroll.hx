@@ -63,6 +63,7 @@ class VScroll extends Scroll implements IScrollable {
 			_deincButton.percentWidth = 100;
 			_deincButton.height = layout.innerWidth;
 			_deincButton.id = "deinc";
+			_deincButton.styleName = "up";
 			_deincButton.addEventListener(MouseEvent.MOUSE_DOWN, _onDeinc);
 			addChild(_deincButton);
 			
@@ -70,6 +71,7 @@ class VScroll extends Scroll implements IScrollable {
 			_incButton.percentWidth = 100;
 			_incButton.height = layout.innerWidth;
 			_incButton.id = "inc";
+			_incButton.styleName = "down";
 			_incButton.addEventListener(MouseEvent.MOUSE_DOWN, _onInc);
 			addChild(_incButton);
 		}
@@ -78,6 +80,7 @@ class VScroll extends Scroll implements IScrollable {
 		_thumb.percentWidth = 100;
 		_thumb.height = 50;
 		_thumb.id = "thumb";
+		_thumb.styleName = "thumb";
 		_thumb.remainPressed = true;
 		_thumb.addEventListener(MouseEvent.MOUSE_DOWN, _onThumbMouseDown);
 		addChild(_thumb);

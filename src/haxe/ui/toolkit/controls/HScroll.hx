@@ -64,6 +64,7 @@ class HScroll extends Scroll implements IScrollable {
 			_deincButton.width = layout.innerHeight;
 			_deincButton.percentHeight = 100;
 			_deincButton.id = "deinc";
+			_deincButton.styleName = "left";
 			_deincButton.addEventListener(MouseEvent.MOUSE_DOWN, _onDeinc);
 			addChild(_deincButton);
 
@@ -71,6 +72,7 @@ class HScroll extends Scroll implements IScrollable {
 			_incButton.width = layout.innerHeight;
 			_incButton.percentHeight = 100;
 			_incButton.id = "inc";
+			_incButton.styleName = "right";
 			_incButton.addEventListener(MouseEvent.MOUSE_DOWN, _onInc);
 			addChild(_incButton);
 		}
@@ -79,6 +81,7 @@ class HScroll extends Scroll implements IScrollable {
 		_thumb.width = 50;
 		_thumb.percentHeight = 100;
 		_thumb.id = "thumb";
+		_thumb.styleName = "thumb";
 		_thumb.remainPressed = true;
 		_thumb.addEventListener(MouseEvent.MOUSE_DOWN, _onThumbMouseDown);
 		addChild(_thumb);

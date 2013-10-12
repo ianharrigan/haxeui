@@ -92,22 +92,7 @@ class Button extends StateComponent implements IFocusable {
 	//******************************************************************************************
 	private override function preInitialize():Void {
 		super.preInitialize();
-		if (text.length > 0 && autoSize == true) {
-			var buttonLayout:ButtonLayout = cast(_layout, ButtonLayout);
-			if (width == 0) {
-				var cx:Float = _label.width + _layout.padding.left + _layout.padding.right;
-				if (_icon != null) {
-					if (buttonLayout.iconPosition == "farLeft" || buttonLayout.iconPosition == "left" || buttonLayout.iconPosition == "right" || buttonLayout.iconPosition == "farRight") {
-						cx += _icon.width + _layout.padding.left + _layout.padding.right;
-					}
-				}
-				width = cx;
-			}
-			if (height == 0) {
-				var cy:Float = _label.height + _layout.padding.top + _layout.padding.bottom;
-				height = cy;
-			}
-		}
+		resizeButton();
 	}
 	
 	private override function initialize():Void {
@@ -132,6 +117,9 @@ class Button extends StateComponent implements IFocusable {
 	private override function set_text(value:String):String {
 		value = super.set_text(value);
 		_label.text = value;
+		if (_ready) {
+			resizeButton(true);
+		}
 		return value;
 	}
 
@@ -322,6 +310,28 @@ class Button extends StateComponent implements IFocusable {
 
 			if (_style.labelPosition != null) {
 				cast(_layout, ButtonLayout).labelPosition = _style.labelPosition;
+			}
+		}
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	private function resizeButton(force:Bool = false):Void {
+		if (text.length > 0 && autoSize == true) {
+			var buttonLayout:ButtonLayout = cast(_layout, ButtonLayout);
+			if (width == 0 || force == true) {
+				var cx:Float = _label.width + _layout.padding.left + _layout.padding.right;
+				if (_icon != null) {
+					if (buttonLayout.iconPosition == "farLeft" || buttonLayout.iconPosition == "left" || buttonLayout.iconPosition == "right" || buttonLayout.iconPosition == "farRight") {
+						cx += _icon.width + _layout.padding.left + _layout.padding.right;
+					}
+				}
+				width = cx;
+			}
+			if (height == 0 || force == true) {
+				var cy:Float = _label.height + _layout.padding.top + _layout.padding.bottom;
+				height = cy;
 			}
 		}
 	}

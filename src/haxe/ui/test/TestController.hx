@@ -2,9 +2,11 @@ package haxe.ui.test;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
+import haxe.ui.events.MenuEvent;
 import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.containers.Stack;
+import haxe.ui.toolkit.containers.TabView;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.CheckBox;
 import haxe.ui.toolkit.controls.extended.Code;
@@ -35,13 +37,25 @@ class TestController extends XMLController {
 			return;
 		}
 
+		attachEvent("menu1", MenuEvent.SELECT, function(e:MenuEvent) {
+			trace(e.menuItem.id);
+		});
+		
 		attachEvent("perfButton", MouseEvent.CLICK, function(e) {
 			trace("perf");
 			var b:Button = getComponentAs("perfButton", Button);
+			b.text = "bbbbbbbbbbbbbbbbbbbbbb";
+			var mainTabs:TabView = getComponentAs("mainTabs", TabView);
+			mainTabs.setTabText(0, "xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+			mainTabs.invalidate();
+			/*
+			var b:Button = getComponentAs("perfButton", Button);
 			for (x in 0...354) {
-				//StyleManager.instance.buildStyleFor(b);
 			}
 			
+			StyleManager.instance.dump();
+			
+			*/
 			StyleManager.instance.dump();
 		});
 		

@@ -83,6 +83,11 @@ class TabBar extends ScrollView {
 		button.addEventListener(MouseEvent.CLICK, buildMouseClickFunction(_content.children.length - 1));
 	}
 	
+	public function setTabText(index:Int, text:String):Void {
+		var button:Button = cast(_content.getChildAt(index), Button);
+		button.text = text;
+	}
+	
 	private function buildMouseClickFunction(index:Int) {
 		return function(event:MouseEvent) { mouseClickButton(index); };
 	}

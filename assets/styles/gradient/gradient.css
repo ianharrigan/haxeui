@@ -148,15 +148,15 @@ VScroll Button:down {
 	borderColor: 0x4b546a;
 }
 
-VScroll #deinc {
+VScroll Button.up {
 	icon: styles/gradient/arrow_up.png;
 }
 
-VScroll #inc {
+VScroll Button.down {
 	icon: styles/gradient/arrow_down.png;
 }
 
-VScroll #thumb {
+VScroll Button.thumb {
 	icon: styles/gradient/gripper_vertical.png;
 }
 
@@ -194,15 +194,15 @@ HScroll Button:down {
 	borderColor: 0x4b546a;
 }
 			
-HScroll #deinc {
+HScroll Button.left {
 	icon: styles/gradient/arrow_left.png;
 }
 
-HScroll #inc {
+HScroll Button.right {
 	icon: styles/gradient/arrow_right.png;
 }
 
-HScroll #thumb {
+HScroll Button.thumb {
 	icon: styles/gradient/gripper_horizontal.png;
 }
 
@@ -568,6 +568,80 @@ MenuBar {
 	filter: dropShadow(2, 90, 0x808080, 1, 0, 4, 1, 3);
 }
 
+Menu {
+	spacingX: 0;
+	spacingY: 0;
+	backgroundColor: 0xE9EDF5;
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	borderColor: 0x495267;
+	borderSize: 1;
+	cornerRadius: 3;
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	width: 150;
+}
+
+MenuItem {
+	width: 100%;
+	labelPosition: left;
+	iconPosition: farRight;
+	filter: null;
+	borderSize: 0;
+	backgroundColor: 0xE9EDF5;
+	color: 0x000000;
+}
+
+MenuItem:over {
+	backgroundColor: 0x606c88;
+	color: 0xFFFFFF;
+}
+
+MenuItem:down {
+	backgroundColor: 0x606c88;
+	color: 0xFFFFFF;
+}
+
+MenuItem.expandable {
+	icon: styles/gradient/arrow_right_dark.png;
+}
+
+MenuItem.expandable:over {
+	icon: styles/gradient/arrow_right.png;
+}
+
+MenuItem.expandable:down {
+	icon: styles/gradient/arrow_right.png;
+}
+
+MenuBar MenuButton {
+	backgroundColor: 0xdfdddd;
+	color: 0x000000;
+	borderColor: 0x495267;
+	filter: null;
+	borderSize: 0;
+}
+
+MenuBar MenuButton:over {
+	backgroundColor: 0xf4f5f5;
+	backgroundColorGradientEnd: 0xdfdddd;
+	color: 0x363d4c;
+	borderColor: 0x808080;
+	borderSize: 1;
+	filter: dropShadow(2, 45, 0x808080, 1, 2, 2, 1, 3);
+}
+
+MenuBar MenuButton:down {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	color: 0x363d4c;
+	borderColor: 0x808080;
+	borderSize: 1;
+	color: 0xFFFFFF;
+	filter: dropShadow(2, 45, 0x808080, 1, 2, 2, 1, 3);
+}
+
 MenuBar Button {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
@@ -693,6 +767,7 @@ Popup {
 	backgroundColor: 0xE9EDF5;
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 	borderColor: 0x495267;
+	borderSize: 1;
 	cornerRadius: 3;
 	paddingLeft: 2;
 	paddingRight: 2;
@@ -742,6 +817,9 @@ ListPopupContent ListView {
 
 Accordion {
 	backgroundColor: 0xdfdddd;
+	spacingX: 0;
+	spacingY: 0;
+	padding: 0;
 }
 
 Accordion VBox, Accordion HBox, Accordion Grid {
@@ -749,6 +827,8 @@ Accordion VBox, Accordion HBox, Accordion Grid {
 	paddingTop : 5;
 	paddingBottom : 5;
 	paddingRight : 5;
+	spacingX: 0;
+	spacingY: 0;
 }
 
 AccordionButton {

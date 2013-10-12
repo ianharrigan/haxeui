@@ -37,15 +37,16 @@ class TextDisplay implements ITextDisplay {
 	}
 	
 	private function set_text(value:String):String {
-		if (_tf.multiline == false) {
-			//_tf.htmlText = StringTools.replace(value, "\\n", "<br>");
-			_tf.text = StringTools.replace(value, "\\n", "\n");
-		} else {
-			//_tf.htmlText = StringTools.replace(value, "\\n", "<br>");
-			_tf.text = StringTools.replace(value, "\\n", "\n");
+		if (value != null) {
+			if (_tf.multiline == false) {
+				_tf.text = StringTools.replace(value, "\\n", "\n");
+			} else {
+				_tf.text = StringTools.replace(value, "\\n", "\n");
+			}
 		}
+		
 		style = _style;
-		if (value.length > 0) {
+		if (value != null && value.length > 0) {
 			if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == false) {
 				_tf.width = _tf.textWidth + 4;
 				_tf.height = _tf.textHeight + 4;
