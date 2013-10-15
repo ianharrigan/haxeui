@@ -72,7 +72,7 @@ class TabBar extends ScrollView {
 	/**
 	 Adds a new button to the tab bar with the specified `text`
 	 **/
-	public function addTab(text:String):Void {
+	public function addTab(text:String):Button {
 		var button:Button = new Button();
 		button.text = text;
 		button.toggle = true;
@@ -81,6 +81,7 @@ class TabBar extends ScrollView {
 		_content.addChild(button);
 		button.selected = (_content.children.length - 1 == _selectedIndex);
 		button.addEventListener(MouseEvent.CLICK, buildMouseClickFunction(_content.children.length - 1));
+		return button;
 	}
 	
 	public function setTabText(index:Int, text:String):Void {

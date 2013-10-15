@@ -20,7 +20,7 @@
 
 Text {
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 }
 
 VBox {
@@ -59,7 +59,7 @@ Stack {
 }
 
 TextInput, Code, RTF {
-	backgroundImage: styles/windows/textinput.png;
+	backgroundImage: "styles/windows/textinput.png";
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 0,0,15,15;
 	width: 200;
@@ -69,7 +69,7 @@ TextInput, Code, RTF {
 	paddingRight: 2;
 	paddingBottom: 2;
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 }
 
 MenuBar {

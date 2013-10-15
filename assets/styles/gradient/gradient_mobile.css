@@ -19,7 +19,7 @@
 
 Text {
 	fontSize: 16;
-	fontName: _sans;
+	fontName: "_sans";
 }
 
 VBox {
@@ -96,9 +96,9 @@ Button {
 	cornerRadius: 3;
 	borderSize: 1;
 	fontSize: 16;
-	fontName: _sans;
+	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: left;
+	iconPosition: "left";
 }
 
 Button:over {
@@ -134,7 +134,7 @@ VScroll Button {
 	borderColor: 0x606c88;
 	cornerRadius: 3;
 	filter: null;
-	iconPosition: center;
+	iconPosition: "center";
 }
 
 VScroll Button:over {
@@ -168,7 +168,7 @@ HScroll Button {
 	borderColor: 0x606c88;
 	cornerRadius: 3;
 	filter: null;
-	iconPosition: center;
+	iconPosition: "center";
 }
 
 HScroll Button:over {
@@ -239,7 +239,7 @@ VProgress #value {
 	backgroundColorGradientEnd: 0x3f4c6b;
 	borderColor: 0xa5b8da;
 	cornerRadius: 3;
-	gradientType: horizontal;
+	gradientType: "horizontal";
 }
 
 HSlider {
@@ -269,8 +269,8 @@ HSlider #value {
 HSlider Button {
 	width: 40;
 	height: 100%;
-	icon: styles/gradient/gripper_horizontal.png;
-	iconPosition: center;
+	icon: "styles/gradient/gripper_horizontal.png";
+	iconPosition: "center";
 }
 
 VSlider {
@@ -295,14 +295,14 @@ VSlider #value {
 	cornerRadius: 3;
 	cornerRadiusTopRight: 0;
 	cornerRadiusTopLeft: 0;
-	gradientType: horizontal;
+	gradientType: "horizontal";
 }
 
 VSlider Button {
 	width: 100%;
 	height: 40;
-	icon: styles/gradient/gripper_vertical.png;
-	iconPosition: center;
+	icon: "styles/gradient/gripper_vertical.png";
+	iconPosition: "center";
 }
 
 ListView {
@@ -422,8 +422,8 @@ CheckBoxValue #selected {
 	paddingRight: 1;
 	cornerRadius: 3;
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
-	icon: styles/gradient/cross_dark.png;
-	iconPosition: center;
+	icon: "styles/gradient/cross_dark.png";
+	iconPosition: "center";
 }
 
 OptionBox {
@@ -457,8 +457,8 @@ OptionBoxValue #selected {
 	paddingRight: 1;
 	cornerRadius: 3;
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
-	icon: styles/gradient/circle_dark.png;
-	iconPosition: center;
+	icon: "styles/gradient/circle_dark.png";
+	iconPosition: "center";
 }
 
 TextInput, Code, RTF {
@@ -473,7 +473,7 @@ TextInput, Code, RTF {
 	cornerRadius: 2;
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 }
 
 TabBar {
@@ -580,12 +580,12 @@ List, Date {
 	cornerRadius: 3;
 	borderSize: 1;
 	fontSize: 16;
-	fontName: _sans;
+	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	icon: styles/gradient/arrow_down.png;
-	iconPosition: farRight;
-	labelPosition: left;
-	selectionMethod: popup;
+	icon: "styles/gradient/arrow_down.png";
+	iconPosition: "farRight";
+	labelPosition: "left";
+	selectionMethod: "popup";
 }
 
 List:over, Date:over {
@@ -723,6 +723,9 @@ ListPopupContent ListView {
 
 Accordion {
 	backgroundColor: 0xdfdddd;
+	spacingX: 0;
+	spacingY: 0;
+	padding: 0;
 }
 
 Accordion VBox, Accordion HBox, Accordion Grid {
@@ -730,6 +733,8 @@ Accordion VBox, Accordion HBox, Accordion Grid {
 	paddingTop : 5;
 	paddingBottom : 5;
 	paddingRight : 5;
+	spacingX: 0;
+	spacingY: 0;
 }
 
 AccordionButton {
@@ -744,11 +749,11 @@ AccordionButton {
 	cornerRadius: 0;
 	borderSize: 1;
 	fontSize: 16;
-	fontName: _sans;
+	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: farLeft;
-	labelPosition: left;
-	icon: styles/gradient/arrow_right2.png;
+	iconPosition: "farLeft";
+	labelPosition: "left";
+	icon: "styles/gradient/arrow_right2.png";
 }
 
 AccordionButton:over {
@@ -763,7 +768,7 @@ AccordionButton:down {
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
-	icon: styles/gradient/arrow_down.png;
+	icon: "styles/gradient/arrow_down.png";
 }
 
 RTFView {
@@ -775,7 +780,7 @@ RTFView List {
 	backgroundColorGradientEnd: 0xdfdddd;
 	color: 0x363d4c;
 	borderColor: 0xdfdddd;
-	icon: styles/gradient/arrow_down_dark.png;
+	icon: "styles/gradient/arrow_down_dark.png";
 }
 
 RTFView List:over {
@@ -783,7 +788,7 @@ RTFView List:over {
 	backgroundColorGradientEnd: 0x7089b3;
 	borderColor: 0x7d99ca;
 	color: 0xFFFFFF;
-	icon: styles/gradient/arrow_down.png;
+	icon: "styles/gradient/arrow_down.png";
 }
 
 RTFView List:down {
@@ -791,7 +796,7 @@ RTFView List:down {
 	backgroundColorGradientEnd: 0x536f9d;
 	borderColor: 0x5d7fbc;
 	color: 0xFFFFFF;
-	icon: styles/gradient/arrow_down.png;
+	icon: "styles/gradient/arrow_down.png";
 }
 
 RTFView RTFToolButton {
@@ -808,9 +813,9 @@ RTFView RTFToolButton {
 	cornerRadius: 3;
 	borderSize: 1;
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: center;
+	iconPosition: "center";
 }
 
 RTFView RTFToolButton:over {
@@ -826,35 +831,35 @@ RTFView RTFToolButton:down {
 }
 
 RTFView #bold {
-	icon: img/rtfview/edit-bold.png;
+	icon: "img/rtfview/edit-bold.png";
 }
 
 RTFView #italic {
-	icon: img/rtfview/edit-italic.png;
+	icon: "img/rtfview/edit-italic.png";
 }
 
 RTFView #underline {
-	icon: img/rtfview/edit-underline.png;
+	icon: "img/rtfview/edit-underline.png";
 }
 
 RTFView #bullet {
-	icon: img/rtfview/edit-list.png;
+	icon: "img/rtfview/edit-list.png";
 }
 
 RTFView #alignLeft {
-	icon: img/rtfview/edit-alignment-left.png;
+	icon: "img/rtfview/edit-alignment-left.png";
 }
 
 RTFView #alignCenter {
-	icon: img/rtfview/edit-alignment-center.png;
+	icon: "img/rtfview/edit-alignment-center.png";
 }
 
 RTFView #alignRight {
-	icon: img/rtfview/edit-alignment-right.png;
+	icon: "img/rtfview/edit-alignment-right.png";
 }
 
 RTFView #alignJustify {
-	icon: img/rtfview/edit-alignment-justify.png;
+	icon: "img/rtfview/edit-alignment-justify.png";
 }
 
 CalendarView {
@@ -898,9 +903,9 @@ CalendarDay {
 	cornerRadius: 3;
 	borderSize: 1;
 	fontSize: 16;
-	fontName: _sans;
+	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: left;
+	iconPosition: "left";
 }
 
 CalendarDay:over {

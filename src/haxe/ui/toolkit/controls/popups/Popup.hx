@@ -44,6 +44,7 @@ class Popup extends VBox implements IDraggable {
 		}
 		
 		_content = content;
+		_content.popup = this;
 		
 		if (title != null) {
 			_title = new Text();
@@ -61,6 +62,12 @@ class Popup extends VBox implements IDraggable {
 		if (_config == null) {
 			_config = new PopupConfig();
 			_config.addButton(PopupButtonType.OK);
+		}
+		if (_config.id != null) {
+			this.id = _config.id;
+		}
+		if (_config.styleName != null) {
+			this.styleName = _config.styleName;
 		}
 		
 		_fn = fn;
@@ -128,10 +135,7 @@ class Popup extends VBox implements IDraggable {
 			var button:Button = new Button();
 			button.text = "OK";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				PopupManager.instance.hidePopup(this);
-				if (_fn != null) {
-					_fn(PopupButtonType.OK);
-				}
+				clickButton(PopupButtonType.OK);
 			});
 			_buttonBar.addChild(button);
 		}
@@ -139,10 +143,7 @@ class Popup extends VBox implements IDraggable {
 			var button:Button = new Button();
 			button.text = "Yes";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				PopupManager.instance.hidePopup(this);
-				if (_fn != null) {
-					_fn(PopupButtonType.YES);
-				}
+				clickButton(PopupButtonType.YES);
 			});
 			_buttonBar.addChild(button);
 		}
@@ -150,10 +151,7 @@ class Popup extends VBox implements IDraggable {
 			var button:Button = new Button();
 			button.text = "No";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				PopupManager.instance.hidePopup(this);
-				if (_fn != null) {
-					_fn(PopupButtonType.NO);
-				}
+				clickButton(PopupButtonType.NO);
 			});
 			_buttonBar.addChild(button);
 		}
@@ -161,10 +159,7 @@ class Popup extends VBox implements IDraggable {
 			var button:Button = new Button();
 			button.text = "Cancel";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				PopupManager.instance.hidePopup(this);
-				if (_fn != null) {
-					_fn(PopupButtonType.CANCEL);
-				}
+				clickButton(PopupButtonType.CANCEL);
 			});
 			_buttonBar.addChild(button);
 		}
@@ -172,13 +167,16 @@ class Popup extends VBox implements IDraggable {
 			var button:Button = new Button();
 			button.text = "Confirm";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				PopupManager.instance.hidePopup(this);
-				if (_fn != null) {
-					_fn(PopupButtonType.CONFIRM);
-				}
+				clickButton(PopupButtonType.CONFIRM);
 			});
 			_buttonBar.addChild(button);
 		}
 	}
 	
+	public function clickButton(button:Int):Void {
+		PopupManager.instance.hidePopup(this);
+		if (_fn != null) {
+			_fn(button);
+		}
+	}
 }

@@ -35,6 +35,7 @@ class RTFView extends VBox {
 		super();
 		_rtf = new RTF();
 		_rtf.multiline = true;
+		_rtf.wrapLines = true;
 		_rtf.percentWidth = 100;
 		_rtf.percentHeight = 100;
 	}

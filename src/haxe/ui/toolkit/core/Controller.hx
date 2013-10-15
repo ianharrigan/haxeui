@@ -1,6 +1,8 @@
 package haxe.ui.toolkit.core;
 
 import haxe.ds.StringMap;
+import haxe.ui.toolkit.controls.popups.Popup;
+import haxe.ui.toolkit.controls.popups.PopupContent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 
 class Controller {
@@ -9,6 +11,7 @@ class Controller {
 	
 	public var view(get, null):IDisplayObjectContainer;
 	public var root(get, null):Root;
+	public var popup(get, null):Popup;
 	
 	public function new(view:IDisplayObjectContainer) {
 		_view = view;
@@ -63,5 +66,13 @@ class Controller {
 			return null;
 		}
 		return _view.root;
+	}
+	
+	private function get_popup():Popup {
+		var popup:Popup = null;
+		if (Std.is(view.parent, PopupContent)) {
+			popup = cast(view.parent, PopupContent).popup;
+		}
+		return popup;
 	}
 }

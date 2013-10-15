@@ -14,8 +14,9 @@ class CodeSyntax {
 		_defaultFormat = new TextFormat("_typewriter", 13, 0x000000);
 	}
 	
-	public function addRule(regex:String, color:Int):Void {
+	public function addRule(regex:String, color:Int, bold:Bool = false):Void {
 		var f:TextFormat = new TextFormat(_defaultFormat.font, _defaultFormat.size, color);
+		f.bold = bold;
 		_rules.set(regex, f);
 	}	
 	
@@ -23,6 +24,10 @@ class CodeSyntax {
 		var syntax:CodeSyntax = new CodeSyntax();
 		if (id == "haxe") {
 			syntax = new HaxeSyntax();
+		} else if (id == "xml") {
+			syntax = new XMLSyntax();
+		} else if (id == "css") {
+			syntax = new CSSSyntax();
 		}
 		return syntax;
 	}

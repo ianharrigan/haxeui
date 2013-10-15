@@ -44,6 +44,9 @@ class UIProcessor extends XMLProcessor {
 		var c:Component = Type.createInstance(Type.resolveClass(className), []);
 
 		for (attr in config.attributes()) {
+			if (StringTools.startsWith(attr, "xmlns:")) {
+				continue;
+			}
 			if (attr == "width") { // special case for width, want to be able to specify % values
 				var width:Float = 0;
 				var percentWidth:Int = -1;

@@ -3,6 +3,7 @@ package haxe.ui.toolkit.containers;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.Lib;
+import flash.ui.Mouse;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.HProgress;
 import haxe.ui.toolkit.controls.HSlider;
@@ -17,6 +18,7 @@ import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
+import haxe.ui.toolkit.events.ListViewEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
 class ListView extends ScrollView implements IDataComponent {
@@ -25,6 +27,7 @@ class ListView extends ScrollView implements IDataComponent {
 	private var _content:VBox;
 	
 	private var _selectedItems:Array<ListViewItem>;
+	private var _lastSelection:Int = -1;
 	
 	public function new() {
 		super();
@@ -64,6 +67,8 @@ class ListView extends ScrollView implements IDataComponent {
 	public var listSize(get, null):Int;
 	public var itemHeight(get, null):Float;
 	public var selectedItems(get, null):Array<ListViewItem>;
+	public var selectedIndex(get, null):Int;
+	public var content(get, null):Component;
 	
 	private function get_listSize():Int {
 		return _content.children.length;
@@ -74,13 +79,17 @@ class ListView extends ScrollView implements IDataComponent {
 			return 0;
 		}
 		var n:Int = 0;
-		var cy:Float = 0;
+		var cy:Float = _content.layout.padding.top + _content.layout.padding.bottom;
+		var scy:Int = _content.layout.spacingY;
 		for (child in _content.children) {
-			cy += child.height;
+			cy += child.height + scy;
 			n++;
 			if (n > 100) {
 				break;
 			}
+		}
+		if (n > 0) {
+			cy -= scy;
 		}
 		return (cy / n);
 	}
@@ -93,6 +102,22 @@ class ListView extends ScrollView implements IDataComponent {
 		return _selectedItems;
 	}
 
+	private function get_selectedIndex():Int {
+		var index:Int = -1;
+		if (_selectedItems != null && _selectedItems.length > 0) {
+			index = Lambda.indexOf(_content.children, _selectedItems[0]);
+		}
+		return index;
+	}
+	
+	private function get_content():Component {
+		var c:Component = null;
+		if (numChildren > 0) {
+			c = cast(getChildAt(0), Component);
+		}
+		return c;
+	}
+	
 	//******************************************************************************************
 	// IDataComponent
 	//******************************************************************************************
@@ -118,6 +143,7 @@ class ListView extends ScrollView implements IDataComponent {
 		if (_ready == true) {
 			syncUI();
 		}
+		_lastSelection = -1;
 		return value;
 	}
 	
@@ -211,7 +237,14 @@ class ListView extends ScrollView implements IDataComponent {
 	}
 	
 	private function removeListViewItem(index:Int):Void {
-		trace("remove item index = " + index);
+		var item:ListViewItem = cast(_content.getChildAt(index), ListViewItem);
+		var sIndex:Int = Lambda.indexOf(_selectedItems, item);
+		if (sIndex != -1) {
+			_selectedItems.remove(item);
+		}
+		if (item != null) {
+			_content.removeChild(item);
+		}
 	}
 	
 	public function handleListSelection(item:ListViewItem, event:Event):Void {
@@ -247,6 +280,17 @@ class ListView extends ScrollView implements IDataComponent {
 		
 		var event:Event = new Event(Event.CHANGE);
 		dispatchEvent(event);
+	}
+	
+	public function handleClick(item:ListViewItem, event:MouseEvent):Void {
+		var index:Int = Lambda.indexOf(_content.children, item);
+		if (_lastSelection == index) {
+			var event:MouseEvent = new MouseEvent(MouseEvent.DOUBLE_CLICK);
+			dispatchEvent(event);
+			_lastSelection = -1;
+		} else {
+			_lastSelection = index;
+		}
 	}
 	
 	public function isSelected(item:ListViewItem):Bool {
@@ -306,8 +350,8 @@ class ListViewItem extends StateComponent {
 		if (_subControl != null && _subControl.hitTest(event.stageX, event.stageY) == true) {
 			return;
 		}
-
 		_parentList.handleListSelection(this, event);
+		_parentList.handleClick(this, event);
 	}
 	
 	//******************************************************************************************
@@ -389,6 +433,7 @@ class ListViewItem extends StateComponent {
 			_subtextControl = new Text();
 			_subtextControl.id = "subtext";
 			_subtextControl.multiline = true;
+			_subtextControl.wrapLines = true;
 			_subtextControl.autoSize = false;
 			_subtextControl.addStates(this.states);
 			addChild(_subtextControl);
@@ -434,7 +479,7 @@ class ListViewItem extends StateComponent {
 		if (_subControl != null) {
 			removeChild(_subControl);
 		}
-		
+
 		if (value == "button") {
 			_subControl = new Button();
 			_subControl.addEventListener(MouseEvent.CLICK, function(e) {
@@ -615,29 +660,5 @@ private class ListViewItemLayout extends DefaultLayout {
 			component.x = container.width - padding.right - component.width;
 			component.y = (container.height / 2) - (component.height / 2);
 		}
-	}
-}
-
-class ListViewEvent extends Event {
-	public static var COMPONENT_EVENT:String = "ComponentEvent";
-	
-	private var li:ListViewItem;
-	private var c:Component;
-	
-	public var item(get, null):ListViewItem;
-	public var component(get, null):Component;
-	
-	public function new(type:String, listItem:ListViewItem, component:Component) {
-		super(type);
-		li = listItem;
-		c = component;
-	}
-	
-	public function get_item():ListViewItem {
-		return li;
-	}
-	
-	public function get_component():Component {
-		return c;
 	}
 }

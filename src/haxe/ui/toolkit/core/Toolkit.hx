@@ -38,7 +38,7 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 		
-		if (StyleManager.instance.hasStyles == false) {
+		if (StyleManager.instance.hasStyles == false && _useDefaultStyles == true) {
 			StyleManager.instance.addStyles(new DefaultStyles());
 		}
 	}
@@ -135,10 +135,12 @@ class Toolkit {
 	//******************************************************************************************
 	// Animation defaults
 	//******************************************************************************************
+	private static var _useDefaultStyles:Bool = true;
 	private static var _defaultTransition:String = "slide";
 	private static var _transitionRegister:StringMap<String>;
 	
 	public static var defaultTransition(get, set):String;
+	public static var useDefaultStyles(get, set):Bool;	
 	
 	private static function get_defaultTransition():String {
 		return _defaultTransition;
@@ -146,6 +148,15 @@ class Toolkit {
 	
 	private static function set_defaultTransition(value:String):String {
 		_defaultTransition = value;
+		return value;
+	}
+
+	private static function get_useDefaultStyles():Bool {
+		return _useDefaultStyles;
+	}
+	
+	private static function set_useDefaultStyles(value:Bool):Bool {
+		_useDefaultStyles = value;
 		return value;
 	}
 	

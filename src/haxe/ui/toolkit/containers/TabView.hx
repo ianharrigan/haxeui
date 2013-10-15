@@ -44,10 +44,12 @@ class TabView extends Component {
 		} else {
 			r = _stack.addChild(child);
 			var label:String = "";
+			var styleName:String = null;
 			if (Std.is(child, Component)) {
 				label = cast(child, Component).text;
+				styleName = cast(child, Component).styleName;
 			}
-			_tabs.addTab(label);
+			_tabs.addTab(label).styleName = styleName;
 		}
 		return r;
 	}

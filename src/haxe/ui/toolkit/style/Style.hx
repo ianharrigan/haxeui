@@ -88,7 +88,6 @@ class Style {
 	
 	public function new(defaults:Dynamic = null) {
 		for (field in Reflect.fields(defaults)) {
-			trace(field);
 			if (Reflect.getProperty(this, "set_" + field) != null) {
 				Reflect.setProperty(this, field, Reflect.field(defaults, field));
 			}

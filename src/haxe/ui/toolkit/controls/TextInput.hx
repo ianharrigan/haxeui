@@ -139,12 +139,14 @@ class TextInput extends StateComponent {
 	 Sets the currently selected text (if available) to the specified text format
 	 **/
 	public var selectedTextFormat(get, null):TextFormat;
+	public var wrapLines(get, set):Bool;
 	
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
 	}
 	
 	private function set_multiline(value:Bool):Bool {
+		_textDisplay.wrapLines = value;
 		_textDisplay.multiline = value;
 		return value;
 	}
@@ -170,6 +172,15 @@ class TextInput extends StateComponent {
 	private function get_selectedTextFormat():TextFormat {
 		var tf:TextField = cast(_textDisplay.display, TextField);
 		return tf.getTextFormat(selectionBeginIndex - 1, selectionEndIndex);
+	}
+	
+	private function get_wrapLines():Bool {
+		return _textDisplay.wrapLines;
+	}
+	
+	private function set_wrapLines(value:Bool):Bool {
+		_textDisplay.wrapLines = value;
+		return value;
 	}
 	
 	//******************************************************************************************

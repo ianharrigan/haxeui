@@ -105,8 +105,10 @@ class StyleHelper {
 			} else {
 				var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
 				var bitmapData:BitmapData = getBitmapSection(style.backgroundImage, backgroundImageRect);
-				rects.set("middle", new Rectangle(0, 0, bitmapData.width, bitmapData.height));
-				paintCompoundBitmap(g, style.backgroundImage, backgroundImageRect, rects, rc);
+				if (bitmapData != null) {
+					rects.set("middle", new Rectangle(0, 0, bitmapData.width, bitmapData.height));
+					paintCompoundBitmap(g, style.backgroundImage, backgroundImageRect, rects, rc);
+				}
 			}
 		}
 	}
@@ -255,6 +257,10 @@ class StyleHelper {
 	}
 	
 	private static function getBitmapSection(resourceId:String, rc:Rectangle = null):BitmapData {
+		if (resourceId == null || resourceId.length == 0) {
+			return null;
+		}
+		
 		if (sectionCache == null) {
 			sectionCache = new StringMap<BitmapData>();
 		}

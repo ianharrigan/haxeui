@@ -2,7 +2,7 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
-import haxe.ui.events.MenuEvent;
+import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 
@@ -12,8 +12,6 @@ class Menu extends VBox {
 	private var _currentSubMenu:Menu;
 	private var _parentMenu:Menu;
 
-	public static var currentMenu:Menu;
-	
 	public function new() {
 		super();
 		_subMenus = new Map<MenuItem, Menu>();

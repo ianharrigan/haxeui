@@ -42,10 +42,4 @@ class Styles {
 	private function get_rules():Iterator<String> {
 		return _styleRules.iterator();
 	}
-	
-	public function dump():Void {
-		for (rule in _styleRules) {
-			trace(rule + ":" + _styles.get(rule));
-		}
-	}
 }

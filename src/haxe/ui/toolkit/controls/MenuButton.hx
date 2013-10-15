@@ -1,10 +1,13 @@
 package haxe.ui.toolkit.controls;
+
 import flash.events.MouseEvent;
-import haxe.ui.events.MenuEvent;
+import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 
 class MenuButton extends Button {
 	private var _menu:Menu;
+	
+	private static var _currentMenuButton:MenuButton;
 	
 	public function new() {
 		super();
@@ -38,20 +41,30 @@ class MenuButton extends Button {
 		return r;
 	}
 	
+	private override function _onMouseOver(event:MouseEvent):Void {
+		super._onMouseOver(event);
+		if (_currentMenuButton != null && _currentMenuButton != this) {
+			_currentMenuButton.hideMenu();
+			this.showMenu();
+		}
+	}
+	
 	private override function _onMouseClick(event:MouseEvent):Void {
 		if (root.indexOfChild(_menu) == -1) {
-			selected = true;
-			_menu.x = this.stageX - root.stageX;
-			_menu.y = this.stageY + this.height - root.stageY;
-			root.addChild(_menu);
-			root.addEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
+			showMenu();
 		} else {
-			selected = false;
-			root.removeChild(_menu, false);
-			_menu.hideSubMenus();
-			root.removeEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
-
+			hideMenu();
 		}
+	}
+	
+	private override function set_selected(value:Bool):Bool {
+		_selected = value;
+		if (_selected == true) {
+			state = Button.STATE_DOWN;
+		} else {
+			state = Button.STATE_NORMAL;
+		}
+		return value;
 	}
 	
 	private function _onRootMouseDown(event:MouseEvent):Void {
@@ -73,19 +86,30 @@ class MenuButton extends Button {
 			}
 		}
 		if (_menu != null && mouseIn == false) {
-			selected = false;
-			root.removeChild(_menu, false);
-			_menu.hideSubMenus();
-			root.removeEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
+			hideMenu();
 		}
 	}
 	
 	private function _onMenuSelect(event:MenuEvent):Void {
+		hideMenu();
+		var e:MenuEvent = new MenuEvent(event.menuItem);
+		dispatchEvent(e);
+	}
+
+	private function showMenu():Void {
+		selected = true;
+		_menu.x = this.stageX - root.stageX;
+		_menu.y = this.stageY + this.height - root.stageY;
+		root.addChild(_menu);
+		root.addEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
+		_currentMenuButton = this;
+	}
+	
+	private function hideMenu():Void {
 		selected = false;
 		root.removeChild(_menu, false);
 		_menu.hideSubMenus();
 		root.removeEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
-		var e:MenuEvent = new MenuEvent(event.menuItem);
-		dispatchEvent(e);
+		_currentMenuButton = null;
 	}
 }

@@ -8,12 +8,76 @@ class Macros {
 		var contents:String = sys.io.File.getContent(resourcePath);
 		var code:String = "function() {\n";
 		var arr:Array<String> = contents.split("}");
+		
 		for (s in arr) {
-			code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + s + "}\");\n";
-			code += "\thaxe.ui.toolkit.style.StyleManager.instance.addStyles(styles);\n";
+			if (StringTools.trim(s).length > 0) {
+				var n:Int = s.indexOf("{");
+				var rule:String = StringTools.trim(s.substring(0, n));
+				var style:String = s.substring(n + 1, s.length);
+				style = StringTools.replace(style, "\"", "\\\"");
+				code += "\tMacros.addStyle(\"" + rule + "\", \"" + style + "\");\n";
+			}
 		}
-		//code += "\tvar styles:haxe.ui.toolkit.style.Styles = haxe.ui.toolkit.style.StyleParser.fromString(\"" + contents + "\");\n";
-		//code += "\tstyles.dump();\n";
+		code += "}()\n";
+		//trace(code);
+		return Context.parseInlineString(code, Context.currentPos());
+	}
+	
+	macro public static function addStyle(rule:String, style:String):Expr {
+		var code:String = "function() {\n";
+		
+		code += "\tvar style:haxe.ui.toolkit.style.Style = new haxe.ui.toolkit.style.Style({\n";
+		var styles:Array<String> = style.split(";");
+		for (styleData in styles) {
+			styleData = StringTools.trim(styleData);
+			if (styleData.length > 0) {
+				var props:Array<String> = styleData.split(":");
+				var propName:String = StringTools.trim(props[0]);
+				var propValue:String = StringTools.trim(props[1]);
+				
+				if (propName == "width" && propValue.indexOf("%") != -1) { // special case for width
+					propName = "percentWidth";
+					propValue = propValue.substr(0, propValue.length - 1);
+				} else if (propName == "height" && propValue.indexOf("%") != -1) { // special case for height
+					propName = "percentHeight";
+					propValue = propValue.substr(0, propValue.length - 1);
+				} else if (propName == "filter") {
+					var filterParams = "";
+					var n:Int = propValue.indexOf("(");
+					if (n != -1) {
+						filterParams = propValue.substring(n + 1, propValue.length - 1);
+					}
+					if (StringTools.startsWith(propValue, "dropShadow")) {
+						propValue = "new flash.filters.DropShadowFilter(" + filterParams + ")";
+					} else if (StringTools.startsWith(propValue, "blur")) {
+						propValue = "new flash.filters.BlurFilter(" + filterParams + ")";
+					} else if (StringTools.startsWith(propValue, "glow")) {
+						propValue = "new flash.filters.GlowFilter(" + filterParams + ")";
+					} else {
+						propValue = "null";
+					}
+				} else if (propName == "backgroundImageScale9") {
+					var coords:Array<String> = propValue.split(",");
+					var x1:Int = Std.parseInt(coords[0]);
+					var y1:Int = Std.parseInt(coords[1]);
+					var x2:Int = Std.parseInt(coords[2]);
+					var y2:Int = Std.parseInt(coords[3]);
+					propValue = "new flash.geom.Rectangle(" + x1 + "," + y1 + "," + (x2 - x1) + "," + (y2 - y1) + ")";
+				} else if (propName == "backgroundImageRect") {
+					var arr:Array<String> = propValue.split(",");
+					propValue = "new flash.geom.Rectangle(" + Std.parseInt(arr[0]) + "," + Std.parseInt(arr[1]) + "," + Std.parseInt(arr[2]) + "," + Std.parseInt(arr[3]) + ")";
+				}
+				
+				if (StringTools.startsWith(propValue, "#")) { // lazyness
+					propValue = "0x" + propValue.substr(1, propValue.length - 1);
+				}
+				
+				code += "\t\t" + propName + ":" + propValue + ",\n";
+			}
+		}
+		code += "\t});\n";
+		code += "\thaxe.ui.toolkit.style.StyleManager.instance.addStyle(\"" + rule + "\", style);\n";
+				
 		code += "}()\n";
 		return Context.parseInlineString(code, Context.currentPos());
 	}

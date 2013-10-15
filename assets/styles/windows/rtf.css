@@ -6,59 +6,59 @@ RTFView RTFToolButton {
 	width: 32;
 	height: 100%;
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 	color: 0x000000;
 	paddingLeft: 5;
 	paddingTop: 2;
 	paddingBottom: 2;
 	paddingRight: 5;
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
-	iconPosition: center;
-	labelPosition: center;
+	iconPosition: "center";
+	labelPosition: "center";
 }
 
 RTFView RTFToolButton:over {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
 
 RTFView RTFToolButton:down {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }
 
 RTFView #bold {
-	icon: img/rtfview/edit-bold.png;
+	icon: "img/rtfview/edit-bold.png";
 }
 
 RTFView #italic {
-	icon: img/rtfview/edit-italic.png;
+	icon: "img/rtfview/edit-italic.png";
 }
 
 RTFView #underline {
-	icon: img/rtfview/edit-underline.png;
+	icon: "img/rtfview/edit-underline.png";
 }
 
 RTFView #bullet {
-	icon: img/rtfview/edit-list.png;
+	icon: "img/rtfview/edit-list.png";
 }
 
 RTFView #alignLeft {
-	icon: img/rtfview/edit-alignment-left.png;
+	icon: "img/rtfview/edit-alignment-left.png";
 }
 
 RTFView #alignCenter {
-	icon: img/rtfview/edit-alignment-center.png;
+	icon: "img/rtfview/edit-alignment-center.png";
 }
 
 RTFView #alignRight {
-	icon: img/rtfview/edit-alignment-right.png;
+	icon: "img/rtfview/edit-alignment-right.png";
 }
 
 RTFView #alignJustify {
-	icon: img/rtfview/edit-alignment-justify.png;
+	icon: "img/rtfview/edit-alignment-justify.png";
 }

@@ -20,6 +20,10 @@ class Code extends TextInput {
 		super();
 		multiline = true;
 		_textDisplay.wrapLines = false;
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		#if flash
+			tf.alwaysShowSelection = true;
+		#end
 		_syntax = CodeSyntax.getSyntax("");
 	}
 	
@@ -41,10 +45,12 @@ class Code extends TextInput {
 	}
 	
 	private override function set_text(value:String):String {
-		value = super.set_text(value);
-		value = StringTools.replace(value, "\t", "    ");
-		super.set_text(value);
-		applyRules();
+		if (value != null) {
+			value = super.set_text(value);
+			value = StringTools.replace(value, "\t", "    ");
+			super.set_text(value);
+			applyRules();
+		}
 		return value;
 	}
 	

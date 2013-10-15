@@ -3,7 +3,7 @@ ListView {
 	paddingRight: 2;
 	paddingBottom: 2;
 	paddingTop: 2;
-	backgroundImage: styles/windows/container.png;
+	backgroundImage: "styles/windows/container.png";
 	backgroundImageScale9: 2,2,4,4;
 	backgroundImageRect: 0,0,6,6;
 }
@@ -23,7 +23,7 @@ ListView VBox {
 ListViewItem {
 	backgroundColor: 0xFFFFFF;
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 	paddingLeft: 2;
 	paddingTop: 2;
 	paddingRight: 2;
@@ -31,14 +31,14 @@ ListViewItem {
 }
 
 ListViewItem:over {
-	backgroundImage: styles/windows/listview.png;
+	backgroundImage: "styles/windows/listview.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 	color: 0x000000;
 }
 
 ListViewItem:selected {
-	backgroundImage: styles/windows/listview.png;
+	backgroundImage: "styles/windows/listview.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
@@ -50,28 +50,28 @@ ListViewItem #subtext {
 
 List, Date {
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 	color: 0x000000;
 	paddingLeft: 5;
 	paddingTop: 2;
 	paddingBottom: 2;
 	paddingRight: 5;
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
-	icon: styles/windows/glyphs/down_arrow.png;
-	iconPosition: farRight;
-	labelPosition: left;
+	icon: "styles/windows/glyphs/down_arrow.png";
+	iconPosition: "farRight";
+	labelPosition: "left";
 }
 
 List:over, Date:over {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
 
 List:down, Date:down {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }

@@ -30,6 +30,10 @@ class ResourceManager {
 	}
 	
 	public function getBitmapData(resourceId:String, locale:String = null):BitmapData {
+		if (resourceId == null || resourceId.length == 0) {
+			return null;
+		}
+		
 		var bmp:BitmapData = Assets.getBitmapData(resourceId, false);
 		return bmp;
 	}

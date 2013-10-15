@@ -39,6 +39,7 @@ class Client {
 	}
 
 	private function get_platform():String {
+		#if air return "air"; #end
 		#if flash return "flash"; #end
 		#if html5 return "html5"; #end
 		#if windows return "windows"; #end
@@ -50,6 +51,7 @@ class Client {
 	}
 
 	private function get_target():String {
+		#if air return "air"; #end
 		#if flash return "flash"; #end
 		#if html5 return "html5"; #end
 		#if cpp return "cpp"; #end

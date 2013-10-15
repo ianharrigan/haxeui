@@ -1,4 +1,4 @@
-package haxe.ui.events;
+package haxe.ui.toolkit.events;
 
 import flash.events.Event;
 import haxe.ui.toolkit.controls.MenuItem;

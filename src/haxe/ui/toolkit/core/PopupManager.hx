@@ -32,12 +32,15 @@ class PopupManager {
 	}
 	
 	public function showSimple(root:Root, text:String, title:String = null, config:Dynamic = PopupButtonType.OK, fn:Dynamic->Void = null):Popup {
-		var p:Popup = new Popup(title, new SimplePopupContent(text), getPopupConfig(config), fn);
+		var popupConfig:PopupConfig = getPopupConfig(config);
+		var p:Popup = new Popup(title, new SimplePopupContent(text), popupConfig, fn);
 		
 		p.root = root;
 		p.visible = false;
 		centerPopup(p);
-		root.showModalOverlay();
+		if (popupConfig.modal == true) {
+			root.showModalOverlay();
+		}
 		root.addChild(p);
 		showPopup(p);
 		
@@ -45,12 +48,15 @@ class PopupManager {
 	}
 	
 	public function showCustom(root:Root, display:IDisplayObject, title:String = null, config:Dynamic = PopupButtonType.CONFIRM, fn:Dynamic->Void = null):Popup {
-		var p:Popup = new Popup(title, new CustomPopupContent(display), getPopupConfig(config), fn);
+		var popupConfig:PopupConfig = getPopupConfig(config);
+		var p:Popup = new Popup(title, new CustomPopupContent(display), popupConfig, fn);
 
 		p.root = root;
 		p.visible = false;
 		centerPopup(p);
-		root.showModalOverlay();
+		if (popupConfig.modal == true) {
+			root.showModalOverlay();
+		}
 		root.addChild(p);
 		showPopup(p);
 		
@@ -183,6 +189,8 @@ class PopupManager {
 			if (n & PopupButtonType.CONFIRM == PopupButtonType.CONFIRM) {
 				conf.addButton(PopupButtonType.CONFIRM);
 			}
+		} else if (Std.is(config, PopupConfig)) {
+			conf = cast(config, PopupConfig);
 		}
 		return conf;
 	}
@@ -190,6 +198,9 @@ class PopupManager {
 
 class PopupConfig {
 	public var buttons:Array<PopupButtonConfig>;
+	public var id:String;
+	public var styleName:String;
+	public var modal:Bool = true;
 	
 	public function new() {
 		buttons = new Array<PopupButtonConfig>();

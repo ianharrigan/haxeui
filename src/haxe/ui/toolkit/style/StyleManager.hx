@@ -32,6 +32,9 @@ class StyleManager {
 	private var stylesBuiltFor:Map<String, Int>;
 	
 	public var hasStyles(get, null):Bool;
+
+	private var _cacheStyles:Bool = true;
+	private var _cachedStyles:Map<String, Style>;
 	
 	public function new() {
 		_styles = new StringMap<StyleRule>();
@@ -40,9 +43,14 @@ class StyleManager {
 	}
 	
 	public function addStyle(rule:String, style:Style):Void {
-		var styleRule:StyleRule = new StyleRule(rule, style);
-		_styles.set(rule, styleRule);
-		_rules.push(rule);
+		_cachedStyles = null;
+		var arr:Array<String> = rule.split(",");
+		for (a in arr) {
+			a = StringTools.trim(a);
+			var styleRule:StyleRule = new StyleRule(a, style);
+			_styles.set(a, styleRule);
+			_rules.push(a);
+		}
 	}
 	
 	public function addStyles(styles:Styles):Void {
@@ -183,6 +191,17 @@ class StyleManager {
 			state = null;
 		}
 		
+		var cacheKey:String = null;
+		if (_cacheStyles == true) {
+			cacheKey = buildFullCacheKey(c, state);
+			if (_cachedStyles == null) {
+				_cachedStyles = new Map<String, Style>();
+			}
+			if (_cachedStyles.get(cacheKey) != null) {
+				return _cachedStyles.get(cacheKey);
+			}
+		}
+		
 		var style:Style = new Style();
 		style.autoApply = false;
 		
@@ -223,9 +242,55 @@ class StyleManager {
 		n++;
 		stylesBuiltFor.set(className, n);
 		
+		if (_cacheStyles == true && cacheKey != null) {
+			_cachedStyles.set(cacheKey, style);
+		}
+		
 		style.target = c;
 		style.autoApply = true;
 		return style;
+	}
+	
+	private function buildCacheKey(c:IDisplayObjectContainer, state:String = null):String {
+		if (state == "normal") {
+			state = null;
+		}
+		
+		var className:String = Type.getClassName(Type.getClass(c));
+		var n:Int = className.lastIndexOf(".");
+		className = className.substr(n + 1, className.length);
+
+		var id:String = c.id;
+		var styleName:String = null;
+		if (Std.is(c, IStyleable)) {
+			styleName = cast(c, IStyleable).styleName;
+		}
+		
+		var s:String = className;
+		if (id != null) {
+			s += "#" + id;
+		}
+		if (styleName != null) {
+			s += "." + styleName;
+		}
+		if (state != null) {
+			s += ":" + state;
+		}
+		return s;
+	}
+	
+	private function buildFullCacheKey(c:IDisplayObjectContainer, state:String = null):String {
+		if (state == "normal") {
+			state = null;
+		}
+		
+		var key:String = buildCacheKey(c, state);
+		var p:IDisplayObjectContainer = c.parent;
+		while (p != null) {
+			key += ">" + buildCacheKey(p, null);
+			p = p.parent;
+		}
+		return key;
 	}
 	
 	public function dump():Void {

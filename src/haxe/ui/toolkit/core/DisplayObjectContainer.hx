@@ -7,6 +7,8 @@ import haxe.ui.toolkit.core.interfaces.ILayout;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
+import haxe.CallStack;
+
 class DisplayObjectContainer extends DisplayObject implements IDisplayObjectContainer {
 	private var _children:Array<IDisplayObject>;
 	
@@ -67,7 +69,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	}
 	
 	public function indexOfChild(child:IDisplayObject):Int {
-		var index:Int = Lambda.indexOf(_children, child);
+		var index:Int = std.Lambda.indexOf(_children, child);
 		return index;
 	}
 	
@@ -152,6 +154,13 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return child;
 	}
 	
+	public function removeAllChildren():Void {
+		while (_children.length > 0) {
+			var child:IDisplayObject = _children[0];
+			removeChild(child);
+		}
+	}
+	
 	public function findChildAs<T>(type:Class<T>):Null<T> {
 		var match:Component = null;
 		for (child in children) {
@@ -202,7 +211,9 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			try {
 				removeChild(child);
 			} catch (e:Dynamic) {
-				trace("problem removing component: " + this + ", " + child + "(" + e + ")");
+				var stack:Array<haxe.StackItem> = CallStack.exceptionStack();
+				trace("Problem removing component: " + this + ", " + child + "(" + e + "), callstack:");
+				trace(CallStack.toString(stack));
 			}
 		}
 		super.dispose();

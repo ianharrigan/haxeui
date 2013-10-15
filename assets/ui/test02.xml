@@ -61,7 +61,7 @@
 		<ui:button text="Menubar Button" />
 		<ui:spacer width="100%" />
 		<selection:list text="Select Style" id="styleList">
-			<data:array>Gradient, Gradient Mobile, Windows</data:array>
+			<data:array>Gradient, Gradient Mobile, Windows, Default</data:array>
 		</selection:list>
 	</ui:menubar>
 	

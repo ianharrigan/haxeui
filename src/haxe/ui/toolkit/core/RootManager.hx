@@ -7,7 +7,7 @@ import haxe.ui.toolkit.core.Root;
 class RootManager {
 	private static var _instance:RootManager;
 	public static var instance(get_instance, null):RootManager;
-	public static function get_instance():RootManager {
+	private static function get_instance():RootManager {
 		if (_instance == null) {
 			_instance = new RootManager();
 		}
@@ -34,7 +34,7 @@ class RootManager {
 		root.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			if (fn != null) {
 				#if ios
-					haxe.Timer.delay(fn(root), 100); // iOS 6
+					haxe.Timer.delay(function() fn(root), 100); // iOS 6
 				#else
 					fn(root);
 				#end
@@ -72,5 +72,10 @@ class RootManager {
 		for (root in _roots) {
 			destroyRoot(root);
 		}
+	}
+	
+	public var roots(get, null):Array<Root>;
+	public function get_roots():Array<Root> {
+		return _roots;
 	}
 }

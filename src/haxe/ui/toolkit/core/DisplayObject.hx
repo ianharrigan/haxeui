@@ -31,7 +31,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public function new() {
 		_sprite = new Sprite();
 		_sprite.tabChildren = false;
-		addEventListener(Event.ADDED_TO_STAGE, _onAddedToStage);
+		addEventListener(Event.ADDED_TO_STAGE, _onAddedToStage, false, 100);
 	}
 
 	//******************************************************************************************
@@ -48,7 +48,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	//******************************************************************************************
 	private function _onAddedToStage(event:Event):Void {
 		removeEventListener(Event.ADDED_TO_STAGE, _onAddedToStage);
-		
+
 		preInitialize();
 		_ready = true;
 		initialize();

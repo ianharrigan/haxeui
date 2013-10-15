@@ -36,6 +36,9 @@ class StyleParser {
 						propValue += ":" + StringTools.trim(temp[2]);
 					}
 					
+					propValue = StringTools.replace(propValue, "\"", "");
+					propValue = StringTools.replace(propValue, "'", "");
+					
 					if (propName == "width" && propValue.indexOf("%") != -1) { // special case for width
 						propName = "percentWidth";
 						propValue = propValue.substr(0, propValue.length - 1);

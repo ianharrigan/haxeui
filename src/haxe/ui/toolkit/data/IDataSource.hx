@@ -14,5 +14,6 @@ interface IDataSource {
 	public function add(o:Dynamic):Bool;
 	public function update(o:Dynamic):Bool;
 	public function remove():Bool;
+	public function removeAll():Void;
 	public function hash():String;
 }

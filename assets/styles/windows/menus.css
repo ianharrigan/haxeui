@@ -1,0 +1,33 @@
+Menu {
+	spacingX: 0;
+	spacingY: 0;
+	padding: 3;
+	backgroundImage: "styles/windows/container.png";
+	backgroundImageScale9: 2,2,4,4;
+	backgroundImageRect: 0,0,6,6;
+	width: 150;
+	filter: dropShadow(1, 45, 0x808080, 1, 2, 2, 1, 3);
+}
+
+MenuItem {
+	width: 100%;
+	labelPosition: "left";
+	iconPosition: "farRight";
+	filter: null;
+	borderSize: 0;
+	backgroundColor: 0xFFFFFF;
+	color: 0x000000;
+	backgroundImage: "";
+}
+
+MenuItem:over, MenuItem:down {
+	backgroundImage: "styles/windows/listview.png";
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 0,0,20,20;
+	color: 0x000000;
+}
+
+MenuItem.expandable {
+	icon: "styles/windows/glyphs/right_arrow.png";
+}
+

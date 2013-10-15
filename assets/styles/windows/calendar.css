@@ -29,45 +29,45 @@ Calendar {
 
 CalendarDay {
 	fontSize: 13;
-	fontName: _sans;
+	fontName: "_sans";
 	color: 0x000000;
 	paddingLeft: 5;
 	paddingTop: 2;
 	paddingBottom: 2;
 	paddingRight: 5;
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
-	iconPosition: left;
-	labelPosition: center;
+	iconPosition: "left";
+	labelPosition: "center";
 }
 
 CalendarDay:over {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
 
 CalendarDay:down {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }
 
 Calendar #selectedDay {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }
 
 Calendar #selectedDay:over {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }
 
 Calendar #selectedDay:down {
-	backgroundImage: styles/windows/button.png;
+	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;
 }

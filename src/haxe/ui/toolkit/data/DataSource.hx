@@ -107,6 +107,14 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 		return b;
 	}
 	
+	public function removeAll():Void {
+		if (moveFirst()) {
+			do {
+				remove();
+			} while (moveFirst());
+		}
+	}
+	
 	public function hash():String {
 		var o:Dynamic = get();
 		if (o == null) {

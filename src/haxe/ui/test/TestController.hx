@@ -2,7 +2,8 @@ package haxe.ui.test;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
-import haxe.ui.events.MenuEvent;
+import haxe.ui.toolkit.events.ListViewEvent;
+import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.containers.Stack;
@@ -26,6 +27,7 @@ import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.Main;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.controls.Progress;
+import haxe.ui.toolkit.style.DefaultStyles;
 import haxe.ui.toolkit.style.StyleManager;
 
 class TestController extends XMLController {
@@ -39,6 +41,8 @@ class TestController extends XMLController {
 
 		attachEvent("menu1", MenuEvent.SELECT, function(e:MenuEvent) {
 			trace(e.menuItem.id);
+			var mainTabs:TabView = getComponentAs("mainTabs", TabView);
+			mainTabs.selectedIndex = 3;
 		});
 		
 		attachEvent("perfButton", MouseEvent.CLICK, function(e) {
@@ -47,7 +51,8 @@ class TestController extends XMLController {
 			b.text = "bbbbbbbbbbbbbbbbbbbbbb";
 			var mainTabs:TabView = getComponentAs("mainTabs", TabView);
 			mainTabs.setTabText(0, "xxxxxxxxxxxxxxxxxxxxxxxxxxx");
-			mainTabs.invalidate();
+			//mainTabs.invalidate();
+			mainTabs.selectedIndex = 2;
 			/*
 			var b:Button = getComponentAs("perfButton", Button);
 			for (x in 0...354) {
@@ -92,7 +97,7 @@ class TestController extends XMLController {
 		attachEvent("showCalendarPopup", MouseEvent.CLICK, function(e) {
 			PopupManager.instance.showCalendar(root, "Select Date");
 		});
-		
+
 		attachEvent("theList", ListViewEvent.COMPONENT_EVENT, function (e:ListViewEvent) {
 			if (Std.is(e.component, Button)) {
 				PopupManager.instance.showSimple(root, "You clicked: " + e.component.text + "!", "Alert!");
@@ -122,6 +127,9 @@ class TestController extends XMLController {
 				Macros.addStyleSheet("assets/styles/windows/rtf.css");
 				Macros.addStyleSheet("assets/styles/windows/calendar.css");
 				Macros.addStyleSheet("assets/styles/windows/popups.css");
+				Macros.addStyleSheet("assets/styles/windows/menus.css");
+			} else if (style == "default") {
+				StyleManager.instance.addStyles(new DefaultStyles());
 			}
 			Toolkit.openFullscreen(function(root:Root) {
 				root.addChild(new TestController().view);

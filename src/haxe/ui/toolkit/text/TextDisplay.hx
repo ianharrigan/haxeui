@@ -131,7 +131,6 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_multiline(value:Bool):Bool {
 		_tf.multiline = value;
-		_tf.wordWrap = value;
 		return value;
 	}
 	
