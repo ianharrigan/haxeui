@@ -191,6 +191,14 @@ class Button extends StateComponent implements IFocusable {
 		return [STATE_NORMAL, STATE_OVER, STATE_DOWN];
 	}
 	
+	private override function set_state(value:String):String {
+		super.set_state(value);
+		if (value == STATE_DOWN) {
+			_down = true;
+		}
+		return value;
+	}
+	
 	//******************************************************************************************
 	// IFocusable
 	//******************************************************************************************

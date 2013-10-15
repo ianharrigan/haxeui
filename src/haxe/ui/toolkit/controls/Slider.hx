@@ -21,6 +21,8 @@ class Slider extends Progress {
 	public function new() {
 		super();
 		
+		_valueBgComp.sprite.buttonMode = true;
+		_valueBgComp.sprite.useHandCursor = true;
 	}
 	
 	//******************************************************************************************
@@ -36,6 +38,7 @@ class Slider extends Progress {
 		addChild(_thumb);
 		
 		addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
+		addEventListener(MouseEvent.MOUSE_DOWN, _onBackgroundMouseDown);
 	}
 	
 	//******************************************************************************************
@@ -51,6 +54,13 @@ class Slider extends Progress {
 		_mouseDownOffset = -1;
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
+	}
+	
+	private function _onBackgroundMouseDown(event:MouseEvent):Void {
+	}
+	
+	private function calcPosFromCoord(coord:Float):Float {
+		return 0;
 	}
 	
 	private function _onMouseWheel(event:MouseEvent):Void {
