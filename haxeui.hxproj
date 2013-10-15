@@ -25,7 +25,7 @@
     <option flashStrict="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;-xml docs/haxe-ui-toolkit.xml&#xA;-resource assets/ui/test01.xml@ui/test01.xml&#xA;-resource assets/ui/test02.xml@ui/test02.xml&#xA;-resource assets/data/data.xml@data/data.xml&#xA;--macro allowPackage(&quot;flash&quot;)" />
+    <option additional="--no-output&#xA;-dce std&#xA;--macro allowPackage(&quot;flash&quot;)" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

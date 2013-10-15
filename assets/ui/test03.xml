@@ -1,7 +1,0 @@
-		<ui:listview width="50%" height="200" id="theList">
-			<data:json>
-				[
-					{"text": "Item 1"}
-				]
-			</data:json>
-		</ui:listview>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ui:hbox>
-	<ui:button text="Imported 1" />
-	<ui:button text="Imported 2" />
-	<ui:button text="Toggle" toggle="true" selected="true" />
-</ui:hbox>

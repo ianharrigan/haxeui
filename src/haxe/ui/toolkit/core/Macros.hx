@@ -5,6 +5,17 @@ import haxe.macro.Expr;
 
 class Macros {
 	macro public static function addStyleSheet(resourcePath:String):Expr {
+		if (sys.FileSystem.exists(resourcePath) == false) {
+			var paths:Array<String> = Context.getClassPath();
+			for (path in paths) {
+				path = path + "/" + resourcePath;
+				if (sys.FileSystem.exists(path)) {
+					resourcePath = path;
+					break;
+				}
+			}
+		}
+		
 		var contents:String = sys.io.File.getContent(resourcePath);
 		var code:String = "function() {\n";
 		var arr:Array<String> = contents.split("}");

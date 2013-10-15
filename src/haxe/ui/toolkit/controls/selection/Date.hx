@@ -36,6 +36,7 @@ class Date extends Button {
 	
 	private override function initialize():Void {
 		super.initialize();
+		autoSize = false;
 	}
 	
 	private override function _onMouseClick(event:MouseEvent):Void {

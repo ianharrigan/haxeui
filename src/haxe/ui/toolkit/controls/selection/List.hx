@@ -59,6 +59,11 @@ class List extends Button implements IDataComponent {
 		}
 	}
 	
+	private override function initialize():Void {
+		super.initialize();
+		autoSize = false;
+	}
+	
 	private override function _onMouseClick(event:MouseEvent):Void {
 		super._onMouseClick(event);
 		if (_list == null || _list.visible == false) {

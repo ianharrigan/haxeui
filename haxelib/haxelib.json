@@ -1,0 +1,14 @@
+{
+    "name"         : "haxeui",
+    "url"          : "https://github.com/ianharrigan/haxeui",
+    "license"      : "MIT",
+    "tags"         : ["rich", "ui"],
+    "description"  : "Styleable application centric rich UI",
+    "version"      : "0.1",
+    "contributors" : ["Ian Harrigan"],
+    "dependencies" : {
+        "openfl"        : "",
+        "actuate"       : "",
+        "hscript"       : ""
+    }
+}
