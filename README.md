@@ -16,12 +16,12 @@ Instructions
 -------------------------
 First install haxeui via haxelib:
 ```
-	haxelib install haxeui
+haxelib install haxeui
 ```
 
 Once installed add 
 ```
-	<haxelib name="haxeui" />
+<haxelib name="haxeui" />
 ```
 to your openfl application.xml. Finally, create a basic application with:
 	
@@ -42,6 +42,8 @@ class Main {
 	}
 }
 ```
+
+Note: haxeui comes with some styles ready for use, if no styles are added a default one is used.
 
 Components
 -------------------------
