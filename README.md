@@ -28,6 +28,7 @@ General components
 - List selection (drop downs, popup lists)
 - Date selection (drop downs, popup calendar)
 - Calendar 
+- Menus
 
 Extended components
 
