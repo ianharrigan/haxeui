@@ -12,6 +12,37 @@ Cross platfrom Haxe/OpenFL set of styleable application centric rich UI componen
 
 <a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a>
 
+Instructions
+-------------------------
+First install haxeui via haxelib:
+```
+	haxelib install haxeui
+```
+
+Once installed add 
+```
+	<haxelib name="haxeui" />
+```
+to your openfl application.xml. Finally, create a basic application with:
+	
+```haxe
+import haxe.ui.toolkit.core.Macros;
+import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.core.Root;
+
+class Main {
+	public static function main() {
+		Macros.addStyleSheet("styles/gradient/gradient.css");
+		Toolkit.init();
+		Toolkit.openFullscreen(function(root:Root) {
+			var button:Button = new Button();
+			button.text = "HaxeUI!";
+			root.addChild(button);
+		});
+	}
+}
+```
+
 Components
 -------------------------
 General components
