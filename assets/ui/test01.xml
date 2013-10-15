@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:listview width="200" height="100%">
-	<data:array>
-		Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10,
-		Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10,
-		Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10,
-		Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10,
-		Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
-	</data:array>
-</ui:listview>
+		<ui:vbox text="Scrolls">
+			<ui:hbox>
+				<ui:vscroll />
+				<ui:vscroll height="200" />
+				<ui:vscroll width="30" height="200" />
+				
+				<ui:scrollview width="200" height="200">
+					<ui:image resource="img/slinky.jpg" />
+				</ui:scrollview>
+				
+				<ui:vprogress pos="25" />
+				<ui:vprogress height="200" pos="75" />
+				<ui:vprogress width="30" height="200" pos="50" />
+
+				<ui:vslider pos="25" />
+				<ui:vslider height="200" pos="75" />
+				<ui:vslider width="30" height="200" pos="50" />
+				
+			</ui:hbox>
+			
+			<ui:hscroll />
+			<ui:hscroll width="200" />
+			<ui:hscroll width="200" height="30" />
+			
+			<ui:hprogress pos="25" />
+			<ui:hprogress width="200" pos="75" />
+			<ui:hprogress width="200" height="30" pos="50" />
+			
+			<ui:hslider pos="25" />
+			<ui:hslider width="200" pos="75" />
+			<ui:hslider width="200" height="30" pos="50" />
+		</ui:vbox>

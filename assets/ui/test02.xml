@@ -138,10 +138,7 @@
 				</ui:listview>
 				
 				<ui:accordion width="50%" height="100%">
-					<ui:grid text="Buttons" columns="9">
-						<ui:button text="Some Button" />
-						<!-- for performance testing, noticable delay (esp. on flash) when opening the panel -->
-						<!-- 
+					<ui:grid text="Buttons" columns="9" style="spacing:5;">
 						<ui:button text="1" />
 						<ui:button text="1" />
 						<ui:button text="1" />
@@ -231,7 +228,6 @@
 						<ui:button text="9" />
 						<ui:button text="9" />
 						<ui:button text="9" />
-						-->
 					</ui:grid>
 					<ui:vbox text="Image Panel" id="nopadding">
 						<ui:scrollview width="100%" height="100%">

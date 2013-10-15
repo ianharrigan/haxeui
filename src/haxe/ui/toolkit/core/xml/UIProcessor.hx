@@ -5,8 +5,12 @@ import haxe.ui.toolkit.core.ClassManager;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.data.DataManager;
 import haxe.ui.toolkit.data.IDataSource;
+import haxe.ui.toolkit.style.Style;
+import haxe.ui.toolkit.style.StyleParser;
+import haxe.ui.toolkit.style.Styles;
 import haxe.ui.toolkit.util.TypeParser;
 
 class UIProcessor extends XMLProcessor {
@@ -82,6 +86,16 @@ class UIProcessor extends XMLProcessor {
 				}
 				if (percentHeight != -1) {
 					c.percentHeight = percentHeight;
+				}
+			} else if (attr == "style") { // ignore condition attr
+				if (Std.is(c, StyleableDisplayObject)) {
+					var inlineStyles:Styles = StyleParser.fromString("_temp {" + config.get("style") + "}");
+					if (inlineStyles != null) {
+						var style:Style = inlineStyles.getStyle("_temp");
+						if (style != null) {
+							cast(c, StyleableDisplayObject).inlineStyle = style;
+						}
+					}
 				}
 			} else if (attr == "condition") { // ignore condition attr
 			} else if (attr == "dataSource") { // special handling

@@ -15,6 +15,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private var _style:Style;
 	private var _storedStyles:StringMap<Style>; // styles stored for ease later
 	private var _styleName:String;
+	private var _inlineStyle:Style;
 	
 	public function new() {
 		super();
@@ -38,6 +39,10 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			}
 		} else {
 			_style = StyleManager.instance.buildStyleFor(this);
+		}
+		
+		if (_inlineStyle != null) {
+			_style.merge(_inlineStyle);
 		}
 		
 		if (_style != null) {
@@ -111,6 +116,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	public var style(get, set):Style;
 	public var styleName(get, set):String;
+	public var inlineStyle(get, set):Style;
 	
 	private function get_style():Style {
 		return _style;
@@ -118,6 +124,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	private function set_style(value:Style):Style {
 		_style = value;
+		_style.target = this;
 		applyStyle();
 		return value;
 	}
@@ -128,6 +135,21 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	private function set_styleName(value:String):String {
 		_styleName = value;
+		if (_ready) {
+			buildStyles();
+			_style = StyleManager.instance.buildStyleFor(this);
+			invalidate(InvalidationFlag.DISPLAY);
+		}
+		return value;
+	}
+
+	private function get_inlineStyle():Style {
+		return _inlineStyle;
+	}
+	
+	private function set_inlineStyle(value:Style):Style {
+		_inlineStyle = value;
+		_inlineStyle.target = this;
 		if (_ready) {
 			buildStyles();
 			_style = StyleManager.instance.buildStyleFor(this);
@@ -151,6 +173,13 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	public function applyStyle():Void {
+		if (_style == null) {
+			return;
+		}
+		
+		if (_inlineStyle != null) {
+			_style.merge(_inlineStyle);
+		}
 		if (_style != null) {
 			if (_style.alpha != -1) {
 				_sprite.alpha = _style.alpha;
