@@ -180,6 +180,10 @@ private class HProgressLayout extends DefaultLayout {
 			} else if (cx > ucx) {
 				cx = ucx;
 			}
+
+			if (thumb != null) {
+				cx += thumb.width / 2;
+			}
 			
 			if (cx == 0) {
 				value.visible = false;
@@ -202,17 +206,10 @@ private class HProgressLayout extends DefaultLayout {
 
 		var scroll:IScrollable = cast(container, IScrollable);
 		if (value != null) {
-			//value.y = (container.height / 2) - (value.height / 2);
 			
 			var thumb:IDisplayObject =  container.findChild("thumb");
 			if (thumb != null) {
-				var xpos:Float = value.x;
-				if (scroll.pos != scroll.min) {
-					xpos += value.width;
-					if (scroll.pos != scroll.max) { // bit of a hack
-						xpos--;
-					}
-				}
+				var xpos:Float = value.x + value.width - (thumb.width / 2);
 				thumb.x = Std.int(xpos);
 			}
 		}
@@ -251,6 +248,10 @@ private class VProgressLayout extends DefaultLayout {
 				cy = ucy;
 			}
 			
+			if (thumb != null) {
+				cy += thumb.height / 2;
+			}
+			
 			if (cy == 0) {
 				value.visible = false;
 			} else {
@@ -273,20 +274,11 @@ private class VProgressLayout extends DefaultLayout {
 		var scroll:IScrollable = cast(container, IScrollable);
 		if (value != null) {
 			var ucy:Float = usableHeight;
-			//value.x = (container.width / 2) - (value.width / 2);
 			value.y = ucy - value.height - background.layout.padding.bottom;
 			
 			var thumb:IDisplayObject =  container.findChild("thumb");
 			if (thumb != null) {
-				var ypos:Float = value.y;
-				if (scroll.pos != scroll.min) {
-					ypos -= thumb.height;
-					if (scroll.pos != scroll.max) { // bit of a hack
-						ypos++;
-					}
-				} else {
-					ypos = innerHeight - thumb.height;
-				}
+				var ypos:Float = value.y - (thumb.height / 2);
 				thumb.y = Std.int(ypos);
 			}
 		}

@@ -20595,15 +20595,15 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls._Progress.HProgressLayout" params="" file="src/haxe/ui/toolkit/controls/Progress.hx" private="1" module="haxe.ui.toolkit.controls.Progress">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<repositionChildren public="1" set="method" line="193" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<repositionChildren public="1" set="method" line="197" override="1"><f a=""><x path="Void"/></f></repositionChildren>
 		<resizeChildren public="1" set="method" line="156" override="1"><f a=""><x path="Void"/></f></resizeChildren>
 		<new public="1" set="method" line="152"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls._Progress.VProgressLayout" params="" file="src/haxe/ui/toolkit/controls/Progress.hx" private="1" module="haxe.ui.toolkit.controls.Progress">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<repositionChildren public="1" set="method" line="263" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<resizeChildren public="1" set="method" line="227" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<new public="1" set="method" line="223"><f a=""><x path="Void"/></f></new>
+		<repositionChildren public="1" set="method" line="264" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="224" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<new public="1" set="method" line="220"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Spacer" params="" file="src/haxe/ui/toolkit/controls/Spacer.hx">
 		<extends path="haxe.ui.toolkit.core.Component"/>
