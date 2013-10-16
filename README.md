@@ -2,13 +2,12 @@ Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 ================================
 Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
-<img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/main.jpg" />
-<img src="https://raw.github.com/ianharrigan/haxeui/master/docs/screenshots/extended.jpg" />
+<img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg" />
+<img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg" />
 
-<a href="https://github.com/ianharrigan/haxeui/blob/master/docs/demo/haxeuitoolkit.swf?raw=true">Compiled demo</a> (May be out of date)
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">Compiled SWF demo</a> (May be out of date)
 
 <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
-
 
 <a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a>
 
@@ -29,6 +28,7 @@ to your openfl application.xml. Finally, create a basic application with:
 import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.Root;
+import haxe.ui.toolkit.controls.Button;
 
 class Main {
 	public static function main() {
