@@ -6,9 +6,8 @@ Cross platfrom Haxe/OpenFL set of styleable application centric rich UI componen
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg" />
 
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">Compiled SWF demo</a> (May be out of date)
-
+<a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)
 <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
-
 <a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a>
 
 Instructions
