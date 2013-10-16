@@ -11,6 +11,7 @@ import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.util.TypeParser;
 
@@ -213,16 +214,16 @@ class ScrollView extends Component {
 		}
 		
 		var content:IDisplayObject = getChildAt(0); // assume first child is content
-		if (content != null) {
-			if (inScroll == false || content.width > layout.usableWidth || content.height > layout.usableHeight) {
+		if (content != null && inScroll == false) {
+			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
 				_downPos = new Point(event.stageX, event.stageY);
-				root.addEventListener(MouseEvent.MOUSE_MOVE, _onMouseMove);
-				root.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+				Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
+				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 			}
 		}
 	}
 	
-	private function _onMouseMove(event:MouseEvent):Void {
+	private function _onScreenMouseMove(event:MouseEvent):Void {
 		if (_downPos != null) {
 			var ypos:Float = event.stageY - _downPos.y;
 			var xpos:Float = event.stageX - _downPos.x;
@@ -254,11 +255,11 @@ class ScrollView extends Component {
 		}
 	}
 	
-	private function _onMouseUp(event:MouseEvent):Void {
+	private function _onScreenMouseUp(event:MouseEvent):Void {
 		_eventTarget.visible = false;
 		_downPos = null;
-		root.removeEventListener(MouseEvent.MOUSE_MOVE, _onMouseMove);
-		root.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
+		Screen.instance.removeEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 		
 		if (_hscroll != null && _showHScroll == true && _autoHideScrolls == true) {
 			_hscroll.visible = false;
