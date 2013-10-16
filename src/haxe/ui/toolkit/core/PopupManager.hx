@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.Timer;
 import haxe.ui.toolkit.controls.popups.BusyPopupContent;
 import haxe.ui.toolkit.controls.popups.CalendarPopupContent;
 import haxe.ui.toolkit.controls.popups.CustomPopupContent;
@@ -95,6 +96,14 @@ class PopupManager {
 	
 	public function showBusy(root:Root, text:String, delay:Int = -1, title:String = null):Popup {
 		var p:Popup = new Popup(title, new BusyPopupContent(text), new PopupConfig());
+		
+		if (delay > 0) {
+			var timer:Timer = new Timer(delay);
+			timer.run = function():Void {
+				timer.stop();
+				hidePopup(p);
+			}
+		}
 		
 		p.root = root;
 		p.visible = false;

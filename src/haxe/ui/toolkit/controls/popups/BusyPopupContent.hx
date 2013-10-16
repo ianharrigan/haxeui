@@ -14,5 +14,6 @@ class BusyPopupContent extends SimplePopupContent {
 	//******************************************************************************************
 	private override function initialize():Void {
 		addChild(_textControl);
+		height = _textControl.height + 15;
 	}
 }

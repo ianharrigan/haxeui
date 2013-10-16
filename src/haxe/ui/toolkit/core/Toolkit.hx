@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core;
 
 import flash.Lib;
 import haxe.ds.StringMap;
+import haxe.ui.toolkit.controls.Menu;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
@@ -37,6 +38,10 @@ class Toolkit {
 		registerXMLProcessor(UIProcessor, "selection");
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
+
+		if (_defaultTransition != "none") {
+			setTransitionForClass(Menu, "fade"); // fade looks nicer
+		}
 		
 		if (StyleManager.instance.hasStyles == false && _useDefaultStyles == true) {
 			StyleManager.instance.addStyles(new DefaultStyles());

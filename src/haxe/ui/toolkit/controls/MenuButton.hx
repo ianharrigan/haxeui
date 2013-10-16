@@ -1,8 +1,11 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
+import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import motion.Actuate;
+import motion.easing.Linear;
 
 class MenuButton extends Button {
 	private var _menu:Menu;
@@ -103,13 +106,52 @@ class MenuButton extends Button {
 		root.addChild(_menu);
 		root.addEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
 		_currentMenuButton = this;
+		
+		var transition:String = Toolkit.getTransitionForClass(Menu);
+		if (transition == "slide") {
+			_menu.clipHeight = 0;
+			_menu.sprite.alpha = 1;
+			_menu.visible = true;
+			Actuate.tween(_menu, .1, { clipHeight: _menu.height }, true).ease(Linear.easeNone).onComplete(function() {
+				_menu.clearClip();
+			});
+		} else if (transition == "fade") {
+			_menu.sprite.alpha = 0;
+			_menu.visible = true;
+			Actuate.tween(_menu.sprite, .1, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+			});
+		} else {
+			_menu.sprite.alpha = 1;
+			_menu.visible = true;
+		}
 	}
-	
+
 	private function hideMenu():Void {
 		selected = false;
-		root.removeChild(_menu, false);
+		
 		_menu.hideSubMenus();
 		root.removeEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
+		
+		var transition:String = Toolkit.getTransitionForClass(Menu);
+		if (transition == "slide") {
+			_menu.sprite.alpha = 1;
+			Actuate.tween(_menu, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				_menu.visible = false;
+				_menu.clearClip();
+				root.removeChild(_menu, false);
+			});
+		} else if (transition == "fade") {
+			Actuate.tween(_menu.sprite, .1, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				_menu.visible = false;
+				root.removeChild(_menu, false);
+			});
+		} else {
+			_menu.sprite.alpha = 1;
+			_menu.visible = false;
+			root.removeChild(_menu, false);
+		}
+		
 		_currentMenuButton = null;
+		this.selected = false;
 	}
 }
