@@ -28,11 +28,16 @@ class Component extends StyleableDisplayObject {
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		super.invalidate(type);
+		if (!_ready || _invalidating) {
+			return;
+		}
 		
+		super.invalidate(type);
+		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE && _clipContent == true) {
 			sprite.scrollRect = new Rectangle(0, 0, width, height);
 		}
+		_invalidating = false;
 	}
 	
 	//******************************************************************************************

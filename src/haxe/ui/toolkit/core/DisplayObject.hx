@@ -22,6 +22,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _percentWidth:Float = -1;
 	private var _percentHeight:Float = -1;
 	private var _ready:Bool = false;
+	private var _invalidating:Bool = false;
 	private var _sprite:Sprite;
 	private var _halign:String = "left";
 	private var _valign:String = "center";
@@ -266,15 +267,17 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	static var invalidationCount:Int = 0;
 	public function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		if (!_ready) {
+		if (!_ready || _invalidating) {
 			return;
 		}
 
+		_invalidating = true;
 		if (type & InvalidationFlag.DISPLAY == InvalidationFlag.DISPLAY
 			|| type & InvalidationFlag.STATE == InvalidationFlag.STATE) {
 			invalidationCount++;
 			paint();
 		}
+		_invalidating = false;
 	}
 	
 	public function dispose():Void {
