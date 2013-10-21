@@ -141,6 +141,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
 		}
+		var event:Event =  new Event(Event.RESIZE);
+		dispatchEvent(event);
+		
 		return value;
 	}
 	
@@ -159,6 +162,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
 		}
+		var event:Event =  new Event(Event.RESIZE);
+		dispatchEvent(event);
+		
 		return value;
 	}
 	
