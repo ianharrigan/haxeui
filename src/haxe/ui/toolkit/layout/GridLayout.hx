@@ -1,4 +1,6 @@
 package haxe.ui.toolkit.layout;
+import haxe.ui.toolkit.core.base.HorizontalAlign;
+import haxe.ui.toolkit.core.base.VerticalAlign;
 
 class GridLayout extends Layout {
 	private var _columns:Int = 1;
@@ -34,16 +36,19 @@ class GridLayout extends Layout {
 		
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
+		//var autoSize:Bool = _container.autoSize;
 		for (child in container.children) {
-			var ucx:Float = usableWidth;
-			ucx -= columnWidths[columnIndex] + spacingX;
 			
 			if (child.percentWidth > -1) {
+				var ucx:Float = usableWidth;
+				//ucx -= columnWidths[columnIndex] + spacingX;
 				child.width = (ucx * child.percentWidth) / 100; 
 			}
 			
 			if (child.percentHeight > -1) {
-				//child.height = (ucy * child.percentHeight) / 100; 
+				var ucy:Float = usableHeight;
+				//ucy -= rowHeights[rowIndex] + spacingY;
+				child.height = (ucy * child.percentHeight) / 100; 
 			}
 			
 			columnIndex++;
@@ -86,13 +91,26 @@ class GridLayout extends Layout {
 		var columnIndex:Int = 0;
 		var xpos:Float = padding.left;
 		var ypos:Float = padding.top;
+		var halign = container.horizontalAlign;
+		var valign = container.verticalAlign;
 		
 		for (child in container.children) {
-			child.x = xpos;
-			if (child.verticalAlign == "center") {
-				child.y = ypos + ((rowHeights[rowIndex] / 2) - (child.height / 2));
-			} else {
-				child.y = ypos;
+			
+			switch (halign) {
+				case HorizontalAlign.CENTER:
+					child.x = xpos + (columnWidths[columnIndex] - child.width) * 0.5;
+				case HorizontalAlign.RIGHT:
+					child.x += xpos + (columnWidths[columnIndex] - child.width);
+				default: 
+					child.x = xpos;
+			}
+			switch (valign) {
+				case VerticalAlign.CENTER:
+					child.y = ypos + (rowHeights[rowIndex] - child.height) * 0.5;
+				case VerticalAlign.BOTTOM:
+					child.y = ypos + (rowHeights[rowIndex] - child.height);
+				default:
+					child.y = ypos;
 			}
 
 			xpos += columnWidths[columnIndex] + spacingX;
@@ -133,12 +151,15 @@ class GridLayout extends Layout {
 		
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
+		var autoSize:Bool = _container.autoSize;
+		var ucx = usableWidth;
 		for (child in container.children) {
-			if (child.percentWidth > -1) {
+			if (autoSize && child.percentWidth > -1) {
 				continue;
 			}
-			
-			if (child.width > columnWidths[columnIndex]) {
+			if (child.percentWidth > 0 && !autoSize)
+				columnWidths[columnIndex] = (ucx * child.percentWidth) / 100;
+			else if (child.width > columnWidths[columnIndex]) {
 				columnWidths[columnIndex] = child.width;
 			}
 
@@ -165,13 +186,15 @@ class GridLayout extends Layout {
 		
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
-		
+		var autoSize:Bool = _container.autoSize;
+		var ucy = usableHeight;
 		for (child in container.children) {
-			if (child.percentHeight > -1) {
+			if (autoSize && child.percentHeight > -1) {
 				continue;
 			}
-			
-			if (child.height > rowHeights[rowIndex]) {
+			if (child.percentHeight > 0 && !autoSize)
+				rowHeights[rowIndex] = (ucy * child.percentHeight) / 100;
+			else if (child.height > rowHeights[rowIndex]) {
 				rowHeights[rowIndex] = child.height;
 			}
 			
