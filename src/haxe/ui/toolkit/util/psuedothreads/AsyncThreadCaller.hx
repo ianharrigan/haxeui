@@ -76,4 +76,9 @@ class AsyncThreadCaller extends EventDispatcher {
 	private function get_executionTime():Float {
 		return _endTime - _startTime;
 	}
+	
+	public var worker(get, null):IRunnable;
+	private function get_worker():IRunnable {
+		return _runnableWorker;
+	}
 }

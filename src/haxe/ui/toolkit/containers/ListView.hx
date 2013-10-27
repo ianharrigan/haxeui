@@ -244,6 +244,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		if (item != null) {
 			_content.removeChild(item);
+			invalidate(InvalidationFlag.SIZE);
 		}
 	}
 	
@@ -295,6 +296,17 @@ class ListView extends ScrollView implements IDataComponent {
 	
 	public function isSelected(item:ListViewItem):Bool {
 		return Lambda.indexOf(_selectedItems, item) != -1;
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	public function getItemIndex(item:ListViewItem):Int {
+		var index:Int = -1;
+		if (item != null) {
+			index = Lambda.indexOf(_content.children, item);
+		}
+		return index;
 	}
 }
 

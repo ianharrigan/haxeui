@@ -39,7 +39,7 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 
-		if (_defaultTransition != "none") {
+		if (_defaultTransition != "none" && _transitionRegister.get(Type.getClassName(Menu)) == null) {
 			setTransitionForClass(Menu, "fade"); // fade looks nicer
 		}
 		
@@ -190,6 +190,7 @@ class Toolkit {
 	}
 	
 	private function initInstance() {
+		_transitionRegister = new StringMap<String>();
 		ClassManager.instance;
 	}
 	
