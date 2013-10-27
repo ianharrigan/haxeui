@@ -161,7 +161,7 @@ class ScrollView extends Component {
 			return;
 		}
 
-		super.invalidate();
+		super.invalidate(type);
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();

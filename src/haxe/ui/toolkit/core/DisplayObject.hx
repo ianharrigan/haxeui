@@ -137,6 +137,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		}
 		
 		_width = value;
+		_invalidating = false;
 		invalidate(InvalidationFlag.DISPLAY | InvalidationFlag.SIZE);
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
@@ -158,6 +159,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		}
 		
 		_height = value;
+		_invalidating = false;
 		invalidate(InvalidationFlag.DISPLAY | InvalidationFlag.SIZE);
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
@@ -271,7 +273,6 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		return b;
 	}
 	
-	static var invalidationCount:Int = 0;
 	public function invalidate(type:Int = InvalidationFlag.ALL):Void {
 		if (!_ready || _invalidating) {
 			return;
@@ -280,7 +281,6 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		_invalidating = true;
 		if (type & InvalidationFlag.DISPLAY == InvalidationFlag.DISPLAY
 			|| type & InvalidationFlag.STATE == InvalidationFlag.STATE) {
-			invalidationCount++;
 			paint();
 		}
 		_invalidating = false;

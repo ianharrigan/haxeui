@@ -45,7 +45,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			return;
 		}
 
-		super.invalidate();
+		super.invalidate(type);
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE
 			|| type & InvalidationFlag.LAYOUT == InvalidationFlag.LAYOUT) {
