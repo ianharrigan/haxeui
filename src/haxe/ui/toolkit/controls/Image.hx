@@ -50,7 +50,7 @@ class Image extends Component {
 		super.invalidate(type);
 		
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
-			if (_stretch) {
+			if (_stretch && _bmp != null) {
 				_bmp.width = width;
 				_bmp.height = height;
 			}
