@@ -156,20 +156,20 @@ class PopupManager {
 		}
 	}
 	
-	public function hidePopup(p:Popup):Void {
+	public function hidePopup(p:Popup, dispose:Bool = true):Void {
 		var transition:String = Toolkit.getTransitionForClass(Popup);
 		if (transition == "slide") {
 			Actuate.tween(p, .2, { y: p.root.height }, true).ease(Linear.easeNone).onComplete(function() {
-				p.root.removeChild(p);
+				p.root.removeChild(p, dispose);
 				p.root.hideModalOverlay();
 			});
 		} else if (transition == "fade") {
 			Actuate.tween(p.sprite, .2, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
-				p.root.removeChild(p);
+				p.root.removeChild(p, dispose);
 				p.root.hideModalOverlay();
 			});
 		} else {
-			p.root.removeChild(p);
+			p.root.removeChild(p, dispose);
 			p.root.hideModalOverlay();
 		}
 	}
