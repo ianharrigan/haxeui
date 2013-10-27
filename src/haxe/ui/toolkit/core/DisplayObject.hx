@@ -9,6 +9,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDrawable;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.events.UIEvent;
 
 class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable {
 	// used in IDisplayObject getters/setters
@@ -55,7 +56,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		initialize();
 		invalidate();
 		
-		var event:Event =  new Event(Event.INIT);
+		var event:UIEvent =  new UIEvent(UIEvent.INIT);
 		dispatchEvent(event);
 	}
 	
@@ -142,7 +143,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
 		}
-		var event:Event =  new Event(Event.RESIZE);
+		var event:UIEvent =  new UIEvent(UIEvent.RESIZE);
 		dispatchEvent(event);
 		
 		return value;
@@ -164,7 +165,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
 		}
-		var event:Event =  new Event(Event.RESIZE);
+		var event:UIEvent =  new UIEvent(UIEvent.RESIZE);
 		dispatchEvent(event);
 		
 		return value;
@@ -291,10 +292,19 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		removeAllEventListeners();
 	}
 	
+	private function interceptEvent(event:Event):Void {
+		dispatchEvent(new UIEvent(UIEvent.PREFIX + event.type));
+	}
+	
 	//******************************************************************************************
 	// IEventDispatcher
 	//******************************************************************************************
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
+		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
+			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
+			addEventListener(interceptEventType, interceptEvent, useCapture, priority, useWeakReference);
+		}
+		
 		if (_eventListeners == null) {
 			_eventListeners = new StringMap < List < Dynamic->Void >> ();
 			var list:List < Dynamic->Void > = _eventListeners.get(type);
@@ -308,6 +318,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	public function dispatchEvent(event:Event):Bool {
+		if (Std.is(event, UIEvent)) {
+			cast(event, UIEvent).displayObject = this;
+		}
 		return _sprite.dispatchEvent(event);
 	}
 	
@@ -316,6 +329,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	public function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
+		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
+			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
+			removeEventListener(interceptEventType, interceptEvent, useCapture);
+		}
 		if (_eventListeners != null && _eventListeners.exists(type)) {
 			var list:List < Dynamic->Void > = _eventListeners.get(type);
 			if (list != null) {

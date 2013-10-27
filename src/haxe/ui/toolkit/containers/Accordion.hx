@@ -11,6 +11,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
 
@@ -91,9 +92,9 @@ class Accordion extends VBox {
 		if (panel != null) {
 			panel.visible = false;
 			if (panel.ready == false) {
-				cast(panel, IEventDispatcher).addEventListener(Event.INIT, _onPanelAdded);
+				cast(panel, IEventDispatcher).addEventListener(UIEvent.INIT, _onPanelAdded);
 			} else {
-				cast(panel, IEventDispatcher).addEventListener(Event.ADDED_TO_STAGE, _onPanelAdded);
+				cast(panel, IEventDispatcher).addEventListener(UIEvent.ADDED_TO_STAGE, _onPanelAdded);
 			}
 			super.addChildAt(panel, buttonChildIndex + 1);
 			button.selected = true;
@@ -129,8 +130,8 @@ class Accordion extends VBox {
 	
 	private function _onPanelAdded(event:Event):Void {
 		var panel:IDisplayObject = findPanelFromSprite(event.target);
-		cast(panel, IEventDispatcher).removeEventListener(Event.ADDED_TO_STAGE, _onPanelAdded);
-		cast(panel, IEventDispatcher).removeEventListener(Event.INIT, _onPanelAdded);
+		cast(panel, IEventDispatcher).removeEventListener(UIEvent.ADDED_TO_STAGE, _onPanelAdded);
+		cast(panel, IEventDispatcher).removeEventListener(UIEvent.INIT, _onPanelAdded);
 		var panelIndex:Int = Lambda.indexOf(_panels, panel);
 		var button:Button = _buttons[panelIndex];
 	
