@@ -774,6 +774,7 @@ Popup {
 	paddingTop: 2;
 	paddingBottom: 2;
 	width: 300;
+	spacing: 1;
 }
 
 Popup #titleBar {

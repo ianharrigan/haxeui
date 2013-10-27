@@ -125,7 +125,6 @@ VScroll {
 	spacingY: 0;
 	cornerRadius: 0;
 	hasButtons: false;
-	alpha: 0.5;
 }
 
 VScroll Button {
@@ -159,7 +158,6 @@ HScroll {
 	spacingX: 1;
 	cornerRadius: 0;
 	hasButtons: false;
-	alpha: 0.5;
 }
 			
 HScroll Button {
@@ -338,7 +336,7 @@ ListViewItem {
 	paddingLeft: 2;
 	paddingTop: 14;
 	paddingBottom: 14;
-	paddingRight: 2;
+	paddingRight: 10;
 	borderSize: 0;
 	spacingX: 2;
 	spacingY: 2;
@@ -680,6 +678,7 @@ Popup {
 	paddingTop: 2;
 	paddingBottom: 2;
 	width: 350;
+	spacing: 1;
 }
 
 Popup #titleBar {
