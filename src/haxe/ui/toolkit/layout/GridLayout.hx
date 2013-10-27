@@ -88,16 +88,15 @@ class GridLayout extends Layout {
 		var columnIndex:Int = 0;
 		var xpos:Float = padding.left;
 		var ypos:Float = padding.top;
-		var halign = container.horizontalAlign;
-		var valign = container.verticalAlign;
 		
 		for (child in container.children) {
-			
+			var halign = child.horizontalAlign;
+			var valign = child.verticalAlign;
 			switch (halign) {
 				case HorizontalAlign.CENTER:
 					child.x = xpos + (columnWidths[columnIndex] - child.width) * 0.5;
 				case HorizontalAlign.RIGHT:
-					child.x += xpos + (columnWidths[columnIndex] - child.width);
+					child.x = xpos + (columnWidths[columnIndex] - child.width);
 				default: 
 					child.x = xpos;
 			}
@@ -211,6 +210,8 @@ class GridLayout extends Layout {
 			}
 		}
 		
+		rowIndex = 0;
+		columnIndex = 0;
 		for (child in container.children) {
 			if (child.percentHeight > 0) {
 				var ucy = usableHeight - ((rowCount - 1) * spacingY);

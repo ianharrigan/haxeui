@@ -120,6 +120,8 @@ class UIProcessor extends XMLProcessor {
 						}
 					}
 				}
+			} else if (attr == "text") {
+				c.text = config.get(attr);
 			} else {
 				try {
 					var value:String = config.get(attr);

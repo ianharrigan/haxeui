@@ -105,6 +105,8 @@ class Button extends StateComponent implements IFocusable {
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
+		
+		applyStyle();
 	}
 	
 	//******************************************************************************************

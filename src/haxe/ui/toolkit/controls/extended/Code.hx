@@ -19,7 +19,7 @@ class Code extends TextInput {
 	public function new() {
 		super();
 		multiline = true;
-		_textDisplay.wrapLines = false;
+		wrapLines = false;
 		var tf:TextField = cast(_textDisplay.display, TextField);
 		#if flash
 			tf.alwaysShowSelection = true;

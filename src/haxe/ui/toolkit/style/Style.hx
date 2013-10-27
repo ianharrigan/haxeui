@@ -35,7 +35,8 @@ class Style {
 	private var _filterSet:Bool = false;
 	private var _alpha:Float = -1;
 	private var _fontName:String;
-	private var _fontSize:Int = -1;
+	private var _fontSize:Float = -1;
+	private var _fontScale:Float = -1;
 	private var _iconPosition:String;
 	private var _labelPosition:String;
 	private var _icon:String;
@@ -73,7 +74,8 @@ class Style {
 	public var filter(get, set):BitmapFilter;
 	public var alpha(get, set):Float;
 	public var fontName(get, set):String;
-	public var fontSize(get, set):Int;
+	public var fontSize(get, set):Float;
+	public var fontScale(get, set):Float;
 	public var iconPosition(get, set):String;
 	public var labelPosition(get, set):String;
 	public var icon(get, set):String;
@@ -457,13 +459,29 @@ class Style {
 		return value;
 	}
 	
-	private function get_fontSize():Int {
-		return _fontSize;
+	private function get_fontSize():Float {
+		var size:Float = _fontSize;
+		if (_fontScale > 0) {
+			size = _fontSize * _fontScale;
+		}
+		return size;
 	}
 	
-	private function set_fontSize(value:Int):Int {
+	private function set_fontSize(value:Float):Float {
 		if (value != _fontSize) {
 			_fontSize = value;
+			apply();
+		}
+		return value;
+	}
+	
+	private function get_fontScale():Float {
+		return _fontScale;
+	}
+	
+	private function set_fontScale(value:Float):Float {
+		if (value != _fontScale) {
+			_fontScale = value;
 			apply();
 		}
 		return value;
@@ -610,6 +628,7 @@ class Style {
 		if (with._alpha != -1) this._alpha = with._alpha;
 		if (with._fontName != null) this._fontName = with._fontName;
 		if (with._fontSize != -1) this._fontSize = with._fontSize;
+		if (with._fontScale != -1) this._fontScale = with._fontScale;
 		if (with._iconPosition != null) this._iconPosition = with._iconPosition;
 		if (with._labelPosition != null) this._labelPosition = with._labelPosition;
 		if (with._icon != null) this._icon = with._icon;

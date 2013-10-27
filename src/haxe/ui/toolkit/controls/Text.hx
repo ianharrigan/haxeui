@@ -75,7 +75,7 @@ class Text extends StateComponent {
 	//******************************************************************************************
 	public override function applyStyle():Void {
 		super.applyStyle();
-		
+
 		// apply style to TextDisplay
 		if (_textDisplay != null) {
 			_textDisplay.style = style;
