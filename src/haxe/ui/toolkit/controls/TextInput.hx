@@ -67,7 +67,7 @@ class TextInput extends StateComponent {
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();
 		}
-		_invalidating = true;
+		_invalidating = false;
 	}
 	
 	//******************************************************************************************
