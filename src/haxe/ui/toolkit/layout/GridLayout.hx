@@ -148,8 +148,6 @@ class GridLayout extends Layout {
 		
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
-		var autoSize:Bool = _container.autoSize;
-		var ucx = usableWidth - ((columns - 1) * spacingX);
 		for (child in container.children) {
 			if (child.percentWidth <= 0) {
 				if (child.width > columnWidths[columnIndex]) {
@@ -163,14 +161,16 @@ class GridLayout extends Layout {
 			}
 		}
 		
-		for (n in columnWidths) {
-			ucx -= n;
-		}
-		
 		rowIndex = 0;
 		columnIndex = 0;
 		for (child in container.children) {
 			if (child.percentWidth > 0) {
+				var ucx = usableWidth - ((columns - 1) * spacingX);
+				for (n in 0...columnWidths.length) {
+					if (n != columnIndex) {
+						ucx -= columnWidths[n];
+					}
+				}
 				var cx:Float = (ucx * child.percentWidth) / 100;
 				if (cx > columnWidths[columnIndex]) {
 					columnWidths[columnIndex] = cx;
@@ -198,8 +198,6 @@ class GridLayout extends Layout {
 		
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
-		var autoSize:Bool = _container.autoSize;
-		var ucy = usableHeight - ((rowCount - 1) * spacingY);
 		for (child in container.children) {
 			if (child.percentHeight <= 0) {
 				if (child.height > rowHeights[rowIndex]) {
@@ -213,12 +211,14 @@ class GridLayout extends Layout {
 			}
 		}
 		
-		for (n in rowHeights) {
-			ucy -= n;
-		}
-		
 		for (child in container.children) {
 			if (child.percentHeight > 0) {
+				var ucy = usableHeight - ((rowCount - 1) * spacingY);
+				for (n in 0...rowHeights.length) {
+					if (n != rowIndex) {
+						ucy -= rowHeights[n];
+					}
+				}
 				var cy:Float = (ucy * child.percentHeight) / 100;
 				if (cy > rowHeights[rowIndex]) {
 					rowHeights[rowIndex] = cy;
