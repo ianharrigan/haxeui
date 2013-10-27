@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.layout;
+import haxe.ui.toolkit.core.base.HorizontalAlign;
 
 class VerticalLayout extends Layout {
 	public function new() {
@@ -45,9 +46,19 @@ class VerticalLayout extends Layout {
 	
 	private override function repositionChildren():Void {
 		super.repositionChildren();
-		var xpos:Float = padding.left;
 		var ypos:Float = padding.top;
 		for (child in container.children) {
+			var xpos:Float = padding.left;
+			var halign:String = child.horizontalAlign;
+			
+			switch (halign) {
+				case HorizontalAlign.CENTER:
+					xpos = (container.width / 2) - (child.width / 2);
+				case HorizontalAlign.RIGHT:
+					xpos = container.width - child.width;
+				default:	
+			}
+			
 			child.x = xpos;
 			child.y = ypos;
 			
