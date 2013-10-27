@@ -156,7 +156,6 @@ class ScrollView extends Component {
 	// Overridables
 	//******************************************************************************************
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		
 		if (!_ready || _invalidating) {
 			return;
 		}
@@ -356,6 +355,7 @@ class ScrollView extends Component {
 			}
 			
 			if (invalidateLayout) {
+				_invalidating = false;
 				invalidate(InvalidationFlag.LAYOUT);
 			}
 		}
