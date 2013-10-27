@@ -58,14 +58,16 @@ class TextInput extends StateComponent {
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		if (!_ready) {
+		if (!_ready || _invalidating) {
 			return;
 		}
 		
 		super.invalidate(type);
+		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();
 		}
+		_invalidating = true;
 	}
 	
 	//******************************************************************************************

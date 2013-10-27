@@ -41,15 +41,17 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		super.invalidate();
-		if (!_ready) {
+		if (!_ready || _invalidating) {
 			return;
 		}
 
+		super.invalidate();
+		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE
 			|| type & InvalidationFlag.LAYOUT == InvalidationFlag.LAYOUT) {
 			_layout.refresh();
 		}
+		_invalidating = false;
 	}
 	
 	//******************************************************************************************

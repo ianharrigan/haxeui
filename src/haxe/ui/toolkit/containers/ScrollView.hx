@@ -156,16 +156,19 @@ class ScrollView extends Component {
 	// Overridables
 	//******************************************************************************************
 	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		super.invalidate();
-		if (!_ready) {
+		
+		if (!_ready || _invalidating) {
 			return;
 		}
 
+		super.invalidate();
+		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();
 			updateScrollRect();
 			resizeEventTarget();
 		}
+		_invalidating = false;
 	}
 	
 	//******************************************************************************************
