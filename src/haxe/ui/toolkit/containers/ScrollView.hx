@@ -208,10 +208,10 @@ class ScrollView extends Component {
 	
 	private function _onMouseDown(event:MouseEvent):Void {
 		var inScroll:Bool = false;
-		if (_vscroll != null) {
+		if (_vscroll != null && _vscroll.visible == true) {
 			inScroll = _vscroll.hitTest(event.stageX, event.stageY);
 		}
-		if (_hscroll != null && inScroll == false) {
+		if (_hscroll != null && _hscroll.visible == true && inScroll == false) {
 			inScroll = _hscroll.hitTest(event.stageX, event.stageY);
 		}
 		
