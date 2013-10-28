@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	<assets path="styles" rename="styles" />
+	<assets path="img" rename="img" />
 	<classpath name="styles" />
 </project>

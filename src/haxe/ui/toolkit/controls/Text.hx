@@ -12,6 +12,7 @@ class Text extends StateComponent {
 	
 	public function new() {
 		super();
+		_valign = "center";
 		autoSize = true;
 		_textDisplay = new TextDisplay();
 		_textDisplay.text = "";

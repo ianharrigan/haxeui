@@ -26,7 +26,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _invalidating:Bool = false;
 	private var _sprite:Sprite;
 	private var _halign:String = "left";
-	private var _valign:String = "center";
+	private var _valign:String = "top";
 
 	private var _eventListeners:StringMap < List < Dynamic->Void >> ;
 	
