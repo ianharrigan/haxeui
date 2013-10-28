@@ -7,6 +7,14 @@ Cross platfrom Haxe/OpenFL set of styleable application centric rich UI componen
 
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">Compiled SWF demo</a> (May be out of date)
 
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.exe?raw=true">Compiled Windows EXE demo</a> (May be out of date)
+
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.exe?raw=true">Compiled Neko EXE demo</a> (May be out of date)
+
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Compiled Android APK demo</a> (May be out of date)
+
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">Compiled Adobe AIR demo</a> (May be out of date. Note: Will not install from mounted/network drive)
+
 <a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)
 
 <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
