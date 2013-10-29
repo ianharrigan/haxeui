@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Haxeui by ianharrigan</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Haxeui</h1>
+        <h2>Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used &quot;out the box&quot;. Supports css type styling/skinning.</h2>
+        <a href="https://github.com/ianharrigan/haxeui" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="haxe-ui-formerly-yahui" class="anchor" href="#haxe-ui-formerly-yahui"><span class="octicon octicon-link"></span></a>Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)</h1>
+
+<p>Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.</p>
+
+<p><img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg"><img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg"></p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">Compiled SWF demo</a> (May be out of date)</p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Compiled Windows EXE demo</a> (May be out of date)</p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Compiled Neko EXE demo</a> (May be out of date)</p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Compiled Android APK demo</a> (May be out of date)</p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">Compiled Adobe AIR demo</a> (May be out of date. Note: Will not install from mounted/network drive)</p>
+
+<p><a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)</p>
+
+<p><a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a></p>
+
+<p><a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a></p>
+
+<h2>
+<a name="instructions" class="anchor" href="#instructions"><span class="octicon octicon-link"></span></a>Instructions</h2>
+
+<p>First install haxeui via haxelib:</p>
+
+<pre><code>haxelib install haxeui
+</code></pre>
+
+<p>Once installed add </p>
+
+<pre><code>&lt;haxelib name="haxeui" /&gt;
+</code></pre>
+
+<p>to your openfl application.xml. Finally, create a basic application with:</p>
+
+<div class="highlight highlight-haxe"><pre><span class="kn">import</span> <span class="nn">haxe.ui.toolkit.core.Macros</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">haxe.ui.toolkit.core.Toolkit</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">haxe.ui.toolkit.core.Root</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">haxe.ui.toolkit.controls.Button</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">function</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Macros</span><span class="o">.</span><span class="n">addStyleSheet</span><span class="p">(</span><span class="s2">"styles/gradient/gradient.css"</span><span class="p">);</span>
+        <span class="n">Toolkit</span><span class="o">.</span><span class="n">init</span><span class="p">();</span>
+        <span class="n">Toolkit</span><span class="o">.</span><span class="n">openFullscreen</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nv">root</span><span class="p">:</span><span class="nc">Root</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nv">button</span><span class="p">:</span><span class="nc">Button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="p">();</span>
+            <span class="n">button</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">"HaxeUI!"</span><span class="p">;</span>
+            <span class="n">root</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">button</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Note: haxeui comes with some styles ready for use, if no styles are added a default one is used.</p>
+
+<h2>
+<a name="components" class="anchor" href="#components"><span class="octicon octicon-link"></span></a>Components</h2>
+
+<p>General components</p>
+
+<ul>
+<li>Button</li>
+<li>Check box</li>
+<li>Image</li>
+<li>Option box</li>
+<li>Progress bars (horizontal &amp; vertical)</li>
+<li>Scroll bars (horizontal &amp; vertical)</li>
+<li>Sliders (horizontal &amp; vertical)</li>
+<li>Tab bars</li>
+<li>Text (static, input, multiline)</li>
+<li>List selection (drop downs, popup lists)</li>
+<li>Date selection (drop downs, popup calendar)</li>
+<li>Calendar </li>
+<li>Menus</li>
+</ul><p>Extended components</p>
+
+<ul>
+<li>Code editor (supports basic syntax highlighting)</li>
+<li>RTF edtior (preliminary, only fully functional in flash due to neko/cpp limitations)</li>
+</ul><p>Layout, position and containment components</p>
+
+<ul>
+<li>Accordion</li>
+<li>Grid</li>
+<li>HBox</li>
+<li>ListView</li>
+<li>MenuBar</li>
+<li>ScrollView</li>
+<li>Stack</li>
+<li>TabView</li>
+<li>VBox</li>
+</ul><p>Popups</p>
+
+<ul>
+<li>Busy</li>
+<li>Simple</li>
+<li>List</li>
+<li>Custom</li>
+<li>Calendar</li>
+</ul><p>Data Sources</p>
+
+<ul>
+<li>Array</li>
+<li>JSON</li>
+<li>XML</li>
+<li>MySQL (Neko/Read-Only)</li>
+<li>Files (Neko/Read-Only)</li>
+</ul><h2>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>html5 is still being tested, but functions to a degree.</p>
+
+<h2>
+<a name="licence" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>Licence</h2>
+
+<pre><code>Unless indicated otherwise, this code was created by Ian Harrigan and
+provided under a MIT-style license. 
+Copyright (c) Ian Harrigan. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a 
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ianharrigan/haxeui/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ianharrigan/haxeui/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ianharrigan/haxeui"></a> is maintained by <a href="https://github.com/ianharrigan">ianharrigan</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
