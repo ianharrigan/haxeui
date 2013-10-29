@@ -594,7 +594,10 @@ class Style {
 		}
 	}
 
-	public function merge(with :Style):Void {
+	public function merge(with:Style):Void {
+		if (with == null) {
+			return;
+		}
 		if (with._width != -1) this._width = with._width;
 		if (with._height != -1) this._height = with._height;
 		if (with._percentWidth != -1) this._percentWidth = with._percentWidth;

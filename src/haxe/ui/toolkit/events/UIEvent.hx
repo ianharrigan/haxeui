@@ -26,7 +26,10 @@ class UIEvent extends Event {
 	public static inline var ACTIVATE:String = PREFIX + "activate";
 	public static inline var DEACTIVATE:String = PREFIX + "deactivate";
 	
+	public static inline var GLYPH_CLICK:String = PREFIX + "glyphClick"; // for button images
+	
 	public var displayObject(default, default):IDisplayObject;
+	public var data(default, default):Dynamic;
 	
 	public function new(type:String, bubbles:Bool = false, cancelable:Bool = false) {
 		super(type, bubbles, cancelable);

@@ -17,10 +17,11 @@ class StateComponent extends Component implements IStateComponent {
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
-	public override function buildStyles():Void {
+	private override function buildStyles():Void {
 		for (s in states) {
 			var stateStyle:Style = StyleManager.instance.buildStyleFor(this, s);
 			if (stateStyle != null) {
+				stateStyle.merge(_setStyle);
 				storeStyle(s, stateStyle);
 			}
 		}

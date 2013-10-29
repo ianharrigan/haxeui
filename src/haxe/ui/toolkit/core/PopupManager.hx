@@ -64,7 +64,7 @@ class PopupManager {
 		return p;
 	}
 	
-	public function showList(root:Root, items:Dynamic, title:String = null, selectedIndex:Int = -1, fn:Dynamic->Void):Popup {
+	public function showList(root:Root, items:Dynamic, title:String = null, selectedIndex:Int = -1, modal:Bool = true, fn:Dynamic->Void = null):Popup {
 		var ds:IDataSource = null;
 		if (Std.is(items, Array)) { // we need to convert items into a proper data source for the list
 			var arr:Array<Dynamic> = cast(items, Array<Dynamic>);
@@ -82,12 +82,16 @@ class PopupManager {
 			ds = cast(items, IDataSource);
 		}
 
-		var p:Popup = new Popup(title, new ListPopupContent(ds, selectedIndex, fn), new PopupConfig());
+		var popupConfig:PopupConfig = new PopupConfig();
+		popupConfig.modal = modal;
+		var p:Popup = new Popup(title, new ListPopupContent(ds, selectedIndex, fn), popupConfig);
 		
 		p.root = root;
 		p.visible = false;
 		centerPopup(p);
-		root.showModalOverlay();
+		if (popupConfig.modal == true) {
+			root.showModalOverlay();
+		}
 		root.addChild(p);
 		showPopup(p);
 		

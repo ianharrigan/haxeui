@@ -128,6 +128,15 @@ class Popup extends VBox implements IDraggable {
 	}
 
 	//******************************************************************************************
+	// Getters / Setters
+	//******************************************************************************************
+	public var content(get, null):PopupContent;
+	
+	private function get_content():PopupContent {
+		return _content;
+	}
+	
+	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
 	private function addStandardButton(v:Int):Void {

@@ -156,6 +156,10 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return child;
 	}
 	
+	public function removeChildAt(index:Int, dispose:Bool = true):IDisplayObject {
+		return removeChild(getChildAt(index), dispose);
+	}
+	
 	public function removeAllChildren():Void {
 		while (_children.length > 0) {
 			var child:IDisplayObject = _children[0];

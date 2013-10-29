@@ -1,5 +1,7 @@
 package haxe.ui.toolkit.controls;
 
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 import flash.events.Event;
 import flash.text.TextField;
 import flash.text.TextFormat;
@@ -198,6 +200,11 @@ class TextInput extends StateComponent {
 		#end
 	}
 	
+	public function focus():Void {
+		var tf:TextField = cast(_textDisplay.display, TextField);
+		tf.stage.focus = tf;
+	}
+	
 	private function checkScrolls():Void {
 		if (multiline == false || ready == false) {
 			return;
@@ -260,8 +267,9 @@ private class TextInputLayout extends DefaultLayout {
 		if (container.sprite.numChildren > 0) {
 			var vscroll:VScroll = container.findChildAs(VScroll);
 			
-			var text:TextField = cast(container.sprite.getChildAt(0), TextField);
-			if (text != null) {
+			var firstChild:DisplayObject = container.sprite.getChildAt(0);
+			if (firstChild != null && Std.is(firstChild, TextField)) {
+				var text:TextField = cast(firstChild, TextField);
 				text.x = padding.left;
 				if (text.multiline == true) {
 					text.y = padding.top;

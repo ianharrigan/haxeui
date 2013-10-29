@@ -6,6 +6,7 @@ import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.events.UIEvent;
 
 /**
  Horizontally scrollable tab bar
@@ -43,6 +44,7 @@ class TabBar extends ScrollView {
 	 Gets (or sets) the selected button index for the tab bar
 	 **/
 	public var selectedIndex(get, set):Int;
+	public var numTabs(get, null):Int;
 	
 	private function get_selectedIndex():Int {
 		return _selectedIndex;
@@ -66,6 +68,10 @@ class TabBar extends ScrollView {
 		return value;
 	}
 	
+	private function get_numTabs():Int {
+		return _content.numChildren;
+	}
+	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
@@ -80,8 +86,19 @@ class TabBar extends ScrollView {
 		button.allowSelection = false;
 		_content.addChild(button);
 		button.selected = (_content.children.length - 1 == _selectedIndex);
-		button.addEventListener(MouseEvent.CLICK, buildMouseClickFunction(_content.children.length - 1));
+		button.addEventListener(UIEvent.CLICK, tabButtonClick, false, 1);
+		button.addEventListener(UIEvent.GLYPH_CLICK, tabGlyphClick);
 		return button;
+	}
+	
+	public function removeTab(index:Int):Void {
+		_content.removeChildAt(index);
+		var newIndex:Int = selectedIndex;
+		if (newIndex > _content.numChildren - 1) {
+			newIndex = _content.numChildren - 1;
+		}
+		selectedIndex = -1;
+		selectedIndex = newIndex;
 	}
 	
 	public function setTabText(index:Int, text:String):Void {
@@ -89,11 +106,13 @@ class TabBar extends ScrollView {
 		button.text = text;
 	}
 	
-	private function buildMouseClickFunction(index:Int) {
-		return function(event:MouseEvent) { mouseClickButton(index); };
+	private function tabButtonClick(event:UIEvent):Void {
+		selectedIndex = _content.indexOfChild(event.displayObject);
 	}
 	
-	private function mouseClickButton(index:Int):Void {
-		selectedIndex = index;
+	private function tabGlyphClick(event:UIEvent):Void {
+		var newEvent:UIEvent = new UIEvent(UIEvent.GLYPH_CLICK);
+		newEvent.data = _content.indexOfChild(event.displayObject);
+		dispatchEvent(newEvent);
 	}
 }

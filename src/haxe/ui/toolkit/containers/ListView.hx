@@ -67,7 +67,7 @@ class ListView extends ScrollView implements IDataComponent {
 	public var listSize(get, null):Int;
 	public var itemHeight(get, null):Float;
 	public var selectedItems(get, null):Array<ListViewItem>;
-	public var selectedIndex(get, null):Int;
+	public var selectedIndex(get, set):Int;
 	public var content(get, null):Component;
 	
 	private function get_listSize():Int {
@@ -108,6 +108,17 @@ class ListView extends ScrollView implements IDataComponent {
 			index = Lambda.indexOf(_content.children, _selectedItems[0]);
 		}
 		return index;
+	}
+	
+	private function set_selectedIndex(value:Int):Int {
+		if (_ready == false) {
+			return value;
+		}
+		var item:ListViewItem = cast(_content.getChildAt(value), ListViewItem);
+		if (item != null) {
+			handleListSelection(item, null);
+		}
+		return value;
 	}
 	
 	private function get_content():Component {
@@ -248,11 +259,11 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 	}
 	
-	public function handleListSelection(item:ListViewItem, event:Event):Void {
+	public function handleListSelection(item:ListViewItem, event:Event, raiseEvent:Bool = true):Void {
 		var shiftPressed:Bool = false;
 		var ctrlPressed:Bool = false;
 		
-		if (Std.is(event, MouseEvent)) {
+		if (event != null && Std.is(event, MouseEvent)) {
 			var mouseEvent:MouseEvent = cast(event, MouseEvent);
 			shiftPressed = mouseEvent.shiftKey;
 			ctrlPressed = mouseEvent.ctrlKey;
@@ -278,9 +289,13 @@ class ListView extends ScrollView implements IDataComponent {
 			_selectedItems.push(item);
 			item.state = ListViewItem.STATE_SELECTED;
 		}
+
+		ensureVisible(item);
 		
-		var event:Event = new Event(Event.CHANGE);
-		dispatchEvent(event);
+		if (raiseEvent == true) {
+			var event:Event = new Event(Event.CHANGE);
+			dispatchEvent(event);
+		}
 	}
 	
 	public function handleClick(item:ListViewItem, event:MouseEvent):Void {
@@ -307,6 +322,26 @@ class ListView extends ScrollView implements IDataComponent {
 			index = Lambda.indexOf(_content.children, item);
 		}
 		return index;
+	}
+	
+	public function setSelectedIndexNoEvent(value:Int):Int {
+		if (_ready == false) {
+			return value;
+		}
+		var item:ListViewItem = cast(_content.getChildAt(value), ListViewItem);
+		if (item != null) {
+			handleListSelection(item, null, false);
+		}
+		return value;
+	}
+	
+	public function ensureVisible(item:ListViewItem):Void {
+		if (item.y + item.height > _vscroll.pos + _content.clipHeight) {
+			_vscroll.pos = ((item.y + item.height) - _content.clipHeight);
+		} else if (item.y < _vscroll.pos) {
+			_vscroll.pos = item.y;
+		}
+		
 	}
 }
 

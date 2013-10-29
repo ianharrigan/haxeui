@@ -92,7 +92,7 @@ class Code extends TextInput {
 	}
 	
 	private function _onCodeKeyDown(event:KeyboardEvent):Void {
-		if (event.keyCode == 9) {
+		if (event.keyCode == 9 && event.ctrlKey == false && event.altKey == false && event.shiftKey == false) {
 			replaceSelectedText("    ");
 			applyRules();
 		}

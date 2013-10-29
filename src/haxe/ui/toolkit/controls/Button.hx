@@ -4,6 +4,7 @@ import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.Layout;
 import haxe.ui.toolkit.style.Style;
 
@@ -176,6 +177,9 @@ class Button extends StateComponent implements IFocusable {
 	}
 	
 	private function _onMouseClick(event:MouseEvent):Void {
+		if (_icon != null && _icon.hitTest(event.stageX, event.stageY)) {
+			dispatchEvent(new UIEvent(UIEvent.GLYPH_CLICK));
+		}
 		if (_toggle == true && _allowSelection == true) {
 			selected = !selected;
 			#if !android
@@ -334,7 +338,7 @@ class Button extends StateComponent implements IFocusable {
 				var cx:Float = _label.width + _layout.padding.left + _layout.padding.right;
 				if (_icon != null) {
 					if (buttonLayout.iconPosition == "farLeft" || buttonLayout.iconPosition == "left" || buttonLayout.iconPosition == "right" || buttonLayout.iconPosition == "farRight") {
-						cx += _icon.width + _layout.padding.left + _layout.padding.right;
+						cx += (_icon.width  + _layout.spacingX) * 2;
 					}
 				}
 				width = cx;
