@@ -302,18 +302,22 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
 		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
 			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
-			addEventListener(interceptEventType, interceptEvent, useCapture, priority, useWeakReference);
+			if (getListenerCount(interceptEventType, interceptEvent) == 0) {
+				addEventListener(interceptEventType, interceptEvent, useCapture, priority, useWeakReference);
+			}
 		}
 		
 		if (_eventListeners == null) {
 			_eventListeners = new StringMap < List < Dynamic->Void >> ();
-			var list:List < Dynamic->Void > = _eventListeners.get(type);
-			if (list == null) {
-				list = new List < Dynamic->Void > ();
-				_eventListeners.set(type, list);
-			}
-			list.add(listener);
 		}
+		
+		var list:List < Dynamic->Void > = _eventListeners.get(type);
+		if (list == null) {
+			list = new List < Dynamic->Void > ();
+			_eventListeners.set(type, list);
+		}
+		list.add(listener);
+		
 		_sprite.addEventListener(type, listener, useCapture, priority, useWeakReference);
 	}
 	
@@ -331,8 +335,11 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
 		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
 			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
-			removeEventListener(interceptEventType, interceptEvent, useCapture);
+			if (_eventListeners.get(type).length <= 1) {
+				removeEventListener(interceptEventType, interceptEvent, useCapture);
+			}
 		}
+		
 		if (_eventListeners != null && _eventListeners.exists(type)) {
 			var list:List < Dynamic->Void > = _eventListeners.get(type);
 			if (list != null) {
@@ -388,5 +395,18 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 				}
 			}
 		}
+	}
+	
+	private function getListenerCount(type:String, listener:Dynamic->Void):Int {
+		var count:Int = 0;
+		if (_eventListeners.exists(type)) {
+			var list:List < Dynamic->Void > = _eventListeners.get(type); 
+			for (l in list) {
+				if (l == listener) {
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 }
