@@ -335,7 +335,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
 		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
 			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
-			if (_eventListeners.get(type).length <= 1) {
+			if (_eventListeners.exists(type) == false || _eventListeners.get(type).length <= 1) {
 				removeEventListener(interceptEventType, interceptEvent, useCapture);
 			}
 		}

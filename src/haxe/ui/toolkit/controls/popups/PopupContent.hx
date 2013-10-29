@@ -11,4 +11,8 @@ class PopupContent extends VBox {
 	public function new() {
 		super();
 	}
+	
+	public function onButtonClicked(button:Int):Bool {
+		return true;
+	}
 }

@@ -817,19 +817,14 @@ ListPopupContent ListView {
 }
 
 Accordion {
-	backgroundColor: 0xdfdddd;
 	spacingX: 0;
 	spacingY: 0;
 	padding: 0;
 }
 
 Accordion VBox, Accordion HBox, Accordion Grid {
-	paddingLeft : 5;
-	paddingTop : 5;
-	paddingBottom : 5;
-	paddingRight : 5;
-	spacingX: 0;
-	spacingY: 0;
+	padding: 5;
+	spacing: 5;
 }
 
 AccordionButton {

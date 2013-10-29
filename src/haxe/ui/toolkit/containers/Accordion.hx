@@ -21,8 +21,7 @@ import motion.easing.Linear;
 class Accordion extends VBox {
 	private var _panels:Array<IDisplayObject>;
 	private var _buttons:Array<AccordionButton>;
-	
-	//private var _transition:String = "slide";
+	private var _selectedIndex:Int = -1;
 	
 	public function new() {
 		super();
@@ -34,6 +33,14 @@ class Accordion extends VBox {
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
+	public override function initialize():Void {
+		super.initialize();
+		
+		if (_selectedIndex != -1) {
+			showPage(_selectedIndex);
+		}
+	}
+	
 	/**
 	 Adds a panel to the accordion, the childs `text` property will be used as the title
 	 **/
@@ -65,13 +72,27 @@ class Accordion extends VBox {
 	}
 
 	//******************************************************************************************
-	// Helpers
+	// Properties
 	//******************************************************************************************
-	private function buildMouseClickFunction(index:Int) {
-		return function(event:MouseEvent) { mouseClickButton(index); };
+	public var selectedIndex(get, set):Int;
+	
+	private function get_selectedIndex():Int {
+		return _selectedIndex;
 	}
 	
-	private function mouseClickButton(index:Int):Void {
+	private function set_selectedIndex(value:Int):Int {
+		if (_ready == true) {
+			showPage(value);
+		} else {
+			_selectedIndex = value;
+		}
+		return value;
+	}
+	
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	private function showPage(index:Int):Void {
 		var button:AccordionButton = _buttons[index];
 		for (b in _buttons) {
 			if (b == button) {
@@ -82,6 +103,16 @@ class Accordion extends VBox {
 				}
 			}
 		}
+		
+		dispatchEvent(new Event(Event.CHANGE));
+	}
+	
+	private function buildMouseClickFunction(index:Int) {
+		return function(event:MouseEvent) { mouseClickButton(index); };
+	}
+	
+	private function mouseClickButton(index:Int):Void {
+		showPage(index);
 	}
 	
 	private function showPanel(index:Int):Void {
@@ -98,6 +129,7 @@ class Accordion extends VBox {
 			}
 			super.addChildAt(panel, buttonChildIndex + 1);
 			button.selected = true;
+			_selectedIndex = index;
 		}
 	}
 	
