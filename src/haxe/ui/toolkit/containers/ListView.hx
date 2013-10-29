@@ -336,9 +336,13 @@ class ListView extends ScrollView implements IDataComponent {
 	}
 	
 	public function ensureVisible(item:ListViewItem):Void {
-		if (item.y + item.height > _vscroll.pos + _content.clipHeight) {
+		var vpos:Float = 0;
+		if (_vscroll != null) {
+			vpos = _vscroll.pos;
+		}
+		if (item.y + item.height > vpos + _content.clipHeight) {
 			_vscroll.pos = ((item.y + item.height) - _content.clipHeight);
-		} else if (item.y < _vscroll.pos) {
+		} else if (item.y < vpos) {
 			_vscroll.pos = item.y;
 		}
 		
