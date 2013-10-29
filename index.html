@@ -1,57 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>HaxeUI by ianharrigan</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Haxeui by ianharrigan</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Haxeui</h1>
-        <h2>Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used &quot;out the box&quot;. Supports css type styling/skinning.</h2>
-        <a href="https://github.com/ianharrigan/haxeui" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
+    <div class="wrapper">
+      <header>
+        <h1>HaxeUI</h1>
+        <p>Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used &quot;out the box&quot;. Supports css type styling/skinning.</p>
+        <p class="view"><a href="https://github.com/ianharrigan/haxeui">View the Project on GitHub <small>ianharrigan/haxeui</small></a></p>
+        <ul>
+          <li><a href="https://github.com/ianharrigan/haxeui/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ianharrigan/haxeui/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ianharrigan/haxeui">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a name="haxe-ui-formerly-yahui" class="anchor" href="#haxe-ui-formerly-yahui"><span class="octicon octicon-link"></span></a>Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)</h1>
 
 <p>Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.</p>
 
 <p><img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg"><img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg"></p>
 
-<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">Compiled SWF demo</a> (May be out of date)</p>
+<p><b>Demos</b> (May be out of date): 
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">SWF</a> | 
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Windows</a> | 
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Neko</a> | 
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Android</a> |
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">AIR</a></p>
 
-<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Compiled Windows EXE demo</a> (May be out of date)</p>
-
-<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Compiled Neko EXE demo</a> (May be out of date)</p>
-
-<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Compiled Android APK demo</a> (May be out of date)</p>
-
-<p><a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">Compiled Adobe AIR demo</a> (May be out of date. Note: Will not install from mounted/network drive)</p>
-
-<p><a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)</p>
-
-<p><a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a></p>
-
-<p><a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a></p>
+<p>Adobe AIR  note: Installer will not install from mounted/network drives.</p>
 
 <h2>
+<a name="projects" class="anchor" href="#projects"><span class="octicon octicon-link"></span></a>Projects</h2>
+
+<ul>
+<li>
+<a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)</li>
+<li><a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a></li>
+<li><a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a></li>
+<li><a href="https://github.com/ianharrigan/haxe-pad">HaxePad</a></li>
+</ul><h2>
 <a name="instructions" class="anchor" href="#instructions"><span class="octicon octicon-link"></span></a>Instructions</h2>
 
 <p>First install haxeui via haxelib:</p>
@@ -160,7 +161,7 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included
 in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE IS PROVIDED ?AS IS?, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -168,25 +169,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </code></pre>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/ianharrigan/haxeui/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/ianharrigan/haxeui/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/ianharrigan/haxeui"></a> is maintained by <a href="https://github.com/ianharrigan">ianharrigan</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
-
-  
+    <footer>
+      <p>Project maintained by <a href="https://github.com/ianharrigan">ianharrigan</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
