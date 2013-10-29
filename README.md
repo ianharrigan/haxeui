@@ -17,7 +17,7 @@ Adobe AIR  note: Installer will not install from mounted/network drives.
 Projects
 -------------------------
  - <a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)
- - <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
+ - <a href="https://github.com/ianharrigan/haxeui/tree/master/samples">Samples</a>
  - <a href="https://github.com/ianharrigan/hui-irc-threadtest">IRC client test app</a>
  - <a href="https://github.com/ianharrigan/haxe-pad">HaxePad</a>
 
