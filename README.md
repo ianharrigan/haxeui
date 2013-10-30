@@ -16,7 +16,7 @@ Adobe AIR  note: Installer will not install from mounted/network drives.
 
 Documentation
 -------------------------
-<a href="http://haxeui.org/docs/api">API</a>
+<a href="http://haxeui.org/docs/api">API</a> (Incomplete)
 
 Projects
 -------------------------
