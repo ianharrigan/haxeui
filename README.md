@@ -14,6 +14,10 @@ Cross platfrom Haxe/OpenFL set of styleable application centric rich UI componen
 
 Adobe AIR  note: Installer will not install from mounted/network drives.
 
+Documentation
+-------------------------
+<a href="http://haxeui.org/docs/api">API</a>
+
 Projects
 -------------------------
  - <a href="https://github.com/ianharrigan/haxeui-test-app">Test App</a> (Used in demo/screenshots)
