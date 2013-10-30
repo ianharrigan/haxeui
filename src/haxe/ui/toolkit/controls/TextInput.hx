@@ -9,6 +9,7 @@ import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
 import haxe.ui.toolkit.layout.DefaultLayout;
@@ -18,6 +19,7 @@ import haxe.ui.toolkit.layout.DefaultLayout;
  **/
 class TextInput extends StateComponent {
 	private var _textDisplay:ITextDisplay;
+	private var _textPlaceHolder:ITextDisplay;
 	
 	private var _vscroll:VScroll;
 	private var _hscroll:HScroll;
@@ -49,13 +51,20 @@ class TextInput extends StateComponent {
 		
 		_textDisplay.display.addEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.addEventListener(Event.SCROLL, _onTextScroll);
-		checkScrolls();		
+		checkScrolls();	
+		
+		if (_textPlaceHolder != null && sprite.contains(_textPlaceHolder.display) == false) {
+			sprite.addChild(_textPlaceHolder.display);
+		}
 	}
 
 	public override function dispose() {
 		_textDisplay.display.removeEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextScroll);
 		sprite.removeChild(_textDisplay.display);
+		if (_textPlaceHolder != null && sprite.contains(_textPlaceHolder.display)) {
+			sprite.removeChild(_textPlaceHolder.display);
+		}
 		super.dispose();
 	}
 	
@@ -77,6 +86,9 @@ class TextInput extends StateComponent {
 	//******************************************************************************************
 	private function _onTextChange(event:Event):Void {
 		checkScrolls();
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.visible = (text.length == 0);
+		}
 	}
 
 	private function _onTextScroll(event:Event):Void {
@@ -122,6 +134,12 @@ class TextInput extends StateComponent {
 		if (_textDisplay != null) {
 			_textDisplay.style = style;
 		}
+		if (_textPlaceHolder != null) {
+			var placeholderStyle:Style = new Style();
+			placeholderStyle.merge(style);
+			placeholderStyle.color = 0xAAAAAA;
+			_textPlaceHolder.style = placeholderStyle;
+		}
 	}
 	
 	//******************************************************************************************
@@ -144,6 +162,8 @@ class TextInput extends StateComponent {
 	 **/
 	public var selectedTextFormat(get, null):TextFormat;
 	public var wrapLines(get, set):Bool;
+	public var displayAsPassword(get, set):Bool;
+	public var placeholderText(get, set):String;
 	
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
@@ -187,6 +207,41 @@ class TextInput extends StateComponent {
 		return value;
 	}
 	
+	private function get_displayAsPassword():Bool {
+		return _textDisplay.displayAsPassword;
+	}
+	
+	private function set_displayAsPassword(value:Bool):Bool {
+		_textDisplay.displayAsPassword = value;
+		return value;
+	}
+	
+	private function get_placeholderText():String {
+		if (_textPlaceHolder == null) {
+			return null;
+		}
+		return _textPlaceHolder.text;
+	}
+	
+	private function set_placeholderText(value:String):String {
+		if (_textPlaceHolder == null) {
+			_textPlaceHolder = new TextDisplay();
+		}
+		_textPlaceHolder.text = value;
+		if (_ready && sprite.contains(_textPlaceHolder.display) == false && value != null) {
+			sprite.addChild(_textPlaceHolder.display);
+		}
+		if (value == null) {
+			if (sprite.contains(_textPlaceHolder.display)) {
+				sprite.removeChild(_textPlaceHolder.display);
+			}
+			_textPlaceHolder = null;
+		}
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.visible = (text.length == 0);
+		}
+		return value;
+	}
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
@@ -279,6 +334,16 @@ private class TextInputLayout extends DefaultLayout {
 					text.y = (container.height / 2) - (text.height / 2);
 				}
 				text.width = usableWidth;
+				
+				for (n in 0...container.sprite.numChildren) {
+					var child:DisplayObject = container.sprite.getChildAt(n);
+					if (Std.is(child, TextField) && child != text) {
+						child.x = text.x;
+						child.y = text.y;
+						child.width = text.width;
+						child.height = text.height;
+					}
+				}
 			}
 		}
 	}

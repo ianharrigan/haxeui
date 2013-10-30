@@ -31,6 +31,8 @@ class TextDisplay implements ITextDisplay {
 	public var interactive(get, set):Bool;
 	public var multiline(get, set):Bool;
 	public var wrapLines(get, set):Bool;
+	public var displayAsPassword(get, set):Bool;
+	public var visible(get, set):Bool;
 
 	private function get_text():String {
 		return _tf.text;
@@ -140,6 +142,24 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_wrapLines(value:Bool):Bool {
 		_tf.wordWrap = value;
+		return value;
+	}
+	
+	private function get_displayAsPassword():Bool {
+		return _tf.displayAsPassword;
+	}
+	
+	private function set_displayAsPassword(value:Bool):Bool {
+		_tf.displayAsPassword = value;
+		return value;
+	}
+
+	private function get_visible():Bool {
+		return _tf.visible;
+	}
+	
+	private function set_visible(value:Bool):Bool {
+		_tf.visible = value;
 		return value;
 	}
 }
