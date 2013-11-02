@@ -19,7 +19,7 @@ import haxe.ui.toolkit.layout.DefaultLayout;
  **/
 class TextInput extends StateComponent {
 	private var _textDisplay:ITextDisplay;
-	private var _textPlaceHolder:ITextDisplay;
+	private var _textPlaceHolder:Text;
 	
 	private var _vscroll:VScroll;
 	private var _hscroll:HScroll;
@@ -53,8 +53,12 @@ class TextInput extends StateComponent {
 		_textDisplay.display.addEventListener(Event.SCROLL, _onTextScroll);
 		checkScrolls();	
 		
-		if (_textPlaceHolder != null && sprite.contains(_textPlaceHolder.display) == false) {
-			sprite.addChild(_textPlaceHolder.display);
+		if (_textPlaceHolder != null && contains(_textPlaceHolder) == false) {
+			addChild(_textPlaceHolder);
+		}
+		
+		if (_textPlaceHolder != null) {
+			setChildIndex(_textPlaceHolder, 0);
 		}
 	}
 
@@ -62,8 +66,8 @@ class TextInput extends StateComponent {
 		_textDisplay.display.removeEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextScroll);
 		sprite.removeChild(_textDisplay.display);
-		if (_textPlaceHolder != null && sprite.contains(_textPlaceHolder.display)) {
-			sprite.removeChild(_textPlaceHolder.display);
+		if (_textPlaceHolder != null && contains(_textPlaceHolder)) {
+			removeChild(_textPlaceHolder);
 		}
 		super.dispose();
 	}
@@ -137,7 +141,10 @@ class TextInput extends StateComponent {
 		if (_textPlaceHolder != null) {
 			var placeholderStyle:Style = new Style();
 			placeholderStyle.merge(style);
-			placeholderStyle.color = 0xAAAAAA;
+			placeholderStyle.borderSize = 0;
+			placeholderStyle.backgroundColor = -1;
+			placeholderStyle.backgroundImage = null;
+			placeholderStyle.padding = 0;
 			_textPlaceHolder.style = placeholderStyle;
 		}
 	}
@@ -225,15 +232,17 @@ class TextInput extends StateComponent {
 	
 	private function set_placeholderText(value:String):String {
 		if (_textPlaceHolder == null) {
-			_textPlaceHolder = new TextDisplay();
+			_textPlaceHolder = new Text();
+			_textPlaceHolder.id = "placeholder";
 		}
 		_textPlaceHolder.text = value;
-		if (_ready && sprite.contains(_textPlaceHolder.display) == false && value != null) {
-			sprite.addChild(_textPlaceHolder.display);
+		if (_ready && contains(_textPlaceHolder) == false && value != null) {
+			trace("addding");
+			addChild(_textPlaceHolder);
 		}
 		if (value == null) {
-			if (sprite.contains(_textPlaceHolder.display)) {
-				sprite.removeChild(_textPlaceHolder.display);
+			if (contains(_textPlaceHolder)) {
+				removeChild(_textPlaceHolder);
 			}
 			_textPlaceHolder = null;
 		}
@@ -322,9 +331,8 @@ private class TextInputLayout extends DefaultLayout {
 		if (container.sprite.numChildren > 0) {
 			var vscroll:VScroll = container.findChildAs(VScroll);
 			
-			var firstChild:DisplayObject = container.sprite.getChildAt(0);
-			if (firstChild != null && Std.is(firstChild, TextField)) {
-				var text:TextField = cast(firstChild, TextField);
+			var text:TextField = findTextField();
+			if (text != null) {
 				text.x = padding.left;
 				if (text.multiline == true) {
 					text.y = padding.top;
@@ -335,14 +343,10 @@ private class TextInputLayout extends DefaultLayout {
 				}
 				text.width = usableWidth;
 				
-				for (n in 0...container.sprite.numChildren) {
-					var child:DisplayObject = container.sprite.getChildAt(n);
-					if (Std.is(child, TextField) && child != text) {
-						child.x = text.x;
-						child.y = text.y;
-						child.width = text.width;
-						child.height = text.height;
-					}
+				var placeholder:Text = container.findChild("placeholder");
+				if (placeholder != null) {
+					placeholder.width = text.width;
+					placeholder.height = text.height;
 				}
 			}
 		}
@@ -358,6 +362,13 @@ private class TextInputLayout extends DefaultLayout {
 		var hscroll:HScroll = container.findChildAs(HScroll);
 		if (hscroll != null) {
 			hscroll.y = container.height - hscroll.height - padding.bottom;
+		}
+		
+		var text:TextField = findTextField();
+		var placeholder:Text = container.findChild("placeholder");
+		if (text != null && placeholder != null) {
+			placeholder.x = text.x;
+			placeholder.y = text.y + 1;
 		}
 	}
 	
@@ -378,5 +389,17 @@ private class TextInputLayout extends DefaultLayout {
 			ucy -= hscroll.height - spacingY;
 		}
 		return ucy;
+	}
+	
+	private function findTextField():TextField {
+		var tf:TextField = null;
+		for (i in 0...container.sprite.numChildren) {
+			var child:DisplayObject = container.sprite.getChildAt(i);
+			if (Std.is(child, TextField)) {
+				tf = cast(child, TextField);
+				break;
+			}
+		}
+		return tf;
 	}
 }

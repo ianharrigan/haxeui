@@ -14,6 +14,8 @@ interface IDisplayObjectContainer extends IDisplayObject { // as display object 
 	public function findChild<T>(id:String, type:Class<T> = null):Null<T>;
 	public function findChildAs<T>(type:Class<T>):Null<T>;
 	public function removeAllChildren():Void;
+	public function contains(child:IDisplayObject):Bool;
+	public function setChildIndex(child:IDisplayObject, index:Int):Void;
 	
 	public var layout(get, set):ILayout;
 	

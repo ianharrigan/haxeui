@@ -498,6 +498,10 @@ TextInput, Code, RTF {
 	fontName: "_sans";
 }
 
+TextInput #placeholder {
+	color: 0xAAAAAA;
+}
+
 TabBar {
 	backgroundColor: 0xFFFFFF;
 	height: 45;

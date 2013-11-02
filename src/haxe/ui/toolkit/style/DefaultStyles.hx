@@ -62,6 +62,10 @@ class DefaultStyles extends Styles {
 			fontName: "_sans"
 		} ));
 
+		addStyle("TextInput #placeholder", new Style( {
+			color: 0xAAAAAA,
+		} ));
+		
 		addStyle("HProgress", new Style( {
 			backgroundColor: 0xFFFFFF,
 			width: 100,

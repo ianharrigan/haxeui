@@ -167,6 +167,20 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		}
 	}
 	
+	public function contains(child:IDisplayObject):Bool {
+		if (child == null) {
+			return false;
+		}
+
+		return sprite.contains(child.sprite);
+	}
+	
+	public function setChildIndex(child:IDisplayObject, index:Int):Void {
+		if (child != null) {
+			sprite.setChildIndex(child.sprite, index);
+		}
+	}
+	
 	public function findChildAs<T>(type:Class<T>):Null<T> {
 		var match:Component = null;
 		for (child in children) {

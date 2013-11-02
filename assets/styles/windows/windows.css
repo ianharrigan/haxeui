@@ -72,6 +72,10 @@ TextInput, Code, RTF {
 	fontName: "_sans";
 }
 
+TextInput #placeholder {
+	color: 0xAAAAAA;
+}
+
 MenuBar {
 	backgroundColor: 0xF5F5F5;
 	width: 100%;
