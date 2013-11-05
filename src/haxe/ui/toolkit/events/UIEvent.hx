@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.events;
 
 import flash.events.Event;
+import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 
 class UIEvent extends Event {
@@ -29,6 +30,7 @@ class UIEvent extends Event {
 	public static inline var GLYPH_CLICK:String = PREFIX + "glyphClick"; // for button images
 	
 	public var displayObject(default, default):IDisplayObject;
+	public var component(get, null):Component;
 	public var data(default, default):Dynamic;
 	
 	public function new(type:String, bubbles:Bool = false, cancelable:Bool = false) {
@@ -39,5 +41,12 @@ class UIEvent extends Event {
 		var c:UIEvent = new UIEvent(type, bubbles, cancelable);
 		c.displayObject = displayObject;
 		return c;
+	}
+	
+	private function get_component():Component {
+		if (displayObject == null || Std.is(displayObject, Component) == false) {
+			return null;
+		}
+		return cast(displayObject, Component);
 	}
 }
