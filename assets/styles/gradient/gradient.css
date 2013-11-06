@@ -725,42 +725,42 @@ DropDownList {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 }
 
-ListView VBox Button {
+ListView VBox Button, TableView #tableContent Button {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox Button:over {
+ListView VBox Button:over, TableView #tableContent Button:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox Button:down {
+ListView VBox Button:down, TableView #tableContent Button:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List {
+ListView VBox List, TableView #tableContent List {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:over {
+ListView VBox List:over, TableView #tableContent List:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:down {
+ListView VBox List:down, TableView #tableContent List:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
@@ -1044,4 +1044,57 @@ CalendarPopupContent CalendarView {
 	paddingBottom: 0;
 	borderSize: 0;
 	filter: null;
+}
+
+TableView {
+	borderColor: 0xa5b8da;
+	color: 0x000000;
+	paddingLeft: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingRight: 2;
+	borderSize: 1;
+	spacingX: 2;
+	spacingY: 2;
+	cornerRadius: 2;
+	backgroundColor: 0xFFFFFF;
+	
+}
+
+TableView #tableContent {
+	padding: 0;
+	spacing: 0;
+}
+
+TableViewRow {
+	padding: 2;
+}
+
+
+TableView #even {
+	backgroundColor: 0xE9EDF5;
+	color: 0x000000;
+	cornerRadius: 2;
+}
+
+TableView #odd {
+	backgroundColor: 0xFFFFFF;
+	color: 0x000000;
+	cornerRadius: 2;
+}
+
+TableViewRow:over {
+	backgroundColor: 0x606c88;
+}
+
+TableViewRow:selected {
+	backgroundColor: 0x3f4c6b;
+}
+
+TableViewRow Text {
+	color: 0x000000;
+}
+
+TableViewRow Text:over, TableViewRow Text:selected {
+	color: 0xFFFFFF;
 }

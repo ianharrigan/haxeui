@@ -9,7 +9,7 @@ import haxe.ui.toolkit.layout.HorizontalLayout;
 class HBox extends Component {
 	public function new() {
 		super();
-		
+
 		autoSize = true;
 		layout = new HorizontalLayout();
 	}

@@ -44,7 +44,9 @@ class ScrollView extends Component {
 		
 		if (_style != null) {
 			_autoHideScrolls = _style.autoHideScrolls;
-			cast(_layout, ScrollViewLayout).inlineScrolls = _style.inlineScrolls;
+			if (Reflect.getProperty(_layout, "inlineScrolls") != null) {
+				Reflect.setProperty(_layout, "inlineScrolls", _style.inlineScrolls);
+			}
 		}
 	}
 	
