@@ -4,8 +4,10 @@ import flash.filters.BitmapFilter;
 import flash.geom.Rectangle;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.StyleableDisplayObject;
+import haxe.ui.toolkit.hscript.ScriptManager;
 
 class Style {
+	private var _dynamicValues:Map<String, String>;
 	private var _target:IDisplayObject;
 	private var _autoApply:Bool = true;
 	
@@ -116,6 +118,9 @@ class Style {
 	}
 	
 	private function get_width():Int {
+		if (hasDynamicValue("width")) {
+			return getDynamicValue("width");
+		}
 		return _width;
 	}
 	
@@ -128,6 +133,9 @@ class Style {
 	}
 
 	private function get_height():Int {
+		if (hasDynamicValue("height")) {
+			return getDynamicValue("height");
+		}
 		return _height;
 	}
 	
@@ -140,6 +148,9 @@ class Style {
 	}
 	
 	private function get_percentWidth():Int {
+		if (hasDynamicValue("percentWidth")) {
+			return getDynamicValue("percentWidth");
+		}
 		return _percentWidth;
 	}
 	
@@ -152,6 +163,9 @@ class Style {
 	}
 
 	private function get_percentHeight():Int {
+		if (hasDynamicValue("percentHeight")) {
+			return getDynamicValue("percentHeight");
+		}
 		return _percentHeight;
 	}
 	
@@ -164,6 +178,9 @@ class Style {
 	}
 	
 	private function get_backgroundImage():String {
+		if (hasDynamicValue("backgroundImage")) {
+			return getDynamicValue("backgroundImage");
+		}
 		return _backgroundImage;
 	}
 	
@@ -176,6 +193,9 @@ class Style {
 	}
 
 	private function get_backgroundImageScale9():Rectangle {
+		if (hasDynamicValue("backgroundImageScale9")) {
+			return getDynamicValue("backgroundImageScale9");
+		}
 		return _backgroundImageScale9;
 	}
 	
@@ -188,6 +208,9 @@ class Style {
 	}
 
 	private function get_backgroundImageRect():Rectangle {
+		if (hasDynamicValue("backgroundImageRect")) {
+			return getDynamicValue("backgroundImageRect");
+		}
 		return _backgroundImageRect;
 	}
 	
@@ -200,6 +223,9 @@ class Style {
 	}
 	
 	private function get_backgroundColor():Int {
+		if (hasDynamicValue("backgroundColor")) {
+			return getDynamicValue("backgroundColor");
+		}
 		return _backgroundColor;
 	}
 	
@@ -212,6 +238,9 @@ class Style {
 	}
 
 	private function get_backgroundColorGradientEnd():Int {
+		if (hasDynamicValue("backgroundColorGradientEnd")) {
+			return getDynamicValue("backgroundColorGradientEnd");
+		}
 		return _backgroundColorGradientEnd;
 	}
 	
@@ -224,6 +253,9 @@ class Style {
 	}
 	
 	private function get_borderColor():Int {
+		if (hasDynamicValue("borderColor")) {
+			return getDynamicValue("borderColor");
+		}
 		return _borderColor;
 	}
 	
@@ -236,6 +268,9 @@ class Style {
 	}
 
 	private function get_borderSize():Int {
+		if (hasDynamicValue("borderSize")) {
+			return getDynamicValue("borderSize");
+		}
 		return _borderSize;
 	}
 	
@@ -248,6 +283,9 @@ class Style {
 	}
 
 	private function get_color():Int {
+		if (hasDynamicValue("color")) {
+			return getDynamicValue("color");
+		}
 		return _color;
 	}
 	
@@ -260,6 +298,12 @@ class Style {
 	}
 
 	private function get_paddingLeft():Int {
+		if (hasDynamicValue("paddingLeft")) {
+			return getDynamicValue("paddingRight");
+		}
+		if (hasDynamicValue("padding")) {
+			return getDynamicValue("padding");
+		}
 		return _paddingLeft;
 	}
 	
@@ -272,6 +316,12 @@ class Style {
 	}
 
 	private function get_paddingRight():Int {
+		if (hasDynamicValue("paddingRight")) {
+			return getDynamicValue("paddingRight");
+		}
+		if (hasDynamicValue("padding")) {
+			return getDynamicValue("padding");
+		}
 		return _paddingRight;
 	}
 	
@@ -284,6 +334,12 @@ class Style {
 	}
 	
 	private function get_paddingTop():Int {
+		if (hasDynamicValue("paddingTop")) {
+			return getDynamicValue("paddingTop");
+		}
+		if (hasDynamicValue("padding")) {
+			return getDynamicValue("padding");
+		}
 		return _paddingTop;
 	}
 	
@@ -296,6 +352,12 @@ class Style {
 	}
 	
 	private function get_paddingBottom():Int {
+		if (hasDynamicValue("paddingBottom")) {
+			return getDynamicValue("paddingBottom");
+		}
+		if (hasDynamicValue("padding")) {
+			return getDynamicValue("padding");
+		}
 		return _paddingBottom;
 	}
 	
@@ -308,6 +370,9 @@ class Style {
 	}
 
 	private function get_padding():Int {
+		if (hasDynamicValue("padding")) {
+			return getDynamicValue("padding");
+		}
 		return cast(_paddingLeft | _paddingRight | _paddingTop | _paddingBottom, Int);
 	}
 	
@@ -323,6 +388,12 @@ class Style {
 	}
 	
 	private function get_spacingX():Int {
+		if (hasDynamicValue("spacingX")) {
+			return getDynamicValue("spacingX");
+		}
+		if (hasDynamicValue("spacing")) {
+			return getDynamicValue("spacing");
+		}
 		return _spacingX;
 	}
 	
@@ -335,6 +406,12 @@ class Style {
 	}
 
 	private function get_spacingY():Int {
+		if (hasDynamicValue("spacingY")) {
+			return getDynamicValue("spacingY");
+		}
+		if (hasDynamicValue("spacing")) {
+			return getDynamicValue("spacing");
+		}
 		return _spacingY;
 	}
 	
@@ -347,6 +424,9 @@ class Style {
 	}
 	
 	private function get_spacing():Int {
+		if (hasDynamicValue("spacing")) {
+			return getDynamicValue("spacing");
+		}
 		return _spacingX | _spacingY;
 	}
 	
@@ -360,6 +440,12 @@ class Style {
 	}
 	
 	private function get_cornerRadiusTopLeft():Int {
+		if (hasDynamicValue("cornerRadiusTopLeft")) {
+			return getDynamicValue("cornerRadiusTopLeft");
+		}
+		if (hasDynamicValue("cornerRadius")) {
+			return getDynamicValue("cornerRadius");
+		}
 		return _cornerRadiusTopLeft;
 	}
 	
@@ -372,6 +458,12 @@ class Style {
 	}
 
 	private function get_cornerRadiusTopRight():Int {
+		if (hasDynamicValue("cornerRadiusTopRight")) {
+			return getDynamicValue("cornerRadiusTopRight");
+		}
+		if (hasDynamicValue("cornerRadius")) {
+			return getDynamicValue("cornerRadius");
+		}
 		return _cornerRadiusTopRight;
 	}
 	
@@ -384,6 +476,12 @@ class Style {
 	}
 	
 	private function get_cornerRadiusBottomLeft():Int {
+		if (hasDynamicValue("cornerRadiusBottomLeft")) {
+			return getDynamicValue("cornerRadiusBottomLeft");
+		}
+		if (hasDynamicValue("cornerRadius")) {
+			return getDynamicValue("cornerRadius");
+		}
 		return _cornerRadiusBottomLeft;
 	}
 	
@@ -396,6 +494,12 @@ class Style {
 	}
 
 	private function get_cornerRadiusBottomRight():Int {
+		if (hasDynamicValue("cornerRadiusBottomRight")) {
+			return getDynamicValue("cornerRadiusBottomRight");
+		}
+		if (hasDynamicValue("cornerRadius")) {
+			return getDynamicValue("cornerRadius");
+		}
 		return _cornerRadiusBottomRight;
 	}
 	
@@ -408,6 +512,9 @@ class Style {
 	}
 
 	private function get_cornerRadius():Int {
+		if (hasDynamicValue("cornerRadius")) {
+			return getDynamicValue("cornerRadius");
+		}
 		return _cornerRadiusTopLeft | _cornerRadiusTopRight | _cornerRadiusBottomLeft | _cornerRadiusBottomRight;
 	}
 	
@@ -423,6 +530,9 @@ class Style {
 	}
 	
 	private function get_filter():BitmapFilter {
+		if (hasDynamicValue("filter")) {
+			return getDynamicValue("filter");
+		}
 		return _filter;
 	}
 	
@@ -436,6 +546,9 @@ class Style {
 	}
 	
 	private function get_alpha():Float {
+		if (hasDynamicValue("alpha")) {
+			return getDynamicValue("alpha");
+		}
 		return _alpha;
 	}
 	
@@ -448,6 +561,9 @@ class Style {
 	}
 	
 	private function get_fontName():String {
+		if (hasDynamicValue("fontName")) {
+			return getDynamicValue("fontName");
+		}
 		return _fontName;
 	}
 	
@@ -460,6 +576,9 @@ class Style {
 	}
 	
 	private function get_fontSize():Float {
+		if (hasDynamicValue("fontSize")) {
+			return getDynamicValue("fontSize");
+		}
 		var size:Float = _fontSize;
 		if (_fontScale > 0) {
 			size = _fontSize * _fontScale;
@@ -476,6 +595,9 @@ class Style {
 	}
 	
 	private function get_fontScale():Float {
+		if (hasDynamicValue("fontScale")) {
+			return getDynamicValue("fontScale");
+		}
 		return _fontScale;
 	}
 	
@@ -488,6 +610,9 @@ class Style {
 	}
 	
 	private function get_iconPosition():String {
+		if (hasDynamicValue("iconPosition")) {
+			return getDynamicValue("iconPosition");
+		}
 		return _iconPosition;
 	}
 	
@@ -500,6 +625,9 @@ class Style {
 	}
 
 	private function get_labelPosition():String {
+		if (hasDynamicValue("labelPosition")) {
+			return getDynamicValue("labelPosition");
+		}
 		return _labelPosition;
 	}
 	
@@ -512,6 +640,9 @@ class Style {
 	}
 	
 	private function get_icon():String {
+		if (hasDynamicValue("icon")) {
+			return getDynamicValue("icon");
+		}
 		return _icon;
 	}
 	
@@ -524,6 +655,9 @@ class Style {
 	}
 
 	private function get_hasButtons():Bool {
+		if (hasDynamicValue("hasButtons")) {
+			return getDynamicValue("hasButtons");
+		}
 		if (_hasButtons == -1) {
 			return true;
 		}
@@ -537,6 +671,9 @@ class Style {
 	}
 	
 	private function get_gradientType():String {
+		if (hasDynamicValue("gradientType")) {
+			return getDynamicValue("gradientType");
+		}
 		return _gradientType;
 	}
 	
@@ -549,6 +686,9 @@ class Style {
 	}
 
 	private function get_selectionMethod():String {
+		if (hasDynamicValue("selectionMethod")) {
+			return getDynamicValue("selectionMethod");
+		}
 		return _selectionMethod;
 	}
 	
@@ -561,6 +701,9 @@ class Style {
 	}
 
 	private function get_autoHideScrolls():Bool {
+		if (hasDynamicValue("autoHideScrolls")) {
+			return getDynamicValue("autoHideScrolls");
+		}
 		if (_autoHideScrolls == -1) {
 			return false;
 		}
@@ -574,6 +717,9 @@ class Style {
 	}
 
 	private function get_inlineScrolls():Bool {
+		if (hasDynamicValue("inlineScrolls")) {
+			return getDynamicValue("inlineScrolls");
+		}
 		if (_inlineScrolls == -1) {
 			return false;
 		}
@@ -594,6 +740,26 @@ class Style {
 		}
 	}
 
+	public function addDynamicValue(property:String, script:String):Void {
+		if (_dynamicValues == null) {
+			_dynamicValues = new Map<String, String>();
+		}
+		_dynamicValues.set(property, script);
+	}
+	
+	private function hasDynamicValue(property):Bool {
+		if (_dynamicValues == null) {
+			return false;
+		}
+		return _dynamicValues.get(property) != null;
+	}
+	
+	private function getDynamicValue<T>(property:String):Null<T> {
+		var script:String = _dynamicValues.get(property);
+		var retVal = ScriptManager.instance.executeScript(script);
+		return retVal;
+	}
+	
 	public function merge(with:Style):Void {
 		if (with == null) {
 			return;
@@ -639,6 +805,15 @@ class Style {
 		if (with._gradientType != null) this._gradientType = with._gradientType;
 		if (with._selectionMethod != null) this._selectionMethod = with._selectionMethod;
 		if (with._autoHideScrolls != -1) this._autoHideScrolls = with._autoHideScrolls;
-		if (with._inlineScrolls != -1) this._inlineScrolls = with._inlineScrolls;
+		if (with._inlineScrolls != -1) this._inlineScrolls = with ._inlineScrolls;
+		if (with._dynamicValues != null) {
+			if (_dynamicValues == null) {
+				_dynamicValues = new Map<String, String>();
+			}
+			for (property in with._dynamicValues.keys()) {
+				var script:String = with._dynamicValues.get(property);
+				_dynamicValues.set(property, script);
+			}
+		}
 	}
 }

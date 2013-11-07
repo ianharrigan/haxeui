@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core;
 
 import haxe.macro.Context;
 import haxe.macro.Expr;
+import haxe.ui.toolkit.hscript.ScriptUtils;
 
 class Macros {
 	macro public static function addStyleSheet(resourcePath:String):Expr {
@@ -39,12 +40,17 @@ class Macros {
 		
 		code += "\tvar style:haxe.ui.toolkit.style.Style = new haxe.ui.toolkit.style.Style({\n";
 		var styles:Array<String> = style.split(";");
+		var dynamicValues:Map<String, String> = new Map<String, String>();
 		for (styleData in styles) {
 			styleData = StringTools.trim(styleData);
 			if (styleData.length > 0) {
 				var props:Array<String> = styleData.split(":");
 				var propName:String = StringTools.trim(props[0]);
 				var propValue:String = StringTools.trim(props[1]);
+				if (ScriptUtils.isScript(propValue) && propName != "filter" && propName != "icon" && propName != "backgroundImage") {
+					dynamicValues.set(propName, propValue);
+					continue;
+				}
 				
 				if (propName == "width" && propValue.indexOf("%") != -1) { // special case for width
 					propName = "percentWidth";
@@ -87,6 +93,10 @@ class Macros {
 			}
 		}
 		code += "\t});\n";
+		for (property in dynamicValues.keys()) {
+			var value:String = dynamicValues.get(property);
+			code += "\tstyle.addDynamicValue(\"" + property + "\", \"" + value + "\");\n";
+		}
 		code += "\thaxe.ui.toolkit.style.StyleManager.instance.addStyle(\"" + rule + "\", style);\n";
 				
 		code += "}()\n";

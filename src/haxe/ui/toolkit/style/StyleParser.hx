@@ -2,6 +2,7 @@ package haxe.ui.toolkit.style;
 
 import flash.geom.Rectangle;
 import flash.Lib;
+import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.FilterParser;
 
 class StyleParser {
@@ -38,6 +39,10 @@ class StyleParser {
 					
 					propValue = StringTools.replace(propValue, "\"", "");
 					propValue = StringTools.replace(propValue, "'", "");
+					if (ScriptUtils.isScript(propValue) && propName != "filter" && propName != "icon" && propName != "backgroundImage") {
+						style.addDynamicValue(propName, propValue);
+						continue;
+					}
 					
 					if (propName == "width" && propValue.indexOf("%") != -1) { // special case for width
 						propName = "percentWidth";

@@ -13,6 +13,7 @@ import haxe.ui.toolkit.core.xml.UIProcessor;
 import haxe.ui.toolkit.data.DataManager;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.hscript.ClientWrapper;
+import haxe.ui.toolkit.hscript.ScriptManager;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.style.DefaultStyles;
 import haxe.ui.toolkit.style.StyleManager;
@@ -105,6 +106,18 @@ class Toolkit {
 						return processXml(importXml);
 					}
 				}
+			} else if (nodeName == "script") {
+				var scriptResource = node.get("resource");
+				var scriptData:String = "";
+				if (scriptResource != null) {
+					scriptData += ResourceManager.instance.getText(scriptResource);
+				}
+				var scriptNodeData:String = node.firstChild().nodeValue;
+				if (scriptNodeData != null) {
+					scriptNodeData = StringTools.trim(scriptNodeData);
+					scriptData += "\n\n" + scriptNodeData;
+				}
+				ScriptManager.instance.addScript(scriptData);
 			}
 		} else {
 			var p:IXMLProcessor = null;
