@@ -23,6 +23,7 @@ class MenuButton extends Button {
 		
 		if (_menu != null) {
 			_menu.addEventListener(MenuEvent.SELECT, _onMenuSelect);
+			_menu.addEventListener(MenuEvent.OPEN, _onMenuOpen);
 		}
 	}
 	
@@ -95,10 +96,16 @@ class MenuButton extends Button {
 	
 	private function _onMenuSelect(event:MenuEvent):Void {
 		hideMenu();
-		var e:MenuEvent = new MenuEvent(event.menuItem);
+		var e:MenuEvent = new MenuEvent(MenuEvent.SELECT, event.menuItem);
 		dispatchEvent(e);
 	}
 
+	private function _onMenuOpen(event:MenuEvent):Void {
+		var e:MenuEvent = new MenuEvent(MenuEvent.OPEN);
+		e.menu = event.menu;
+		dispatchEvent(e);
+	}
+	
 	private function showMenu():Void {
 		selected = true;
 		_menu.x = this.stageX - root.stageX;
@@ -124,6 +131,10 @@ class MenuButton extends Button {
 			_menu.sprite.alpha = 1;
 			_menu.visible = true;
 		}
+		
+		var event:MenuEvent = new MenuEvent(MenuEvent.OPEN);
+		event.menu = _menu;
+		dispatchEvent(event);
 	}
 
 	private function hideMenu():Void {

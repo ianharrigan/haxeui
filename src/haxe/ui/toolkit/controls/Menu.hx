@@ -76,7 +76,7 @@ class Menu extends VBox {
 		var subMenu:Menu = _subMenus.get(item);
 		if (subMenu == null) {
 			rootMenu.hideSubMenus();
-			var e:MenuEvent = new MenuEvent(item);
+			var e:MenuEvent = new MenuEvent(MenuEvent.SELECT, item);
 			rootMenu.dispatchEvent(e);
 		}
 	}
@@ -128,6 +128,10 @@ class Menu extends VBox {
 				subMenu.sprite.alpha = 1;
 				subMenu.visible = true;
 			}
+			
+			var e:MenuEvent = new MenuEvent(MenuEvent.OPEN, item);
+			e.menu = subMenu;
+			rootMenu.dispatchEvent(e);
 		}
 	}
 	
