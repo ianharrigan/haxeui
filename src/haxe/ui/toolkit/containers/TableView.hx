@@ -519,4 +519,11 @@ class TableViewRow extends HBox implements IStateComponent {
 	private function get_states():Array<String> {
 		return [STATE_NORMAL, STATE_OVER, STATE_SELECTED];
 	}
+	
+	public function hasState(state:String):Bool {
+		if (states == null) {
+			return false;
+		}
+		return Lambda.indexOf(states, state) != -1;
+	}
 }

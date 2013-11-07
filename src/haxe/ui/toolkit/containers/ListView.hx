@@ -353,6 +353,7 @@ class ListViewItem extends StateComponent {
 	public static inline var STATE_NORMAL = "normal";
 	public static inline var STATE_OVER = "over";
 	public static inline var STATE_SELECTED = "selected";
+	public static inline var STATE_DISABLED = "disabled";
 	
 	private var _hash:String;
 	private var _controlId:String;
@@ -409,7 +410,7 @@ class ListViewItem extends StateComponent {
 	// IState
 	//******************************************************************************************
 	private override function get_states():Array<String> {
-		return [STATE_NORMAL, STATE_OVER, STATE_SELECTED];
+		return [STATE_NORMAL, STATE_OVER, STATE_SELECTED, STATE_DISABLED];
 	}
 	
 	private override function set_state(value:String):String {

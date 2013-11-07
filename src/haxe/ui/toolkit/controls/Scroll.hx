@@ -1,8 +1,10 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.interfaces.IDirectional;
+import haxe.ui.toolkit.core.StateComponent;
 
 /**
  Scrollbar control
@@ -11,11 +13,12 @@ import haxe.ui.toolkit.core.interfaces.IDirectional;
  
  * `Event.CHANGE` - Dispatched when value of the scrollbar has changed
  **/
-class Scroll extends Component implements IDirectional {
+class Scroll extends StateComponent implements IDirectional {
 	private var _direction:String = Direction.VERTICAL;
-	
+
 	public function new() {
 		super();
+		addStates([State.NORMAL, State.DISABLED]);
 	}
 	
 	//******************************************************************************************

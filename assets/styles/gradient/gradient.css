@@ -18,6 +18,7 @@
 	alpha: .6;
 }
 
+
 Text {
 	fontSize: 13;
 	fontName: "_sans";
@@ -115,6 +116,13 @@ Button:down {
 	borderColor: 0x363d4c;
 }
 
+Button:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 VScroll {
 	width: 17;
 	height: 100;
@@ -126,6 +134,10 @@ VScroll {
 	hasButtons: true;
 	backgroundColor: 0xa5b8da;
 	cornerRadius: 2;
+}
+
+VScroll:disabled {
+	backgroundColor: 0xCCCCCC;
 }
 
 VScroll Button {
@@ -149,6 +161,12 @@ VScroll Button:down {
 	borderColor: 0x4b546a;
 }
 
+VScroll Button:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x8C8C8C;
+	borderColor: 0x8C8C8C;
+}
+
 VScroll Button.up {
 	icon: "styles/gradient/arrow_up.png";
 }
@@ -159,6 +177,18 @@ VScroll Button.down {
 
 VScroll Button.thumb {
 	icon: "styles/gradient/gripper_vertical.png";
+}
+
+VScroll Button.thumb:disabled {
+	icon: "styles/gradient/gripper_vertical_disabled.png";
+}
+
+VScroll Button.up:disabled {
+	icon: "styles/gradient/arrow_up_disabled.png";
+}
+
+VScroll Button.down:disabled {
+	icon: "styles/gradient/arrow_down_disabled.png";
 }
 
 HScroll {
@@ -173,7 +203,11 @@ HScroll {
 	backgroundColor: 0xa5b8da;
 	cornerRadius: 2;
 }
-			
+
+HScroll:disabled {
+	backgroundColor: 0xCCCCCC;
+}
+
 HScroll Button {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x606c88;
@@ -194,7 +228,13 @@ HScroll Button:down {
 	backgroundColorGradientEnd: 0x4b546a;
 	borderColor: 0x4b546a;
 }
-			
+
+HScroll Button:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x8C8C8C;
+	borderColor: 0x8C8C8C;
+}
+
 HScroll Button.left {
 	icon: "styles/gradient/arrow_left.png";
 }
@@ -205,6 +245,18 @@ HScroll Button.right {
 
 HScroll Button.thumb {
 	icon: "styles/gradient/gripper_horizontal.png";
+}
+
+HScroll Button.thumb:disabled {
+	icon: "styles/gradient/gripper_horizontal_disabled.png";
+}
+
+HScroll Button.left:disabled {
+	icon: "styles/gradient/arrow_left_disabled.png";
+}
+
+HScroll Button.right:disabled {
+	icon: "styles/gradient/arrow_right_disabled.png";
 }
 
 HProgress {
@@ -220,6 +272,11 @@ HProgress {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 }
 
+HProgress:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 HProgress #background {
 	width: 100%;
 	height: 100%;
@@ -228,12 +285,23 @@ HProgress #background {
 	cornerRadius: 3;
 }
 
+HProgress #background:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0xCCCCCC;
+}
+
 HProgress #value {
 	height: 100%;
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	borderColor: 0xa5b8da;
 	cornerRadius: 3;
+}
+
+HProgress #value:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0xCCCCCC;
 }
 
 VProgress {
@@ -249,12 +317,22 @@ VProgress {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 }
 
+VProgress:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 VProgress #background {
 	width: 100%;
 	height: 100%;
 	backgroundColor: 0xa5b8da;
 	borderColor: 0xa5b8da;
 	cornerRadius: 3;
+}
+
+VProgress #background:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0xCCCCCC;
 }
 
 VProgress #value {
@@ -264,6 +342,12 @@ VProgress #value {
 	borderColor: 0xa5b8da;
 	cornerRadius: 3;
 	gradientType: "horizontal";
+}
+
+VProgress #value:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0xCCCCCC;
 }
 
 HSlider {
@@ -280,6 +364,11 @@ HSlider #background {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, false);
 }
 
+HSlider #background:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 HSlider #value {
 	height: 10;
 	backgroundColor: 0x819bcb;
@@ -290,11 +379,21 @@ HSlider #value {
 	cornerRadiusBottomRight: 0;
 }
 
+HSlider #value:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 HSlider Button {
 	width: 30;
 	height: 100%;
 	icon: "styles/gradient/gripper_horizontal.png";
 	iconPosition: "center";
+}
+
+HSlider Button:disabled {
+	icon: "styles/gradient/gripper_horizontal_disabled.png";
 }
 
 VSlider {
@@ -311,6 +410,11 @@ VSlider #background {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, false);
 }
 
+VSlider #background:disabled {
+	backgroundColor: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 VSlider #value {
 	width: 10;
 	backgroundColor: 0x819bcb;
@@ -322,11 +426,21 @@ VSlider #value {
 	gradientType: "horizontal";
 }
 
+VSlider #value:disabled {
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 VSlider Button {
 	width: 100%;
 	height: 30;
 	icon: "styles/gradient/gripper_vertical.png";
 	iconPosition: "center";
+}
+
+VSlider Button:disabled {
+	icon: "styles/gradient/gripper_vertical_disabled.png";
 }
 
 ListView {
@@ -341,6 +455,10 @@ ListView {
 	spacingY: 2;
 	cornerRadius: 2;
 	backgroundColor: 0xFFFFFF;
+}
+
+ListView:disabled {
+	borderColor: 0x666666;
 }
 
 ListView VBox {
@@ -374,6 +492,10 @@ ListView #even {
 	cornerRadius: 2;
 }
 
+ListView #even:disabled {
+	backgroundColor: 0xF5F5F5;
+}
+
 ListView #odd {
 	backgroundColor: 0xFFFFFF;
 	color: 0x000000;
@@ -392,6 +514,10 @@ ListViewItem #text:over {
 	color: 0xFFFFFF;
 }
 
+ListViewItem #text:disabled {
+	color: 0x666666;
+}
+
 ListViewItem #subtext {
 	color: 0x606c88;
 	fontSize: 11;
@@ -399,6 +525,10 @@ ListViewItem #subtext {
 
 ListViewItem #subtext:over {
 	color: 0xFFFFFF;
+}
+
+ListViewItem #subtext:disabled {
+	color: 0x666666;
 }
 
 ListViewItem:selected {
@@ -434,6 +564,12 @@ CheckBoxValue #unselected {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 }
 
+CheckBoxValue #unselected:disabled {
+	backgroundColor: 0xCCCCCC;
+	backgroundColorGradientEnd: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 CheckBoxValue #selected {
 	backgroundColor: 0xFFFFFF;
 	backgroundColorGradientEnd: 0xFFFFFF;
@@ -446,6 +582,13 @@ CheckBoxValue #selected {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 	icon: "styles/gradient/cross_dark.png";
 	iconPosition: "center";
+}
+
+CheckBoxValue #selected:disabled {
+	backgroundColor: 0xCCCCCC;
+	backgroundColorGradientEnd: 0xCCCCCC;
+	borderColor: 0x666666;
+	icon: "styles/gradient/cross_dark_disabled.png";
 }
 
 OptionBox {
@@ -469,6 +612,12 @@ OptionBoxValue #unselected {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 }
 
+OptionBoxValue #unselected:disabled {
+	backgroundColor: 0xCCCCCC;
+	backgroundColorGradientEnd: 0xCCCCCC;
+	borderColor: 0x666666;
+}
+
 OptionBoxValue #selected {
 	backgroundColor: 0xFFFFFF;
 	backgroundColorGradientEnd: 0xFFFFFF;
@@ -481,6 +630,12 @@ OptionBoxValue #selected {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 	icon: "styles/gradient/circle_dark.png";
 	iconPosition: "center";
+}
+
+OptionBoxValue #selected:disabled {
+	backgroundColor: 0xCCCCCC;
+	backgroundColorGradientEnd: 0xCCCCCC;
+	borderColor: 0x666666;
 }
 
 TextInput, Code, RTF {
@@ -496,6 +651,13 @@ TextInput, Code, RTF {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 	fontSize: 13;
 	fontName: "_sans";
+}
+
+TextInput:disabled {
+	backgroundColor: 0xCCCCCC;
+	backgroundColorGradientEnd: 0xCCCCCC;
+	borderColor: 0x666666;
+	color: 0x888888;
 }
 
 TextInput #placeholder {
@@ -608,6 +770,10 @@ MenuItem:down {
 	color: 0xFFFFFF;
 }
 
+MenuItem:disabled {
+	color: 0xCCCCCC;
+}
+
 MenuItem.expandable {
 	icon: "styles/gradient/arrow_right_dark.png";
 }
@@ -700,6 +866,14 @@ List:down, Date:down {
 	borderColor: 0x363d4c;
 }
 
+List:disabled, Date:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+	icon: "styles/gradient/arrow_down_disabled.png";
+}
+
 MenuBar List {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
@@ -746,6 +920,13 @@ ListView VBox Button:down, TableView #tableContent Button:down {
 	borderColor: 0x495267;
 }
 
+ListView VBox Button:disabled, TableView #tableContent Button:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 ListView VBox List, TableView #tableContent List {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
@@ -765,6 +946,14 @@ ListView VBox List:down, TableView #tableContent List:down {
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
+}
+
+ListView VBox List:disabled, TableView #tableContent List:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+	icon: "styles/gradient/arrow_down_disabled.png";
 }
 
 Popup {
@@ -1098,3 +1287,4 @@ TableViewRow Text {
 TableViewRow Text:over, TableViewRow Text:selected {
 	color: 0xFFFFFF;
 }
+

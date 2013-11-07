@@ -61,4 +61,11 @@ class StateComponent extends Component implements IStateComponent {
 	private function get_states():Array<String> {
 		return _states;
 	}
+	
+	public function hasState(state:String):Bool {
+		if (states == null) {
+			return false;
+		}
+		return Lambda.indexOf(states, state) != -1;
+	}
 }

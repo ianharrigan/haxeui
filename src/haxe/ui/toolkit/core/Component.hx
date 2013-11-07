@@ -3,14 +3,19 @@ package haxe.ui.toolkit.core;
 import flash.events.MouseEvent;
 import flash.geom.Point;
 import flash.geom.Rectangle;
+import haxe.ds.StringMap.StringMap;
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Client;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
+import haxe.ui.toolkit.style.Style;
+import haxe.ui.toolkit.style.StyleManager;
 
 class Component extends StyleableDisplayObject {
 	private var _text:String;
 	private var _clipContent:Bool = false;
+	private var _disabled:Bool = false;
 	
 	public function new() {
 		super();
@@ -21,9 +26,14 @@ class Component extends StyleableDisplayObject {
 	//******************************************************************************************
 	private override function initialize():Void {
 		super.initialize();
-		
 		if (Std.is(this, IDraggable)) {
 			addEventListener(MouseEvent.MOUSE_DOWN, _onComponentMouseDown);
+		}
+	}
+	
+	private override function postInitialize():Void { 
+		if (_disabled == true) {
+			disabled = true;
 		}
 	}
 	
@@ -47,6 +57,7 @@ class Component extends StyleableDisplayObject {
 	public var clipWidth(get, set):Float;
 	public var clipHeight(get, set):Float;
 	public var clipContent(get, set):Bool;
+	public var disabled(get, set):Bool;
 	
 	private function get_text():String {
 		return _text;
@@ -103,6 +114,115 @@ class Component extends StyleableDisplayObject {
 	
 	public function clearClip():Void {
 		sprite.scrollRect = null;
+	}
+	
+	private function get_disabled():Bool {
+		return _disabled;
+	}
+	
+	private function set_disabled(value:Bool):Bool {
+		if (value == true) {
+			if (_cachedListeners == null) {
+				_cachedListeners = new StringMap < List < Dynamic->Void >> ();
+			}
+			
+			for (type in _eventListeners.keys()) {
+				if (disablableEventType(type) == true) {
+					var list:List < Dynamic->Void > = _eventListeners.get(type);
+					var cachedList:List < Dynamic->Void > = _cachedListeners.get(type);
+					if (cachedList == null) {
+						cachedList = new List < Dynamic->Void > ();
+						_cachedListeners.set(type, cachedList);
+					}
+					for (listener in list) {
+						cachedList.push(listener);
+						removeEventListener(type, listener);
+					}
+				}
+			}
+		}
+		
+		_disabled = value;
+		for (child in children) {
+			if (Std.is(child, Component)) {
+				cast(child, Component).disabled = value;
+			}
+		}
+		
+		if (value == false) { // add event listeners
+			if (_cachedListeners != null) {
+				for (type in _cachedListeners.keys()) {
+					var list:List < Dynamic->Void > = _cachedListeners.get(type);
+					for (listener in list) {
+						addEventListener(type, listener);
+					}
+					list.clear();
+				}
+				_cachedListeners = null;
+			}
+		}
+		
+		if (Std.is(this, StateComponent)) {
+			var stateComponent:StateComponent = cast(this, StateComponent);
+			if (value == true) {
+				if (stateComponent.hasState(State.DISABLED)) {
+					stateComponent.state = State.DISABLED;
+				}
+			} else {
+				if (stateComponent.hasState(State.NORMAL)) {
+					stateComponent.state = State.NORMAL;
+				}
+			}
+		}
+		
+		return value;
+	}
+	 
+	//******************************************************************************************
+	// Event dispatcher overrides
+	//******************************************************************************************
+	private var _cachedListeners:StringMap < List < Dynamic->Void >> ; // for disabling
+	public override function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
+		if (_disabled == true && disablableEventType(type) == true) {
+			if (_cachedListeners == null) {
+				_cachedListeners = new StringMap < List < Dynamic->Void >> ();
+			}
+			var list:List < Dynamic->Void > = _cachedListeners.get(type);
+			if (list == null) {
+				list = new List < Dynamic->Void > ();
+				_cachedListeners.set(type, list);
+			}
+			list.push(listener);
+			return;
+		}
+		super.addEventListener(type, listener, useCapture, priority, useWeakReference);
+	}
+	
+	public override function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
+		if (_disabled == true && disablableEventType(type) == true) {
+			if (_cachedListeners != null) {
+				var list:List < Dynamic->Void > = _cachedListeners.get(type);
+				if (list != null) {
+					list.remove(listener);
+					if (list.length == 0) {
+						_cachedListeners.remove(type);
+					}
+				}
+			}
+			return;
+		}
+		super.removeEventListener(type, listener, useCapture);
+	}
+	
+	private function disablableEventType(type:String):Bool {
+		return (type == MouseEvent.MOUSE_DOWN
+				|| type == MouseEvent.MOUSE_MOVE
+				|| type == MouseEvent.MOUSE_OVER
+				|| type == MouseEvent.MOUSE_OUT
+				|| type == MouseEvent.MOUSE_UP
+				|| type == MouseEvent.MOUSE_WHEEL
+				|| type == MouseEvent.CLICK
+		);
 	}
 	//******************************************************************************************
 	// Drag functions

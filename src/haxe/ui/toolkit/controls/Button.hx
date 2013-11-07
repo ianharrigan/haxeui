@@ -29,6 +29,10 @@ class Button extends StateComponent implements IFocusable {
 	 Button state is "down"
 	 **/
 	public static inline var STATE_DOWN = "down";
+	/**
+	 Button state is "disabled"
+	 **/
+	public static inline var STATE_DISABLED = "disabled";
 	
 	private var _allowFocus:Bool = true;
 	private var _remainPressed:Bool = false; // if the button should remain pressed even when the mouse is out
@@ -110,6 +114,20 @@ class Button extends StateComponent implements IFocusable {
 		applyStyle();
 	}
 	
+	private override function set_disabled(value:Bool):Bool {
+		super.set_disabled(value);
+		if (value == true) {
+			sprite.buttonMode = false;
+			sprite.useHandCursor = false;
+			//state = STATE_DISABLED;
+		} else {
+			sprite.buttonMode = true;
+			sprite.useHandCursor = true;
+			//state = STATE_NORMAL;
+		}
+		return value;
+	}
+	
 	//******************************************************************************************
 	// Component overrides
 	//******************************************************************************************
@@ -170,9 +188,9 @@ class Button extends StateComponent implements IFocusable {
 				state = STATE_NORMAL;
 			}
 			
-			if (_remainPressed == true) {
+			//if (_remainPressed == true) {
 				Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-			}
+			//}
 		}
 	}
 	
@@ -194,7 +212,7 @@ class Button extends StateComponent implements IFocusable {
 	// IState
 	//******************************************************************************************
 	private override function get_states():Array<String> {
-		return [STATE_NORMAL, STATE_OVER, STATE_DOWN];
+		return [STATE_NORMAL, STATE_OVER, STATE_DOWN, STATE_DISABLED];
 	}
 	
 	private override function set_state(value:String):String {

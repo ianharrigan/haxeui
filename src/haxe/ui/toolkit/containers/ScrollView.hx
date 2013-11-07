@@ -7,15 +7,17 @@ import flash.geom.Point;
 import flash.geom.Rectangle;
 import haxe.ui.toolkit.controls.HScroll;
 import haxe.ui.toolkit.controls.VScroll;
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
+import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.util.TypeParser;
 
-class ScrollView extends Component {
+class ScrollView extends StateComponent {
 	private var _hscroll:HScroll;
 	private var _vscroll:VScroll;
 	
@@ -30,7 +32,7 @@ class ScrollView extends Component {
 	
 	public function new() {
 		super();
-		
+		addStates([State.NORMAL, State.DISABLED]);
 		_layout = new ScrollViewLayout();
 		_eventTarget = new Sprite();
 		_eventTarget.visible = false;

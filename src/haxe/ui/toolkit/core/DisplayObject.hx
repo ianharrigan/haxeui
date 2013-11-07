@@ -45,6 +45,8 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private function initialize():Void {
 	}
 	
+	private function postInitialize():Void {
+	}
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
@@ -54,6 +56,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		preInitialize();
 		_ready = true;
 		initialize();
+		postInitialize();
 		invalidate();
 		
 		var event:UIEvent =  new UIEvent(UIEvent.INIT);

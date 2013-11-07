@@ -1,14 +1,16 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.AbsoluteLayout;
 
 /**
  N-state cyclic value control
  **/
 
-class Value extends Component {
+class Value extends StateComponent {
 	private var _values:Map<String, Button>;
 	private var _valuesList:Array<String>;
 	private var _value:String = "";
@@ -17,6 +19,7 @@ class Value extends Component {
 	
 	public function new() {
 		super();
+		addStates([State.NORMAL, State.DISABLED]);
 		_autoSize = false;
 		_layout = new AbsoluteLayout();
 		_values = new Map<String, Button>();

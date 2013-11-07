@@ -158,7 +158,9 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	private function set_inlineStyle(value:Style):Style {
 		_inlineStyle = value;
-		_inlineStyle.target = this;
+		if (_inlineStyle != null) {
+			_inlineStyle.target = this;
+		}
 		if (_ready) {
 			buildStyles();
 			_style = StyleManager.instance.buildStyleFor(this);

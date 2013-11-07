@@ -5,6 +5,7 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.text.TextField;
 import flash.text.TextFormat;
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleable;
@@ -26,6 +27,7 @@ class TextInput extends StateComponent {
 	
 	public function new() {
 		super();
+		addStates([State.NORMAL, State.DISABLED]);
 		_layout = new TextInputLayout();
 		_textDisplay = new TextDisplay();
 		_textDisplay.interactive = true;
@@ -83,6 +85,16 @@ class TextInput extends StateComponent {
 			checkScrolls();
 		}
 		_invalidating = false;
+	}
+	
+	private override function set_disabled(value:Bool):Bool {
+		super.set_disabled(value);
+		if (value == true) {
+			_textDisplay.interactive = false;
+		} else {
+			_textDisplay.interactive = true;
+		}
+		return value;
 	}
 	
 	//******************************************************************************************

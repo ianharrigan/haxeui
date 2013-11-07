@@ -3,12 +3,14 @@ package haxe.ui.toolkit.controls;
 import flash.display.Bitmap;
 import flash.events.Event;
 import flash.Lib;
+import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.interfaces.IDirectional;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
+import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.layout.Layout;
 
@@ -19,23 +21,25 @@ import haxe.ui.toolkit.layout.Layout;
  
  * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
-class Progress extends Component implements IScrollable implements IDirectional {
+class Progress extends StateComponent implements IScrollable implements IDirectional {
 	private var _direction:String;
 	private var _min:Float = 0;
 	private var _max:Float = 100;
 	private var _pos:Float = 0;
 	private var _incrementSize:Float = 1;
 	
-	private var _valueBgComp:Component;
-	private var _valueComp:Component;
+	private var _valueBgComp:StateComponent;
+	private var _valueComp:StateComponent;
 	
 	public function new() {
 		super();
-		
+		addStates([State.NORMAL, State.DISABLED]);
 		direction = Direction.HORIZONTAL;
-		_valueBgComp = new Component();
+		_valueBgComp = new StateComponent();
+		_valueBgComp.addStates([State.NORMAL, State.DISABLED]);
 		_valueBgComp.id = "background";
-		_valueComp = new Component();
+		_valueComp = new StateComponent();
+		_valueComp.addStates([State.NORMAL, State.DISABLED]);
 		_valueComp.id = "value";
 	}
 	
