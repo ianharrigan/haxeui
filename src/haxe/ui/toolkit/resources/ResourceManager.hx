@@ -25,6 +25,15 @@ class ResourceManager {
 		
 	}
 	
+	public function getXML(resourceId:String, locale:String = null):Xml {
+		var text:String = getText(resourceId, locale);
+		var xml:Xml = null;
+		if (text != null) {
+			xml = Xml.parse(text);
+		}
+		return xml;
+	}
+	
 	public function getText(resourceId:String, locale:String = null):String {
 		var str:String = Resource.getString(resourceId);
 		if (str == null) {

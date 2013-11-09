@@ -24,7 +24,7 @@ import haxe.ui.toolkit.util.TypeParser;
 class Toolkit {
 	private static var _instance:Toolkit;
 	public static var instance(get, null):Toolkit;
-	public static function get_instance():Toolkit {
+	private static function get_instance():Toolkit {
 		if (_instance == null) {
 			Lib.current.stage.align = flash.display.StageAlign.TOP_LEFT;
 			Lib.current.stage.scaleMode = flash.display.StageScaleMode.NO_SCALE;
