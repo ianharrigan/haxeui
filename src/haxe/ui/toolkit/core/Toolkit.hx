@@ -69,7 +69,7 @@ class Toolkit {
 		return result;
 	}
 	
-	private static function processXmlNode(node:Xml):Dynamic {
+	private static function processXmlNode<T>(node:Xml):Null<T> {
 		if (node == null) {
 			return null;
 		}
@@ -147,7 +147,7 @@ class Toolkit {
 			}
 		}
 		
-		return result;
+		return cast result;
 	}
 	
 	//******************************************************************************************
