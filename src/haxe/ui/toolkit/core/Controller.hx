@@ -3,6 +3,7 @@ package haxe.ui.toolkit.core;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.controls.popups.Popup;
 import haxe.ui.toolkit.controls.popups.PopupContent;
+import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 
 class Controller {
@@ -13,9 +14,57 @@ class Controller {
 	public var root(get, null):Root;
 	public var popup(get, null):Popup;
 	
-	public function new(view:IDisplayObjectContainer) {
-		_view = view;
+	public function new(view:Dynamic = null, options:Dynamic = null) {
+		if (Std.is(view, IDisplayObjectContainer)) {
+			_view = cast(view, IDisplayObjectContainer);
+		} else if (Std.is(view, Class)) {
+			var cls:Class<Dynamic> = cast(view, Class<Dynamic>);
+			_view = Type.createInstance(cls, []);
+		} else if (view != null) {
+			options = view;
+		}
+		
+		if (_view == null) {
+			_view = new Component();
+		}
+		
+		if (options != null) {
+			for (f in Reflect.fields(options)) {
+				if (Reflect.getProperty(_view, "set_" + f) != null) {
+					Reflect.setProperty(_view, f, Reflect.field(options, f));
+				}
+			}
+		}
+		
 		refereshNamedComponents();
+	}
+	
+	public function addChild<T>(child:Dynamic = null, options:Dynamic = null):Null<T> {
+		var childObject:IDisplayObject = null;
+		if (Std.is(child, IDisplayObject)) {
+			childObject = cast(child, IDisplayObject);
+		} else if (Std.is(child, Class)) {
+			var cls:Class<Dynamic> = cast(child, Class<Dynamic>);
+			childObject = Type.createInstance(cls, []);
+		} else if (child != null) {
+			options = child;
+		}
+		
+		if (childObject == null) {
+			childObject = new Component();
+		}
+
+		if (options != null) {
+			for (f in Reflect.fields(options)) {
+				if (Reflect.getProperty(childObject, "set_" + f) != null) {
+					Reflect.setProperty(childObject, f, Reflect.field(options, f));
+				}
+			}
+		}
+		
+		var retVal:IDisplayObject = _view.addChild(childObject);
+		refereshNamedComponents();
+		return cast retVal;
 	}
 	
 	public function attachEvent(id:String, type:String, listener:Dynamic->Void):Void {
