@@ -212,8 +212,16 @@ class Toolkit {
 		return root;
 	}
 	
-	public static function openPopup(fn:Root->Void = null):Root {
-		var root:Root = RootManager.instance.createRoot( { x: 20, y: 20, id: "popupRoot" }, fn);
+	public static function openPopup(options:Dynamic = null, fn:Root->Void = null):Root {
+		if (options == null) {
+			options = { };
+		}
+		
+		options.x = (options.x != null) ? options.x : 20;
+		options.y = (options.y != null) ? options.y : 20;
+		options.styleName = (options.styleName != null) ? options.styleName : "popup";
+		
+		var root:Root = RootManager.instance.createRoot(options, fn);
 		return root;
 	}
 }

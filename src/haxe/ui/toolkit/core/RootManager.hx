@@ -44,6 +44,7 @@ class RootManager {
 		
 		root.root = root;
 		root.id = (options.id != null) ? options.id : "root";
+		root.styleName = (options.styleName != null) ? options.styleName : null;
 		root.x = (options.x != null) ? options.x : 0;
 		root.y = (options.y != null) ? options.y : 0;
 		root.width = (options.width != null) ? options.width : 0;
