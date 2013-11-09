@@ -61,12 +61,16 @@ class Toolkit {
 	// Processes a chunk of xml, return values depend on what comes in, could return IDisplayObject, IDataSource
 	// processing means constructing ui, registering data sources
 	//******************************************************************************************
-	public static function processXml(xml:Xml):Dynamic {
+	public static function processXmlResource<T>(resourceId:String):Null<T> {
+		return processXml(ResourceManager.instance.getXML(resourceId));
+	}
+	
+	public static function processXml<T>(xml:Xml):Null<T> {
 		var result:Dynamic = null;
 		
 		result = processXmlNode(xml.firstElement());
 		
-		return result;
+		return cast result;
 	}
 	
 	private static function processXmlNode<T>(node:Xml):Null<T> {
