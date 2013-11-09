@@ -1,6 +1,6 @@
 Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
 ================================
-Cross platfrom Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
+Cross platform Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg" />
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg" />
@@ -16,6 +16,7 @@ Adobe AIR  note: Installer will not install from mounted/network drives.
 
 Documentation
 -------------------------
+<a href="https://github.com/ianharrigan/haxeui/wiki">Wiki</a> (Incomplete)
 <a href="http://haxeui.org/docs/api">API</a> (Incomplete)
 
 Projects
