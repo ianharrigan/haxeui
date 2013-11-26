@@ -80,6 +80,7 @@ class TextDisplay implements ITextDisplay {
 		var format:TextFormat = _tf.getTextFormat();
 		if (_style.fontName != null) {
 			format.font = _style.fontName;
+			_tf.embedFonts = true;
 		}
 		if (_style.fontSize != -1) {
 			format.size = _style.fontSize;
