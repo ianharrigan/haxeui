@@ -40,9 +40,11 @@ class XMLDataSource extends ArrayDataSource {
 			if (xml != null) {
 				var it:Iterator<Xml> = xml.firstElement().elements();
 				for (e in it) {
-					var text:String = e.get("text");
-					if (text != null) {
-						var o = { text: text };
+					var o = { };
+					for (attrName in e.attributes()) {
+						Reflect.setField(o, attrName, e.get(attrName));
+					}
+					if (Reflect.fields(o).length != 0) {
 						add(o);
 					}
 				}

@@ -212,7 +212,7 @@ class ListView extends ScrollView implements IDataComponent {
 		if (data == null) {
 			return;
 		}
-		
+
 		var itemData:Dynamic = data;
 		if (Std.is(data, String)) {
 			itemData = { };
