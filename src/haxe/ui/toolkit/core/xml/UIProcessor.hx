@@ -55,7 +55,7 @@ class UIProcessor extends XMLProcessor {
 			}
 			
 			var value:String = config.get(attr);
-			if (ScriptUtils.isScript(value) && attr != "text" && attr != "id" && attr != "dataSource" && attr != "resource" && attr != "htmlText") {
+			if (ScriptUtils.isScript(value) && attr != "text" && attr != "id" && attr != "dataSource" && attr != "resource" && attr != "htmlText" && attr != "placeholderText") {
 				value = ScriptManager.instance.executeScript(value);
 			}
 			

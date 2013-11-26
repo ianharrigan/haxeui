@@ -19,7 +19,7 @@ class ScriptUtils {
 		if (name == "filter"
 			|| name == "icon"
 			|| name == "backgroundImage"
-			|| name == "fontName111") {
+			|| name == "fontName") {
 				return true;
 			}
 		return false;
