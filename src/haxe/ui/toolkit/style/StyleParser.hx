@@ -39,7 +39,7 @@ class StyleParser {
 					
 					propValue = StringTools.replace(propValue, "\"", "");
 					propValue = StringTools.replace(propValue, "'", "");
-					if (ScriptUtils.isScript(propValue) && propName != "filter" && propName != "icon" && propName != "backgroundImage") {
+					if (ScriptUtils.isScript(propValue) && !ScriptUtils.isCssException(propName)) {
 						style.addDynamicValue(propName, propValue);
 						continue;
 					}

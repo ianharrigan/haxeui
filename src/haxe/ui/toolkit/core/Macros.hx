@@ -47,7 +47,7 @@ class Macros {
 				var props:Array<String> = styleData.split(":");
 				var propName:String = StringTools.trim(props[0]);
 				var propValue:String = StringTools.trim(props[1]);
-				if (ScriptUtils.isScript(propValue) && propName != "filter" && propName != "icon" && propName != "backgroundImage" && propName != "fontName") {
+				if (ScriptUtils.isScript(propValue) && !ScriptUtils.isCssException(propName)) {
 					dynamicValues.set(propName, propValue);
 					continue;
 				}

@@ -14,4 +14,14 @@ class ScriptUtils {
 		}
 		return false;
 	}
+	
+	public static function isCssException(name:String):Bool {
+		if (name == "filter"
+			|| name == "icon"
+			|| name == "backgroundImage"
+			|| name == "fontName") {
+				return true;
+			}
+		return false;
+	}
 }
