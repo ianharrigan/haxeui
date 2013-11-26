@@ -57,13 +57,8 @@ class RootManager {
 	}
 	
 	public function destroyRoot(root:Root):Void {
-		var options:Dynamic = null;
-		if (options == null) {
-			options = { };
-		}
-
-		options.parent = (options.parent != null) ? options.parent : Lib.current.stage;
-		options.parent.removeChild(root.sprite);
+		if (root.sprite.parent != null)
+			root.sprite.parent.removeChild(root.sprite);
 		root.dispose();
 		
 		_roots.remove(root);
