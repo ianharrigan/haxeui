@@ -227,6 +227,7 @@ class ListView extends ScrollView implements IDataComponent {
 		itemData.dataSource = (itemData.dataSource != null) ? itemData.dataSource : null;
 		
 		var item:ListViewItem = new ListViewItem(this);
+		item.data = itemData;
 		item.text = itemData.text;
 		item.subtext = itemData.subtext;
 		item.icon = itemData.icon;
@@ -355,6 +356,7 @@ class ListViewItem extends StateComponent {
 	public static inline var STATE_SELECTED = "selected";
 	public static inline var STATE_DISABLED = "disabled";
 	
+	private var _data:Dynamic;
 	private var _hash:String;
 	private var _controlId:String;
 	private var _controlDataSource:Dynamic;
@@ -452,6 +454,7 @@ class ListViewItem extends StateComponent {
 	//******************************************************************************************
 	// Getters/setters
 	//******************************************************************************************
+	public var data(get, set):Dynamic;
 	public var hash(get, set):String;
 	public var subtext(get, set):String;
 	public var icon(get, set):String;
@@ -459,6 +462,15 @@ class ListViewItem extends StateComponent {
 	public var type(null, set):String;
 	public var value(get, set):Dynamic;
 	public var controlDataSource(get, set):Dynamic;
+	
+	private function get_data():Dynamic {
+		return _data;
+	}
+	
+	private function set_data(value:Dynamic):Dynamic {
+		_data = value;
+		return value;
+	}
 	
 	private function get_hash():String {
 		return _hash;
