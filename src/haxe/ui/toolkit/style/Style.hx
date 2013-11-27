@@ -816,6 +816,7 @@ class Style {
 		if (with._fontName != null) this._fontName = with._fontName;
 		if (with._fontSize != -1) this._fontSize = with._fontSize;
 		if (with._fontScale != -1) this._fontScale = with._fontScale;
+		if (with._fontEmbedded != -1) this._fontEmbedded = with._fontEmbedded;
 		if (with._iconPosition != null) this._iconPosition = with._iconPosition;
 		if (with._labelPosition != null) this._labelPosition = with._labelPosition;
 		if (with._icon != null) this._icon = with._icon;
