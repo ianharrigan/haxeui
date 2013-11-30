@@ -7,9 +7,9 @@ import haxe.ui.toolkit.core.Root;
 class Main {
 	public static function main() {
 		#if android
-			Macros.addStyleSheet("styles/gradient/gradient_mobile.css");
+			Macros.addStyleSheet("assets/styles/gradient/gradient_mobile.css");
 		#else
-			Macros.addStyleSheet("styles/gradient/gradient.css");
+			Macros.addStyleSheet("assets/styles/gradient/gradient.css");
 		#end
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {

@@ -1,4 +1,4 @@
-<ui:vbox width="100%" height="100%">
+<ui:vbox width="100%" height="100%" xmlns:ui="haxeui::ui">
 	<ui:hscroll pos="25" />
 	<ui:hprogress pos="75" />
 	<ui:hslider pos="50" />

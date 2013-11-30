@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:tabview width="100%" height="100%" id="main">
+<ui:tabview width="100%" height="100%" id="main" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
 	<style:css>
 		TabBar #tabButton {
 			icon: assets/fav_16.png
