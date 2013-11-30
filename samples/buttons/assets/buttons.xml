@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:grid columns="3">
+<ui:grid columns="3" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
 	<style:css>
 		#styled {
 			width: 140;
