@@ -47,7 +47,15 @@ class StyleManager {
 		var arr:Array<String> = rule.split(",");
 		for (a in arr) {
 			a = StringTools.trim(a);
-			var styleRule:StyleRule = new StyleRule(a, style);
+			var existingStyleRule:StyleRule = _styles.get(a);
+			var existingStyle:Style = null;
+			if (existingStyleRule != null) {
+				existingStyle = existingStyleRule.style;
+				existingStyle.merge(style);
+			} else {
+				existingStyle = style;
+			}
+			var styleRule:StyleRule = new StyleRule(a, existingStyle);
 			_styles.set(a, styleRule);
 			_rules.push(a);
 		}
