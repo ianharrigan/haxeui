@@ -186,6 +186,9 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			var child:IDisplayObject = arr[0];
 			removeChild(child);
 		}
+		while (sprite.numChildren > 0) {
+			sprite.removeChildAt(0);
+		}
 		#if html5
 		_childrenToAdd = null;
 		#end
@@ -227,12 +230,24 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return cast match;
 	}
 	
-	public function findChild<T>(id:String, type:Class<T> = null):Null<T> {
+	public function findChild<T>(id:String, type:Class<T> = null, recursive:Bool = false):Null<T> {
 		var match:Component = null;
 		for (child in children) {
 			if (child.id == id) {
 				match = cast child;
 				break;
+			}
+		}
+		if (match == null && recursive == true) {
+			for (child in children) {
+				if (Std.is(child, IDisplayObjectContainer)) {
+					var c:IDisplayObjectContainer = cast(child, IDisplayObjectContainer);
+					var temp:Component = cast c.findChild(id, type, recursive);
+					if (temp != null) {
+						match = temp;
+						break;
+					}
+				}
 			}
 		}
 		return cast match;

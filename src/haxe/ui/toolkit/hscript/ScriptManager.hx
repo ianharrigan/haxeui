@@ -41,8 +41,9 @@ class ScriptManager {
 
 			retVal = interp.execute(program);
 		} catch (e:Dynamic) {
-			trace("Problem running script: " + e);
-			trace(script);
+			//trace("Problem running script: " + e);
+			//trace(script);
+			retVal = cast script;
 		}
 		return retVal;
 	}

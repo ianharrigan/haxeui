@@ -26,7 +26,11 @@ class ScrollView extends StateComponent {
 	
 	private var _eventTarget:Sprite;
 	private var _downPos:Point;
-	private var _scrollSensitivity:Int = 1;
+	#if mobile
+	private var _scrollSensitivity:Int = 0;
+	#else
+	private var _scrollSensitivity:Int = 0;
+	#end
 	
 	private var _autoHideScrolls:Bool = false;
 	
@@ -294,6 +298,7 @@ class ScrollView extends StateComponent {
 					_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
 					_hscroll.visible = false;
 					addChild(_hscroll);
+					invalidateLayout = true;
 				}
 				
 				_hscroll.max = content.width - layout.usableWidth;
@@ -332,6 +337,7 @@ class ScrollView extends StateComponent {
 					_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
 					_vscroll.visible = false;
 					addChild(_vscroll);
+					invalidateLayout = true;
 				}
 				
 				_vscroll.max = content.height - layout.usableHeight;

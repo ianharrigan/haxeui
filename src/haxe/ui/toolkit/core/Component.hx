@@ -58,6 +58,7 @@ class Component extends StyleableDisplayObject {
 	public var clipHeight(get, set):Float;
 	public var clipContent(get, set):Bool;
 	public var disabled(get, set):Bool;
+	public var userData(default, default):Dynamic;
 	
 	private function get_text():String {
 		return _text;

@@ -55,19 +55,19 @@ class UIProcessor extends XMLProcessor {
 			}
 			
 			var value:String = config.get(attr);
-			if (ScriptUtils.isScript(value) && attr != "text" && attr != "id" && attr != "dataSource" && attr != "resource" && attr != "htmlText" && attr != "placeholderText") {
+			if (ScriptUtils.isScript(value)) {
 				value = ScriptManager.instance.executeScript(value);
 			}
 			
 			if (attr == "width") { // special case for width, want to be able to specify % values
 				var width:Float = 0;
-				var percentWidth:Int = -1;
+				var percentWidth:Float = -1;
 				var widthString:String = value;
 				if (widthString != null) {
-					width = Std.parseInt(widthString);
+					width = Std.parseFloat(widthString);
 					if (widthString.indexOf("%") != -1) {
 						width = 0;
-						percentWidth = Std.parseInt(widthString.substr(0, widthString.length - 1));
+						percentWidth = Std.parseFloat(widthString.substr(0, widthString.length - 1));
 					}
 				}
 				
@@ -79,13 +79,13 @@ class UIProcessor extends XMLProcessor {
 				}
 			} else if (attr == "height") { // special case for height, want to be able to specify % values
 				var height:Float = 0;
-				var percentHeight:Int = -1;
+				var percentHeight:Float = -1;
 				var heightString:String = value;
 				if (heightString != null) {
-					height = Std.parseInt(heightString);
+					height = Std.parseFloat(heightString);
 					if (heightString.indexOf("%") != -1) {
 						height = 0;
-						percentHeight = Std.parseInt(heightString.substr(0, heightString.length - 1));
+						percentHeight = Std.parseFloat(heightString.substr(0, heightString.length - 1));
 					}
 				}
 				

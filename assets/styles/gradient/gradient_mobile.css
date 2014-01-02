@@ -115,6 +115,13 @@ Button:down {
 	borderColor: 0x363d4c;
 }
 
+Button:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 VScroll {
 	width: 5;
 	height: 100;
@@ -125,6 +132,10 @@ VScroll {
 	spacingY: 0;
 	cornerRadius: 0;
 	hasButtons: false;
+}
+
+VScroll:disabled {
+	backgroundColor: 0xCCCCCC;
 }
 
 VScroll Button {

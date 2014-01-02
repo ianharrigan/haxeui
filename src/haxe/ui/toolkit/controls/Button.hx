@@ -326,6 +326,7 @@ class Button extends StateComponent implements IFocusable {
 			if (_style != null) {
 				labelStyle.fontName = _style.fontName;
 				labelStyle.fontSize = _style.fontSize;
+				labelStyle.fontEmbedded = _style.fontEmbedded;
 				labelStyle.color = _style.color;
 			}
 			_label.style = labelStyle;

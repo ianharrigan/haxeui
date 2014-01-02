@@ -74,6 +74,20 @@ class Controller {
 		}
 	}
 	
+	public function detachEvent(id:String, type:String, listener:Dynamic->Void):Void {
+		var c:Component = getComponent(id);
+		if (c != null) {
+			c.removeEventListener(type, listener);
+		}
+	}
+
+	public function detachEvents(id:String, type:String):Void {
+		var c:Component = getComponent(id);
+		if (c != null) {
+			c.removeEventListenerType(type);
+		}
+	}
+	
 	public function getComponent(id:String):Component {
 		return getComponentAs(id, Component);
 	}
