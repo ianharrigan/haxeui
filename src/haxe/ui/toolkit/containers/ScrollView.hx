@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.containers;
 
+import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
@@ -237,6 +238,15 @@ class ScrollView extends StateComponent {
 		if (_downPos != null) {
 			var ypos:Float = event.stageY - _downPos.y;
 			var xpos:Float = event.stageX - _downPos.x;
+			
+			var target:DisplayObject =  event.target;
+			while (target != null && Std.is(target, DisplayObject))
+			{
+				xpos /= target.scaleX;
+				ypos /= target.scaleY;
+				target = target.parent;
+			}
+			
 			if (Math.abs(xpos) >= _scrollSensitivity  || Math.abs(ypos) >= _scrollSensitivity) {
 				_eventTarget.visible = true;
 				var content:IDisplayObject = getChildAt(0); // assume first child is content
