@@ -385,6 +385,10 @@ class ListViewItem extends StateComponent {
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 	}
 	
+	public function toString():String {
+		return text;
+	}
+
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
