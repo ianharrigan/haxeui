@@ -66,7 +66,7 @@ class Date extends Button {
 			PopupManager.instance.showCalendar(root, "Select Date", function(button:Dynamic, date:std.Date) {
 				this.selected = false;
 				if (button == PopupButtonType.CONFIRM) {
-					var dateString:String = DateTools.format(date, "%d/%m/%Y");
+					var dateString:String = DateTools.format(date, dateFormat);
 					this.text = dateString;
 				}
 			});
@@ -153,6 +153,31 @@ class Date extends Button {
 		return value;
 	}
 	
+	/**
+	 * Returns the selected date
+	 **/
+	public var date(get, never):std.Date;
+
+	private function get_date():std.Date {
+		if (_cal != null) {
+			return _cal.selectedDate;
+		}
+		return std.Date.now();
+	}
+
+	/**
+	 * Sets the displayed date format (default: %d/%m/%Y)
+	 **/
+	public var dateFormat(default, set):String = "%d/%m/%Y";
+
+	private function set_dateFormat(value:String):String {
+		dateFormat = value;
+		if (_cal != null) {
+			this.text = DateTools.format(_cal.selectedDate, dateFormat);
+		}
+		return value;
+	}
+
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
@@ -171,7 +196,7 @@ class Date extends Button {
 	}
 	
 	private function onDateChange(event:Event):Void {
-		var dateString:String = DateTools.format(_cal.selectedDate, "%d/%m/%Y");
+		var dateString:String = DateTools.format(_cal.selectedDate, dateFormat);
 		this.text = dateString;
 		hideCalendar();
 	}
