@@ -80,6 +80,10 @@ class ArrayDataSource extends DataSource {
 		return array.remove(get());
 	}
 	
+	public override function size():Int {
+		return array.length;
+	}
+	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************

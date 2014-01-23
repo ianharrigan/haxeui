@@ -123,7 +123,6 @@ class List extends Button implements IDataComponent {
 			if (_list == null) {
 				_list = new ListView();
 				_list.addEventListener(Event.CHANGE, _onListChange);
-				_list.dataSource = _dataSource;
 				_list.content.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 					showList();
 				});
@@ -131,6 +130,7 @@ class List extends Button implements IDataComponent {
 				return;
 			}
 
+			_list.dataSource = _dataSource;
 			root.addEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
 			root.addEventListener(MouseEvent.MOUSE_WHEEL, _onRootMouseDown);
 			
@@ -148,6 +148,7 @@ class List extends Button implements IDataComponent {
 			
 			var listHeight:Float = n * _list.itemHeight + (_list.layout.padding.top + _list.layout.padding.bottom);
 			_list.height = listHeight;
+			_list.setSelectedIndexNoEvent(_selectedIndex);
 
 			var transition:String = Toolkit.getTransitionForClass(List);
 			if (transition == "slide") {
@@ -229,6 +230,32 @@ class List extends Button implements IDataComponent {
 		return _selectedItems;
 	}
 	
+	public var selectedIndex(get, set):Int;
+	private function get_selectedIndex():Int {
+		return _selectedIndex;
+	}
+	
+	private function set_selectedIndex(value:Int):Int {
+		_selectedIndex = value;
+		if (_list != null) {
+			_list.selectedIndex = value;
+			_selectedItems = _list.selectedItems;
+		}
+		if (_selectedIndex > -1 && _dataSource != null) {
+			var n:Int = 0;
+			if (dataSource.moveFirst()) {
+				do {
+					if (n == _selectedIndex) {
+						this.text = _dataSource.get().text;
+						break;
+					}
+					n++;
+				} while (dataSource.moveNext()); 
+			}
+		}
+		return value;
+	}
+	
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
@@ -249,6 +276,7 @@ class List extends Button implements IDataComponent {
 	private function _onListChange(event:Event):Void {
 		if (_list.selectedItems != null && _list.selectedItems.length > 0) {
 			this.text = _list.selectedItems[0].text;
+			_selectedIndex = _list.selectedIndex;
 			_selectedItems = _list.selectedItems;
 			hideList();
 			

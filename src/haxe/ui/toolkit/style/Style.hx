@@ -835,4 +835,16 @@ class Style {
 			}
 		}
 	}
+	
+	public function toString():String {
+		var s:String = "";
+		if (_width != -1 || hasDynamicValue("width")) s += "width: " + (_width != -1 ? Std.string(_width) : _dynamicValues.get("width")) + ";\n";
+		if (_height != -1 || hasDynamicValue("height")) s += "height: " + (_height != -1 ? Std.string(_height) : _dynamicValues.get("height")) + ";\n";
+		if (_percentWidth != -1 || hasDynamicValue("percentWidth")) s += "width: " + (_percentWidth != -1 ? Std.string(_percentWidth) : _dynamicValues.get("percentWidth")) + "%;\n";
+		if (_percentHeight != -1 || hasDynamicValue("percentHeight")) s += "height: " + (_percentHeight != -1 ? Std.string(_percentHeight) : _dynamicValues.get("percentHeight")) + "%;\n";
+		if (_backgroundImage != null || hasDynamicValue("backgroundImage")) s += "backgroundImage: \"" + (_backgroundImage != null ? Std.string(_backgroundImage) : _dynamicValues.get("backgroundImage")) + "\";\n";
+		if (_backgroundColor != -1 || hasDynamicValue("backgroundColor")) s += "backgroundColor: #" + (_backgroundColor != -1 ? StringTools.hex(_backgroundColor, 6) : _dynamicValues.get("backgroundColor")) + ";\n";
+		if (_backgroundColorGradientEnd != -1 || hasDynamicValue("backgroundColorGradientEnd")) s += "backgroundColorGradientEnd: #" + (_backgroundColorGradientEnd != -1 ? StringTools.hex(_backgroundColorGradientEnd, 6) : _dynamicValues.get("backgroundColorGradientEnd")) + ";\n";
+		return s;
+	}
 }

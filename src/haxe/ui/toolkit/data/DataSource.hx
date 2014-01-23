@@ -123,6 +123,10 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 		return "" + getObjectId(o);
 	}
 	
+	public function size():Int {
+		return -1;
+	}
+	
 	//******************************************************************************************
 	// Overridables
 	//******************************************************************************************

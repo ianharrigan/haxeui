@@ -16,4 +16,5 @@ interface IDataSource {
 	public function remove():Bool;
 	public function removeAll():Void;
 	public function hash():String;
+	public function size():Int;
 }

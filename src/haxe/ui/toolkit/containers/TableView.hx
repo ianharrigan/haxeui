@@ -65,8 +65,8 @@ class TableView extends Component implements IDataComponent {
 		syncUI();
 	}
 	
-	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		super.invalidate(type);
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		super.invalidate(type, recursive);
 		if (_ready && type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			if (_scrollView.layout.usableWidth > 0) {
 				resizeColumns();

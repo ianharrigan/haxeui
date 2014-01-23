@@ -56,7 +56,7 @@ class BoxLayout extends Layout {
 				case HorizontalAlign.CENTER:
 					xpos = (container.width / 2) - (child.width / 2);
 				case HorizontalAlign.RIGHT:
-					xpos = container.width - child.width;
+					xpos = container.width - child.width - padding.right;
 				default:	
 			}
 
@@ -64,7 +64,7 @@ class BoxLayout extends Layout {
 				case VerticalAlign.CENTER:
 					ypos = (container.height / 2) - (child.height / 2);
 				case VerticalAlign.BOTTOM:
-					ypos = container.height - child.height;
+					ypos = container.height - child.height - padding.bottom;
 				default:
 			}
 			
@@ -81,6 +81,7 @@ class BoxLayout extends Layout {
 	private override function get_usableWidth():Float {
 		var ucx:Float = super.get_usableWidth();
 		
+		/*
 		if (container.numChildren > 1) {
 			ucx -= spacingX * (container.numChildren - 1);
 		}
@@ -94,6 +95,7 @@ class BoxLayout extends Layout {
 		if (ucx < 0) {
 			ucx = 0;
 		}
+		*/
 		
 		return ucx;
 	}
@@ -101,6 +103,7 @@ class BoxLayout extends Layout {
 	private override function get_usableHeight():Float {
 		var ucy:Float = super.get_usableHeight();
 		
+		/*
 		if (container.numChildren > 1) {
 			ucy -= spacingY * (container.numChildren - 1);
 		}
@@ -114,6 +117,7 @@ class BoxLayout extends Layout {
 		if (ucy < 0) {
 			ucy = 0;
 		}
+		*/
 		
 		return ucy;
 	}

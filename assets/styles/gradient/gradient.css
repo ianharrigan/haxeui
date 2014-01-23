@@ -35,6 +35,17 @@ VBox {
 	borderSize: 0;
 }
 
+Box {
+	borderColor: 0xa5b8da;
+	paddingLeft: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingRight: 0;
+	spacingY: 5;
+	cornerRadius: 2;
+	borderSize: 0;
+}
+
 HBox {
 	borderColor: 0xa5b8da;
 	paddingLeft: 0;
@@ -56,6 +67,23 @@ Grid {
 	spacingY: 5;
 	cornerRadius: 2;
 	borderSize: 0;
+}
+
+Frame {
+	borderColor: 0x606c88;
+	padding: 5;
+	spacingY: 5;
+	cornerRadius: 2;
+	borderSize: 1;
+	backgroundColor: 0xFFFFFF;
+}
+
+Frame Box {
+	paddingTop: 10;
+}
+
+Frame Text.frame {
+	color: 0x606c88;
 }
 
 ScrollView {

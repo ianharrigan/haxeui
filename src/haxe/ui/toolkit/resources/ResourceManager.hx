@@ -56,10 +56,10 @@ class ResourceManager {
 				loader.loadBytes(ba);
 				bmp = cast(loader.content, Bitmap).bitmapData;
 			} else {
-				bmp = Assets.getBitmapData(resourceId, false);
+				bmp = Assets.getBitmapData(resourceId, true);
 			}
 		#else
-			bmp = Assets.getBitmapData(resourceId, false);
+			bmp = Assets.getBitmapData(resourceId, true);
 		#end
 		return bmp;
 	}

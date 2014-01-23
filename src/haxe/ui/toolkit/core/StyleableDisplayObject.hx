@@ -27,65 +27,9 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	private override function preInitialize():Void {
 		super.preInitialize();
-
 		_setStyle = _style;
-		buildStyles();
-		if (Std.is(this, StateComponent)) {
-			var state:String = cast(this, StateComponent).state;
-			if (state == null) {
-				state = "normal";
-			}
-			_style = retrieveStyle(state);//StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
-			if (_style == null) {
-				_style = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
-			}
-		} else {
-			_style = StyleManager.instance.buildStyleFor(this);
-		}
-		
-		_style.merge(_inlineStyle);
+		refreshStyle();
 		_style.merge(_setStyle);
-		
-		if (_style != null) {
-			// get props from style if they exist
-			if (_style.width != -1 && width == 0) {
-				width = _style.width;
-			}
-			if (_style.height != -1 && height == 0) {
-				height = _style.height;
-			}
-
-			if (_style.percentWidth != -1 && percentWidth == -1) {
-				percentWidth = _style.percentWidth;
-			}
-			if (_style.percentHeight != -1 && percentHeight == -1) {
-				percentHeight = _style.percentHeight;
-			}
-			
-			// set layout props from style
-			if (layout != null) {
-				if (_style.paddingLeft != -1) {
-					layout.padding.left = _style.paddingLeft;
-				}
-				if (_style.paddingTop != -1) {
-					layout.padding.top = _style.paddingTop;
-				}
-				if (_style.paddingRight != -1) {
-					layout.padding.right = _style.paddingRight;
-				}
-				if (_style.paddingBottom != -1) {
-					layout.padding.bottom = _style.paddingBottom;
-				}
-				if (_style.spacingX != -1) {
-					_layout.spacingX = _style.spacingX;
-				}
-				if (_style.spacingY != -1) {
-					_layout.spacingY = _style.spacingY;
-				}
-			}
-		}
-		
-		applyStyle();
 	}
 	
 	public override function paint():Void {
@@ -98,6 +42,12 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		StyleHelper.paintStyle(graphics, style, rc);
 	}
 	
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		super.invalidate(type, recursive);
+		if (type & InvalidationFlag.STYLE == InvalidationFlag.STYLE) {
+			refreshStyle();
+		}
+	}
 	
 	private override function set_id(value:String):String { // if id changes, rebuild styles
 		if (value == id) {
@@ -211,5 +161,66 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	private function buildStyles():Void {
 		
+	}
+	
+	private function refreshStyle():Void {
+		//_setStyle = _style;
+		buildStyles();
+		if (Std.is(this, StateComponent)) {
+			var state:String = cast(this, StateComponent).state;
+			if (state == null) {
+				state = "normal";
+			}
+			_style = retrieveStyle(state);//StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			if (_style == null) {
+				_style = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			}
+		} else {
+			_style = StyleManager.instance.buildStyleFor(this);
+		}
+		
+		_style.merge(_inlineStyle);
+		//_style.merge(_setStyle);
+		
+		if (_style != null) {
+			// get props from style if they exist
+			if (_style.width != -1 && width == 0) {
+				width = _style.width;
+			}
+			if (_style.height != -1 && height == 0) {
+				height = _style.height;
+			}
+
+			if (_style.percentWidth != -1 && percentWidth == -1) {
+				percentWidth = _style.percentWidth;
+			}
+			if (_style.percentHeight != -1 && percentHeight == -1) {
+				percentHeight = _style.percentHeight;
+			}
+			
+			// set layout props from style
+			if (layout != null) {
+				if (_style.paddingLeft != -1) {
+					layout.padding.left = _style.paddingLeft;
+				}
+				if (_style.paddingTop != -1) {
+					layout.padding.top = _style.paddingTop;
+				}
+				if (_style.paddingRight != -1) {
+					layout.padding.right = _style.paddingRight;
+				}
+				if (_style.paddingBottom != -1) {
+					layout.padding.bottom = _style.paddingBottom;
+				}
+				if (_style.spacingX != -1) {
+					_layout.spacingX = _style.spacingX;
+				}
+				if (_style.spacingY != -1) {
+					_layout.spacingY = _style.spacingY;
+				}
+			}
+		}
+		
+		applyStyle();
 	}
 }

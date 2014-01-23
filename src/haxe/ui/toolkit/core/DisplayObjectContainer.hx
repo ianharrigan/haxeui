@@ -40,18 +40,24 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		#end
 	}
 	
-	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
 		if (!_ready || _invalidating) {
 			return;
 		}
 
-		super.invalidate(type);
+		super.invalidate(type, recursive);
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE
 			|| type & InvalidationFlag.LAYOUT == InvalidationFlag.LAYOUT) {
 			_layout.refresh();
 		}
 		_invalidating = false;
+		
+		if (recursive == true) {
+			for (child in _children) {
+				child.invalidate(type, recursive);
+			}
+		}
 	}
 	
 	//******************************************************************************************

@@ -74,12 +74,12 @@ class TextInput extends StateComponent {
 		super.dispose();
 	}
 	
-	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
 		if (!_ready || _invalidating) {
 			return;
 		}
 		
-		super.invalidate(type);
+		super.invalidate(type, recursive);
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();

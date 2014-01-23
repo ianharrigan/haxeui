@@ -18,7 +18,7 @@ class TabView extends Component {
 		
 		_tabs = new TabBar();
 		_tabs.percentWidth = 100;
-		_tabs.id = "tabs";
+		_tabs.id = id + "_tabs";
 		_tabs.addEventListener(Event.CHANGE, _onTabsChange);
 		_tabs.addEventListener(UIEvent.GLYPH_CLICK, _onGlyphClick);
 		addChild(_tabs);
@@ -47,7 +47,7 @@ class TabView extends Component {
 	//******************************************************************************************
 	public override function addChild(child:IDisplayObject):IDisplayObject {
 		var r = null;
-		if (child.id == "tabs" || child.id == "stack") {
+		if (child.id == id + "_tabs" || child.id == "stack") {
 			r = super.addChild(child);
 		} else {
 			r = _stack.addChild(child);
@@ -64,7 +64,7 @@ class TabView extends Component {
 
 	public override function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
 		var r = null;
-		if (child.id == "tabs" || child.id == "stack") {
+		if (child.id == id + "_tabs" || child.id == "stack") {
 			r = super.addChildAt(child, index);
 		} else {
 			r = _stack.addChildAt(child, index);
@@ -106,5 +106,10 @@ class TabView extends Component {
 	public function removeTab(index:Int):Void {
 		_stack.removeChildAt(index);
 		_tabs.removeTab(index);
+	}
+	
+	public function removeAllTabs():Void {
+		_stack.removeAllChildren();
+		_tabs.removeAllTabs();
 	}
 }

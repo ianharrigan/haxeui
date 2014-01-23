@@ -21,7 +21,7 @@ interface IDisplayObject { // canvas/sprite
 	
 	public function hitTest(stageX:Float, stageY:Float):Bool;
 	
-	public function invalidate(type:Int = InvalidationFlag.ALL):Void;
+	public function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void;
 	public function dispose():Void;
 	
 	public var horizontalAlign(get, set):String;

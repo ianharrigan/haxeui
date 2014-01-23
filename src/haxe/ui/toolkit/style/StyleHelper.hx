@@ -224,6 +224,10 @@ class StyleHelper {
 			return;
 		}
 		
+		if (src.width <= 0 || src.height <= 0 || dst.width <= 0 || dst.height <= 0) {
+			return;
+		}
+		
 		if (resourceRect == null) {
 			resourceRect = new Rectangle(0, 0, srcData.width, srcData.height);
 		}

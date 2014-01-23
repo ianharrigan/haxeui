@@ -5,7 +5,7 @@ import flash.Lib;
 class Screen {
 	private static var _instance:Screen;
 	public static var instance(get, null):Screen;
-	public static function get_instance():Screen {
+	private static function get_instance():Screen {
 		if (_instance == null) {
 			_instance = new Screen();
 		}

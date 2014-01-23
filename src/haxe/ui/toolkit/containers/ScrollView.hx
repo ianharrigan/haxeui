@@ -81,6 +81,27 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	// Helper props
 	//******************************************************************************************
+	public var showHScroll(get, set):Bool;
+	public var showVScroll(get, set):Bool;
+	
+	private function get_showHScroll():Bool {
+		return _showHScroll;
+	}
+	
+	private function set_showHScroll(value:Bool):Bool {
+		_showHScroll = value;
+		return value;
+	}
+	
+	private function get_showVScroll():Bool {
+		return _showVScroll;
+	}
+	
+	private function set_showVScroll(value:Bool):Bool {
+		_showVScroll = value;
+		return value;
+	}
+	
 	public var hscrollPos(get, set):Float;
 	public var hscrollMin(get, null):Float;
 	public var hscrollMax(get, null):Float;
@@ -164,12 +185,12 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	// Overridables
 	//******************************************************************************************
-	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
 		if (!_ready || _invalidating) {
 			return;
 		}
 
-		super.invalidate(type);
+		super.invalidate(type, recursive);
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();

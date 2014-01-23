@@ -50,14 +50,15 @@ class StyleManager {
 			var existingStyleRule:StyleRule = _styles.get(a);
 			var existingStyle:Style = null;
 			if (existingStyleRule != null) {
-				existingStyle = existingStyleRule.style;
+				var existingStyle:Style = existingStyleRule.style;
 				existingStyle.merge(style);
+				var styleRule:StyleRule = new StyleRule(a, existingStyle);
+				_styles.set(a, styleRule);
 			} else {
-				existingStyle = style;
+				var styleRule:StyleRule = new StyleRule(a, style);
+				_styles.set(a, styleRule);
+				_rules.push(a);
 			}
-			var styleRule:StyleRule = new StyleRule(a, existingStyle);
-			_styles.set(a, styleRule);
-			_rules.push(a);
 		}
 	}
 	
@@ -65,6 +66,14 @@ class StyleManager {
 		for (rule in styles.rules) {
 			addStyle(rule, styles.getStyle(rule));
 		}
+	}
+	
+	public function findStyle(rule:String):Style {
+		var existingStyleRule:StyleRule = _styles.get(rule);
+		if (existingStyleRule != null) {
+			return existingStyleRule.style;
+		}
+		return null;
 	}
 	
 	public function clear():Void {

@@ -119,12 +119,15 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	}
 	
 	private function set_pos(value:Float):Float {
-		if (value < _min) {
-			value = _min;
+		if (_ready) {
+			if (value < _min) {
+				value = _min;
+			}
+			if (value > _max) {
+				value = _max;
+			}
 		}
-		if (value > _max) {
-			value = _max;
-		}
+
 		if (value != _pos) {
 			_pos = value;
 			var changeEvent:Event = new Event(Event.CHANGE);

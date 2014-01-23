@@ -2,8 +2,12 @@ Root.popup{width:760;height:560;backgroundColor:0xFFFFFF;borderColor:0xa5b8da;pa
 #modalOverlay{backgroundColor:0xE9EDF5;filter:blur;alpha:.6;}
 Text{fontSize:13;fontName:"_sans";}
 VBox{borderColor:0xa5b8da;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingY:5;cornerRadius:2;borderSize:0;}
+Box{borderColor:0xa5b8da;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingY:5;cornerRadius:2;borderSize:0;}
 HBox{borderColor:0xa5b8da;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingX:5;cornerRadius:2;borderSize:0;}
 Grid{borderColor:0xa5b8da;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingX:5;spacingY:5;cornerRadius:2;borderSize:0;}
+Frame{borderColor:0x606c88;padding:5;spacingY:5;cornerRadius:2;borderSize:1;backgroundColor:0xFFFFFF;}
+Frame Box{paddingTop:10;}
+Frame Text.frame{color:0x606c88;}
 ScrollView{borderColor:0xa5b8da;color:0x000000;paddingLeft:2;paddingTop:2;paddingBottom:2;paddingRight:2;borderSize:1;spacingX:2;spacingY:2;cornerRadius:2;}
 ScrollView VBox{backgroundColor:0xFFFFFF;borderColor:0x000000;color:0x000000;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;borderSize:0;spacingX:5;spacingY:5;}
 Button{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;cornerRadius:3;borderSize:1;fontSize:13;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"left";fontScale:1;}

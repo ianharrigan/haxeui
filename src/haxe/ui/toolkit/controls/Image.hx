@@ -46,8 +46,8 @@ class Image extends Component {
 		super.dispose();
 	}
 	
-	public override function invalidate(type:Int = InvalidationFlag.ALL):Void {
-		super.invalidate(type);
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		super.invalidate(type, recursive);
 		
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			if (_stretch && _bmp != null) {

@@ -10,6 +10,12 @@ import haxe.ui.toolkit.data.DataManager;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.hscript.ScriptManager;
 import haxe.ui.toolkit.hscript.ScriptUtils;
+import haxe.ui.toolkit.layout.AbsoluteLayout;
+import haxe.ui.toolkit.layout.BoxLayout;
+import haxe.ui.toolkit.layout.DefaultLayout;
+import haxe.ui.toolkit.layout.GridLayout;
+import haxe.ui.toolkit.layout.HorizontalLayout;
+import haxe.ui.toolkit.layout.VerticalLayout;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleParser;
 import haxe.ui.toolkit.style.Styles;
@@ -106,6 +112,15 @@ class UIProcessor extends XMLProcessor {
 					}
 				}
 			} else if (attr == "condition") { // ignore condition attr
+			} else if (attr == "layout") { // special handling
+				switch (value) {
+					case "absolute": c.layout = new AbsoluteLayout(); break;
+					case "box": c.layout = new BoxLayout(); break;
+					case "grid": c.layout = new GridLayout(); break;
+					case "horizontal": c.layout = new HorizontalLayout(); break;
+					case "vertical": c.layout = new VerticalLayout(); break;
+					default: c.layout = new DefaultLayout(); break;
+				}
 			} else if (attr == "dataSource") { // special handling
 				if (Std.is(c, IDataComponent)) {
 					var dataComponent:IDataComponent = cast(c, IDataComponent);

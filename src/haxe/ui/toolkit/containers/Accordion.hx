@@ -92,6 +92,15 @@ class Accordion extends VBox {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	public var selectedButton(get, null):Button;
+	private function get_selectedButton():Button {
+		return getButton(_selectedIndex);
+	}
+
+	public function getButton(index:Int):Button {
+		return _buttons[index];
+	}
+	
 	private function showPage(index:Int):Void {
 		var button:AccordionButton = _buttons[index];
 		for (b in _buttons) {
@@ -104,7 +113,7 @@ class Accordion extends VBox {
 			}
 		}
 		
-		dispatchEvent(new Event(Event.CHANGE));
+		dispatchEvent(new UIEvent(UIEvent.CHANGE));
 	}
 	
 	private function buildMouseClickFunction(index:Int) {

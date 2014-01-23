@@ -185,6 +185,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		
 		_percentWidth = value;
 		invalidate();
+		if (_parent != null) {
+			_parent.invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	
@@ -199,6 +202,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		
 		_percentHeight = value;
 		invalidate();
+		if (_parent != null) {
+			_parent.invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	
@@ -254,6 +260,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	private function set_horizontalAlign(value:String):String {
 		_halign = value;
+		if (_ready) {
+			parent.invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	
@@ -263,6 +272,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	private function set_verticalAlign(value:String):String {
 		_valign = value;
+		if (_ready) {
+			parent.invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	
@@ -277,7 +289,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		return b;
 	}
 	
-	public function invalidate(type:Int = InvalidationFlag.ALL):Void {
+	public function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
 		if (!_ready || _invalidating) {
 			return;
 		}
