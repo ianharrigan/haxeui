@@ -35,25 +35,6 @@ class Macros {
 		return fields;
 	}
 	
-	/*
-	public static function addEvent(name:String, fields:Array<Field>):Void {
-		var name = "on" + StringUtil.capitalizeFirstLetter(name);
-        var tparam = TPath( { pack : ["haxe","ui","toolkit","events"], name : "UIEvent", params : [], sub : null } );
-        var tvoid = TPath( { pack : [], name : "Void", params : [], sub : null } );
-		var tfn = TFunction([tparam], tvoid);
-		fields.push( { name : name, doc : null, meta : [], access : [APublic], kind : FProp("default", "set", tfn, null), pos : haxe.macro.Context.currentPos() } );
-		
-		var code = "function (value:haxe.ui.toolkit.events.UIEvent->Void):haxe.ui.toolkit.events.UIEvent->Void {\n";
-		code += "return null;\n";
-		code += "}";
-		var fnSetter = switch (Context.parseInlineString(code, haxe.macro.Context.currentPos()) ).expr {
-            case EFunction(_,f): f;
-            case _: throw "false";
-        }
-		fields.push( { name : "set_" + name, doc : null, meta : [], access : [APrivate], kind : FFun(fnSetter), pos : haxe.macro.Context.currentPos() } );
-	}
-	*/
-	
 	macro public static function buildController(resourcePath:String):Array<Field> {
         var pos = haxe.macro.Context.currentPos();
         var fields = haxe.macro.Context.getBuildFields();
