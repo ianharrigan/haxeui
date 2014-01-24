@@ -11,7 +11,14 @@ import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.util.CallStackHelper;
+import haxe.ui.toolkit.util.StringUtil;
 
+@:build(haxe.ui.toolkit.core.Macros.addEvents([
+	"init", "resize",
+	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change",
+	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
+	"glyphClick"
+]))
 class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable {
 	// used in IDisplayObject getters/setters
 	private var _parent:IDisplayObjectContainer;
@@ -426,5 +433,18 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 			}
 		}
 		return count;
+	}
+	
+	//******************************************************************************************
+	// event handler vars
+	//******************************************************************************************
+	private function _handleEvent(event:UIEvent):Void {
+		var fnName:String = "on" + StringUtil.capitalizeFirstLetter(StringTools.replace(event.type, UIEvent.PREFIX, ""));
+		var fn:UIEvent->Void = Reflect.field(this, fnName);
+		if (fn != null) {
+			var fnEvent:UIEvent = new UIEvent(UIEvent.PREFIX + event.type); 
+			fnEvent.displayObject = this;
+			fn(fnEvent);
+		}
 	}
 }
