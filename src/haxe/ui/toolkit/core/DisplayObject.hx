@@ -10,6 +10,7 @@ import haxe.ui.toolkit.core.interfaces.IDrawable;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.util.CallStackHelper;
 
 class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable {
 	// used in IDisplayObject getters/setters
@@ -57,7 +58,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		_ready = true;
 		initialize();
 		postInitialize();
-		invalidate();
+		invalidate(InvalidationFlag.LAYOUT | InvalidationFlag.DISPLAY | InvalidationFlag.SIZE);
 		
 		var event:UIEvent =  new UIEvent(UIEvent.INIT);
 		dispatchEvent(event);
@@ -288,12 +289,14 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		
 		return b;
 	}
-	
+
 	public function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
 		if (!_ready || _invalidating) {
 			return;
 		}
 
+		//CallStackHelper.traceCallStack();
+		
 		_invalidating = true;
 		if (type & InvalidationFlag.DISPLAY == InvalidationFlag.DISPLAY
 			|| type & InvalidationFlag.STATE == InvalidationFlag.STATE) {

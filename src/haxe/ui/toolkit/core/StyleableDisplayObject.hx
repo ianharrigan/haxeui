@@ -43,6 +43,10 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		if (!_ready || _invalidating) {
+			return;
+		}
+		
 		super.invalidate(type, recursive);
 		if (type & InvalidationFlag.STYLE == InvalidationFlag.STYLE) {
 			refreshStyle();
@@ -80,7 +84,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private function set_style(value:Style):Style {
 		_style = value;
 		_style.target = this;
-		applyStyle();
+		//applyStyle();
 		return value;
 	}
 	

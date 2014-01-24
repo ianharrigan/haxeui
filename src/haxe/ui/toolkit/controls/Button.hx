@@ -112,7 +112,7 @@ class Button extends StateComponent implements IFocusable {
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 		
-		applyStyle();
+		//applyStyle();
 	}
 	
 	private override function set_disabled(value:Bool):Bool {

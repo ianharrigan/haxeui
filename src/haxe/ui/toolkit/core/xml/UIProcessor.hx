@@ -14,7 +14,9 @@ import haxe.ui.toolkit.layout.AbsoluteLayout;
 import haxe.ui.toolkit.layout.BoxLayout;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.layout.GridLayout;
+import haxe.ui.toolkit.layout.HorizontalContinuousLayout;
 import haxe.ui.toolkit.layout.HorizontalLayout;
+import haxe.ui.toolkit.layout.VerticalContinuousLayout;
 import haxe.ui.toolkit.layout.VerticalLayout;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleParser;
@@ -119,6 +121,8 @@ class UIProcessor extends XMLProcessor {
 					case "grid": c.layout = new GridLayout(); break;
 					case "horizontal": c.layout = new HorizontalLayout(); break;
 					case "vertical": c.layout = new VerticalLayout(); break;
+					case "continuousVertical": c.layout = new VerticalContinuousLayout(); break;
+					case "continuousHorizontal": c.layout = new HorizontalContinuousLayout(); break;
 					default: c.layout = new DefaultLayout(); break;
 				}
 			} else if (attr == "dataSource") { // special handling

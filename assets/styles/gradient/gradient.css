@@ -24,47 +24,10 @@ Text {
 	fontName: "_sans";
 }
 
-VBox {
+VBox, ContinuousBox, Box, HBox, Grid {
 	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingY: 5;
-	cornerRadius: 2;
-	borderSize: 0;
-}
-
-Box {
-	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingY: 5;
-	cornerRadius: 2;
-	borderSize: 0;
-}
-
-HBox {
-	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingX: 5;
-	cornerRadius: 2;
-	borderSize: 0;
-}
-
-Grid {
-	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingX: 5;
-	spacingY: 5;
+	padding: 0;
+	spacing: 5;
 	cornerRadius: 2;
 	borderSize: 0;
 }
