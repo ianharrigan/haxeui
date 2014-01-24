@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:vbox>
+	<ui:button id="testButton" text="Test" />
+</ui:vbox>

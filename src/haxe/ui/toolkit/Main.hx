@@ -1,8 +1,8 @@
 package haxe.ui.toolkit;
 
 import haxe.ui.toolkit.core.Macros;
-import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.Root;
+import haxe.ui.toolkit.core.Toolkit;
 
 class Main {
 	public static function main() {
@@ -13,6 +13,8 @@ class Main {
 		#end
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
+			var t:TestController = new TestController();
+			root.addChild(t.view);
 		});
 	}
 }

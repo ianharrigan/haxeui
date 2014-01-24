@@ -5,6 +5,73 @@ import haxe.macro.Expr;
 import haxe.ui.toolkit.hscript.ScriptUtils;
 
 class Macros {
+	macro public static function buildController(resourcePath:String):Array<Field> {
+        var pos = haxe.macro.Context.currentPos();
+        var fields = haxe.macro.Context.getBuildFields();
+		var ctor = null;
+		for (f in fields) {
+			if (f.name == "new") {
+				switch (f.kind) {
+					case FFun(f):
+							ctor = f;
+						break;
+					default:
+				}
+			}
+		}
+
+		if (ctor == null) Context.error("A class building a controller must have a constructor", Context.currentPos());
+		
+		if (sys.FileSystem.exists(resourcePath) == false) {
+			Context.error("XML file not found", Context.currentPos());
+		}
+		
+		var e:Expr = Context.parseInlineString("super(\"" + resourcePath + "\")", Context.currentPos());
+		ctor.expr = switch(ctor.expr.expr) {
+			case EBlock(el): macro $b{insertExpr(el, 0, e)};
+			case _: macro $b { insertExpr([ctor.expr], 0, e) }
+		}
+		
+		var contents:String = sys.io.File.getContent(resourcePath);
+		var xml:Xml = Xml.parse(contents);
+		var types:Map<String, String> = new Map<String, String>();
+		processNode(xml.firstElement(), types);
+		
+		var n:Int = 1;
+		for (id in types.keys()) {
+			var cls:String = types.get(id);
+			var classArray:Array<String> = cls.split(".");
+			var className = classArray.pop();
+	        var ttype = TPath( { pack : classArray, name : className, params : [], sub : null } );
+			fields.push( { name : id, doc : null, meta : [], access : [APrivate], kind : FVar(ttype, null), pos : pos } );
+			
+			var e:Expr = Context.parseInlineString("this." + id + " = getComponentAs(\"" + id + "\", " + cls + ")", Context.currentPos());
+			ctor.expr = switch(ctor.expr.expr) {
+				case EBlock(el): macro $b{insertExpr(el, n, e)};
+				case _: macro $b { insertExpr([ctor.expr], n, e) }
+			}
+		}
+		
+		return fields;
+	}
+	
+	private static function processNode(node:Xml, types:Map < String, String > ):Void {
+		var nodeName:String = node.nodeName;
+		var id:String = node.get("id");
+		if (id != null && id.length > 0) {
+			var cls:String = componentClasses.get(nodeName);
+			types.set(id, cls);
+		}
+		for (child in node.elements()) {
+			processNode(child, types);
+		}
+	}
+	
+	private static function insertExpr(arr:Array<Expr>, pos:Int, item:Expr):Array<Expr> {
+		arr.insert(pos, item);
+		return arr;
+	}
+	
 	macro public static function addStyleSheet(resourcePath:String):Expr {
 		if (sys.FileSystem.exists(resourcePath) == false) {
 			var paths:Array<String> = Context.getClassPath();
@@ -103,6 +170,7 @@ class Macros {
 		return Context.parseInlineString(code, Context.currentPos());
 	}
 	
+	private static var componentClasses:Map<String, String> = new Map<String, String>();
 	macro public static function registerComponentPackage(pack:String, prefix:String):Expr {
 
 		var code:String = "function() {\n";
@@ -128,6 +196,8 @@ class Macros {
 							var className:String = getClassNameFromType(t);
 							if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
 								if (className == pack + "." + name) {
+									var entryName:String = prefix + ":" + name.toLowerCase();
+									componentClasses.set(entryName, className);
 									if (currentClassName.indexOf("ClassManager") != -1) {
 										code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
 									} else {
