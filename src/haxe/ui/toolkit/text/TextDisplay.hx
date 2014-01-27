@@ -8,6 +8,14 @@ import flash.text.TextFormat;
 import haxe.ui.toolkit.style.Style;
 
 class TextDisplay implements ITextDisplay {
+	#if html5
+	private static inline var X_PADDING:Int = 0;
+	private static inline var Y_PADDING:Int = 2;
+	#else
+	private static inline var X_PADDING:Int = 4;
+	private static inline var Y_PADDING:Int = 4;
+	#end
+	
 	private var _style:Style;
 	private var _tf:TextField; 
 	
@@ -50,10 +58,10 @@ class TextDisplay implements ITextDisplay {
 		style = _style;
 		if (value != null && value.length > 0) {
 			if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == false) {
-				_tf.width = _tf.textWidth + 4;
-				_tf.height = _tf.textHeight + 4;
+				_tf.width = _tf.textWidth + X_PADDING;
+				_tf.height = _tf.textHeight + Y_PADDING;
 			} else if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == true) {
-				_tf.height = _tf.textHeight + 4;
+				_tf.height = _tf.textHeight + Y_PADDING;
 			} else if (_tf.type == TextFieldType.INPUT && _tf.multiline == false) {
 				//_tf.width = _tf.textWidth + 4;
 				//_tf.height = _tf.textHeight + 4;
@@ -94,10 +102,10 @@ class TextDisplay implements ITextDisplay {
 		
 		if (text.length > 0) {
 			if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == false) {
-				_tf.width = _tf.textWidth + 4;
-				_tf.height = _tf.textHeight + 4;
+				_tf.width = _tf.textWidth + X_PADDING;
+				_tf.height = _tf.textHeight + Y_PADDING;
 			} else if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == true) {
-				_tf.height = _tf.textHeight + 4;
+				_tf.height = _tf.textHeight + Y_PADDING;
 			} else if (_tf.type == TextFieldType.INPUT && _tf.multiline == false) {
 				//_tf.width = _tf.textWidth + 4;
 				//_tf.height = _tf.textHeight + 4;

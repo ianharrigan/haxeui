@@ -2,8 +2,10 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
+import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.layout.HorizontalLayout;
+import haxe.ui.toolkit.style.Style;
 
 /**
  Simple two state checkbox control
@@ -33,6 +35,7 @@ class CheckBox extends Component {
 	private override function initialize():Void {
 		super.initialize();
 		
+		_value.verticalAlign = VerticalAlign.CENTER;
 		addChild(_value);
 		addChild(_label);
 		
@@ -77,6 +80,25 @@ class CheckBox extends Component {
 		dispatchEvent(event);
 		
 		return value;
+	}
+	
+	//******************************************************************************************
+	// IStyleable
+	//******************************************************************************************
+	public override function applyStyle():Void {
+		super.applyStyle();
+		
+		// apply style to label
+		if (_label != null) {
+			var labelStyle:Style = new Style();
+			if (_style != null) {
+				labelStyle.fontName = _style.fontName;
+				labelStyle.fontSize = _style.fontSize;
+				labelStyle.fontEmbedded = _style.fontEmbedded;
+				labelStyle.color = _style.color;
+			}
+			_label.style = labelStyle;
+		}
 	}
 }
 

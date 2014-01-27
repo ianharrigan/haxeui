@@ -54,7 +54,9 @@ class ResourceManager {
 				var ba:ByteArray = ByteConverter.fromHaxeBytes(bytes);
 				var loader:Loader = new Loader();
 				loader.loadBytes(ba);
-				bmp = cast(loader.content, Bitmap).bitmapData;
+				if (loader.content != null) {
+					bmp = cast(loader.content, Bitmap).bitmapData;
+				}
 			} else {
 				bmp = Assets.getBitmapData(resourceId, true);
 			}

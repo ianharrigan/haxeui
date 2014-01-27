@@ -153,11 +153,13 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 				_sprite.alpha = 1;
 			}
 			
+			#if !html5
 			if (_style.filter != null) {
 				_sprite.filters = [_style.filter];
 			} else {
 				_sprite.filters = [];
 			}
+			#end
 		}
 		
 		invalidate(InvalidationFlag.DISPLAY);

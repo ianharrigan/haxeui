@@ -29,6 +29,8 @@ class ScrollView extends StateComponent {
 	private var _downPos:Point;
 	#if mobile
 	private var _scrollSensitivity:Int = 0;
+	#elseif html5
+	private var _scrollSensitivity:Int = 1;
 	#else
 	private var _scrollSensitivity:Int = 0;
 	#end

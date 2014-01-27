@@ -18,7 +18,7 @@ import haxe.ui.toolkit.events.UIEvent;
 class TabBar extends ScrollView {
 	private var _content:HBox;
 
-	private var _selectedIndex:Int = 0;
+	private var _selectedIndex:Int = -1;
 	
 	public function new() {
 		super();

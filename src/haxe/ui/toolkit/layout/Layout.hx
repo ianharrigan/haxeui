@@ -85,12 +85,18 @@ class Layout implements ILayout {
 	
 	// Inner width returns the size of the component minus padding
 	private function get_innerWidth():Float {
+		if (container == null) {
+			return 0;
+		}
 		var icx:Float = container.width - (padding.left + padding.right);
 		return icx;
 	}
 	
 	// Inner height returns the size of the component minus padding
 	private function get_innerHeight():Float {
+		if (container == null) {
+			return 0;
+		}
 		var icy:Float = container.height - (padding.top + padding.bottom);
 		return icy;
 	}

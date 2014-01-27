@@ -82,7 +82,9 @@ class Root extends Component {
 		for (child in children) {
 			if (Std.is(child, Popup) == false && child.id != "modalOverlay") {
 				var c:Component = cast(child, Component);
+				#if !html5
 				c.sprite.filters = [new BlurFilter(4, 4)];
+				#end
 			}
 		}
 		#end
@@ -99,7 +101,9 @@ class Root extends Component {
 			for (child in children) {
 				if (Std.is(child, Popup) == false && child.id != "modalOverlay") {
 					var c:Component = cast(child, Component);
+					#if !html5
 					c.sprite.filters = null;
+					#end
 				}
 			}
 			#end

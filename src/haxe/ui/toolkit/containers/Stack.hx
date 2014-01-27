@@ -10,7 +10,11 @@ import motion.Actuate;
 import motion.easing.Linear;
 
 class Stack extends Component {
+	#if !html5
 	private var _selectedIndex:Int = 0;
+	#else
+	private var _selectedIndex:Int = -1;
+	#end
 	
 	//private var _transition:String = "slide";
 	
