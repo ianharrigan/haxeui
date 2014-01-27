@@ -109,7 +109,8 @@ Data Sources
 
 Notes
 -------------------------
-html5 is still being tested, but functions to a degree.
+html5 target functions but is not particularly performant. This will,
+hopefully, be improved in future releases.
 
 
 Licence

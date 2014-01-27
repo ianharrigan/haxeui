@@ -33,6 +33,10 @@ class StyleHelper {
 				if (borderSize > 0) {
 					g.lineStyle(borderSize, style.borderColor);
 					rc.inflate( -(borderSize / 2), -(borderSize / 2));
+					#if html5
+						rc.x = Std.int(rc.x);
+						rc.y = Std.int(rc.y);
+					#end
 				}
 			}
 			
@@ -93,7 +97,7 @@ class StyleHelper {
 			
 			g.endFill();
 		}
-		
+
 		if (style.backgroundImage != null) {
 			var backgroundImageRect:Rectangle = null;
 			if (style.backgroundImageRect != null) {

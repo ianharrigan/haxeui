@@ -417,7 +417,6 @@ class ListViewItem extends StateComponent {
 	}
 	
 	private function _onMouseClick(event:MouseEvent):Void {
-		trace("click");
 		if (_subControl != null && _subControl.hitTest(event.stageX, event.stageY) == true) {
 			return;
 		}
