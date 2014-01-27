@@ -2,7 +2,7 @@
 <ui:vbox width="100%" height="100%">
 	<ui:button x="100" y="100" id="testButton" text="Test" />
 	<ui:button text="Simple Popup" id="showSimplePopup" />
-	<!--ui:tabview width="100%" height="100%"-->
+	<ui:tabview width="100%" height="100%">
 		<ui:vbox text="Tab 1" width="100%" height="100%">
 			
 				<ui:listview width="100%" height="75%" id="theList">
@@ -63,7 +63,6 @@
 				</ui:listview>
 				
 		</ui:vbox>
-		<!--
 		<ui:vbox text="Tab 2">
 			<ui:button text="Bob" />
 		</ui:vbox>
@@ -76,6 +75,5 @@
 		<ui:vbox text="Tab 5">
 			<ui:button text="Bob" />
 		</ui:vbox>
-		-->
-	<!--/ui:tabview-->
+	</ui:tabview>
 </ui:vbox>

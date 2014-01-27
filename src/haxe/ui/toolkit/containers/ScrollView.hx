@@ -21,6 +21,7 @@ import haxe.ui.toolkit.util.TypeParser;
 class ScrollView extends StateComponent {
 	private var _hscroll:HScroll;
 	private var _vscroll:VScroll;
+	private var _container:Box;
 	
 	private var _showHScroll:Bool = true;
 	private var _showVScroll:Bool = true;
@@ -43,6 +44,10 @@ class ScrollView extends StateComponent {
 		_layout = new ScrollViewLayout();
 		_eventTarget = new Sprite();
 		_eventTarget.visible = false;
+		
+		_container = new Box();
+		_container.percentWidth = _container.percentHeight = 100;
+		addChild(_container);
 	}
 	
 	//******************************************************************************************
@@ -65,7 +70,7 @@ class ScrollView extends StateComponent {
 		addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		
-		var content:IDisplayObject = getChildAt(0); // assume first child is content
+		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null) {
 			cast(content, IEventDispatcher).addEventListener(Event.ADDED_TO_STAGE, function(e) {
 				invalidate();
@@ -73,6 +78,26 @@ class ScrollView extends StateComponent {
 		}
 		
 		sprite.addChild(_eventTarget);
+	}
+	
+	public override function addChild(child:IDisplayObject):IDisplayObject {
+		var r = null;
+		if (child == _container || child == _hscroll || child == _vscroll) {
+			r = super.addChild(child);
+		} else {
+			r = _container.addChild(child);
+		}
+		return r;
+	}
+	
+	public override function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
+		var r = null;
+		if (child == _container || child == _hscroll || child == _vscroll) {
+			r = super.addChildAt(child, index);
+		} else {
+			r = _container.addChildAt(child, index);
+		}
+		return r;
 	}
 	
 	public override function dispose():Void {
@@ -214,7 +239,7 @@ class ScrollView extends StateComponent {
 	}
 	
 	private function _onMouseWheel(event:MouseEvent):Void {
-		var content:IDisplayObject = getChildAt(0); // assume first child is content
+		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (event.shiftKey || content.height < layout.usableHeight) {
 			if (_hscroll != null && content.width > layout.usableWidth) {
 				if (event.delta != 0) {
@@ -247,7 +272,7 @@ class ScrollView extends StateComponent {
 			inScroll = _hscroll.hitTest(event.stageX, event.stageY);
 		}
 		
-		var content:IDisplayObject = getChildAt(0); // assume first child is content
+		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null && inScroll == false) {
 			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
 				_downPos = new Point(event.stageX, event.stageY);
@@ -272,7 +297,7 @@ class ScrollView extends StateComponent {
 			
 			if (Math.abs(xpos) >= _scrollSensitivity  || Math.abs(ypos) >= _scrollSensitivity) {
 				_eventTarget.visible = true;
-				var content:IDisplayObject = getChildAt(0); // assume first child is content
+				var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 				if (content != null) {
 					if (xpos != 0 && content.width > layout.usableWidth) {
 						if (_showHScroll == true && _autoHideScrolls == true) {
@@ -316,7 +341,7 @@ class ScrollView extends StateComponent {
 	// Helpers
 	//******************************************************************************************
 	private function checkScrolls():Void { // checks to see if scrolls are needed, creates/displays/hides as appropriate
-		var content:IDisplayObject = getChildAt(0); // assume first child is content
+		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null) {
 			// show hscroll if needed
 			var invalidateLayout:Bool = false;
@@ -406,7 +431,7 @@ class ScrollView extends StateComponent {
 	
 	private function updateScrollRect():Void {
 		if (numChildren > 0) {
-			var content:IDisplayObject = getChildAt(0);
+			var content:IDisplayObject = _container.getChildAt(0);
 			if (content != null) {
 				var xpos:Float = 0;
 				if (_hscroll != null) {
@@ -416,7 +441,10 @@ class ScrollView extends StateComponent {
 				if (_vscroll != null) {
 					ypos = _vscroll.pos;
 				}
-				content.sprite.scrollRect = new Rectangle(xpos, ypos, layout.usableWidth, layout.usableHeight);
+				content.x = -xpos;
+				content.y = -ypos;
+				//content.sprite.scrollRect = new Rectangle(xpos, ypos, layout.usableWidth, layout.usableHeight);
+				_container.sprite.scrollRect = new Rectangle(0, 0, layout.usableWidth, layout.usableHeight);
 			}
 		}
 	}
