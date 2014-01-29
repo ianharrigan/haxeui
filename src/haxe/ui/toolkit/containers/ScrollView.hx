@@ -15,6 +15,7 @@ import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.util.TypeParser;
 
@@ -70,14 +71,17 @@ class ScrollView extends StateComponent {
 		addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		
+		sprite.addChild(_eventTarget);
+	}
+	
+	private override function postInitialize():Void {
+		super.postInitialize();
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null) {
-			cast(content, IEventDispatcher).addEventListener(Event.ADDED_TO_STAGE, function(e) {
-				invalidate();
+			cast(content, IEventDispatcher).addEventListener(UIEvent.RESIZE, function(e) {
+				invalidate(InvalidationFlag.SIZE);
 			});
 		}
-		
-		sprite.addChild(_eventTarget);
 	}
 	
 	public override function addChild(child:IDisplayObject):IDisplayObject {
@@ -96,6 +100,16 @@ class ScrollView extends StateComponent {
 			r = super.addChildAt(child, index);
 		} else {
 			r = _container.addChildAt(child, index);
+		}
+		return r;
+	}
+	
+	public override function removeChild(child:IDisplayObject, dispose:Bool = true):IDisplayObject {
+		var r = null;
+		if (child == _container || child == _hscroll || child == _vscroll) {
+			r = super.removeChild(child, dispose);
+		} else {
+			r = _container.removeChild(child, dispose);
 		}
 		return r;
 	}

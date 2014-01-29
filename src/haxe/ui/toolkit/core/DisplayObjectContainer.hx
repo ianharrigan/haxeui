@@ -163,14 +163,14 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		}
 		
 		var childSprite:Sprite = child.sprite;
-		if (_sprite.contains(childSprite)) {
+		//if (_sprite.contains(childSprite)) {
 			_sprite.removeChild(childSprite);
 			_children.remove(child);
 			if (dispose == true) {
 				child.dispose();
 			}
 			invalidate(InvalidationFlag.LAYOUT);
-		}
+		//}
 		#if html5
 		if (_childrenToAdd != null) {
 			var success = _childrenToAdd.remove(child);
