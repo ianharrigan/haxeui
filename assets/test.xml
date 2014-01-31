@@ -1,22 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox width="100%" height="100%">
-	<ui:button x="100" y="100" id="testButton" text="Test" />
-	<ui:button text="Simple Popup" id="showSimplePopup" />
-	<ui:button x="100" y="100" id="testButton2" text="Test 2" />
-	<ui:tabview width="100%" height="100%" id="mainTabs">
-		<sys:import resource="assets/tab.xml" />
+<ui:vbox>
+	<ui:hbox>
+		<ui:grid columns="2">
+			<ui:text text="Width" />
+			<ui:hslider id="width" width="150" max="310" pos="200" />
+			
+			<ui:text text="Height" />
+			<ui:hslider id="height" width="150" max="450" pos="200"/>
+
+			<selection:list id="child" text="Button1" verticalAlign="top" selectedIndex="0">
+				<data:array>Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9</data:array>
+			</selection:list>
+			
+			<ui:grid columns="3">
+				<ui:text text="Width" />
+				<ui:hslider id="childWidth" max="200" pos="50"/>
+				<ui:checkbox id="childWidthAsPercent" text="%" verticalAlign="bottom" />
+				
+				<ui:text text="Height" />
+				<ui:hslider id="childHeight" max="200" pos="50"/>
+				<ui:checkbox id="childHeightAsPercent" text="%" verticalAlign="bottom" />
+				
+				<ui:text text="VAlign" />
+				<selection:list id="valign" text="top" selectedIndex="0" width="100%">
+					<data:array>top,center,bottom</data:array>
+				</selection:list>
+				<ui:spacer />
+				
+				<ui:text text="HAlign" />
+				<selection:list id="halign" text="left" selectedIndex="0" width="100%">
+					<data:array>left,center,right</data:array>
+				</selection:list>
+				<ui:spacer />
+			</ui:grid>
+		</ui:grid>
+		<ui:spacer width="20" />
 		
-		<ui:vbox text="Tab 2">
-			<ui:button text="Bob" />
-		</ui:vbox>
-		<ui:vbox text="Tab 3">
-			<ui:button text="Bob" />
-		</ui:vbox>
-		<ui:vbox text="Tab 4">
-			<ui:button text="Bob" />
-		</ui:vbox>
-		<ui:vbox text="Tab 5">
-			<ui:button text="Bob" />
-		</ui:vbox>
-	</ui:tabview>
+		<ui:grid id="theBox" style="borderSize:1;padding:5;" width="200" height="200" autoSize="false" columns="3">
+			<ui:button id="Button1" text="1" width="50" height="50" />
+			<ui:button id="Button2" text="2" width="100%" height="25" />
+			<ui:button id="Button3" text="3" width="50" height="50" />
+			<ui:button id="Button4" text="4" width="25" height="100%" />
+			<ui:button id="Button5" text="5" width="75%" height="75%" horizontalAlign="center" verticalAlign="center"/>
+			<ui:button id="Button6" text="6" width="25" height="100%" horizontalAlign="right" />
+			<ui:button id="Button7" text="7" width="50" height="50" />
+			<ui:button id="Button8" text="8" width="100%" height="25" verticalAlign="bottom" />
+			<ui:button id="Button9" text="9" width="50" height="50"/>
+		</ui:grid>
+	</ui:hbox>
 </ui:vbox>

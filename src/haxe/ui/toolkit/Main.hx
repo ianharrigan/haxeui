@@ -1,6 +1,7 @@
 package haxe.ui.toolkit;
 
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
@@ -14,16 +15,20 @@ class Main {
 		#end
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			var t:TestController = new TestController();
-			root.addChild(t.view);
-			/*
+			//var t:TestController = new TestController();
+			//root.addChild(t.view);
 			var button:Button = new Button();
 			button.x = 100;
 			button.y = 100;
-			button.width = 100;
-			button.height = 100;
+			//button.width = 100;
+			//button.height = 100;
 			button.text = "Test Button";
 			root.addChild(button);
+
+			/*
+			var s:Text = new Text();
+			s.text = "Bob";
+			root.addChild(s);
 			*/
 		});
 	}

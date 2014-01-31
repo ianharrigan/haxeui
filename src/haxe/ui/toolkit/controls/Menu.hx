@@ -72,6 +72,10 @@ class Menu extends VBox {
 	}
 
 	private function mouseClickItem(index:Int):Void {
+		if (this.getChildAt(index) == null) {
+			return;
+		}
+		
 		var item:MenuItem = cast(this.getChildAt(index), MenuItem);
 		var subMenu:Menu = _subMenus.get(item);
 		if (subMenu == null) {
