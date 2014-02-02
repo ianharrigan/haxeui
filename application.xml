@@ -25,5 +25,5 @@
 	
 	<!-- optimize output -->
 	<haxeflag name="-dce std" if="haxe3" />
-	<haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" />
+	<!--haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" /-->
 </project>

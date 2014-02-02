@@ -203,6 +203,9 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (_style.percentHeight != -1 && percentHeight == -1) {
 				percentHeight = _style.percentHeight;
 			}
+			if (_style.autoSizeSet) {
+				autoSize = _style.autoSize;
+			}
 			
 			// set layout props from style
 			if (layout != null) {

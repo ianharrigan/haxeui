@@ -87,10 +87,17 @@ class Macros {
 	
 	private static function processNode(node:Xml, types:Map < String, String > ):Void {
 		var nodeName:String = node.nodeName;
+		var n:Int = nodeName.indexOf(":");
+		if (n != -1) {
+			nodeName = nodeName.substr(n + 1, nodeName.length);
+		}
+		
 		var id:String = node.get("id");
 		if (id != null && id.length > 0) {
 			var cls:String = componentClasses.get(nodeName);
-			types.set(id, cls);
+			if (cls != null) {
+				types.set(id, cls);
+			}
 		}
 		for (child in node.elements()) {
 			processNode(child, types);
