@@ -101,9 +101,8 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	}
 	
 	private function set_min(value:Float):Float {
-		_min = value;
 		if (value != _min) {
-			_pos = value;
+			_min = value;
 			var changeEvent:Event = new Event(Event.CHANGE);
 			dispatchEvent(changeEvent);
 			invalidate(InvalidationFlag.LAYOUT);
@@ -116,9 +115,8 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	}
 	
 	private function set_max(value:Float):Float {
-		_max = value;
 		if (value != _max) {
-			_pos = value;
+			_max = value;
 			var changeEvent:Event = new Event(Event.CHANGE);
 			dispatchEvent(changeEvent);
 			invalidate(InvalidationFlag.LAYOUT);
