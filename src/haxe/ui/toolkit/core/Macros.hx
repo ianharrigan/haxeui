@@ -201,7 +201,7 @@ class Macros {
 	}
 	
 	private static var componentClasses:Map<String, String> = new Map<String, String>();
-	macro public static function registerComponentPackage(pack:String, prefix:String):Expr {
+	macro public static function registerComponentPackage(pack:String):Expr {
 
 		var code:String = "function() {\n";
 		var currentClassName:String = Context.getLocalClass().toString();
@@ -226,12 +226,12 @@ class Macros {
 							var className:String = getClassNameFromType(t);
 							if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
 								if (className == pack + "." + name) {
-									var entryName:String = prefix + ":" + name.toLowerCase();
+									var entryName:String = name.toLowerCase();
 									componentClasses.set(entryName, className);
 									if (currentClassName.indexOf("ClassManager") != -1) {
-										code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
+										code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "');\n";
 									} else {
-										code += "\tClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "', '" + prefix + "');\n";
+										code += "\tClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "');\n";
 									}
 								}
 							}

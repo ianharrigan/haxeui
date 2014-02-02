@@ -18,8 +18,7 @@ body, html { height:100%; padding:0px !important; overflow:hidden; }
 #nav li { list-style-type: none; }
 #nav .expando > ul { display:none; }
 #nav .expando.expanded > ul { display:block; }
-#nav ul { margin-left:14px; }
-#nav li { margin-left:0px; }
+#nav ul, #nav li li { margin-left:14px; }
 #nav img { padding-right:4px; }
 #nav .pack { display:none; }
 

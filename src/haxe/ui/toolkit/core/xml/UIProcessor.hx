@@ -31,19 +31,17 @@ class UIProcessor extends XMLProcessor {
 	public override function process(node:Xml):Dynamic {
 		var result:Dynamic = null;
 		var nodeName:String = node.nodeName;
-		var nodeNS:String = null;
 		var n:Int = nodeName.indexOf(":");
 		if (n != -1) {
-			nodeNS = nodeName.substr(0, n);
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
 		
-		var className:String = ClassManager.instance.getComponentClassName(nodeName, nodeNS);
+		var className:String = ClassManager.instance.getComponentClassName(nodeName);
 		var direction:String = node.get("direction");
 		if (direction != null) {
 			var directionalPrefix:String = direction.substr(0, 1);
 			var directionalName:String = directionalPrefix + nodeName;
-			var directionalClassName:String = ClassManager.instance.getComponentClassName(directionalName, nodeNS);
+			var directionalClassName:String = ClassManager.instance.getComponentClassName(directionalName);
 			if (directionalClassName != null) {
 				className = directionalClassName;
 			}

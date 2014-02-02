@@ -10,10 +10,8 @@ class XMLProcessor implements IXMLProcessor {
 	}
 	
 	public function stripNamespace(nodeName:String):String {
-		var nodeNS:String = null;
 		var n:Int = nodeName.indexOf(":");
 		if (n != -1) {
-			nodeNS = nodeName.substr(0, n);
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
 		
