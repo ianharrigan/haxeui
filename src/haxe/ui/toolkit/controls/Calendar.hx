@@ -118,7 +118,7 @@ class Calendar extends Component {
 	// Helpers
 	//*****************************************************************************************
 	private function getEndDay(month:Int, year:Int):Int {
-		var endDay:Int = 30; // april, june, sept, nov.
+		var endDay:Int = -1;
 		switch (month) {
 			case 1: // feb
 				if ((year % 400 == 0) ||  ((year % 100 != 0) && (year % 4 == 0))) {
@@ -126,6 +126,8 @@ class Calendar extends Component {
 				} else {
 					endDay = 28;
 				}
+			case 3, 5, 8, 10: // april, june, sept, nov.
+				endDay = 30;
 			default:
 				endDay = 31;
 		}
