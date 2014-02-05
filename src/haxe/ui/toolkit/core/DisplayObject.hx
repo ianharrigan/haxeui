@@ -14,7 +14,7 @@ import haxe.ui.toolkit.util.CallStackHelper;
 import haxe.ui.toolkit.util.StringUtil;
 
 @:build(haxe.ui.toolkit.core.Macros.addEvents([
-	"init", "resize",
+	"init", "resize", "ready",
 	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change",
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
 	"glyphClick"
@@ -68,6 +68,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		invalidate(InvalidationFlag.LAYOUT | InvalidationFlag.DISPLAY | InvalidationFlag.SIZE);
 		
 		var event:UIEvent =  new UIEvent(UIEvent.INIT);
+		dispatchEvent(event);
+		
+		var event:UIEvent =  new UIEvent(UIEvent.READY);
 		dispatchEvent(event);
 	}
 	

@@ -15,6 +15,7 @@ class Style {
 	private var _height:Int = -1; 
 	private var _percentWidth:Int = -1; 
 	private var _percentHeight:Int = -1;
+	private var _autoSize:Int = -1;
 	private var _backgroundImage:String;
 	private var _backgroundImageScale9:Rectangle;
 	private var _backgroundImageRect:Rectangle;
@@ -53,6 +54,8 @@ class Style {
 	public var height(get, set):Int;
 	public var percentWidth(get, set):Int;
 	public var percentHeight(get, set):Int;
+	public var autoSize(get, set):Bool;
+	public var autoSizeSet(get, null):Bool;
 	public var backgroundImage(get, set):String;
 	public var backgroundImageScale9(get, set):Rectangle;
 	public var backgroundImageRect(get, set):Rectangle;
@@ -177,6 +180,32 @@ class Style {
 			apply();
 		}
 		return value;
+	}
+	
+	private function get_autoSize():Bool {
+		if (hasDynamicValue("autoSize")) {
+			return getDynamicValue("autoSize");
+		}
+		if (_autoSize == -1) {
+			return true;
+		}
+		return _autoSize == 1;
+	}
+	
+	private function set_autoSize(value:Bool):Bool {
+		_autoSize = value ? 1 : 0;
+		apply();
+		return value;
+	}
+	
+	private function get_autoSizeSet():Bool {
+		if (hasDynamicValue("autoSize")) {
+			return true;
+		}
+		if (_autoSize != -1) {
+			return true;
+		}
+		return false;
 	}
 	
 	private function get_backgroundImage():String {
@@ -786,6 +815,7 @@ class Style {
 		if (with._height != -1) this._height = with._height;
 		if (with._percentWidth != -1) this._percentWidth = with._percentWidth;
 		if (with._percentHeight != -1) this._percentHeight = with._percentHeight;
+		if (with._autoSize != -1) this._autoSize = with._autoSize;
 		if (with._backgroundImage != null) {
 			this._backgroundImage = with._backgroundImage;
 			this._backgroundImageScale9 = null;

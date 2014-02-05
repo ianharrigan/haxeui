@@ -9,6 +9,7 @@ class UIEvent extends Event {
 	
 	public static inline var INIT:String = PREFIX + "init";
 	public static inline var RESIZE:String = PREFIX + "resize";
+	public static inline var READY:String = PREFIX + "ready";
 	
 	public static inline var CLICK:String = PREFIX + "click";
 	public static inline var MOUSE_DOWN:String = PREFIX + "mouseDown";

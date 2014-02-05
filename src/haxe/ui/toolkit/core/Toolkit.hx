@@ -80,10 +80,8 @@ class Toolkit {
 		
 		var result:Dynamic = null; 
 		var nodeName:String = node.nodeName;
-		var nodeNS:String = null;
 		var n:Int = nodeName.indexOf(":");
 		if (n != -1) {
-			nodeNS = nodeName.substr(0, n);
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
 
@@ -100,41 +98,36 @@ class Toolkit {
 			}
 		}
 		
-		if (nodeNS == "sys") {
-			if (nodeName == "import") {
-				var importResource = node.get("resource");
-				if (importResource != null) {
-					var importData:String = ResourceManager.instance.getText(importResource);
-					if (importData != null) {
-						var importXml:Xml = Xml.parse(importData);
-						return processXml(importXml);
-					}
+		if (nodeName == "import") {
+			var importResource = node.get("resource");
+			if (importResource != null) {
+				var importData:String = ResourceManager.instance.getText(importResource);
+				if (importData != null) {
+					var importXml:Xml = Xml.parse(importData);
+					return processXml(importXml);
 				}
-			} else if (nodeName == "script") {
-				var scriptResource = node.get("resource");
-				var scriptData:String = "";
-				if (scriptResource != null) {
-					scriptData += ResourceManager.instance.getText(scriptResource);
-				}
-				var scriptNodeData:String = node.firstChild().nodeValue;
-				if (scriptNodeData != null) {
-					scriptNodeData = StringTools.trim(scriptNodeData);
-					scriptData += "\n\n" + scriptNodeData;
-				}
-				ScriptManager.instance.addScript(scriptData);
 			}
+		} else if (nodeName == "script") {
+			var scriptResource = node.get("resource");
+			var scriptData:String = "";
+			if (scriptResource != null) {
+				scriptData += ResourceManager.instance.getText(scriptResource);
+			}
+			var scriptNodeData:String = node.firstChild().nodeValue;
+			if (scriptNodeData != null) {
+				scriptNodeData = StringTools.trim(scriptNodeData);
+				scriptData += "\n\n" + scriptNodeData;
+			}
+			ScriptManager.instance.addScript(scriptData);
+		} else if (nodeName == "style") {
+			var p:IXMLProcessor = new StyleProcessor();
+			result = p.process(node);
 		} else {
-			var p:IXMLProcessor = null;
-			if (_registeredProcessors != null) {
-				if (nodeNS != null) {
-					var processorClassName:String = _registeredProcessors.get(nodeNS);
-					if (processorClassName != null) {
-						p = Type.createInstance(Type.resolveClass(processorClassName), []);
-					}
-				}
-			}
-		
-			if (p != null) {
+			if (ClassManager.instance.hasDataSourceClass(nodeName)) {
+				var p:IXMLProcessor = new DataProcessor();
+				result = p.process(node);
+			} else {
+				var p:IXMLProcessor = new UIProcessor();
 				result = p.process(node);
 			}
 		}

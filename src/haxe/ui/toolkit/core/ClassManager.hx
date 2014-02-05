@@ -22,28 +22,24 @@ class ClassManager {
 	}
 
 	private function registerDefaults():Void {
-		Macros.registerComponentPackage("haxe.ui.toolkit.containers", "ui");
-		Macros.registerComponentPackage("haxe.ui.toolkit.controls", "ui");
-		Macros.registerComponentPackage("haxe.ui.toolkit.controls.selection", "selection");
-		Macros.registerComponentPackage("haxe.ui.toolkit.controls.extended", "ui");
+		Macros.registerComponentPackage("haxe.ui.toolkit.containers");
+		Macros.registerComponentPackage("haxe.ui.toolkit.controls");
+		Macros.registerComponentPackage("haxe.ui.toolkit.controls.selection");
+		Macros.registerComponentPackage("haxe.ui.toolkit.controls.extended");
 		Macros.registerDataSourcePackage("haxe.ui.toolkit.data");
 	}
 
 	//******************************************************************************************
 	// Component class registry
 	//******************************************************************************************
-	private var componentClassPrefixMap:StringMap<String>;
 	private var componentClassMap:StringMap<ComponentRegistryEntry>;
 	
-	public function getComponentClassName(simpleName:String, prefix:String):String {
+	public function getComponentClassName(simpleName:String):String {
 		if (componentClassMap == null) {
 			return null;
 		}
 		
 		var key:String = simpleName;
-		if (prefix != null) {
-			key = prefix + ":" + simpleName;
-		}
 		
 		var entry:ComponentRegistryEntry = componentClassMap.get(key);
 		if (entry == null) {
@@ -52,31 +48,34 @@ class ClassManager {
 		return entry.className;
 	}
 	
-	public function registerComponentClass(cls:Class<IDisplayObject>, simpleName:String, prefix:String):Void {
+	public function registerComponentClass(cls:Class<IDisplayObject>, simpleName:String):Void {
 		var className:String = Type.getClassName(cls);
-		registerComponentClassName(className, simpleName, prefix);
+		registerComponentClassName(className, simpleName);
 	}
 	
-	private function registerComponentClassName(className:String, simpleName:String, prefix:String):Void {
-		if (componentClassPrefixMap == null) {
-			componentClassPrefixMap = new StringMap<String>();
-		}
+	private function registerComponentClassName(className:String, simpleName:String):Void {
 		if (componentClassMap == null) {
 			componentClassMap = new StringMap<ComponentRegistryEntry>();
 		}
 		
 		var entry:ComponentRegistryEntry = new ComponentRegistryEntry();
 		entry.simpleName = simpleName;
-		entry.prefix = prefix;
 		entry.className = className;
-		componentClassPrefixMap.set(prefix, prefix);
-		componentClassMap.set(prefix + ":" + simpleName, entry);
+		componentClassMap.set(simpleName, entry);
 	}
 	
 	//******************************************************************************************
 	// Data source class registry
 	//******************************************************************************************
 	private var dataSourceClassMap:StringMap<DataSourceRegistryEntry>;
+	
+	public function hasDataSourceClass(simpleName:String):Bool {
+		if (dataSourceClassMap == null) {
+			return false;
+		}
+		
+		return dataSourceClassMap.exists(simpleName);
+	}
 	
 	public function getDataSourceClassName(simpleName:String):String {
 		if (dataSourceClassMap == null) {
