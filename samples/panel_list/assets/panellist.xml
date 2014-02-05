@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:hbox xmlns:ui="haxeui::ui" xmlns:style="haxeui::style" xmlns:data="haxeui::data">
-<ui:vbox verticalAlign="left">
+<ui:scrollview width="300" height="100%" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style" xmlns:data="haxeui::data">
 	<style:css>
 		#nopadding {
 			paddingLeft: 0;
@@ -9,25 +8,27 @@
 			paddingRight: 0;
 		}
 	</style:css>
-	<ui:accordion width="300" height="400">
+	<ui:panellist width="100%" height="800">
 		<ui:vbox text="Panel 1">
 			<ui:button text="Button 1" />
+			<ui:button text="Button 2" />
+			<ui:button text="Button 3" />
+			<ui:button text="Button 4" />
 		</ui:vbox>
 		<ui:vbox text="Image Panel" id="nopadding">
-			<ui:scrollview width="100%" height="100%">
+			<ui:scrollview width="100%" height="300">
 				<ui:image resource="assets/slinky.jpg" />
 			</ui:scrollview>
 		</ui:vbox>
 		<ui:vbox text="List Panel" id="nopadding">
-			<ui:listview width="100%" height="100%">
+			<ui:listview width="100%" height="300">
 				<data:array>
 					Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
 				</data:array>
 			</ui:listview>
 		</ui:vbox>
 		<ui:vbox text="Panel 4">
-			<ui:button text="Button 4" />
+			<ui:button text="Button 5" />
 		</ui:vbox>
-	</ui:accordion>
-</ui:vbox>
-</ui:hbox>
+	</ui:panellist>
+</ui:scrollview>

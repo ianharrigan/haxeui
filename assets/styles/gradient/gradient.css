@@ -1000,6 +1000,12 @@ ListPopupContent ListView {
 	borderSize: 0;
 }
 
+PanelList {
+	spacingX: 0;
+	spacingY: 0;
+	padding: 0;
+}
+
 Accordion {
 	spacingX: 0;
 	spacingY: 0;
