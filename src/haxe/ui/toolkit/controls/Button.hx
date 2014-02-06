@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
+import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
@@ -46,6 +47,9 @@ class Button extends StateComponent implements IFocusable {
 	private var _selected:Bool = false;
 	private var _allowSelection:Bool = true;
 	
+	private var _group:String;
+	private static var _groups:StringMap<Array<Button>>;
+	
 	public function new() {
 		super();
 		sprite.buttonMode = true;
@@ -54,6 +58,10 @@ class Button extends StateComponent implements IFocusable {
 		_layout = new ButtonLayout();
 		_label = new Text();
 		autoSize = true;
+		
+		if (_groups == null) {
+			_groups = new StringMap<Array<Button>>();
+		}
 	}
 	
 	//******************************************************************************************
@@ -262,6 +270,10 @@ class Button extends StateComponent implements IFocusable {
 	 **/
 	public var selected(get, set):Bool;
 	/**
+	 Defines the group for this button. Toggle buttons belonging to the same group will only ever have a single option selected.
+	 **/
+	public var group(get, set):String;
+	/**
 	 Defines whether this buttons selected state can be modified by the user. Only applicable for toggle buttons.
 	 **/
 	public var allowSelection(get, set):Bool;
@@ -303,8 +315,47 @@ class Button extends StateComponent implements IFocusable {
 				state = STATE_NORMAL;
 			#end
 		}
+		
+		if (_group != null && value == true) { // set all the others in group
+			var arr:Array<Button> = _groups.get(_group);
+			if (arr != null) {
+				for (button in arr) {
+					if (button != this) {
+						button.selected = false;
+					}
+				}
+			}
+		}
+		
 		return value;
 	}
+	
+	private function get_group():String {
+		return _group;
+	}
+	
+	private function set_group(value:String):String {
+		if (value != null) {
+			var arr:Array<Button> = _groups.get(value);
+			if (arr != null) {
+				arr.remove(this);
+			}
+		}
+		
+		_group = value;
+		var arr:Array<Button> = _groups.get(value);
+		if (arr == null) {
+			arr = new Array<Button>();
+		}
+		
+		if (optionInGroup(value, this) == false) {
+			arr.push(this);
+		}
+		_groups.set(value, arr);
+		
+		return value;
+	}
+	
 	
 	private function get_allowSelection():Bool {
 		return _allowSelection;
@@ -352,6 +403,20 @@ class Button extends StateComponent implements IFocusable {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	private static function optionInGroup(value:String, option:Button):Bool {
+		var exists:Bool = false;
+		var arr:Array<Button> = _groups.get(value);
+		if (arr != null) {
+			for (test in arr) {
+				if (test == option) {
+					exists = true;
+					break;
+				}
+			}
+		}
+		return exists;
+	}
+	
 	private function resizeButton(force:Bool = false):Void {
 		if (text.length > 0 && autoSize == true) {
 			var buttonLayout:ButtonLayout = cast(_layout, ButtonLayout);
