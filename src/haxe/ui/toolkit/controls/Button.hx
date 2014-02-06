@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import flash.events.Event;
 import flash.events.MouseEvent;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IFocusable;
@@ -15,7 +16,8 @@ import haxe.ui.toolkit.style.Style;
  
  <b>Events:</b>
  
- * `MouseEvent.CLICK` - Dispatched when button is clicked
+ * `MouseEvent.CLICK`	- Dispatched when button is clicked
+ * `Event.CHANGE`		- Dispatched when the value of the toggle group changes
  **/
  
 class Button extends StateComponent implements IFocusable {
@@ -301,6 +303,29 @@ class Button extends StateComponent implements IFocusable {
 	}
 	
 	private function set_selected(value:Bool):Bool {
+		
+		if (_toggle == true && _selected != value) {
+			
+			
+			/** If toggle button state has changed, 
+			 * unselect other buttons in the same group */
+			if (_group != null && value == true) {
+				var arr:Array<Button> = _groups.get(_group);
+				if (arr != null) {
+					for (button in arr) {
+						if (button != this) {
+							button.selected = false;
+						}
+					}
+				}
+			}
+			
+			_selected = value; // makes sense to update selected before dispatching event.
+			var event:Event = new Event(Event.CHANGE);
+			dispatchEvent(event);
+			
+		}
+		
 		_selected = value;
 		if (_selected == true) {
 			state = STATE_DOWN;
@@ -315,18 +340,7 @@ class Button extends StateComponent implements IFocusable {
 				state = STATE_NORMAL;
 			#end
 		}
-		
-		if (_group != null && value == true) { // set all the others in group
-			var arr:Array<Button> = _groups.get(_group);
-			if (arr != null) {
-				for (button in arr) {
-					if (button != this) {
-						button.selected = false;
-					}
-				}
-			}
-		}
-		
+			
 		return value;
 	}
 	
