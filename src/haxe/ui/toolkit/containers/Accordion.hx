@@ -22,10 +22,13 @@ class Accordion extends VBox {
 	private var _panels:Array<IDisplayObject>;
 	private var _buttons:Array<AccordionButton>;
 	private var _selectedIndex:Int = -1;
+	/** Whether to hide other panels when a new one is expanded */
+	private var _hideUnselected:Bool;
 	
 	public function new() {
 		super();
 		_autoSize = false;
+		_hideUnselected = true;
 		_panels = new Array<IDisplayObject>();
 		_buttons = new Array<AccordionButton>();
 	}
@@ -49,11 +52,21 @@ class Accordion extends VBox {
 		if (Std.is(child, AccordionButton)) {
 			r = super.addChild(child);
 		} else {
-			if (Std.is(child, IDisplayObjectContainer)) {
-				cast(child, IDisplayObjectContainer).autoSize = false;
+			
+			if (autoSize == false) {
+				
+				/* If autosize is set to false the added panels autosize will also be set to false
+				 * and will fit the accordion height and width
+				 * 
+				 * If autosize is set to true, the accordion will fit the panels width and height */
+				if (Std.is(child, IDisplayObjectContainer)) {
+					cast(child, IDisplayObjectContainer).autoSize = false;
+				}
+				
+				child.percentHeight = 100;
+				child.percentWidth = 100;
 			}
-			child.percentHeight = 100;
-			child.percentWidth = 100;
+			
 			_panels.push(child);
 			
 			var button:AccordionButton = new AccordionButton();
@@ -154,7 +167,9 @@ class Accordion extends VBox {
 				c.clipHeight = c.height;
 				Actuate.tween(c, .2, { height: 0, clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 					c.clearClip();
-					panel.percentHeight = 100;
+					if (autoSize == false) {
+						panel.percentHeight = 100;
+					}
 					invalidate(InvalidationFlag.SIZE);
 					button.selected = false;
 					removeChild(panel, false);
@@ -178,12 +193,15 @@ class Accordion extends VBox {
 	
 		var panelToHide:Component = null;
 		var buttonToHide:AccordionButton = null;
-		for (b in _buttons) {
-			if (b != button && b.selected == true) {
-				buttonToHide = b;
-				var tempIndex:Int = Lambda.indexOf(_buttons, b);
-				panelToHide = cast(_panels[tempIndex], Component);
-				break;
+		
+		if (_hideUnselected) {
+			for (b in _buttons) {
+				if (b != button && b.selected == true) {
+					buttonToHide = b;
+					var tempIndex:Int = Lambda.indexOf(_buttons, b);
+					panelToHide = cast(_panels[tempIndex], Component);
+					break;
+				}
 			}
 		}
 		
@@ -200,7 +218,9 @@ class Accordion extends VBox {
 			
 			Actuate.tween(c, .2, { height: ucy, clipHeight: ucy }, true).ease(Linear.easeNone).onComplete(function() {
 				c.clearClip();
-				c.percentHeight = 100;
+				if (autoSize == false) {
+					c.percentHeight = 100;
+				}
 				invalidate(InvalidationFlag.SIZE);
 				if (buttonToHide != null) {
 					buttonToHide.selected = false;
