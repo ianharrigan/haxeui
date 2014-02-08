@@ -34,14 +34,14 @@ class FilesDataSource extends ArrayDataSource {
 			var files:Array<String> = FileSystem.readDirectory(_dir);
 		
 			for (file in files) {
-				if (FileSystem.isDirectory(_dir + "/" + file)) { // add dirs first
+				if (isDir(_dir + "/" + file)) { // add dirs first
 					var o = { text: file };
 					add(o);
 				}
 			}
 			
 			for (file in files) {
-				if (!FileSystem.isDirectory(_dir + "/" + file)) {
+				if (!isDir(_dir + "/" + file)) {
 					var o = { text: file };
 					add(o);
 				}
