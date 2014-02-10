@@ -13,6 +13,7 @@ class Image extends Component {
 	private var _bmp:Bitmap;
 	private var _resource:String;
 	private var _stretch:Bool;
+	private var _autoDisposeBitmapData:Bool = false;
 	
 	public function new() {
 		super();
@@ -39,7 +40,9 @@ class Image extends Component {
 	 **/
 	public override function dispose():Void {
 		if (_bmp != null) {
-			_bmp.bitmapData.dispose();
+			if (_autoDisposeBitmapData == true) {
+				_bmp.bitmapData.dispose();
+			}
 			sprite.removeChild(_bmp);
 			_bmp = null;
 		}
@@ -65,6 +68,7 @@ class Image extends Component {
 	 **/
 	public var resource(get, set):String;
 	public var stretch(get, set):Bool;
+	public var autoDisposeBitmapData(get, set):Bool;
 	
 	private function get_resource():String {
 		return _resource;
@@ -72,7 +76,9 @@ class Image extends Component {
 	
 	private function set_resource(value:String):String {
 		if (_bmp != null) {
-			//_bmp.bitmapData.dispose();
+			if (_autoDisposeBitmapData == true) {
+				_bmp.bitmapData.dispose();
+			}
 			sprite.removeChild(_bmp);
 			_bmp = null;
 		}
@@ -101,6 +107,15 @@ class Image extends Component {
 		}
 		_stretch = value;
 		invalidate(InvalidationFlag.SIZE);
+		return value;
+	}
+	
+	private function get_autoDisposeBitmapData():Bool {
+		return _autoDisposeBitmapData;
+	}
+	
+	private function set_autoDisposeBitmapData(value:Bool):Bool {
+		_autoDisposeBitmapData = value;
 		return value;
 	}
 }
