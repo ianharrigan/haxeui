@@ -17,23 +17,22 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="bin\html5\haxe" />
+    <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.2.5&#xA;bitfive&#xA;display&#xA;html5&#xA;web&#xA;html5&#xA;html" />
+    <option directives="tools=1.2.5&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;--remap flash:flash" />
+    <option additional="--no-output&#xA;-dce std&#xA;-swf-version 11.2&#xA;#--remap nme:flash" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
     <library name="openfl" />
     <library name="actuate" />
     <library name="hscript" />
-    <library name="openfl-bitfive" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

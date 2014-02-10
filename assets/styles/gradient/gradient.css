@@ -63,7 +63,6 @@ ScrollView {
 }
 
 ScrollView VBox {
-	backgroundColor: 0xFFFFFF;
 	borderColor: 0x000000;
 	color: 0x000000;
 	paddingLeft: 0;
@@ -1005,6 +1004,12 @@ PanelList {
 	spacingY: 0;
 	padding: 0;
 }
+
+PanelList VBox, PanelList HBox, PanelList Grid {
+	padding: 5;
+	spacing: 5;
+}
+
 
 Accordion {
 	spacingX: 0;

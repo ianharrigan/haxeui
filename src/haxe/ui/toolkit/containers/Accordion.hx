@@ -165,11 +165,13 @@ class Accordion extends VBox {
 				var c:Component = cast(panel, Component);
 				c.percentHeight = -1;
 				c.clipHeight = c.height;
+				c.autoSize = false;
 				Actuate.tween(c, .2, { height: 0, clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 					c.clearClip();
-					if (autoSize == false) {
+					c.autoSize = autoSize;
+					//if (autoSize == false) {
 						panel.percentHeight = 100;
-					}
+					//}
 					invalidate(InvalidationFlag.SIZE);
 					button.selected = false;
 					removeChild(panel, false);
@@ -184,16 +186,12 @@ class Accordion extends VBox {
 		}
 	}
 	
-	private function _onPanelAdded(event:Event):Void {
-		var panel:IDisplayObject = findPanelFromSprite(event.target);
-		cast(panel, IEventDispatcher).removeEventListener(UIEvent.ADDED_TO_STAGE, _onPanelAdded);
-		cast(panel, IEventDispatcher).removeEventListener(UIEvent.INIT, _onPanelAdded);
+	private function showPanelObject(panel:IDisplayObject):Void {
 		var panelIndex:Int = Lambda.indexOf(_panels, panel);
 		var button:Button = _buttons[panelIndex];
-	
 		var panelToHide:Component = null;
 		var buttonToHide:AccordionButton = null;
-		
+
 		if (_hideUnselected) {
 			for (b in _buttons) {
 				if (b != button && b.selected == true) {
@@ -211,6 +209,7 @@ class Accordion extends VBox {
 			invalidate(InvalidationFlag.SIZE);
 			c.percentHeight = -1;
 			var ucy:Float = c.height;
+			c.autoSize = false;
 			c.width = _layout.usableWidth;
 			c.height = 0;
 			c.clipHeight = 0;
@@ -218,6 +217,7 @@ class Accordion extends VBox {
 			
 			Actuate.tween(c, .2, { height: ucy, clipHeight: ucy }, true).ease(Linear.easeNone).onComplete(function() {
 				c.clearClip();
+				c.autoSize = autoSize;
 				if (autoSize == false) {
 					c.percentHeight = 100;
 				}
@@ -248,6 +248,24 @@ class Accordion extends VBox {
 				buttonToHide.selected = false;
 			}
 		}
+	}
+	
+	private function _onLastComponentReady(event:UIEvent):Void {
+		event.component.removeEventListener(UIEvent.INIT, _onLastComponentReady);
+		var panel:IDisplayObject = event.component.parent;
+		showPanelObject(panel);
+	}
+	
+	private function _onPanelAdded(event:UIEvent):Void {
+		var panel:IDisplayObject = event.component;
+		cast(panel, IEventDispatcher).removeEventListener(UIEvent.ADDED_TO_STAGE, _onPanelAdded);
+		cast(panel, IEventDispatcher).removeEventListener(UIEvent.INIT, _onPanelAdded);
+		var c = cast(panel, Component);
+		if (c.numChildren > 0 && c.children[c.numChildren - 1].ready == false) {
+			cast(c.children[c.numChildren - 1], IEventDispatcher).addEventListener(UIEvent.INIT, _onLastComponentReady);
+			return;
+		}
+		showPanelObject(panel);
 	}
 	
 	private function findPanelFromSprite(s:Sprite):IDisplayObject {
