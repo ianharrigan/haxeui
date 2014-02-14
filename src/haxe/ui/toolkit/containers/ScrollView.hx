@@ -430,16 +430,6 @@ class ScrollView extends StateComponent {
 					_hscroll.visible = false;
 					invalidateLayout = true;
 				}
-				/*
-				if (_hscroll == null) {
-					_hscroll = new HScroll();
-					_hscroll.percentWidth = 100;
-					_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
-					_hscroll.visible = false;
-					addChild(_hscroll);
-					invalidateLayout = true;
-				}
-				*/
 				
 				_hscroll.max = content.width - layout.usableWidth;
 				_hscroll.pageSize = (layout.usableWidth / content.width) * _hscroll.max;
@@ -475,16 +465,6 @@ class ScrollView extends StateComponent {
 					_vscroll.visible = false;
 					invalidateLayout = true;
 				}
-				/*
-				if (_vscroll == null) { // create vscroll
-					_vscroll = new VScroll();
-					_vscroll.percentHeight = 100;
-					_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
-					_vscroll.visible = false;
-					addChild(_vscroll);
-					invalidateLayout = true;
-				}
-				*/
 				
 				_vscroll.max = content.height - layout.usableHeight;
 				_vscroll.pageSize = (layout.usableHeight / content.height) * _vscroll.max;
