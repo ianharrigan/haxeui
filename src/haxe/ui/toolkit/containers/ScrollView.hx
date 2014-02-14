@@ -345,12 +345,18 @@ class ScrollView extends StateComponent {
 		}
 		
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
-		if (content != null && inScroll == false) {
+		if (content != null && inScroll == false && _virtualScrolling == false) {
 			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
 				_downPos = new Point(event.stageX, event.stageY);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 			}
+		}
+		
+		if (_virtualScrolling == true && (_vscroll != null || _hscroll != null)) {
+			_downPos = new Point(event.stageX, event.stageY);
+			Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
+			Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 		}
 	}
 	
@@ -371,7 +377,7 @@ class ScrollView extends StateComponent {
 				_eventTarget.visible = true;
 				var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 				if (content != null) {
-					if (xpos != 0 && content.width > layout.usableWidth) {
+					if (xpos != 0 && (content.width > layout.usableWidth || _virtualScrolling == true)) {
 						if (_showHScroll == true && _autoHideScrolls == true) {
 							_hscroll.visible = true;
 						}
@@ -380,7 +386,7 @@ class ScrollView extends StateComponent {
 						}
 					}
 					
-					if (ypos != 0 && content.height > layout.usableHeight) {
+					if (ypos != 0 && (content.height > layout.usableHeight || _virtualScrolling == true)) {
 						if (_showVScroll == true && _autoHideScrolls == true) {
 							_vscroll.visible = true;
 						}
