@@ -15,7 +15,7 @@ import haxe.ui.toolkit.util.StringUtil;
 
 @:build(haxe.ui.toolkit.core.Macros.addEvents([
 	"init", "resize", "ready",
-	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change",
+	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change", "scroll", 
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
 	"glyphClick"
 ]))

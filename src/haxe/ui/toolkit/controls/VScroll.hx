@@ -5,13 +5,11 @@ import flash.events.MouseEvent;
 import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.utils.Timer;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.layout.DefaultLayout;
-import haxe.ui.toolkit.util.TypeParser;
 
 /**
  Vertical scrollbar control
@@ -25,7 +23,7 @@ class VScroll extends Scroll implements IScrollable {
 	private var _pos:Float = 0;
 	private var _min:Float = 0;
 	private var _max:Float = 100;
-	private var _pageSize:Float = 50;
+	private var _pageSize:Float = 0;
 	private var _incrementSize:Float = 20;
 	
 	private var _deincButton:Button;
