@@ -39,7 +39,7 @@ class Image extends Component {
 	 **/
 	public override function dispose():Void {
 		if (_bmp != null) {
-			_bmp.bitmapData.dispose();
+			//_bmp.bitmapData.dispose();
 			sprite.removeChild(_bmp);
 			_bmp = null;
 		}

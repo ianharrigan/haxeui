@@ -15,7 +15,16 @@ class VerticalLayout extends Layout {
 		var ucy:Float = usableHeight;
 		var totalWidth:Float = 0;
 		var totalHeight:Float = 0;
+		var numChildren:Int = 0; // counts visible children.
+		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
+			numChildren++;
+				
 			if (child.percentWidth > -1) {
 				child.width = (ucx * child.percentWidth) / 100; 
 			}
@@ -30,8 +39,8 @@ class VerticalLayout extends Layout {
 			}
 		}
 		
-		if (container.numChildren > 1) {
-			totalHeight += spacingY * (container.numChildren - 1);
+		if (numChildren > 1) {
+			totalHeight += spacingY * (numChildren - 1);
 		}
 
 		if (container.autoSize) {
@@ -48,6 +57,11 @@ class VerticalLayout extends Layout {
 		super.repositionChildren();
 		var ypos:Float = padding.top;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			var xpos:Float = padding.left;
 			var halign:String = child.horizontalAlign;
 			
