@@ -15,7 +15,16 @@ class HorizontalLayout extends Layout {
 		var ucy:Float = usableHeight;
 		var totalWidth:Float = 0;
 		var totalHeight:Float = 0;
+		var numChildren:Int = 0; // counts visible children.
+		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
+			numChildren++;
+			
 			if (child.percentWidth > -1) {
 				child.width = (ucx * child.percentWidth) / 100; 
 			}
@@ -30,8 +39,8 @@ class HorizontalLayout extends Layout {
 			}
 		}
 		
-		if (container.numChildren > 1) {
-			totalWidth += spacingX * (container.numChildren - 1);
+		if (numChildren > 1) {
+			totalWidth += spacingX * (numChildren - 1);
 		}
 
 		if (container.autoSize) {
@@ -48,6 +57,11 @@ class HorizontalLayout extends Layout {
 		super.repositionChildren();
 		var xpos:Float = padding.left;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			var ypos:Float = padding.top;
 			var valign:String = child.verticalAlign;
 
@@ -72,11 +86,23 @@ class HorizontalLayout extends Layout {
 	private override function get_usableWidth():Float {
 		var ucx:Float = super.get_usableWidth();
 		
-		if (container.numChildren > 1) {
-			ucx -= spacingX * (container.numChildren - 1);
+		var visibleChildren = 0;
+		for (c in container.children) {
+			if (c.visible) {
+				visibleChildren++;
+			}
+		}
+		
+		if (visibleChildren > 1) {
+			ucx -= spacingX * (visibleChildren - 1);
 		}
 		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.width > 0 && child.percentWidth < 0) { // means its a fixed width, ie, not a % sized control
 				ucx -= child.width;
 			}

@@ -13,6 +13,11 @@ class AbsoluteLayout extends Layout {
 		var ucx:Float = usableWidth;
 		var ucy:Float = usableHeight;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth > -1) {
 				child.width = (ucx * child.percentWidth) / 100; 
 			}

@@ -24,6 +24,11 @@ class HorizontalContinuousLayout extends Layout {
 			maxCX = container.parent.layout.usableWidth;
 		}
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			rowChildren.push(child);
 			usedCX += child.width + spacingX;
 			if (usedCX - spacingX > maxCX) {

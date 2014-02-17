@@ -86,11 +86,23 @@ class VerticalLayout extends Layout {
 	private override function get_usableHeight():Float {
 		var ucy:Float = super.get_usableHeight();
 		
-		if (container.numChildren > 1) {
-			ucy -= spacingY * (container.numChildren - 1);
+		var visibleChildren = 0;
+		for (c in container.children) {
+			if (c.visible) {
+				visibleChildren++;
+			}
+		}
+		
+		if (visibleChildren > 1) {
+			ucy -= spacingY * (visibleChildren - 1);
 		}
 		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.height > 0 && child.percentHeight < 0) { // means its a fixed height, ie, not a % sized control
 				ucy -= child.height;
 			}
