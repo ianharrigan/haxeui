@@ -4,6 +4,7 @@ import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.AbsoluteLayout;
 
 /**
@@ -83,6 +84,8 @@ class Value extends StateComponent {
 				_value = newValue;
 				valueControl.visible = true;
 			}
+			
+			dispatchEvent(new UIEvent(UIEvent.CHANGE));
 		}
 		return newValue;
 	}
