@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<vbox>
-	<hbox>
-		<grid columns="2">
-			<text text="Width" />
-			<hslider id="width" width="150" max="310" pos="200" />
-			
-			<text text="Height" />
-			<hslider id="height" width="150" max="450" pos="200"/>
-
-			<selection:list id="child" text="Button1" verticalAlign="top" selectedIndex="0">
-				<array>Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9</array>
-			</selection:list>
-			
-			<grid columns="3">
-				<text text="Width" />
-				<hslider id="childWidth" max="200" pos="50"/>
-				<checkbox id="childWidthAsPercent" text="%" verticalAlign="bottom" />
-				
-				<text text="Height" />
-				<hslider id="childHeight" max="200" pos="50"/>
-				<checkbox id="childHeightAsPercent" text="%" verticalAlign="bottom" />
-				
-				<text text="VAlign" />
-				<selection:list id="valign" text="top" selectedIndex="0" width="100%">
-					<array>top,center,bottom</array>
-				</selection:list>
-				<spacer />
-				
-				<text text="HAlign" />
-				<selection:list id="halign" text="left" selectedIndex="0" width="100%">
-					<array>left,center,right</array>
-				</selection:list>
-				<spacer />
-			</grid>
-		</grid>
-		<spacer width="20" />
+<hbox height="100%">
+	<vbox height="100%">
+		<scrollview width="300" height="50%" id="normalScrollview">
+			<vbox width="100%">
+				<button text="1" width="100%"/>
+				<button text="2" width="100%"/>
+				<button text="3" width="100%"/>
+				<button text="4" width="100%"/>
+				<button text="5" width="100%"/>
+				<button text="6" width="100%"/>
+				<button text="7" width="100%"/>
+				<button text="8" width="100%"/>
+				<button text="9" width="100%"/>
+				<button text="10" width="100%"/>
+				<button text="11" width="100%"/>
+				<button text="12" width="100%"/>
+				<button text="13" width="100%"/>
+			</vbox>
+		</scrollview>
 		
-		<grid id="theBox" style="borderSize:1;padding:5;" width="200" height="200" autoSize="false" columns="3">
-			<button id="Button1" text="1" width="50" height="50" />
-			<button id="Button2" text="2" width="100%" height="25" />
-			<button id="Button3" text="3" width="50" height="50" />
-			<button id="Button4" text="4" width="25" height="100%" />
-			<button id="Button5" text="5" width="75%" height="75%" horizontalAlign="center" verticalAlign="center"/>
-			<button id="Button6" text="6" width="25" height="100%" horizontalAlign="right" />
-			<button id="Button7" text="7" width="50" height="50" />
-			<button id="Button8" text="8" width="100%" height="25" verticalAlign="bottom" />
-			<button id="Button9" text="9" width="50" height="50"/>
-		</grid>
-	</hbox>
-</vbox>
+		<scrollview width="300" height="50%" id="virtualScrollview" virtualScrolling="true" hscrollMax="150" vscrollMax="150">
+			<vbox>
+				<button text="Button" id="theButton" />
+			</vbox>
+		</scrollview>
+	</vbox>
+	
+	<grid columns="2">
+		<text text="hpos:" />
+		<text text="???" id="hpos" />
+		
+		<text text="vpos:" />
+		<text text="???" id="vpos" />
+	</grid>
+</hbox>

@@ -38,6 +38,7 @@ class ScrollView extends StateComponent {
 	#end
 	
 	private var _autoHideScrolls:Bool = false;
+	private var _virtualScrolling:Bool = false;
 	
 	public function new() {
 		super();
@@ -122,6 +123,15 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	// Helper props
 	//******************************************************************************************
+	public var virtualScrolling(get, set):Bool;
+	private function get_virtualScrolling():Bool {
+		return _virtualScrolling;
+	}
+	private function set_virtualScrolling(value:Bool):Bool {
+		_virtualScrolling = value;
+		return value;
+	}
+	
 	public var showHScroll(get, set):Bool;
 	public var showVScroll(get, set):Bool;
 	
@@ -144,9 +154,9 @@ class ScrollView extends StateComponent {
 	}
 	
 	public var hscrollPos(get, set):Float;
-	public var hscrollMin(get, null):Float;
-	public var hscrollMax(get, null):Float;
-	public var hscrollPageSize(get, null):Float;
+	public var hscrollMin(get, set):Float;
+	public var hscrollMax(get, set):Float;
+	public var hscrollPageSize(get, set):Float;
 
 	private function get_hscrollPos():Float {
 		if (_hscroll != null) {
@@ -168,12 +178,27 @@ class ScrollView extends StateComponent {
 		}
 		return 0;
 	}
+
+	private function set_hscrollMin(value:Float):Float {
+		if (_virtualScrolling == true) {
+			
+		}
+		return value;
+	}
 	
 	private function get_hscrollMax():Float {
 		if (_hscroll != null) {
 			return _hscroll.max;
 		}
 		return 0;
+	}
+	
+	private function set_hscrollMax(value:Float):Float {
+		if (_virtualScrolling == true) {
+			createHScroll(true);
+			_hscroll.max = value;
+		}
+		return value;
 	}
 	
 	private function get_hscrollPageSize():Float {
@@ -183,10 +208,17 @@ class ScrollView extends StateComponent {
 		return 0;
 	}
 	
+	private function set_hscrollPageSize(value:Float):Float {
+		if (_virtualScrolling == true) {
+			
+		}
+		return value;
+	}
+	
 	public var vscrollPos(get, set):Float;
-	public var vscrollMin(get, null):Float;
-	public var vscrollMax(get, null):Float;
-	public var vscrollPageSize(get, null):Float;
+	public var vscrollMin(get, set):Float;
+	public var vscrollMax(get, set):Float;
+	public var vscrollPageSize(get, set):Float;
 	
 	private function get_vscrollPos():Float {
 		if (_vscroll != null) {
@@ -209,6 +241,13 @@ class ScrollView extends StateComponent {
 		return 0;
 	}
 	
+	private function set_vscrollMin(value:Float):Float {
+		if (_virtualScrolling == true) {
+			
+		}
+		return value;
+	}
+	
 	private function get_vscrollMax():Float {
 		if (_vscroll != null) {
 			return _vscroll.max;
@@ -216,11 +255,26 @@ class ScrollView extends StateComponent {
 		return 0;
 	}
 	
+	private function set_vscrollMax(value:Float):Float {
+		if (_virtualScrolling == true) {
+			createVScroll(true);
+			_vscroll.max = value;
+		}
+		return value;
+	}
+	
 	private function get_vscrollPageSize():Float {
 		if (_vscroll != null) {
 			return _vscroll.pageSize;
 		}
 		return 0;
+	}
+	
+	private function set_vscrollPageSize(value:Float):Float {
+		if (_virtualScrolling == true) {
+			
+		}
+		return value;
 	}
 	
 	//******************************************************************************************
@@ -246,10 +300,14 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	private function _onHScrollChange(event:Event):Void {
 		updateScrollRect();
+		var event:UIEvent = new UIEvent(UIEvent.SCROLL);
+		dispatchEvent(event);
 	}
 	
 	private function _onVScrollChange(event:Event):Void {
 		updateScrollRect();
+		var event:UIEvent = new UIEvent(UIEvent.SCROLL);
+		dispatchEvent(event);
 	}
 	
 	private function _onMouseWheel(event:MouseEvent):Void {
@@ -287,12 +345,18 @@ class ScrollView extends StateComponent {
 		}
 		
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
-		if (content != null && inScroll == false) {
+		if (content != null && inScroll == false && _virtualScrolling == false) {
 			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
 				_downPos = new Point(event.stageX, event.stageY);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 			}
+		}
+		
+		if (_virtualScrolling == true && (_vscroll != null || _hscroll != null)) {
+			_downPos = new Point(event.stageX, event.stageY);
+			Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
+			Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 		}
 	}
 	
@@ -313,7 +377,7 @@ class ScrollView extends StateComponent {
 				_eventTarget.visible = true;
 				var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 				if (content != null) {
-					if (xpos != 0 && content.width > layout.usableWidth) {
+					if (xpos != 0 && (content.width > layout.usableWidth || _virtualScrolling == true)) {
 						if (_showHScroll == true && _autoHideScrolls == true) {
 							_hscroll.visible = true;
 						}
@@ -322,7 +386,7 @@ class ScrollView extends StateComponent {
 						}
 					}
 					
-					if (ypos != 0 && content.height > layout.usableHeight) {
+					if (ypos != 0 && (content.height > layout.usableHeight || _virtualScrolling == true)) {
 						if (_showVScroll == true && _autoHideScrolls == true) {
 							_vscroll.visible = true;
 						}
@@ -355,6 +419,10 @@ class ScrollView extends StateComponent {
 	// Helpers
 	//******************************************************************************************
 	private function checkScrolls():Void { // checks to see if scrolls are needed, creates/displays/hides as appropriate
+		if (_virtualScrolling == true) {
+			return;
+		}
+
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null) {
 			// show hscroll if needed
@@ -364,12 +432,8 @@ class ScrollView extends StateComponent {
 				hpos = _hscroll.pos;
 			}
 			if (content.width - hpos > layout.usableWidth) {
-				if (_hscroll == null) {
-					_hscroll = new HScroll();
-					_hscroll.percentWidth = 100;
-					_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
+				if (createHScroll() == true) {
 					_hscroll.visible = false;
-					addChild(_hscroll);
 					invalidateLayout = true;
 				}
 				
@@ -403,12 +467,8 @@ class ScrollView extends StateComponent {
 				vpos = _vscroll.pos;
 			}
 			if (content.height - vpos > layout.usableHeight) {
-				if (_vscroll == null) { // create vscroll
-					_vscroll = new VScroll();
-					_vscroll.percentHeight = 100;
-					_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
+				if (createVScroll() == true) {
 					_vscroll.visible = false;
-					addChild(_vscroll);
 					invalidateLayout = true;
 				}
 				
@@ -443,8 +503,44 @@ class ScrollView extends StateComponent {
 		}
 	}
 	
+	private function createHScroll(invalidateLayout:Bool = false):Bool {
+		var created:Bool = false;
+		if (_hscroll == null) {
+			_hscroll = new HScroll();
+			_hscroll.percentWidth = 100;
+			_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
+			_hscroll.visible = true;
+			addChild(_hscroll);
+			created = true;
+		}
+		
+		if (invalidateLayout) {
+			_invalidating = false;
+			invalidate(InvalidationFlag.LAYOUT);
+		}
+		
+		return created;
+	}
+	
+	private function createVScroll(invalidateLayout:Bool = false):Bool {
+		var created:Bool = false;
+		if (_vscroll == null) { // create vscroll
+			_vscroll = new VScroll();
+			_vscroll.percentHeight = 100;
+			_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
+			_vscroll.visible = true;
+			addChild(_vscroll);
+		}
+				
+		if (invalidateLayout) {
+			_invalidating = false;
+			invalidate(InvalidationFlag.LAYOUT);
+		}
+		return created;
+	}
+	
 	private function updateScrollRect():Void {
-		if (numChildren > 0) {
+		if (numChildren > 0 && _virtualScrolling == false) {
 			var content:IDisplayObject = _container.getChildAt(0);
 			if (content != null) {
 				var xpos:Float = 0;
@@ -460,6 +556,8 @@ class ScrollView extends StateComponent {
 				//content.sprite.scrollRect = new Rectangle(xpos, ypos, layout.usableWidth, layout.usableHeight);
 				_container.sprite.scrollRect = new Rectangle(0, 0, layout.usableWidth, layout.usableHeight);
 			}
+		} else {
+			_container.sprite.scrollRect = new Rectangle(0, 0, layout.usableWidth, layout.usableHeight);
 		}
 	}
 	

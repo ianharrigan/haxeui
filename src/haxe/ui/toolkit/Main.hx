@@ -15,15 +15,15 @@ class Main {
 		#end
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			//var t:TestController = new TestController();
-			//root.addChild(t.view);
-			var button:Button = new Button();
-			button.x = 100;
-			button.y = 100;
+			var t:TestController = new TestController();
+			root.addChild(t.view);
+			//var button:Button = new Button();
+			//button.x = 100;
+			//button.y = 100;
 			//button.width = 100;
 			//button.height = 100;
-			button.text = "Test Button";
-			root.addChild(button);
+			//button.text = "Test Button";
+			//root.addChild(button);
 
 			/*
 			var s:Text = new Text();

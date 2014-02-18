@@ -1,18 +1,15 @@
 package haxe.ui.toolkit.controls;
 
-import flash.display.DisplayObject;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.utils.Timer;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.layout.DefaultLayout;
-import haxe.ui.toolkit.util.TypeParser;
 
 /**
  Horizontal scrollbar control
