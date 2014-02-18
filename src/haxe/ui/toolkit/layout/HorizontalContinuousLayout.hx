@@ -30,6 +30,11 @@ class HorizontalContinuousLayout extends Layout {
 			}
 			
 			rowChildren.push(child);
+			
+			if (child.percentWidth > -1) {
+				child.width = ((maxCX - spacingX) * child.percentWidth) / 100; 
+			}
+			
 			usedCX += child.width + spacingX;
 			if (usedCX - spacingX > maxCX) {
 				xpos = padding.left;
