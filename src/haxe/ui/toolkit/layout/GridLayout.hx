@@ -38,6 +38,10 @@ class GridLayout extends Layout {
 		var columnIndex:Int = 0;
 		for (child in container.children) {
 			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth > -1) {
 				var ucx:Float = columnWidths[columnIndex];
 				child.width = (ucx * child.percentWidth) / 100; 
@@ -90,6 +94,11 @@ class GridLayout extends Layout {
 		var ypos:Float = padding.top;
 		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			var halign = child.horizontalAlign;
 			var valign = child.verticalAlign;
 			switch (halign) {
@@ -148,6 +157,11 @@ class GridLayout extends Layout {
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth <= 0) {
 				if (child.width > columnWidths[columnIndex]) {
 					columnWidths[columnIndex] = child.width;
@@ -163,6 +177,11 @@ class GridLayout extends Layout {
 		rowIndex = 0;
 		columnIndex = 0;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth > 0) {
 				var ucx = usableWidth - ((columns - 1) * spacingX);
 				for (n in 0...columnWidths.length) {
@@ -186,8 +205,16 @@ class GridLayout extends Layout {
 	}
 	
 	public function calcRowHeights():Array<Float> {
-		var rowCount:Int = Std.int((container.children.length / _columns));
-		if (container.children.length % _columns != 0) {
+		
+		var visibleChildren = 0;
+		for (c in container.children) {
+			if (c.visible) {
+				visibleChildren++;
+			}
+		}
+		
+		var rowCount:Int = Std.int((visibleChildren / _columns));
+		if (visibleChildren % _columns != 0) {
 			rowCount++;
 		}
 		var rowHeights:Array<Float> = new Array<Float>();
@@ -198,6 +225,11 @@ class GridLayout extends Layout {
 		var rowIndex:Int = 0;
 		var columnIndex:Int = 0;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentHeight <= 0) {
 				if (child.height > rowHeights[rowIndex]) {
 					rowHeights[rowIndex] = child.height;
@@ -213,6 +245,11 @@ class GridLayout extends Layout {
 		rowIndex = 0;
 		columnIndex = 0;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentHeight > 0) {
 				var ucy = usableHeight - ((rowCount - 1) * spacingY);
 				for (n in 0...rowHeights.length) {

@@ -26,6 +26,11 @@ class VerticalContinuousLayout extends Layout {
 		}
 		
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			colChildren.push(child);
 			usedCY += child.height + spacingY;
 			if (usedCY - spacingY > maxCY) {

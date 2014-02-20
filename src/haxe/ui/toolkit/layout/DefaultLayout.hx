@@ -13,6 +13,11 @@ class DefaultLayout extends Layout {
 		var ucx:Float = usableWidth;
 		var ucy:Float = usableHeight;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth > -1) {
 				child.width = (ucx * child.percentWidth) / 100; 
 			}
@@ -28,6 +33,11 @@ class DefaultLayout extends Layout {
 		var xpos:Float = padding.left;
 		var ypos:Float = padding.top;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			child.x = xpos;
 			child.y = ypos;
 		}

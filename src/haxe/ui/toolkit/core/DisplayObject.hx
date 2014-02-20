@@ -262,6 +262,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	private function set_visible(value:Bool):Bool {
 		_sprite.visible = value;
+		if (_parent != null) {
+			_parent.invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	

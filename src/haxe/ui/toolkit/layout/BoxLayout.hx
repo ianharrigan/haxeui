@@ -17,6 +17,11 @@ class BoxLayout extends Layout {
 		var totalWidth:Float = 0;
 		var totalHeight:Float = 0;
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			if (child.percentWidth > -1) {
 				child.width = (ucx * child.percentWidth) / 100; 
 			}
@@ -47,6 +52,11 @@ class BoxLayout extends Layout {
 	private override function repositionChildren():Void {
 		super.repositionChildren();
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			var xpos:Float = padding.left;
 			var ypos:Float = padding.top;
 			var halign:String = child.horizontalAlign;

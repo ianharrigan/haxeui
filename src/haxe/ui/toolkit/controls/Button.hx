@@ -281,11 +281,16 @@ class Button extends StateComponent implements IFocusable {
 	public var allowSelection(get, set):Bool;
 	
 	private function get_iconPosition():String {
-		return cast(_layout, ButtonLayout).iconPosition;
+		if (Std.is(_layout, ButtonLayout)) {
+			return cast(_layout, ButtonLayout).iconPosition;
+		}
+		return "";
 	}
 	
 	private function set_iconPosition(value:String):String {
-		cast(_layout, ButtonLayout).iconPosition = value;
+		if (Std.is(_layout, ButtonLayout)) {
+			cast(_layout, ButtonLayout).iconPosition = value;
+		}
 		return value;
 	}
 	
@@ -403,12 +408,12 @@ class Button extends StateComponent implements IFocusable {
 				icon = _style.icon;
 			}
 			
-			if (_style.iconPosition != null) {
+			if (_style.iconPosition != null && Std.is(_layout, ButtonLayout)) {
 				cast(_layout, ButtonLayout).iconPosition = _style.iconPosition;
 				invalidate(InvalidationFlag.LAYOUT);
 			}
 
-			if (_style.labelPosition != null) {
+			if (_style.labelPosition != null && Std.is(_layout, ButtonLayout)) {
 				cast(_layout, ButtonLayout).labelPosition = _style.labelPosition;
 			}
 		}
@@ -432,7 +437,7 @@ class Button extends StateComponent implements IFocusable {
 	}
 	
 	private function resizeButton(force:Bool = false):Void {
-		if (text.length > 0 && autoSize == true) {
+		if (text.length > 0 && autoSize == true && Std.is(_layout, ButtonLayout)) {
 			var buttonLayout:ButtonLayout = cast(_layout, ButtonLayout);
 			if (width == 0 || force == true) {
 				var cx:Float = _label.width + _layout.padding.left + _layout.padding.right;

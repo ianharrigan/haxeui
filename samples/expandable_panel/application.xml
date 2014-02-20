@@ -3,7 +3,7 @@
 	<meta title="Haxe UI Toolkit" package="haxe.ui.toolkit" version="1.0.0" company="" />
 	
 	<!-- output -->
-	<app main="Main" file="panellist" path="./bin" />
+	<app main="Main" file="expandablePanel" path="./bin" />
 	
 	<window background="#FFFFFF" fps="60" />
 	<window width="800" height="600" unless="mobile" />

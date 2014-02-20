@@ -24,7 +24,17 @@ class HorizontalContinuousLayout extends Layout {
 			maxCX = container.parent.layout.usableWidth;
 		}
 		for (child in container.children) {
+			
+			if (child.visible == false) {
+				continue; // ignore invisible.
+			}
+			
 			rowChildren.push(child);
+			
+			if (child.percentWidth > -1) {
+				child.width = ((maxCX - spacingX) * child.percentWidth) / 100; 
+			}
+			
 			usedCX += child.width + spacingX;
 			if (usedCX - spacingX > maxCX) {
 				xpos = padding.left;
