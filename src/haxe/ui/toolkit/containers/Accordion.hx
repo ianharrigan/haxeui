@@ -37,7 +37,9 @@ class Accordion extends VBox {
 		super.initialize();
 		
 		if (_selectedIndex != -1) {
-			_buttons[_selectedIndex].selected = true;
+			var cachedIndex:Int = _selectedIndex;
+			_selectedIndex = -1;
+			showPage(cachedIndex);
 		}
 	}
 	
@@ -108,7 +110,16 @@ class Accordion extends VBox {
 		return _buttons[index];
 	}
 	
-	private function showPage(index:Int):Void {
+	public function showPage(index:Int):Void {
+		var button:AccordionButton = _buttons[index];
+		button.selected = true;
+	}
+	
+	private function buildMouseClickFunction(index:Int) {
+		return function(event:UIEvent) { mouseClickButton(index); };
+	}
+	
+	private function mouseClickButton(index:Int):Void {
 		var button:AccordionButton = _buttons[index];
 		for (b in _buttons) {
 			if (b == button) {
@@ -123,21 +134,11 @@ class Accordion extends VBox {
 		dispatchEvent(new UIEvent(UIEvent.CHANGE));
 	}
 	
-	private function buildMouseClickFunction(index:Int) {
-		return function(event:UIEvent) { mouseClickButton(index); };
-	}
-	
-	private function mouseClickButton(index:Int):Void {
-		showPage(index);
-	}
-	
 	private function showPanel(index:Int):Void {
 		var button:AccordionButton = _buttons[index];
-		var buttonChildIndex:Int = indexOfChild(button);
 		var panel:IDisplayObject = _panels[index];
 		
 		if (panel != null) {
-			
 			panel.visible = true;
 			//panel.percentHeight = 100;
 			
@@ -152,7 +153,6 @@ class Accordion extends VBox {
 			
 			if (selectedButton != null) {
 				selectedButton.selected = false; // hides current panel.
-				
 			} else if (transition == "slide") { // slide in panel.
 				panel.percentHeight = -1;
 				c.clipHeight = 0;
@@ -173,9 +173,7 @@ class Accordion extends VBox {
 		var buttonChildIndex:Int = indexOfChild(button);
 		var panel:IDisplayObject = _panels[index];
 		
-		
 		if (panel != null) {
-			
 			var transition:String = Toolkit.getTransitionForClass(Accordion);
 			if (transition == "slide") {
 				var c:Component = cast(panel, Component);

@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
+	<ui:accordion width="300" height="400" id="theAccordion">
+		<ui:vbox text="Panel 1">
+			<ui:button text="Button 1" />
+		</ui:vbox>
+		<ui:vbox text="Image Panel" id="nopadding">
+			<ui:scrollview width="100%" height="100%">
+				<ui:image resource="assets/slinky.jpg" />
+			</ui:scrollview>
+		</ui:vbox>
+		<ui:vbox text="List Panel" id="nopadding">
+			<ui:listview width="100%" height="100%">
+				<data:array>
+					Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
+				</data:array>
+			</ui:listview>
+		</ui:vbox>
+		<ui:vbox text="Panel 4">
+			<ui:button text="Button 4" />
+		</ui:vbox>
+	</ui:accordion>
+<!--
 <hbox height="100%">
 	<vbox height="100%">
 		<scrollview width="300" height="50%" id="normalScrollview">
@@ -34,3 +55,4 @@
 		<text text="???" id="vpos" />
 	</grid>
 </hbox>
+-->

@@ -4,7 +4,7 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.2.1",
+    "version"      : "1.2.2",
     "releasenote"  : "",
     "contributors" : ["ianharrigan"],
     "dependencies" : {

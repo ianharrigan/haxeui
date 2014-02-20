@@ -15,12 +15,16 @@ import haxe.ui.toolkit.util.StringUtil;
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test.xml"))
 class TestController extends XMLController {
 	public function new() {
+		/*
 		virtualScrollview.onScroll = function(e) {
 			hpos.text = "" + virtualScrollview.hscrollPos;
 			vpos.text = "" + virtualScrollview.vscrollPos;
 			theButton.x =  virtualScrollview.hscrollPos;
 			theButton.y =  virtualScrollview.vscrollPos;
 		};
+		*/
+		
+		theAccordion.selectedIndex = 0;
 	}
 	
 }
