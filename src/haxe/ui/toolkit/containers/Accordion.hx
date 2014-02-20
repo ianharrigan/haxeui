@@ -10,6 +10,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
@@ -54,11 +55,15 @@ class Accordion extends VBox {
 			if (Std.is(child, IDisplayObjectContainer)) {
 				cast(child, IDisplayObjectContainer).autoSize = false;
 			}
+			if (Std.is(child, StyleableDisplayObject)) {
+				cast(child, StyleableDisplayObject).styleName = "page";
+			}
 			child.percentHeight = 100;
 			child.percentWidth = 100;
 			_panels.push(child);
 			
 			var button:AccordionButton = new AccordionButton();
+			button.styleName = "expandable";
 			if (Std.is(child, Component)) {
 				button.text = cast(child, Component).text;
 			}

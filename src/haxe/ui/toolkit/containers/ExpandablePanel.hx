@@ -40,13 +40,15 @@ class ExpandablePanel extends VBox {
 			_button.toggle = true;
 			_button.selected = startExpanded ? true : false;
 			_button.addEventListener(UIEvent.CHANGE, onClickButton);
+			_button.styleName = "expandable";
 			super.addChild(_button);
 		} 
 		
 		if (_panel == null) {
 			_panel = new VBox();
+			_panel.id = "content";
 			_panel.percentWidth = 100; 
-			super.addChild(_panel );
+			super.addChild(_panel);
 			_panel.addEventListener(Event.ADDED_TO_STAGE, panelAdded);
 		}
 		

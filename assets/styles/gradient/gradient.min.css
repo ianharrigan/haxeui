@@ -139,13 +139,13 @@ Popup #titleBar Text{color:0xFFFFFF;}
 Popup #buttonBar{paddingTop:10;paddingBottom:5;height:45;}
 ListPopupContent{paddingLeft:0;paddingRight:0;paddingTop:0;paddingBottom:0;}
 ListPopupContent ListView{paddingLeft:0;paddingRight:0;paddingTop:0;paddingBottom:0;borderSize:0;}
-PanelList{spacingX:0;spacingY:0;padding:0;}
-PanelList VBox,PanelList HBox,PanelList Grid{padding:5;spacing:5;}
 Accordion{spacingX:0;spacingY:0;padding:0;}
-Accordion VBox,Accordion HBox,Accordion Grid{padding:5;spacing:5;}
-AccordionButton{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;cornerRadius:0;borderSize:1;fontSize:13;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"farLeft";labelPosition:"left";icon:"styles/gradient/arrow_right2.png";}
-AccordionButton:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
-AccordionButton:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;icon:"styles/gradient/arrow_down.png";}
+Accordion .page{padding:5;spacing:5;}
+Button.expandable{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;cornerRadius:0;borderSize:1;fontSize:13;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"farLeft";labelPosition:"left";icon:"styles/gradient/arrow_right2.png";}
+AccordionButton:over,ExpandableButton:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+AccordionButton:down,ExpandableButton:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;icon:"styles/gradient/arrow_down.png";}
+ExpandablePanel{spacingX:0;spacingY:0;padding:0;}
+ExpandablePanel #content{padding:5;spacing:5;}
 RTFView{spacingY:8;}
 RTFView List{backgroundColor:0xf4f5f5;backgroundColorGradientEnd:0xdfdddd;color:0x363d4c;borderColor:0xdfdddd;icon:"styles/gradient/arrow_down_dark.png";}
 RTFView List:over{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;borderColor:0x7d99ca;color:0xFFFFFF;icon:"styles/gradient/arrow_down.png";}

@@ -24,7 +24,7 @@ class TestController extends XMLController {
 		};
 		*/
 		
-		theAccordion.selectedIndex = 0;
+		//theAccordion.selectedIndex = 0;
 	}
 	
 }
