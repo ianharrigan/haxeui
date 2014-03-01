@@ -140,7 +140,7 @@ class Controller {
 	}
 	
 	public var namedComponents(get, null):StringMap<IDisplayObjectContainer>;
-	public function get_namedComponents():StringMap<IDisplayObjectContainer> {
+	private function get_namedComponents():StringMap<IDisplayObjectContainer> {
 		return _namedComponents;
 	}
 }
