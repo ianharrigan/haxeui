@@ -3,6 +3,7 @@ package haxe.ui.toolkit.controls;
 import flash.events.MouseEvent;
 import flash.geom.Point;
 import haxe.ui.toolkit.core.interfaces.Direction;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.Screen;
 
 /**
@@ -12,7 +13,7 @@ import haxe.ui.toolkit.core.Screen;
  
  * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
-class VSlider extends Slider {
+class VSlider extends Slider implements IClonable<VSlider> {
 	public function new() {
 		super();
 		direction = Direction.VERTICAL;
@@ -69,5 +70,14 @@ class VSlider extends Slider {
 		var v:Float = ypos - minY;
 		var newValue:Float = max - ((v / ucy) * m);
 		return newValue;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():VSlider return new VSlider();
+	public override function clone():VSlider {
+		var c:VSlider = cast super.clone();
+		return c;
 	}
 }

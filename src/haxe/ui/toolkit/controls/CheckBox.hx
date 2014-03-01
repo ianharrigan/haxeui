@@ -4,6 +4,7 @@ import flash.events.Event;
 import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 import haxe.ui.toolkit.style.Style;
@@ -16,19 +17,19 @@ import haxe.ui.toolkit.style.Style;
  * `Event.CHANGE` - Dispatched when the value of the checkbox is modified
  **/
 
-class CheckBox extends Component {
+class CheckBox extends Component implements IClonable<CheckBox> {
 	private var _value:CheckBoxValue;
 	private var _label:Text;
 	private var _selected:Bool;
 	
 	public function new() {
 		super();
-		_autoSize = true;
+		autoSize = true;
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		_value = new CheckBoxValue();
 		_label = new Text();
-		_layout = new HorizontalLayout();
+		layout = new HorizontalLayout();
 	}
 
 	//******************************************************************************************
@@ -36,19 +37,18 @@ class CheckBox extends Component {
 	//******************************************************************************************
 	private override function initialize():Void {
 		super.initialize();
-		
+
 		_value.verticalAlign = VerticalAlign.CENTER;
 		addChild(_value);
 		addChild(_label);
 		
-		_label.addEventListener(MouseEvent.CLICK, function(e) {
+		_label.addEventListener(UIEvent.CLICK, function(e) {
 			_value.cycleValues();
 		});
 		
 		_value.addEventListener(UIEvent.CHANGE, function (e) {
 			selected = _value.value == "selected"; // updates checkbox state.
 		}); 
-		
 	}
 	
 	//******************************************************************************************
@@ -108,13 +108,32 @@ class CheckBox extends Component {
 			_label.style = labelStyle;
 		}
 	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():CheckBox return new CheckBox();
+	public override function clone():CheckBox {
+		var c:CheckBox = cast super.clone();
+		c.selected = this.selected;
+		return c;
+	}
 }
 
-private class CheckBoxValue extends Value {
+private class CheckBoxValue extends Value implements IClonable<CheckBoxValue> {
 	public function new() {
 		super();
 		_value = "unselected";
 		addValue("selected");
 		addValue("unselected");
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():CheckBoxValue return new CheckBoxValue();
+	public override function clone():CheckBoxValue {
+		var c:CheckBoxValue = cast super.clone();
+		return c;
 	}
 }

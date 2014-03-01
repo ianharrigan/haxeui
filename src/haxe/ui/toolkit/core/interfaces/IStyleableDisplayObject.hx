@@ -2,7 +2,7 @@ package haxe.ui.toolkit.core.interfaces;
 
 import haxe.ui.toolkit.style.Style;
 
-interface IStyleable {
+interface IStyleableDisplayObject {
 	public var id(get, set):String;
 	public var style(get, set):Style;
 	public var styleName(get, set):String;

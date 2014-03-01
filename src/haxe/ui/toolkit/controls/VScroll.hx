@@ -5,6 +5,7 @@ import flash.events.MouseEvent;
 import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.utils.Timer;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
@@ -19,7 +20,7 @@ import haxe.ui.toolkit.layout.DefaultLayout;
  * `Event.CHANGE` - Dispatched when value of the slider bar has changed
  **/
  
-class VScroll extends Scroll implements IScrollable {
+class VScroll extends Scroll implements IScrollable implements IClonable<VScroll> {
 	private var _pos:Float = 0;
 	private var _min:Float = 0;
 	private var _max:Float = 100;
@@ -293,6 +294,20 @@ class VScroll extends Scroll implements IScrollable {
 	 **/
 	public function incrementValue():Void {
 		pos += _incrementSize;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():VScroll return new VScroll();
+	public override function clone():VScroll {
+		var c:VScroll = cast super.clone();
+		c.min = this.min;
+		c.max = this.max;
+		c.pos = this.pos;
+		c.pageSize = this.pageSize;
+		c.incrementSize = this.incrementSize;
+		return c;
 	}
 }
 

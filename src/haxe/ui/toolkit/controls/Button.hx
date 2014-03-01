@@ -7,6 +7,7 @@ import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.Layout;
 import haxe.ui.toolkit.style.Style;
@@ -20,7 +21,7 @@ import haxe.ui.toolkit.style.Style;
  * `Event.CHANGE`		- Dispatched when the value of the toggle group changes
  **/
  
-class Button extends StateComponent implements IFocusable {
+class Button extends StateComponent implements IFocusable implements IClonable<StateComponent> {
 	/**
 	 Button state is "normal" (default state)
 	 **/
@@ -59,6 +60,7 @@ class Button extends StateComponent implements IFocusable {
 		state = STATE_NORMAL;
 		_layout = new ButtonLayout();
 		_label = new Text();
+		_label.id = "label";
 		autoSize = true;
 		
 		if (_groups == null) {
@@ -95,11 +97,13 @@ class Button extends StateComponent implements IFocusable {
 	}
 	
 	private function set_icon(value:String):String {
-		if (_icon == null) {
-			_icon = new Image();
-			addChild(_icon);
+		if (value != null) {
+			if (_icon == null) {
+				_icon = new Image();
+				addChild(_icon);
+			}
+			_icon.resource = value;
 		}
-		_icon.resource = value;
 		return value;
 	}
 	
@@ -453,6 +457,23 @@ class Button extends StateComponent implements IFocusable {
 				height = cy;
 			}
 		}
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Button return new Button();
+	public override function clone():Button {
+		var c:Button = cast super.clone();
+		c.remainPressed = this.remainPressed;
+		c.icon = this.icon;
+		c.allowFocus = this.allowFocus;
+		c.iconPosition = this.iconPosition;
+		c.toggle = this.toggle;
+		c.selected = this.selected;
+		c.group = this.group;
+		c.allowSelection = this.allowSelection;
+		return c;
 	}
 }
 

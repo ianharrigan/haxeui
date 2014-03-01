@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
@@ -7,7 +8,7 @@ import haxe.ui.toolkit.text.TextDisplay;
 /**
  Generic non-editable text component (supports multiline text)
  **/
-class Text extends StateComponent {
+class Text extends StateComponent implements IClonable<Text> {
 	private var _textDisplay:ITextDisplay;
 	
 	public function new() {
@@ -112,5 +113,16 @@ class Text extends StateComponent {
 	private function set_wrapLines(value:Bool):Bool {
 		_textDisplay.wrapLines = value;
 		return value;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Text return new Text();
+	public override function clone():Text {
+		var c:Text = cast super.clone();
+		c.multiline = this.multiline;
+		c.wrapLines = this.wrapLines;
+		return c;
 	}
 }

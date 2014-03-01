@@ -1,15 +1,17 @@
 package haxe.ui.toolkit.core;
 
 import flash.display.Sprite;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.ILayout;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
 import haxe.CallStack;
 
-class DisplayObjectContainer extends DisplayObject implements IDisplayObjectContainer {
+class DisplayObjectContainer extends DisplayObject implements IDisplayObjectContainer implements IClonable<DisplayObjectContainer> {
 	private var _children:Array<IDisplayObject>;
 	
 	// used in IDisplayObjectContainer getters/setters
@@ -303,4 +305,18 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return value;
 	}
 	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():DisplayObjectContainer return new DisplayObjectContainer();
+	public override function clone():DisplayObjectContainer {
+		var c:DisplayObjectContainer = cast super.clone();
+		c.autoSize = this.autoSize;
+		/*
+		for (child in this.children) {
+			c.addChild(child.clone());
+		}
+		*/
+		return c;
+	}
 }

@@ -1,160 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<vbox width="100%" height="100%" id="main">
-	<menubar>
-		<menubutton text="Menu 1" id="menu1" disabled="true">
-			<menu>
-				<menuitem text="Item 1" id="testMenuItem1" />
-				<menuitem text="Item 2" disabled="true" />
-				<menuitem text="Item 3" />
-				<menu text="Expandable 1">
-					<menuitem text="Disabled 1" id="" />
-					<menuitem text="Sub 2" />
-					<menuitem text="Sub 3" />
-					<menu text="Expandable 2">
-						<menuitem text="Disabled 2" id=""/>
-						<menuitem text="Sub Sub 2" />
-						<menuitem text="Sub Sub 3" />
-						<menu text="Expandable 3">
-							<menuitem text="Disabled 3"  id="" />
-							<menuitem text="Sub Sub Sub 2" />
-							<menuitem text="Sub Sub Sub 3" />
-							<menu text="Expandable 4">
-								<menuitem text="Disabled 4"  id=""/>
-								<menuitem text="Sub Sub Sub Sub 2" />
-								<menuitem text="Sub Sub Sub Sub 3" />
-							</menu>
-							<menuitem text="Sub Sub Sub 4" />
-							<menuitem text="Sub Sub Sub 5" />
-							<menuitem text="Su bSub Sub 6" />
-						</menu>
-						<menuitem text="Sub Sub 4" />
-						<menuitem text="Sub Sub 5" />
-						<menuitem text="Sub Sub 6" />
-					</menu>
-					<menuitem text="Sub 4" />
-					<menuitem text="Sub 5" />
-					<menuitem text="Sub 6" />
-				</menu>
-				<menuitem text="Item 4" />
-				<menuitem text="Item 5" />
-				<menuitem text="Item 6" />
-				<menu text="Expandable 2">
-					<menuitem text="Sub Sub 1" />
-					<menuitem text="Sub Sub 2" />
-					<menuitem text="Sub Sub 3" />
-					<menu text="Expandable 3">
-						<menuitem text="Sub Sub Sub 1" />
-						<menuitem text="Sub Sub Sub 2" />
-						<menuitem text="Sub Sub Sub 3" />
-						<menu text="Expandable 4">
-							<menuitem text="Sub Sub Sub Sub 1" />
-							<menuitem text="Sub Sub Sub Sub 2" />
-							<menuitem text="Sub Sub Sub Sub 3" />
-						</menu>
-						<menuitem text="Sub Sub Sub 4" />
-						<menuitem text="Sub Sub Sub 5" />
-						<menuitem text="Su bSub Sub 6" />
-					</menu>
-					<menuitem text="Sub Sub 4" />
-					<menuitem text="Sub Sub 5" />
-					<menuitem text="Sub Sub 6" />
-				</menu>
-			</menu>
-		</menubutton>
-	</menubar>
-</vbox>
 
 <!--
-<hbox>
-	<ui:accordion width="300" height="400" id="theAccordion" selectedIndex="1">
-		<ui:vbox text="Panel 1">
-			<ui:button text="Button 1" />
-		</ui:vbox>
-		<ui:vbox text="Image Panel" id="nopadding">
-			<ui:scrollview width="100%" height="100%">
-				<ui:image resource="assets/slinky.jpg" />
-			</ui:scrollview>
-		</ui:vbox>
-		<ui:vbox text="List Panel" id="nopadding">
-			<ui:listview width="100%" height="100%">
-				<data:array>
-					Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
-				</data:array>
-			</ui:listview>
-		</ui:vbox>
-		<ui:vbox text="Panel 4">
-			<ui:button text="Button 4" />
-		</ui:vbox>
-	</ui:accordion>
-	
-	<ui:scrollview width="300" height="100%" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style" xmlns:data="haxeui::data">
-		
-		<ui:vbox width="100%" height="500" style="spacing:0;padding:0" >
-			
-			<ui:expandablepanel width="100%" text="Panel 1" style="spacingY:5">
-				<ui:button text="Button 1" />
-				<ui:button text="Button 2" />
-				<ui:button text="Button 3" />
-				<ui:button text="Button 4" />
-			</ui:expandablepanel>
-			
-			<ui:expandablepanel width="100%" text="Image Panel" style="spacingY:5">
-				<ui:scrollview width="100%" height="300">
-					<ui:image resource="assets/slinky.jpg" />
-				</ui:scrollview>
-			</ui:expandablepanel>
-			
-			<ui:expandablepanel width="100%" text="List Panel" startExpanded="false">
-				<ui:listview width="100%" height="300">
-					<data:array>
-						Item 1, Item 2, Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9, Item 10
-					</data:array>
-				</ui:listview>
-			</ui:expandablepanel>
-			
-			<ui:expandablepanel width="100%" text="Panel 4" startExpanded="false" >
-				<ui:button text="Button 5" />
-			</ui:expandablepanel>
-			
-		</ui:vbox>
-		
-	</ui:scrollview>	
-</hbox>	
+<button x="100" y="100" width="100" height="30" text="Button" />
 -->
+
+
 <!--
-<hbox height="100%">
-	<vbox height="100%">
-		<scrollview width="300" height="50%" id="normalScrollview">
-			<vbox width="100%">
-				<button text="1" width="100%"/>
-				<button text="2" width="100%"/>
-				<button text="3" width="100%"/>
-				<button text="4" width="100%"/>
-				<button text="5" width="100%"/>
-				<button text="6" width="100%"/>
-				<button text="7" width="100%"/>
-				<button text="8" width="100%"/>
-				<button text="9" width="100%"/>
-				<button text="10" width="100%"/>
-				<button text="11" width="100%"/>
-				<button text="12" width="100%"/>
-				<button text="13" width="100%"/>
-			</vbox>
-		</scrollview>
-		
-		<scrollview width="300" height="50%" id="virtualScrollview" virtualScrolling="true" hscrollMax="150" vscrollMax="150">
-			<vbox>
-				<button text="Button" id="theButton" />
-			</vbox>
-		</scrollview>
-	</vbox>
-	
-	<grid columns="2">
-		<text text="hpos:" />
-		<text text="???" id="hpos" />
-		
-		<text text="vpos:" />
-		<text text="???" id="vpos" />
-	</grid>
-</hbox>
+<checkbox x="100" y="100" text="Button" selected="false" />
 -->
+
+<!--
+<grid x="100" y="100" columns="3">
+	<button text="1" />
+	<button text="2" />
+	<button text="3" />
+	<button text="4" />
+	<button text="5" />
+	<button text="6" />
+</grid>
+-->
+
+<accordion x="10" y="10" width="200" height="200">
+	<vbox text="Page 1">
+		<button text="Button 1A" />
+		<button text="Button 1B" />
+		<button text="Button 1C" />
+	</vbox>
+	<vbox text="Page 2">
+		<button text="Button 2A" />
+		<button text="Button 2B" />
+		<button text="Button 2C" />
+	</vbox>
+	<vbox text="Page 3">
+		<button text="Button 3A" />
+		<button text="Button 3B" />
+		<button text="Button 3C" />
+	</vbox>
+</accordion>

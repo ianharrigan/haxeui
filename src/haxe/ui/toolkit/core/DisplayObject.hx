@@ -4,6 +4,7 @@ import flash.display.Graphics;
 import flash.display.Sprite;
 import flash.events.Event;
 import haxe.ds.StringMap;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDrawable;
@@ -19,7 +20,7 @@ import haxe.ui.toolkit.util.StringUtil;
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
 	"glyphClick"
 ]))
-class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable {
+class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable implements IClonable<DisplayObject> {
 	// used in IDisplayObject getters/setters
 	private var _parent:IDisplayObjectContainer;
 	private var _root:Root;
@@ -452,5 +453,24 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 			fnEvent.displayObject = this;
 			fn(fnEvent);
 		}
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public function self():DisplayObject return new DisplayObject();
+	public function clone():DisplayObject {
+		var c = self();
+		c.id = this.id;
+		c.x = this.x;
+		c.y = this.y;
+		c.width = this.width;
+		c.height = this.height;
+		c.percentWidth = this.percentWidth;
+		c.percentHeight = this.percentHeight;
+		c.visible = this.visible;
+		c.horizontalAlign = this.horizontalAlign;
+		c.verticalAlign = this.verticalAlign;
+		return c;
 	}
 }

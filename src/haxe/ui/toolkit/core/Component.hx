@@ -6,13 +6,14 @@ import flash.geom.Rectangle;
 import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Client;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 
-class Component extends StyleableDisplayObject {
+class Component extends StyleableDisplayObject implements IClonable<StyleableDisplayObject> {
 	private var _text:String;
 	private var _clipContent:Bool = false;
 	private var _disabled:Bool = false;
@@ -249,5 +250,22 @@ class Component extends StyleableDisplayObject {
 	private function _onComponentMouseMove(event:MouseEvent):Void {
 		this.x = event.stageX - mouseDownPos.x;
 		this.y = event.stageY - mouseDownPos.y;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Component return new Component();
+	public override function clone():Component {
+		var c:Component = cast super.clone();
+		c.text = this.text;
+		/*
+		c.clipWidth = this.clipWidth;
+		c.clipHeight = this.clipHeight;
+		c.clipContent = this.clipContent;
+		*/
+		c.disabled = this.disabled;
+		c.userData = this.userData;
+		return c;
 	}
 }

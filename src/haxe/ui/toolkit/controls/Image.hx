@@ -3,13 +3,14 @@ package haxe.ui.toolkit.controls;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
 
 /**
  General purpose image control
  **/
-class Image extends Component {
+class Image extends Component implements IClonable<Image> {
 	private var _bmp:Bitmap;
 	private var _resource:String;
 	private var _stretch:Bool;
@@ -117,5 +118,17 @@ class Image extends Component {
 	private function set_autoDisposeBitmapData(value:Bool):Bool {
 		_autoDisposeBitmapData = value;
 		return value;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Image return new Image();
+	public override function clone():Image {
+		var c:Image = cast super.clone();
+		c.resource = this.resource;
+		c.stretch = this.stretch;
+		c.autoDisposeBitmapData = this.autoDisposeBitmapData;
+		return c;
 	}
 }

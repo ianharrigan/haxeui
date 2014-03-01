@@ -7,8 +7,9 @@ import flash.text.TextField;
 import flash.text.TextFormat;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
-import haxe.ui.toolkit.core.interfaces.IStyleable;
+import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.text.ITextDisplay;
@@ -18,7 +19,7 @@ import haxe.ui.toolkit.layout.DefaultLayout;
 /**
  Generic editable text component (supports multiline text)
  **/
-class TextInput extends StateComponent {
+class TextInput extends StateComponent implements IClonable<TextInput> {
 	private var _textDisplay:ITextDisplay;
 	private var _textPlaceHolder:Text;
 	
@@ -330,6 +331,22 @@ class TextInput extends StateComponent {
 		
 		invalidate(InvalidationFlag.LAYOUT);
 		#end
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():TextInput return new TextInput();
+	public override function clone():TextInput {
+		var c:TextInput = cast super.clone();
+		c.multiline = this.multiline;
+		c.selectionBeginIndex = this.selectionBeginIndex;
+		c.selectionEndIndex = this.selectionEndIndex;
+		c.selectedTextFormat = this.selectedTextFormat;
+		c.wrapLines = this.wrapLines;
+		c.displayAsPassword = this.displayAsPassword;
+		c.placeholderText = this.placeholderText;
+		return c;
 	}
 }
 

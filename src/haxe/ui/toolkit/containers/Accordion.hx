@@ -6,6 +6,7 @@ import flash.events.Event;
 import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
@@ -19,7 +20,7 @@ import motion.easing.Linear;
 /**
  Basic, animated accordion container
  **/
-class Accordion extends VBox {
+class Accordion extends VBox implements IClonable<Accordion> {
 	private var _panels:Array<IDisplayObject>;
 	private var _buttons:Array<AccordionButton>;
 	private var _selectedIndex:Int = -1;
@@ -212,10 +213,27 @@ class Accordion extends VBox {
 		button.allowSelection = true;
 	}
 	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Accordion return new Accordion();
+	public override function clone():Accordion {
+		var c:Accordion = cast super.clone();
+		return c;
+	}
 }
 
-private class AccordionButton extends Button {
+private class AccordionButton extends Button implements IClonable<AccordionButton> {
 	public function new() {
 		super();
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():AccordionButton return new AccordionButton();
+	public override function clone():AccordionButton {
+		var c:AccordionButton = cast super.clone();
+		return c;
 	}
 }

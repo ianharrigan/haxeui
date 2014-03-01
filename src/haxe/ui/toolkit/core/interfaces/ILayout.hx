@@ -2,7 +2,7 @@ package haxe.ui.toolkit.core.interfaces;
 
 import flash.geom.Rectangle;
 
-interface ILayout {
+interface ILayout extends IClonable<ILayout> {
 	public var container(get, set):IDisplayObjectContainer;
 	public var padding(get, set):Rectangle;
 	public var spacingX(get, set):Int;

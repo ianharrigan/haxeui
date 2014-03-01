@@ -1,10 +1,11 @@
 package haxe.ui.toolkit.layout;
 
 import flash.geom.Rectangle;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.ILayout;
 
-class Layout implements ILayout {
+class Layout implements ILayout implements IClonable<Layout> {
 	private var _container:IDisplayObjectContainer;
 	private var _padding:Rectangle;
 	private var _spacingX:Int = 0;
@@ -111,5 +112,17 @@ class Layout implements ILayout {
 	private function get_usableHeight():Float {
 		var ucy:Float = innerHeight;
 		return ucy;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public function self():Layout return new Layout();
+	public function clone():Layout {
+		var c = self();
+		c.spacingX = this.spacingX;
+		c.spacingY = this.spacingY;
+		c.padding = this.padding.clone();
+		return c;
 	}
 }

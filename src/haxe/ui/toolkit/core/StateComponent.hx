@@ -2,10 +2,11 @@ package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 
-class StateComponent extends Component implements IStateComponent {
+class StateComponent extends Component implements IStateComponent implements IClonable<StateComponent> {
 	private var _state:String;
 	private var _states:Array<String>;
 	
@@ -67,5 +68,15 @@ class StateComponent extends Component implements IStateComponent {
 			return false;
 		}
 		return Lambda.indexOf(states, state) != -1;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():StateComponent return new StateComponent();
+	public override function clone():StateComponent {
+		var c:StateComponent = cast super.clone();
+		c.state = this.state;
+		return c;
 	}
 }

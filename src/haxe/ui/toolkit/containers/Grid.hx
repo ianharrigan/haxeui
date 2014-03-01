@@ -1,12 +1,13 @@
 package haxe.ui.toolkit.containers;
 
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.layout.GridLayout;
 
 /**
  Grid style layout container
  **/
-class Grid extends Component {
+class Grid extends Container implements IClonable<Grid> {
 	public function new() {
 		super();
 		
@@ -29,5 +30,15 @@ class Grid extends Component {
 	private function set_columns(value:Int):Int {
 		cast(_layout, GridLayout).columns = value;
 		return value;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Grid return new Grid();
+	public override function clone():Grid {
+		var c:Grid = cast super.clone();
+		c.columns = this.columns;
+		return c;
 	}
 }

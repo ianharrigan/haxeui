@@ -6,6 +6,7 @@ import flash.Lib;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDirectional;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
@@ -21,7 +22,7 @@ import haxe.ui.toolkit.layout.Layout;
  
  * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
-class Progress extends StateComponent implements IScrollable implements IDirectional {
+class Progress extends StateComponent implements IScrollable implements IDirectional implements IClonable<Progress> {
 	private var _direction:String;
 	private var _min:Float = 0;
 	private var _max:Float = 100;
@@ -162,6 +163,21 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	private function set_incrementSize(value:Float):Float {
 		_incrementSize = value;
 		return value;
+	}
+	
+	//******************************************************************************************
+	// Clone
+	//******************************************************************************************
+	public override function self():Progress return new Progress();
+	public override function clone():Progress {
+		var c:Progress = cast super.clone();
+		c.direction = this.direction;
+		c.min = this.min;
+		c.max = this.max;
+		c.pos = this.pos;
+		c.pageSize = this.pageSize;
+		c.incrementSize = this.incrementSize;
+		return c;
 	}
 }
 

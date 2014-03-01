@@ -3,7 +3,7 @@ package haxe.ui.toolkit.core.interfaces;
 import flash.display.Sprite;
 import haxe.ui.toolkit.core.Root;
 
-interface IDisplayObject { // canvas/sprite
+interface IDisplayObject extends IClonable<IDisplayObject> { // canvas/sprite
 	public var parent(get, set):IDisplayObjectContainer; // null is valid
 	public var root(get, set):Root;
 	public var id(get, set):String;
