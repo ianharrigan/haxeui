@@ -53,6 +53,20 @@ class Macros {
 		if (ctor == null) Context.error("A class building a controller must have a constructor", Context.currentPos());
 		
 		if (sys.FileSystem.exists(resourcePath) == false) {
+			var paths:Array<String> = Context.getClassPath();
+			for (path in paths) {
+				path = path + "/" + resourcePath;
+				if (sys.FileSystem.exists(path)) {
+					resourcePath = path;
+					break;
+				}
+			}
+		}
+
+		resourcePath = StringTools.replace(resourcePath, "\\", "/");
+		resourcePath = StringTools.replace(resourcePath, "//", "/");
+		
+		if (sys.FileSystem.exists(resourcePath) == false) {
 			Context.error("XML file not found", Context.currentPos());
 		}
 		

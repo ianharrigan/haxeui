@@ -32,6 +32,9 @@ class TabView extends Component {
 	//******************************************************************************************
 	private function _onTabsChange(event:Event):Void {
 		_stack.selectedIndex = _tabs.selectedIndex;
+		
+		var event:UIEvent = new UIEvent(UIEvent.CHANGE);
+		dispatchEvent(event);
 	}
 	
 	private function _onGlyphClick(event:UIEvent):Void {

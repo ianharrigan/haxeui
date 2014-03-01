@@ -7,6 +7,8 @@ import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.hscript.ScriptManager;
 
 class Style {
+	public static inline var NONE:Int = -2;
+	
 	private var _dynamicValues:Map<String, String>;
 	private var _target:IDisplayObject;
 	private var _autoApply:Bool = true;
@@ -822,8 +824,11 @@ class Style {
 			this._backgroundImageRect = null;
 		}
 		if (with._backgroundImageScale9 != null) this._backgroundImageScale9 = with._backgroundImageScale9;
-		if (with._backgroundImageRect != null) this._backgroundImageRect = with._backgroundImageRect;
-		if (with._backgroundColor != -1) {
+		if (with._backgroundImageRect != null) this._backgroundImageRect = with ._backgroundImageRect;
+		if (with._backgroundColor == NONE) {
+			this._backgroundColor = -1;
+			this._backgroundColorGradientEnd = -1;
+		} else if (with._backgroundColor != -1) {
 			this._backgroundColor = with._backgroundColor;
 			this._backgroundColorGradientEnd = -1;
 		}
