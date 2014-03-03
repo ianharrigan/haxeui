@@ -70,6 +70,7 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	/**
 	 Defines whether the checkbox is checked or not
 	 **/
+	@:clonable
 	public var selected(get, set):Bool;
 	
 	private function get_selected():Bool {
@@ -108,32 +109,13 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 			_label.style = labelStyle;
 		}
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():CheckBox return new CheckBox();
-	public override function clone():CheckBox {
-		var c:CheckBox = cast super.clone();
-		c.selected = this.selected;
-		return c;
-	}
 }
 
-private class CheckBoxValue extends Value implements IClonable<CheckBoxValue> {
+class CheckBoxValue extends Value implements IClonable<CheckBoxValue> {
 	public function new() {
 		super();
 		_value = "unselected";
 		addValue("selected");
 		addValue("unselected");
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():CheckBoxValue return new CheckBoxValue();
-	public override function clone():CheckBoxValue {
-		var c:CheckBoxValue = cast super.clone();
-		return c;
 	}
 }

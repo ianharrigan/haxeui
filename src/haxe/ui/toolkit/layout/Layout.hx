@@ -5,6 +5,8 @@ import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.ILayout;
 
+@:build(haxe.ui.toolkit.core.Macros.addClonable())
+@:autoBuild(haxe.ui.toolkit.core.Macros.addClonable())
 class Layout implements ILayout implements IClonable<Layout> {
 	private var _container:IDisplayObjectContainer;
 	private var _padding:Rectangle;
@@ -19,8 +21,11 @@ class Layout implements ILayout implements IClonable<Layout> {
 	// ILayout
 	//******************************************************************************************
 	public var container(get, set):IDisplayObjectContainer;
+	@:clonable
 	public var padding(get, set):Rectangle;  
+	@:clonable
 	public var spacingX(get, set):Int;
+	@:clonable
 	public var spacingY(get, set):Int;
 	
 	private function get_container():IDisplayObjectContainer {
@@ -112,17 +117,5 @@ class Layout implements ILayout implements IClonable<Layout> {
 	private function get_usableHeight():Float {
 		var ucy:Float = innerHeight;
 		return ucy;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public function self():Layout return new Layout();
-	public function clone():Layout {
-		var c = self();
-		c.spacingX = this.spacingX;
-		c.spacingY = this.spacingY;
-		c.padding = this.padding.clone();
-		return c;
 	}
 }

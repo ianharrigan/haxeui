@@ -14,14 +14,4 @@ class VBox extends Container implements IClonable<VBox> {
 		autoSize = true;
 		layout = new VerticalLayout();
 	}
-	
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():VBox return new VBox();
-	public override function clone():VBox {
-		var c:VBox = cast super.clone();
-		return c;
-	}
 }

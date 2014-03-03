@@ -54,7 +54,7 @@ class Frame extends Component {
 	}
 }
 
-private class FrameLayout extends DefaultLayout {
+class FrameLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

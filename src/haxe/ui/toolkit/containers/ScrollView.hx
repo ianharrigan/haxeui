@@ -582,7 +582,7 @@ class ScrollView extends StateComponent {
 	}
 }
 
-private class ScrollViewLayout extends DefaultLayout {
+class ScrollViewLayout extends DefaultLayout {
 	private var _inlineScrolls:Bool = false;
 	
 	public function new() {

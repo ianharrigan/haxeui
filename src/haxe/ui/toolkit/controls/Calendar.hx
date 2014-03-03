@@ -146,13 +146,13 @@ class Calendar extends Component {
 	}
 }
 
-private class CalendarDay extends Button {
+class CalendarDay extends Button {
 	public function new() {
 		super();
 	}
 }
 
-private class CalendarLayout extends Layout {
+class CalendarLayout extends Layout {
 	public function new() {
 		super();
 	}

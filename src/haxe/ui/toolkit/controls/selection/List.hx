@@ -288,7 +288,7 @@ class List extends Button implements IDataComponent {
 	}
 }
 
-private class DropDownList extends ListView {
+class DropDownList extends ListView {
 	public function new() {
 		super();
 	}

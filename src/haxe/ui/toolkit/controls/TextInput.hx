@@ -168,6 +168,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	/**
 	 Defines whether or not the text can span more than a single line. Vertical and horizontal scrollbars will be added as needed.
 	 **/
+	@:clonable
 	public var multiline(get, set):Bool;
 	/**
 	 The start position of the selected text
@@ -181,8 +182,11 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	 Sets the currently selected text (if available) to the specified text format
 	 **/
 	public var selectedTextFormat(get, null):TextFormat;
+	@:clonable
 	public var wrapLines(get, set):Bool;
+	@:clonable
 	public var displayAsPassword(get, set):Bool;
+	@:clonable
 	public var placeholderText(get, set):String;
 	
 	private function get_multiline():Bool {
@@ -332,25 +336,9 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		invalidate(InvalidationFlag.LAYOUT);
 		#end
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():TextInput return new TextInput();
-	public override function clone():TextInput {
-		var c:TextInput = cast super.clone();
-		c.multiline = this.multiline;
-		c.selectionBeginIndex = this.selectionBeginIndex;
-		c.selectionEndIndex = this.selectionEndIndex;
-		c.selectedTextFormat = this.selectedTextFormat;
-		c.wrapLines = this.wrapLines;
-		c.displayAsPassword = this.displayAsPassword;
-		c.placeholderText = this.placeholderText;
-		return c;
-	}
 }
 
-private class TextInputLayout extends DefaultLayout {
+class TextInputLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

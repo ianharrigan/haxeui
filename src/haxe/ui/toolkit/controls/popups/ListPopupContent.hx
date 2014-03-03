@@ -19,7 +19,7 @@ class ListPopupContent extends PopupContent {
 	private var _fn:Dynamic->Void;
 	private var _selectedIndex:Int = -1;
 	
-	public function new(dataSource:IDataSource, selectedIndex:Int = -1, fn:Dynamic->Void) {
+	public function new(dataSource:IDataSource = null, selectedIndex:Int = -1, fn:Dynamic->Void = null) {
 		super();
 		
 		_selectedIndex = selectedIndex;

@@ -8,7 +8,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 class CustomPopupContent extends PopupContent {
 	private var _display:IDisplayObject;
 	
-	public function new(display:IDisplayObject) {
+	public function new(display:IDisplayObject = null) {
 		super();
 		
 		_display = display;

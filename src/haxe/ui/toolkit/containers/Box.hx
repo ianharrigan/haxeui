@@ -11,13 +11,4 @@ class Box extends Container implements IClonable<Box> {
 		autoSize = true;
 		layout = new BoxLayout();
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Box return new Box();
-	public override function clone():Box {
-		var c:Box = cast super.clone();
-		return c;
-	}
 }

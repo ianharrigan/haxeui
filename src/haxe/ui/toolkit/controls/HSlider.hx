@@ -71,13 +71,4 @@ class HSlider extends Slider implements IClonable<HSlider> {
 		var newValue:Float = min + ((v / ucx) * m);
 		return newValue;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():HSlider return new HSlider();
-	public override function clone():HSlider {
-		var c:HSlider = cast super.clone();
-		return c;
-	}
 }

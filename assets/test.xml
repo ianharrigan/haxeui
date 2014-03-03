@@ -4,7 +4,6 @@
 <button x="100" y="100" width="100" height="30" text="Button" />
 -->
 
-
 <!--
 <checkbox x="100" y="100" text="Button" selected="false" />
 -->

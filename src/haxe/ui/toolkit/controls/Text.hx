@@ -94,7 +94,9 @@ class Text extends StateComponent implements IClonable<Text> {
 	/**
 	 Defines whether or not the text can span more than a single line
 	 **/
+	@:clonable
 	public var multiline(get, set):Bool;
+	@:clonable
 	public var wrapLines(get, set):Bool;
 	
 	private function get_multiline():Bool {
@@ -113,16 +115,5 @@ class Text extends StateComponent implements IClonable<Text> {
 	private function set_wrapLines(value:Bool):Bool {
 		_textDisplay.wrapLines = value;
 		return value;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Text return new Text();
-	public override function clone():Text {
-		var c:Text = cast super.clone();
-		c.multiline = this.multiline;
-		c.wrapLines = this.wrapLines;
-		return c;
 	}
 }

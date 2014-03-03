@@ -67,8 +67,11 @@ class Image extends Component implements IClonable<Image> {
 	/**
 	 The resource asset for this image: eg `assets/myimage.jpeg`
 	 **/
+	@:clonable
 	public var resource(get, set):String;
+	@:clonable
 	public var stretch(get, set):Bool;
+	@:clonable
 	public var autoDisposeBitmapData(get, set):Bool;
 	
 	private function get_resource():String {
@@ -118,17 +121,5 @@ class Image extends Component implements IClonable<Image> {
 	private function set_autoDisposeBitmapData(value:Bool):Bool {
 		_autoDisposeBitmapData = value;
 		return value;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Image return new Image();
-	public override function clone():Image {
-		var c:Image = cast super.clone();
-		c.resource = this.resource;
-		c.stretch = this.stretch;
-		c.autoDisposeBitmapData = this.autoDisposeBitmapData;
-		return c;
 	}
 }

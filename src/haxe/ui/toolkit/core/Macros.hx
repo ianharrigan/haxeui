@@ -6,6 +6,83 @@ import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.StringUtil;
 
 class Macros {
+	macro public static function addClonable():Array<Field> {
+        var pos = haxe.macro.Context.currentPos();
+        var fields = haxe.macro.Context.getBuildFields();
+		if (hasInterface(Context.getLocalType(), "haxe.ui.toolkit.core.interfaces.IClonable") == false) {
+			return fields;
+		}
+
+		var currentCloneFn = getFunction("clone", fields);
+		var t:haxe.macro.Type = Context.getLocalType();
+		var className:String = getClassNameFromType(t);
+		var filePath = StringTools.replace(className, ".", "/");
+		filePath = "src/" + filePath + ".hx";
+		pos = Context.makePosition( { min: 0, max:0, file: filePath});
+
+		var useSelf:Bool = false;
+		if (getSuperClass(t) == null) {
+			useSelf = true;
+		}
+		
+		var n1:Int = className.indexOf("_");
+		if (n1 != -1) {
+			var n2:Int = className.indexOf(".", n1);
+			className = className.substr(0, n1) + className.substr(n2 + 1, className.length);
+		}
+		
+		if (currentCloneFn == null) {
+			var code:String = "";
+			code += "function():" + className + " {\n";
+			if (useSelf == false) {
+				code += "var c:" + className + " = cast super.clone();\n";
+			} else {
+				code += "var c:" + className + " = self();\n";
+			}
+			for (f in getFieldsWithMeta("clonable", fields)) {
+				code += "c." + f.name + " = this." + f.name + ";\n";
+			}
+			code += "return c;\n";
+			code += "}\n";
+		
+			//trace(code);
+			
+			var access:Array<Access> = [APublic];
+			if (useSelf == false) {
+				access.push(AOverride);
+			}
+			addFunction("clone", Context.parseInlineString(code, pos), access, fields, pos);
+		} else {
+			var code:String = "";
+			if (useSelf == false) {
+				code += "var c:" + className + " = cast super.clone()\n";
+			} else {
+				code += "var c:" + className + " = self()\n";
+			}
+
+			insertLine(currentCloneFn, Context.parseInlineString(code, pos), 0);
+			
+			for (f in getFieldsWithMeta("clonable", fields)) {
+				code = "c." + f.name + " = this." + f.name + "";
+				insertLine(currentCloneFn, Context.parseInlineString(code, pos), -1);
+			}
+
+			insertLine(currentCloneFn, Context.parseInlineString("return c", pos), -1);
+		}
+
+		var code:String = "";
+		code += "function():" + className + " {\n";
+		code += "return new " + className + "();\n";
+		code += "}\n";
+		var access:Array<Access> = [APrivate];
+		if (useSelf == false) {
+			access.push(AOverride);
+		}
+		addFunction("self", Context.parseInlineString(code, pos), access, fields, pos);
+
+		return fields;
+	}
+	
 	macro public static function addEvents(types:Array<String>):Array<Field> {
         var pos = haxe.macro.Context.currentPos();
         var fields = haxe.macro.Context.getBuildFields();
@@ -118,8 +195,73 @@ class Macros {
 		}
 	}
 	
+	private static function getFunction(name:String, fields:Array<Field>) {
+		var fn = null;
+		for (f in fields) {
+			if (f.name == name) {
+				switch (f.kind) {
+					case FFun(f):
+							fn = f;
+						break;
+					default:
+				}
+				break;
+			}
+		}
+		return fn;
+	}
+	
+	private static function addFunction(name:String, e:Expr, access:Array<Access>, fields:Array<Field>, pos:Position):Void {
+		var fn = switch (e).expr {
+			case EFunction(_,f): f;
+			case _: throw "false";
+		}
+		fields.push( { name : name, doc : null, meta : [], access : access, kind : FFun(fn), pos : pos } );
+	}
+	
+	private static function getFieldsWithMeta(meta:String, fields:Array<Field>):Array<Field> {
+		var arr:Array<Field> = new Array<Field>();
+
+		for (f in fields) {
+			if (hasMeta(f, meta)) {
+				arr.push(f);
+			}
+		}
+		
+		return arr;
+	}
+	
+	private static function getSuperClass(t:haxe.macro.Type) {
+		var superClass = null;
+		switch (t) {
+				case TAnonymous(t): {};
+				case TMono(t): {};
+				case TLazy(t): {};
+				case TFun(t, _): {};
+				case TDynamic(t): {};
+				case TInst(t, _): {
+					superClass = t.get().superClass;
+				}
+				case TEnum(t, _): {};
+				case TType(t, _): {};
+				case TAbstract(t, _): {};
+		}
+		return superClass;
+	}
+	
+	private static function insertLine(fn, e:Expr, location:Int):Void {
+		fn.expr = switch(fn.expr.expr) {
+			case EBlock(el): macro $b{insertExpr(el, location, e)};
+			case _: macro $b { insertExpr([fn.expr], location, e) }
+		}
+	}
+	
 	private static function insertExpr(arr:Array<Expr>, pos:Int, item:Expr):Array<Expr> {
-		arr.insert(pos, item);
+		if (pos == -1) {
+			arr.push(item);
+		} else {
+			arr.insert(pos, item);
+		}
 		return arr;
 	}
 	
@@ -327,6 +469,17 @@ class Macros {
 				case TAbstract(t, _): className = t.toString();
 		}
 		return className;
+	}
+	
+	private static function hasMeta(f:Field, meta:String):Bool {
+		var has:Bool = false;
+		for (m in f.meta) {
+			if (m.name == meta || m.name == ":" + meta) {
+				has = true;
+				break;
+			}
+		}
+		return has;
 	}
 	
 	private static function hasInterface(t:haxe.macro.Type, interfaceRequired:String):Bool {

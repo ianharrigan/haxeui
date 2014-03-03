@@ -194,30 +194,18 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	//******************************************************************************************
 	// Clone
 	//******************************************************************************************
-	public override function self():Accordion return new Accordion();
 	public override function clone():Accordion {
-		var c:Accordion = cast super.clone();
 		c.removeAllChildren();
 		for (child in this.children) {
 			if (Std.is(child, AccordionButton) == false) {
 				c.addChild(child.clone());
 			}
 		}
-		return c;
 	}
 }
 
-private class AccordionButton extends Button implements IClonable<AccordionButton> {
+class AccordionButton extends Button implements IClonable<AccordionButton> {
 	public function new() {
 		super();
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():AccordionButton return new AccordionButton();
-	public override function clone():AccordionButton {
-		var c:AccordionButton = cast super.clone();
-		return c;
 	}
 }

@@ -67,7 +67,9 @@ class Value extends StateComponent implements IClonable<Value> {
 	//******************************************************************************************
 	// Getters/setters
 	//******************************************************************************************
+	@:clonable
 	public var value(get, set):String;
+	@:clonable
 	public var interactive(get, set):Bool;
 	
 	private function get_value():String {
@@ -103,14 +105,10 @@ class Value extends StateComponent implements IClonable<Value> {
 	//******************************************************************************************
 	// Clone
 	//******************************************************************************************
-	public override function self():Value return new Value();
 	public override function clone():Value {
-		var c:Value = cast super.clone();
 		for (v in this._valuesList) {
 			c.addValue(v);
 		}
-		c.value = this.value;
-		c.interactive = this.interactive;
 		return c;
 	}
 }

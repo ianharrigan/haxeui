@@ -72,6 +72,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	// IStyleable
 	//******************************************************************************************
 	public var style(get, set):Style;
+	@:clonable
 	public var styleName(get, set):String;
 	public var inlineStyle(get, set):Style;
 	
@@ -232,15 +233,5 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		
 		applyStyle();
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():StyleableDisplayObject return new StyleableDisplayObject();
-	public override function clone():StyleableDisplayObject {
-		var c:StyleableDisplayObject = cast super.clone();
-		c.styleName = this.styleName;
-		return c;
 	}
 }

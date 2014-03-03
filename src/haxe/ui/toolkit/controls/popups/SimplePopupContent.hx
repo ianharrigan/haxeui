@@ -8,7 +8,7 @@ import haxe.ui.toolkit.controls.Text;
 class SimplePopupContent extends PopupContent {
 	private var _textControl:Text;
 	
-	public function new(text:String) {
+	public function new(text:String = "") {
 		super();
 		_autoSize = false;
 		_textControl = new Text();

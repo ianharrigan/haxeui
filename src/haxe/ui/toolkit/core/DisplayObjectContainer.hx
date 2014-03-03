@@ -68,6 +68,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	public var numChildren(get, null):Int;
 	public var layout(get, set):ILayout;
 	public var children(get, null):Array<IDisplayObject>;
+	@:clonable
 	public var autoSize(get, set):Bool;
 	
 	private function get_numChildren():Int {
@@ -303,20 +304,5 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			child.root = value;
 		}
 		return value;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():DisplayObjectContainer return new DisplayObjectContainer();
-	public override function clone():DisplayObjectContainer {
-		var c:DisplayObjectContainer = cast super.clone();
-		c.autoSize = this.autoSize;
-		/*
-		for (child in this.children) {
-			c.addChild(child.clone());
-		}
-		*/
-		return c;
 	}
 }

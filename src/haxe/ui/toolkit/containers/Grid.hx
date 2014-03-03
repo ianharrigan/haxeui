@@ -21,6 +21,7 @@ class Grid extends Container implements IClonable<Grid> {
 	/**
 	 Number of columns for the grid
 	 **/
+	@:clonable
 	public var columns(get, set):Int;
 	
 	private function get_columns():Int {
@@ -30,15 +31,5 @@ class Grid extends Container implements IClonable<Grid> {
 	private function set_columns(value:Int):Int {
 		cast(_layout, GridLayout).columns = value;
 		return value;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Grid return new Grid();
-	public override function clone():Grid {
-		var c:Grid = cast super.clone();
-		c.columns = this.columns;
-		return c;
 	}
 }

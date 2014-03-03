@@ -5,7 +5,7 @@ package haxe.ui.toolkit.controls.popups;
  **/
 class BusyPopupContent extends SimplePopupContent {
 
-	public function new(text:String) {
+	public function new(text:String = "") {
 		super(text);
 	}
 	

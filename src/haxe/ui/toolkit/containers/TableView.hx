@@ -323,7 +323,7 @@ class TableViewRow extends HBox implements IStateComponent {
 	private var _states:Array<String>;
 	private var _parentTable:TableView;
 	
-	public function new(parentTable:TableView) {
+	public function new(parentTable:TableView = null) {
 		super();
 		_states = new Array<String>();
 		sprite.buttonMode = true;

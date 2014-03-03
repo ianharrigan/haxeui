@@ -71,13 +71,4 @@ class VSlider extends Slider implements IClonable<VSlider> {
 		var newValue:Float = max - ((v / ucy) * m);
 		return newValue;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():VSlider return new VSlider();
-	public override function clone():VSlider {
-		var c:VSlider = cast super.clone();
-		return c;
-	}
 }

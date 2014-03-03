@@ -18,13 +18,4 @@ class VProgress extends Progress implements IClonable<VProgress> {
 		super();
 		direction = Direction.VERTICAL;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():VProgress return new VProgress();
-	public override function clone():VProgress {
-		var c:VProgress = cast super.clone();
-		return c;
-	}
 }

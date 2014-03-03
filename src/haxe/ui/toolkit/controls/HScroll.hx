@@ -190,22 +190,27 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	/**
 	 Value of the scrollbar
 	 **/
+	@:clonable
 	public var pos(get, set):Float;
 	/**
 	 Minimum value allowed for the scrollbar
 	 **/
+	@:clonable
 	public var min(get, set):Float;
 	/**
 	 Maximum value allowed for the scrollbar
 	 **/
+	@:clonable
 	public var max(get, set):Float;
 	/**
 	 The size of one page for the scrollbar (affects the size of the thumb)
 	 **/
+	@:clonable
 	public var pageSize(get, set):Float;
 	/**
 	 How much the scrollbar should increment (or deincrement) when using the scroll buttons
 	 **/
+	@:clonable
 	public var incrementSize(get, set):Float;
 	
 	private function get_pos():Float {
@@ -295,23 +300,9 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	public function incrementValue():Void {
 		pos += _incrementSize;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():HScroll return new HScroll();
-	public override function clone():HScroll {
-		var c:HScroll = cast super.clone();
-		c.min = this.min;
-		c.max = this.max;
-		c.pos = this.pos;
-		c.pageSize = this.pageSize;
-		c.incrementSize = this.incrementSize;
-		return c;
-	}
 }
 
-private class HScrollLayout extends DefaultLayout {
+class HScrollLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

@@ -108,7 +108,7 @@ class ExpandablePanel extends VBox {
 	}
 }
 
-private class ExpandableButton extends Button {
+class ExpandableButton extends Button {
 	public function new () {
 		super();
 	}

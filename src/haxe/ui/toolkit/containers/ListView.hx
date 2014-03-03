@@ -383,7 +383,7 @@ class ListViewItem extends StateComponent {
 	
 	private var _parentList:ListView;
 	
-	public function new(parentList:ListView) {
+	public function new(parentList:ListView = null) {
 		super();
 		_parentList = parentList;
 		sprite.buttonMode = true;
@@ -642,7 +642,7 @@ class ListViewItem extends StateComponent {
 	}
 }
 
-private class ListViewItemLayout extends DefaultLayout {
+class ListViewItemLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

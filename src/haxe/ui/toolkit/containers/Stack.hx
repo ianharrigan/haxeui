@@ -45,6 +45,7 @@ class Stack extends Component {
 	private function set_selectedIndex(value:Int):Int {
 		if (value != _selectedIndex) {
 			var transition:String = Toolkit.getTransitionForClass(Stack);
+			transition = "none";
 			for (n in 0...children.length) {
 				var item:IDisplayObject = children[n];
 				if (n == value) {

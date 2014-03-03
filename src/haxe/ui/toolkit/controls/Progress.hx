@@ -61,26 +61,32 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	/**
 	 The direction of this progress bar. Can be `horizontal` or `vertical`
 	 **/
+	@:clonable
 	public var direction(get, set):String;
 	/**
 	 Minimum value allowed for the progress bar
 	 **/
+	@:clonable
 	public var min(get, set):Float;
 	/**
 	 Maximum value allowed for the progress bar
 	 **/
+	@:clonable
 	public var max(get, set):Float;
 	/**
 	 Value of the progress bar
 	 **/
+	@:clonable
 	public var pos(get, set):Float;
 	/**
 	 Not applicable to progress bar
 	 **/
+	@:clonable
 	public var pageSize(get, set):Float;
 	/**
 	 How much the scrollbar should increment (or deincrement)
 	 **/
+	@:clonable
 	public var incrementSize(get, set):Float;
 	
 	private function get_direction():String {
@@ -164,24 +170,9 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 		_incrementSize = value;
 		return value;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Progress return new Progress();
-	public override function clone():Progress {
-		var c:Progress = cast super.clone();
-		c.direction = this.direction;
-		c.min = this.min;
-		c.max = this.max;
-		c.pos = this.pos;
-		c.pageSize = this.pageSize;
-		c.incrementSize = this.incrementSize;
-		return c;
-	}
 }
 
-private class HProgressLayout extends DefaultLayout {
+class HProgressLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}
@@ -249,7 +240,7 @@ private class HProgressLayout extends DefaultLayout {
 	}
 }
 
-private class VProgressLayout extends DefaultLayout {
+class VProgressLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

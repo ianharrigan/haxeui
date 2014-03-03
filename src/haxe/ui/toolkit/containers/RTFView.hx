@@ -231,6 +231,6 @@ class RTFView extends VBox {
 	}
 }
 
-private class RTFToolButton extends Button { // for styling
+class RTFToolButton extends Button { // for styling
 	
 }

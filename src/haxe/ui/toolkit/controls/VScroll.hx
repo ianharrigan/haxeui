@@ -190,22 +190,27 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 	/**
 	 Value of the scrollbar
 	 **/
+	@:clonable
 	public var pos(get, set):Float;
 	/**
 	 Minimum value allowed for the scrollbar
 	 **/
+	@:clonable
 	public var min(get, set):Float;
 	/**
 	 Maximum value allowed for the scrollbar
 	 **/
+	@:clonable
 	public var max(get, set):Float;
 	/**
 	 The size of one page for the scrollbar (affects the size of the thumb)
 	 **/
+	@:clonable
 	public var pageSize(get, set):Float;
 	/**
 	 How much the scrollbar should increment (or deincrement) when using the scroll buttons
 	 **/
+	@:clonable
 	public var incrementSize(get, set):Float;
 	
 	private function get_pos():Float {
@@ -295,23 +300,9 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 	public function incrementValue():Void {
 		pos += _incrementSize;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():VScroll return new VScroll();
-	public override function clone():VScroll {
-		var c:VScroll = cast super.clone();
-		c.min = this.min;
-		c.max = this.max;
-		c.pos = this.pos;
-		c.pageSize = this.pageSize;
-		c.incrementSize = this.incrementSize;
-		return c;
-	}
 }
 
-private class VScrollLayout extends DefaultLayout {
+class VScrollLayout extends DefaultLayout {
 	public function new() {
 		super();
 	}

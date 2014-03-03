@@ -14,13 +14,4 @@ class HBox extends Container implements IClonable<HBox> {
 		autoSize = true;
 		layout = new HorizontalLayout();
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():HBox return new HBox();
-	public override function clone():HBox {
-		var c:HBox = cast super.clone();
-		return c;
-	}
 }

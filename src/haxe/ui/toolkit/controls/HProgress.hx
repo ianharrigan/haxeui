@@ -18,13 +18,4 @@ class HProgress extends Progress implements IClonable<HProgress> {
 		super();
 		direction = Direction.HORIZONTAL;
 	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():HProgress return new HProgress();
-	public override function clone():HProgress {
-		var c:HProgress = cast super.clone();
-		return c;
-	}
 }

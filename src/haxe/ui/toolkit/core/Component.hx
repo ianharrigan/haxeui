@@ -54,11 +54,14 @@ class Component extends StyleableDisplayObject implements IClonable<StyleableDis
 	//******************************************************************************************
 	// Component methods/properties
 	//******************************************************************************************
+	@:clonable
 	public var text(get, set):String;
 	public var clipWidth(get, set):Float;
 	public var clipHeight(get, set):Float;
 	public var clipContent(get, set):Bool;
+	@:clonable
 	public var disabled(get, set):Bool;
+	@:clonable
 	public var userData(default, default):Dynamic;
 	
 	private function get_text():String {
@@ -250,22 +253,5 @@ class Component extends StyleableDisplayObject implements IClonable<StyleableDis
 	private function _onComponentMouseMove(event:MouseEvent):Void {
 		this.x = event.stageX - mouseDownPos.x;
 		this.y = event.stageY - mouseDownPos.y;
-	}
-	
-	//******************************************************************************************
-	// Clone
-	//******************************************************************************************
-	public override function self():Component return new Component();
-	public override function clone():Component {
-		var c:Component = cast super.clone();
-		c.text = this.text;
-		/*
-		c.clipWidth = this.clipWidth;
-		c.clipHeight = this.clipHeight;
-		c.clipContent = this.clipContent;
-		*/
-		c.disabled = this.disabled;
-		c.userData = this.userData;
-		return c;
 	}
 }
