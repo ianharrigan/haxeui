@@ -37,7 +37,6 @@ import haxe.ui.toolkit.style.Style;
 @:event("UIEvent.MOUSE_OUT", "Dispatched when the user moves a pointing device away from the button") 
 @:event("UIEvent.MOUSE_MOVE", "Dispatched when a user moves the pointing device while it is over the button") 
 @:event("UIEvent.CHANGE", "Dispatched when the value of the toggle group changes") 
-@events_descriptions("Dispatched when button is clicked", "Dispatched when the value of the toggle group changes")
 class Button extends StateComponent implements IFocusable implements IClonable<StateComponent> {
 	/**
 	 Button state is "normal" (default state)
