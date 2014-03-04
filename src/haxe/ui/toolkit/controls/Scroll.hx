@@ -8,11 +8,9 @@ import haxe.ui.toolkit.core.StateComponent;
 
 /**
  Scrollbar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the scrollbar has changed
  **/
+ 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the scrollbar changes") 
 class Scroll extends StateComponent implements IDirectional {
 	private var _direction:String = Direction.VERTICAL;
 

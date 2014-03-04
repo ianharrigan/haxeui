@@ -11,12 +11,9 @@ import haxe.ui.toolkit.style.Style;
 
 /**
  Simple two state checkbox control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when the value of the checkbox is modified
  **/
 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the checkbox is modified") 
 class CheckBox extends Component implements IClonable<CheckBox> {
 	private var _value:CheckBoxValue;
 	private var _label:Text;

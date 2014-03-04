@@ -14,10 +14,6 @@ import haxe.ui.toolkit.layout.DefaultLayout;
 
 /**
  Horizontal scrollbar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the slider bar has changed
  **/
 
 class HScroll extends Scroll implements IScrollable implements IClonable<HScroll> {

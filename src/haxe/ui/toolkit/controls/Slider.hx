@@ -8,11 +8,9 @@ import haxe.ui.toolkit.core.Screen;
 
 /**
  Slider bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the slider bar has changed
  **/
+ 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the slider changes") 
 class Slider extends Progress {
 	private var _thumb:Button;
 	

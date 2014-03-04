@@ -11,12 +11,9 @@ import haxe.ui.toolkit.style.Style;
 
 /**
  Simple two state option control (supports groups)
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the option group has changed
  **/
 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the option box is modified") 
 class OptionBox extends Component implements IClonable<OptionBox> {
 	private var _value:OptionBoxValue;
 	private var _label:Text;

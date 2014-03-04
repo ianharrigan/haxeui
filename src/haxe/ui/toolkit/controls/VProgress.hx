@@ -7,10 +7,6 @@ import haxe.ui.toolkit.layout.Layout;
 
 /**
  Vertical progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
  
 class VProgress extends Progress implements IClonable<VProgress> {

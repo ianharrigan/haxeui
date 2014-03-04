@@ -7,10 +7,6 @@ import haxe.ui.toolkit.layout.Layout;
 
 /**
  Horizontal progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
  
 class HProgress extends Progress implements IClonable<HProgress> {

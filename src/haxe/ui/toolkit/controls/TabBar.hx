@@ -10,11 +10,9 @@ import haxe.ui.toolkit.events.UIEvent;
 
 /**
  Horizontally scrollable tab bar
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when the selection is changed
  **/
+ 
+@:event("UIEvent.CHANGE", "Dispatched when the selection is changed") 
 class TabBar extends ScrollView {
 	private var _content:HBox;
 

@@ -17,11 +17,9 @@ import haxe.ui.toolkit.layout.Layout;
 
 /**
  Progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed
  **/
+ 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the progress bar changes") 
 class Progress extends StateComponent implements IScrollable implements IDirectional implements IClonable<Progress> {
 	private var _direction:String;
 	private var _min:Float = 0;

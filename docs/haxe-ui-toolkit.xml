@@ -21614,24 +21614,24 @@
 		<extends path="haxe.ui.toolkit.core.StateComponent"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.core.StateComponent"/></implements>
 		<implements path="haxe.ui.toolkit.core.interfaces.IFocusable"/>
-		<STATE_NORMAL public="1" get="inline" set="null" line="45" static="1">
+		<STATE_NORMAL public="1" get="inline" set="null" line="44" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "normal" (default state)</haxe_doc>
 		</STATE_NORMAL>
-		<STATE_OVER public="1" get="inline" set="null" line="49" static="1">
+		<STATE_OVER public="1" get="inline" set="null" line="48" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "over"</haxe_doc>
 		</STATE_OVER>
-		<STATE_DOWN public="1" get="inline" set="null" line="53" static="1">
+		<STATE_DOWN public="1" get="inline" set="null" line="52" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "down"</haxe_doc>
 		</STATE_DOWN>
-		<STATE_DISABLED public="1" get="inline" set="null" line="57" static="1">
+		<STATE_DISABLED public="1" get="inline" set="null" line="56" static="1">
 			<c path="String"/>
 			<haxe_doc>Button state is "disabled"</haxe_doc>
 		</STATE_DISABLED>
 		<_groups static="1"><c path="haxe.ds.StringMap"><c path="Array"><c path="haxe.ui.toolkit.controls.Button"/></c></c></_groups>
-		<optionInGroup set="method" line="454" static="1"><f a="value:option">
+		<optionInGroup set="method" line="453" static="1"><f a="value:option">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.controls.Button"/>
 	<x path="Bool"/>
@@ -21655,49 +21655,49 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>Sets the icon asset. Eg: `assets/myicon.png`</haxe_doc>
 		</icon>
-		<get_remainPressed set="method" line="102"><f a=""><x path="Bool"/></f></get_remainPressed>
-		<set_remainPressed set="method" line="106"><f a="value">
+		<get_remainPressed set="method" line="101"><f a=""><x path="Bool"/></f></get_remainPressed>
+		<set_remainPressed set="method" line="105"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_remainPressed>
-		<get_icon set="method" line="111"><f a=""><c path="String"/></f></get_icon>
-		<set_icon set="method" line="118"><f a="value">
+		<get_icon set="method" line="110"><f a=""><c path="String"/></f></get_icon>
+		<set_icon set="method" line="117"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_icon>
-		<preInitialize set="method" line="132" override="1"><f a=""><x path="Void"/></f></preInitialize>
-		<initialize set="method" line="137" override="1"><f a=""><x path="Void"/></f></initialize>
-		<set_disabled set="method" line="151" override="1"><f a="value">
+		<preInitialize set="method" line="131" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<initialize set="method" line="136" override="1"><f a=""><x path="Void"/></f></initialize>
+		<set_disabled set="method" line="150" override="1"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_disabled>
-		<get_text set="method" line="168" override="1"><f a=""><c path="String"/></f></get_text>
-		<set_text set="method" line="172" override="1"><f a="value">
+		<get_text set="method" line="167" override="1"><f a=""><c path="String"/></f></get_text>
+		<set_text set="method" line="171" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
-		<_onMouseOver set="method" line="184"><f a="event">
+		<_onMouseOver set="method" line="183"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOver>
-		<_onMouseOut set="method" line="194"><f a="event">
+		<_onMouseOut set="method" line="193"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseOut>
-		<_onMouseDown set="method" line="204"><f a="event">
+		<_onMouseDown set="method" line="203"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onMouseUp set="method" line="212"><f a="event">
+		<_onMouseUp set="method" line="211"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseUp>
-		<_onMouseClick set="method" line="231"><f a="event">
+		<_onMouseClick set="method" line="230"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseClick>
-		<get_states set="method" line="248" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
-		<set_state set="method" line="252" override="1"><f a="value">
+		<get_states set="method" line="247" override="1"><f a=""><c path="Array"><c path="String"/></c></f></get_states>
+		<set_state set="method" line="251" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_state>
@@ -21706,8 +21706,8 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>Defines whether or not the button can receive focus by tabbing to it (not yet implemented)</haxe_doc>
 		</allowFocus>
-		<get_allowFocus set="method" line="269"><f a=""><x path="Bool"/></f></get_allowFocus>
-		<set_allowFocus set="method" line="273"><f a="value">
+		<get_allowFocus set="method" line="268"><f a=""><x path="Bool"/></f></get_allowFocus>
+		<set_allowFocus set="method" line="272"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowFocus>
@@ -21742,39 +21742,39 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>Defines whether this buttons selected state can be modified by the user. Only applicable for toggle buttons.</haxe_doc>
 		</allowSelection>
-		<get_iconPosition set="method" line="312"><f a=""><c path="String"/></f></get_iconPosition>
-		<set_iconPosition set="method" line="319"><f a="value">
+		<get_iconPosition set="method" line="311"><f a=""><c path="String"/></f></get_iconPosition>
+		<set_iconPosition set="method" line="318"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_toggle set="method" line="326"><f a=""><x path="Bool"/></f></get_toggle>
-		<set_toggle set="method" line="330"><f a="value">
+		<get_toggle set="method" line="325"><f a=""><x path="Bool"/></f></get_toggle>
+		<set_toggle set="method" line="329"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_toggle>
-		<get_selected set="method" line="335"><f a=""><x path="Bool"/></f></get_selected>
-		<set_selected set="method" line="339"><f a="value">
+		<get_selected set="method" line="334"><f a=""><x path="Bool"/></f></get_selected>
+		<set_selected set="method" line="338"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<get_group set="method" line="381"><f a=""><c path="String"/></f></get_group>
-		<set_group set="method" line="385"><f a="value">
+		<get_group set="method" line="380"><f a=""><c path="String"/></f></get_group>
+		<set_group set="method" line="384"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_group>
-		<get_allowSelection set="method" line="408"><f a=""><x path="Bool"/></f></get_allowSelection>
-		<set_allowSelection set="method" line="412"><f a="value">
+		<get_allowSelection set="method" line="407"><f a=""><x path="Bool"/></f></get_allowSelection>
+		<set_allowSelection set="method" line="411"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_allowSelection>
-		<applyStyle public="1" set="method" line="420" override="1"><f a=""><x path="Void"/></f></applyStyle>
-		<resizeButton set="method" line="468"><f a="?force">
+		<applyStyle public="1" set="method" line="419" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<resizeButton set="method" line="467"><f a="?force">
 	<x path="Bool"/>
 	<x path="Void"/>
 </f></resizeButton>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Button"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Button"/></f></self>
-		<new public="1" set="method" line="73"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="72"><f a=""><x path="Void"/></f></new>
 		<haxe_doc><![CDATA[General purpose multi-state button control with icon and toggle support (plus icon positioning)
 
  <b>Code Example</b>
@@ -21819,10 +21819,6 @@
 			</m>
 			<m n=":event">
 				<e>"UIEvent.CHANGE"</e>
-				<e>"Dispatched when the value of the toggle group changes"</e>
-			</m>
-			<m n="events_descriptions">
-				<e>"Dispatched when button is clicked"</e>
 				<e>"Dispatched when the value of the toggle group changes"</e>
 			</m>
 		</meta>
@@ -22789,20 +22785,20 @@
 		<_labelPos><c path="String"/></_labelPos>
 		<iconPosition public="1" get="accessor" set="accessor"><c path="String"/></iconPosition>
 		<labelPosition public="1" get="accessor" set="accessor"><c path="String"/></labelPosition>
-		<get_iconPosition set="method" line="503"><f a=""><c path="String"/></f></get_iconPosition>
-		<set_iconPosition set="method" line="507"><f a="value">
+		<get_iconPosition set="method" line="502"><f a=""><c path="String"/></f></get_iconPosition>
+		<set_iconPosition set="method" line="506"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_iconPosition>
-		<get_labelPosition set="method" line="512"><f a=""><c path="String"/></f></get_labelPosition>
-		<set_labelPosition set="method" line="516"><f a="value">
+		<get_labelPosition set="method" line="511"><f a=""><c path="String"/></f></get_labelPosition>
+		<set_labelPosition set="method" line="515"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_labelPosition>
-		<repositionChildren set="method" line="524" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<repositionChildren set="method" line="523" override="1"><f a=""><x path="Void"/></f></repositionChildren>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.ButtonLayout"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.ButtonLayout"/></f></self>
-		<new public="1" set="method" line="493"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="492"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -22885,9 +22881,9 @@
 		<_value><c path="haxe.ui.toolkit.controls.CheckBoxValue"/></_value>
 		<_label><c path="haxe.ui.toolkit.controls.Text"/></_label>
 		<_selected><x path="Bool"/></_selected>
-		<initialize set="method" line="38" override="1"><f a=""><x path="Void"/></f></initialize>
-		<get_text set="method" line="57" override="1"><f a=""><c path="String"/></f></get_text>
-		<set_text set="method" line="61" override="1"><f a="value">
+		<initialize set="method" line="35" override="1"><f a=""><x path="Void"/></f></initialize>
+		<get_text set="method" line="54" override="1"><f a=""><c path="String"/></f></get_text>
+		<set_text set="method" line="58" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
@@ -22896,23 +22892,23 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>Defines whether the checkbox is checked or not</haxe_doc>
 		</selected>
-		<get_selected set="method" line="76"><f a=""><x path="Bool"/></f></get_selected>
-		<set_selected set="method" line="80"><f a="value">
+		<get_selected set="method" line="73"><f a=""><x path="Bool"/></f></get_selected>
+		<set_selected set="method" line="77"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<applyStyle public="1" set="method" line="97" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="94" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.CheckBox"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.CheckBox"/></f></self>
-		<new public="1" set="method" line="25"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Simple two state checkbox control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when the value of the checkbox is modified]]></haxe_doc>
+		<new public="1" set="method" line="22"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Simple two state checkbox control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the value of the checkbox is modified"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Value" params="" file="src/haxe/ui/toolkit/controls/Value.hx">
@@ -22966,7 +22962,7 @@
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.CheckBoxValue"/></implements>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.CheckBoxValue"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.CheckBoxValue"/></f></self>
-		<new public="1" set="method" line="116"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="113"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -22993,7 +22989,7 @@
 		<_incrementSize><x path="Float"/></_incrementSize>
 		<_valueBgComp><c path="haxe.ui.toolkit.core.StateComponent"/></_valueBgComp>
 		<_valueComp><c path="haxe.ui.toolkit.core.StateComponent"/></_valueComp>
-		<initialize set="method" line="51" override="1"><f a=""><x path="Void"/></f></initialize>
+		<initialize set="method" line="49" override="1"><f a=""><x path="Void"/></f></initialize>
 		<direction public="1" get="accessor" set="accessor">
 			<c path="String"/>
 			<meta><m n=":clonable"/></meta>
@@ -23024,47 +23020,47 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>How much the scrollbar should increment (or deincrement)</haxe_doc>
 		</incrementSize>
-		<get_direction set="method" line="92"><f a=""><c path="String"/></f></get_direction>
-		<set_direction set="method" line="96"><f a="value">
+		<get_direction set="method" line="90"><f a=""><c path="String"/></f></get_direction>
+		<set_direction set="method" line="94"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_direction>
-		<get_min set="method" line="106"><f a=""><x path="Float"/></f></get_min>
-		<set_min set="method" line="110"><f a="value">
+		<get_min set="method" line="104"><f a=""><x path="Float"/></f></get_min>
+		<set_min set="method" line="108"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_max set="method" line="120"><f a=""><x path="Float"/></f></get_max>
-		<set_max set="method" line="124"><f a="value">
+		<get_max set="method" line="118"><f a=""><x path="Float"/></f></get_max>
+		<set_max set="method" line="122"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_pos set="method" line="134"><f a=""><x path="Float"/></f></get_pos>
-		<set_pos set="method" line="138"><f a="value">
+		<get_pos set="method" line="132"><f a=""><x path="Float"/></f></get_pos>
+		<set_pos set="method" line="136"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_pageSize set="method" line="157"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_pageSize set="method" line="161"><f a="value">
+		<get_pageSize set="method" line="155"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_pageSize set="method" line="159"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_incrementSize set="method" line="165"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_incrementSize set="method" line="169"><f a="value">
+		<get_incrementSize set="method" line="163"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_incrementSize set="method" line="167"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Progress"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Progress"/></f></self>
-		<new public="1" set="method" line="35"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="33"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Progress bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the value of the progress bar changes"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.HProgress" params="" file="src/haxe/ui/toolkit/controls/HProgress.hx">
@@ -23072,12 +23068,8 @@
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.HProgress"/></implements>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HProgress"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HProgress"/></f></self>
-		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Horizontal progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Horizontal progress bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23091,22 +23083,22 @@
 			<c path="String"/>
 			<haxe_doc>The direction of this progress bar. Can be `horizontal` or `vertical`</haxe_doc>
 		</direction>
-		<get_direction set="method" line="32"><f a=""><c path="String"/></f></get_direction>
-		<set_direction set="method" line="36"><f a="value">
+		<get_direction set="method" line="30"><f a=""><c path="String"/></f></get_direction>
+		<set_direction set="method" line="34"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_direction>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Scroll"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Scroll"/></f></self>
-		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Scrollbar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the scrollbar has changed]]></haxe_doc>
+		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Scrollbar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the value of the scrollbar changes"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.HScroll" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx">
@@ -23125,33 +23117,33 @@
 		<_scrollDirection><x path="Int"/></_scrollDirection>
 		<_scrollTimer><c path="flash.utils.Timer"/></_scrollTimer>
 		<_hasButtons><x path="Bool"/></_hasButtons>
-		<preInitialize set="method" line="49" override="1"><f a=""><x path="Void"/></f></preInitialize>
-		<initialize set="method" line="57" override="1"><f a=""><x path="Void"/></f></initialize>
-		<_onThumbMouseDown set="method" line="93"><f a="event">
+		<preInitialize set="method" line="45" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<initialize set="method" line="53" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_onThumbMouseDown set="method" line="89"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
-		<_onScreenMouseMove set="method" line="101"><f a="event">
+		<_onScreenMouseMove set="method" line="97"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onScreenMouseUp set="method" line="125"><f a="event">
+		<_onScreenMouseUp set="method" line="121"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onDeinc set="method" line="134"><f a="event">
+		<_onDeinc set="method" line="130"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onInc set="method" line="146"><f a="event">
+		<_onInc set="method" line="142"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onScrollTimerComplete set="method" line="158"><f a="event">
+		<_onScrollTimerComplete set="method" line="154"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onMouseDown set="method" line="170"><f a="event">
+		<_onMouseDown set="method" line="166"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
@@ -23180,47 +23172,43 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
 		</incrementSize>
-		<get_pos set="method" line="216"><f a=""><x path="Float"/></f></get_pos>
-		<set_pos set="method" line="220"><f a="value">
+		<get_pos set="method" line="212"><f a=""><x path="Float"/></f></get_pos>
+		<set_pos set="method" line="216"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_min set="method" line="236"><f a=""><x path="Float"/></f></get_min>
-		<set_min set="method" line="240"><f a="value">
+		<get_min set="method" line="232"><f a=""><x path="Float"/></f></get_min>
+		<set_min set="method" line="236"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_max set="method" line="251"><f a=""><x path="Float"/></f></get_max>
-		<set_max set="method" line="255"><f a="value">
+		<get_max set="method" line="247"><f a=""><x path="Float"/></f></get_max>
+		<set_max set="method" line="251"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_pageSize set="method" line="266"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_pageSize set="method" line="270"><f a="value">
+		<get_pageSize set="method" line="262"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_pageSize set="method" line="266"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_incrementSize set="method" line="278"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_incrementSize set="method" line="282"><f a="value">
+		<get_incrementSize set="method" line="274"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_incrementSize set="method" line="278"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<deincrementValue public="1" set="method" line="293">
+		<deincrementValue public="1" set="method" line="289">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<incrementValue public="1" set="method" line="300">
+		<incrementValue public="1" set="method" line="296">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HScroll"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HScroll"/></f></self>
-		<new public="1" set="method" line="41"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Horizontal scrollbar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the slider bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="37"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Horizontal scrollbar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23228,12 +23216,12 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.HScrollLayout" params="" file="src/haxe/ui/toolkit/controls/HScroll.hx" module="haxe.ui.toolkit.controls.HScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<resizeChildren public="1" set="method" line="311" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<repositionChildren public="1" set="method" line="329" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<get_usableWidth set="method" line="356" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
+		<resizeChildren public="1" set="method" line="307" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<repositionChildren public="1" set="method" line="325" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<get_usableWidth set="method" line="352" override="1"><f a=""><x path="Float"/></f></get_usableWidth>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HScrollLayout"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HScrollLayout"/></f></self>
-		<new public="1" set="method" line="307"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="303"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23244,75 +23232,71 @@
 		<extends path="haxe.ui.toolkit.controls.Progress"/>
 		<_thumb><c path="haxe.ui.toolkit.controls.Button"/></_thumb>
 		<_mouseDownOffset><x path="Float"/></_mouseDownOffset>
-		<initialize set="method" line="31" override="1"><f a=""><x path="Void"/></f></initialize>
-		<_onMouseDown set="method" line="47"><f a="event">
+		<initialize set="method" line="29" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_onMouseDown set="method" line="45"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScreenMouseMove set="method" line="50"><f a="event">
+		<_onScreenMouseMove set="method" line="48"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onScreenMouseUp set="method" line="53"><f a="event">
+		<_onScreenMouseUp set="method" line="51"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onBackgroundMouseDown set="method" line="59"><f a="event">
+		<_onBackgroundMouseDown set="method" line="57"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onBackgroundMouseDown>
-		<calcPosFromCoord set="method" line="62"><f a="coord">
+		<calcPosFromCoord set="method" line="60"><f a="coord">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></calcPosFromCoord>
-		<_onMouseWheel set="method" line="66"><f a="event">
+		<_onMouseWheel set="method" line="64"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseWheel>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Slider"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.Slider"/></f></self>
-		<new public="1" set="method" line="21"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Slider bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the slider bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="19"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Slider bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the value of the slider changes"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.HSlider" params="" file="src/haxe/ui/toolkit/controls/HSlider.hx">
 		<extends path="haxe.ui.toolkit.controls.Slider"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.HSlider"/></implements>
-		<_onMouseDown set="method" line="25" override="1"><f a="event">
+		<_onMouseDown set="method" line="21" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScreenMouseMove set="method" line="29" override="1"><f a="event">
+		<_onScreenMouseMove set="method" line="25" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onBackgroundMouseDown set="method" line="34" override="1"><f a="event">
+		<_onBackgroundMouseDown set="method" line="30" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onBackgroundMouseDown>
-		<startTracking set="method" line="47"><f a="offset">
+		<startTracking set="method" line="43"><f a="offset">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></startTracking>
-		<calcPosFromCoord set="method" line="57" override="1"><f a="xpos">
+		<calcPosFromCoord set="method" line="53" override="1"><f a="xpos">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></calcPosFromCoord>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HSlider"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HSlider"/></f></self>
-		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Horizontal slider bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Horizontal slider bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23492,7 +23476,7 @@
 		<extends path="haxe.ui.toolkit.core.Component"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.OptionBox"/></implements>
 		<_groups static="1"><c path="haxe.ds.StringMap"><c path="Array"><c path="haxe.ui.toolkit.controls.OptionBox"/></c></c></_groups>
-		<optionInGroup set="method" line="142" static="1"><f a="value:option">
+		<optionInGroup set="method" line="139" static="1"><f a="value:option">
 	<c path="String"/>
 	<c path="haxe.ui.toolkit.controls.OptionBox"/>
 	<x path="Bool"/>
@@ -23500,9 +23484,9 @@
 		<_value><c path="haxe.ui.toolkit.controls.OptionBoxValue"/></_value>
 		<_label><c path="haxe.ui.toolkit.controls.Text"/></_label>
 		<_group><c path="String"/></_group>
-		<initialize set="method" line="45" override="1"><f a=""><x path="Void"/></f></initialize>
-		<get_text set="method" line="62" override="1"><f a=""><c path="String"/></f></get_text>
-		<set_text set="method" line="66" override="1"><f a="value">
+		<initialize set="method" line="42" override="1"><f a=""><x path="Void"/></f></initialize>
+		<get_text set="method" line="59" override="1"><f a=""><c path="String"/></f></get_text>
+		<set_text set="method" line="63" override="1"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_text>
@@ -23516,28 +23500,28 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>Defines the group for this option. Options belonging to the same group will only ever have a single option selected.</haxe_doc>
 		</group>
-		<get_selected set="method" line="86"><f a=""><x path="Bool"/></f></get_selected>
-		<set_selected set="method" line="90"><f a="value">
+		<get_selected set="method" line="83"><f a=""><x path="Bool"/></f></get_selected>
+		<set_selected set="method" line="87"><f a="value">
 	<x path="Bool"/>
 	<x path="Bool"/>
 </f></set_selected>
-		<get_group set="method" line="113"><f a=""><c path="String"/></f></get_group>
-		<set_group set="method" line="117"><f a="value">
+		<get_group set="method" line="110"><f a=""><c path="String"/></f></get_group>
+		<set_group set="method" line="114"><f a="value">
 	<c path="String"/>
 	<c path="String"/>
 </f></set_group>
-		<applyStyle public="1" set="method" line="159" override="1"><f a=""><x path="Void"/></f></applyStyle>
+		<applyStyle public="1" set="method" line="156" override="1"><f a=""><x path="Void"/></f></applyStyle>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.OptionBox"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.OptionBox"/></f></self>
-		<new public="1" set="method" line="27"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Simple two state option control (supports groups)
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the option group has changed]]></haxe_doc>
+		<new public="1" set="method" line="24"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Simple two state option control (supports groups)</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the value of the option box is modified"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.OptionBoxValue" params="" file="src/haxe/ui/toolkit/controls/OptionBox.hx" module="haxe.ui.toolkit.controls.OptionBox">
@@ -23545,7 +23529,7 @@
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.OptionBoxValue"/></implements>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.OptionBoxValue"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.OptionBoxValue"/></f></self>
-		<new public="1" set="method" line="178"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="175"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23554,11 +23538,11 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.HProgressLayout" params="" file="src/haxe/ui/toolkit/controls/Progress.hx" module="haxe.ui.toolkit.controls.Progress">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<resizeChildren public="1" set="method" line="181" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<repositionChildren public="1" set="method" line="222" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="179" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<repositionChildren public="1" set="method" line="220" override="1"><f a=""><x path="Void"/></f></repositionChildren>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HProgressLayout"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.HProgressLayout"/></f></self>
-		<new public="1" set="method" line="177"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="175"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23567,11 +23551,11 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.VProgressLayout" params="" file="src/haxe/ui/toolkit/controls/Progress.hx" module="haxe.ui.toolkit.controls.Progress">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<resizeChildren public="1" set="method" line="250" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<repositionChildren public="1" set="method" line="290" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<resizeChildren public="1" set="method" line="248" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<repositionChildren public="1" set="method" line="288" override="1"><f a=""><x path="Void"/></f></repositionChildren>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VProgressLayout"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VProgressLayout"/></f></self>
-		<new public="1" set="method" line="246"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="244"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23594,54 +23578,54 @@
 		<extends path="haxe.ui.toolkit.containers.ScrollView"/>
 		<_content><c path="haxe.ui.toolkit.containers.HBox"/></_content>
 		<_selectedIndex><x path="Int"/></_selectedIndex>
-		<initialize set="method" line="36" override="1"><f a=""><x path="Void"/></f></initialize>
+		<initialize set="method" line="34" override="1"><f a=""><x path="Void"/></f></initialize>
 		<selectedIndex public="1" get="accessor" set="accessor">
 			<x path="Int"/>
 			<haxe_doc>Gets (or sets) the selected button index for the tab bar</haxe_doc>
 		</selectedIndex>
 		<numTabs public="1" get="accessor" set="null"><x path="Int"/></numTabs>
-		<get_selectedIndex set="method" line="49"><f a=""><x path="Int"/></f></get_selectedIndex>
-		<set_selectedIndex set="method" line="53"><f a="value">
+		<get_selectedIndex set="method" line="47"><f a=""><x path="Int"/></f></get_selectedIndex>
+		<set_selectedIndex set="method" line="51"><f a="value">
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_selectedIndex>
-		<get_numTabs set="method" line="71"><f a=""><x path="Int"/></f></get_numTabs>
-		<addTab public="1" set="method" line="81">
+		<get_numTabs set="method" line="69"><f a=""><x path="Int"/></f></get_numTabs>
+		<addTab public="1" set="method" line="79">
 			<f a="text">
 				<c path="String"/>
 				<c path="haxe.ui.toolkit.controls.Button"/>
 			</f>
 			<haxe_doc>Adds a new button to the tab bar with the specified `text`</haxe_doc>
 		</addTab>
-		<removeTab public="1" set="method" line="94"><f a="index">
+		<removeTab public="1" set="method" line="92"><f a="index">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></removeTab>
-		<removeAllTabs public="1" set="method" line="104"><f a=""><x path="Void"/></f></removeAllTabs>
-		<setTabText public="1" set="method" line="109"><f a="index:text">
+		<removeAllTabs public="1" set="method" line="102"><f a=""><x path="Void"/></f></removeAllTabs>
+		<setTabText public="1" set="method" line="107"><f a="index:text">
 	<x path="Int"/>
 	<c path="String"/>
 	<x path="Void"/>
 </f></setTabText>
-		<tabButtonClick set="method" line="114"><f a="event">
+		<tabButtonClick set="method" line="112"><f a="event">
 	<c path="haxe.ui.toolkit.events.UIEvent"/>
 	<x path="Void"/>
 </f></tabButtonClick>
-		<tabGlyphClick set="method" line="118"><f a="event">
+		<tabGlyphClick set="method" line="116"><f a="event">
 	<c path="haxe.ui.toolkit.events.UIEvent"/>
 	<x path="Void"/>
 </f></tabGlyphClick>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.TabBar"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.TabBar"/></f></self>
-		<new public="1" set="method" line="23"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Horizontally scrollable tab bar
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when the selection is changed]]></haxe_doc>
+		<new public="1" set="method" line="21"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Horizontally scrollable tab bar</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
+			<m n=":event">
+				<e>"UIEvent.CHANGE"</e>
+				<e>"Dispatched when the selection is changed"</e>
+			</m>
 		</meta>
 	</class>
 	<class path="haxe.ui.toolkit.controls.Text" params="" file="src/haxe/ui/toolkit/controls/Text.hx">
@@ -23820,12 +23804,8 @@
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.VProgress"/></implements>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VProgress"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VProgress"/></f></self>
-		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Vertical progress bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Vertical progress bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23847,33 +23827,33 @@
 		<_scrollDirection><x path="Int"/></_scrollDirection>
 		<_scrollTimer><c path="flash.utils.Timer"/></_scrollTimer>
 		<_hasButtons><x path="Bool"/></_hasButtons>
-		<preInitialize set="method" line="49" override="1"><f a=""><x path="Void"/></f></preInitialize>
-		<initialize set="method" line="57" override="1"><f a=""><x path="Void"/></f></initialize>
-		<_onThumbMouseDown set="method" line="93"><f a="event">
+		<preInitialize set="method" line="45" override="1"><f a=""><x path="Void"/></f></preInitialize>
+		<initialize set="method" line="53" override="1"><f a=""><x path="Void"/></f></initialize>
+		<_onThumbMouseDown set="method" line="89"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onThumbMouseDown>
-		<_onScreenMouseMove set="method" line="101"><f a="event">
+		<_onScreenMouseMove set="method" line="97"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onScreenMouseUp set="method" line="125"><f a="event">
+		<_onScreenMouseUp set="method" line="121"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseUp>
-		<_onDeinc set="method" line="134"><f a="event">
+		<_onDeinc set="method" line="130"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onDeinc>
-		<_onInc set="method" line="146"><f a="event">
+		<_onInc set="method" line="142"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onInc>
-		<_onScrollTimerComplete set="method" line="158"><f a="event">
+		<_onScrollTimerComplete set="method" line="154"><f a="event">
 	<c path="flash.events.TimerEvent"/>
 	<x path="Void"/>
 </f></_onScrollTimerComplete>
-		<_onMouseDown set="method" line="170"><f a="event">
+		<_onMouseDown set="method" line="166"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
@@ -23902,47 +23882,43 @@
 			<meta><m n=":clonable"/></meta>
 			<haxe_doc>How much the scrollbar should increment (or deincrement) when using the scroll buttons</haxe_doc>
 		</incrementSize>
-		<get_pos set="method" line="216"><f a=""><x path="Float"/></f></get_pos>
-		<set_pos set="method" line="220"><f a="value">
+		<get_pos set="method" line="212"><f a=""><x path="Float"/></f></get_pos>
+		<set_pos set="method" line="216"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<get_min set="method" line="236"><f a=""><x path="Float"/></f></get_min>
-		<set_min set="method" line="240"><f a="value">
+		<get_min set="method" line="232"><f a=""><x path="Float"/></f></get_min>
+		<set_min set="method" line="236"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_min>
-		<get_max set="method" line="251"><f a=""><x path="Float"/></f></get_max>
-		<set_max set="method" line="255"><f a="value">
+		<get_max set="method" line="247"><f a=""><x path="Float"/></f></get_max>
+		<set_max set="method" line="251"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_max>
-		<get_pageSize set="method" line="266"><f a=""><x path="Float"/></f></get_pageSize>
-		<set_pageSize set="method" line="270"><f a="value">
+		<get_pageSize set="method" line="262"><f a=""><x path="Float"/></f></get_pageSize>
+		<set_pageSize set="method" line="266"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pageSize>
-		<get_incrementSize set="method" line="278"><f a=""><x path="Float"/></f></get_incrementSize>
-		<set_incrementSize set="method" line="282"><f a="value">
+		<get_incrementSize set="method" line="274"><f a=""><x path="Float"/></f></get_incrementSize>
+		<set_incrementSize set="method" line="278"><f a="value">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_incrementSize>
-		<deincrementValue public="1" set="method" line="293">
+		<deincrementValue public="1" set="method" line="289">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Deincrement the scrollbar value by `incrementSize`</haxe_doc>
 		</deincrementValue>
-		<incrementValue public="1" set="method" line="300">
+		<incrementValue public="1" set="method" line="296">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Increment the scrollbar value by `incrementSize`</haxe_doc>
 		</incrementValue>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VScroll"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VScroll"/></f></self>
-		<new public="1" set="method" line="41"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Vertical scrollbar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the slider bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="37"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Vertical scrollbar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23950,12 +23926,12 @@
 	</class>
 	<class path="haxe.ui.toolkit.controls.VScrollLayout" params="" file="src/haxe/ui/toolkit/controls/VScroll.hx" module="haxe.ui.toolkit.controls.VScroll">
 		<extends path="haxe.ui.toolkit.layout.DefaultLayout"/>
-		<resizeChildren public="1" set="method" line="311" override="1"><f a=""><x path="Void"/></f></resizeChildren>
-		<repositionChildren public="1" set="method" line="329" override="1"><f a=""><x path="Void"/></f></repositionChildren>
-		<get_usableHeight set="method" line="356" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
+		<resizeChildren public="1" set="method" line="307" override="1"><f a=""><x path="Void"/></f></resizeChildren>
+		<repositionChildren public="1" set="method" line="325" override="1"><f a=""><x path="Void"/></f></repositionChildren>
+		<get_usableHeight set="method" line="352" override="1"><f a=""><x path="Float"/></f></get_usableHeight>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VScrollLayout"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VScrollLayout"/></f></self>
-		<new public="1" set="method" line="307"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="303"><f a=""><x path="Void"/></f></new>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
@@ -23965,34 +23941,30 @@
 	<class path="haxe.ui.toolkit.controls.VSlider" params="" file="src/haxe/ui/toolkit/controls/VSlider.hx">
 		<extends path="haxe.ui.toolkit.controls.Slider"/>
 		<implements path="haxe.ui.toolkit.core.interfaces.IClonable"><c path="haxe.ui.toolkit.controls.VSlider"/></implements>
-		<_onMouseDown set="method" line="25" override="1"><f a="event">
+		<_onMouseDown set="method" line="21" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onMouseDown>
-		<_onScreenMouseMove set="method" line="29" override="1"><f a="event">
+		<_onScreenMouseMove set="method" line="25" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onScreenMouseMove>
-		<_onBackgroundMouseDown set="method" line="34" override="1"><f a="event">
+		<_onBackgroundMouseDown set="method" line="30" override="1"><f a="event">
 	<c path="flash.events.MouseEvent"/>
 	<x path="Void"/>
 </f></_onBackgroundMouseDown>
-		<startTracking set="method" line="47"><f a="offset">
+		<startTracking set="method" line="43"><f a="offset">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></startTracking>
-		<calcPosFromCoord set="method" line="57" override="1"><f a="ypos">
+		<calcPosFromCoord set="method" line="53" override="1"><f a="ypos">
 	<x path="Float"/>
 	<x path="Float"/>
 </f></calcPosFromCoord>
 		<clone public="1" set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VSlider"/></f></clone>
 		<self set="method" line="1" override="1"><f a=""><c path="haxe.ui.toolkit.controls.VSlider"/></f></self>
-		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
-		<haxe_doc><![CDATA[Vertical slider bar control
- 
- <b>Events:</b>
- 
- * `Event.CHANGE` - Dispatched when value of the progess bar has changed]]></haxe_doc>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>Vertical slider bar control</haxe_doc>
 		<meta>
 			<m n=":build"><e>'???'</e></m>
 			<m n=":autoBuild"><e>'???'</e></m>
