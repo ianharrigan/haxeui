@@ -1,4 +1,4 @@
-Haxe UI (Formerly <a href="https://github.com/ianharrigan/yahui">YAHUI</a>)
+Haxe UI
 ================================
 Cross platform Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
