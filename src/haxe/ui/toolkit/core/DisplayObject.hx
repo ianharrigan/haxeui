@@ -22,6 +22,11 @@ import haxe.ui.toolkit.util.StringUtil;
 ]))
 @:build(haxe.ui.toolkit.core.Macros.addClonable())
 @:autoBuild(haxe.ui.toolkit.core.Macros.addClonable())
+@:event("UIEvent.INIT", "Dispatched when the display object has been initialized")
+@:event("UIEvent.READY", "Dispatched when the display object is ready")
+@:event("UIEvent.ADDED_TO_STAGE", "Dispatched when a display object is added to the on stage display list")
+@:event("UIEvent.REMOVED_FROM_STAGE", "Dispatched when a display object is about to be removed from the display list")
+@:event("UIEvent.RESIZE", "Dispatched when the display object has been resized")
 class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable implements IClonable<DisplayObject> {
 	// used in IDisplayObject getters/setters
 	private var _parent:IDisplayObjectContainer;

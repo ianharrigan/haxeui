@@ -338,6 +338,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	}
 }
 
+@exclude
 class TextInputLayout extends DefaultLayout {
 	public function new() {
 		super();

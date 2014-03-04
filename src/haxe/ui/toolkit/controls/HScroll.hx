@@ -302,6 +302,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 }
 
+@exclude
 class HScrollLayout extends DefaultLayout {
 	public function new() {
 		super();

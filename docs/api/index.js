@@ -1,4 +1,3 @@
-
 function createCookie(name, value, days) {
 	if (days) {
 		var date = new Date();

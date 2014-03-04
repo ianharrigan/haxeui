@@ -94,7 +94,7 @@ class Macros {
 			var tparam = TPath( { pack : ["haxe","ui","toolkit","events"], name : "UIEvent", params : [], sub : null } );
 			var tvoid = TPath( { pack : [], name : "Void", params : [], sub : null } );
 			var tfn = TFunction([tparam], tvoid);
-			fields.push( { name : name, doc : null, meta : [], access : [APublic], kind : FProp("default", "set", tfn, null), pos : haxe.macro.Context.currentPos() } );
+			fields.push( { name : name, doc : null, meta : [{name: "exclude", pos: haxe.macro.Context.currentPos() }], access : [APublic], kind : FProp("default", "set", tfn, null), pos : haxe.macro.Context.currentPos() } );
 			
 			var code = "function (value:haxe.ui.toolkit.events.UIEvent->Void):haxe.ui.toolkit.events.UIEvent->Void {\n";
 			code += "" + name + " = value;\n";
@@ -106,7 +106,7 @@ class Macros {
 				case EFunction(_,f): f;
 				case _: throw "false";
 			}
-			fields.push( { name : "set_" + name, doc : null, meta : [], access : [APrivate], kind : FFun(fnSetter), pos : haxe.macro.Context.currentPos() } );
+			fields.push( { name : "set_" + name, doc : null, meta : [{name: "exclude", pos: haxe.macro.Context.currentPos() }], access : [APrivate], kind : FFun(fnSetter), pos : haxe.macro.Context.currentPos() } );
 		}
 		
 		return fields;

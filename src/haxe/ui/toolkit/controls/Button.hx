@@ -14,13 +14,30 @@ import haxe.ui.toolkit.style.Style;
 
 /**
  General purpose multi-state button control with icon and toggle support (plus icon positioning)
- 
- <b>Events:</b>
- 
- * `MouseEvent.CLICK`	- Dispatched when button is clicked
- * `Event.CHANGE`		- Dispatched when the value of the toggle group changes
+
+ <b>Code Example</b>
+ <pre>
+ var button:Button = new Button();
+ button.x = 100;
+ button.y = 100;
+ button.width = 150;
+ button.height = 100;
+ button.text = "Button";
+ button.id = "theButton";</pre>
+
+ <b>XML Example</b>
+ <pre>
+ &lt;button id="theButton" text="Button" x="100" y="100" width="150" height="100" /&gt;</pre>
  **/
- 
+
+@:event("UIEvent.CLICK", "Dispatched when the button is clicked") 
+@:event("UIEvent.MOUSE_DOWN", "Dispatched when a user presses the pointing device button over the button") 
+@:event("UIEvent.MOUSE_UP", "Dispatched when a user releases the pointing device button over the button") 
+@:event("UIEvent.MOUSE_OVER", "Dispatched when the user moves a pointing device over the button") 
+@:event("UIEvent.MOUSE_OUT", "Dispatched when the user moves a pointing device away from the button") 
+@:event("UIEvent.MOUSE_MOVE", "Dispatched when a user moves the pointing device while it is over the button") 
+@:event("UIEvent.CHANGE", "Dispatched when the value of the toggle group changes") 
+@events_descriptions("Dispatched when button is clicked", "Dispatched when the value of the toggle group changes")
 class Button extends StateComponent implements IFocusable implements IClonable<StateComponent> {
 	/**
 	 Button state is "normal" (default state)
@@ -468,6 +485,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	}
 }
 
+@exclude
 class ButtonLayout extends Layout {
 	private var _iconPos:String = "center";
 	private var _labelPos:String = "center";

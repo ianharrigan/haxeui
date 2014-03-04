@@ -365,6 +365,7 @@ class ListView extends ScrollView implements IDataComponent {
 	}
 }
 
+@exclude
 class ListViewItem extends StateComponent {
 	public static inline var STATE_NORMAL = "normal";
 	public static inline var STATE_OVER = "over";
@@ -642,6 +643,7 @@ class ListViewItem extends StateComponent {
 	}
 }
 
+@exclude
 class ListViewItemLayout extends DefaultLayout {
 	public function new() {
 		super();

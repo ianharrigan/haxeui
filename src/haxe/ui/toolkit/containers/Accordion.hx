@@ -204,6 +204,7 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	}
 }
 
+@exclude
 class AccordionButton extends Button implements IClonable<AccordionButton> {
 	public function new() {
 		super();

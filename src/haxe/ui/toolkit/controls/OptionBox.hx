@@ -173,6 +173,7 @@ class OptionBox extends Component implements IClonable<OptionBox> {
 	}
 }
 
+@exclude
 class OptionBoxValue extends Value implements IClonable<OptionBoxValue> {
 	public function new() {
 		super();
