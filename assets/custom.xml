@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<grid columns="2" width="100%">
+	<text text="First Name:" />
+	<textinput text="Ian" id="server" width="100%"/>
+	<text text="Last Name:"/>
+	<textinput text="Harrigan" id="nickname" width="100%"/>
+</grid>

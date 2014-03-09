@@ -6,10 +6,13 @@ import haxe.ui.toolkit.controls.popups.CalendarPopupContent;
 import haxe.ui.toolkit.controls.popups.CustomPopupContent;
 import haxe.ui.toolkit.controls.popups.ListPopupContent;
 import haxe.ui.toolkit.controls.popups.Popup;
+import haxe.ui.toolkit.controls.popups.PopupContent;
 import haxe.ui.toolkit.controls.popups.SimplePopupContent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import haxe.ui.toolkit.core.PopupManager.PopupButtonInfo;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
+import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
 
@@ -26,45 +29,27 @@ class PopupManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	//private var _transition:String = "slide";
+	public var defaultTitle(default, default):String = "HaxeUI";
+	public var defaultWidth(default, default):Int = 300;
 	
 	public function new() {
 		
 	}
 	
-	public function showSimple(root:Root, text:String, title:String = null, config:Dynamic = PopupButtonType.OK, fn:Dynamic->Void = null):Popup {
-		var popupConfig:PopupConfig = getPopupConfig(config);
-		var p:Popup = new Popup(title, new SimplePopupContent(text), popupConfig, fn);
-		
-		p.root = root;
-		p.visible = false;
-		centerPopup(p);
-		if (popupConfig.modal == true) {
-			root.showModalOverlay();
-		}
-		root.addChild(p);
+	public function showSimple(text:String, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
+		var p:Popup = buildPopup(new SimplePopupContent(text), title, config, fn);
 		showPopup(p);
-		
 		return p;
 	}
 	
-	public function showCustom(root:Root, display:IDisplayObject, title:String = null, config:Dynamic = PopupButtonType.CONFIRM, fn:Dynamic->Void = null):Popup {
-		var popupConfig:PopupConfig = getPopupConfig(config);
-		var p:Popup = new Popup(title, new CustomPopupContent(display), popupConfig, fn);
-
-		p.root = root;
-		p.visible = false;
-		centerPopup(p);
-		if (popupConfig.modal == true) {
-			root.showModalOverlay();
-		}
-		root.addChild(p);
+	public function showCustom(display:IDisplayObject, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
+		var p:Popup = buildPopup(new CustomPopupContent(display), title, config, fn);
 		showPopup(p);
-		
 		return p;
 	}
 	
-	public function showList(root:Root, items:Dynamic, title:String = null, selectedIndex:Int = -1, modal:Bool = true, fn:Dynamic->Void = null):Popup {
+	public function showList(items:Dynamic, selectedIndex:Int = -1, title:String = null, fn:Dynamic->Void = null):Popup {
+		var config:Dynamic = { modal: true };
 		var ds:IDataSource = null;
 		if (Std.is(items, Array)) { // we need to convert items into a proper data source for the list
 			var arr:Array<Dynamic> = cast(items, Array<Dynamic>);
@@ -81,25 +66,37 @@ class PopupManager {
 		} else if (Std.is(items, IDataSource)) {
 			ds = cast(items, IDataSource);
 		}
-
-		var popupConfig:PopupConfig = new PopupConfig();
-		popupConfig.modal = modal;
-		var p:Popup = new Popup(title, new ListPopupContent(ds, selectedIndex, fn), popupConfig);
 		
-		p.root = root;
-		p.visible = false;
-		centerPopup(p);
-		if (popupConfig.modal == true) {
-			root.showModalOverlay();
-		}
-		root.addChild(p);
+		var p:Popup = buildPopup(new ListPopupContent(ds, selectedIndex, fn), title, config, fn);
 		showPopup(p);
-		
 		return p;
 	}
 	
-	public function showBusy(root:Root, text:String, delay:Int = -1, title:String = null):Popup {
-		var p:Popup = new Popup(title, new BusyPopupContent(text), new PopupConfig());
+	public function showCalendar(title:String = null, fn:Dynamic->Date-> Void = null):Popup {
+		var config:Dynamic = { modal: true, buttons: PopupButton.CONFIRM | PopupButton.CANCEL };
+		var content:CalendarPopupContent = new CalendarPopupContent();
+		var tempFn = function(button:Dynamic) {
+			if (fn != null) {
+				if (button == PopupButton.CONFIRM) {
+					fn(button, content.selectedDate);
+				} else {
+					fn(button, null);
+				}
+			}
+		}
+		
+		var p:Popup = buildPopup(content, title, config, tempFn);
+		showPopup(p);
+		return p;
+	}
+	
+	public function showBusy(text:String, delay:Int = -1, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
+		if (config == null) {
+			config = { };
+		}
+		config.useDefaultTitle = false;
+		var p:Popup = buildPopup(new BusyPopupContent(text), title, config, fn);
+		showPopup(p);
 		
 		if (delay > 0) {
 			var timer:Timer = new Timer(delay);
@@ -109,40 +106,20 @@ class PopupManager {
 			}
 		}
 		
-		p.root = root;
-		p.visible = false;
-		centerPopup(p);
-		root.showModalOverlay();
-		root.addChild(p);
-		showPopup(p);
-		
-		return p;
-	}
-
-	public function showCalendar(root:Root, title:String = null, fn:Dynamic->Date->Void = null):Popup {
-		var content:CalendarPopupContent = new CalendarPopupContent();
-		var tempFn = function(button:Dynamic) {
-			if (fn != null) {
-				if (button == PopupButtonType.CONFIRM) {
-					fn(button, content.selectedDate);
-				} else {
-					fn(button, null);
-				}
-			}
-		}
-		var p:Popup = new Popup(title, content, getPopupConfig(PopupButtonType.CONFIRM |PopupButtonType.CANCEL), tempFn);
-		
-		p.root = root;
-		p.visible = false;
-		centerPopup(p);
-		root.showModalOverlay();
-		root.addChild(p);
-		showPopup(p);
-		
 		return p;
 	}
 	
 	public function showPopup(p:Popup):Void {
+		var modal:Bool = true;
+		if (p.config.modal != null) {
+			modal = p.config.modal;
+		}
+		if (modal == true) {
+			p.root.showModalOverlay();
+		}
+		p.root.addChild(p);
+		centerPopup(p);
+
 		var transition:String = Toolkit.getTransitionForClass(Popup);
 		if (transition == "slide") {
 			var ypos:Float = p.y;
@@ -183,62 +160,108 @@ class PopupManager {
 		p.y = Std.int((p.root.height / 2) - (p.height / 2));
 	}
 	
-	private function getPopupConfig(config:Dynamic):PopupConfig {
-		var conf:PopupConfig = new PopupConfig();
-		if (Std.is(config, Int)) {
-			var n:Int = cast(config, Int);
-			if (n & PopupButtonType.OK == PopupButtonType.OK) {
-				conf.addButton(PopupButtonType.OK);
-			}
-			if (n & PopupButtonType.YES == PopupButtonType.YES) {
-				conf.addButton(PopupButtonType.YES);
-			}
-			if (n & PopupButtonType.NO == PopupButtonType.NO) {
-				conf.addButton(PopupButtonType.NO);
-			}
-			if (n & PopupButtonType.CANCEL == PopupButtonType.CANCEL) {
-				conf.addButton(PopupButtonType.CANCEL);
-			}
-			if (n & PopupButtonType.CONFIRM == PopupButtonType.CONFIRM) {
-				conf.addButton(PopupButtonType.CONFIRM);
-			}
-		} else if (Std.is(config, PopupConfig)) {
-			conf = cast(config, PopupConfig);
+	private function buildPopup(content:PopupContent, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
+		config = buildConfig(config);
+		if (title == null && config.useDefaultTitle == true) {
+			title = PopupManager.instance.defaultTitle;
 		}
-		return conf;
-	}
-}
-
-class PopupConfig {
-	public var buttons:Array<PopupButtonConfig>;
-	public var id:String;
-	public var styleName:String;
-	public var modal:Bool = true;
-	
-	public function new() {
-		buttons = new Array<PopupButtonConfig>();
-	}
-	
-	public function addButton(type:Int):Void {
-		var butConfig:PopupButtonConfig = new PopupButtonConfig();
-		butConfig.type = type;
-		buttons.push(butConfig);
-	}
-}
-
-class PopupButtonConfig {
-	public var type:Int;
-	
-	public function new() {
+		var p:Popup = new Popup(title, content, config, fn);
+		p.root = config.root;
+		p.visible = false;
 		
+		return p;
+	}
+	
+	private function buildConfig(config:Dynamic):Dynamic {
+		var c:Dynamic = { };
+		c.id = null;
+		c.styleName = null;
+		c.modal = true;
+		c.width = PopupManager.instance.defaultWidth;
+		c.useDefaultTitle = true;
+		c.root = RootManager.instance.currentRoot;
+
+		if (config != null && Std.is(config, Int) == false) {
+			c.id = (config.id != null) ? config.id : null;
+			c.styleName = (config.styleName != null) ? config.styleName : null;
+			c.modal = (config.modal != null) ? config.modal : true;
+			c.width = (config.width != null) ? config.width : PopupManager.instance.defaultWidth;
+			c.useDefaultTitle = (config.useDefaultTitle != null) ? config.useDefaultTitle : true;
+			c.root = (config.root != null) ? config.root : RootManager.instance.currentRoot;
+		}
+
+		c.buttons = new Array<PopupButtonInfo>();
+		if (config != null) {
+			if (Std.is(config, Int)) {
+				c.buttons = buildButtonArray(config);
+			} else if (Std.is(config, Array)) {
+				c.buttons = buildButtonArray(config);
+			} else {
+				if (config.buttons != null) {
+					c.buttons = buildButtonArray(config.buttons);
+				}
+			}
+		}
+		
+		return c;
+	}
+	
+	private function buildButtonArray(data:Dynamic):Array<PopupButtonInfo> {
+		var buttons:Array<PopupButtonInfo> = new Array<PopupButtonInfo>();
+		if (Std.is(data, Int)) {
+			var n:Int = cast(data, Int);
+			if (n & PopupButton.OK == PopupButton.OK) {
+				buttons.push(new PopupButtonInfo(PopupButton.OK));
+			}
+			if (n & PopupButton.YES == PopupButton.YES) {
+				buttons.push(new PopupButtonInfo(PopupButton.YES));
+			}
+			if (n & PopupButton.NO == PopupButton.NO) {
+				buttons.push(new PopupButtonInfo(PopupButton.NO));
+			}
+			if (n & PopupButton.CANCEL == PopupButton.CANCEL) {
+				buttons.push(new PopupButtonInfo(PopupButton.CANCEL));
+			}
+			if (n & PopupButton.CONFIRM == PopupButton.CONFIRM) {
+				buttons.push(new PopupButtonInfo(PopupButton.CONFIRM));
+			}
+		} else if (Std.is(data, Array)) {
+			var arr:Array<Dynamic> = cast data;
+			for (item in arr) {
+				if (Std.is(item, Int)) {
+					buttons.push(new PopupButtonInfo(cast(item, Int)));
+				} else {
+					var type:Int = PopupButton.CUSTOM;
+					if (item.type != null) {
+						type = item.type;
+					}
+					var text = item.text;
+					var fn = item.fn;
+					buttons.push(new PopupButtonInfo(type, text, fn));
+				}
+			}
+		}	
+		return buttons;
 	}
 }
 
-class PopupButtonType {
+class PopupButton {
 	public static inline var OK:Int =      0x00000001;
 	public static inline var YES:Int =     0x00000010;
 	public static inline var NO:Int =      0x00000100;
 	public static inline var CANCEL:Int =  0x00001000;
 	public static inline var CONFIRM:Int = 0x00010000;
 	public static inline var CUSTOM:Int =  0x00100000;
+}
+
+class PopupButtonInfo {
+	public var type:Int = -1;
+	public var text:String;
+	public var fn:Dynamic->Void;
+	
+	public function new(type:Int = PopupButton.OK, text:String = null, fn:Dynamic->Void = null) {
+		this.type = type;
+		this.text = text;
+		this.fn = fn;
+	}
 }

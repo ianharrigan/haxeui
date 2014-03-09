@@ -963,21 +963,10 @@ Popup #buttonBar {
 	height: 45;
 }
 
-ListPopupContent {
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-}
-
-ListPopupContent ListView {
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
+ListPopupContent ListView, ListPopupContent #content {
+	padding: 0;
 	borderSize: 0;
 }
-
 
 Accordion {
 	spacingX: 0;

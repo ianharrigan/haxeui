@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<vbox>
+	<hbox>
+		<button id="simple1" text="Simple 1" />
+		<button id="simple2" text="Simple 2" />
+		<button id="simple3" text="Simple 3" />
+		<button id="simple4" text="Simple 4" />
+		<button id="simple5" text="Simple 5" />
+		<button id="simple6" text="Simple 6" />
+	</hbox>
+	<hbox>
+		<button id="custom1" text="Custom 1" />
+	</hbox>
+	<hbox>
+		<button id="list1" text="List 1" />
+	</hbox>
+	<hbox>
+		<button id="busy1" text="Busy 1" />
+	</hbox>
+	<hbox>
+		<button id="cal1" text="Calendar 1" />
+	</hbox>
+</vbox>

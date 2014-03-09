@@ -74,4 +74,12 @@ class RootManager {
 	public function get_roots():Array<Root> {
 		return _roots;
 	}
+	
+	public var currentRoot(get, null):Root;
+	public function get_currentRoot():Root {
+		if (_roots.length == 0) {
+			return null;
+		}
+		return _roots[_roots.length - 1];
+	}
 }

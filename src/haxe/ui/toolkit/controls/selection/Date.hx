@@ -63,9 +63,9 @@ class Date extends Button {
 	//******************************************************************************************
 	public function showCalendar():Void {
 		if (_method == "popup") {
-			PopupManager.instance.showCalendar(root, "Select Date", function(button:Dynamic, date:std.Date) {
+			PopupManager.instance.showCalendar("Select Date", function(button:Dynamic, date:std.Date) {
 				this.selected = false;
-				if (button == PopupButtonType.CONFIRM) {
+				if (button == PopupButton.CONFIRM) {
 					var dateString:String = DateTools.format(date, dateFormat);
 					this.text = dateString;
 				}

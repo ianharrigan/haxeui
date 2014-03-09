@@ -21,43 +21,13 @@ class Main {
 		Macros.addStyleSheet("assets/test.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
+			/*
 			var t:TestController = new TestController();
 			root.addChild(t.view);
-			
-			/*
-			var original:IDisplayObject = Toolkit.processXmlResource("assets/test.xml");
-			original.id = "ORG";
-			root.addChild(original);
-			*/
-
-			/*
-			var clone = original.clone();
-			clone.x += 250;
-			clone.id = "CLONE";
-			root.addChild(clone);
-
-			var clone2 = clone.clone();
-			clone2.x += 250;
-			clone2.id = "CLONE2";
-			root.addChild(clone2);
 			*/
 			
-			/*
-			var button:Button = new Button();
-			button.disabled = true;
-			button.x = 100;
-			button.y = 100;
-			button.width = 100;
-			button.height = 100;
-			button.text = "Test Button";
-			root.addChild(button);
-			*/
-
-			/*
-			var s:Text = new Text();
-			s.text = "Bob";
-			root.addChild(s);
-			*/
+			var t2:TestController2 = new TestController2();
+			root.addChild(t2.view);
 		});
 	}
 }

@@ -112,7 +112,7 @@ class List extends Button implements IDataComponent {
 	 **/
 	public function showList():Void {
 		if (_method == "popup") {
-			PopupManager.instance.showList(root, dataSource, "Select", _selectedIndex, true, function(item:IItemRenderer) {
+			PopupManager.instance.showList(dataSource, _selectedIndex, "Select", function(item:IItemRenderer) {
 				this.text = item.text;
 				_selectedItems = new Array<IItemRenderer>();
 				_selectedItems.push(item);

@@ -5,6 +5,7 @@ import haxe.ui.toolkit.controls.popups.Popup;
 import haxe.ui.toolkit.controls.popups.PopupContent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
+import haxe.ui.toolkit.core.PopupManager.PopupButton;
 
 class Controller {
 	private var _view:IDisplayObjectContainer;
@@ -142,5 +143,38 @@ class Controller {
 	public var namedComponents(get, null):StringMap<IDisplayObjectContainer>;
 	private function get_namedComponents():StringMap<IDisplayObjectContainer> {
 		return _namedComponents;
+	}
+
+	private function showPopup(text:String, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
+		return showSimplePopup(text, title, config, fn);
+	}
+	
+	private function showSimplePopup(text:String, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
+		return PopupManager.instance.showSimple(text, title, config, fn);
+	}
+	
+	private function showCustomPopup(content:Dynamic, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
+		var display:IDisplayObject = null;
+		if (Std.is(content, IDisplayObject)) {
+			display = cast(content, IDisplayObject);
+		} else if (Std.is(content, String)) {
+			display = Toolkit.processXmlResource(cast(content, String));
+		}
+		if (display == null) {
+			return null;
+		}
+		return PopupManager.instance.showCustom(display, title, config, fn);
+	}
+	
+	private function showListPopup(items:Dynamic, selectedIndex:Int = -1, title:String = null, fn:Dynamic->Void = null):Popup {
+		return PopupManager.instance.showList(items, selectedIndex, title, fn);
+	}
+	
+	private function showBusyPopup(text:String, delay:Int = -1, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
+		return PopupManager.instance.showBusy(text, delay, title, config, fn);
+	}
+	
+	public function showCalendarPopup(title:String = null, fn:Dynamic->Date->Void = null):Popup {
+		return PopupManager.instance.showCalendar(title, fn);
 	}
 }

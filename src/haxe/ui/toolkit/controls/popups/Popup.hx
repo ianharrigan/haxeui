@@ -17,7 +17,7 @@ class Popup extends VBox implements IDraggable {
 	private var _title:Text;
 	private var _content:PopupContent;
 	private var _buttonBar:HBox;
-	private var _config:PopupConfig;
+	private var _config:Dynamic;
 	private var _fn:Dynamic->Void;
 	
 	/**
@@ -33,7 +33,7 @@ class Popup extends VBox implements IDraggable {
 	 
 	 Note - Creating the popup does not display it, use `PopupManager.showPopup` to display it.
 	 **/
-	public function new(title:String = null, content:PopupContent = null, config:PopupConfig = null, fn:Dynamic->Void = null) {
+	public function new(title:String = null, content:PopupContent = null, config:Dynamic = null, fn:Dynamic->Void = null) {
 		super();
 		_autoSize = true;
 		
@@ -49,19 +49,17 @@ class Popup extends VBox implements IDraggable {
 		if (title != null) {
 			_title = new Text();
 			_title.id = "title";
-			//_title.width = 1000;
-			//_title.autoSize = false;
 			_title.text = title;
 		}
 		
 		_buttonBar = new HBox();
-		_buttonBar.autoSize = false;
 		_buttonBar.id = "buttonBar";
+		_buttonBar.horizontalAlign = "center";
 		
 		_config = config;
 		if (_config == null) {
-			_config = new PopupConfig();
-			_config.addButton(PopupButtonType.OK);
+			_config = { };
+			_config.buttons = new Array<PopupButtonInfo>();
 		}
 		if (_config.id != null) {
 			this.id = _config.id;
@@ -94,24 +92,26 @@ class Popup extends VBox implements IDraggable {
 		_content.percentWidth = 100;
 		//_content.percentHeight = 100;
 		addChild(_content);
-		
+
 		if (_config.buttons.length > 0) {
-			_buttonBar.percentWidth = 100;
-			var spacer:Spacer = new Spacer();
-			spacer.percentWidth = 50;
-			_buttonBar.addChild(spacer);
-			
-			for (but in _config.buttons) {
-				if (but.type != PopupButtonType.CUSTOM) {
-					addStandardButton(but.type);
+			var buttons:Array<PopupButtonInfo> = cast _config.buttons;
+			for (info in buttons) {
+				if (info.type != PopupButton.CUSTOM) {
+					addStandardButton(info.type);
+				} else {
+					var button:Button = new Button();
+					button.text = info.text;
+					button.addEventListener(MouseEvent.CLICK, function(e) {
+						clickButton(PopupButton.CUSTOM);
+					});
+					_buttonBar.addChild(button);
 				}
 			}
-
-			var spacer:Spacer = new Spacer();
-			spacer.percentWidth = 50;
-			_buttonBar.addChild(spacer);
-			
 			addChild(_buttonBar);
+		}
+		
+		if (_config.width != null) {
+			width = _config.width;
 		}
 		
 		PopupManager.instance.centerPopup(this);
@@ -131,57 +131,62 @@ class Popup extends VBox implements IDraggable {
 	// Getters / Setters
 	//******************************************************************************************
 	public var content(get, null):PopupContent;
-	
 	private function get_content():PopupContent {
 		return _content;
+	}
+	
+	public var config(get, null):Dynamic;
+	private function get_config():Dynamic {
+		return _config;
 	}
 	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
 	private function addStandardButton(v:Int):Void {
-		if (v == PopupButtonType.OK) {
+		if (v == PopupButton.OK) {
 			var button:Button = new Button();
 			button.text = "OK";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				clickButton(PopupButtonType.OK);
+				clickButton(PopupButton.OK);
 			});
 			_buttonBar.addChild(button);
 		}
-		if (v == PopupButtonType.YES) {
+		if (v == PopupButton.YES) {
 			var button:Button = new Button();
 			button.text = "Yes";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				clickButton(PopupButtonType.YES);
+				clickButton(PopupButton.YES);
 			});
 			_buttonBar.addChild(button);
 		}
-		if (v == PopupButtonType.NO) {
+		if (v == PopupButton.NO) {
 			var button:Button = new Button();
 			button.text = "No";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				clickButton(PopupButtonType.NO);
+				clickButton(PopupButton.NO);
 			});
 			_buttonBar.addChild(button);
 		}
-		if (v == PopupButtonType.CANCEL) {
+		if (v == PopupButton.CANCEL) {
 			var button:Button = new Button();
 			button.text = "Cancel";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				clickButton(PopupButtonType.CANCEL);
+				clickButton(PopupButton.CANCEL);
 			});
 			_buttonBar.addChild(button);
 		}
-		if (v == PopupButtonType.CONFIRM) {
+		if (v == PopupButton.CONFIRM) {
 			var button:Button = new Button();
 			button.text = "Confirm";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
-				clickButton(PopupButtonType.CONFIRM);
+				clickButton(PopupButton.CONFIRM);
 			});
 			_buttonBar.addChild(button);
 		}
 	}
 	
+	@exclude
 	public function clickButton(button:Int):Void {
 		if (_content.onButtonClicked(button) == true) {
 			PopupManager.instance.hidePopup(this);
