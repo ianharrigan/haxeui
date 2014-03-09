@@ -22,13 +22,13 @@ class TestController extends XMLController {
 		
 		list3.onComponentEvent = function(e:UIEvent) {
 			logData("list3.onComponentEvent: value = " + e.component.value);
-			e.getDataAs(IItemRenderer).data.text = e.component.value;
+			e.data.text = e.component.value;
 			e.data.update();
 		};
 
 		list4.onComponentEvent = function(e:UIEvent) {
 			logData("list4.onComponentEvent: value = " + e.component.value);
-			e.getDataAs(IItemRenderer).data.text = e.component.value;
+			e.data.text = e.component.value;
 			e.data.update();
 		};
 		

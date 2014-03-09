@@ -110,7 +110,8 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 				Reflect.setField(_data, event.component.id, event.component.value);
 			}
 			var uiEvent:UIEvent = new UIEvent(UIEvent.COMPONENT_EVENT, event.component);
-			uiEvent.data = this;
+			uiEvent.data = _data;
+			uiEvent.data.update = this.update;
 			eventDispatcher.dispatchEvent(uiEvent);
 		}
 		

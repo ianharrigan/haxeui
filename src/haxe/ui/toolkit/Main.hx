@@ -21,13 +21,13 @@ class Main {
 		Macros.addStyleSheet("assets/test.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			/*
 			var t:TestController = new TestController();
 			root.addChild(t.view);
-			*/
 			
+			/*
 			var t2:TestController2 = new TestController2();
 			root.addChild(t2.view);
+			*/
 		});
 	}
 }
