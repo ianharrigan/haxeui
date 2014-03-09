@@ -10,7 +10,7 @@ import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
 
-class Date extends Button {
+class DateSelector extends Button {
 	private var _cal:CalendarView;
 	
 	private var _method:String = "";
@@ -88,7 +88,7 @@ class Date extends Button {
 			_cal.y = this.stageY + this.height - root.stageY;
 			_cal.sprite.filters = [ new DropShadowFilter (4, 45, 0x808080, 1, 4, 4, 1, 3) ];
 			
-			var transition:String = Toolkit.getTransitionForClass(Date);
+			var transition:String = Toolkit.getTransitionForClass(DateSelector);
 			if (transition == "slide") {
 				_cal.clipHeight = 0;
 				_cal.sprite.alpha = 1;
@@ -112,7 +112,7 @@ class Date extends Button {
 	
 	public function hideCalendar():Void {
 		if (_cal != null) {
-			var transition:String = Toolkit.getTransitionForClass(Date);
+			var transition:String = Toolkit.getTransitionForClass(DateSelector);
 			if (transition == "slide") {
 				_cal.sprite.alpha = 1;
 				Actuate.tween(_cal, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {

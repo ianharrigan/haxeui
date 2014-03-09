@@ -30,7 +30,7 @@ import motion.easing.Linear;
  
  **/
 
-class List extends Button implements IDataComponent {
+class ListSelector extends Button implements IDataComponent {
 	private var _dataSource:IDataSource;
 	private var _list:ListView;
 	
@@ -153,7 +153,7 @@ class List extends Button implements IDataComponent {
 			_list.height = listHeight;
 			_list.setSelectedIndexNoEvent(_selectedIndex);
 
-			var transition:String = Toolkit.getTransitionForClass(List);
+			var transition:String = Toolkit.getTransitionForClass(ListSelector);
 			if (transition == "slide") {
 				_list.clipHeight = 0;
 				_list.sprite.alpha = 1;
@@ -180,7 +180,7 @@ class List extends Button implements IDataComponent {
 	 **/
 	public function hideList():Void {
 		if (_list != null) {
-			var transition:String = Toolkit.getTransitionForClass(List);
+			var transition:String = Toolkit.getTransitionForClass(ListSelector);
 			if (transition == "slide") {
 				_list.sprite.alpha = 1;
 				Actuate.tween(_list, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {

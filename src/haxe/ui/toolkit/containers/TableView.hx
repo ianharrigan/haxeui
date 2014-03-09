@@ -8,7 +8,7 @@ import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.HProgress;
 import haxe.ui.toolkit.controls.HScroll;
 import haxe.ui.toolkit.controls.HSlider;
-import haxe.ui.toolkit.controls.selection.List;
+import haxe.ui.toolkit.controls.selection.ListSelector;
 import haxe.ui.toolkit.controls.Spacer;
 import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.controls.VScroll;
@@ -407,7 +407,7 @@ class TableViewRow extends HBox implements IStateComponent {
 									ds.add(o);
 								}
 							}
-							cast(c, List).dataSource = ds;
+							cast(c, ListSelector).dataSource = ds;
 						}
 					}
 					
@@ -456,8 +456,8 @@ class TableViewRow extends HBox implements IStateComponent {
 				c = new HProgress();
 				cast(c, HProgress).pos = Std.parseInt(value);
 			case "list":
-				c = new List();
-				cast(c, List).text = cast(value, String);
+				c = new ListSelector();
+				cast(c, ListSelector).text = cast(value, String);
 			default:
 				c = new Spacer();
 		}
