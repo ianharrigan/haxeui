@@ -1,4 +1,4 @@
-package haxe.ui.toolkit.util.psuedothreads;
+package haxe.ui.toolkit.util.pseudothreads;
 
 class Runner implements IRunnable {
 	public function new() {

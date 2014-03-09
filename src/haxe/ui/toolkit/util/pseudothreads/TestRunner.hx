@@ -1,4 +1,4 @@
-package haxe.ui.toolkit.util.psuedothreads;
+package haxe.ui.toolkit.util.pseudothreads;
 
 class TestRunner extends Runner {
 	public function new(timeShare:Float) {

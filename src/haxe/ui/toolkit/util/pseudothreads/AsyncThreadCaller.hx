@@ -1,4 +1,4 @@
-package haxe.ui.toolkit.util.psuedothreads;
+package haxe.ui.toolkit.util.pseudothreads;
 
 import flash.events.Event;
 import flash.events.EventDispatcher;
