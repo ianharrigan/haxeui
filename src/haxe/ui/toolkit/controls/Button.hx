@@ -390,6 +390,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 		
 		_group = value;
+		if (value == null) {
+			return value;
+		}
+		
 		var arr:Array<Button> = _groups.get(value);
 		if (arr == null) {
 			arr = new Array<Button>();

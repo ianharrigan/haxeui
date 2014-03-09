@@ -14,6 +14,7 @@ class XMLProcessor implements IXMLProcessor {
 		if (n != -1) {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
+		nodeName = nodeName.toLowerCase();
 		
 		return nodeName;
 	}

@@ -4,6 +4,7 @@ import flash.events.Event;
 import flash.events.TimerEvent;
 import flash.utils.Timer;
 import haxe.ui.toolkit.containers.ListView;
+import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.data.IDataSource;
 
@@ -95,7 +96,7 @@ class ListPopupContent extends PopupContent {
 		}
 		
 		if (_fn != null) {
-			var item:ListViewItem = _list.selectedItems[0];
+			var item:IItemRenderer = _list.selectedItems[0];
 			var index:Int = Lambda.indexOf(_list.selectedItems, item);
 			var param:Dynamic = {
 				text: item.text,

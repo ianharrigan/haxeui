@@ -262,6 +262,17 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return cast match;
 	}
 	
+	public function findComponentUnderPoint(stageX:Float, stageY:Float):IDisplayObject {
+		var c:IDisplayObject = null;
+		for (child in children) {
+			if (child.hitTest(stageX, stageY) == true) {
+				c = child;
+				break;
+			}
+		}
+		return c;
+	}
+	
 	private function get_layout():ILayout {
 		return _layout;
 	}

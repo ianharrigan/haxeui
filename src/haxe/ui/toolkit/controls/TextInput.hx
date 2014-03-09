@@ -188,7 +188,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	public var displayAsPassword(get, set):Bool;
 	@:clonable
 	public var placeholderText(get, set):String;
-	
+
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
 	}
@@ -268,6 +268,39 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		}
 		return value;
 	}
+	
+	public var vscrollPos(get, set):Float;
+	public var vscrollMin(get, null):Float;
+	public var vscrollMax(get, null):Float;
+	
+	private function get_vscrollPos():Float {
+		if (_vscroll != null) {
+			return _vscroll.pos;
+		}
+		return 0;
+	}
+	
+	private function set_vscrollPos(value:Float) {
+		if (_vscroll != null) {
+			_vscroll.pos = value;
+		}
+		return value;
+	}
+
+	private function get_vscrollMin():Float {
+		if (_vscroll != null) {
+			return _vscroll.min;
+		}
+		return 0;
+	}
+	
+	private function get_vscrollMax():Float {
+		if (_vscroll != null) {
+			return _vscroll.max;
+		}
+		return 0;
+	}
+	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************

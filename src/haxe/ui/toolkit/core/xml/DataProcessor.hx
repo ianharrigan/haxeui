@@ -12,6 +12,7 @@ class DataProcessor extends XMLProcessor {
 	public override function process(node:Xml):Dynamic {
 		var result:Dynamic = null; 
 		var nodeName:String = stripNamespace(node.nodeName);
+		nodeName = nodeName.toLowerCase();
 		
 		var className:String = ClassManager.instance.getDataSourceClassName(nodeName);
 		if (className != null) {

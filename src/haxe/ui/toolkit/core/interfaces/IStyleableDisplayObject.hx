@@ -2,7 +2,7 @@ package haxe.ui.toolkit.core.interfaces;
 
 import haxe.ui.toolkit.style.Style;
 
-interface IStyleableDisplayObject {
+interface IStyleableDisplayObject extends IDisplayObjectContainer {
 	public var id(get, set):String;
 	public var style(get, set):Style;
 	public var styleName(get, set):String;

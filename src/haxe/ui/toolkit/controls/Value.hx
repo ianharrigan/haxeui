@@ -68,15 +68,13 @@ class Value extends StateComponent implements IClonable<Value> {
 	// Getters/setters
 	//******************************************************************************************
 	@:clonable
-	public var value(get, set):String;
-	@:clonable
 	public var interactive(get, set):Bool;
 	
-	private function get_value():String {
+	private override function get_value():Dynamic {
 		return _value;
 	}
 	
-	private function set_value(newValue:String):String {
+	private override function set_value(newValue:Dynamic):Dynamic {
 		if (newValue != _value) {
 			var valueControl:Button = _values.get(newValue);
 			if (valueControl != null) {

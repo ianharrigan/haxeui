@@ -135,7 +135,7 @@ VScroll Button {
 	backgroundColorGradientEnd: 0x606c88;
 	borderColor: 0x606c88;
 	cornerRadius: 1;
-	filter: null;
+	filter: none;
 	iconPosition: "center";
 }
 
@@ -376,14 +376,13 @@ HSlider #value:disabled {
 }
 
 HSlider Button {
-	width: 30;
+	width: 10;
 	height: 100%;
-	icon: "styles/gradient/gripper_horizontal.png";
 	iconPosition: "center";
+	cornerRadius: 2;
 }
 
 HSlider Button:disabled {
-	icon: "styles/gradient/gripper_horizontal_disabled.png";
 }
 
 VSlider {
@@ -451,7 +450,7 @@ ListView:disabled {
 	borderColor: 0x666666;
 }
 
-ListView VBox {
+ListView #content {
 	color: 0x000000;
 	paddingLeft: 0;
 	paddingTop: 0;
@@ -463,8 +462,10 @@ ListView VBox {
 	cornerRadius: 0;
 }
 
-ListViewItem {
+.even {
+	backgroundColor: 0xE9EDF5;
 	color: 0x000000;
+	cornerRadius: 2;
 	paddingLeft: 2;
 	paddingTop: 4;
 	paddingBottom: 4;
@@ -472,64 +473,42 @@ ListViewItem {
 	borderSize: 0;
 	spacingX: 2;
 	spacingY: 2;
-	cornerRadius: 2;
 }
 
-
-ListView #even {
-	backgroundColor: 0xE9EDF5;
-	color: 0x000000;
-	cornerRadius: 2;
-}
-
-ListView #even:disabled {
+.even:disabled {
 	backgroundColor: 0xF5F5F5;
 }
 
-ListView #odd {
+.odd {
 	backgroundColor: 0xFFFFFF;
 	color: 0x000000;
 	cornerRadius: 2;
+	paddingLeft: 2;
+	paddingTop: 4;
+	paddingBottom: 4;
+	paddingRight: 2;
+	borderSize: 0;
+	spacingX: 2;
+	spacingY: 2;
 }
 
-ListViewItem:over {
+.even:over, .odd:over {
 	backgroundColor: 0x606c88;
 }
 
-ListViewItem #text {
-	color: 0x000000;
-}
-
-ListViewItem #text:over {
-	color: 0xFFFFFF;
-}
-
-ListViewItem #text:disabled {
-	color: 0x666666;
-}
-
-ListViewItem #subtext {
-	color: 0x606c88;
-	fontSize: 11;
-}
-
-ListViewItem #subtext:over {
-	color: 0xFFFFFF;
-}
-
-ListViewItem #subtext:disabled {
-	color: 0x666666;
-}
-
-ListViewItem:selected {
+.even:selected, .odd:selected {
 	backgroundColor: 0x3f4c6b;
 }
 
-ListViewItem #text:selected {
+.even #text, .odd #text {
+	color: 0x000000;
+}
+
+.even #text:over, .odd #text:over {
 	color: 0xFFFFFF;
 }
 
-ListViewItem #subtext:selected {
+.even #text:selected, .odd #text:selected {
 	color: 0xFFFFFF;
 }
 

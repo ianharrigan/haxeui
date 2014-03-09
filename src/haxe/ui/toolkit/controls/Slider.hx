@@ -39,6 +39,15 @@ class Slider extends Progress {
 		addEventListener(MouseEvent.MOUSE_DOWN, _onBackgroundMouseDown);
 	}
 	
+	private override function get_value():Dynamic {
+		return pos;
+	}
+	
+	private override function set_value(newValue:Dynamic):Dynamic {
+		pos = Std.parseFloat(newValue);
+		return newValue;
+	}
+	
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************

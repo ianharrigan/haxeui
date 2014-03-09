@@ -31,25 +31,54 @@ class UIEvent extends Event {
 	public static inline var DEACTIVATE:String = PREFIX + "deactivate";
 	
 	public static inline var GLYPH_CLICK:String = PREFIX + "glyphClick"; // for button images
+	public static inline var COMPONENT_EVENT:String = PREFIX + "componentEvent";
 	
 	public var displayObject(default, default):IDisplayObject;
 	public var component(get, null):Component;
 	public var data(default, default):Dynamic;
+	public var stageX(default, default):Float;
+	public var stageY(default, default):Float;
 	
-	public function new(type:String, bubbles:Bool = false, cancelable:Bool = false) {
+	public function new(type:String, c:Component = null, bubbles:Bool = false, cancelable:Bool = false) {
 		super(type, bubbles, cancelable);
+		_component = c;
 	}
 	
 	public override function clone():Event {
-		var c:UIEvent = new UIEvent(type, bubbles, cancelable);
+		var c:UIEvent = new UIEvent(type, _component, bubbles, cancelable);
 		c.displayObject = displayObject;
+		c.data = data;
+		c.stageX = stageX;
+		c.stageY = stageY;
 		return c;
 	}
 	
+	private var _component:Component;
 	private function get_component():Component {
+		if (_component != null) {
+			return _component;
+		}
 		if (displayObject == null || Std.is(displayObject, Component) == false) {
 			return null;
 		}
 		return cast(displayObject, Component);
+	}
+	
+	public function getComponentAs<T>(type:Class<T>):Null<T> {
+		var c:IDisplayObject = component;
+		if (c == null) {
+			return null;
+		}
+
+		return cast c;
+	}
+	
+	public function getDataAs<T>(type:Class<T>):Null<T> {
+		var d:Dynamic = data;
+		if (d == null) {
+			return null;
+		}
+
+		return cast d;
 	}
 }

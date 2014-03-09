@@ -35,6 +35,7 @@ class UIProcessor extends XMLProcessor {
 		if (n != -1) {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
+		nodeName = nodeName.toLowerCase();
 		
 		var className:String = ClassManager.instance.getComponentClassName(nodeName);
 		var direction:String = node.get("direction");

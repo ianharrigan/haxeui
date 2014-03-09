@@ -84,6 +84,7 @@ class Toolkit {
 		if (n != -1) {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
+		nodeName = nodeName.toLowerCase();
 
 		var condition:String = node.get("condition");
 		if (condition != null) {

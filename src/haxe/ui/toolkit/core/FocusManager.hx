@@ -2,8 +2,8 @@ package haxe.ui.toolkit.core;
 
 class FocusManager {
 	private static var _instance:FocusManager;
-	public static var instance(getInstance, null):FocusManager;
-	public static function getInstance():FocusManager {
+	public static var instance(get, null):FocusManager;
+	private static function get_instance():FocusManager {
 		if (_instance == null) {
 			_instance = new FocusManager();
 		}

@@ -10,7 +10,7 @@ import haxe.ui.toolkit.core.Macros;
 
 class Main {
 	public static function main() {
-		Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
+		//Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			var vbox:VBox = new VBox();

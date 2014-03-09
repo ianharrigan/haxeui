@@ -1,30 +1,43 @@
 package haxe.ui.toolkit;
 
-import flash.events.MouseEvent;
-import haxe.ui.toolkit.containers.VBox;
-import haxe.ui.toolkit.controls.Button;
-import haxe.ui.toolkit.core.Component;
-import haxe.ui.toolkit.core.DisplayObjectContainer;
-import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
-import haxe.ui.toolkit.core.PopupManager;
-import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.events.UIEvent;
-import haxe.ui.toolkit.util.StringUtil;
 
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test.xml"))
 class TestController extends XMLController {
 	public function new() {
-		/*
-		virtualScrollview.onScroll = function(e) {
-			hpos.text = "" + virtualScrollview.hscrollPos;
-			vpos.text = "" + virtualScrollview.vscrollPos;
-			theButton.x =  virtualScrollview.hscrollPos;
-			theButton.y =  virtualScrollview.vscrollPos;
+		list1.onChange = function(e:UIEvent) {
+			logData("list1.onChange: text = " + list1.selectedItems[0].data.text);
 		};
-		*/
+		list2.onChange = function(e:UIEvent) {
+			logData("list2.onChange: text = " + list2.selectedItems[0].data.text);
+		};
+		list3.onChange = function(e:UIEvent) {
+			logData("list3.onChange: text = " + list3.selectedItems[0].data.text + ", componentValue = " + list3.selectedItems[0].data.componentValue);
+		};
+		list4.onChange = function(e:UIEvent) {
+			logData("list4.onChange: text = " + list4.selectedItems[0].data.text + ", componentValue = " + list4.selectedItems[0].data.componentValue);
+		};
 		
-		//theAccordion.selectedIndex = 0;
+		list3.onComponentEvent = function(e:UIEvent) {
+			logData("list3.onComponentEvent: value = " + e.component.value);
+			e.getDataAs(IItemRenderer).data.text = e.component.value;
+			e.data.update();
+		};
+
+		list4.onComponentEvent = function(e:UIEvent) {
+			logData("list4.onComponentEvent: value = " + e.component.value);
+			e.getDataAs(IItemRenderer).data.text = e.component.value;
+			e.data.update();
+		};
+		
+		logData("ready...");	
+	}
+	
+	private function logData(data:String):Void {
+		log.text += data + "\n";
+		log.vscrollPos = log.vscrollMax;
 	}
 	
 }

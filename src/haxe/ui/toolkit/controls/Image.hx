@@ -61,6 +61,15 @@ class Image extends Component implements IClonable<Image> {
 		}
 	}
 	
+	private override function get_value():Dynamic {
+		return resource;
+	}
+	
+	private override function set_value(newValue:Dynamic):Dynamic {
+		resource = newValue;
+		return newValue;
+	}
+	
 	//******************************************************************************************
 	// Methods/props
 	//******************************************************************************************

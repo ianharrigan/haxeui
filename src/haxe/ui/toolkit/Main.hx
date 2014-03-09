@@ -21,24 +21,26 @@ class Main {
 		Macros.addStyleSheet("assets/test.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			//var t:TestController = new TestController();
-			//root.addChild(t.view);
+			var t:TestController = new TestController();
+			root.addChild(t.view);
 			
+			/*
 			var original:IDisplayObject = Toolkit.processXmlResource("assets/test.xml");
 			original.id = "ORG";
 			root.addChild(original);
-			
+			*/
+
+			/*
 			var clone = original.clone();
-			//clone.y = 150;
 			clone.x += 250;
 			clone.id = "CLONE";
 			root.addChild(clone);
 
 			var clone2 = clone.clone();
-			//clone2.y = 200;
 			clone2.x += 250;
 			clone2.id = "CLONE2";
 			root.addChild(clone2);
+			*/
 			
 			/*
 			var button:Button = new Button();

@@ -3,6 +3,7 @@ package haxe.ui.toolkit.core;
 import flash.display.Graphics;
 import flash.display.Sprite;
 import flash.events.Event;
+import flash.events.MouseEvent;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
@@ -341,7 +342,13 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function interceptEvent(event:Event):Void {
-		dispatchEvent(new UIEvent(UIEvent.PREFIX + event.type));
+		var uiEvent:UIEvent = new UIEvent(UIEvent.PREFIX + event.type);
+		if (Std.is(event, MouseEvent)) {
+			var mouseEvent:MouseEvent = cast event;
+			uiEvent.stageX = mouseEvent.stageX;
+			uiEvent.stageY = mouseEvent.stageY;
+		}
+		dispatchEvent(uiEvent);
 	}
 	
 	//******************************************************************************************
@@ -465,7 +472,8 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		var fnName:String = "on" + StringUtil.capitalizeFirstLetter(StringTools.replace(event.type, UIEvent.PREFIX, ""));
 		var fn:UIEvent->Void = Reflect.field(this, fnName);
 		if (fn != null) {
-			var fnEvent:UIEvent = new UIEvent(UIEvent.PREFIX + event.type); 
+			var fnEvent:UIEvent = new UIEvent(UIEvent.PREFIX + event.type, event.component); 
+			fnEvent.data = event.data;
 			fnEvent.displayObject = this;
 			fn(fnEvent);
 		}

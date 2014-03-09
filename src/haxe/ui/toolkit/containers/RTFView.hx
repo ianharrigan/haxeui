@@ -204,14 +204,18 @@ class RTFView extends VBox {
 	}
 	
 	private function _onFontNameChange(event:Event):Void {
+		/*
 		var item:ListView.ListViewItem = _fontNameList.selectedItems[0];
 		_rtf.fontName(item.text);
+		*/
 	}
 	
 	private function _onFontSizeChange(event:Event):Void {
+		/*
 		var item:ListView.ListViewItem = _fontSizeList.selectedItems[0];
 		var size:Int = Std.parseInt(item.text);
 		_rtf.fontSize(size);
+		*/
 	}
 	
 	private function _onLeftAlignClick(event:Event):Void {

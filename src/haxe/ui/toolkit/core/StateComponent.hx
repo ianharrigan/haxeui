@@ -28,12 +28,21 @@ class StateComponent extends Component implements IStateComponent implements ICl
 		}
 	}
 	
-	public function addStates(stateNames:Array<String>):Void {
+	public function addStates(stateNames:Array<String>, rebuildStyles:Bool = true):Void {
 		for (stateName in stateNames) {
-			_states.push(stateName);
+			addState(stateName, false);
 		}
-		if (_ready) {
+		if (rebuildStyles == true && _ready) {
 			buildStyles();
+		}
+	}
+	
+	public function addState(stateName:String, rebuildStyles:Bool = true):Void {
+		if (hasState(stateName) == false) {
+			_states.push(stateName);
+			if (rebuildStyles == true && _ready) {
+				buildStyles();
+			}
 		}
 	}
 	
