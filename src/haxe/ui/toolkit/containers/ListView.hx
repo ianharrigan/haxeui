@@ -138,9 +138,11 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 			_selectedItems = new Array<IItemRenderer>();
 		} else {
-			var item:IItemRenderer = cast(_content.getChildAt(value), IItemRenderer);
-			if (item != null) {
-				handleListSelection(item, null);
+			if (_content.getChildAt(value) != null) {
+				var item:IItemRenderer = cast(_content.getChildAt(value), IItemRenderer);
+				if (item != null) {
+					handleListSelection(item, null);
+				}
 			}
 		}
 		
