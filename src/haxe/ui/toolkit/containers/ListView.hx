@@ -10,7 +10,7 @@ import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
 import haxe.ui.toolkit.core.renderers.ItemRenderer;
-import haxe.ui.toolkit.core.renderers.TextItemRenderer;
+import haxe.ui.toolkit.core.renderers.BasicItemRenderer;
 import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
@@ -39,7 +39,7 @@ class ListView extends ScrollView implements IDataComponent {
 		_content.percentWidth = 100;
 		addChild(_content);
 
-		_itemRenderer = TextItemRenderer;
+		_itemRenderer = BasicItemRenderer;
 	}
 
 	//******************************************************************************************

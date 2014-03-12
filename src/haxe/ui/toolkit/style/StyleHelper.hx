@@ -44,7 +44,7 @@ class StyleHelper {
 				if (style.backgroundColorGradientEnd != -1) {
 					var w:Int = Std.int(rc.width);
 					var h:Int = Std.int(rc.height);
-					var colors:Array<Int> = [style.backgroundColor, style.backgroundColorGradientEnd];
+					var colors:Array<UInt> = [style.backgroundColor, style.backgroundColorGradientEnd];
 					var alphas:Array<Int> = [1, 1];
 					var ratios:Array<Int> = [0, 255];
 					var matrix:Matrix = new Matrix();

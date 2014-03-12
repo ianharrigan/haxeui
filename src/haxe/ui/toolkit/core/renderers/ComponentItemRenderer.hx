@@ -8,7 +8,7 @@ import haxe.ui.toolkit.layout.HorizontalLayout;
 import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.controls.Button;
 
-class ComponentItemRenderer extends TextItemRenderer {
+class ComponentItemRenderer extends BasicItemRenderer {
 	private var _component:Component;
 	
 	public function new() {

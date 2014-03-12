@@ -1,1 +1,5 @@
+-cmd haxelib run openfl build application.xml flash -Dxml=docs/haxe-ui-toolkit.xml
+
+--next
+
 -cmd haxelib run dox -o docs/api -i docs -r /docs/api --title HaxeUI -in "haxe" -ex "haxe.io" -ex "haxe.ds" -ex "haxe.macro" -ex "haxe.EnumTools" -ex "haxe.EnumValueTools" -ex "haxe.FlatEnum" -ex "haxe.Function" -ex "haxe.Json" -ex "haxe.Log" -ex "haxe.ObjectMapKey" -ex "haxe.Or" -ex "haxe.PosInfos" -ex "haxe.Timer" -ex "haxe.ui.test" -ex "haxe.ui.toolkit.Main" -ex "haxe.ui.toolkit.controls.Value" -ex "haxe.StackItem" -ex "haxe.Resource" -ex "haxe.CallStack" -ex "haxe.Unserializer" -ex "haxe.ui.toolkit.containers.TableViewColumnDefs" -ex "haxe.ui.toolkit.containers.TableViewRow" -ex "haxe.ui.toolkit.containers.TableViewColumnDef"

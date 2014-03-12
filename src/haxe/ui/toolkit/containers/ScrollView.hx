@@ -48,6 +48,7 @@ class ScrollView extends StateComponent {
 		_eventTarget.visible = false;
 		
 		_container = new Box();
+		_container.id = "container";
 		_container.percentWidth = _container.percentHeight = 100;
 		addChild(_container);
 	}

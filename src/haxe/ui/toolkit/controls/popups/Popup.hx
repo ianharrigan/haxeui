@@ -88,7 +88,7 @@ class Popup extends VBox implements IDraggable {
 		if (_content == null) {
 			_content = new PopupContent();
 		}
-		_content.id = "content";
+		_content.id = "popupContent";
 		_content.percentWidth = 100;
 		//_content.percentHeight = 100;
 		addChild(_content);

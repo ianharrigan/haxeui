@@ -48,8 +48,7 @@ class PopupManager {
 		return p;
 	}
 	
-	public function showList(items:Dynamic, selectedIndex:Int = -1, title:String = null, fn:Dynamic->Void = null):Popup {
-		var config:Dynamic = { modal: true };
+	public function showList(items:Dynamic, selectedIndex:Int = -1, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
 		var ds:IDataSource = null;
 		if (Std.is(items, Array)) { // we need to convert items into a proper data source for the list
 			var arr:Array<Dynamic> = cast(items, Array<Dynamic>);

@@ -452,13 +452,9 @@ ListView:disabled {
 
 ListView #content {
 	color: 0x000000;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
+	padding: 0;
 	borderSize: 0;
-	spacingX: 0;
-	spacingY: 0;
+	spacing: 0;
 	cornerRadius: 0;
 }
 
@@ -802,7 +798,7 @@ MenuBar Button:down {
 	borderColor: 0x495267;
 }
 
-List, Date {
+ListSelector, DateSelector {
 	paddingLeft: 8;
 	paddingTop: 5;
 	paddingBottom: 5;
@@ -821,21 +817,21 @@ List, Date {
 	labelPosition: "left";
 }
 
-List:over, Date:over {
+ListSelector:over, DateSelector:over {
 	backgroundColor: 0x4b546a;
 	backgroundColorGradientEnd: 0x2c354b;
 	color: 0xFFFFFF;
 	borderColor: 0x363d4c;
 }
 
-List:down, Date:down {
+ListSelector:down, DateSelector:down {
 	backgroundColor: 0x8C95A9;
 	backgroundColorGradientEnd: 0x767F95;
 	color: 0xFFFFFF;
 	borderColor: 0x363d4c;
 }
 
-List:disabled, Date:disabled {
+ListSelector:disabled, DateSelector:disabled {
 	color: 0xCCCCCC;
 	backgroundColor: 0x8C8C8C;
 	backgroundColorGradientEnd: 0x6C6C6C;
@@ -843,21 +839,21 @@ List:disabled, Date:disabled {
 	icon: "styles/gradient/arrow_down_disabled.png";
 }
 
-MenuBar List {
+MenuBar ListSelector {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-MenuBar List:over {
+MenuBar ListSelector:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-MenuBar List:down {
+MenuBar ListSelector:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
@@ -896,28 +892,28 @@ ListView VBox Button:disabled, TableView #tableContent Button:disabled {
 	borderColor: 0x666666;
 }
 
-ListView VBox List, TableView #tableContent List {
+ListView VBox ListSelector, TableView #tableContent ListSelector {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:over, TableView #tableContent List:over {
+ListView VBox ListSelector:over, TableView #tableContent ListSelector:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:down, TableView #tableContent List:down {
+ListView VBox ListSelector:down, TableView #tableContent ListSelector:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:disabled, TableView #tableContent List:disabled {
+ListView VBox ListSelector:disabled, TableView #tableContent ListSelector:disabled {
 	color: 0xCCCCCC;
 	backgroundColor: 0x8C8C8C;
 	backgroundColorGradientEnd: 0x6C6C6C;
@@ -946,7 +942,7 @@ Popup #titleBar {
 	paddingLeft: 5;
 }
 
-Popup #content {
+Popup #popupContent {
 	paddingLeft: 5;
 	paddingRight: 5;
 	paddingTop: 5;
@@ -963,7 +959,7 @@ Popup #buttonBar {
 	height: 45;
 }
 
-ListPopupContent ListView, ListPopupContent #content {
+ListPopupContent ListView, ListPopupContent #popupContent {
 	padding: 0;
 	borderSize: 0;
 }
@@ -1028,7 +1024,7 @@ RTFView {
 	spacingY: 8;
 }
 
-RTFView List {
+RTFView ListSelector {
 	backgroundColor: 0xf4f5f5;
 	backgroundColorGradientEnd: 0xdfdddd;
 	color: 0x363d4c;
@@ -1036,7 +1032,7 @@ RTFView List {
 	icon: "styles/gradient/arrow_down_dark.png";
 }
 
-RTFView List:over {
+RTFView ListSelector:over {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	borderColor: 0x7d99ca;
@@ -1044,7 +1040,7 @@ RTFView List:over {
 	icon: "styles/gradient/arrow_down.png";
 }
 
-RTFView List:down {
+RTFView ListSelector:down {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	borderColor: 0x5d7fbc;
