@@ -182,6 +182,7 @@ class Macros {
 		if (n != -1) {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
+		nodeName = nodeName.toLowerCase();
 		
 		var id:String = node.get("id");
 		if (id != null && id.length > 0) {
