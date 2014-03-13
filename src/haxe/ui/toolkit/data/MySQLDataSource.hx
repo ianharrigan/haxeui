@@ -7,6 +7,7 @@ import sys.db.ResultSet;
 #end
 
 class MySQLDataSource extends DataSource {
+	/*
 	private var _connectionDetails:Dynamic;
 	private var _query:String;
 	private var _currentRecord:Dynamic;
@@ -151,4 +152,5 @@ class MySQLDataSource extends DataSource {
 	public override function createFromResource(resourceId:String, config:Dynamic = null):Void {
 		createFromString(resourceId, config);
 	}
+	*/
 }

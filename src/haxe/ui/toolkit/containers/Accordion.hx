@@ -143,26 +143,14 @@ class Accordion extends VBox implements IClonable<Accordion> {
 			panelOld = cast _panels[_selectedIndex];
 			unselectButton(buttonOld);
 		}
-		
 		var transition:String = Toolkit.getTransitionForClass(Accordion);
 		if (transition == "slide") {
 			panel.percentHeight = -1;
 			panel.height = 0;
 			panel.visible = true;
 			Actuate.tween(panel, .2, { height: ucy, clipHeight: ucy }, true).ease(Linear.easeNone)
-				.onComplete(function () {
-					panel.clearClip();
-					panel.percentHeight = 100;
-					if (panelOld != null) {
-						panelOld.visible = false;
-						unselectButton(buttonOld);
-					}
-				}).onUpdate(function() {
-					if (panelOld != null) {
-						panelOld.height = ucy - panel.height;
-						panelOld.clipHeight = panelOld.height;
-					}
-				});
+				.onUpdate(_onTweenUpdate, [ucy, panel, panelOld])
+				.onComplete(_onTweenComplete, [panel, panelOld, buttonOld]);
 		} else if (transition == "fade") {
 			panel.sprite.alpha = 0;
 			panel.visible = true;
@@ -189,6 +177,22 @@ class Accordion extends VBox implements IClonable<Accordion> {
 		button.allowSelection = false;
 		button.selected = false;
 		button.allowSelection = true;
+	}
+	
+	private function _onTweenUpdate(ucy:Float, panel:Component, panelOld:Component):Void {
+		if (panelOld != null) {
+			panelOld.height = ucy - panel.height;
+			panelOld.clipHeight = panelOld.height;
+		}
+	}
+	
+	private function _onTweenComplete(panel:Component, panelOld:Component, buttonOld):Void {
+		panel.clearClip();
+		panel.percentHeight = 100;
+		if (panelOld != null) {
+			panelOld.visible = false;
+			unselectButton(buttonOld);
+		}
 	}
 	
 	//******************************************************************************************

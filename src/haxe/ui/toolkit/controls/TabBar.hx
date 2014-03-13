@@ -99,6 +99,10 @@ class TabBar extends ScrollView {
 		selectedIndex = newIndex;
 	}
 	
+	public function getTabButton(index:Int):Button {
+		return cast _content.getChildAt(index);
+	}
+	
 	public function removeAllTabs():Void {
 		_content.removeAllChildren();
 		_selectedIndex = -1;

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
 <vbox>
 	<hbox>
 		<button id="simple1" text="Simple 1" />
@@ -21,3 +22,12 @@
 		<button id="cal1" text="Calendar 1" />
 	</hbox>
 </vbox>
+-->
+<accordion width="300" height="300">
+	<vbox text="Panel 1">
+		<button text="1" width="100%" height="100%" />
+	</vbox>
+	<vbox text="Panel 2">
+		<button text="2" width="100%" height="100%" />
+	</vbox>
+</accordion>

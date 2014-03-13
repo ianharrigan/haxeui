@@ -8,6 +8,7 @@ import haxe.ui.toolkit.core.XMLController;
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test2.xml"))
 class TestController2 extends XMLController {
 	public function new() {
+		/*
 		PopupManager.instance.defaultTitle = "Popup Tests!";
 		
 		simple1.onClick = function(e) {
@@ -57,5 +58,6 @@ class TestController2 extends XMLController {
 		cal1.onClick = function(e) {
 			showCalendarPopup();
 		}
+		*/
 	}
 }

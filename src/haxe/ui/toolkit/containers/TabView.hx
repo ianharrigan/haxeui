@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.containers;
 
 import flash.events.Event;
+import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.TabBar;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
@@ -122,6 +123,10 @@ class TabView extends Component {
 	public function removeTab(index:Int):Void {
 		_stack.removeChildAt(index);
 		_tabs.removeTab(index);
+	}
+	
+	public function getTabButton(index:Int):Button {
+		return cast _tabs.getTabButton(index);
 	}
 	
 	public function removeAllTabs():Void {
