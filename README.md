@@ -10,7 +10,7 @@ Cross platform Haxe/OpenFL set of styleable application centric rich UI componen
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Windows</a> | 
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Neko</a> | 
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Android</a> |
-<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">AIR</a> | <a href="http://haxeui.org/examples/html/index.html">HTML</a>
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">AIR</a> | <a href="http://haxeui.org/examples/html/showcase/index.html">HTML</a>
 
 Adobe AIR  note: Installer will not install from mounted/network drives.
 
@@ -112,7 +112,7 @@ Notes
 html5 target functions but is not particularly performant. This will,
 hopefully, be improved in future releases.
 
-An experimental html5 demo is available <a href="http://haxeui.org/examples/html/index.html">here</a>
+An experimental html5 demo is available <a href="http://haxeui.org/examples/html/showcase/index.html">here</a>
 
 
 Licence
