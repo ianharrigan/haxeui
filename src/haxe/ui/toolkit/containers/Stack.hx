@@ -1,10 +1,8 @@
 package haxe.ui.toolkit.containers;
 
 import flash.events.Event;
-import flash.geom.Rectangle;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
-import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
@@ -45,7 +43,9 @@ class Stack extends Component {
 	private function set_selectedIndex(value:Int):Int {
 		if (value != _selectedIndex) {
 			var transition:String = Toolkit.getTransitionForClass(Stack);
-			transition = "none";
+			if (transition == "slide") {
+				transition = "none";
+			}
 			for (n in 0...children.length) {
 				var item:IDisplayObject = children[n];
 				if (n == value) {

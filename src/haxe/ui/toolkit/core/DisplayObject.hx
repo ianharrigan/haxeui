@@ -12,7 +12,6 @@ import haxe.ui.toolkit.core.interfaces.IDrawable;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.events.UIEvent;
-import haxe.ui.toolkit.util.CallStackHelper;
 import haxe.ui.toolkit.util.StringUtil;
 
 @:build(haxe.ui.toolkit.core.Macros.addEvents([
@@ -49,6 +48,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	public function new() {
 		_sprite = new Sprite();
+		//_sprite.cacheAsBitmap = true;
 		_sprite.tabChildren = false;
 		addEventListener(Event.ADDED_TO_STAGE, _onAddedToStage, false, 100);
 	}

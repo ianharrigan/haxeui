@@ -7,7 +7,7 @@
     <movie path="application.xml" />
     <movie fps="60" />
     <movie width="800" />
-    <movie height="600" />
+    <movie height="520" />
     <movie version="3" />
     <movie minorVersion="0" />
     <movie platform="NME" />
@@ -17,11 +17,12 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
+    <class path="assets" />
     <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.2.5&#xA;display&#xA;web" />
+    <option directives="tools=1.3.1&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />

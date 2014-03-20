@@ -3,16 +3,15 @@ package haxe.ui.toolkit.controls.selection;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.filters.DropShadowFilter;
-import flash.geom.Rectangle;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.controls.Button;
-import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
+import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
-import haxe.ui.toolkit.core.interfaces.IDataComponent;
+import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
 
@@ -45,6 +44,8 @@ class ListSelector extends Button implements IDataComponent {
 	public function new() {
 		super();
 		toggle = true;
+		allowSelection = false;
+		dispatchChangeEvents = false;
 	}
 	
 	//******************************************************************************************
@@ -66,7 +67,7 @@ class ListSelector extends Button implements IDataComponent {
 	}
 	
 	private override function _onMouseClick(event:MouseEvent):Void {
-		super._onMouseClick(event);
+		//super._onMouseClick(event);
 		if (_list == null || _list.visible == false) {
 			showList();
 		} else {
@@ -112,18 +113,19 @@ class ListSelector extends Button implements IDataComponent {
 	 **/
 	public function showList():Void {
 		if (_method == "popup") {
-			PopupManager.instance.showList(dataSource, _selectedIndex, "Select", function(item:IItemRenderer) {
-				this.text = item.text;
+			PopupManager.instance.showList(dataSource, _selectedIndex, "Select Item", { }, function(item:IItemRenderer) {
+				_selectedIndex = item.data.index;
+				this.text = item.data.text;
 				_selectedItems = new Array<IItemRenderer>();
 				_selectedItems.push(item);
 				this.selected = false;
-				var event:Event = new Event(Event.CHANGE);
+				var event:UIEvent = new UIEvent(UIEvent.CHANGE);
 				dispatchEvent(event);
 			});
 		} else {
 			if (_list == null) {
 				_list = new ListView();
-				_list.addEventListener(Event.CHANGE, _onListChange);
+				_list.addEventListener(UIEvent.CHANGE, _onListChange);
 				_list.content.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 					showList();
 				});
@@ -276,14 +278,14 @@ class ListSelector extends Button implements IDataComponent {
 		}
 	}
 	
-	private function _onListChange(event:Event):Void {
+	private function _onListChange(event:UIEvent):Void {
 		if (_list.selectedItems != null && _list.selectedItems.length > 0) {
-			this.text = _list.selectedItems[0].text;
+			this.text = _list.selectedItems[0].data.text;
 			_selectedIndex = _list.selectedIndex;
 			_selectedItems = _list.selectedItems;
 			hideList();
 			
-			var event:Event = new Event(Event.CHANGE);
+			var event:UIEvent = new UIEvent(UIEvent.CHANGE);
 			dispatchEvent(event);
 		}
 	}

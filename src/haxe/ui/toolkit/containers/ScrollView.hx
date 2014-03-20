@@ -9,7 +9,6 @@ import flash.geom.Rectangle;
 import haxe.ui.toolkit.controls.HScroll;
 import haxe.ui.toolkit.controls.VScroll;
 import haxe.ui.toolkit.core.base.State;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
@@ -17,7 +16,7 @@ import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
-import haxe.ui.toolkit.util.TypeParser;
+import haxe.ui.toolkit.layout.VerticalLayout;
 
 class ScrollView extends StateComponent {
 	private var _hscroll:HScroll;
@@ -48,6 +47,7 @@ class ScrollView extends StateComponent {
 		_eventTarget.visible = false;
 		
 		_container = new Box();
+		_container.layout = new VerticalLayout();
 		_container.id = "container";
 		_container.percentWidth = _container.percentHeight = 100;
 		addChild(_container);
@@ -497,6 +497,7 @@ class ScrollView extends StateComponent {
 				}
 			}
 			
+			//invalidateLayout = true;
 			if (invalidateLayout) {
 				_invalidating = false;
 				invalidate(InvalidationFlag.LAYOUT);
@@ -510,7 +511,13 @@ class ScrollView extends StateComponent {
 			_hscroll = new HScroll();
 			_hscroll.percentWidth = 100;
 			_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
-			_hscroll.visible = true;
+			if (_showHScroll == false) {
+				_hscroll.visible = false;
+			} else if (_autoHideScrolls == true) {
+				_hscroll.visible = false;
+			} else {
+				_hscroll.visible = true;
+			}
 			addChild(_hscroll);
 			created = true;
 		}
@@ -529,7 +536,13 @@ class ScrollView extends StateComponent {
 			_vscroll = new VScroll();
 			_vscroll.percentHeight = 100;
 			_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
-			_vscroll.visible = true;
+			if (_showVScroll == false) {
+				_vscroll.visible = false;
+			} else if (_autoHideScrolls == true) {
+				_vscroll.visible = false;
+			} else {
+				_vscroll.visible = true;
+			}
 			addChild(_vscroll);
 		}
 				

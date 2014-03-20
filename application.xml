@@ -9,19 +9,23 @@
 	<app main="haxe.ui.toolkit.Main" file="haxeui" path="bin" />
 	
 	<window background="#FFFFFF" fps="60" />
-	<window width="800" height="600" unless="mobile" />
+	<window width="800" height="520" unless="mobile" />
 	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
 
 	<assets path="assets" rename="assets" />
 	
 	<!-- classpath, haxe libs -->
 	<source path="src" />
+	<classpath name="assets" />
+	
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
 	<haxelib name="hscript" />
 	
 	<assets path="assets/styles" rename="styles" />
 	<assets path="assets/img" rename="img" />
+	<assets path="assets/fonts" rename="fonts" />
+	<assets path="assets/ui" rename="ui" />
 	
 	<!-- optimize output -->
 	<haxeflag name="-dce std" if="haxe3" />

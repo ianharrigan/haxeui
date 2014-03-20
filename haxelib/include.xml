@@ -3,5 +3,7 @@
 	<assets path="styles" exclude="*.css" rename="styles" if="html5" />
 	<assets path="styles" rename="styles" unless="html5" />
 	<assets path="img" rename="img" />
+	<assets path="fonts" rename="fonts" />
 	<classpath name="styles" />
+	<classpath name="fonts" />
 </project>

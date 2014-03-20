@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.controls.extended.syntax;
+
 import flash.text.TextFormat;
 
 class CodeSyntax {

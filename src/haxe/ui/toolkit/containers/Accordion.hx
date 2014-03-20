@@ -43,6 +43,12 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	 Adds a panel to the accordion, the childs `text` property will be used as the title
 	 **/
 	public override function addChild(child:IDisplayObject):IDisplayObject {
+		#if html5
+		if (_ready == false) {
+			return super.addChild(child);
+		}
+		#end
+		
 		var r = null;
 		if (Std.is(child, AccordionButton)) {
 			r = super.addChild(child);
@@ -56,16 +62,18 @@ class Accordion extends VBox implements IClonable<Accordion> {
 			child.percentHeight = 100;
 			child.percentWidth = 100;
 			_panels.push(child);
-			
+
 			var button:AccordionButton = new AccordionButton();
 			button.styleName = "expandable";
 			if (Std.is(child, Component)) {
 				button.text = cast(child, Component).text;
 			}
+			button.userData = _panels.length - 1;
+			button.id = "accordionButton_" + (_panels.length - 1);
 			button.percentWidth = 100;
 			button.toggle = true;
 			button.selected = false;
-			button.userData = _panels.length - 1;
+			button.allowSelection = false;
 			button.addEventListener(UIEvent.CLICK, _onButtonClick);
 			_buttons.push(button);
 			
@@ -133,6 +141,7 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	
 	private function showPanel(index:Int):Void {
 		var button:AccordionButton = _buttons[index];
+		button.selected = true;
 		var panel:Component = cast _panels[index];
 
 		var buttonOld:AccordionButton = null;
@@ -141,7 +150,9 @@ class Accordion extends VBox implements IClonable<Accordion> {
 		if (_selectedIndex > -1) {
 			buttonOld = _buttons[_selectedIndex];
 			panelOld = cast _panels[_selectedIndex];
-			unselectButton(buttonOld);
+			if (button != buttonOld) {
+				unselectButton(buttonOld);
+			}
 		}
 		var transition:String = Toolkit.getTransitionForClass(Accordion);
 		if (transition == "slide") {
@@ -155,12 +166,14 @@ class Accordion extends VBox implements IClonable<Accordion> {
 			panel.sprite.alpha = 0;
 			panel.visible = true;
 			if (panelOld != null) {
+				unselectButton(buttonOld);
 				panelOld.visible = false;
 			}
 			Actuate.tween(panel.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone);
 		} else {
 			panel.visible = true;
 			if (panelOld != null) {
+				unselectButton(buttonOld);
 				panelOld.visible = false;
 			}
 		}
@@ -174,9 +187,9 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	
 	/** Unselects button without triggering hidePanel() */
 	private function unselectButton(button:Button) {
-		button.allowSelection = false;
+		//button.allowSelection = false;
 		button.selected = false;
-		button.allowSelection = true;
+		//button.allowSelection = true;
 	}
 	
 	private function _onTweenUpdate(ucy:Float, panel:Component, panelOld:Component):Void {

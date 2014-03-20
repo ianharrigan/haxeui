@@ -1,16 +1,13 @@
 package haxe.ui.toolkit.core;
 
-import flash.filters.BitmapFilter;
 import flash.geom.Rectangle;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
-import haxe.ui.toolkit.layout.GridLayout;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleHelper;
 import haxe.ui.toolkit.style.StyleManager;
-import haxe.ui.toolkit.util.FilterParser;
 
 class StyleableDisplayObject extends DisplayObjectContainer implements IStyleableDisplayObject implements IClonable<StyleableDisplayObject>  {
 	private var _style:Style;
@@ -153,6 +150,13 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 				_sprite.alpha = _style.alpha;
 			} else {
 				_sprite.alpha = 1;
+			}
+			
+			if (_style.horizontalAlignment != null) {
+				this.horizontalAlign = _style.horizontalAlignment;
+			}
+			if (_style.verticalAlignment != null) {
+				this.verticalAlign = _style.verticalAlignment;
 			}
 			
 			#if !html5

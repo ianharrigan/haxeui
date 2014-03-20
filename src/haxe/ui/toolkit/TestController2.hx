@@ -4,10 +4,32 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.XMLController;
+import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.util.CallStackHelper;
 
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test2.xml"))
 class TestController2 extends XMLController {
 	public function new() {
+		test.onClick = function(e) {
+			//documenttabs.setTabText(0, "Panel 1*");
+			showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");
+			//showCustomPopup("assets/custom.xml", "Something Nice", {buttons: [PopupButton.CONFIRM, PopupButton.CANCEL], width: 500});
+			//list1.width = 400;
+			//trace("bob");
+		};
+		
+		test.onReady = function(e) {
+			//list1.width = 400;
+		};
+		
+
+		/*
+		dd1.onChange = function(e:UIEvent) {
+			
+			trace("onChange - " + dd1.selectedItems[0].data.text);
+		};
+		*/
+		
 		/*
 		PopupManager.instance.defaultTitle = "Popup Tests!";
 		

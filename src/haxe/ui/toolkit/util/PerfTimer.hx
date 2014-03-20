@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.util;
+
 import haxe.Timer;
 
 class PerfTimer {

@@ -1,9 +1,9 @@
 package haxe.ui.toolkit.core.renderers;
 
 import haxe.ui.toolkit.controls.Image;
+import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.layout.HorizontalLayout;
-import haxe.ui.toolkit.controls.Text;
 
 class BasicItemRenderer extends ItemRenderer {
 	public function new() {
@@ -13,6 +13,7 @@ class BasicItemRenderer extends ItemRenderer {
 		var text:Text = new Text();
 		text.text = "Text";
 		text.id = "text";
+		text.verticalAlign = VerticalAlign.CENTER;
 		text.percentWidth = 100;
 		addChild(text);
 	}

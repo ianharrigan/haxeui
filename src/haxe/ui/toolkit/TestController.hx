@@ -7,6 +7,7 @@ import haxe.ui.toolkit.events.UIEvent;
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test.xml"))
 class TestController extends XMLController {
 	public function new() {
+		/*
 		list1.onChange = function(e:UIEvent) {
 			logData("list1.onChange: text = " + list1.selectedItems[0].data.text);
 		};
@@ -33,11 +34,14 @@ class TestController extends XMLController {
 		};
 		
 		logData("ready...");	
+		*/
 	}
 	
 	private function logData(data:String):Void {
+		/*
 		log.text += data + "\n";
 		log.vscrollPos = log.vscrollMax;
+		*/
 	}
 	
 }

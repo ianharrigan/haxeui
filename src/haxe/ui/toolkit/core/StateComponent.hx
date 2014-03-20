@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
-import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 

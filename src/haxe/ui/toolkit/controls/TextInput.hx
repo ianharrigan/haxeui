@@ -1,20 +1,16 @@
 package haxe.ui.toolkit.controls;
 
 import flash.display.DisplayObject;
-import flash.display.Sprite;
 import flash.events.Event;
 import flash.text.TextField;
 import flash.text.TextFormat;
 import haxe.ui.toolkit.core.base.State;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
-import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
 import haxe.ui.toolkit.core.StateComponent;
-import haxe.ui.toolkit.style.Style;
+import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
-import haxe.ui.toolkit.layout.DefaultLayout;
 
 /**
  Generic editable text component (supports multiline text)
@@ -151,6 +147,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		if (_textDisplay != null) {
 			_textDisplay.style = style;
 		}
+		/*
 		if (_textPlaceHolder != null) {
 			var placeholderStyle:Style = new Style();
 			placeholderStyle.merge(style);
@@ -160,6 +157,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 			placeholderStyle.padding = 0;
 			_textPlaceHolder.style = placeholderStyle;
 		}
+		*/
 	}
 	
 	//******************************************************************************************
@@ -254,7 +252,6 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		}
 		_textPlaceHolder.text = value;
 		if (_ready && contains(_textPlaceHolder) == false && value != null) {
-			trace("addding");
 			addChild(_textPlaceHolder);
 		}
 		if (value == null) {

@@ -23,11 +23,76 @@
 	</hbox>
 </vbox>
 -->
-<accordion width="300" height="300">
+<vbox width="100%" height="100%" style="spacing:2;">
+<!--
+		<menubar style="autoSize:true">
+			<vbox>
+				<hbox>
+					<menubutton text="File" id="menufile">
+						<import resource="ui/menus/file.xml" />
+					</menubutton>
+					<menubutton text="Search" id="menusearch">
+						<import resource="ui/menus/search.xml" />
+					</menubutton>
+					<menubutton text="Program" id="menuprogram">
+						<import resource="ui/menus/program.xml" />
+					</menubutton>
+					<menubutton text="Help" id="menuhelp">
+						<import resource="ui/menus/help.xml" />
+					</menubutton>
+				</hbox>
+
+				<import resource="ui/toolbar.xml" />
+			</vbox>
+		</menubar>
+	-->
+<tabview width="100%" height="100%" id="documenttabs">
 	<vbox text="Panel 1">
-		<button text="1" width="100%" height="100%" />
+		<button text="1" />
+		<button text="test" id="test"/>
+		<grid columns="4">
+			
+			<!--
+			<button id="something" x="101" y="401" text="This is a test button" />
+			<button id="something" x="101" y="401" text="This is a test button" />
+			<hprogress pos="50" />
+			<hslider pos="50" />
+			<listview width="200" height="150" id="list1">
+				<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
+			</listview>
+			<listSelector text="Select Item" id = "dd1">
+				<array>Item 1,Item 2,Item 3, Item4, Item 5</array>
+			</listSelector>
+			
+			-->
+			<accordion width="200" height="300">
+				<vbox text="Page 1">
+					<listview width="100%" height="100%">
+						<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
+					</listview>
+				</vbox>
+				<vbox text="Page 2">
+					<listview width="100%" height="100%">
+						<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
+					</listview>
+				</vbox>
+			</accordion>
+			
+			<!--
+			<code text="2This is some code to make things scroll\n3This is some code to make things scroll\n4This is some code to make things scroll\n5This is some code to make things scroll\n6This is some code to make things scroll\n7This is some code to make things scroll\nThis is some code to make things scroll\nThis is some code to make things scroll\nThis is some code to make things scroll\n" width="100" height="100">
+			</code>
+			-->	
+		</grid>
 	</vbox>
 	<vbox text="Panel 2">
-		<button text="2" width="100%" height="100%" />
+		<button text="2" />
 	</vbox>
-</accordion>
+	<vbox text="Panel 3">
+		<button text="3" />
+	</vbox>
+	<vbox text="Panel 4">
+		<button text="4" />
+	</vbox>
+</tabview>
+
+</vbox>

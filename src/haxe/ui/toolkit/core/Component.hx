@@ -11,8 +11,6 @@ import haxe.ui.toolkit.core.interfaces.IComponent;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
-import haxe.ui.toolkit.style.Style;
-import haxe.ui.toolkit.style.StyleManager;
 
 class Component extends StyleableDisplayObject implements IComponent implements IClonable<StyleableDisplayObject> {
 	private var _text:String;

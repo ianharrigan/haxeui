@@ -1,6 +1,5 @@
 package haxe.ui.toolkit.core.xml;
 
-import flash.xml.XML;
 import haxe.ui.toolkit.core.ClassManager;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;

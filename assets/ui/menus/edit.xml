@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+	<menuitem text="Cut" />
+	<menuitem text="Copy" />
+	<menuitem text="Paste" />
+	<menuitem text="Select All" />
+</menu>

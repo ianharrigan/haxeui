@@ -2,7 +2,6 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
 import haxe.ui.toolkit.core.base.State;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.events.UIEvent;

@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.layout;
+
 import haxe.ui.toolkit.core.base.HorizontalAlign;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
-import haxe.ui.toolkit.util.CallStackHelper;
 
 class VerticalContinuousLayout extends Layout {
 	public function new() {

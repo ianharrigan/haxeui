@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+	<menuitem id="menufilenew" text="New" />
+	<menuitem id="menufileopen" text="Open..." />
+	<menuitem id="menufilesave" text="Save" condition="Client.target != 'flash'" />
+	<menuitem id="menufilesaveas" text="Save As..." />
+	
+	<menu text="Recent Files" id="menufilerecent" condition="Client.target != 'flash'">
+		<menuitem id="" text="SPARQL INSERT.txt" />
+		<menuitem id="" text="SPARQL.txt" />
+		<menuitem id="" text="test file.txt" />
+	</menu>
+	
+	<menuitem id="menuileexit" text="Exit" condition="Client.target != 'flash'"/>
+</menu>

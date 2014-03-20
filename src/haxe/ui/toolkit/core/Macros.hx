@@ -129,20 +129,7 @@ class Macros {
 
 		if (ctor == null) Context.error("A class building a controller must have a constructor", Context.currentPos());
 		
-		if (sys.FileSystem.exists(resourcePath) == false) {
-			var paths:Array<String> = Context.getClassPath();
-			for (path in paths) {
-				path = path + "/" + resourcePath;
-				if (sys.FileSystem.exists(path)) {
-					resourcePath = path;
-					break;
-				}
-			}
-		}
-
-		resourcePath = StringTools.replace(resourcePath, "\\", "/");
-		resourcePath = StringTools.replace(resourcePath, "//", "/");
-		
+		resourcePath = resolveResource(resourcePath, Context.getClassPath());
 		if (sys.FileSystem.exists(resourcePath) == false) {
 			Context.error("XML file not found", Context.currentPos());
 		}
@@ -156,7 +143,7 @@ class Macros {
 		var contents:String = sys.io.File.getContent(resourcePath);
 		var xml:Xml = Xml.parse(contents);
 		var types:Map<String, String> = new Map<String, String>();
-		processNode(xml.firstElement(), types);
+		processNode(xml.firstElement(), types, Context.getClassPath());
 		
 		var n:Int = 1;
 		for (id in types.keys()) {
@@ -176,13 +163,28 @@ class Macros {
 		return fields;
 	}
 	
-	private static function processNode(node:Xml, types:Map < String, String > ):Void {
+	private static function processNode(node:Xml, types:Map < String, String >, paths:Array<String>):Void {
 		var nodeName:String = node.nodeName;
 		var n:Int = nodeName.indexOf(":");
 		if (n != -1) {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
 		nodeName = nodeName.toLowerCase();
+		
+		if (nodeName == "import") {
+			#if (!flash && !html5)
+			var resourcePath:String = node.get("resource");
+			resourcePath = resolveResource(resourcePath, paths);
+			if (sys.FileSystem.exists(resourcePath) == false) {
+				trace("WARNING: " + resourcePath + " not found");
+			} else {
+				var contents:String = sys.io.File.getContent(resourcePath);
+				var xml:Xml = Xml.parse(contents);
+				processNode(xml.firstElement(), types, paths);
+				return;
+			}
+			#end
+		}
 		
 		var id:String = node.get("id");
 		if (id != null && id.length > 0) {
@@ -192,7 +194,7 @@ class Macros {
 			}
 		}
 		for (child in node.elements()) {
-			processNode(child, types);
+			processNode(child, types, paths);
 		}
 	}
 	
@@ -518,5 +520,38 @@ class Macros {
 		}
 		
 		return has;
+	}
+	
+	private static function resolveResource(resourcePath:String, paths:Array<String>):String {
+		#if (flash || html5)
+		return resourcePath;
+		#else
+		var subs = ["/", "/assets/"];
+		var found = false;
+		if (sys.FileSystem.exists(resourcePath) == false) {
+			for (path in paths) {
+				
+				for (s in subs) {
+					var test = path + s + resourcePath;	
+					if (test.indexOf("/") == 0 || test.indexOf("\\") == 0) {
+						test = test.substr(1, test.length);
+					}
+					if (sys.FileSystem.exists(test)) {
+						resourcePath = test;
+						found = true;
+						break;
+					}
+				}
+				
+				if (found == true) {
+					break;
+				}
+			}
+		}
+
+		resourcePath = StringTools.replace(resourcePath, "\\", "/");
+		resourcePath = StringTools.replace(resourcePath, "//", "/");
+		return resourcePath;
+		#end
 	}
 }

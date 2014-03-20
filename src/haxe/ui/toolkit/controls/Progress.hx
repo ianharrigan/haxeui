@@ -1,8 +1,6 @@
 package haxe.ui.toolkit.controls;
 
-import flash.display.Bitmap;
 import flash.events.Event;
-import flash.Lib;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
@@ -13,7 +11,6 @@ import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.layout.DefaultLayout;
-import haxe.ui.toolkit.layout.Layout;
 
 /**
  Progress bar control

@@ -13,4 +13,6 @@
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
 	<haxelib name="hscript" />	
+
+	<assets path="../../assets/fonts" rename="fonts" />
 </project>

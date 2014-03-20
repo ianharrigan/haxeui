@@ -1,8 +1,6 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
-import flash.geom.Point;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.Screen;
 

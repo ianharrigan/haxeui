@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.data;
+
 import haxe.ui.toolkit.resources.ResourceManager;
 
 class ArrayDataSource extends DataSource {

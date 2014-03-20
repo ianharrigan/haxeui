@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<grid columns="2" width="100%">
-	<text text="First Name:" />
-	<textinput text="Ian" id="server" width="100%"/>
-	<text text="Last Name:"/>
-	<textinput text="Harrigan" id="nickname" width="100%"/>
+<vbox width="100%" height="400">
+	<accordion id="prefs" width="100%" height="100%">
+
+<grid columns="2" text="Defaults">
+	<text text="Last Directory:" />
+	<hbox width="100%" style="padding: 0">
+		<textinput text="" width="100%" id="lastDir" placeholderText="Last Directory" />
+		<button text="Clear" />
+	</hbox>
+	
+	<text text="Theme:" />
+	<listSelector text="Theme" width="100%">
+		<array>Gradient</array>
+	</listSelector>
+	
+	<text text="Variables:" verticalAlign="top" />
+	<textinput id="environmentVars" text="" width="100%" height="80" multiline="true" wrapLines="true" placeholderText="Environment Variables" />
 </grid>
+
+
+<grid columns="2" text="Flash Settings">
+	<text text="Flash Player:" />
+	<textinput text="" width="100%" id="flashPlayer"/>
+</grid>
+		
+		
+		
+	</accordion>
+</vbox>

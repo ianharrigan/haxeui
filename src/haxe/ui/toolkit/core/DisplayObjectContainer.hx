@@ -1,15 +1,14 @@
 package haxe.ui.toolkit.core;
 
 import flash.display.Sprite;
+import haxe.CallStack;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.ILayout;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
-import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
-import haxe.CallStack;
 
 class DisplayObjectContainer extends DisplayObject implements IDisplayObjectContainer implements IClonable<DisplayObjectContainer> {
 	private var _children:Array<IDisplayObject>;
@@ -109,7 +108,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			return null;
 		}
 		
-		#if html5
+		#if html5	
 		if (_ready == false) {
 			if (_childrenToAdd == null) {
 				_childrenToAdd = new Array<IDisplayObject>();

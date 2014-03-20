@@ -33,6 +33,8 @@ class Style implements IClonable<Style> {
 	private var _paddingBottom:Int = -1;
 	private var _spacingX:Int = -1;
 	private var _spacingY:Int = -1;
+	private var _verticalAlignment:String;
+	private var _horizontalAlignment:String;
 	private var _cornerRadiusTopLeft:Int = -1;
 	private var _cornerRadiusTopRight:Int = -1;
 	private var _cornerRadiusBottomLeft:Int = -1;
@@ -75,6 +77,8 @@ class Style implements IClonable<Style> {
 	public var spacingX(get, set):Int;
 	public var spacingY(get, set):Int;
 	public var spacing(get, set):Int;
+	public var verticalAlignment(get, set):String;
+	public var horizontalAlignment(get, set):String;
 	public var cornerRadiusTopLeft(get, set):Int;
 	public var cornerRadiusTopRight(get, set):Int;
 	public var cornerRadiusBottomLeft(get, set):Int;
@@ -472,6 +476,36 @@ class Style implements IClonable<Style> {
 		}
 		return value;
 	}
+
+	private function get_horizontalAlignment():String {
+		if (hasDynamicValue("horizontalAlignment")) {
+			return getDynamicValue("horizontalAlignment");
+		}
+		return _horizontalAlignment;
+	}
+	
+	private function set_horizontalAlignment(value:String):String {
+		if (value != _horizontalAlignment) {
+			_horizontalAlignment = value;
+			apply();
+		}
+		return value;
+	}
+
+	private function get_verticalAlignment():String {
+		if (hasDynamicValue("verticalAlignment")) {
+			return getDynamicValue("verticalAlignment");
+		}
+		return _verticalAlignment;
+	}
+	
+	private function set_verticalAlignment(value:String):String {
+		if (value != _verticalAlignment) {
+			_verticalAlignment = value;
+			apply();
+		}
+		return value;
+	}
 	
 	private function get_cornerRadiusTopLeft():Int {
 		if (hasDynamicValue("cornerRadiusTopLeft")) {
@@ -843,6 +877,8 @@ class Style implements IClonable<Style> {
 		if (with._paddingBottom != -1) this._paddingBottom = with._paddingBottom;
 		if (with._spacingX != -1) this._spacingX = with._spacingX;
 		if (with._spacingY != -1) this._spacingY = with._spacingY;
+		if (with._horizontalAlignment != null) this._horizontalAlignment = with._horizontalAlignment;
+		if (with._verticalAlignment != null) this._verticalAlignment = with._verticalAlignment;
 		if (with._cornerRadiusTopLeft != -1) this._cornerRadiusTopLeft = with._cornerRadiusTopLeft;
 		if (with._cornerRadiusTopRight != -1) this._cornerRadiusTopRight = with._cornerRadiusTopRight;
 		if (with._cornerRadiusBottomLeft != -1) this._cornerRadiusBottomLeft = with._cornerRadiusBottomLeft;

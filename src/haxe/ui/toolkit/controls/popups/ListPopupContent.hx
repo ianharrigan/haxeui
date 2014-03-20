@@ -1,6 +1,5 @@
 package haxe.ui.toolkit.controls.popups;
 
-import flash.events.Event;
 import flash.events.TimerEvent;
 import flash.utils.Timer;
 import haxe.ui.toolkit.containers.ListView;
@@ -84,8 +83,13 @@ class ListPopupContent extends PopupContent {
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
+	#if mobile
+	private var DELAY:Int = 400;
+	#else
+	private var DELAY:Int = 0;
+	#end
 	private function _onListChange(event:UIEvent):Void {
-		hideTimer = new Timer(400, 1);
+		hideTimer = new Timer(DELAY, 1);
 		hideTimer.addEventListener(TimerEvent.TIMER_COMPLETE, _onTimerComplete);
 		hideTimer.start();
 	}
@@ -95,14 +99,11 @@ class ListPopupContent extends PopupContent {
 		if (Std.is(parent, Popup)) {
 			PopupManager.instance.hidePopup(cast(parent, Popup));
 		}
-		
+
 		if (_fn != null) {
 			var item:IItemRenderer = _list.selectedItems[0];
-			var index:Int = Lambda.indexOf(_list.selectedItems, item);
-			var param:Dynamic = {
-				text: item.text,
-				index: index,
-			};
+			var index:Int = _list.getItemIndex(item);
+			item.data.index = index;
 			_fn(item);
 		}
 	}

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<button text="Button" width="100" height="100" autoSize="false" icon="img/rtfview/edit-alignment-center.png" />
+
+<!--
 <vbox width="100%" height="100%">
 	<hbox height="100%" width="100%">
 		<json id="ds">
@@ -60,3 +63,4 @@
 	</hbox>
 	
 </vbox>
+-->

@@ -1,11 +1,8 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
-import flash.events.MouseEvent;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.ScrollView;
-import haxe.ui.toolkit.containers.VBox;
-import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.events.UIEvent;
 
 /**
@@ -24,6 +21,7 @@ class TabBar extends ScrollView {
 		_scrollSensitivity = 5;
 		_showHScroll = _showVScroll = false;
 		_content = new HBox();
+		_content.id = "content";
 		_content.percentHeight = 100;
 		addChild(_content);
 	}

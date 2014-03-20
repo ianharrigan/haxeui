@@ -10,16 +10,12 @@ import haxe.ui.toolkit.core.xml.DataProcessor;
 import haxe.ui.toolkit.core.xml.IXMLProcessor;
 import haxe.ui.toolkit.core.xml.StyleProcessor;
 import haxe.ui.toolkit.core.xml.UIProcessor;
-import haxe.ui.toolkit.data.DataManager;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.hscript.ClientWrapper;
 import haxe.ui.toolkit.hscript.ScriptManager;
 import haxe.ui.toolkit.resources.ResourceManager;
-import haxe.ui.toolkit.style.DefaultStyles;
-import haxe.ui.toolkit.style.StyleManager;
-import haxe.ui.toolkit.style.StyleParser;
-import haxe.ui.toolkit.style.Styles;
-import haxe.ui.toolkit.util.TypeParser;
+import haxe.ui.toolkit.themes.DefaultTheme;
+import haxe.ui.toolkit.themes.Theme;
 
 class Toolkit {
 	private static var _instance:Toolkit;
@@ -40,12 +36,16 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 
-		if (_defaultTransition != "none" && _transitionRegister.get(Type.getClassName(Menu)) == null) {
+		if (_defaultTransition != "none" && _transitionRegister != null &&  _transitionRegister.get(Type.getClassName(Menu)) == null) {
 			setTransitionForClass(Menu, "fade"); // fade looks nicer
 		}
 		
-		if (StyleManager.instance.hasStyles == false && _useDefaultStyles == true) {
-			StyleManager.instance.addStyles(new DefaultStyles());
+		if (theme == null && useDefaultTheme == true) {
+			theme = new DefaultTheme();
+		}
+		
+		if (theme != null) {
+			theme.apply();
 		}
 	}
 
@@ -56,6 +56,12 @@ class Toolkit {
 		}
 		_registeredProcessors.set(prefix, Type.getClassName(cls));
 	}
+	
+	//******************************************************************************************
+	// Theme functions
+	//******************************************************************************************
+	public static var useDefaultTheme(default, default):Bool = true;
+	public static var theme(default, default):Theme;
 	
 	//******************************************************************************************
 	// Processes a chunk of xml, return values depend on what comes in, could return IDisplayObject, IDataSource
@@ -151,12 +157,10 @@ class Toolkit {
 	//******************************************************************************************
 	// Animation defaults
 	//******************************************************************************************
-	private static var _useDefaultStyles:Bool = true;
 	private static var _defaultTransition:String = "slide";
 	private static var _transitionRegister:StringMap<String>;
 	
 	public static var defaultTransition(get, set):String;
-	public static var useDefaultStyles(get, set):Bool;	
 	
 	private static function get_defaultTransition():String {
 		return _defaultTransition;
@@ -167,15 +171,6 @@ class Toolkit {
 		return value;
 	}
 
-	private static function get_useDefaultStyles():Bool {
-		return _useDefaultStyles;
-	}
-	
-	private static function set_useDefaultStyles(value:Bool):Bool {
-		_useDefaultStyles = value;
-		return value;
-	}
-	
 	public static function getTransitionForClass(cls:Class<IDisplayObject>):String {
 		var s = _defaultTransition;
 		var className:String = Type.getClassName(cls);
@@ -201,7 +196,7 @@ class Toolkit {
 	}
 	
 	private function initInstance() {
-		_transitionRegister = new StringMap<String>();
+		//_transitionRegister = new StringMap<String>();
 		ClassManager.instance;
 	}
 	

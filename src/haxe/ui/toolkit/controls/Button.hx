@@ -1,13 +1,12 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.Event;
 import flash.events.MouseEvent;
 import haxe.ds.StringMap;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
-import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.Layout;
 import haxe.ui.toolkit.style.Style;
@@ -307,6 +306,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	 **/
 	@:clonable
 	public var allowSelection(get, set):Bool;
+	private var dispatchChangeEvents(default, default):Bool = true;
 	
 	private function get_iconPosition():String {
 		if (Std.is(_layout, ButtonLayout)) {
@@ -336,9 +336,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	}
 	
 	private function set_selected(value:Bool):Bool {
-		
 		if (_toggle == true && _selected != value) {
-			
 			
 			/** If toggle button state has changed, 
 			 * unselect other buttons in the same group */
@@ -354,9 +352,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			}
 			
 			_selected = value; // makes sense to update selected before dispatching event.
-			var event:Event = new Event(Event.CHANGE);
-			dispatchEvent(event);
-			
+			if (dispatchChangeEvents == true) {
+				var event:UIEvent = new UIEvent(UIEvent.CHANGE);
+				dispatchEvent(event);
+			}
 		}
 		
 		_selected = value;
@@ -480,8 +479,12 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				}
 				width = cx;
 			}
+			//force = false;
 			if (height == 0 || force == true) {
 				var cy:Float = _label.height + _layout.padding.top + _layout.padding.bottom;
+				if (force == true) { // this is strange
+					cy += 1;
+				}
 				height = cy;
 			}
 		}

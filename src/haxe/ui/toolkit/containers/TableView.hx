@@ -1,25 +1,20 @@
 package haxe.ui.toolkit.containers;
 
-import flash.display.Bitmap;
 import flash.events.Event;
 import flash.events.IEventDispatcher;
 import flash.events.MouseEvent;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.HProgress;
-import haxe.ui.toolkit.controls.HScroll;
 import haxe.ui.toolkit.controls.HSlider;
 import haxe.ui.toolkit.controls.selection.ListSelector;
 import haxe.ui.toolkit.controls.Spacer;
 import haxe.ui.toolkit.controls.Text;
-import haxe.ui.toolkit.controls.VScroll;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
-import haxe.ui.toolkit.events.UIEvent;
-import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 

@@ -1,12 +1,10 @@
 package haxe.ui.toolkit.core.renderers;
 
+import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.HSlider;
 import haxe.ui.toolkit.controls.Image;
 import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.Component;
-import haxe.ui.toolkit.layout.HorizontalLayout;
-import haxe.ui.toolkit.controls.Text;
-import haxe.ui.toolkit.controls.Button;
 
 class ComponentItemRenderer extends BasicItemRenderer {
 	private var _component:Component;

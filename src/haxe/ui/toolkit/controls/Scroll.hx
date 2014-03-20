@@ -1,7 +1,6 @@
 package haxe.ui.toolkit.controls;
 
 import haxe.ui.toolkit.core.base.State;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.interfaces.IDirectional;
 import haxe.ui.toolkit.core.StateComponent;

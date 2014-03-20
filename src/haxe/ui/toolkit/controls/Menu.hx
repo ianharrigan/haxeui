@@ -1,11 +1,10 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.Event;
 import flash.events.MouseEvent;
-import haxe.ui.toolkit.core.Toolkit;
-import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.events.MenuEvent;
 import motion.Actuate;
 import motion.easing.Linear;
 

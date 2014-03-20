@@ -12,7 +12,6 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.PopupManager.PopupButtonInfo;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
-import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
 

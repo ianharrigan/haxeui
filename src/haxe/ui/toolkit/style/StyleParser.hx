@@ -1,7 +1,6 @@
 package haxe.ui.toolkit.style;
 
 import flash.geom.Rectangle;
-import flash.Lib;
 import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.FilterParser;
 

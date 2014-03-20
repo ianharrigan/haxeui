@@ -1,7 +1,6 @@
 package haxe.ui.toolkit.core.renderers;
 
 import haxe.ui.toolkit.controls.Button;
-import haxe.ui.toolkit.controls.Image;
 import haxe.ui.toolkit.controls.Slider;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
@@ -105,16 +104,24 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 	}
 	
 	private function _onComponentEvent(event:UIEvent):Void {
+		if (event.component != null && event.component.id != null && event.component.id.length > 0) {
+			Reflect.setField(_data, event.component.id, event.component.value);
+		}
+		
+		dispatchProxyEvent(UIEvent.COMPONENT_EVENT, event);
+	}
+	
+	public function dispatchProxyEvent(type:String, refEvent:UIEvent):Void {
 		if (eventDispatcher != null) {
-			if (event.component != null && event.component.id != null && event.component.id.length > 0) {
-				Reflect.setField(_data, event.component.id, event.component.value);
+			var c = null;
+			if (refEvent != null && refEvent.component != null) {
+				c = refEvent.component;
 			}
-			var uiEvent:UIEvent = new UIEvent(UIEvent.COMPONENT_EVENT, event.component);
+			var uiEvent:UIEvent = new UIEvent(type, c);
 			uiEvent.data = _data;
 			uiEvent.data.update = this.update;
 			eventDispatcher.dispatchEvent(uiEvent);
 		}
-		
 	}
 	
  	private function updateComponents():Void {

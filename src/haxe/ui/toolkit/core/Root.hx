@@ -2,14 +2,11 @@ package haxe.ui.toolkit.core;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
-import flash.filters.BlurFilter;
 import flash.geom.Point;
-import flash.geom.Rectangle;
 import haxe.ui.toolkit.controls.popups.Popup;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.layout.AbsoluteLayout;
-import haxe.ui.toolkit.layout.Layout;
 
 class Root extends Component {
 	private var _modalOverlay:Component;
@@ -83,7 +80,9 @@ class Root extends Component {
 			if (Std.is(child, Popup) == false && child.id != "modalOverlay") {
 				var c:Component = cast(child, Component);
 				#if !html5
-				c.sprite.filters = [new BlurFilter(4, 4)];
+				if (_modalOverlay.style.filter != null) {
+					//c.sprite.filters = [_modalOverlay.style.filter];
+				}
 				#end
 			}
 		}

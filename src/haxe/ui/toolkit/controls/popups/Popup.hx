@@ -1,10 +1,10 @@
 package haxe.ui.toolkit.controls.popups;
 
 import flash.events.MouseEvent;
+import haxe.ui.toolkit.containers.Box;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.controls.Button;
-import haxe.ui.toolkit.controls.Spacer;
 import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.PopupManager;
@@ -13,10 +13,10 @@ import haxe.ui.toolkit.core.PopupManager;
  Simple modal, draggable popup component
  **/
 class Popup extends VBox implements IDraggable {
-	private var _titleBar:HBox;
+	private var _titleBar:Box;
 	private var _title:Text;
 	private var _content:PopupContent;
-	private var _buttonBar:HBox;
+	private var _buttonBar:Box;
 	private var _config:Dynamic;
 	private var _fn:Dynamic->Void;
 	
@@ -38,22 +38,23 @@ class Popup extends VBox implements IDraggable {
 		_autoSize = true;
 		
 		if (title != null) {
-			_titleBar = new HBox();
+			_titleBar = new Box();
 			_titleBar.autoSize = false;
 			_titleBar.id = "titleBar";
 		}
 		
 		_content = content;
 		_content.popup = this;
-		
+
 		if (title != null) {
 			_title = new Text();
 			_title.id = "title";
 			_title.text = title;
 		}
-		
-		_buttonBar = new HBox();
+
+		_buttonBar = new Box();
 		_buttonBar.id = "buttonBar";
+		_buttonBar.percentWidth = 100;
 		_buttonBar.horizontalAlign = "center";
 		
 		_config = config;
@@ -94,17 +95,23 @@ class Popup extends VBox implements IDraggable {
 		addChild(_content);
 
 		if (_config.buttons.length > 0) {
+			var box:HBox = new HBox();
+			box.horizontalAlign = _buttonBar.horizontalAlign;
 			var buttons:Array<PopupButtonInfo> = cast _config.buttons;
+			_buttonBar.addChild(box);
 			for (info in buttons) {
 				if (info.type != PopupButton.CUSTOM) {
-					addStandardButton(info.type);
+					var button:Button = createStandardButton(info.type);
+					if (button != null) {
+						box.addChild(button);
+					}
 				} else {
 					var button:Button = new Button();
 					button.text = info.text;
 					button.addEventListener(MouseEvent.CLICK, function(e) {
 						clickButton(PopupButton.CUSTOM);
 					});
-					_buttonBar.addChild(button);
+					box.addChild(button);
 				}
 			}
 			addChild(_buttonBar);
@@ -143,47 +150,45 @@ class Popup extends VBox implements IDraggable {
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
-	private function addStandardButton(v:Int):Void {
+	private function createStandardButton(v:Int):Button {
+		var button:Button = null;
 		if (v == PopupButton.OK) {
-			var button:Button = new Button();
+			button = new Button();
 			button.text = "OK";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
 				clickButton(PopupButton.OK);
 			});
-			_buttonBar.addChild(button);
 		}
 		if (v == PopupButton.YES) {
-			var button:Button = new Button();
+			button = new Button();
 			button.text = "Yes";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
 				clickButton(PopupButton.YES);
 			});
-			_buttonBar.addChild(button);
 		}
 		if (v == PopupButton.NO) {
-			var button:Button = new Button();
+			button = new Button();
 			button.text = "No";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
 				clickButton(PopupButton.NO);
 			});
-			_buttonBar.addChild(button);
 		}
 		if (v == PopupButton.CANCEL) {
-			var button:Button = new Button();
+			button = new Button();
 			button.text = "Cancel";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
 				clickButton(PopupButton.CANCEL);
 			});
-			_buttonBar.addChild(button);
 		}
 		if (v == PopupButton.CONFIRM) {
-			var button:Button = new Button();
+			button = new Button();
 			button.text = "Confirm";
 			button.addEventListener(MouseEvent.CLICK, function(e) {
 				clickButton(PopupButton.CONFIRM);
 			});
-			_buttonBar.addChild(button);
 		}
+		
+		return button;
 	}
 	
 	@exclude

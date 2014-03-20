@@ -1,136 +1,282 @@
 package haxe.ui.toolkit.style;
 
-import flash.filters.BitmapFilter;
 import flash.filters.DropShadowFilter;
+import openfl.Assets;
 
 class DefaultStyles extends Styles {
 	public function new() {
 		super();
 
-		addStyle("Root", new Style( {
-			padding: 0
+		var f = Assets.getFont("fonts/Oxygen.ttf");
+		var fb = Assets.getFont("fonts/Oxygen-Bold.ttf");
+		
+		addStyle("Component", new Style( {
+			padding: 0,
+			backgroundColor: 0x888888,
+		} ));
+		
+		addStyle("#modalOverlay", new Style( {
+			backgroundColor: 0x888888,
+			alpha: .7
 		} ));
 		
 		addStyle("Text", new Style( {
-			fontSize: 13,
-			fontName: "_sans"
-		} ));
-		
-		addStyle("ScrollView, ScrollView VBox", new Style( {
-			backgroundColor: 0xFFFFFF,
-			borderColor: 0xDDDDDD,
-			color: 0x000000,
-			padding: 0,
-			borderSize: 0,
-			spacing: 5,
-		} ));
-		addStyle("VBox, HBox, Grid, ListView", new Style( {
-			spacing: 5,
-			
-		} ));
-		addStyle("Stack", new Style( {
-			padding: 5,
-		} ));
-		
-		addStyle("Button", new Style( {
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xEEEEEE,
-			padding: 10,
-			borderColor: 0xCCCCCC,
-			borderSize: 1,
-			cornerRadius: 3,
-			filter: new DropShadowFilter(1, 45, 0xBFBFBF, 1, 2, 2, 1, 1)
-		} ));
-		addStyle("Button:over", new Style( {
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xDDDDDD,
-		} ));
-		addStyle("Button:down", new Style( {
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xCCCCCC,
+			fontSize: 14,
+			fontName: f.fontName,
+			fontEmbedded: true,
+			color: 0x444444
 		} ));
 
+		addStyle("Code", new Style( {
+			fontSize: 14,
+			fontName: "_sans",
+			fontEmbedded: false,
+			color: 0x444444,
+		} ));
+		
+		addStyle("Container", new Style( {
+			spacing: 5,
+			backgroundColor: 0x888888,
+		} ));
+		
+		addStyle("Accordion", new Style( {
+			spacing: 0,
+		} ));
+		
+		addStyle(".page", new Style( {
+			padding: 5,
+			backgroundColor: -2,
+		} ));
+
+		addStyle("Button", new Style( {
+			fontSize: 14,
+			fontName: f.fontName,
+			fontEmbedded: true,
+			
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x222222,
+			padding: 10,
+			borderColor: 0x444444,
+			borderSize: 1,
+			cornerRadius: 2,
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+		} ));
+		
+		
+		addStyle("Button:over", new Style( {
+			backgroundColor: 0xffb76b,
+			backgroundColorGradientEnd: 0xff7f04,
+			color: 0x222222,
+		} ));
+		addStyle("Button:down", new Style( {
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x444444,
+		} ));
+
+		
+		addStyle("Button.expandable", new Style( {
+			iconPosition: "farLeft",
+			labelPosition: "left",
+			icon: "styles/default/expand.png",
+		} ));
+		
+		addStyle("Button.expandable:down", new Style( {
+			icon: "styles/default/collapse.png",
+		} ));
+		
+		
 		addStyle("TextInput", new Style( {
 			backgroundColor: 0xFFFFFF,
+			color: 0x222222,
 			width: 150,
-			height: 30,
-			borderColor: 0xCCCCCC,
+			height: 42,
+			borderColor: 0x222222,
+			borderSize: 1,
 			padding: 2,
 			cornerRadius: 2,
-			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 1, true),
-			fontSize: 13,
-			fontName: "_sans"
+			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 3, true),
+			fontSize: 14,
+			fontName: f.fontName,
+			fontEmbedded: true,
 		} ));
 
 		addStyle("TextInput #placeholder", new Style( {
 			color: 0xAAAAAA,
 		} ));
 		
+		addStyle("ListSelector", new Style( {
+			icon: "styles/default/up_down.png",
+			iconPosition: "farRight",
+			labelPosition: "left",
+			selectionMethod: "popup",
+		} ));
+		
+	
+		addStyle("TabView", new Style( {
+			backgroundColor: 0xcccccc,
+			borderColor: -1,
+			filter: null,
+			spacing: 0,
+		} ));
+		addStyle("TabView Container", new Style( {
+			backgroundColor: 0xcccccc,
+		} ));
+		
+		addStyle("TabBar", new Style( {
+			backgroundColor: 0x888888,
+			height: 42,
+			paddingTop: 0,
+			paddingLeft: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			cornerRadius: 0,
+			filter: null,
+			borderColor: -1,
+			borderSize: 0,
+			spacing:0,
+		} ));
+		addStyle("TabBar #content", new Style( {
+			spacing: 1,
+			borderColor: -1,
+			backgroundColor: 0x888888,
+		} ));
+		addStyle("TabBar #container", new Style( {
+			backgroundColor: 0x888888,
+		} ));
+		addStyle("TabBar Button", new Style( {
+			height: 42,
+			iconPosition: "top",
+			cornerRadius: 0,
+			
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x222222,
+			
+			borderSize: 0,
+			borderColor: -1,
+			paddingLeft: 20,
+			paddingRight: 20
+		} ));
+		addStyle("TabBar Button:down", new Style( {
+			backgroundColor: 0xeeeeee,
+			backgroundColorGradientEnd: 0xcccccc,
+			color: 0x444444,
+		} ));
 		addStyle("HProgress", new Style( {
-			backgroundColor: 0xFFFFFF,
-			width: 100,
-			height: 20,
-			borderColor: 0xEFEFEF,
-			padding: 0,
+			width: 150,
+			height: 30,
+			backgroundColor: 0x666666,
+			borderColor: -1,
+			padding: 2,
 			cornerRadius: 2,
 			borderSize: 0,
-			filter: new DropShadowFilter(1, 45, 0xBFBFBF, 1, 2, 2, 1, 1, true),
+			filter: new DropShadowFilter(1, 45, 0x444444, 1, 2, 2, 1, 3, true),
 		} ));
-
+		
 		addStyle("HProgress #background", new Style( {
 			percentWidth: 100,
 			percentHeight: 100,
-			backgroundColor: 0xFFFFFF,
+			backgroundColor: -1,
 			borderSize: 0,
+			borderColor: -1,
 		} ));
-
+		
 		addStyle("HProgress #value", new Style( {
 			percentHeight: 100,
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xEEEEEE,
-			borderColor: 0xDFDFDF,
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			borderColor: -1,
 			cornerRadius: 2,
 		} ));
 
-		
-		
-		
-		
 		addStyle("HSlider", new Style( {
-			width: 100,
-			height: 26,
-			borderColor: 0xEFEFEF,
-			padding: 3,
+			width: 150,
+			height: 30,
+			backgroundColor: 0x666666,
+			borderColor: -1,
+			padding: 2,
+			paddingLeft: 0,
+			paddingRight: 0,
 			cornerRadius: 2,
 			borderSize: 0,
+			filter: new DropShadowFilter(1, 45, 0x444444, 1, 2, 2, 1, 3, true),
 		} ));
-
+		
 		addStyle("HSlider #background", new Style( {
 			percentWidth: 100,
-			height: 10,
-			borderSize: 1,
-			backgroundColor: 0xEFEFEF,
-			cornerRadius: 2,
-		} ));
-
-		addStyle("HSlider #value", new Style( {
-			height: 10,
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xEEEEEE,
-			borderColor: 0xDFDFDF,
-			cornerRadius: 2,
-		} ));
-
-		addStyle("HSlider Button", new Style( {
-			width: 10,
 			percentHeight: 100,
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xEEEEEE,
-			borderColor: 0xDFDFDF,
+			backgroundColor: -1,
+			borderSize: 0,
+			borderColor: -1,
+		} ));
+		
+		addStyle("HSlider #value", new Style( {
+			percentHeight: 0,
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			borderColor: -1,
 			cornerRadius: 2,
 		} ));
 		
+		addStyle("HSlider Button", new Style( {
+			width: 26,
+			height: 26,
+			gradientType: "vertical",
+			filter: new DropShadowFilter(2, 45, 0x666666, 1, 2, 2, 1, 3, false),
+		} ));
+
+		addStyle("ScrollView", new Style( {
+			backgroundColor: 0x444444 ,
+			borderColor: -1,
+			padding: 1,
+			cornerRadius: 2,
+			borderSize: 0,
+			filter: new DropShadowFilter(1, 45, 0x444444, 1, 2, 2, 1, 3, true),
+			inlineScrolls: true,
+			autoHideScrolls: true,
+			spacing: 0
+		} ));
 		
+		
+		addStyle("ListView", new Style( {
+			//cornerRadius: 0,
+		} ));
+
+		addStyle("ListView #content", new Style( {
+			backgroundColor: 0x444444,
+			borderColor: -1,
+			padding: 0,
+			spacing: 1,
+		} ));
+		
+		addStyle(".even, .odd", new Style( {
+			padding: 10,
+			backgroundColor: 0x666666,
+		} ));
+
+		addStyle(".even:over, .odd:over", new Style( {
+			backgroundColor: 0xffb76b,
+			backgroundColorGradientEnd: 0xff7f04,
+			color: 0x222222,
+		} ));
+		
+		addStyle(".even:selected, .odd:selected", new Style( {
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x444444,
+		} ));
+		
+		addStyle(".even #text, .odd #text", new Style( {
+			color: 0xffa84c,
+		} ));
+		addStyle(".even #text:over, .odd #text:over", new Style( {
+			color: 0x222222,
+		} ));
+		addStyle(".even #text:selected, .odd #text:selected", new Style( {
+			color: 0x444444,
+		} ));
 		
 		addStyle("VScroll", new Style( {
 			width: 10,
@@ -139,8 +285,10 @@ class DefaultStyles extends Styles {
 		} ));
 		addStyle("VScroll Button", new Style( {
 			cornerRadius: 2,
-			gradientType: "horizontal"
+			gradientType: "horizontal",
+			filter: null,
 		} ));
+
 		addStyle("HScroll", new Style( {
 			width: 100,
 			height: 10,
@@ -148,130 +296,139 @@ class DefaultStyles extends Styles {
 		} ));
 		addStyle("HScroll Button", new Style( {
 			cornerRadius: 2,
+			gradientType: "vertical",
+			filter: null,
 		} ));
 		
-		addStyle("ListView", new Style( {
-			color: 0x000000,
-			padding: 2,
-			borderSize: 1,
-			spacing: 2,
-			cornerRadius: 2,
-		} ));
-
-		addStyle("ListViewItem", new Style( {
-			padding: 5,
-			cornerRadius: 3,
-			backgroundColor: 0xFFFFFF
-		} ));
-		
-		addStyle("ListView #even", new Style( {
-			backgroundColor: 0xF9F9F9
-		} ));
-
-		addStyle("ListView #even:over, ListView #odd:over, ListViewItem:selected", new Style( {
-			backgroundColor: 0xCCCCCC,
-		} ));
-
-		addStyle("MenuBar", new Style( {
-			height: 45
-		} ));
-		
-		addStyle("TabBar", new Style( {
-			backgroundColor: 0xFFFFFF,
-			height: 45,
-			paddingTop: 15,
-			paddingLeft: 5,
-			paddingRight: 5,
-		} ));
-		addStyle("TabBar HBox", new Style( {
-			spacingX: 3,
-		} ));
-		addStyle("TabBar Button", new Style( {
-			height: 30,
-			iconPosition: "left",
-			cornerRadiusBottomLeft: 0,
-			cornerRadiusBottomRight: 0,
-			backgroundColor: 0xEEEEEE,
-			backgroundColorGradientEnd: 0xCCCCCC,
-			borderColor: 0xE0E0E0,
-			color: 0x888888
-		} ));
-		addStyle("TabBar Button:down", new Style( {
-			backgroundColor: 0xFFFFFF,
-			backgroundColorGradientEnd: 0xEEEEEE,
-			color: 0x000000,
-		} ));
-		addStyle("TabView", new Style( {
-			backgroundColor: 0xEEEEEE,
-		} ));
-
 		addStyle("MenuBar", new Style( {
 			backgroundColor: 0xdfdddd,
 			percentWidth: 100,
-			height: 50,
+			height: 10,
 			padding: 5,
+			borderColor: -1,
 			cornerRadius: 0,
-			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 1)
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			autoSize:true,
 		} ));
 		
-		addStyle("Calendar, CalendarView", new Style( {
-			width: 250,
-			height: 250,
+		addStyle("MenuBar Container", new Style( {
+			backgroundColor: 0xdfdddd,
 		} ));
-
+		
 		addStyle("Popup", new Style( {
-			backgroundColor: 0xFFFFFF,
-			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 1),
-			borderColor: 0xAAAAAA,
+			backgroundColor: 0x888888,
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			borderColor: 0x888888,
 			borderSize: 1,
-			cornerRadius: 3,
-			padding: 2,
+			cornerRadius: 2,
+			padding: 1,
+			spacing: 1,
 			width: 350,
 		} ));
-		
-		addStyle("Popup #titleBar", new Style( {
-			backgroundColor: 0xCCCCCC,
-			height: 30,
-			paddingTop: 4,
-			paddingLeft: 5,
+
+		addStyle("Popup Container", new Style( {
+			backgroundColor: -2,
 		} ));
 		
-		addStyle("Popup #content", new Style( {
+		
+		addStyle("Popup #titleBar", new Style( {
+			backgroundColor: 0xcccccc,
+			height: 45,
+			paddingTop: 5,
+			paddingBottom: 5,
+			paddingLeft: 5,
+			paddingRight: 5,
+		} ));
+		
+		addStyle("Popup #popupContent", new Style( {
 			padding: 5,
+			backgroundColor: 0xcccccc,
 		} ));
 
 		addStyle("Popup #buttonBar", new Style( {
-			paddingTop: 10,
+			paddingTop: 5,
 			paddingBottom: 5,
 			height: 55,
+			backgroundColor: 0xcccccc,
 		} ));
 		
-		addStyle("Popup #titleBar #text", new Style( {
-			color: 0x666666,
+		addStyle("Popup #titleBar #title", new Style( {
+			fontName: fb.fontName,
+			fontEmbedded: true,
+			fontSize: 24,
+			color: 0x888888,
+			horizontalAlignment: "right",
 		} ));
-		
-		addStyle("Menu", new Style( {
-			spacing: 0,
-			backgroundColor: 0xFFFFFF,
-			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 1),
-			borderColor: 0xAAAAAA,
-			borderSize: 1,
-			cornerRadius: 3,
+
+		addStyle("ListPopupContent ListView, ListPopupContent #popupContent", new Style( {
 			padding: 2,
-			width: 150,
+			borderSize: 0,
 		} ));
+
+		addStyle("Menu", new Style( {
+			backgroundColor: 0x888888,
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			borderColor: 0x444444,
+			borderSize: 1,
+			cornerRadius: 1,
+			padding: 1,
+			width: 175,
+			spacing: 1,
+		} ));
+
+		addStyle("MenuButton", new Style( {
+			backgroundColor: 0xdfdddd,
+			backgroundColorGradientEnd: 0xdfdddd,
+			color: 0x222222,
+			padding: 10,
+			borderColor: -1,
+			borderSize: 0,
+			cornerRadius: 2,
+			filter: null,
+		} ));
+		
+		
+		addStyle("MenuButton:over", new Style( {
+			backgroundColor: 0xffb76b,
+			backgroundColorGradientEnd: 0xff7f04,
+			color: 0x222222,
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			borderSize: 1,
+		} ));
+		addStyle("MenuButton:down", new Style( {
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x444444,
+			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			borderSize: 1,
+		} ));
+		
 		
 		addStyle("MenuItem", new Style( {
 			percentWidth: 100,
-			backgroundColor: 0xFFFFFF,
-			borderSize: 0,
 			labelPosition: "left",
 			iconPosition: "farRight",
+			filter: null,
+			borderSize: 0,
 			cornerRadius: 0,
+			backgroundColor: 0xcccccc,
+			color: 0x222222,
+		} ));
+
+		addStyle("MenuItem:over", new Style( {
+			backgroundColor: 0xffb76b,
+			backgroundColorGradientEnd: 0xff7f04,
+			color: 0x222222,
 		} ));
 		
-		addStyle("MenuItem:over, MenuItem:down", new Style( {
-			backgroundColor: 0xAAAAAA,
+		addStyle("MenuItem:down", new Style( {
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			color: 0x444444,
+		} ));
+
+		addStyle("MenuItem.expandable", new Style( {
+			icon: "styles/default/expand.png",
 		} ));
 	}
 }

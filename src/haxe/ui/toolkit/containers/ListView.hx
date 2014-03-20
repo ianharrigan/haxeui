@@ -9,8 +9,8 @@ import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStateComponent;
-import haxe.ui.toolkit.core.renderers.ItemRenderer;
 import haxe.ui.toolkit.core.renderers.BasicItemRenderer;
+import haxe.ui.toolkit.core.renderers.ItemRenderer;
 import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
@@ -236,6 +236,7 @@ class ListView extends ScrollView implements IDataComponent {
 			removeListViewItem(n);
 		}
 		
+		/*
 		var n:Int = 0; // set id's for styling
 		for (child in _content.children) {
 			var item:IItemRenderer = cast(child, IItemRenderer);
@@ -245,6 +246,7 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 			n++;
 		}
+		*/
 	}
 	
 	private function addListViewItem(dataHash:String, data:Dynamic, index:Int = -1):Void {
@@ -315,7 +317,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 	}
 	
-	private function handleListSelection(item:IItemRenderer, event:Event, raiseEvent:Bool = true):Void {
+	private function handleListSelection(item:IItemRenderer, event:UIEvent, raiseEvent:Bool = true):Void {
 		var shiftPressed:Bool = false;
 		var ctrlPressed:Bool = false;
 		
@@ -349,8 +351,14 @@ class ListView extends ScrollView implements IDataComponent {
 		ensureVisible(item);
 		
 		if (raiseEvent == true) {
-			var event:UIEvent = new UIEvent(UIEvent.CHANGE);
-			dispatchEvent(event);
+			if (selectedIndex != -1) {
+				var item:ItemRenderer = cast _content.getChildAt(selectedIndex);
+				if (item != null) {
+					item.dispatchProxyEvent(UIEvent.CHANGE, event);
+				}
+				//var event:UIEvent = new UIEvent(UIEvent.CHANGE);
+				//dispatchEvent(event);
+			}
 		}
 	}
 	

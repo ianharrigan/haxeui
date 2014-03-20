@@ -1,3 +1,7 @@
 Button:disabled {
 	backgroundColor: 0xFF0000;
 }
+
+.toolbar-new  {
+	icon: "img/rtfview/edit-bold.png";
+}

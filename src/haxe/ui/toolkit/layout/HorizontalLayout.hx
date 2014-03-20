@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.layout;
+
 import haxe.ui.toolkit.core.base.VerticalAlign;
 
 class HorizontalLayout extends Layout {

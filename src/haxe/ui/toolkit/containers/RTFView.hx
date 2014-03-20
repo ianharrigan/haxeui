@@ -3,14 +3,10 @@ package haxe.ui.toolkit.containers;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.text.Font;
-import flash.ui.Mouse;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.extended.RTF;
 import haxe.ui.toolkit.controls.selection.ListSelector;
 import haxe.ui.toolkit.controls.Spacer;
-import haxe.ui.toolkit.controls.TextInput;
-import haxe.ui.toolkit.data.ArrayDataSource;
-import haxe.ui.toolkit.resources.ResourceManager;
 
 /**
  Rich text editor container (contains style controls)
@@ -52,6 +48,7 @@ class RTFView extends VBox {
 		_fontNameList.width = 200;
 		_fontNameList.text = "_sans";
 		if (_systemFonts == true) {
+			#if !html5
 			var fonts:Array<Font> = Font.enumerateFonts(true);
 			fonts.sort(function(f1:Font, f2:Font):Int {
 				var a = f1.fontName.toLowerCase();
@@ -64,6 +61,7 @@ class RTFView extends VBox {
 			for (font in fonts) {
 				_fontNameList.dataSource.add( { text: font.fontName } );
 			}
+			#end
 		} else {
 			_fontNameList.dataSource.add( { text: "_sans" } );
 			_fontNameList.dataSource.add( { text: "_serif" } );

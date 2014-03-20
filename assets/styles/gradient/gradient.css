@@ -32,23 +32,6 @@ VBox, ContinuousBox, Box, HBox, Grid {
 	borderSize: 0;
 }
 
-Frame {
-	borderColor: 0x606c88;
-	padding: 5;
-	spacingY: 5;
-	cornerRadius: 2;
-	borderSize: 1;
-	backgroundColor: 0xFFFFFF;
-}
-
-Frame Box {
-	paddingTop: 10;
-}
-
-Frame Text.frame {
-	color: 0x606c88;
-}
-
 ScrollView {
 	borderColor: 0xa5b8da;
 	color: 0x000000;
@@ -635,6 +618,10 @@ TabBar {
 	paddingTop: 15;
 	paddingLeft: 5;
 	paddingRight: 5;
+	paddingBottom: 0;
+	borderSize: -1;
+	borderColor: -1;
+	cornerRadius: 0;
 }
 
 TabBar HBox {

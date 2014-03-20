@@ -6,11 +6,8 @@ import haxe.ui.toolkit.core.DisplayObject;
 import haxe.ui.toolkit.core.DisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
-import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.core.StyleableDisplayObject;
-import haxe.ui.toolkit.resources.ResourceManager;
-import haxe.ui.toolkit.util.PerfTimer;
 
 class StyleManager {
 	private static var _instance:StyleManager;
