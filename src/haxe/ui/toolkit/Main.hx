@@ -5,6 +5,8 @@ import haxe.ui.toolkit.containers.Stack;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.themes.DefaultTheme;
+import haxe.ui.toolkit.themes.GradientTheme;
+import haxe.ui.toolkit.themes.WindowsTheme;
 
 class Main {
 	public static function main() {
@@ -12,6 +14,8 @@ class Main {
 		Toolkit.setTransitionForClass(Accordion, "slide");
 		Toolkit.setTransitionForClass(Stack, "fade");
 		Toolkit.theme = new DefaultTheme();
+		//Toolkit.theme = new WindowsTheme();
+		//Toolkit.theme = new GradientTheme();
 		//Macros.addStyleSheet("assets/test.css");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
