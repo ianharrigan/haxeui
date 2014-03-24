@@ -41,6 +41,8 @@ class TextDisplay implements ITextDisplay {
 	public var wrapLines(get, set):Bool;
 	public var displayAsPassword(get, set):Bool;
 	public var visible(get, set):Bool;
+	public var selectable(get, set):Bool;
+	public var mouseEnabled(get, set):Bool;
 
 	private function get_text():String {
 		return _tf.text;
@@ -170,5 +172,21 @@ class TextDisplay implements ITextDisplay {
 	private function set_visible(value:Bool):Bool {
 		_tf.visible = value;
 		return value;
+	}
+	
+	private function get_selectable():Bool {
+		return _tf.selectable;
+	}
+	
+	private function set_selectable(value:Bool):Bool {
+		return _tf.selectable = value;
+	}
+	
+	private function get_mouseEnabled():Bool {
+		return _tf.mouseEnabled;
+	}
+	
+	private function set_mouseEnabled(value:Bool):Bool {
+		return _tf.mouseEnabled = value;
 	}
 }
