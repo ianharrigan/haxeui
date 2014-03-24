@@ -12,4 +12,6 @@ interface ITextDisplay {
 	public var wrapLines(get, set):Bool;
 	public var displayAsPassword(get, set):Bool;
 	public var visible(get, set):Bool;
+	public var selectable(get, set):Bool;
+	public var mouseEnabled(get, set):Bool;
 }
