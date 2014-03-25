@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.controls;
 
 import flash.events.Event;
+import flash.events.MouseEvent;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.events.UIEvent;
@@ -23,6 +24,7 @@ class TabBar extends ScrollView {
 		_content = new HBox();
 		_content.id = "content";
 		_content.percentHeight = 100;
+		_content.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 		addChild(_content);
 	}
 	
@@ -119,5 +121,17 @@ class TabBar extends ScrollView {
 		var newEvent:UIEvent = new UIEvent(UIEvent.GLYPH_CLICK);
 		newEvent.data = _content.indexOfChild(event.displayObject);
 		dispatchEvent(newEvent);
+	}
+	
+	private override function _onMouseWheel(event:MouseEvent):Void {
+		if (_hscroll != null && _content.width > layout.usableWidth) {
+			if (event.delta != 0) {
+				if (event.delta < 0) {
+					_hscroll.incrementValue();
+				} else if (event.delta > 0) {
+					_hscroll.deincrementValue();
+				}
+			}
+		}
 	}
 }
