@@ -100,7 +100,7 @@ class Popup extends VBox implements IDraggable {
 			var buttons:Array<PopupButtonInfo> = cast _config.buttons;
 			_buttonBar.addChild(box);
 			for (info in buttons) {
-				if (info.type != PopupButton.CUSTOM) {
+				if (info.type & PopupButton.CUSTOM != PopupButton.CUSTOM) {
 					var button:Button = createStandardButton(info.type);
 					if (button != null) {
 						box.addChild(button);
@@ -109,7 +109,7 @@ class Popup extends VBox implements IDraggable {
 					var button:Button = new Button();
 					button.text = info.text;
 					button.addEventListener(MouseEvent.CLICK, function(e) {
-						clickButton(PopupButton.CUSTOM);
+						clickButton(info.type);
 					});
 					box.addChild(button);
 				}
