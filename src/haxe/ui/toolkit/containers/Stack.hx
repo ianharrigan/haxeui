@@ -43,23 +43,20 @@ class Stack extends Component {
 	private function set_selectedIndex(value:Int):Int {
 		if (value != _selectedIndex) {
 			var transition:String = Toolkit.getTransitionForClass(Stack);
-			if (transition == "slide") {
-				transition = "none";
-			}
 			for (n in 0...children.length) {
 				var item:IDisplayObject = children[n];
 				if (n == value) {
 					if (transition == "slide") {
 						if (value > _selectedIndex) {
-							item.x = -item.width;
 							item.sprite.alpha = 1;
 							item.visible = true;
+							item.x = -item.width;
 							Actuate.tween(item, .2, { x: this.layout.padding.left }, true).ease(Linear.easeNone).onComplete(function() {
 							});
 						} else {
-							item.x = this.width;
 							item.sprite.alpha = 1;
 							item.visible = true;
+							item.x = this.width;
 							Actuate.tween(item, .2, { x: this.layout.padding.left }, true).ease(Linear.easeNone).onComplete(function() {
 							});
 						}
