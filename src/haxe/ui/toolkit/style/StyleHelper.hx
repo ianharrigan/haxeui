@@ -10,6 +10,7 @@ import flash.geom.Point;
 import flash.geom.Rectangle;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.resources.ResourceManager;
+import format.SVG;
 
 class StyleHelper {
 	private static var sectionCache:StringMap<BitmapData>;
@@ -100,21 +101,27 @@ class StyleHelper {
 		}
 
 		if (style.backgroundImage != null) {
-			var backgroundImageRect:Rectangle = null;
-			if (style.backgroundImageRect != null) {
-				backgroundImageRect = style.backgroundImageRect;
-			}
-			
-			if (style.backgroundImageScale9 != null) {
-				paintScale9(g, style.backgroundImage, backgroundImageRect, style.backgroundImageScale9, rc);
-			} else {
-				var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
-				var bitmapData:BitmapData = getBitmapSection(style.backgroundImage, backgroundImageRect);
-				if (bitmapData != null) {
-					rects.set("middle", new Rectangle(0, 0, bitmapData.width, bitmapData.height));
-					paintCompoundBitmap(g, style.backgroundImage, backgroundImageRect, rects, rc);
-				}
-			}
+            var backgroundImageRect:Rectangle = null;
+            if (style.backgroundImageRect != null) {
+                backgroundImageRect = style.backgroundImageRect;
+            }
+            if (style.backgroundImage.substr(-3).toLowerCase() != "svg") {
+                // assume that if it is not svg, it is an image file
+                if (style.backgroundImageScale9 != null) {
+                    paintScale9(g, style.backgroundImage, backgroundImageRect, style.backgroundImageScale9, rc);
+                } else {
+                    var rects:StringMap<Rectangle> = new StringMap<Rectangle>();
+                    var bitmapData:BitmapData = getBitmapSection(style.backgroundImage, backgroundImageRect);
+                    if (bitmapData != null) {
+                        rects.set("middle", new Rectangle(0, 0, bitmapData.width, bitmapData.height));
+                        paintCompoundBitmap(g, style.backgroundImage, backgroundImageRect, rects, rc);
+                    }
+                }
+            } else {
+                // svg image!
+                var svg:SVG = ResourceManager.instance.getSVG(style.backgroundImage);
+                svg.render(g, rc.left, rc.top, cast rc.width, cast rc.height);
+            }
 		}
 	}
 
