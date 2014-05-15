@@ -3,6 +3,7 @@ package haxe.ui.toolkit.core;
 import flash.geom.Rectangle;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IClonable;
+import haxe.ui.toolkit.core.interfaces.ILayout;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
 import haxe.ui.toolkit.style.Style;
@@ -63,6 +64,34 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return v;
+	}
+	
+	private override function set_layout(value:ILayout):ILayout {
+		value = super.set_layout(value);
+		if (_style != null) { // better way/place to do this
+			// set layout props from style
+			if (layout != null) {
+				if (_style.paddingLeft != -1) {
+					layout.padding.left = _style.paddingLeft;
+				}
+				if (_style.paddingTop != -1) {
+					layout.padding.top = _style.paddingTop;
+				}
+				if (_style.paddingRight != -1) {
+					layout.padding.right = _style.paddingRight;
+				}
+				if (_style.paddingBottom != -1) {
+					layout.padding.bottom = _style.paddingBottom;
+				}
+				if (_style.spacingX != -1) {
+					_layout.spacingX = _style.spacingX;
+				}
+				if (_style.spacingY != -1) {
+					_layout.spacingY = _style.spacingY;
+				}
+			}
+		}
+		return value;
 	}
 	
 	//******************************************************************************************

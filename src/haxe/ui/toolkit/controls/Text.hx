@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.controls;
 
 import haxe.ui.toolkit.core.interfaces.IClonable;
+import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
@@ -27,7 +28,8 @@ class Text extends StateComponent implements IClonable<Text> {
 		
 		sprite.addChild(_textDisplay.display);
 		_textDisplay.text = text;
-	
+		_textDisplay.autoSize = autoSize;
+		
 		if (autoSize == true) {
 			if (width == 0) {
 				width = _textDisplay.display.width;
@@ -45,6 +47,20 @@ class Text extends StateComponent implements IClonable<Text> {
 		super.dispose();
 	}
 	
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		if (!_ready || _invalidating) {
+			return;
+		}
+
+		super.invalidate(type, recursive);
+		_invalidating = true;
+		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE && _autoSize == false) {
+			_textDisplay.display.width = layout.innerWidth;
+			_textDisplay.display.height = layout.innerHeight;
+		}
+		_invalidating = false;
+	}
+	
 	//******************************************************************************************
 	// Component overrides
 	//******************************************************************************************
@@ -60,6 +76,14 @@ class Text extends StateComponent implements IClonable<Text> {
 			width = _textDisplay.display.width;
 			height = _textDisplay.display.height;
 		} 
+		return value;
+	}
+	
+	private override function set_autoSize(value:Bool):Bool {
+		value = super.set_autoSize(value);
+		if (_textDisplay != null) {
+			_textDisplay.autoSize = value;
+		}
 		return value;
 	}
 	
@@ -102,6 +126,8 @@ class Text extends StateComponent implements IClonable<Text> {
 	public var selectable(get, set):Bool;
 	@:clonable
 	public var mouseEnabled(get, set):Bool;
+	@:clonable
+	public var textAlign(get, set):String;
 	
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
@@ -135,5 +161,19 @@ class Text extends StateComponent implements IClonable<Text> {
 	
 	private function set_mouseEnabled(value:Bool):Bool {
 		return _textDisplay.mouseEnabled = value;
+	}
+	
+	private function get_textAlign():String {
+		if (_textDisplay == null) {
+			return null;
+		}
+		return _textDisplay.textAlign;
+	}
+	
+	private function set_textAlign(value:String):String {
+		if (_textDisplay != null) {
+			_textDisplay.textAlign = value;
+		}
+		return value;
 	}
 }

@@ -23,6 +23,10 @@ class StyleParser {
 			var props:Array<String> = styleData.split(";");
 			for (prop in props) {
 				prop = StringTools.trim(prop);
+				if (StringTools.startsWith(prop, "//")) {
+					continue;
+				}
+
 				if (prop != null && prop.length > 0) {
 					var temp:Array<String> = prop.split(":");
 					var propName = StringTools.trim(temp[0]);

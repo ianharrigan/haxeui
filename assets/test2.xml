@@ -1,98 +1,89 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-<vbox>
-	<hbox>
-		<button id="simple1" text="Simple 1" />
-		<button id="simple2" text="Simple 2" />
-		<button id="simple3" text="Simple 3" />
-		<button id="simple4" text="Simple 4" />
-		<button id="simple5" text="Simple 5" />
-		<button id="simple6" text="Simple 6" />
-	</hbox>
-	<hbox>
-		<button id="custom1" text="Custom 1" />
-	</hbox>
-	<hbox>
-		<button id="list1" text="List 1" />
-	</hbox>
-	<hbox>
-		<button id="busy1" text="Busy 1" />
-	</hbox>
-	<hbox>
-		<button id="cal1" text="Calendar 1" />
-	</hbox>
-</vbox>
--->
 <vbox width="100%" height="100%" style="spacing:2;">
-<!--
-		<menubar style="autoSize:true">
-			<vbox>
-				<hbox>
-					<menubutton text="File" id="menufile">
-						<import resource="ui/menus/file.xml" />
-					</menubutton>
-					<menubutton text="Search" id="menusearch">
-						<import resource="ui/menus/search.xml" />
-					</menubutton>
-					<menubutton text="Program" id="menuprogram">
-						<import resource="ui/menus/program.xml" />
-					</menubutton>
-					<menubutton text="Help" id="menuhelp">
-						<import resource="ui/menus/help.xml" />
-					</menubutton>
-				</hbox>
-
-				<import resource="ui/toolbar.xml" />
-			</vbox>
-		</menubar>
-	-->
-<tabview width="100%" height="100%" id="documenttabs">
-	<vbox text="Panel 1">
-		<button text="1" />
-		<button text="test" id="test"/>
-		<grid columns="4">
-			
-			<!--
-			<button id="something" x="101" y="401" text="This is a test button" />
-			<button id="something" x="101" y="401" text="This is a test button" />
-			<hprogress pos="50" />
-			<hslider pos="50" />
-			<listview width="200" height="150" id="list1">
-				<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
-			</listview>
-			<listSelector text="Select Item" id = "dd1">
-				<array>Item 1,Item 2,Item 3, Item4, Item 5</array>
+	<menubar>
+		<menubutton text="Application" id="menuApplication">
+			<menu>
+				<menuitem text="Settings..." id="menuSettings" />
+				<menuitem text="About..." id="menuAbout" />
+			</menu>
+		</menubutton>
+		<menubutton text="Test">
+			<import resource="assets/menu.xml" />
+		</menubutton>
+		
+		<spacer width="100%" />
+		
+		<listSelector text="Default Theme" id="theme" width="140">
+			<json>[{"text":"Default Theme", "id": "default"},{"text":"Gradient Theme", "id":"gradient"}]</json>
+		</listSelector>
+	</menubar>
+	<tabview width="100%" height="100%" id="documenttabs">
+		<vbox text="Panel 1">
+			<hbox>
+					<button text="Bigger" id="bigger" />
+					<button text="Smaller" id="smaller" />
+					<button text="test" id="test"/>
+					<accordion width="200" height="200">
+						<vbox text="Page 1">
+							<listview width="100%" height="100%">
+								<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
+							</listview>
+						</vbox>
+						<vbox text="Page 2">
+							<listview width="100%" height="100%">
+								<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
+							</listview>
+						</vbox>
+					</accordion>
+			</hbox>
+			<hbox>
+				<button text="Fixed Size" width="200" height="100" autoSize="false" />
+				<button text="Default" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg"  />
+				<button text="Left" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="left" />
+				<button text="Right" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="right" />
+				<button text="Top" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="top" />
+				<button text="Bottom" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="bottom" />
+			</hbox>
+			<hbox>
+				<button text="Dynamic Size" />
+				<button text="Default" icon="img/slinky_tiny.jpg" />
+				<button text="Left" icon="img/slinky_tiny.jpg" iconPosition="left" />
+				<button text="Right" icon="img/slinky_tiny.jpg" iconPosition="right" />
+				<button text="Top" icon="img/slinky_tiny.jpg" iconPosition="top" />
+				<button text="Bottom" icon="img/slinky_tiny.jpg" iconPosition="bottom" />
+				<button text="Dynamic Size with large text label" icon="img/slinky_tiny.jpg" iconPosition="top" />
+			</hbox>
+			<hbox>
+				<style>
+					.styled {
+						icon :img/rtfview/edit-alignment-justify.png;
+						iconPosition: top;
+					}
+				</style>
+				<button styleName="styled" text="Styled" width="200" height="100" autoSize="false" />
+				<button styleName="styled" text="Styled Dynamic" />
+			</hbox>
+			<hbox>
+				<text text="Dynamic" />
+				<text text="Fixed" width="200" height="50" autoSize="false" textAlign="right" />
+			</hbox>
+			<hbox>
+				<textinput  textAlign="right" />
+				<textinput  multiline="true" width="200" height="100" textAlign="right" />
+			</hbox>
+		</vbox>
+		<vbox text="Panel 2">
+			<button text="2" />
+			<listSelector text="Dropdown" width="140">
+				<array>1,2,3,4,5,6,7,8,9</array>
 			</listSelector>
 			
-			-->
-			<accordion width="200" height="300">
-				<vbox text="Page 1">
-					<listview width="100%" height="100%">
-						<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
-					</listview>
-				</vbox>
-				<vbox text="Page 2">
-					<listview width="100%" height="100%">
-						<array>Item 1,Item 2,Item 3, Item 4, Item 5, Item 6, Item 7, Item 8, Item 9</array>
-					</listview>
-				</vbox>
-			</accordion>
-			
-			<!--
-			<code text="2This is some code to make things scroll\n3This is some code to make things scroll\n4This is some code to make things scroll\n5This is some code to make things scroll\n6This is some code to make things scroll\n7This is some code to make things scroll\nThis is some code to make things scroll\nThis is some code to make things scroll\nThis is some code to make things scroll\n" width="100" height="100">
-			</code>
-			-->	
-		</grid>
-	</vbox>
-	<vbox text="Panel 2">
-		<button text="2" />
-	</vbox>
-	<vbox text="Panel 3">
-		<button text="3" />
-	</vbox>
-	<vbox text="Panel 4">
-		<button text="4" />
-	</vbox>
-</tabview>
-
+		</vbox>
+		<vbox text="Panel 3">
+			<button text="3" />
+		</vbox>
+		<vbox text="Panel 4">
+			<button text="4" />
+		</vbox>
+	</tabview>
 </vbox>

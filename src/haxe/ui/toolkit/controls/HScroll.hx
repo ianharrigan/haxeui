@@ -55,6 +55,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 
 		if (_hasButtons == true) {
 			_deincButton = new Button();
+			_deincButton.iconPosition = "center";
 			_deincButton.width = layout.innerHeight;
 			_deincButton.percentHeight = 100;
 			_deincButton.id = "deinc";
@@ -63,6 +64,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 			addChild(_deincButton);
 
 			_incButton = new Button();
+			_incButton.iconPosition = "center";
 			_incButton.width = layout.innerHeight;
 			_incButton.percentHeight = 100;
 			_incButton.id = "inc";
@@ -72,6 +74,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		}
 		
 		_thumb = new Button();
+		_thumb.iconPosition = "center";
 		_thumb.width = 50;
 		_thumb.percentHeight = 100;
 		_thumb.id = "thumb";

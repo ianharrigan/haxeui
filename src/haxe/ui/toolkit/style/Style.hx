@@ -47,7 +47,6 @@ class Style implements IClonable<Style> {
 	private var _fontScale:Float = -1;
 	private var _fontEmbedded:Float = -1;
 	private var _iconPosition:String;
-	private var _labelPosition:String;
 	private var _icon:String;
 	private var _hasButtons:Int = -1;
 	private var _gradientType:String;
@@ -91,7 +90,6 @@ class Style implements IClonable<Style> {
 	public var fontScale(get, set):Float;
 	public var fontEmbedded(get, set):Bool;
 	public var iconPosition(get, set):String;
-	public var labelPosition(get, set):String;
 	public var icon(get, set):String;
 	public var hasButtons(get, set):Bool;
 	public var gradientType(get, set):String;
@@ -708,21 +706,6 @@ class Style implements IClonable<Style> {
 		return value;
 	}
 
-	private function get_labelPosition():String {
-		if (hasDynamicValue("labelPosition")) {
-			return getDynamicValue("labelPosition");
-		}
-		return _labelPosition;
-	}
-	
-	private function set_labelPosition(value:String):String {
-		if (value != _labelPosition) {
-			_labelPosition = value;
-			apply();
-		}
-		return value;
-	}
-	
 	private function get_icon():String {
 		if (hasDynamicValue("icon")) {
 			return getDynamicValue("icon");
@@ -890,7 +873,6 @@ class Style implements IClonable<Style> {
 		if (with._fontScale != -1) this._fontScale = with._fontScale;
 		if (with._fontEmbedded != -1) this._fontEmbedded = with._fontEmbedded;
 		if (with._iconPosition != null) this._iconPosition = with._iconPosition;
-		if (with._labelPosition != null) this._labelPosition = with._labelPosition;
 		if (with._icon != null) this._icon = with._icon;
 		if (with._hasButtons != -1) this._hasButtons = with._hasButtons;
 		if (with._gradientType != null) this._gradientType = with._gradientType;

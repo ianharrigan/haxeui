@@ -1,0 +1,58 @@
+<menu xmlns:ui="haxe:ui">
+	<menuitem text="Item 1" />
+	<menuitem text="Item 2" disabled="true" />
+	<menuitem text="Item 3" />
+	<menu text="Expandable 1">
+		<menuitem text="Disabled 1" />
+		<menuitem text="Sub 2" />
+		<menuitem text="Sub 3" />
+		<menu text="Expandable 2">
+			<menuitem text="Disabled 2"/>
+			<menuitem text="Sub Sub 2" />
+			<menuitem text="Sub Sub 3" />
+			<menu text="Expandable 3">
+				<menuitem text="Disabled 3" />
+				<menuitem text="Sub Sub Sub 2" />
+				<menuitem text="Sub Sub Sub 3" />
+				<menu text="Expandable 4">
+					<menuitem text="Disabled 4"/>
+					<menuitem text="Sub Sub Sub Sub 2" />
+					<menuitem text="Sub Sub Sub Sub 3" />
+				</menu>
+				<menuitem text="Sub Sub Sub 4" />
+				<menuitem text="Sub Sub Sub 5" />
+				<menuitem text="Su bSub Sub 6" />
+			</menu>
+			<menuitem text="Sub Sub 4" />
+			<menuitem text="Sub Sub 5" />
+			<menuitem text="Sub Sub 6" />
+		</menu>
+		<menuitem text="Sub 4" />
+		<menuitem text="Sub 5" />
+		<menuitem text="Sub 6" />
+	</menu>
+	<menuitem text="Item 4" />
+	<menuitem text="Item 5" />
+	<menuitem text="Item 6" />
+	<menu text="Expandable 2">
+		<menuitem text="Sub Sub 1" />
+		<menuitem text="Sub Sub 2" />
+		<menuitem text="Sub Sub 3" />
+		<menu text="Expandable 3">
+			<menuitem text="Sub Sub Sub 1" />
+			<menuitem text="Sub Sub Sub 2" />
+			<menuitem text="Sub Sub Sub 3" />
+			<menu text="Expandable 4">
+				<menuitem text="Sub Sub Sub Sub 1" />
+				<menuitem text="Sub Sub Sub Sub 2" />
+				<menuitem text="Sub Sub Sub Sub 3" />
+			</menu>
+			<menuitem text="Sub Sub Sub 4" />
+			<menuitem text="Sub Sub Sub 5" />
+			<menuitem text="Su bSub Sub 6" />
+		</menu>
+		<menuitem text="Sub Sub 4" />
+		<menuitem text="Sub Sub 5" />
+		<menuitem text="Sub Sub 6" />
+	</menu>
+</menu>

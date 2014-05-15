@@ -9,7 +9,7 @@
 	<app main="haxe.ui.toolkit.Main" file="haxeui" path="bin" />
 	
 	<window background="#FFFFFF" fps="60" />
-	<window width="800" height="520" unless="mobile" />
+	<window width="1400" height="768" unless="mobile" />
 	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
 
 	<assets path="assets" rename="assets" />

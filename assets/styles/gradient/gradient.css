@@ -71,8 +71,8 @@ Button {
 	fontSize: 13;
 	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: "left";
 	fontScale: 1;
+	spacing: 5;
 }
 
 Button:over {
@@ -615,7 +615,7 @@ TextInput #placeholder {
 TabBar {
 	backgroundColor: 0xFFFFFF;
 	height: 45;
-	paddingTop: 15;
+	paddingTop: 16;
 	paddingLeft: 5;
 	paddingRight: 5;
 	paddingBottom: 0;
@@ -704,8 +704,7 @@ Menu {
 
 MenuItem {
 	width: 100%;
-	labelPosition: "left";
-	iconPosition: "farRight";
+	iconPosition: "right";
 	filter: null;
 	borderSize: 0;
 	backgroundColor: 0xE9EDF5;
@@ -800,8 +799,7 @@ ListSelector, DateSelector {
 	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 	icon: "styles/gradient/arrow_down.png";
-	iconPosition: "farRight";
-	labelPosition: "left";
+	iconPosition: "right";
 }
 
 ListSelector:over, DateSelector:over {
@@ -976,8 +974,6 @@ Button.expandable {
 	fontSize: 13;
 	fontName: "_sans";
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: "farLeft";
-	labelPosition: "left";
 	icon: "styles/gradient/arrow_right2.png";
 }
 

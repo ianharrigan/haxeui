@@ -5,6 +5,7 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFieldType;
 import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 import haxe.ui.toolkit.style.Style;
 
 class TextDisplay implements ITextDisplay {
@@ -18,6 +19,7 @@ class TextDisplay implements ITextDisplay {
 	
 	private var _style:Style;
 	private var _tf:TextField; 
+	private var _autoSize:Bool = true;
 	
 	public function new() {
 		_tf = new TextField();
@@ -26,7 +28,7 @@ class TextDisplay implements ITextDisplay {
 		_tf.multiline = false;
 		_tf.mouseEnabled = false;
 		_tf.wordWrap = false;
-		_tf.autoSize = TextFieldAutoSize.NONE;
+		_tf.autoSize = TextFieldAutoSize.LEFT;
 		_tf.text = "";
 	}
 	
@@ -43,7 +45,9 @@ class TextDisplay implements ITextDisplay {
 	public var visible(get, set):Bool;
 	public var selectable(get, set):Bool;
 	public var mouseEnabled(get, set):Bool;
-
+	public var autoSize(get, set):Bool;
+	public var textAlign(get, set):String;
+	
 	private function get_text():String {
 		return _tf.text;
 	}
@@ -58,23 +62,6 @@ class TextDisplay implements ITextDisplay {
 		}
 		
 		style = _style;
-		if (value != null && value.length > 0) {
-			if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == false) {
-				_tf.width = _tf.textWidth + X_PADDING;
-				_tf.height = _tf.textHeight + Y_PADDING;
-			} else if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == true) {
-				_tf.height = _tf.textHeight + Y_PADDING;
-			} else if (_tf.type == TextFieldType.INPUT && _tf.multiline == false) {
-				//_tf.width = _tf.textWidth + 4;
-				//_tf.height = _tf.textHeight + 4;
-			}
-		} else {
-			if (_tf.type == TextFieldType.DYNAMIC) {
-				_tf.width = 0;
-				_tf.height = 0;
-			} else if (_tf.type == TextFieldType.INPUT && _tf.multiline == false) {
-			}
-		}
 		return value;
 	}
 	
@@ -86,6 +73,7 @@ class TextDisplay implements ITextDisplay {
 		if (value == null) {
 			return value;
 		}
+
 		_style = value;
 		var format:TextFormat = _tf.getTextFormat();
 		if (_style.fontName != null) {
@@ -101,19 +89,6 @@ class TextDisplay implements ITextDisplay {
 
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
-		
-		if (text.length > 0) {
-			if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == false) {
-				_tf.width = _tf.textWidth + X_PADDING;
-				_tf.height = _tf.textHeight + Y_PADDING;
-			} else if (_tf.type == TextFieldType.DYNAMIC && _tf.multiline == true) {
-				_tf.height = _tf.textHeight + Y_PADDING;
-			} else if (_tf.type == TextFieldType.INPUT && _tf.multiline == false) {
-				//_tf.width = _tf.textWidth + 4;
-				//_tf.height = _tf.textHeight + 4;
-			}
-		}
-		
 		return value;
 	}
 	
@@ -188,5 +163,51 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_mouseEnabled(value:Bool):Bool {
 		return _tf.mouseEnabled = value;
+	}
+	
+	private function get_autoSize():Bool {
+		return _tf.autoSize != TextFieldAutoSize.NONE;
+	}
+	
+	private function set_autoSize(value:Bool):Bool {
+		if (value == true) {
+			_tf.autoSize = TextFieldAutoSize.LEFT;
+		} else {
+			_tf.autoSize = TextFieldAutoSize.NONE;
+		}
+		return value;
+	}
+	
+	private function get_textAlign():String {
+		var format:TextFormat = _tf.getTextFormat();
+		var align:String = "left";
+		switch (format.align) {
+			case TextFormatAlign.LEFT:
+				align = "left";
+			case TextFormatAlign.CENTER:
+				align = "center";
+			case TextFormatAlign.RIGHT:
+				align = "right";
+			default:
+				align = "left";
+		}
+		return align;
+	}
+	
+	private function set_textAlign(value:String):String {
+		var format:TextFormat = _tf.getTextFormat();
+		switch (value) {
+			case "left":
+				format.align = TextFormatAlign.LEFT;
+			case "center":
+				format.align = TextFormatAlign.CENTER;
+			case "right":
+				format.align = TextFormatAlign.RIGHT;
+			default:
+				format.align = TextFormatAlign.LEFT;
+		}
+		_tf.defaultTextFormat = format;
+		_tf.setTextFormat(format);
+		return value;
 	}
 }

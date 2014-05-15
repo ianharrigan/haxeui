@@ -10,6 +10,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.Screen;
+import haxe.ui.toolkit.layout.BoxLayout;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
 /**
@@ -55,6 +56,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 		
 		if (_hasButtons == true) {
 			_deincButton = new Button();
+			_deincButton.iconPosition = "center";
 			_deincButton.percentWidth = 100;
 			_deincButton.height = layout.innerWidth;
 			_deincButton.id = "deinc";
@@ -63,6 +65,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 			addChild(_deincButton);
 			
 			_incButton = new Button();
+			_incButton.iconPosition = "center";
 			_incButton.percentWidth = 100;
 			_incButton.height = layout.innerWidth;
 			_incButton.id = "inc";
@@ -72,6 +75,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 		}
 		
 		_thumb = new Button();
+		_thumb.iconPosition = "center";
 		_thumb.percentWidth = 100;
 		_thumb.height = 50;
 		_thumb.id = "thumb";

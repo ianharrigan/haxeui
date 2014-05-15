@@ -28,6 +28,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		_layout = new TextInputLayout();
 		_textDisplay = new TextDisplay();
 		_textDisplay.interactive = true;
+		_textDisplay.autoSize = false;
 		_textDisplay.text = "";
 	}
 	
@@ -80,6 +81,8 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		_invalidating = true;
 		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
 			checkScrolls();
+			_textDisplay.display.width = layout.innerWidth;
+			_textDisplay.display.height = layout.innerHeight;
 		}
 		_invalidating = false;
 	}
@@ -186,6 +189,8 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	public var displayAsPassword(get, set):Bool;
 	@:clonable
 	public var placeholderText(get, set):String;
+	@:clonable
+	public var textAlign(get, set):String;
 
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
@@ -262,6 +267,20 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		}
 		if (_textPlaceHolder != null) {
 			_textPlaceHolder.visible = (text.length == 0);
+		}
+		return value;
+	}
+	
+	private function get_textAlign():String {
+		if (_textDisplay == null) {
+			return null;
+		}
+		return _textDisplay.textAlign;
+	}
+	
+	private function set_textAlign(value:String):String {
+		if (_textDisplay != null) {
+			_textDisplay.textAlign = value;
 		}
 		return value;
 	}

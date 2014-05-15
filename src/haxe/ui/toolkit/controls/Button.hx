@@ -2,13 +2,18 @@ package haxe.ui.toolkit.controls;
 
 import flash.events.MouseEvent;
 import haxe.ds.StringMap;
+import haxe.ui.toolkit.core.base.HorizontalAlign;
+import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IFocusable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.layout.BoxLayout;
+import haxe.ui.toolkit.layout.HorizontalLayout;
 import haxe.ui.toolkit.layout.Layout;
+import haxe.ui.toolkit.layout.VerticalLayout;
 import haxe.ui.toolkit.style.Style;
 
 /**
@@ -64,6 +69,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var _toggle:Bool = false;
 	private var _selected:Bool = false;
 	private var _allowSelection:Bool = true;
+	private var _iconPosition:String = "left";
 	
 	private var _group:String;
 	private static var _groups:StringMap<Array<Button>>;
@@ -73,9 +79,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		state = STATE_NORMAL;
-		_layout = new ButtonLayout();
-		_label = new Text();
-		_label.id = "label";
+		_layout = new HorizontalLayout();
 		autoSize = true;
 		
 		if (_groups == null) {
@@ -117,11 +121,80 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		if (value != null) {
 			if (_icon == null) {
 				_icon = new Image();
-				addChild(_icon);
+				_icon.id = "icon";
+				_icon.style.padding = 100;
 			}
 			_icon.resource = value;
+			organiseChildren();
+		} else {
+			_icon.visible = false;
 		}
 		return value;
+	}
+	
+	private function organiseChildren():Void {
+		if (_ready == false) {
+			return;
+		}
+		removeAllChildren(false);
+		if (_iconPosition == "left" || _iconPosition == "right") {
+			layout = new HorizontalLayout();
+		} else if (_iconPosition == "top" || _iconPosition == "bottom") {
+			if (_label != null && _icon != null && _label.width < _icon.width) {
+				_label.autoSize = false;
+				_label.width = _icon.width;
+				_label.textAlign = "center";
+			}
+			layout = new VerticalLayout();
+			if (_autoSize == false) {
+				var spacer:Spacer = new Spacer();
+				spacer.percentHeight = 50;
+				addChild(spacer);
+			}
+		} else {
+			layout = new BoxLayout();
+		}
+		
+		if (_icon != null) {
+			_icon.horizontalAlign = HorizontalAlign.CENTER;
+			_icon.verticalAlign = VerticalAlign.CENTER;
+		}
+		
+		if (_label != null) {
+			if (autoSize == false) {
+				_label.percentWidth = 100;
+				_label.autoSize = false;
+				_label.textAlign = "center";
+			} else {
+				_label.percentWidth = -1;
+				_label.autoSize = true;
+				_label.textAlign = "center";
+			}
+		}
+		
+		if (_iconPosition == "left" || _iconPosition == "top") {
+			addChild(_icon);
+			addChild(_label);
+		} else if (_iconPosition == "right" || _iconPosition == "bottom") {
+			addChild(_label);
+			if (_autoSize == true && _iconPosition == "right") {
+				var spacer:Spacer = new Spacer();
+				spacer.percentWidth = 100;
+				addChild(spacer);
+			}
+			addChild(_icon);
+		} else {
+			addChild(_icon);
+			addChild(_label);
+		}
+		
+		if (_iconPosition == "top" || _iconPosition == "bottom") {
+			if (_autoSize == false) {
+				var spacer:Spacer = new Spacer();
+				spacer.percentHeight = 50;
+				addChild(spacer);
+			}
+		}
 	}
 	
 	//******************************************************************************************
@@ -129,21 +202,18 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	//******************************************************************************************
 	private override function preInitialize():Void {
 		super.preInitialize();
-		resizeButton();
 	}
 	
 	private override function initialize():Void {
 		super.initialize();
 		
-		addChild(_label);
-
 		addEventListener(MouseEvent.MOUSE_OVER, _onMouseOver);
 		addEventListener(MouseEvent.MOUSE_OUT, _onMouseOut);
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 		
-		//applyStyle();
+		organiseChildren();
 	}
 	
 	private override function set_disabled(value:Bool):Bool {
@@ -164,14 +234,24 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	// Component overrides
 	//******************************************************************************************
 	private override function get_text():String {
+		if (_label == null) {
+			return null;
+		}
 		return _label.text;
 	}
 	
 	private override function set_text(value:String):String {
 		value = super.set_text(value);
-		_label.text = value;
-		if (_ready) {
-			resizeButton(true);
+		
+		if (value != null) {
+			if (_label == null) {
+				_label = new Text();
+				_label.id = "label";
+			}
+			_label.value = value;
+			organiseChildren();
+		} else {
+			_label.visible = false;
 		}
 		return value;
 	}
@@ -278,11 +358,11 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	/**
 	 Defines where the icon (if available) should be positioned, valid values are:
 		 
-		 - `farLeft` - furthest left position possible (honours padding)
 		 - `left` - left of the label
-		 - `center` or `top` - centered in the button, if button has a label icon will be positioned ontop of the label
+		 - `top` - top of the label
+		 - `center` - center of the button
 		 - `right` - right of the label
-		 - `farRight` - furthest right position possible (honours padding)
+		 - `bottom` - bottom of the label
 	 **/
 	@:clonable
 	public var iconPosition(get, set):String;
@@ -309,16 +389,12 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var dispatchChangeEvents(default, default):Bool = true;
 	
 	private function get_iconPosition():String {
-		if (Std.is(_layout, ButtonLayout)) {
-			return cast(_layout, ButtonLayout).iconPosition;
-		}
-		return "";
+		return _iconPosition;
 	}
 	
 	private function set_iconPosition(value:String):String {
-		if (Std.is(_layout, ButtonLayout)) {
-			cast(_layout, ButtonLayout).iconPosition = value;
-		}
+		_iconPosition = value;
+		organiseChildren();
 		return value;
 	}
 	
@@ -439,13 +515,8 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				icon = _style.icon;
 			}
 			
-			if (_style.iconPosition != null && Std.is(_layout, ButtonLayout)) {
-				cast(_layout, ButtonLayout).iconPosition = _style.iconPosition;
-				invalidate(InvalidationFlag.LAYOUT);
-			}
-
-			if (_style.labelPosition != null && Std.is(_layout, ButtonLayout)) {
-				cast(_layout, ButtonLayout).labelPosition = _style.labelPosition;
+			if (_style.iconPosition != null) {
+				iconPosition = _style.iconPosition;
 			}
 		}
 	}
@@ -465,127 +536,5 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			}
 		}
 		return exists;
-	}
-	
-	private function resizeButton(force:Bool = false):Void {
-		if (text.length > 0 && autoSize == true && Std.is(_layout, ButtonLayout)) {
-			var buttonLayout:ButtonLayout = cast(_layout, ButtonLayout);
-			if (width == 0 || force == true) {
-				var cx:Float = _label.width + _layout.padding.left + _layout.padding.right;
-				if (_icon != null) {
-					if (buttonLayout.iconPosition == "farLeft" || buttonLayout.iconPosition == "left" || buttonLayout.iconPosition == "right" || buttonLayout.iconPosition == "farRight") {
-						cx += (_icon.width  + _layout.spacingX) * 2;
-					}
-				}
-				width = cx;
-			}
-			//force = false;
-			if (height == 0 || force == true) {
-				var cy:Float = _label.height + _layout.padding.top + _layout.padding.bottom;
-				if (force == true) { // this is strange
-					cy += 1;
-				}
-				height = cy;
-			}
-		}
-	}
-}
-
-@exclude
-class ButtonLayout extends Layout {
-	private var _iconPos:String = "center";
-	private var _labelPos:String = "center";
-	
-	public function new() {
-		super();
-	}
-	
-	//******************************************************************************************
-	// Getters/setters
-	//******************************************************************************************
-	public var iconPosition(get, set):String;
-	public var labelPosition(get, set):String;
-	
-	private function get_iconPosition():String {
-		return _iconPos;
-	}
-	
-	private function set_iconPosition(value:String):String {
-		_iconPos = value;
-		return value;
-	}
-	
-	private function get_labelPosition():String {
-		return _labelPos;
-	}
-	
-	private function set_labelPosition(value:String):String {
-		_labelPos = value;
-		return value;
-	}
-	
-	//******************************************************************************************
-	// ILayout
-	//******************************************************************************************
-	private override function repositionChildren():Void {
-		super.repositionChildren();
-		
-		var labelX:Float = 0;
-		var labelY:Float = 0;
-		var imageX:Float = 0;
-		var imageY:Float = 0;
-		
-		var label:Text = container.findChildAs(Text);
-		var icon:Image = container.findChildAs(Image);
-
-		if (label != null) {
-			if (_labelPos == "center") {
-				labelX = (container.width / 2) - (label.width / 2);
-				labelY = (container.height / 2) - (label.height / 2);
-			} else if (_labelPos == "left") {
-				labelX = padding.left;
-				labelY = (container.height / 2) - (label.height / 2);
-				if (icon != null && (_iconPos == "left" || _iconPos == "farLeft")) {
-					labelX += icon.width + 5;
-				}
-			}
-		}
-		
-		if (icon != null) {
-			if (_iconPos == "left") {
-				imageX = labelX - icon.width;
-				imageY = (container.height / 2) - (icon.height / 2);
-			} else if (_iconPos == "right") {
-				imageX = labelX;
-				if (label != null) {
-					imageX += label.width;
-				}
-				imageY = (container.height / 2) - (icon.height / 2);
-			} else if (_iconPos == "farLeft") {
-				imageX = padding.left;
-				imageY = (container.height / 2) - (icon.height / 2);
-			} else if (_iconPos == "farRight") {
-				imageX = container.width - icon.width - padding.right;
-				imageY = (container.height / 2) - (icon.height / 2);
-			} else if (_iconPos == "top" || _iconPos == "center") {
-				imageX = (container.width / 2) - (icon.width / 2);
-				var combinedHeight = icon.height;
-				if (label != null) {
-					combinedHeight += label.height;
-				}
-				imageY = (container.height / 2) - (combinedHeight / 2);
-				labelY = imageY + icon.height;
-			}
-		}
-		
-		if (label != null) {
-			label.x = labelX;
-			label.y = labelY;
-		}
-		
-		if (icon != null) {
-			icon.x = imageX;
-			icon.y = imageY;
-		}
 	}
 }

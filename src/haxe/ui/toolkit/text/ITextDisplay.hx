@@ -14,4 +14,6 @@ interface ITextDisplay {
 	public var visible(get, set):Bool;
 	public var selectable(get, set):Bool;
 	public var mouseEnabled(get, set):Bool;
+	public var autoSize(get, set):Bool;
+	public var textAlign(get, set):String;
 }

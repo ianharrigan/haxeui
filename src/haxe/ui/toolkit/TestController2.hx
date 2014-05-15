@@ -10,6 +10,15 @@ import haxe.ui.toolkit.util.CallStackHelper;
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test2.xml"))
 class TestController2 extends XMLController {
 	public function new() {
+
+		bigger.onClick = function(e) {
+			documenttabs.setTabText(0, "The tab text is now bigger");
+		}
+
+		smaller.onClick = function(e) {
+			documenttabs.setTabText(0, "Small");
+		}
+		
 		test.onClick = function(e) {
 			//documenttabs.setTabText(0, "Panel 1*");
 			showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");

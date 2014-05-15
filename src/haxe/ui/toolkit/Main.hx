@@ -2,6 +2,7 @@ package haxe.ui.toolkit;
 
 import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.Stack;
+import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.themes.DefaultTheme;
@@ -15,8 +16,9 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "fade");
 		Toolkit.theme = new DefaultTheme();
 		//Toolkit.theme = new WindowsTheme();
-		//Toolkit.theme = new GradientTheme();
-		//Macros.addStyleSheet("assets/test.css");
+		Toolkit.theme = new GradientTheme();
+		Macros.addStyleSheet("assets/test.css");
+		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			/*

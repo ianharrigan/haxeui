@@ -61,6 +61,7 @@ class DefaultStyles extends Styles {
 			borderSize: 1,
 			cornerRadius: 2,
 			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
+			spacing: 5
 		} ));
 		
 		
@@ -77,8 +78,6 @@ class DefaultStyles extends Styles {
 
 		
 		addStyle("Button.expandable", new Style( {
-			iconPosition: "farLeft",
-			labelPosition: "left",
 			icon: "styles/default/expand.png",
 		} ));
 		
@@ -108,8 +107,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle("ListSelector", new Style( {
 			icon: "styles/default/up_down.png",
-			iconPosition: "farRight",
-			labelPosition: "left",
+			iconPosition: "right",
 			selectionMethod: "popup",
 		} ));
 		
@@ -126,7 +124,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle("TabBar", new Style( {
 			backgroundColor: 0x888888,
-			height: 42,
+			height: 41,
 			paddingTop: 0,
 			paddingLeft: 0,
 			paddingRight: 0,
@@ -149,6 +147,7 @@ class DefaultStyles extends Styles {
 			height: 42,
 			iconPosition: "top",
 			cornerRadius: 0,
+			autoSize: true,
 			
 			backgroundColor: 0xffa84c,
 			backgroundColorGradientEnd: 0xff7b0d,
@@ -406,8 +405,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle("MenuItem", new Style( {
 			percentWidth: 100,
-			labelPosition: "left",
-			iconPosition: "farRight",
+			iconPosition: "right",
 			filter: null,
 			borderSize: 0,
 			cornerRadius: 0,
