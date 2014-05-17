@@ -58,6 +58,10 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		}
 		
 		if (_textPlaceHolder != null) {
+			if (text.length > 0) {
+				_textPlaceHolder.visible = false;
+			}
+			_textPlaceHolder.textAlign = _textDisplay.textAlign;
 			setChildIndex(_textPlaceHolder, 0);
 		}
 	}
@@ -257,6 +261,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	private function set_placeholderText(value:String):String {
 		if (_textPlaceHolder == null) {
 			_textPlaceHolder = new Text();
+			_textPlaceHolder.autoSize = false;
 			_textPlaceHolder.id = "placeholder";
 		}
 		_textPlaceHolder.text = value;
@@ -285,6 +290,9 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	private function set_textAlign(value:String):String {
 		if (_textDisplay != null) {
 			_textDisplay.textAlign = value;
+		}
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.textAlign = value;
 		}
 		return value;
 	}

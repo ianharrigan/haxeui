@@ -78,7 +78,7 @@
 				</style>
 				<text text="Some text" styleName="centerStyle" width="200" height="50" autoSize="false" selectable="true" />
 				<button text="Some text" styleName="centerStyle" width="200" height="50" autoSize="false" />
-				<textinput id="theInput" text="012345678" styleName="centerStyle" width="200" height="50" autoSize="false" maxChars="10" restrictChars="0-9" />
+				<textinput id="theInput" placeholderText="Enter number" text="012345678" styleName="centerStyle" width="200" height="50" autoSize="false" maxChars="10" restrictChars="0-9" />
 			</hbox>
 			<hbox>
 				<textinput  textAlign="right" />
