@@ -16,6 +16,10 @@ class TestController2 extends XMLController {
 			documenttabs.setTabText(0, "The tab text is now bigger");
 		}
 
+		theInput.onChange = function(e) {
+			trace("change");
+		}
+		
 		/*
 		smaller.onClick = function(e) {
 			documenttabs.setTabText(0, "Small");

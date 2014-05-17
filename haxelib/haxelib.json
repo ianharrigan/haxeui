@@ -4,9 +4,10 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.3.2",
+    "version"      : "1.3.3",
     "releasenote"  : "",
     "contributors" : ["ianharrigan"],
+	"classPath"    : "haxe",
     "dependencies" : {
         "openfl"        : "",
         "actuate"       : "",

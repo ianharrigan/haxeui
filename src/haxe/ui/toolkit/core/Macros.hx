@@ -309,6 +309,7 @@ class Macros {
 			if (styleData.length > 0) {
 				var props:Array<String> = styleData.split(":");
 				var propName:String = StringTools.trim(props[0]);
+				propName = StringUtil.capitalizeHyphens(propName);
 				var propValue:String = StringTools.trim(props[1]);
 				if (ScriptUtils.isScript(propValue) && !ScriptUtils.isCssException(propName)) {
 					dynamicValues.set(propName, propValue);
