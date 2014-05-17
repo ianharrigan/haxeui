@@ -85,6 +85,48 @@ class DefaultStyles extends Styles {
 			icon: "styles/default/collapse.png",
 		} ));
 		
+		addStyle("CheckBox, OptionBox", new Style( {
+			spacingX: 2,
+			fontSize: 14,
+			fontName: f.fontName,
+			fontEmbedded: true,
+			color: 0x444444
+		} ));
+
+		addStyle("CheckBoxValue, OptionBoxValue", new Style( {
+			width: 32,
+			height: 32,
+		} ));
+		
+		addStyle("CheckBoxValue #unselected", new Style( {
+			iconPosition: "center",
+		} ));
+
+		addStyle("CheckBoxValue #unselected:disabled", new Style( {
+		} ));
+
+		addStyle("CheckBoxValue #selected", new Style( {
+			icon: "styles/default/cross.png",
+			iconPosition: "center",
+		} ));
+
+		addStyle("CheckBoxValue #selected:disabled", new Style( {
+		} ));
+
+		addStyle("OptionBoxValue #unselected", new Style( {
+			iconPosition: "center",
+		} ));
+
+		addStyle("OptionBoxValue #unselected:disabled", new Style( {
+		} ));
+
+		addStyle("OptionBoxValue #selected", new Style( {
+			icon: "styles/default/circle.png",
+			iconPosition: "center",
+		} ));
+
+		addStyle("OptionBoxValue #selected:disabled", new Style( {
+		} ));
 		
 		addStyle("TextInput", new Style( {
 			backgroundColor: 0xFFFFFF,

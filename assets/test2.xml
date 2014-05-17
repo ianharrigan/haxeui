@@ -38,6 +38,16 @@
 					</accordion>
 			</hbox>
 			<hbox>
+				<checkbox text="Check 1" />
+				<checkbox text="Check 2" selected="true" />
+				<checkbox text="Check 3" />
+			</hbox>
+			<hbox>
+				<optionbox text="Option 1" group="1" />
+				<optionbox text="Option 2" selected="true" group="1" />
+				<optionbox text="Option 3" group="1" />
+			</hbox>
+			<hbox>
 				<button text="Fixed Size" width="200" height="100" autoSize="false" />
 				<button id="theButton" text="Default" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg"  />
 				<button text="Left" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="left" />
