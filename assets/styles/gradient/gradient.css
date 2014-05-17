@@ -1096,8 +1096,8 @@ RTFView #alignJustify {
 }
 
 CalendarView {
-	width: 250;
-	height: 250;
+	width: 270;
+	height: 270;
 	spacingX: 5;
 	spacingY: 5;
 	paddingLeft: 5;
@@ -1111,9 +1111,13 @@ CalendarView {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 }
 
+CalendarView #currentMonthYear {
+	textAlign: "center";
+}
+
 Calendar {
-	width: 250;
-	height: 250;
+	width: 270;
+	height: 270;
 	spacingX: 2;
 	spacingY: 2;
 	paddingLeft: 0;

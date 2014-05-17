@@ -148,6 +148,7 @@ class Calendar extends Component {
 class CalendarDay extends Button {
 	public function new() {
 		super();
+		autoSize = false;
 	}
 }
 
@@ -163,8 +164,8 @@ class CalendarLayout extends Layout {
 	private override function resizeChildren():Void {
 		super.resizeChildren();
 		var children:Array<IDisplayObject> = container.children;
-		var ucx:Float = usableWidth - (6 * spacingX);
-		var ucy:Float = usableHeight - (5 * spacingY);
+		var ucx:Float = usableWidth - (6 * spacingX) + (padding.left + padding.right);
+		var ucy:Float = usableHeight - (5 * spacingY) + (padding.top + padding.bottom);
 		var bcx:Float = ucx / 7;
 		var bcy:Float = ucy / 6;
 		

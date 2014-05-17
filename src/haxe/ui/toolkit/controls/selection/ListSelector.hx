@@ -34,7 +34,7 @@ class ListSelector extends Button implements IDataComponent {
 	private var _list:ListView;
 	
 	private var _maxListSize:Int = 4;
-	private var _method:String = "";
+	private var _method:String;
 	
 	private var _selectedIndex:Int = -1;
 	private var _selectedItems:Array<IItemRenderer>;
@@ -79,7 +79,7 @@ class ListSelector extends Button implements IDataComponent {
 		super.applyStyle();
 		
 		if (_style != null) {
-			if (_style.selectionMethod != null) {
+			if (_style.selectionMethod != null && _method == null) {
 				_method = _style.selectionMethod;
 			}
 		}

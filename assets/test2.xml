@@ -37,6 +37,10 @@
 						</vbox>
 					</accordion>
 			</hbox>
+			
+			<dateSelector id="theSelector" width="200" autoSize="false"/>
+
+			
 			<hbox>
 				<checkbox text="Check 1" />
 				<checkbox text="Check 2" selected="true" />

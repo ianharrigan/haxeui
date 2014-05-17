@@ -40,16 +40,18 @@ class CalendarView extends VBox {
 
 		var spacer:Spacer = new Spacer();
 		spacer.percentWidth = 50;
-		hbox.addChild(spacer);
+		//hbox.addChild(spacer);
 		
 		_currentMonthYear = new Text();
 		_currentMonthYear.text = "December 2013";
-		//_currentMonthYear.percentWidth = 100;
+		_currentMonthYear.id = "currentMonthYear";
+		_currentMonthYear.percentWidth = 100;
+		_currentMonthYear.autoSize = false;
 		hbox.addChild(_currentMonthYear);
 		
 		var spacer:Spacer = new Spacer();
 		spacer.percentWidth = 50;
-		hbox.addChild(spacer);
+		//hbox.addChild(spacer);
 		
 		/*
 		var spacer:Spacer = new Spacer();

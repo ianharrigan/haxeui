@@ -13,7 +13,7 @@ import motion.easing.Linear;
 class DateSelector extends Button {
 	private var _cal:CalendarView;
 	
-	private var _method:String = "";
+	private var _method:String;
 	
 	public function new() {
 		super();
@@ -52,7 +52,7 @@ class DateSelector extends Button {
 		super.applyStyle();
 		
 		if (_style != null) {
-			if (_style.selectionMethod != null) {
+			if (_style.selectionMethod != null && _method == null) {
 				_method = _style.selectionMethod;
 			}
 		}
