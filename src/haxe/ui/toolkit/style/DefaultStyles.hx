@@ -109,6 +109,7 @@ class DefaultStyles extends Styles {
 			icon: "styles/default/up_down.png",
 			iconPosition: "right",
 			selectionMethod: "popup",
+			textAlign: "left"
 		} ));
 		
 	

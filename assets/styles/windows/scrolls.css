@@ -16,6 +16,8 @@ VScroll Button {
 	backgroundImageScale9: 5,5,10,10;
 	backgroundImageRect: 0, 0, 15, 15;
 	iconPosition: "center";
+	paddingTop: 9;
+	parringBottom: 9;
 }
 
 VScroll Button:over {

@@ -76,6 +76,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 		
 		_thumb = new Button();
 		_thumb.iconPosition = "center";
+		_thumb.autoSize = false;
 		_thumb.percentWidth = 100;
 		_thumb.height = 50;
 		_thumb.id = "thumb";

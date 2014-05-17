@@ -1,0 +1,6 @@
+Accordion{backgroundColor:0xFFFFFF;spacingX:0;spacingY:0;padding:0;}
+Accordion .page{paddingLeft:5;paddingTop:5;paddingBottom:5;paddingRight:5;spacingX:0;spacingY:0;}
+Button.expandable{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:0,0,15,15;fontSize:13;fontName:"_sans";iconPosition:"left";icon:"styles/windows/glyphs/right_arrow.png";}
+Button.expandable:over{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:15,0,15,15;}
+Button.expandable:down{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:30,0,15,15;icon:"styles/windows/glyphs/down_arrow.png";}
+

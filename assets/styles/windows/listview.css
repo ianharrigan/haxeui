@@ -8,7 +8,7 @@ ListView {
 	backgroundImageRect: 0,0,6,6;
 }
 
-ListView VBox {
+ListView #content {
 	color: 0x000000;
 	paddingLeft: 0;
 	paddingTop: 0;
@@ -20,7 +20,7 @@ ListView VBox {
 	cornerRadius: 0;
 }
 
-ListViewItem {
+.even, .odd {
 	backgroundColor: 0xFFFFFF;
 	fontSize: 13;
 	fontName: "_sans";
@@ -30,17 +30,17 @@ ListViewItem {
 	paddingBottom: 2;
 }
 
-ListViewItem:over {
+.even:over, .odd:over {
+	backgroundImage: "styles/windows/listview.png";
+	backgroundImageScale9: 5,5,15,15;
+	backgroundImageRect: 20,0,20,20;
+}
+
+.even:selected, .odd:selected {
 	backgroundImage: "styles/windows/listview.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 	color: 0x000000;
-}
-
-ListViewItem:selected {
-	backgroundImage: "styles/windows/listview.png";
-	backgroundImageScale9: 5,5,15,15;
-	backgroundImageRect: 20,0,20,20;
 }
 
 ListViewItem #subtext {
@@ -48,7 +48,7 @@ ListViewItem #subtext {
 	fontSize: 11;
 }
 
-List, Date {
+ListSelector, DateSelector {
 	fontSize: 13;
 	fontName: "_sans";
 	color: 0x000000;
@@ -60,17 +60,17 @@ List, Date {
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 0,0,20,20;
 	icon: "styles/windows/glyphs/down_arrow.png";
-	iconPosition: "farRight";
-	labelPosition: "left";
+	iconPosition: "right";
+	textAlign: "left";
 }
 
-List:over, Date:over {
+ListSelector:over, DateSelector:over {
 	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 20,0,20,20;
 }
 
-List:down, Date:down {
+ListSelector:down, DateSelector:down {
 	backgroundImage: "styles/windows/button.png";
 	backgroundImageScale9: 5,5,15,15;
 	backgroundImageRect: 40,0,20,20;

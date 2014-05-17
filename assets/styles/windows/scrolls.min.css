@@ -1,0 +1,19 @@
+VScroll{backgroundImage:"styles/windows/vscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:45,0,17,17;width:18;height:100;paddingLeft:1;paddingTop:1;paddingBottom:1;paddingRight:1;spacingY:1;}
+VScroll Button{backgroundImage:"styles/windows/vscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:0,0,15,15;iconPosition:"center";paddingTop:9;parringBottom:9;}
+VScroll Button:over{backgroundImage:"styles/windows/vscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:15,0,15,15;}
+VScroll Button:down{backgroundImage:"styles/windows/vscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:30,0,15,15;}
+VScroll #deinc{icon:"styles/windows/glyphs/up_arrow.png";}
+VScroll #inc{icon:"styles/windows/glyphs/down_arrow.png";}
+VScroll #thumb{icon:"styles/windows/glyphs/vscroll_thumb_gripper_up.png";}
+VScroll #thumb:over{icon:"styles/windows/glyphs/vscroll_thumb_gripper_over.png";}
+VScroll #thumb:down{icon:"styles/windows/glyphs/vscroll_thumb_gripper_down.png";}
+HScroll{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:45,0,17,17;width:100;height:18;paddingLeft:1;paddingTop:1;paddingBottom:1;paddingRight:1;spacingX:1;}
+HScroll Button{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:0,0,15,15;iconPosition:"center";}
+HScroll Button:over{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:15,0,15,15;}
+HScroll Button:down{backgroundImage:"styles/windows/hscroll.png";backgroundImageScale9:5,5,10,10;backgroundImageRect:30,0,15,15;}
+HScroll #deinc{icon:"styles/windows/glyphs/left_arrow.png";}
+HScroll #inc{icon:"styles/windows/glyphs/right_arrow.png";}
+HScroll #thumb{icon:"styles/windows/glyphs/hscroll_thumb_gripper_up.png";}
+HScroll #thumb:over{icon:"styles/windows/glyphs/hscroll_thumb_gripper_over.png";}
+HScroll #thumb:down{icon:"styles/windows/glyphs/hscroll_thumb_gripper_down.png";}
+

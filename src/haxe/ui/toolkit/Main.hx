@@ -15,8 +15,8 @@ class Main {
 		Toolkit.setTransitionForClass(Accordion, "slide");
 		Toolkit.setTransitionForClass(Stack, "fade");
 		Toolkit.theme = new DefaultTheme();
-		//Toolkit.theme = new WindowsTheme();
 		Toolkit.theme = new GradientTheme();
+		Toolkit.theme = new WindowsTheme();
 		Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();

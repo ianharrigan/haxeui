@@ -86,7 +86,19 @@ class TextDisplay implements ITextDisplay {
 		if (_style.color != -1) {
 			format.color = _style.color;
 		}
-
+		if (_style.textAlign != null) {
+			switch (_style.textAlign) {
+				case "left":
+					format.align = TextFormatAlign.LEFT;
+				case "center":
+					format.align = TextFormatAlign.CENTER;
+				case "right":
+					format.align = TextFormatAlign.RIGHT;
+				default:
+					format.align = TextFormatAlign.LEFT;
+			}
+		}
+		
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
 		return value;

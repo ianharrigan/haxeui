@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <vbox width="100%" height="100%" style="spacing:2;">
 	<menubar>
 		<menubutton text="Application" id="menuApplication">
@@ -66,6 +67,18 @@
 			<hbox>
 				<text text="Dynamic" />
 				<text text="Fixed" width="200" height="50" autoSize="false" textAlign="right" />
+				<style>
+					.centerStyle {
+						//backgroundColor: 0xFF0000;
+						width: 200;
+						height: 50;
+						autoSize: false;
+						textAlign: right;
+					}
+				</style>
+				<text text="Some text" styleName="centerStyle" width="200" height="50" autoSize="false" />
+				<button text="Some text" styleName="centerStyle" width="200" height="50" autoSize="false" />
+				<textinput text="Some text" styleName="centerStyle" width="200" height="50" autoSize="false" />
 			</hbox>
 			<hbox>
 				<textinput  textAlign="right" />
@@ -74,7 +87,7 @@
 		</vbox>
 		<vbox text="Panel 2">
 			<button text="2" />
-			<listSelector text="Dropdown" width="140">
+			<listSelector text="Dropdown" width="340" autoSize="false">
 				<array>1,2,3,4,5,6,7,8,9</array>
 			</listSelector>
 			

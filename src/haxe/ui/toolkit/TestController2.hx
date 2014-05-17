@@ -11,6 +11,7 @@ import haxe.ui.toolkit.util.CallStackHelper;
 class TestController2 extends XMLController {
 	public function new() {
 
+		/*
 		bigger.onClick = function(e) {
 			documenttabs.setTabText(0, "The tab text is now bigger");
 		}
@@ -20,16 +21,12 @@ class TestController2 extends XMLController {
 		}
 		
 		test.onClick = function(e) {
-			//documenttabs.setTabText(0, "Panel 1*");
 			showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");
-			//showCustomPopup("assets/custom.xml", "Something Nice", {buttons: [PopupButton.CONFIRM, PopupButton.CANCEL], width: 500});
-			//list1.width = 400;
-			//trace("bob");
 		};
 		
 		test.onReady = function(e) {
-			//list1.width = 400;
 		};
+		*/
 		
 
 		/*

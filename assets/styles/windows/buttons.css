@@ -11,6 +11,7 @@ Button {
 	backgroundImageRect: 0,0,20,20;
 	iconPosition: "left";
 	labelPosition: "center";
+	spacing: 5;
 }
 
 Button:over {

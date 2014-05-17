@@ -27,9 +27,9 @@ class Text extends StateComponent implements IClonable<Text> {
 		super.initialize();
 		
 		sprite.addChild(_textDisplay.display);
-		_textDisplay.text = text;
 		_textDisplay.autoSize = autoSize;
-		
+		_textDisplay.text = text;
+
 		if (autoSize == true) {
 			if (width == 0) {
 				width = _textDisplay.display.width;

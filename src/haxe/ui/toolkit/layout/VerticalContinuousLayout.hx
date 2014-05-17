@@ -93,54 +93,5 @@ class VerticalContinuousLayout extends Layout {
 			
 			ypos += child.height + spacingY;
 		}
-		/*
-		var xpos:Float = padding.left;
-		var ypos:Float = padding.top;
-		var usedCX:Float = -1;
-		var usedCY:Float = 0;
-		var maxCY:Float = usableHeight;
-		if (container.autoSize == true && container.parent != null) {
-			maxCY = container.parent.layout.usableHeight;
-		}
-
-		var colCX:Float = 0;
-		for (child in container.children) {
-			var halign:String = child.horizontalAlign;
-			switch (halign) {
-				case HorizontalAlign.CENTER:
-					xpos = (container.width / 2) - (child.width / 2);
-				case HorizontalAlign.RIGHT:
-					xpos = container.width - child.width;
-				default:	
-			}
-			
-			usedCY += child.height + spacingY;
-			if (child.width + spacingX > colCX) {
-				colCX = child.width + spacingX;
-				//usedCX += colCX;
-			}
-			if (usedCX == -1) {
-				usedCX = colCX;
-			}
-			if (usedCY > maxCY) {
-				usedCY = child.height + spacingY;
-				usedCX += colCX;
-				xpos += child.width + spacingX;
-				ypos = padding.top;
-				colCX = 0;
-			}
-			if (usedCY - spacingY > innerHeight && container.autoSize) {
-				container.height = usedCY + padding.top + padding.bottom - spacingY;
-			}
-			if (usedCX - spacingX > innerWidth && container.autoSize) {
-				container.width = usedCX + padding.left + padding.right - spacingX;
-			}
-			
-			child.x = xpos;
-			child.y = ypos;
-			
-			ypos += child.height + spacingY;
-		}
-		*/
 	}
 }

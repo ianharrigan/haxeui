@@ -43,6 +43,7 @@ class DefaultLayout extends Layout {
 			if (totalHeight > 0 && totalHeight != innerHeight && container.percentHeight == -1) {
 				container.height = totalHeight + (padding.top + padding.bottom);
 			}
+		} else {
 		}
 	}
 	

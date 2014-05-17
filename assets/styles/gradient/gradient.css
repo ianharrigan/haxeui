@@ -800,6 +800,7 @@ ListSelector, DateSelector {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 	icon: "styles/gradient/arrow_down.png";
 	iconPosition: "right";
+	textAlign: "left";
 }
 
 ListSelector:over, DateSelector:over {

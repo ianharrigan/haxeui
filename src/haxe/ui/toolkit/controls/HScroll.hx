@@ -75,6 +75,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		
 		_thumb = new Button();
 		_thumb.iconPosition = "center";
+		_thumb.autoSize = false;
 		_thumb.width = 50;
 		_thumb.percentHeight = 100;
 		_thumb.id = "thumb";

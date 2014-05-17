@@ -1,0 +1,10 @@
+ListView{paddingLeft:2;paddingRight:2;paddingBottom:2;paddingTop:2;backgroundImage:"styles/windows/container.png";backgroundImageScale9:2,2,4,4;backgroundImageRect:0,0,6,6;}
+ListView #content{color:0x000000;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;borderSize:0;spacingX:0;spacingY:0;cornerRadius:0;}
+.even,.odd{backgroundColor:0xFFFFFF;fontSize:13;fontName:"_sans";paddingLeft:2;paddingTop:2;paddingRight:2;paddingBottom:2;}
+.even:over,.odd:over{backgroundImage:"styles/windows/listview.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:20,0,20,20;}
+.even:selected,.odd:selected{backgroundImage:"styles/windows/listview.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:0,0,20,20;color:0x000000;}
+ListViewItem #subtext{color:0xAAAAAA;fontSize:11;}
+ListSelector,DateSelector{fontSize:13;fontName:"_sans";color:0x000000;paddingLeft:5;paddingTop:2;paddingBottom:2;paddingRight:5;backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:0,0,20,20;icon:"styles/windows/glyphs/down_arrow.png";iconPosition:"right";textAlign:"left";}
+ListSelector:over,DateSelector:over{backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:20,0,20,20;}
+ListSelector:down,DateSelector:down{backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:40,0,20,20;}
+

@@ -1,0 +1,12 @@
+Button{fontSize:13;fontName:"_sans";color:0x000000;paddingLeft:5;paddingTop:5;paddingBottom:5;paddingRight:5;backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:0,0,20,20;iconPosition:"left";labelPosition:"center";spacing:5;}
+Button:over{backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:20,0,20,20;}
+Button:down{backgroundImage:"styles/windows/button.png";backgroundImageScale9:5,5,15,15;backgroundImageRect:40,0,20,20;}
+CheckBox{paddingLeft:0;paddingRight:0;paddingBottom:0;paddingTop:0;spacingX:2;}
+CheckBoxValue{width:13;height:13;}
+CheckBoxValue #unselected{backgroundImage:"styles/windows/checkbox.png";backgroundImageRect:0,0,13,13;}
+CheckBoxValue #selected{backgroundImage:"styles/windows/checkbox.png";backgroundImageRect:26,0,13,13;}
+OptionBox{paddingLeft:0;paddingRight:0;paddingBottom:0;paddingTop:0;spacingX:2;}
+OptionBoxValue{width:12;height:12;}
+OptionBoxValue #unselected{backgroundImage:"styles/windows/optionbox.png";backgroundImageRect:0,0,12,12;}
+OptionBoxValue #selected{backgroundImage:"styles/windows/optionbox.png";backgroundImageRect:24,0,12,12;}
+

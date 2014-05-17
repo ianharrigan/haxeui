@@ -74,14 +74,18 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var _group:String;
 	private static var _groups:StringMap<Array<Button>>;
 	
+	private var _spacers:Array<Spacer>;
+	
 	public function new() {
 		super();
+
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		state = STATE_NORMAL;
 		_layout = new HorizontalLayout();
 		autoSize = true;
 		
+		_spacers = new Array<Spacer>();
 		if (_groups == null) {
 			_groups = new StringMap<Array<Button>>();
 		}
@@ -137,19 +141,25 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			return;
 		}
 		removeAllChildren(false);
+		for (s in _spacers) {
+			s.dispose();
+		}
+		_spacers = new Array<Spacer>();
+		
 		if (_iconPosition == "left" || _iconPosition == "right") {
 			layout = new HorizontalLayout();
 		} else if (_iconPosition == "top" || _iconPosition == "bottom") {
 			if (_label != null && _icon != null && _label.width < _icon.width) {
 				_label.autoSize = false;
 				_label.width = _icon.width;
-				_label.textAlign = "center";
+				//_label.textAlign = "center";
 			}
 			layout = new VerticalLayout();
 			if (_autoSize == false) {
 				var spacer:Spacer = new Spacer();
 				spacer.percentHeight = 50;
 				addChild(spacer);
+				_spacers.push(spacer);
 			}
 		} else {
 			layout = new BoxLayout();
@@ -167,7 +177,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				_label.textAlign = "center";
 			} else {
 				_label.percentWidth = -1;
-				_label.autoSize = true;
+				//_label.autoSize = true;
 				_label.textAlign = "center";
 			}
 		}
@@ -181,6 +191,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				var spacer:Spacer = new Spacer();
 				spacer.percentWidth = 100;
 				addChild(spacer);
+				_spacers.push(spacer);
 			}
 			addChild(_icon);
 		} else {
@@ -193,6 +204,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				var spacer:Spacer = new Spacer();
 				spacer.percentHeight = 50;
 				addChild(spacer);
+				_spacers.push(spacer);
 			}
 		}
 	}
@@ -506,6 +518,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				labelStyle.fontSize = _style.fontSize;
 				labelStyle.fontEmbedded = _style.fontEmbedded;
 				labelStyle.color = _style.color;
+				labelStyle.textAlign = _style.textAlign;
 			}
 			_label.style = labelStyle;
 		}
