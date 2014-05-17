@@ -382,7 +382,7 @@ class Macros {
 			var files:Array<String> = sys.FileSystem.readDirectory(dir);
 			if (files != null) {
 				for (file in files) {
-					if (file.indexOf(".hx") != -1) {
+					if (StringTools.endsWith(file, ".hx") && !StringTools.startsWith(file, ".")) {
 						var name:String = file.substr(0, file.length - 3);
 						var path:String = Context.resolvePath(dir + "/" + file);
 						
@@ -427,7 +427,7 @@ class Macros {
 			var files:Array<String> = sys.FileSystem.readDirectory(dir);
 			if (files != null) {
 				for (file in files) {
-					if (file.indexOf(".hx") != -1) {
+					if (StringTools.endsWith(file, ".hx") && !StringTools.startsWith(file, ".")) {
 						var name:String = file.substr(0, file.length - 3);
 						var path:String = Context.resolvePath(dir + "/" + file);
 						
