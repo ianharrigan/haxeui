@@ -125,8 +125,6 @@ class Text extends StateComponent implements IClonable<Text> {
 	@:clonable
 	public var selectable(get, set):Bool;
 	@:clonable
-	public var mouseEnabled(get, set):Bool;
-	@:clonable
 	public var textAlign(get, set):String;
 	
 	private function get_multiline():Bool {
@@ -153,14 +151,6 @@ class Text extends StateComponent implements IClonable<Text> {
 	
 	private function set_selectable(value:Bool):Bool {
 		return _textDisplay.selectable = value;
-	}
-	
-	private function get_mouseEnabled():Bool {
-		return _textDisplay.mouseEnabled;
-	}
-	
-	private function set_mouseEnabled(value:Bool):Bool {
-		return _textDisplay.mouseEnabled = value;
 	}
 	
 	private function get_textAlign():String {

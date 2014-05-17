@@ -44,9 +44,10 @@ class TextDisplay implements ITextDisplay {
 	public var displayAsPassword(get, set):Bool;
 	public var visible(get, set):Bool;
 	public var selectable(get, set):Bool;
-	public var mouseEnabled(get, set):Bool;
 	public var autoSize(get, set):Bool;
 	public var textAlign(get, set):String;
+	public var maxChars(get, set):Int;
+	public var restrictChars(get, set):String;
 	
 	private function get_text():String {
 		return _tf.text;
@@ -86,21 +87,11 @@ class TextDisplay implements ITextDisplay {
 		if (_style.color != -1) {
 			format.color = _style.color;
 		}
-		if (_style.textAlign != null) {
-			switch (_style.textAlign) {
-				case "left":
-					format.align = TextFormatAlign.LEFT;
-				case "center":
-					format.align = TextFormatAlign.CENTER;
-				case "right":
-					format.align = TextFormatAlign.RIGHT;
-				default:
-					format.align = TextFormatAlign.LEFT;
-			}
-		}
-		
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
+		if (_style.textAlign != null) {
+			textAlign = _style.textAlign;
+		}
 		return value;
 	}
 	
@@ -166,15 +157,8 @@ class TextDisplay implements ITextDisplay {
 	}
 	
 	private function set_selectable(value:Bool):Bool {
+		_tf.mouseEnabled = value;
 		return _tf.selectable = value;
-	}
-	
-	private function get_mouseEnabled():Bool {
-		return _tf.mouseEnabled;
-	}
-	
-	private function set_mouseEnabled(value:Bool):Bool {
-		return _tf.mouseEnabled = value;
 	}
 	
 	private function get_autoSize():Bool {
@@ -221,5 +205,30 @@ class TextDisplay implements ITextDisplay {
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
 		return value;
+	}
+	
+	private function get_maxChars():Int {
+		return _tf.maxChars;
+	}
+	
+	private function set_maxChars(value:Int):Int {
+		return _tf.maxChars = value;
+	}
+
+	
+	private function get_restrictChars():String {
+		#if flash
+		return _tf.restrict;
+		#else
+		return null;
+		#end
+	}
+	
+	private function set_restrictChars(value:String):String {
+		#if flash
+		return _tf.restrict = value;
+		#else
+		return value;
+		#end
 	}
 }

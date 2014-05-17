@@ -13,7 +13,8 @@ interface ITextDisplay {
 	public var displayAsPassword(get, set):Bool;
 	public var visible(get, set):Bool;
 	public var selectable(get, set):Bool;
-	public var mouseEnabled(get, set):Bool;
 	public var autoSize(get, set):Bool;
 	public var textAlign(get, set):String;
+	public var maxChars(get, set):Int;
+	public var restrictChars(get, set):String;
 }

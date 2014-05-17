@@ -191,6 +191,10 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	public var placeholderText(get, set):String;
 	@:clonable
 	public var textAlign(get, set):String;
+	@:clonable
+	public var maxChars(get, set):Int;
+	@:clonable
+	public var restrictChars(get, set):String;
 
 	private function get_multiline():Bool {
 		return _textDisplay.multiline;
@@ -283,6 +287,22 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 			_textDisplay.textAlign = value;
 		}
 		return value;
+	}
+	
+	private function get_maxChars():Int {
+		return _textDisplay.maxChars;
+	}
+	
+	private function set_maxChars(value:Int):Int {
+		return _textDisplay.maxChars = value;
+	}
+
+	private function get_restrictChars():String {
+		return _textDisplay.restrictChars;
+	}
+	
+	private function set_restrictChars(value:String):String {
+		return _textDisplay.restrictChars = value;
 	}
 	
 	public var vscrollPos(get, set):Float;
