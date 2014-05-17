@@ -39,7 +39,7 @@
 			</hbox>
 			<hbox>
 				<button text="Fixed Size" width="200" height="100" autoSize="false" />
-				<button text="Default" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg"  />
+				<button id="theButton" text="Default" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg"  />
 				<button text="Left" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="left" />
 				<button text="Right" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="right" />
 				<button text="Top" width="200" height="100" autoSize="false" icon="img/slinky_tiny.jpg" iconPosition="top" />
@@ -47,7 +47,7 @@
 			</hbox>
 			<hbox>
 				<button text="Dynamic Size" />
-				<button text="Default" icon="img/slinky_tiny.jpg" />
+				<button id="theButton2" text="Default" icon="img/slinky_tiny.jpg" />
 				<button text="Left" icon="img/slinky_tiny.jpg" iconPosition="left" />
 				<button text="Right" icon="img/slinky_tiny.jpg" iconPosition="right" />
 				<button text="Top" icon="img/slinky_tiny.jpg" iconPosition="top" />

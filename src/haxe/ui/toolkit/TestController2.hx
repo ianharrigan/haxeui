@@ -5,25 +5,29 @@ import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.util.CallStackHelper;
 
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test2.xml"))
 class TestController2 extends XMLController {
 	public function new() {
 
-		/*
 		bigger.onClick = function(e) {
 			documenttabs.setTabText(0, "The tab text is now bigger");
 		}
 
+		/*
 		smaller.onClick = function(e) {
 			documenttabs.setTabText(0, "Small");
 		}
+		*/
 		
 		test.onClick = function(e) {
-			showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");
+			//showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");
+			theButton2.icon = ResourceManager.instance.getBitmapData("img/slinky_small.jpg");
 		};
 		
+		/*
 		test.onReady = function(e) {
 		};
 		*/

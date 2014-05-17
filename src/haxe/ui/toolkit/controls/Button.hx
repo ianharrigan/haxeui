@@ -103,7 +103,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	 Sets the icon asset. Eg: `assets/myicon.png`
 	 **/
 	@:clonable
-	public var icon(get, set):String;
+	public var icon(get, set):Dynamic;
 	
 	private function get_remainPressed():Bool {
 		return _remainPressed;
@@ -114,14 +114,14 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		return value;
 	}
 	
-	private function get_icon():String {
+	private function get_icon():Dynamic {
 		if (_icon == null) {
 			return null;
 		}
 		return _icon.resource;
 	}
 	
-	private function set_icon(value:String):String {
+	private function set_icon(value:Dynamic):Dynamic {
 		if (value != null) {
 			if (_icon == null) {
 				_icon = new Image();

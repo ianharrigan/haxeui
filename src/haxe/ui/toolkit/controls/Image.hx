@@ -12,7 +12,7 @@ import haxe.ui.toolkit.resources.ResourceManager;
  **/
 class Image extends Component implements IClonable<Image> {
 	private var _bmp:Bitmap;
-	private var _resource:String;
+	private var _resource:Dynamic;
 	private var _stretch:Bool;
 	private var _autoDisposeBitmapData:Bool = false;
 	
@@ -77,17 +77,17 @@ class Image extends Component implements IClonable<Image> {
 	 The resource asset for this image: eg `assets/myimage.jpeg`
 	 **/
 	@:clonable
-	public var resource(get, set):String;
+	public var resource(get, set):Dynamic;
 	@:clonable
 	public var stretch(get, set):Bool;
 	@:clonable
 	public var autoDisposeBitmapData(get, set):Bool;
 	
-	private function get_resource():String {
+	private function get_resource():Dynamic {
 		return _resource;
 	}
 	
-	private function set_resource(value:String):String {
+	private function set_resource(value:Dynamic):Dynamic {
 		if (_bmp != null) {
 			if (_autoDisposeBitmapData == true) {
 				_bmp.bitmapData.dispose();
@@ -96,7 +96,15 @@ class Image extends Component implements IClonable<Image> {
 			_bmp = null;
 		}
 		
-		var bmpData:BitmapData = ResourceManager.instance.getBitmapData(value);
+		var bmpData:BitmapData = null;
+		if (Std.is(value, String)) {
+			bmpData = ResourceManager.instance.getBitmapData(cast(value, String));
+		} else if (Std.is(value, Bitmap)) {
+			bmpData = cast(value, Bitmap).bitmapData;
+		} else if (Std.is(value, BitmapData)) {
+			bmpData = cast(value, BitmapData);
+		}
+		
 		if (bmpData != null) {
 			_bmp = new Bitmap(bmpData);
 			sprite.addChild(_bmp);

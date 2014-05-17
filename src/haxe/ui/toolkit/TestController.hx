@@ -35,8 +35,12 @@ class TestController extends XMLController {
 		
 		logData("ready...");	
 		*/
+		myButton.addEventListener( UIEvent.CLICK, myButtonClicked );
 	}
 	
+  private function myButtonClicked( e:UIEvent ):Void {
+    myButton.text = "You clicked me!";
+  }
 	private function logData(data:String):Void {
 		/*
 		log.text += data + "\n";
