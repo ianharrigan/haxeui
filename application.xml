@@ -20,6 +20,7 @@
 	
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
+	<haxelib name="svg" />
 	<haxelib name="hscript" />
 	
 	<assets path="assets/styles" rename="styles" />

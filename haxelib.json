@@ -10,6 +10,7 @@
     "dependencies" : {
         "openfl"        : "",
         "actuate"       : "",
-        "hscript"       : ""
+        "hscript"       : "",
+        "svg"           : ""
     }
 }

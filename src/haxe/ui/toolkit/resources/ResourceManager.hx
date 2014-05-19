@@ -7,6 +7,7 @@ import flash.utils.ByteArray;
 import haxe.Resource;
 import haxe.ui.toolkit.util.ByteConverter;
 import openfl.Assets;
+import format.SVG;
 
 class ResourceManager {
 	private static var _instance:ResourceManager;
@@ -41,6 +42,15 @@ class ResourceManager {
 		}
 		return str;
 	}
+
+    public function getSVG(resourceId:String, locale:String = null) : SVG {
+      var text:String = getText(resourceId, locale);
+      var svg : SVG = null;
+      if (text != null) {
+        svg = new SVG(text);
+      }
+      return svg;
+    }
 	
 	public function getBitmapData(resourceId:String, locale:String = null):BitmapData {
 		if (resourceId == null || resourceId.length == 0) {
