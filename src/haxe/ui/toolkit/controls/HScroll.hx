@@ -55,18 +55,20 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 
 		if (_hasButtons == true) {
 			_deincButton = new Button();
+			_deincButton.autoSize = false;
 			_deincButton.iconPosition = "center";
-			_deincButton.width = layout.innerHeight;
 			_deincButton.percentHeight = 100;
+			_deincButton.width = layout.innerHeight;
 			_deincButton.id = "deinc";
 			_deincButton.styleName = "left";
 			_deincButton.addEventListener(MouseEvent.MOUSE_DOWN, _onDeinc);
 			addChild(_deincButton);
 
 			_incButton = new Button();
+			_incButton.autoSize = false;
 			_incButton.iconPosition = "center";
-			_incButton.width = layout.innerHeight;
 			_incButton.percentHeight = 100;
+			_incButton.width = layout.innerHeight;
 			_incButton.id = "inc";
 			_incButton.styleName = "right";
 			_incButton.addEventListener(MouseEvent.MOUSE_DOWN, _onInc);
@@ -88,7 +90,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 	
 	//******************************************************************************************
-	// Evend handlers
+	// Event handlers
 	//******************************************************************************************
 	private function _onThumbMouseDown(event:MouseEvent):Void {
 		var ptStage:Point = new Point(event.stageX, event.stageY);
@@ -311,14 +313,24 @@ class HScrollLayout extends DefaultLayout {
 	public override function resizeChildren():Void {
 		super.resizeChildren();
 		
+		var deinc:IDisplayObject =  container.findChild("deinc");
+		if (deinc != null) {
+			deinc.width = innerHeight;
+		}
+
+		var inc:IDisplayObject =  container.findChild("inc");
+		if (inc != null) {
+			inc.width = innerHeight;
+		}
+		
 		var scroll:IScrollable = cast(container, IScrollable);
 		var thumb:IDisplayObject =  container.findChild("thumb");
 		if (thumb != null) {
 			var m:Float = scroll.max - scroll.min;
 			var ucx:Float = usableWidth;
 			var thumbWidth = (scroll.pageSize / m) * ucx;
-			if (thumbWidth < 20) {
-				thumbWidth = 20;
+			if (thumbWidth < innerHeight) {
+				thumbWidth = innerHeight;
 			} else if (thumbWidth > ucx) {
 				thumbWidth = ucx;
 			}

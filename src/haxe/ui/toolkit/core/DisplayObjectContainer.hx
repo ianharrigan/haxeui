@@ -279,6 +279,9 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	private function set_layout(value:ILayout):ILayout {
 		_layout = value;
 		_layout.container = this;
+		if (_ready) {
+			invalidate(InvalidationFlag.LAYOUT);
+		}
 		return value;
 	}
 	
@@ -289,6 +292,9 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	
 	private function set_autoSize(value:Bool):Bool {
 		_autoSize = value;
+		if (_ready) {
+			invalidate(InvalidationFlag.LAYOUT);
+		}
 		return _autoSize;
 	}
 	

@@ -30,6 +30,7 @@ class Slider extends Progress {
 		_thumb = new Button();
 		_thumb.id = "thumb";
 		_thumb.remainPressed = true;
+		_thumb.autoSize = false;
 		_thumb.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		addChild(_thumb);
 		

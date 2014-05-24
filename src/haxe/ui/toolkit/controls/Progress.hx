@@ -228,7 +228,7 @@ class HProgressLayout extends DefaultLayout {
 			
 			var thumb:IDisplayObject =  container.findChild("thumb");
 			if (thumb != null) {
-				var xpos:Float = value.x + value.width - (thumb.width / 2);
+				var xpos:Float = padding.left + value.x + value.width - (thumb.width / 2);
 				thumb.x = Std.int(xpos);
 			}
 		}
@@ -298,7 +298,7 @@ class VProgressLayout extends DefaultLayout {
 			
 			var thumb:IDisplayObject =  container.findChild("thumb");
 			if (thumb != null) {
-				var ypos:Float = value.y - (thumb.height / 2);
+				var ypos:Float = padding.top + value.y - (thumb.height / 2);
 				thumb.y = Std.int(ypos);
 			}
 		}

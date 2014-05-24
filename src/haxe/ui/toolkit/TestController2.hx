@@ -11,7 +11,15 @@ import haxe.ui.toolkit.util.CallStackHelper;
 @:build(haxe.ui.toolkit.core.Macros.buildController("assets/test2.xml"))
 class TestController2 extends XMLController {
 	public function new() {
-
+		
+		documenttabs.onReady = function(e) {
+			documenttabs.getTabButton(0).icon = "img/rtfview/edit-alignment-center.png";
+			documenttabs.getTabButton(1).icon = "img/rtfview/edit-alignment-center.png";
+			//documenttabs.getTabButton(2).icon = "img/rtfview/edit-alignment-center.png";
+			documenttabs.getTabButton(3).icon = "img/rtfview/edit-alignment-center.png";
+		};
+		
+		/*
 		bigger.onClick = function(e) {
 			documenttabs.setTabText(0, "The tab text is now bigger");
 		}
@@ -19,6 +27,7 @@ class TestController2 extends XMLController {
 		theInput.onChange = function(e) {
 			trace("change");
 		}
+		*/
 		
 		/*
 		smaller.onClick = function(e) {
@@ -26,10 +35,12 @@ class TestController2 extends XMLController {
 		}
 		*/
 		
+		/*
 		test.onClick = function(e) {
 			//showSimplePopup("The theme has been changed. You must restart (or refresh) the application to use the new theme");
 			theButton2.icon = ResourceManager.instance.getBitmapData("img/slinky_small.jpg");
 		};
+		*/
 		
 		/*
 		test.onReady = function(e) {

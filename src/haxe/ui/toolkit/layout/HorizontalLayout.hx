@@ -78,7 +78,7 @@ class HorizontalLayout extends Layout {
 				case VerticalAlign.CENTER:
 					ypos = (container.height / 2) - (child.height / 2);
 				case VerticalAlign.BOTTOM:
-					ypos = container.height - child.height;
+					ypos = container.height - child.height - padding.bottom;
 				default:
 			}
 			

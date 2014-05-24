@@ -10,7 +10,6 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.Screen;
-import haxe.ui.toolkit.layout.BoxLayout;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
 /**
@@ -56,6 +55,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 		
 		if (_hasButtons == true) {
 			_deincButton = new Button();
+			_deincButton.autoSize = false;
 			_deincButton.iconPosition = "center";
 			_deincButton.percentWidth = 100;
 			_deincButton.height = layout.innerWidth;
@@ -65,6 +65,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 			addChild(_deincButton);
 			
 			_incButton = new Button();
+			_incButton.autoSize = false;
 			_incButton.iconPosition = "center";
 			_incButton.percentWidth = 100;
 			_incButton.height = layout.innerWidth;
@@ -312,14 +313,24 @@ class VScrollLayout extends DefaultLayout {
 	public override function resizeChildren():Void {
 		super.resizeChildren();
 		
+		var deinc:IDisplayObject =  container.findChild("deinc");
+		if (deinc != null) {
+			deinc.height = innerWidth;
+		}
+
+		var inc:IDisplayObject =  container.findChild("inc");
+		if (inc != null) {
+			inc.height = innerWidth;
+		}
+		
 		var scroll:IScrollable = cast(container, IScrollable);
 		var thumb:IDisplayObject =  container.findChild("thumb");
 		if (thumb != null) {
 			var m:Float = scroll.max - scroll.min;
 			var ucy:Float = usableHeight;
 			var thumbHeight = (scroll.pageSize / m) * ucy;
-			if (thumbHeight < 20) {
-				thumbHeight = 20;
+			if (thumbHeight < innerWidth) {
+				thumbHeight = innerWidth;
 			} else if (thumbHeight > ucy) {
 				thumbHeight = ucy;
 			}

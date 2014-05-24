@@ -70,6 +70,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var _selected:Bool = false;
 	private var _allowSelection:Bool = true;
 	private var _iconPosition:String = "left";
+	private var _multiline:Bool;
 	
 	private var _group:String;
 	private static var _groups:StringMap<Array<Button>>;
@@ -259,6 +260,8 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			if (_label == null) {
 				_label = new Text();
 				_label.id = "label";
+				_label.multiline = _multiline;
+				_label.wrapLines = _multiline;
 			}
 			_label.value = value;
 			organiseChildren();
@@ -400,6 +403,9 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	public var allowSelection(get, set):Bool;
 	private var dispatchChangeEvents(default, default):Bool = true;
 	
+	@:clonable
+	public var multiline(get, set):Bool;
+	
 	private function get_iconPosition():String {
 		return _iconPosition;
 	}
@@ -501,6 +507,19 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	
 	private function set_allowSelection(value:Bool):Bool {
 		_allowSelection = value;
+		return value;
+	}
+	
+	private function get_multiline():Bool {
+		return _multiline;
+	}
+	
+	private function set_multiline(value:Bool):Bool {
+		_multiline = value;
+		if (_label != null) {
+			_label.multiline = _multiline;
+			_label.wrapLines = _multiline;
+		}
 		return value;
 	}
 	

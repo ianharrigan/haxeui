@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <vbox width="100%" height="100%" style="spacing:2;">
 	<menubar>
 		<menubutton text="Application" id="menuApplication">
@@ -20,6 +19,7 @@
 	</menubar>
 	<tabview width="100%" height="100%" id="documenttabs">
 		<vbox text="Panel 1">
+			<vscroll />
 			<hbox>
 					<button text="Bigger" id="bigger" />
 					<button text="Smaller" id="smaller" />

@@ -78,7 +78,7 @@ class VerticalLayout extends Layout {
 				case HorizontalAlign.CENTER:
 					xpos = (container.width / 2) - (child.width / 2);
 				case HorizontalAlign.RIGHT:
-					xpos = container.width - child.width;
+					xpos = container.width - child.width - padding.left;
 				default:	
 			}
 			

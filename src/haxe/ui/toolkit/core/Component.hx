@@ -114,6 +114,9 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	
 	private function set_clipContent(value:Bool):Bool {
 		_clipContent = value;
+		if (_clipContent == false) {
+			clearClip();
+		}
 		invalidate(InvalidationFlag.SIZE);
 		return value;
 	}

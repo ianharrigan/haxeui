@@ -84,16 +84,17 @@ class HorizontalContinuousLayout extends Layout {
 			}
 			
 			var valign:String = child.verticalAlign;
+			var tempYPos:Float = ypos;
 			switch (valign) {
 				case VerticalAlign.CENTER:
-					ypos = usedCY - child.height - padding.top - ((rowHeights[row] / 2) - (child.height / 2));
+					tempYPos = usedCY - child.height - padding.top - ((rowHeights[row] / 2) - (child.height / 2));
 				case VerticalAlign.BOTTOM:
-					ypos = usedCY - child.height - padding.top;
+					tempYPos = usedCY - child.height - padding.top;
 				default:
 			}
 			
 			child.x = xpos;
-			child.y = ypos;
+			child.y = tempYPos;
 			
 			xpos += child.width + spacingX;
 		}

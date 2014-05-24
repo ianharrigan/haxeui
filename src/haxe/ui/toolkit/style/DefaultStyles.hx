@@ -255,7 +255,7 @@ class DefaultStyles extends Styles {
 		} ));
 		addStyle("TabBar Button", new Style( {
 			height: 42,
-			iconPosition: "top",
+			iconPosition: "left",
 			cornerRadius: 0,
 			autoSize: true,
 			
@@ -273,6 +273,7 @@ class DefaultStyles extends Styles {
 			backgroundColorGradientEnd: 0xcccccc,
 			color: 0x444444,
 		} ));
+		
 		addStyle("HProgress", new Style( {
 			width: 150,
 			height: 30,
@@ -300,6 +301,34 @@ class DefaultStyles extends Styles {
 			cornerRadius: 2,
 		} ));
 
+		addStyle("VProgress", new Style( {
+			width: 30,
+			height: 150,
+			backgroundColor: 0x666666,
+			borderColor: -1,
+			padding: 2,
+			cornerRadius: 2,
+			borderSize: 0,
+			filter: new DropShadowFilter(1, 45, 0x444444, 1, 2, 2, 1, 3, true),
+		} ));
+		
+		addStyle("VProgress #background", new Style( {
+			percentWidth: 100,
+			percentHeight: 100,
+			backgroundColor: -1,
+			borderSize: 0,
+			borderColor: -1,
+		} ));
+		
+		addStyle("VProgress #value", new Style( {
+			percentWidth: 100,
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			borderColor: -1,
+			cornerRadius: 2,
+			gradientType: "horizontal",
+		} ));
+		
 		addStyle("HSlider", new Style( {
 			width: 150,
 			height: 30,
@@ -336,6 +365,42 @@ class DefaultStyles extends Styles {
 			filter: new DropShadowFilter(2, 45, 0x666666, 1, 2, 2, 1, 3, false),
 		} ));
 
+		addStyle("VSlider", new Style( {
+			width: 30,
+			height: 150,
+			backgroundColor: 0x666666,
+			borderColor: -1,
+			padding: 2,
+			paddingLeft: 0,
+			paddingRight: 0,
+			cornerRadius: 2,
+			borderSize: 0,
+			filter: new DropShadowFilter(1, 45, 0x444444, 1, 2, 2, 1, 3, true),
+		} ));
+		
+		addStyle("VSlider #background", new Style( {
+			percentWidth: 100,
+			percentHeight: 100,
+			backgroundColor: -1,
+			borderSize: 0,
+			borderColor: -1,
+		} ));
+		
+		addStyle("VSlider #value", new Style( {
+			percentWidth: 0,
+			backgroundColor: 0xffa84c,
+			backgroundColorGradientEnd: 0xff7b0d,
+			borderColor: -1,
+			cornerRadius: 2,
+		} ));
+		
+		addStyle("VSlider Button", new Style( {
+			width: 26,
+			height: 26,
+			gradientType: "horizontal",
+			filter: new DropShadowFilter(2, 45, 0x666666, 1, 2, 2, 1, 3, false),
+		} ));
+		
 		addStyle("ScrollView", new Style( {
 			backgroundColor: 0x444444 ,
 			borderColor: -1,

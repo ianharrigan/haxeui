@@ -24,7 +24,7 @@ Text {
 	fontName: "_sans";
 }
 
-VBox, ContinuousBox, Box, HBox, Grid {
+VBox, ContinuousHBox, ContinuousVBox, Box, HBox, Grid {
 	borderColor: 0xa5b8da;
 	padding: 0;
 	spacing: 5;
@@ -359,13 +359,15 @@ HSlider #value:disabled {
 }
 
 HSlider Button {
-	width: 10;
+	width: 20;
 	height: 100%;
-	iconPosition: "center";
 	cornerRadius: 2;
+	icon: "styles/gradient/gripper_horizontal.png";
+	iconPosition: "center";
 }
 
 HSlider Button:disabled {
+	icon: "styles/gradient/gripper_horizontal_disabled.png";
 }
 
 VSlider {
@@ -406,7 +408,8 @@ VSlider #value:disabled {
 
 VSlider Button {
 	width: 100%;
-	height: 30;
+	height: 20;
+	cornerRadius: 2;
 	icon: "styles/gradient/gripper_vertical.png";
 	iconPosition: "center";
 }
@@ -699,7 +702,7 @@ Menu {
 	paddingRight: 2;
 	paddingTop: 2;
 	paddingBottom: 2;
-	width: 150;
+	width: 175;
 }
 
 MenuItem {
