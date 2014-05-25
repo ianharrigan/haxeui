@@ -1,4 +1,4 @@
-#popupRoot {
+Root.popup {
 	width: 760;
 	height: 560;
 	backgroundColor: 0xFFFFFF;
@@ -22,36 +22,10 @@ Text {
 	fontName: "_sans";
 }
 
-VBox {
+VBox, ContinuousBox, Box, HBox, Grid {
 	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingY: 5;
-	cornerRadius: 2;
-	borderSize: 0;
-}
-
-HBox {
-	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingX: 5;
-	cornerRadius: 2;
-	borderSize: 0;
-}
-
-Grid {
-	borderColor: 0xa5b8da;
-	paddingLeft: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingRight: 0;
-	spacingX: 5;
-	spacingY: 5;
+	padding: 0;
+	spacing: 5;
 	cornerRadius: 2;
 	borderSize: 0;
 }
@@ -342,7 +316,7 @@ ListView VBox {
 	cornerRadius: 0;
 }
 
-ListViewItem {
+ListView #content {
 	color: 0x000000;
 	paddingLeft: 2;
 	paddingTop: 14;
@@ -355,48 +329,49 @@ ListViewItem {
 }
 
 
-ListView #even {
+.even {
 	backgroundColor: 0xE9EDF5;
 	color: 0x000000;
 	cornerRadius: 2;
 }
 
-ListView #odd {
+.odd {
 	backgroundColor: 0xFFFFFF;
 	color: 0x000000;
 	cornerRadius: 2;
 }
 
-ListViewItem:over {
+.even:over, .odd:over {
 	backgroundColor: 0x606c88;
 }
 
-ListViewItem #text {
+.even:selected, .odd:selected {
+	backgroundColor: 0x3f4c6b;
+}
+
+.even #text, .odd #text {
 	color: 0x000000;
 }
 
-ListViewItem #text:over {
+.even #text:over, .odd #text:over {
 	color: 0xFFFFFF;
 }
 
-ListViewItem #subtext {
+.even #text:selected, .odd #text:selected {
+	color: 0xFFFFFF;
+}
+
+.even #subtext, .odd #subtext {
 	color: 0x606c88;
 	fontSize: 11;
 }
 
-ListViewItem #subtext:over {
+.even #subtext:over, .odd #subtext:over {
 	color: 0xFFFFFF;
 }
 
-ListViewItem:selected {
-	backgroundColor: 0x3f4c6b;
-}
 
-ListViewItem #text:selected {
-	color: 0xFFFFFF;
-}
-
-ListViewItem #subtext:selected {
+.even #subtext:selected, .odd #subtext:selected {
 	color: 0xFFFFFF;
 }
 
@@ -560,6 +535,8 @@ MenuBar {
 	filter: dropShadow(2, 90, 0x808080, 1, 0, 4, 1, 3);
 }
 
+/* Missing items: Menu, MenuItem.* */
+
 MenuBar Button {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
@@ -581,7 +558,7 @@ MenuBar Button:down {
 	borderColor: 0x495267;
 }
 
-List, Date {
+ListSelector, DateSelector {
 	paddingLeft: 8;
 	paddingTop: 8;
 	paddingBottom: 8;
@@ -601,35 +578,35 @@ List, Date {
 	selectionMethod: "popup";
 }
 
-List:over, Date:over {
+ListSelector:over, DateSelector:over {
 	backgroundColor: 0x4b546a;
 	backgroundColorGradientEnd: 0x2c354b;
 	color: 0xFFFFFF;
 	borderColor: 0x363d4c;
 }
 
-List:down, Date:down {
+ListSelector:down, DateSelector:down {
 	backgroundColor: 0x8C95A9;
 	backgroundColorGradientEnd: 0x767F95;
 	color: 0xFFFFFF;
 	borderColor: 0x363d4c;
 }
 
-MenuBar List {
+MenuBar ListSelector {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-MenuBar List:over {
+MenuBar ListSelector:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-MenuBar List:down {
+MenuBar ListSelector:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
@@ -640,42 +617,42 @@ DropDownList {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 }
 
-ListView VBox Button {
+ListView VBox Button, TableView #tableContent Button {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox Button:over {
+ListView VBox Button:over, TableView #tableContent Button:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox Button:down {
+ListView VBox Button:down, TableView #tableContent Button:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List {
+ListView VBox ListSelector, TableView #tableContent ListSelector {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:over {
+ListView VBox ListSelector:over, TableView #tableContent ListSelector:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-ListView VBox List:down {
+ListView VBox ListSelector:down, TableView #tableContent ListSelector:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
@@ -703,7 +680,7 @@ Popup #titleBar {
 	paddingLeft: 5;
 }
 
-Popup #content {
+Popup #popupContent {
 	paddingLeft: 5;
 	paddingRight: 5;
 	paddingTop: 5;
@@ -721,17 +698,11 @@ Popup #buttonBar {
 }
 
 ListPopupContent {
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
+    padding: 0;
 }
 
-ListPopupContent ListView {
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
+ListPopupContent ListView, ListPopupContent #popupContent {
+    padding: 0;
 	borderSize: 0;
 }
 
@@ -751,7 +722,7 @@ Accordion VBox, Accordion HBox, Accordion Grid {
 	spacingY: 0;
 }
 
-AccordionButton {
+Button.expandable {
 	paddingLeft: 8;
 	paddingTop: 8;
 	paddingBottom: 8;
@@ -770,14 +741,14 @@ AccordionButton {
 	icon: "styles/gradient/arrow_right2.png";
 }
 
-AccordionButton:over {
+Button.expandable:over {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	color: 0xFFFFFF;
 	borderColor: 0x495267;
 }
 
-AccordionButton:down {
+Button.expandable:down {
 	backgroundColor: 0x606c88;
 	backgroundColorGradientEnd: 0x3f4c6b;
 	color: 0xFFFFFF;
@@ -785,11 +756,22 @@ AccordionButton:down {
 	icon: "styles/gradient/arrow_down.png";
 }
 
+ExpandablePanel {
+	spacingX: 0;
+	spacingY: 0;
+	padding: 0;
+}
+
+ExpandablePanel #content {
+	padding: 5;
+	spacing: 5;
+}
+
 RTFView {
 	spacingY: 8;
 }
 
-RTFView List {
+RTFView ListSelector {
 	backgroundColor: 0xf4f5f5;
 	backgroundColorGradientEnd: 0xdfdddd;
 	color: 0x363d4c;
@@ -797,7 +779,7 @@ RTFView List {
 	icon: "styles/gradient/arrow_down_dark.png";
 }
 
-RTFView List:over {
+RTFView ListSelector:over {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
 	borderColor: 0x7d99ca;
@@ -805,7 +787,7 @@ RTFView List:over {
 	icon: "styles/gradient/arrow_down.png";
 }
 
-RTFView List:down {
+RTFView ListSelector:down {
 	backgroundColor: 0x819bcb;
 	backgroundColorGradientEnd: 0x536f9d;
 	borderColor: 0x5d7fbc;
@@ -965,3 +947,5 @@ CalendarPopupContent CalendarView {
 	borderSize: 0;
 	filter: null;
 }
+
+/* Missing: table view */
