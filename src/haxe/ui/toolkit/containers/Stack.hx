@@ -14,6 +14,9 @@ class Stack extends Component {
 	private var _selectedIndex:Int = -1;
 	#end
 	
+    // History of selected children
+    private var _history : List<Int> = new List();
+
 	//private var _transition:String = "slide";
 	
 	public function new() {
@@ -47,7 +50,7 @@ class Stack extends Component {
 				var item:IDisplayObject = children[n];
 				if (n == value) {
 					if (transition == "slide") {
-						if (value > _selectedIndex) {
+						if (value < _selectedIndex) {
 							item.sprite.alpha = 1;
 							item.visible = true;
 							item.x = -item.width;
@@ -75,7 +78,7 @@ class Stack extends Component {
 					if (n == _selectedIndex) {
 						if (transition == "slide") {
 							item.sprite.alpha = 1;
-							if (value > _selectedIndex) {
+							if (value < _selectedIndex) {
 								Actuate.tween(item, .2, { x: this.width }, true).ease(Linear.easeNone).onComplete(function() {
 									item.visible = false;
 								});
@@ -97,6 +100,8 @@ class Stack extends Component {
 					}
 				}
 			}
+            // Remember in history
+            _history.push(_selectedIndex);
 			_selectedIndex = value;
 			
 			var event:Event = new Event(Event.CHANGE);
@@ -104,4 +109,15 @@ class Stack extends Component {
 		}
 		return value;
 	}
+
+    // Go back to the last selected index
+    public function back() {
+      var last = _history.pop();
+      if (last == null) {
+        return;
+      }
+      set_selectedIndex(last);
+      // Remove the just added history
+      _history.pop();
+    }
 }
