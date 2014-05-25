@@ -28,6 +28,8 @@ class Client {
 	public var platform(get, null):String;
 	public var screenWidth(get, null):Float;
 	public var screenHeight(get, null):Float;
+	public var windowWidth(get, null):Float;
+	public var windowHeight(get, null):Float;
 	public var target(get, null):String;
 	
 	private function get_language():String {
@@ -67,4 +69,12 @@ class Client {
 	private function get_screenHeight():Float {
 		return Capabilities.screenResolutionY;
 	}
+
+    private function get_windowWidth():Float {
+      return flash.Lib.current.stage.stageWidth;
+    }
+
+    private function get_windowHeight():Float {
+      return flash.Lib.current.stage.stageHeight;
+    }
 }

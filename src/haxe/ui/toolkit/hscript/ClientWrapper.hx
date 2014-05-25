@@ -9,6 +9,8 @@ class ClientWrapper {
 	public var target:String;
 	public var screenWidth:Float;
 	public var screenHeight:Float;
+	public var windowWidth:Float;
+	public var windowHeight:Float;
 	
 	public function new() {
 		language = Client.instance.language;
@@ -17,5 +19,7 @@ class ClientWrapper {
 		target = Client.instance.target;
 		screenWidth = Client.instance.screenWidth;
 		screenHeight = Client.instance.screenHeight;
+		windowWidth = Client.instance.windowWidth;
+		windowHeight = Client.instance.windowHeight;
 	}
 }
