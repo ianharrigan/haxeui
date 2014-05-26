@@ -132,7 +132,9 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			_icon.resource = value;
 			organiseChildren();
 		} else {
-			_icon.visible = false;
+            if (_icon != null) {
+			    _icon.visible = false;
+            }
 		}
 		return value;
 	}
