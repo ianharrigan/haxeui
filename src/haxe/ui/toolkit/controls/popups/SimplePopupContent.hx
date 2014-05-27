@@ -16,7 +16,7 @@ class SimplePopupContent extends PopupContent {
 		_textControl.wrapLines = true;
 		_textControl.percentWidth = 100;
 		_textControl.text = text;
-		_textControl.autoSize = false;
+		_textControl.autoSize = true;
 	}
 	
 	//******************************************************************************************
