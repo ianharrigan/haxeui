@@ -16,25 +16,27 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,0" />
+    <class path="C:\Servers\Haxe\haxe\lib\actuate\1,7,5" />
+    <class path="C:\Servers\Haxe\haxe\lib\svg\1,0,8" />
+    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,1" />
     <class path="src" />
     <class path="assets" />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,0\backends\flash" />
     <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.4.0&#xA;display&#xA;web" />
+    <option directives="openfl=2.0.0&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.1&#xA;tools=1.5.6&#xA;openfl-flash&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;-swf-version 11.2&#xA;#--remap nme:flash" />
+    <option additional="--no-output&#xA;-dce std&#xA;-swf-version 11.2" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
-    <library name="openfl" />
-    <library name="actuate" />
-    <library name="svg" />
-    <library name="hscript" />
+    <!-- example: <library name="..." /> -->
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

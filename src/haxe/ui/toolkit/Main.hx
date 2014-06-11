@@ -31,14 +31,14 @@ class Main /* extends Sprite */ {
 		Toolkit.setTransitionForClass(Accordion, "slide");
 		Toolkit.setTransitionForClass(Stack, "fade");
 		Toolkit.theme = new DefaultTheme();
-		Toolkit.theme = new GradientTheme();
+		//Toolkit.theme = new GradientTheme();
 		//Toolkit.theme = new WindowsTheme();
-		Macros.addStyleSheet("assets/test.css");
+		//Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			var t2:TestController2 = new TestController2();
-			root.addChild(t2.view);
+			//var t2:TestController2 = new TestController2();
+			//root.addChild(t2.view);
 		});
 	}
 }

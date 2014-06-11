@@ -7,10 +7,13 @@ class DefaultTheme extends Theme {
 	public function new() {
 		super();
 		name = "default";
+		Theme.addAsset(name, DefaultStyles);
 	}
 	
+	/*
 	public override function apply():Void {
 		super.apply();
 		StyleManager.instance.addStyles(new DefaultStyles());
 	}
+	*/
 }

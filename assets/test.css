@@ -7,9 +7,9 @@ Button:disabled {
 }
 
 Text {
-	//background-color: 0x0000FF;
+	background-color: 0x0000FF;
 }
 
 Button #label {
-	//background-color: 0xFF0000;
+	background-color: 0xFF0000;
 }

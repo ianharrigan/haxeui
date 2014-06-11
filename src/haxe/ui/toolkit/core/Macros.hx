@@ -6,6 +6,77 @@ import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.StringUtil;
 
 class Macros {
+	macro public static function autoRegisterModules() {
+		var code:String = "function() {\n";
+        var pos = haxe.macro.Context.currentPos();
+		var paths:Array<String> = Context.getClassPath();
+		var n:Int = 0;
+		while (paths.length != 0) {
+			var path:String = paths[0];
+			paths.remove(path);
+			n++;
+			
+			if (sys.FileSystem.exists(path)) {
+				if (sys.FileSystem.isDirectory(path)) {
+					var subDirs:Array<String> = sys.FileSystem.readDirectory(path);
+					for (subDir in subDirs) {
+						if (StringTools.endsWith(path, "/") == false && StringTools.endsWith(path, "\\") == false) {
+							subDir = path + "/" + subDir;
+						} else {
+							subDir = path + subDir;
+						}
+						
+						if (sys.FileSystem.isDirectory(subDir)) {
+							paths.insert(0, subDir);
+						} else {
+							var file:String = subDir;
+							if (file.indexOf("haxe/ui/") == -1 && file.indexOf("haxe\\ui\\") == -1) { // cuts down the number of iterations, not sure if its a good idea
+								continue;
+							}
+							
+							n++;
+							if (StringTools.endsWith(file, ".hx") && !StringTools.startsWith(file, ".")) {
+								var moduleName = null;
+								for (cp in Context.getClassPath()) {
+									if (cp.length == 0) {
+										continue;
+									}
+									if (StringTools.startsWith(file, cp)) {
+										moduleName = file.substr(cp.length, file.length);
+										moduleName = moduleName.substr(0, moduleName.length - 3);
+										moduleName = StringTools.replace(moduleName, "/", ".");
+										moduleName = StringTools.replace(moduleName, "\\", ".");
+										break;
+									}
+								}
+								
+								if (moduleName != null
+										&& StringTools.startsWith(moduleName, "haxe.ui.") == true) {
+									var types:Array<haxe.macro.Type> = Context.getModule(moduleName);
+									for (t in types) {
+										if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IModule")) {
+											code += "\tvar __m:haxe.ui.toolkit.core.interfaces.IModule = new " + getClassName(t) + "();\n";
+											code += "\t__m.init();\n";
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		code += "}()\n";
+		//trace(code);
+		//trace("" + n + " loops");
+		return Context.parseInlineString(code, Context.currentPos());
+	}
+	
+	private static function traverseFileSystem(path:String):Void {
+		
+	}
+	
 	macro public static function addClonable():Array<Field> {
         var pos = haxe.macro.Context.currentPos();
         var fields = haxe.macro.Context.getBuildFields();
@@ -398,7 +469,7 @@ class Macros {
 									if (currentClassName.indexOf("ClassManager") != -1) {
 										code += "\tregisterComponentClass(" + className + ", '" + name.toLowerCase() + "');\n";
 									} else {
-										code += "\tClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "');\n";
+										code += "\thaxe.ui.toolkit.core.ClassManager.instance.registerComponentClass(" + className + ", '" + name.toLowerCase() + "');\n";
 									}
 								}
 							}
@@ -484,6 +555,24 @@ class Macros {
 			}
 		}
 		return has;
+	}
+	
+	private static function getClassName(t:haxe.macro.Type):String {
+		var name:String = null;
+		switch (t) {
+				case TAnonymous(t): {};
+				case TMono(t): {};
+				case TLazy(t): {};
+				case TFun(t, _): {};
+				case TDynamic(t): {};
+				case TInst(t, _): {
+					name = t.get().module;
+				}
+				case TEnum(t, _): {};
+				case TType(t, _): {};
+				case TAbstract(t, _): {};
+		}
+		return name;
 	}
 	
 	private static function hasInterface(t:haxe.macro.Type, interfaceRequired:String):Bool {

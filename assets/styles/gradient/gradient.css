@@ -96,6 +96,44 @@ Button:disabled {
 	borderColor: 0x666666;
 }
 
+Button.alternate {
+	paddingLeft: 8;
+	paddingTop: 5;
+	paddingBottom: 5;
+	paddingRight: 8;
+	backgroundColor: 0xf4f5f5;
+	backgroundColorGradientEnd: 0xdfdddd;
+	color: 0x363d4c;
+	borderColor: 0xdfdddd;
+	width: 32;
+	height: 100%;
+	cornerRadius: 3;
+	borderSize: 1;
+	fontSize: 13;
+	fontName: "_sans";
+	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
+	iconPosition: "center";
+}
+
+Button.alternate:over {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	borderColor: 0x7d99ca;
+}
+
+Button.alternate:down {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	borderColor: 0x5d7fbc;
+}
+
+Button.alternate:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 VScroll {
 	width: 17;
 	height: 100;
@@ -589,7 +627,7 @@ OptionBoxValue #selected:disabled {
 	borderColor: 0x666666;
 }
 
-TextInput, Code, RTF {
+TextInput {
 	width: 150;
 	height: 30;
 	borderColor: 0x363d4c;
@@ -828,6 +866,37 @@ ListSelector:disabled, DateSelector:disabled {
 	icon: "styles/gradient/arrow_down_disabled.png";
 }
 
+ListSelector.alternate {
+	backgroundColor: 0xf4f5f5;
+	backgroundColorGradientEnd: 0xdfdddd;
+	color: 0x363d4c;
+	borderColor: 0xdfdddd;
+	icon: "styles/gradient/arrow_down_dark.png";
+}
+
+ListSelector.alternate:over {
+	backgroundColor: 0xa5b8da;
+	backgroundColorGradientEnd: 0x7089b3;
+	borderColor: 0x7d99ca;
+	color: 0xFFFFFF;
+	icon: "styles/gradient/arrow_down.png";
+}
+
+ListSelector.alternate:down {
+	backgroundColor: 0x819bcb;
+	backgroundColorGradientEnd: 0x536f9d;
+	borderColor: 0x5d7fbc;
+	color: 0xFFFFFF;
+	icon: "styles/gradient/arrow_down.png";
+}
+
+ListSelector.alternate:disabled {
+	color: 0xCCCCCC;
+	backgroundColor: 0x8C8C8C;
+	backgroundColorGradientEnd: 0x6C6C6C;
+	borderColor: 0x666666;
+}
+
 MenuBar ListSelector {
 	backgroundColor: 0xa5b8da;
 	backgroundColorGradientEnd: 0x7089b3;
@@ -1005,97 +1074,6 @@ ExpandablePanel {
 ExpandablePanel #content {
 	padding: 5;
 	spacing: 5;
-}
-
-RTFView {
-	spacingY: 8;
-}
-
-RTFView ListSelector {
-	backgroundColor: 0xf4f5f5;
-	backgroundColorGradientEnd: 0xdfdddd;
-	color: 0x363d4c;
-	borderColor: 0xdfdddd;
-	icon: "styles/gradient/arrow_down_dark.png";
-}
-
-RTFView ListSelector:over {
-	backgroundColor: 0xa5b8da;
-	backgroundColorGradientEnd: 0x7089b3;
-	borderColor: 0x7d99ca;
-	color: 0xFFFFFF;
-	icon: "styles/gradient/arrow_down.png";
-}
-
-RTFView ListSelector:down {
-	backgroundColor: 0x819bcb;
-	backgroundColorGradientEnd: 0x536f9d;
-	borderColor: 0x5d7fbc;
-	color: 0xFFFFFF;
-	icon: "styles/gradient/arrow_down.png";
-}
-
-RTFView RTFToolButton {
-	paddingLeft: 8;
-	paddingTop: 5;
-	paddingBottom: 5;
-	paddingRight: 8;
-	backgroundColor: 0xf4f5f5;
-	backgroundColorGradientEnd: 0xdfdddd;
-	color: 0x363d4c;
-	borderColor: 0xdfdddd;
-	width: 32;
-	height: 100%;
-	cornerRadius: 3;
-	borderSize: 1;
-	fontSize: 13;
-	fontName: "_sans";
-	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
-	iconPosition: "center";
-}
-
-RTFView RTFToolButton:over {
-	backgroundColor: 0xa5b8da;
-	backgroundColorGradientEnd: 0x7089b3;
-	borderColor: 0x7d99ca;
-}
-
-RTFView RTFToolButton:down {
-	backgroundColor: 0x819bcb;
-	backgroundColorGradientEnd: 0x536f9d;
-	borderColor: 0x5d7fbc;
-}
-
-RTFView #bold {
-	icon: "img/rtfview/edit-bold.png";
-}
-
-RTFView #italic {
-	icon: "img/rtfview/edit-italic.png";
-}
-
-RTFView #underline {
-	icon: "img/rtfview/edit-underline.png";
-}
-
-RTFView #bullet {
-	icon: "img/rtfview/edit-list.png";
-}
-
-RTFView #alignLeft {
-	icon: "img/rtfview/edit-alignment-left.png";
-}
-
-RTFView #alignCenter {
-	icon: "img/rtfview/edit-alignment-center.png";
-}
-
-RTFView #alignRight {
-	icon: "img/rtfview/edit-alignment-right.png";
-}
-
-RTFView #alignJustify {
-	icon: "img/rtfview/edit-alignment-justify.png";
 }
 
 CalendarView {

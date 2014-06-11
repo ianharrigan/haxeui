@@ -1,4 +1,4 @@
 Button:disabled{backgroundColor:0xFF0000;}
 .toolbar-new{icon:"img/rtfview/edit-bold.png";}
-Text{//background-color:0x0000FF;}
-Button #label{//background-color:0xFF0000;}
+Text{background-color:0x0000FF;}
+Button #label{background-color:0xFF0000;}

@@ -30,6 +30,7 @@ class Toolkit {
 	}
 	
 	public static function init():Void {
+		Macros.autoRegisterModules();
 		get_instance();
 		registerXMLProcessor(UIProcessor, "ui");
 		registerXMLProcessor(UIProcessor, "selection");
@@ -136,6 +137,9 @@ class Toolkit {
 			} else {
 				var p:IXMLProcessor = new UIProcessor();
 				result = p.process(node);
+				if (result == null) {
+					trace("WARNING: Could not find processor for '" + nodeName + "'");
+				}
 			}
 		}
 		

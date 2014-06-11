@@ -6,8 +6,10 @@ class GradientTheme extends Theme {
 	public function new() {
 		super();
 		name = "gradient";
+		Theme.addAsset(name, "styles/gradient/gradient.css");
 	}
-	
+
+	/*
 	public override function apply():Void {
 		super.apply();
 		#if mobile
@@ -16,4 +18,5 @@ class GradientTheme extends Theme {
 			Macros.addStyleSheet("styles/gradient/gradient.css");
 		#end
 	}
+	*/
 }
