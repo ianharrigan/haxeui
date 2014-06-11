@@ -215,6 +215,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
           _icon.width = width;
           _icon.height = height;
         }
+		
+		if (_ready) {
+			invalidate(InvalidationFlag.STYLE);
+		}
 	}
 	
 	//******************************************************************************************
@@ -232,7 +236,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
-		
+
 		organiseChildren();
 	}
 	

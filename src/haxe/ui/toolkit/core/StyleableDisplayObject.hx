@@ -105,6 +105,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private function get_style():Style {
 		if (_style == null) {
 			_style = new Style();
+			_style.target = this;
 		}
 		return _style;
 	}
