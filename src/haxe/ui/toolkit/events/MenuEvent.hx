@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.events;
 
-import flash.events.Event;
+import openfl.events.Event;
 import haxe.ui.toolkit.controls.Menu;
 import haxe.ui.toolkit.controls.MenuItem;
 

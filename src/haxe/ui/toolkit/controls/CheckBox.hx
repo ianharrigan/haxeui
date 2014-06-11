@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.Event;
+import openfl.events.Event;
 import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;

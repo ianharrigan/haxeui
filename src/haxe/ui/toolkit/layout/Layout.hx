@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.layout;
 
-import flash.geom.Rectangle;
+import openfl.geom.Rectangle;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.ILayout;

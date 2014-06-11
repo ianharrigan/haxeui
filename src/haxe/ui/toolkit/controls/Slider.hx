@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.Screen;
 

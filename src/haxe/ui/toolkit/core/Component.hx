@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.core;
 
-import flash.events.MouseEvent;
-import flash.geom.Point;
-import flash.geom.Rectangle;
+import openfl.events.MouseEvent;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Client;

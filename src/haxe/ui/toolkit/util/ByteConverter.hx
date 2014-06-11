@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.util;
 
-import flash.utils.ByteArray;
+import openfl.utils.ByteArray;
 import haxe.io.Bytes;
 
 class ByteConverter {

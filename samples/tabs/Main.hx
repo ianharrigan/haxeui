@@ -1,7 +1,7 @@
 package;
 
 import haxe.ui.toolkit.core.Toolkit;
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.XMLController;

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core;
 
-import flash.Lib;
+import openfl.Lib;
 
 class Screen {
 	private static var _instance:Screen;

@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.events.UIEvent;

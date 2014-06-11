@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.containers;
 
-import flash.events.Event;
+import openfl.events.Event;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.Toolkit;

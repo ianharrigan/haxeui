@@ -12,12 +12,14 @@ import haxe.ui.toolkit.util.CallStackHelper;
 class TestController2 extends XMLController {
 	public function new() {
 		
+		/*
 		documenttabs.onReady = function(e) {
 			documenttabs.getTabButton(0).icon = "img/rtfview/edit-alignment-center.png";
 			documenttabs.getTabButton(1).icon = "img/rtfview/edit-alignment-center.png";
 			//documenttabs.getTabButton(2).icon = "img/rtfview/edit-alignment-center.png";
 			documenttabs.getTabButton(3).icon = "img/rtfview/edit-alignment-center.png";
 		};
+		*/
 		
 		/*
 		bigger.onClick = function(e) {

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core.interfaces;
 
-import flash.display.Sprite;
+import openfl.display.Sprite;
 import haxe.ui.toolkit.core.Root;
 
 interface IDisplayObject extends IEventDispatcher extends IClonable<IDisplayObject> { // canvas/sprite

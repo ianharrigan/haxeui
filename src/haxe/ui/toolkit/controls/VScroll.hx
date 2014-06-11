@@ -1,10 +1,10 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.events.TimerEvent;
-import flash.geom.Point;
-import flash.utils.Timer;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.events.TimerEvent;
+import openfl.geom.Point;
+import openfl.utils.Timer;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.Toolkit;

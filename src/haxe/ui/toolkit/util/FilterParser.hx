@@ -1,9 +1,9 @@
 package haxe.ui.toolkit.util;
 
-import flash.filters.BitmapFilter;
-import flash.filters.DropShadowFilter;
-import flash.filters.BlurFilter;
-import flash.filters.GlowFilter;
+import openfl.filters.BitmapFilter;
+import openfl.filters.DropShadowFilter;
+import openfl.filters.BlurFilter;
+import openfl.filters.GlowFilter;
 
 class FilterParser {
 	private static var filterParamDefaults = {

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core;
 
-import flash.system.Capabilities;
+import openfl.system.Capabilities;
 
 class Client {
 	private static var _instance:Client;
@@ -71,10 +71,10 @@ class Client {
 	}
 
     private function get_windowWidth():Float {
-      return flash.Lib.current.stage.stageWidth;
+      return openfl.Lib.current.stage.stageWidth;
     }
 
     private function get_windowHeight():Float {
-      return flash.Lib.current.stage.stageHeight;
+      return openfl.Lib.current.stage.stageHeight;
     }
 }

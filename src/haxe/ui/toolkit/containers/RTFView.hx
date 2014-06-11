@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.containers;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.text.Font;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.text.Font;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.extended.RTF;
 import haxe.ui.toolkit.controls.selection.ListSelector;

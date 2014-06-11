@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls;
 
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.base.HorizontalAlign;
 import haxe.ui.toolkit.core.base.VerticalAlign;

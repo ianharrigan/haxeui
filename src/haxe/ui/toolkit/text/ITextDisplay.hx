@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.text;
 
-import flash.display.DisplayObject;
+import openfl.display.DisplayObject;
 import haxe.ui.toolkit.style.Style;
 
 interface ITextDisplay {

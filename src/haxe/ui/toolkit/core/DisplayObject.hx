@@ -1,9 +1,9 @@
 package haxe.ui.toolkit.core;
 
-import flash.display.Graphics;
-import flash.display.Sprite;
-import flash.events.Event;
-import flash.events.MouseEvent;
+import openfl.display.Graphics;
+import openfl.display.Sprite;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;

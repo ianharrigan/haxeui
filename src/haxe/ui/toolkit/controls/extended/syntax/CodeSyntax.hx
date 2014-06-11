@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls.extended.syntax;
 
-import flash.text.TextFormat;
+import openfl.text.TextFormat;
 
 class CodeSyntax {
 	private var _rules:Map<String, TextFormat>;

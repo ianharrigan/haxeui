@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.containers;
 
-import flash.events.Event;
+import openfl.events.Event;
 import haxe.ui.toolkit.containers.ExpandablePanel;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.controls.Button;

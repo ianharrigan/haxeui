@@ -1,9 +1,9 @@
 package haxe.ui.toolkit.controls;
 
-import flash.display.DisplayObject;
-import flash.events.Event;
-import flash.text.TextField;
-import flash.text.TextFormat;
+import openfl.display.DisplayObject;
+import openfl.events.Event;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;

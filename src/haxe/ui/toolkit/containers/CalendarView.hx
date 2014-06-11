@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.containers;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.Calendar;
 import haxe.ui.toolkit.controls.Spacer;

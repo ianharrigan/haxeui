@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core;
 
-import flash.display.Sprite;
+import openfl.display.Sprite;
 import haxe.CallStack;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;

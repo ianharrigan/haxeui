@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core;
 
-import flash.geom.Rectangle;
+import openfl.geom.Rectangle;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.ILayout;

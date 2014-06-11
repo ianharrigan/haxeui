@@ -33,6 +33,7 @@
   <haxelib>
     <library name="openfl" />
     <library name="actuate" />
+    <library name="svg" />
     <library name="hscript" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.controls.popups;
 
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.containers.Box;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.VBox;

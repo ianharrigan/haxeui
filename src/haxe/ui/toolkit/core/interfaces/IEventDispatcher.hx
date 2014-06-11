@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core.interfaces;
 
-import flash.events.Event;
+import openfl.events.Event;
 
 interface IEventDispatcher { // dispatcher, copy of nme for testing
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void;

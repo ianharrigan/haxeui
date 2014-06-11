@@ -5,7 +5,7 @@ import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.Text;
-import flash.events.MouseEvent;
+import openfl.events.MouseEvent;
 import haxe.ui.toolkit.core.Macros;
 
 class Main {

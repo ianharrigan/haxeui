@@ -1,9 +1,9 @@
 package haxe.ui.toolkit.util.pseudothreads;
 
-import flash.events.Event;
-import flash.events.EventDispatcher;
-import flash.events.ProgressEvent;
-import flash.Lib;
+import openfl.events.Event;
+import openfl.events.EventDispatcher;
+import openfl.events.ProgressEvent;
+import openfl.Lib;
 
 class AsyncThreadCaller extends EventDispatcher {
 	private var _workerExitTime:Float;

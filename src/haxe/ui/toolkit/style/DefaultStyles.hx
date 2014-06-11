@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.style;
 
-import flash.filters.DropShadowFilter;
+import openfl.filters.DropShadowFilter;
 import openfl.Assets;
 
 class DefaultStyles extends Styles {

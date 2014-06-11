@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.core;
 
-import flash.events.Event;
-import flash.Lib;
+import openfl.events.Event;
+import openfl.Lib;
 import haxe.ui.toolkit.core.Root;
 
 class RootManager {

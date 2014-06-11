@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.controls.extended;
 
-import flash.events.Event;
-import flash.events.KeyboardEvent;
-import flash.text.TextField;
+import openfl.events.Event;
+import openfl.events.KeyboardEvent;
+import openfl.text.TextField;
 import haxe.ui.toolkit.controls.extended.syntax.CodeSyntax;
 import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.util.pseudothreads.AsyncThreadCaller;

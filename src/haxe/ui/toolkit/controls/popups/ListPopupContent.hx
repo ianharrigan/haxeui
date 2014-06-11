@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.controls.popups;
 
-import flash.events.TimerEvent;
-import flash.utils.Timer;
+import openfl.events.TimerEvent;
+import openfl.utils.Timer;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.PopupManager;

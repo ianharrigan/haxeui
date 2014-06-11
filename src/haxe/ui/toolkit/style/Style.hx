@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.style;
 
-import flash.filters.BitmapFilter;
-import flash.geom.Rectangle;
+import openfl.filters.BitmapFilter;
+import openfl.geom.Rectangle;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.StyleableDisplayObject;

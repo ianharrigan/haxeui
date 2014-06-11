@@ -1,11 +1,11 @@
 package haxe.ui.toolkit.text;
 
-import flash.display.DisplayObject;
-import flash.text.TextField;
-import flash.text.TextFieldAutoSize;
-import flash.text.TextFieldType;
-import flash.text.TextFormat;
-import flash.text.TextFormatAlign;
+import openfl.display.DisplayObject;
+import openfl.text.TextField;
+import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFieldType;
+import openfl.text.TextFormat;
+import openfl.text.TextFormatAlign;
 import haxe.ui.toolkit.style.Style;
 
 class TextDisplay implements ITextDisplay {

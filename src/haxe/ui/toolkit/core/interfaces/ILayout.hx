@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core.interfaces;
 
-import flash.geom.Rectangle;
+import openfl.geom.Rectangle;
 
 interface ILayout extends IClonable<ILayout> {
 	public var container(get, set):IDisplayObjectContainer;

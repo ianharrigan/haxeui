@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.containers;
 
-import flash.events.Event;
+import openfl.events.Event;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.TabBar;
 import haxe.ui.toolkit.core.Component;

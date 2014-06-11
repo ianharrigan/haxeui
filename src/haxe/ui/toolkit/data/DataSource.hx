@@ -1,7 +1,7 @@
 package haxe.ui.toolkit.data;
 
-import flash.events.Event;
-import flash.events.EventDispatcher;
+import openfl.events.Event;
+import openfl.events.EventDispatcher;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
 import haxe.ui.toolkit.resources.ResourceManager;
 

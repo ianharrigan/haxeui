@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.core;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.geom.Point;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.geom.Point;
 import haxe.ui.toolkit.controls.popups.Popup;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Screen;

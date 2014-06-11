@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.controls.selection;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.filters.DropShadowFilter;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.filters.DropShadowFilter;
 import haxe.ui.toolkit.containers.CalendarView;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.PopupManager;

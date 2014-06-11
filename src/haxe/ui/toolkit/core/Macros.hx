@@ -329,11 +329,11 @@ class Macros {
 						filterParams = propValue.substring(n + 1, propValue.length - 1);
 					}
 					if (StringTools.startsWith(propValue, "dropShadow")) {
-						propValue = "new flash.filters.DropShadowFilter(" + filterParams + ")";
+						propValue = "new openfl.filters.DropShadowFilter(" + filterParams + ")";
 					} else if (StringTools.startsWith(propValue, "blur")) {
-						propValue = "new flash.filters.BlurFilter(" + filterParams + ")";
+						propValue = "new openfl.filters.BlurFilter(" + filterParams + ")";
 					} else if (StringTools.startsWith(propValue, "glow")) {
-						propValue = "new flash.filters.GlowFilter(" + filterParams + ")";
+						propValue = "new openfl.filters.GlowFilter(" + filterParams + ")";
 					} else {
 						propValue = "null";
 					}
@@ -343,10 +343,10 @@ class Macros {
 					var y1:Int = Std.parseInt(coords[1]);
 					var x2:Int = Std.parseInt(coords[2]);
 					var y2:Int = Std.parseInt(coords[3]);
-					propValue = "new flash.geom.Rectangle(" + x1 + "," + y1 + "," + (x2 - x1) + "," + (y2 - y1) + ")";
+					propValue = "new openfl.geom.Rectangle(" + x1 + "," + y1 + "," + (x2 - x1) + "," + (y2 - y1) + ")";
 				} else if (propName == "backgroundImageRect") {
 					var arr:Array<String> = propValue.split(",");
-					propValue = "new flash.geom.Rectangle(" + Std.parseInt(arr[0]) + "," + Std.parseInt(arr[1]) + "," + Std.parseInt(arr[2]) + "," + Std.parseInt(arr[3]) + ")";
+					propValue = "new openfl.geom.Rectangle(" + Std.parseInt(arr[0]) + "," + Std.parseInt(arr[1]) + "," + Std.parseInt(arr[2]) + "," + Std.parseInt(arr[3]) + ")";
 				}
 				
 				if (StringTools.startsWith(propValue, "#")) { // lazyness

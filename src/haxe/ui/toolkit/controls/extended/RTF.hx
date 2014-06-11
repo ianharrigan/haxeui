@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.controls.extended;
 
-import flash.text.TextField;
-import flash.text.TextFormat;
-import flash.text.TextFormatAlign;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
+import openfl.text.TextFormatAlign;
 import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.resources.ResourceManager;
 
