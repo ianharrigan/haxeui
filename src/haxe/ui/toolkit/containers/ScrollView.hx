@@ -273,7 +273,8 @@ class ScrollView extends StateComponent {
 	
 	private function set_vscrollPageSize(value:Float):Float {
 		if (_virtualScrolling == true) {
-			
+			createVScroll(true);
+			_vscroll.pageSize = value;
 		}
 		return value;
 	}
@@ -554,6 +555,10 @@ class ScrollView extends StateComponent {
 	}
 	
 	private function updateScrollRect():Void {
+		if (!_ready) {
+			return;
+		}
+
 		if (numChildren > 0 && _virtualScrolling == false) {
 			var content:IDisplayObject = _container.getChildAt(0);
 			if (content != null) {
