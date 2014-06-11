@@ -10,7 +10,9 @@ import openfl.geom.Point;
 import openfl.geom.Rectangle;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.resources.ResourceManager;
+#if svg
 import format.SVG;
+#end
 
 class StyleHelper {
 	private static var sectionCache:StringMap<BitmapData>;
@@ -119,8 +121,10 @@ class StyleHelper {
                 }
             } else {
                 // svg image!
+				#if svg
                 var svg:SVG = ResourceManager.instance.getSVG(style.backgroundImage);
                 svg.render(g, rc.left, rc.top, cast rc.width, cast rc.height);
+				#end
             }
 		}
 	}
