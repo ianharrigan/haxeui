@@ -127,10 +127,11 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			if (_icon == null) {
 				_icon = new Image();
 				_icon.id = "icon";
-				_icon.style.padding = 100;
 			}
-			_icon.resource = value;
-			organiseChildren();
+			if (_icon.resource != value) {
+				_icon.resource = value;
+				organiseChildren();
+			}
 		} else {
             if (_icon != null) {
 			    _icon.visible = false;
@@ -210,15 +211,14 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				_spacers.push(spacer);
 			}
 		}
+
         if (_iconPosition == "fill" && _icon != null) {
           _icon.stretch = true;
           _icon.width = width;
           _icon.height = height;
         }
 		
-		if (_ready) {
-			invalidate(InvalidationFlag.STYLE);
-		}
+		invalidate(InvalidationFlag.STYLE);
 	}
 	
 	//******************************************************************************************
@@ -422,8 +422,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	}
 	
 	private function set_iconPosition(value:String):String {
-		_iconPosition = value;
-		organiseChildren();
+		if (_iconPosition != value) {
+			_iconPosition = value;
+			organiseChildren();
+		}
 		return value;
 	}
 	

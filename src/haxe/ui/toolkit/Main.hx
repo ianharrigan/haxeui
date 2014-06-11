@@ -3,6 +3,7 @@ package haxe.ui.toolkit;
 import flash.display.Sprite;
 import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.Stack;
+import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
@@ -30,7 +31,7 @@ class Main /* extends Sprite */ {
 		Toolkit.setTransitionForClass(Accordion, "slide");
 		Toolkit.setTransitionForClass(Stack, "fade");
 		Toolkit.theme = new DefaultTheme();
-		//Toolkit.theme = new GradientTheme();
+		Toolkit.theme = new GradientTheme();
 		//Toolkit.theme = new WindowsTheme();
 		Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
@@ -38,6 +39,21 @@ class Main /* extends Sprite */ {
 		Toolkit.openFullscreen(function(root:Root) {
 			var t2:TestController2 = new TestController2();
 			root.addChild(t2.view);
+			return;
+			
+          var button:Button = new Button();
+          button.x = 100;
+          button.y = 100;
+          button.style.width = 150;
+          button.style.height = 100;
+          button.style.color = 0xFF00FF;
+          button.style.fontSize = 40;
+		  button.style.icon = "img/slinky_tiny.jpg";
+		  button.style.iconPosition = "top";
+          button.text = "Styled";
+		  //button.icon = "img/slinky_tiny.jpg";
+          root.addChild(button);
+			
 		});
 	}
 }
