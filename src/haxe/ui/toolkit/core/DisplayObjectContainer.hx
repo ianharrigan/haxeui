@@ -302,15 +302,18 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	// IDisplayObject
 	//******************************************************************************************
 	public override function dispose():Void {
-		for (child in children) {
-			try {
-				removeChild(child);
-			} catch (e:Dynamic) {
-				var stack:Array<haxe.StackItem> = CallStack.exceptionStack();
-				trace("Problem removing component: " + this + ", " + child + "(" + e + "), callstack:");
-				trace(CallStack.toString(stack));
+		while (children.length > 0) {
+			for (child in children) {
+				try {
+					removeChild(child);
+				} catch (e:Dynamic) {
+					var stack:Array<haxe.StackItem> = CallStack.exceptionStack();
+					trace("Problem removing component: " + this + ", " + child + "(" + e + "), callstack:");
+					trace(CallStack.toString(stack));
+				}
 			}
 		}
+		
 		super.dispose();
 	}
 
