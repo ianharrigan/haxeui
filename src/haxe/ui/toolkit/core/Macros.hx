@@ -4,6 +4,7 @@ import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.StringUtil;
+import haxe.ui.toolkit.util.XmlUtil;
 
 class Macros {
 	private static var componentClasses:Map<String, String> = new Map<String, String>();
@@ -685,11 +686,29 @@ class Macros {
 		#if (flash || html5)
 		return resourcePath;
 		#else
-		var subs = ["/", "/assets/"];
+		
+		var subs = ["/"];
+		var candidates:Array<String> = ["project.xml", "application.xml"];
+		for (c in candidates) {
+			if (sys.FileSystem.exists(c)) {
+				var xml:Xml = Xml.parse(sys.io.File.getContent(c));
+				var assetPaths:Array<String> = XmlUtil.getPathValues(xml.firstElement(), "/project/assets/@path");
+				for (p in assetPaths) {
+					if (StringTools.startsWith(p, "/") == false) {
+						p = "/" + p;
+					}
+					if (StringTools.endsWith(p, "/") == false) {
+						p = p + "/";
+					}
+					subs.push(p);
+				}
+				break;
+			}
+		}
+		
 		var found = false;
 		if (sys.FileSystem.exists(resourcePath) == false) {
 			for (path in paths) {
-				
 				for (s in subs) {
 					var test = path + s + resourcePath;	
 					if (test.indexOf("/") == 0 || test.indexOf("\\") == 0) {
