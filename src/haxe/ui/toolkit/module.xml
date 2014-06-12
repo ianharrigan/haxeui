@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<module>
+	<exports>
+		<component package="haxe.ui.toolkit.containers" />
+		<component package="haxe.ui.toolkit.controls" />
+		<component package="haxe.ui.toolkit.controls.selection" />
+		<component package="haxe.ui.toolkit.core" />
+		<component package="haxe.ui.toolkit.core.renderers" />
+		<dataSource package="haxe.ui.toolkit.data" />
+	</exports>
+	<themes>
+		<default>
+			<styles class="haxe.ui.toolkit.style.DefaultStyles" />
+		</default>
+		<gradient>
+			<styles path="styles/gradient/gradient.css" />
+		</gradient>
+		<gradient_mobile>
+			<styles path="styles/gradient/gradient_mobile.css" />
+		</gradient_mobile>
+		<windows>
+			<styles path="styles/windows/windows.css" />
+			<styles path="styles/windows/buttons.css" />
+			<styles path="styles/windows/tabs.css" />
+			<styles path="styles/windows/listview.css" />
+			<styles path="styles/windows/scrolls.css" />
+			<styles path="styles/windows/sliders.css" />
+			<styles path="styles/windows/accordion.css" />
+			<styles path="styles/windows/rtf.css" />
+			<styles path="styles/windows/calendar.css" />
+			<styles path="styles/windows/popups.css" />
+			<styles path="styles/windows/menus.css" />
+		</windows>
+	</themes>
+</module>

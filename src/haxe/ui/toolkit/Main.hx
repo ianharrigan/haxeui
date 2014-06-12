@@ -13,46 +13,22 @@ import haxe.ui.toolkit.themes.DefaultTheme;
 import haxe.ui.toolkit.themes.GradientTheme;
 import haxe.ui.toolkit.themes.WindowsTheme;
 
-class Main /* extends Sprite */ {
-	/*
-	public function new () {
-		super();
-		trace("bob");
-		Toolkit.init();
-		Toolkit.openFullscreen(function(root:Root) {
-			var t2:TestController = new TestController();
-			root.addChild(t2.view);
-		});
-	}
-	*/
-	
+class Main {
 	public static function main() {
 		Toolkit.defaultTransition = "none";
 		Toolkit.setTransitionForClass(Accordion, "slide");
 		Toolkit.setTransitionForClass(Stack, "fade");
-		Toolkit.theme = new DefaultTheme();
+		//Toolkit.theme = new DefaultTheme();
 		//Toolkit.theme = new GradientTheme();
-		//Toolkit.theme = new WindowsTheme();
+		Toolkit.theme = new WindowsTheme();
+		//Toolkit.theme = "gradient";
 		//Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			//var t2:TestController2 = new TestController2();
 			//root.addChild(t2.view);
+			root.addChild(Toolkit.processXmlResource("assets/test2.xml"));
 		});
 	}
 }
-
-/*
-@:build( haxe.ui.toolkit.core.Macros.buildController( "assets/test.xml" ) )
-class TestController extends XMLController {
-  public function new():Void {
-    myButton.addEventListener( UIEvent.CLICK, myButtonClicked );
-  }
-
-  private function myButtonClicked( e:UIEvent ):Void {
-    myButton.text = "You clicked me!";
-  }
-}
-
-*/

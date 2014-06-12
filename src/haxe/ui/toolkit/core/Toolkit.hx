@@ -30,7 +30,7 @@ class Toolkit {
 	}
 	
 	public static function init():Void {
-		Macros.autoRegisterModules();
+		Macros.registerModules();
 		get_instance();
 		registerXMLProcessor(UIProcessor, "ui");
 		registerXMLProcessor(UIProcessor, "selection");
@@ -41,12 +41,20 @@ class Toolkit {
 			setTransitionForClass(Menu, "fade"); // fade looks nicer
 		}
 		
-		if (theme == null && useDefaultTheme == true) {
-			theme = new DefaultTheme();
+		var t:Theme = null;
+		if (Std.is(theme, Theme)) {
+			t = cast theme;
+		} else if (Std.is(theme, String)) {
+			t = new Theme();
+			t.name = cast theme;
 		}
 		
-		if (theme != null) {
-			theme.apply();
+		if (t == null && useDefaultTheme == true) {
+			t = new DefaultTheme();
+		}
+		
+		if (t != null) {
+			t.apply();
 		}
 	}
 
@@ -62,7 +70,7 @@ class Toolkit {
 	// Theme functions
 	//******************************************************************************************
 	public static var useDefaultTheme(default, default):Bool = true;
-	public static var theme(default, default):Theme;
+	public static var theme(default, default):Dynamic;
 	
 	//******************************************************************************************
 	// Processes a chunk of xml, return values depend on what comes in, could return IDisplayObject, IDataSource

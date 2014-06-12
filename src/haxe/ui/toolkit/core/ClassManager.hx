@@ -22,12 +22,7 @@ class ClassManager {
 	}
 
 	private function registerDefaults():Void {
-		Macros.registerComponentPackage("haxe.ui.toolkit.containers");
-		Macros.registerComponentPackage("haxe.ui.toolkit.controls");
-		Macros.registerComponentPackage("haxe.ui.toolkit.controls.selection");
-		Macros.registerComponentPackage("haxe.ui.toolkit.core");
-		Macros.registerComponentPackage("haxe.ui.toolkit.core.renderers");
-		Macros.registerDataSourcePackage("haxe.ui.toolkit.data");
+		//Macros.registerDataSourcePackage("haxe.ui.toolkit.data");
 	}
 
 	//******************************************************************************************
@@ -54,7 +49,7 @@ class ClassManager {
 		registerComponentClassName(className, simpleName);
 	}
 	
-	private function registerComponentClassName(className:String, simpleName:String):Void {
+	public function registerComponentClassName(className:String, simpleName:String):Void {
 		if (componentClassMap == null) {
 			componentClassMap = new StringMap<ComponentRegistryEntry>();
 		}
@@ -96,7 +91,7 @@ class ClassManager {
 		registerDataSourceClassName(className, simpleName);
 	}
 	
-	private function registerDataSourceClassName(className:String, simpleName:String):Void {
+	public function registerDataSourceClassName(className:String, simpleName:String):Void {
 		if (dataSourceClassMap == null) {
 			dataSourceClassMap = new StringMap<DataSourceRegistryEntry>();
 		}
