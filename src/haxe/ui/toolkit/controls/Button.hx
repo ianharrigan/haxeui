@@ -78,7 +78,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var _spacers:Array<Spacer>;
 	
 	public function new() {
-		super();
+		super();	
 
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
@@ -90,6 +90,17 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		if (_groups == null) {
 			_groups = new StringMap<Array<Button>>();
 		}
+	}		
+	
+	override public function dispose():Void {
+		
+		// removes this component from groups list.
+		if (group != null) {
+			var arr:Array<Button> = _groups.get(_group);
+			arr.remove(this);
+		}
+		
+		super.dispose();
 	}
 	
 	//******************************************************************************************
