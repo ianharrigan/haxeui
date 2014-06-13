@@ -36,6 +36,17 @@ class OptionBox extends Component implements IClonable<OptionBox> {
 		_autoSize = true;
 	}
 	
+	override public function dispose():Void {
+		
+		// removes this component groups list.
+		if (group != null) {
+			var arr:Array<OptionBox> = _groups.get(_group);
+			arr.remove(this);
+		}
+		
+		super.dispose();
+	}
+	
 	//******************************************************************************************
 	// Overrides
 	//******************************************************************************************
