@@ -16,6 +16,9 @@
 	
 	<assets path="assets" exclude="*.xml|*.css" if="html5" />
 	<assets path="assets" unless="html5" />
+
+	<assets path="../../assets/fonts" rename="fonts" />
+	
 	
 	<haxeflag name="-resource" value="assets/buttons.xml@assets/buttons.xml" />
 	
