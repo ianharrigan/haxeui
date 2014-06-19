@@ -1,0 +1,18 @@
+var lv = create("listview");
+lv.width = 200;
+lv.height = 200;
+
+/*
+lv.dataSource.add({"text": "Item 1"});
+lv.dataSource.add({"text": "Item 2"});
+lv.dataSource.add({"text": "Item 3"});
+lv.dataSource.add({"text": "Item 4"});
+lv.dataSource.add({"text": "Item 5"});
+lv.dataSource.add({"text": "Item 6"});
+lv.dataSource.add({"text": "Item 7"});
+lv.dataSource.add({"text": "Item 8"});
+lv.dataSource.add({"text": "Item 9"});
+*/
+
+inspect(lv);
+

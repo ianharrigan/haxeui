@@ -30,6 +30,10 @@ class Toolkit {
 	}
 	
 	public static function init():Void {
+		#if dconsole
+		haxe.ui.toolkit.console.HaxeUIConsole.init();
+		#end
+		
 		Macros.registerModules();
 		get_instance();
 		registerXMLProcessor(UIProcessor, "ui");

@@ -466,7 +466,7 @@ class TableViewRow extends HBox implements IStateComponent {
 		for (s in states) {
 			var stateStyle:Style = StyleManager.instance.buildStyleFor(this, s);
 			if (stateStyle != null) {
-				stateStyle.merge(_setStyle);
+				//stateStyle.merge(_setStyle);
 				storeStyle(s, stateStyle);
 			}
 		}

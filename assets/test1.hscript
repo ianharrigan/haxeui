@@ -1,0 +1,36 @@
+create("vbox");
+create("hbox");
+create("button");
+create("button");
+create("button");
+create("button");
+
+button0.text = "Button 1";
+button0.autoSize = false;
+button0.percentWidth = 100;
+button0.iconPosition = "center";
+
+button1.text = "Button 2";
+button1.autoSize = false;
+button1.width = 200;
+button1.height = 100;
+button1.iconPosition = "center";
+
+button2.text = "Button 3";
+button2.autoSize = false;
+button2.width = 200;
+button2.height = 100;
+button2.iconPosition = "center";
+
+button3.text = "Button 4";
+button3.autoSize = false;
+button3.percentWidth = 100;
+button3.iconPosition = "center";
+
+vbox0.addChild(button0);
+vbox0.addChild(hbox0);
+hbox0.addChild(button1);
+hbox0.addChild(button2);
+vbox0.addChild(button3);
+
+inspect(vbox0);

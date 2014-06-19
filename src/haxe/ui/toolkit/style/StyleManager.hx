@@ -39,6 +39,15 @@ class StyleManager {
 		stylesBuiltFor = new Map<String, Int>();
 	}
 	
+	public function getRules():Array<String> {
+		return _rules;
+	}
+	
+	public function removeStyle(rule:String):Void {
+		_styles.remove(rule);
+		_rules.remove(rule);
+	}
+	
 	public function addStyle(rule:String, style:Style):Void {
 		_cachedStyles = null;
 		var arr:Array<String> = rule.split(",");

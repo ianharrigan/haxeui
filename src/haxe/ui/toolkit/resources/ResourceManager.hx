@@ -28,6 +28,10 @@ class ResourceManager {
 		
 	}
 	
+	public function hasAsset(resouceId:String):Bool {
+		return Assets.exists(resouceId);
+	}
+	
 	public function getXML(resourceId:String, locale:String = null):Xml {
 		var text:String = getText(resourceId, locale);
 		var xml:Xml = null;

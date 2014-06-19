@@ -15,7 +15,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private var _storedStyles:StringMap<Style>; // styles stored for ease later
 	private var _styleName:String;
 	private var _inlineStyle:Style;
-	private var _setStyle:Style;
+	//private var _setStyle:Style;
 	
 	public function new() {
 		super();
@@ -26,9 +26,9 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	private override function preInitialize():Void {
 		super.preInitialize();
-		_setStyle = _style;
+		//_setStyle = _style;
 		refreshStyle();
-		_style.merge(_setStyle);
+		//_style.merge(_setStyle);
 	}
 	
 	public override function paint():Void {
@@ -60,7 +60,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		if (_ready) {
 			buildStyles();
 			_style = StyleManager.instance.buildStyleFor(this);
-			_style.merge(_setStyle);
+			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return v;
@@ -126,7 +126,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		if (_ready) {
 			buildStyles();
 			_style = StyleManager.instance.buildStyleFor(this);
-			_style.merge(_setStyle);
+			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return value;
@@ -147,7 +147,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		if (_ready) {
 			buildStyles();
 			_style = StyleManager.instance.buildStyleFor(this);
-			_style.merge(_setStyle);
+			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return value;

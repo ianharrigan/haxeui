@@ -29,35 +29,6 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			//var t2:TestController2 = new TestController2();
-			//root.addChild(t2.view);
-			//root.addChild(Toolkit.processXmlResource("assets/test2.xml"));
-			//root.addChild(new TestController().view);
-			
-			var b:Button = new Button();
-			b.text = "Create";
-			b.x = 100;
-			root.addChild(b);
-			b.addEventListener(UIEvent.CLICK, function(e) {
-				for (x in 0...100) {
-					var test:Button = new Button();
-					test.text = "" + x;
-					root.addChild(test);
-					buttons.push(test);
-				}
-			});
-
-			var b:Button = new Button();
-			b.text = "Destroy";
-			b.x = 200;
-			root.addChild(b);
-			b.addEventListener(UIEvent.CLICK, function(e) {
-				for (test in buttons) {
-					root.removeChild(test);
-				}
-				buttons = new Array<Button>();
-			});
-			
 		});
 	}
 }

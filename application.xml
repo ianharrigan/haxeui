@@ -22,6 +22,7 @@
 	<haxelib name="actuate" />
 	<haxelib name="svg" />
 	<haxelib name="hscript" />
+	<haxelib name="dconsole" />
 	
 	<assets path="assets/styles" rename="styles" />
 	<assets path="assets/img" rename="img" />
