@@ -64,6 +64,7 @@ class HaxeUIConsoleFunctions {
 	public static function dispose(target:Dynamic):Void {
 		var c:Component = getComponent(target);
 		if (c != null) {
+			unregisterObjects(c);
 			c.parent.removeChild(c);
 		}
 	}
@@ -254,5 +255,19 @@ class HaxeUIConsoleFunctions {
 	private static function setScriptData(scriptRes:String, scriptData:String):Void {
 		HaxeUIConsole.scripts.set(scriptRes, scriptData);
 		DC.logConfirmation("Script '" + scriptRes + "' saved");
+	}
+	
+	private static function unregisterObjects(parent:Component):Void {
+		if (parent == null) {
+			return;
+		}
+		
+		if (parent.id != null) {
+			DC.unregisterObject(parent.id);
+		}
+		
+		for (child in parent.children) {
+			unregisterObjects(cast child);
+		}
 	}
 }
