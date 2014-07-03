@@ -524,6 +524,11 @@ ListView #content {
 	color: 0x000000;
 }
 
+.even #subtext, .odd #subtext {
+	color: 0x888888;
+	fontSize: 11;
+}
+
 .even #text:over, .odd #text:over {
 	color: 0xFFFFFF;
 }

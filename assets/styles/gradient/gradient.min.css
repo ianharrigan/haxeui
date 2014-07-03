@@ -71,6 +71,7 @@ ListView #content{color:0x000000;padding:0;borderSize:0;spacing:0;cornerRadius:0
 .even:over,.odd:over{backgroundColor:0x606c88;}
 .even:selected,.odd:selected{backgroundColor:0x3f4c6b;}
 .even #text,.odd #text{color:0x000000;}
+.even #subtext,.odd #subtext{color:0x888888;fontSize:11;}
 .even #text:over,.odd #text:over{color:0xFFFFFF;}
 .even #text:selected,.odd #text:selected{color:0xFFFFFF;}
 CheckBox{spacingX:2;}
