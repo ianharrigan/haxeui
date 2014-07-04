@@ -562,6 +562,9 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				labelStyle.fontName = _style.fontName;
 				labelStyle.fontSize = _style.fontSize;
 				labelStyle.fontEmbedded = _style.fontEmbedded;
+				labelStyle.fontBold = _style.fontBold;
+				labelStyle.fontItalic = _style.fontItalic;
+				labelStyle.fontUnderline = _style.fontUnderline;
 				labelStyle.color = _style.color;
 				labelStyle.textAlign = _style.textAlign;
 			}

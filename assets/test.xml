@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<button text="bob" />
+<vbox>
+	<style>
+		#b {
+			fontBold: true;
+		}
+		
+		#i {
+			fontItalic: true;
+		}
+		
+		#u {
+			fontUnderline: true;
+		}
+		
+		#bi {
+			fontBold: true;
+			fontItalic: true;
+		}
+		
+		#bu {
+			fontBold: true;
+			fontUnderline: true;
+		}
+		
+		#iu {
+			fontItalic: true;
+			fontUnderline: true;
+		}
+		
+		#biu {
+			fontBold: true;
+			fontItalic: true;
+			fontUnderline: true;
+		}
+	</style>
+	<button text="Normal" />
+	<button id="b" text="Bold" />
+	<button id="i" text="Italic" />
+	<button id="u" text="Underline" />
+	
+	<button id="bi" text="Bold Italic" />
+	<button id="bu" text="Bold Underline" />
+	<button id="iu" text="Italic Underline" />
+
+	<button id="biu" text="Bold Italic Underline" />
+</vbox>

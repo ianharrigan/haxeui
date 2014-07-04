@@ -87,6 +87,9 @@ class TextDisplay implements ITextDisplay {
 		if (_style.color != -1) {
 			format.color = _style.color;
 		}
+		format.bold = _style.fontBold;
+		format.italic = _style.fontItalic;
+		format.underline = _style.fontUnderline;
 		_tf.defaultTextFormat = format;
 		_tf.setTextFormat(format);
 		if (_style.textAlign != null) {

@@ -46,6 +46,9 @@ class Style implements IClonable<Style> {
 	private var _fontSize:Float = -1;
 	private var _fontScale:Float = -1;
 	private var _fontEmbedded:Float = -1;
+	private var _fontBold:Float = -1;
+	private var _fontItalic:Float = -1;
+	private var _fontUnderline:Float = -1;
 	private var _textAlign:String;
 	private var _iconPosition:String;
 	private var _icon:String;
@@ -90,6 +93,9 @@ class Style implements IClonable<Style> {
 	public var fontSize(get, set):Float;
 	public var fontScale(get, set):Float;
 	public var fontEmbedded(get, set):Bool;
+	public var fontBold(get, set):Bool;
+	public var fontItalic(get, set):Bool;
+	public var fontUnderline(get, set):Bool;
 	public var textAlign(get, set):String;
 	public var iconPosition(get, set):String;
 	public var icon(get, set):String;
@@ -692,6 +698,54 @@ class Style implements IClonable<Style> {
 		apply();
 		return value;
 	}
+
+	private function get_fontBold():Bool {
+		if (hasDynamicValue("fontBold")) {
+			return getDynamicValue("fontBold");
+		}
+		if (_fontBold == -1) {
+			return false;
+		}
+		return _fontBold == 1;
+	}
+	
+	private function set_fontBold(value:Bool):Bool {
+		_fontBold = value ? 1 : 0;
+		apply();
+		return value;
+	}
+
+	private function get_fontItalic():Bool {
+		if (hasDynamicValue("fontItalic")) {
+			return getDynamicValue("fontItalic");
+		}
+		if (_fontItalic == -1) {
+			return false;
+		}
+		return _fontItalic == 1;
+	}
+	
+	private function set_fontItalic(value:Bool):Bool {
+		_fontItalic = value ? 1 : 0;
+		apply();
+		return value;
+	}
+
+	private function get_fontUnderline():Bool {
+		if (hasDynamicValue("fontUnderline")) {
+			return getDynamicValue("fontUnderline");
+		}
+		if (_fontUnderline == -1) {
+			return false;
+		}
+		return _fontUnderline == 1;
+	}
+	
+	private function set_fontUnderline(value:Bool):Bool {
+		_fontUnderline = value ? 1 : 0;
+		apply();
+		return value;
+	}
 	
 	private function get_textAlign():String {
 		if (hasDynamicValue("textAlign")) {
@@ -889,6 +943,9 @@ class Style implements IClonable<Style> {
 		if (with._fontSize != -1) this._fontSize = with._fontSize;
 		if (with._fontScale != -1) this._fontScale = with._fontScale;
 		if (with._fontEmbedded != -1) this._fontEmbedded = with._fontEmbedded;
+		if (with._fontBold != -1) this._fontBold = with._fontBold;
+		if (with._fontItalic != -1) this._fontItalic = with._fontItalic;
+		if (with._fontUnderline != -1) this._fontUnderline = with._fontUnderline;
 		if (with._textAlign != null) this._textAlign = with._textAlign;
 		if (with._iconPosition != null) this._iconPosition = with._iconPosition;
 		if (with._icon != null) this._icon = with._icon;

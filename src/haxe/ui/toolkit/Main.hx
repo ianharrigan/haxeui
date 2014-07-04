@@ -31,29 +31,7 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			var lv:ListView = new ListView();
-			lv.width = 400;
-			lv.height = 400;
-			
-			lv.itemRenderer = "haxe.ui.toolkit.core.renderers.ComponentItemRenderer";
-			for (a in 0...10) {
-				var o = {
-					text: "Item " + a,
-					componentType: "button",
-					componentValue: "Click Me!",
-					controlId: "sendButton",
-					subtext: "Sub text",
-					icon: "img/slinky_tiny.jpg"
-				}
-				
-				if (a == 2) {
-					o.subtext = "This is some extra long sub text to make sure that it all works as expected. The list item should size correctly, and it should all work, etc, etc.";
-				}
-				
-				lv.dataSource.add(o);
-			}
-			
-			root.addChild(lv);
+			root.add("assets/test.xml");
 		});
 	}
 }

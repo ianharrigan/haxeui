@@ -48,9 +48,22 @@ class Root extends Component {
 	private function get_mousePosition():Point {
 		return _mousePos;
 	}
+	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
+	public function add(item:Dynamic) {
+		var r = null;
+		if (Std.is(item, String)) {
+			r = addChild(Toolkit.processXmlResource(cast item));
+		} else if (Std.is(item, Controller)) {
+			r = addChild(cast(item, Controller).view);
+		} else {
+			trace(item + " item not supported in Root.add");
+		}
+		return r;
+	}
+	
 	private function resizeRoot():Void {
 		if (percentWidth > 0) {
 			width = (Screen.instance.width * percentWidth) / 100; 

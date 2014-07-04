@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.4.6",
-    "releasenote"  : "Added dconsole support",
+    "version"      : "1.4.7",
+    "releasenote"  : "",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
