@@ -31,6 +31,7 @@ class RootManager {
 		options.parent = (options.parent != null) ? options.parent : Lib.current.stage;
 
 		var root:Root = new Root();
+		_roots.push(root);
 		root.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			if (fn != null) {
 				#if ios
@@ -52,7 +53,6 @@ class RootManager {
 		root.percentWidth = (options.percentWidth != null) ? options.percentWidth : -1;
 		root.percentHeight = (options.percentHeight != null) ? options.percentHeight : -1;
 		options.parent.addChild(root.sprite);
-		_roots.push(root);
 		return root;
 	}
 	

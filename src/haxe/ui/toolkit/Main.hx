@@ -2,6 +2,7 @@ package haxe.ui.toolkit;
 
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.core.renderers.ComponentItemRenderer;
+import haxe.ui.toolkit.core.RootManager;
 import openfl.display.Sprite;
 import haxe.ui.toolkit.containers.Accordion;
 import haxe.ui.toolkit.containers.Stack;
@@ -31,6 +32,8 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
+			
+			trace(RootManager.instance.currentRoot);
 			root.add("assets/test.xml");
 		});
 	}
