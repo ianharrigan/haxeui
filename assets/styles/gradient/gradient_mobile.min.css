@@ -1,0 +1,120 @@
+Root.popup{width:760;height:560;backgroundColor:0xFFFFFF;borderColor:0xa5b8da;paddingLeft:1;paddingTop:1;paddingBottom:1;paddingRight:1;spacingY:0;cornerRadius:3;filter:dropShadow(4,45,0x808080,1,4,4,1,3);}
+#modalOverlay{backgroundColor:0xE9EDF5;alpha:.6;}
+Text{fontSize:16;fontName:"_sans";}
+VBox,ContinuousBox,Box,HBox,Grid{borderColor:0xa5b8da;padding:0;spacing:5;cornerRadius:2;borderSize:0;}
+ScrollView{borderColor:0xa5b8da;color:0x000000;paddingLeft:1;paddingTop:1;paddingBottom:1;paddingRight:1;borderSize:1;spacingX:2;spacingY:2;cornerRadius:2;inlineScrolls:true;autoHideScrolls:true;}
+ScrollView VBox{backgroundColor:0xFFFFFF;borderColor:0x000000;color:0x000000;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;borderSize:0;spacingX:5;spacingY:5;}
+Button{paddingLeft:8;paddingTop:8;paddingBottom:8;paddingRight:8;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;cornerRadius:3;borderSize:1;fontSize:16;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"left";}
+Button:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+Button:down{backgroundColor:0x8C95A9;backgroundColorGradientEnd:0x767F95;color:0xFFFFFF;borderColor:0x363d4c;}
+Button:disabled{color:0xCCCCCC;backgroundColor:0x8C8C8C;backgroundColorGradientEnd:0x6C6C6C;borderColor:0x666666;}
+VScroll{width:5;height:100;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingY:0;cornerRadius:0;hasButtons:false;}
+VScroll:disabled{backgroundColor:0xCCCCCC;}
+VScroll Button{backgroundColor:0x606c88;backgroundColorGradientEnd:0x606c88;borderColor:0x606c88;cornerRadius:3;filter:null;iconPosition:"center";}
+VScroll Button:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x4b546a;borderColor:0x4b546a;}
+VScroll Button:down{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x4b546a;borderColor:0x4b546a;}
+HScroll{width:100;height:5;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingX:1;cornerRadius:0;hasButtons:false;}
+HScroll Button{backgroundColor:0x606c88;backgroundColorGradientEnd:0x606c88;borderColor:0x606c88;cornerRadius:3;filter:null;iconPosition:"center";}
+HScroll Button:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x4b546a;borderColor:0x4b546a;}
+HScroll Button:down{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x4b546a;borderColor:0x4b546a;}
+HProgress{width:100;height:20;backgroundColor:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);}
+HProgress #background{width:100%;height:100%;backgroundColor:0xa5b8da;borderColor:0xa5b8da;cornerRadius:3;}
+HProgress #value{height:100%;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;borderColor:0xa5b8da;cornerRadius:3;}
+VProgress{width:20;height:100;backgroundColor:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);}
+VProgress #background{width:100%;height:100%;backgroundColor:0xa5b8da;borderColor:0xa5b8da;cornerRadius:3;}
+VProgress #value{width:100%;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;borderColor:0xa5b8da;cornerRadius:3;gradientType:"horizontal";}
+HSlider{width:150;height:34;}
+HSlider #background{width:100%;height:10;backgroundColor:0xa5b8da;borderColor:0x363d4c;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,false);}
+HSlider #value{height:10;backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;borderColor:0x363d4c;cornerRadius:3;cornerRadiusTopRight:0;cornerRadiusBottomRight:0;}
+HSlider Button{width:40;height:100%;icon:"styles/gradient/gripper_horizontal.png";iconPosition:"center";}
+VSlider{width:34;height:150;}
+VSlider #background{width:10;height:100%;backgroundColor:0xa5b8da;borderColor:0x363d4c;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,false);}
+VSlider #value{width:10;backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;borderColor:0x363d4c;cornerRadius:3;cornerRadiusTopRight:0;cornerRadiusTopLeft:0;gradientType:"horizontal";}
+VSlider Button{width:100%;height:40;icon:"styles/gradient/gripper_vertical.png";iconPosition:"center";}
+ListView{borderColor:0xa5b8da;color:0x000000;paddingLeft:1;paddingTop:1;paddingBottom:1;paddingRight:1;borderSize:1;spacingX:2;spacingY:2;cornerRadius:2;backgroundColor:0xFFFFFF;inlineScrolls:true;autoHideScrolls:true;}
+ListView VBox{color:0x000000;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;borderSize:0;spacingX:0;spacingY:0;cornerRadius:0;}
+ListView #content{color:0x000000;paddingLeft:2;paddingTop:14;paddingBottom:14;paddingRight:10;borderSize:0;spacingX:2;spacingY:2;cornerRadius:2;}
+.even{backgroundColor:0xE9EDF5;color:0x000000;cornerRadius:2;paddingLeft:2;paddingTop:4;paddingBottom:4;paddingRight:2;borderSize:0;spacingX:2;spacingY:2;}
+.odd{backgroundColor:0xFFFFFF;color:0x000000;cornerRadius:2;paddingLeft:2;paddingTop:4;paddingBottom:4;paddingRight:2;borderSize:0;spacingX:2;spacingY:2;}
+.even:over,.odd:over{backgroundColor:0x606c88;}
+.even:selected,.odd:selected{backgroundColor:0x3f4c6b;}
+.even #text,.odd #text{color:0x000000;}
+.even #text:over,.odd #text:over{color:0xFFFFFF;}
+.even #text:selected,.odd #text:selected{color:0xFFFFFF;}
+.even #subtext,.odd #subtext{color:0x606c88;fontSize:11;}
+.even #subtext:over,.odd #subtext:over{color:0xFFFFFF;}
+.even #subtext:selected,.odd #subtext:selected{color:0xFFFFFF;}
+CheckBox{spacingX:2;}
+CheckBoxValue{width:18;height:18;}
+CheckBoxValue #unselected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);}
+CheckBoxValue #selected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);icon:"styles/gradient/cross_dark.png";iconPosition:"center";}
+OptionBox{spacingX:2;}
+OptionBoxValue{width:18;height:18;}
+OptionBoxValue #unselected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);}
+OptionBoxValue #selected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);icon:"styles/gradient/circle_dark.png";iconPosition:"center";}
+TextInput,Code,RTF{width:150;height:30;borderColor:0x363d4c;backgroundColor:0xFFFFFF;paddingTop:2;paddingLeft:2;paddingBottom:2;paddingRight:2;cornerRadius:2;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);fontSize:13;fontName:"_sans";}
+TextInput #placeholder{color:0xAAAAAA;}
+TabBar{backgroundColor:0xFFFFFF;height:50;paddingTop:15;paddingLeft:5;paddingRight:5;}
+TabBar HBox{spacingX:3;}
+TabBar Button{paddingLeft:5;paddingTop:5;paddingBottom:5;paddingRight:5;height:35;backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x7d99ca;cornerRadius:2;cornerRadiusBottomLeft:0;cornerRadiusBottomRight:0;}
+TabBar Button:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x5d7fbc;}
+TabBar Button:down{backgroundColor:0xf4f5f5;backgroundColorGradientEnd:0xdfdddd;color:0x363d4c;borderColor:0xdfdddd;}
+TabView{backgroundColor:0xdfdddd;}
+Stack{paddingLeft:5;paddingRight:5;paddingBottom:5;paddingTop:5;}
+TabView Stack{paddingLeft:10;paddingRight:10;paddingBottom:10;paddingTop:10;}
+MenuBar{backgroundColor:0xdfdddd;width:100%;height:50;paddingLeft:5;paddingTop:5;paddingRight:5;paddingBottom:5;cornerRadius:0;filter:dropShadow(2,90,0x808080,1,0,4,1,3);}
+MenuBar Button{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;}
+MenuBar Button:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+MenuBar Button:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;}
+ListSelector,DateSelector{paddingLeft:8;paddingTop:8;paddingBottom:8;paddingRight:8;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;cornerRadius:3;borderSize:1;fontSize:16;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);icon:"styles/gradient/arrow_down.png";iconPosition:"farRight";selectionMethod:"popup";}
+ListSelector:over,DateSelector:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+ListSelector:down,DateSelector:down{backgroundColor:0x8C95A9;backgroundColorGradientEnd:0x767F95;color:0xFFFFFF;borderColor:0x363d4c;}
+MenuBar ListSelector{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;}
+MenuBar ListSelector:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+MenuBar ListSelector:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;}
+DropDownList{filter:dropShadow(2,45,0x808080,1,4,4,1,3);}
+ListView VBox Button,TableView #tableContent Button{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;}
+ListView VBox Button:over,TableView #tableContent Button:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+ListView VBox Button:down,TableView #tableContent Button:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;}
+ListView VBox ListSelector,TableView #tableContent ListSelector{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;}
+ListView VBox ListSelector:over,TableView #tableContent ListSelector:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+ListView VBox ListSelector:down,TableView #tableContent ListSelector:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;}
+Popup{backgroundColor:0xE9EDF5;filter:dropShadow(2,45,0x808080,1,4,4,1,3);borderColor:0x495267;cornerRadius:3;borderSize:1;paddingLeft:2;paddingRight:2;paddingTop:2;paddingBottom:2;width:350;spacing:1;}
+Popup #titleBar{backgroundColor:0x4b546a;height:30;paddingTop:4;paddingLeft:5;}
+Popup #popupContent{paddingLeft:5;paddingRight:5;paddingTop:5;paddingBottom:5;}
+Popup #titleBar Text{color:0xFFFFFF;}
+Popup #buttonBar{paddingTop:10;paddingBottom:5;height:54;}
+ListPopupContent{padding:0;}
+ListPopupContent ListView,ListPopupContent #popupContent{padding:0;borderSize:0;}
+Accordion{backgroundColor:0xdfdddd;spacingX:0;spacingY:0;padding:0;}
+Accordion VBox,Accordion HBox,Accordion Grid{paddingLeft:5;paddingTop:5;paddingBottom:5;paddingRight:5;spacingX:0;spacingY:0;}
+Button.expandable{paddingLeft:8;paddingTop:8;paddingBottom:8;paddingRight:8;backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;color:0xFFFFFF;borderColor:0x495267;cornerRadius:0;borderSize:1;fontSize:16;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"farLeft";icon:"styles/gradient/arrow_right2.png";}
+Button.expandable:over{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;color:0xFFFFFF;borderColor:0x495267;}
+Button.expandable:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;icon:"styles/gradient/arrow_down.png";}
+ExpandablePanel{spacingX:0;spacingY:0;padding:0;}
+ExpandablePanel #content{padding:5;spacing:5;}
+RTFView{spacingY:8;}
+RTFView ListSelector{backgroundColor:0xf4f5f5;backgroundColorGradientEnd:0xdfdddd;color:0x363d4c;borderColor:0xdfdddd;icon:"styles/gradient/arrow_down_dark.png";}
+RTFView ListSelector:over{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;borderColor:0x7d99ca;color:0xFFFFFF;icon:"styles/gradient/arrow_down.png";}
+RTFView ListSelector:down{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;borderColor:0x5d7fbc;color:0xFFFFFF;icon:"styles/gradient/arrow_down.png";}
+RTFView RTFToolButton{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0xf4f5f5;backgroundColorGradientEnd:0xdfdddd;color:0x363d4c;borderColor:0xdfdddd;width:42;height:100%;cornerRadius:3;borderSize:1;fontSize:13;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"center";}
+RTFView RTFToolButton:over{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;borderColor:0x7d99ca;}
+RTFView RTFToolButton:down{backgroundColor:0x819bcb;backgroundColorGradientEnd:0x536f9d;borderColor:0x5d7fbc;}
+RTFView #bold{icon:"img/rtfview/edit-bold.png";}
+RTFView #italic{icon:"img/rtfview/edit-italic.png";}
+RTFView #underline{icon:"img/rtfview/edit-underline.png";}
+RTFView #bullet{icon:"img/rtfview/edit-list.png";}
+RTFView #alignLeft{icon:"img/rtfview/edit-alignment-left.png";}
+RTFView #alignCenter{icon:"img/rtfview/edit-alignment-center.png";}
+RTFView #alignRight{icon:"img/rtfview/edit-alignment-right.png";}
+RTFView #alignJustify{icon:"img/rtfview/edit-alignment-justify.png";}
+CalendarView{width:250;height:250;spacingX:5;spacingY:5;paddingLeft:5;paddingRight:5;paddingTop:5;paddingBottom:5;borderSize:1;borderColor:0x495267;backgroundColor:0xE9EDF5;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3);}
+Calendar{width:250;height:250;spacingX:2;spacingY:2;paddingLeft:0;paddingRight:0;paddingTop:0;paddingBottom:0;borderSize:0;filter:null;}
+CalendarDay{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;borderColor:0x7d99ca;color:0xFFFFFF;cornerRadius:3;borderSize:1;fontSize:16;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);iconPosition:"left";}
+CalendarDay:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+CalendarDay:down{backgroundColor:0x8C95A9;backgroundColorGradientEnd:0x767F95;color:0xFFFFFF;borderColor:0x363d4c;}
+Calendar #selectedDay{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+Calendar #selectedDay:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+Calendar #selectedDay:down{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
+CalendarPopupContent CalendarView{paddingLeft:0;paddingRight:0;paddingTop:0;paddingBottom:0;borderSize:0;filter:null;}
+

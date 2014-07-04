@@ -7,6 +7,7 @@ class ClientWrapper {
 	public var dpi:Float;
 	public var platform:String;
 	public var target:String;
+	public var mobile:Bool;
 	public var screenWidth:Float;
 	public var screenHeight:Float;
 	public var windowWidth:Float;
@@ -17,6 +18,7 @@ class ClientWrapper {
 		dpi = Client.instance.dpi;
 		platform = Client.instance.platform;
 		target = Client.instance.target;
+		mobile = Client.instance.mobile;
 		screenWidth = Client.instance.screenWidth;
 		screenHeight = Client.instance.screenHeight;
 		windowWidth = Client.instance.windowWidth;

@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="application.xml" />
     <movie fps="60" />
-    <movie width="1400" />
-    <movie height="768" />
+    <movie width="800" />
+    <movie height="600" />
     <movie version="3" />
     <movie minorVersion="0" />
     <movie platform="NME" />
@@ -16,18 +16,18 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,0" />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,1" />
     <class path="C:\Servers\Haxe\haxe\lib\actuate\1,7,5" />
     <class path="C:\Servers\Haxe\haxe\lib\svg\1,0,8" />
     <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,1" />
     <class path="src" />
     <class path="assets" />
-    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,0\backends\flash" />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,1\backends\flash" />
     <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="openfl=2.0.0&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.1&#xA;tools=1.5.6&#xA;openfl-flash&#xA;display&#xA;web" />
+    <option directives="openfl=2.0.1&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.1&#xA;tools=1.5.6&#xA;openfl-flash&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />

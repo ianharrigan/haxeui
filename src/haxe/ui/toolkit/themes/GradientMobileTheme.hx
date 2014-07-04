@@ -1,8 +1,8 @@
 package haxe.ui.toolkit.themes;
 
-class DefaultTheme extends Theme {
+class GradientMobileTheme extends Theme {
 	public function new() {
 		super();
-		name = "default";
+		name = "gradient_mobile";
 	}
 }

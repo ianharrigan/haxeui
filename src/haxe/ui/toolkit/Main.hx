@@ -33,7 +33,6 @@ class Main {
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			
-			trace(RootManager.instance.currentRoot);
 			root.add("assets/test.xml");
 		});
 	}

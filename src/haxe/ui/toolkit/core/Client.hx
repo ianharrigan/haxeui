@@ -31,6 +31,7 @@ class Client {
 	public var windowWidth(get, null):Float;
 	public var windowHeight(get, null):Float;
 	public var target(get, null):String;
+	public var mobile(get, null):Bool;
 	
 	private function get_language():String {
 		return Capabilities.language;
@@ -60,6 +61,14 @@ class Client {
 		#if neko return "neko"; #end
 		
 		return null;
+	}
+
+	private function get_mobile():Bool {
+		#if mobile
+		return true;
+		#else
+		return false;
+		#end
 	}
 	
 	private function get_screenWidth():Float {
