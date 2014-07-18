@@ -58,6 +58,17 @@ class ListView extends ScrollView implements IDataComponent {
 		checkScrolls();
 	}
 
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		if (!_ready || _invalidating) {
+			return;
+		}
+		
+		super.invalidate(type, recursive);
+		if (type & InvalidationFlag.DATA == InvalidationFlag.DATA) {
+			syncUI();
+		}
+	}
+	
 	public override function dispose():Void {
 		if (_dataSource != null) {
 			_dataSource.close();
@@ -219,6 +230,7 @@ class ListView extends ScrollView implements IDataComponent {
 						pos++;
 					} else {
 						if (item.hash == dataHash) { // item is in the right position
+							item.data = data;
 							pos++;
 						} else {
 							while (item != null && item.hash != dataHash) { // keep on removing until we find a match
