@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ui.toolkit.events.UIEvent;
 import openfl.events.MouseEvent;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
@@ -132,15 +133,15 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	private function set_disabled(value:Bool):Bool {
 		if (value == true) {
 			if (_cachedListeners == null) {
-				_cachedListeners = new StringMap < List < Dynamic->Void >> ();
+				_cachedListeners = new StringMap < Array < Dynamic->Void >> ();
 			}
 			
 			for (type in _eventListeners.keys()) {
 				if (disablableEventType(type) == true) {
-					var list:List < Dynamic->Void > = _eventListeners.get(type);
-					var cachedList:List < Dynamic->Void > = _cachedListeners.get(type);
+					var list:Array < Dynamic->Void > = _eventListeners.get(type);
+					var cachedList:Array < Dynamic->Void > = _cachedListeners.get(type);
 					if (cachedList == null) {
-						cachedList = new List < Dynamic->Void > ();
+						cachedList = new Array < Dynamic->Void > ();
 						_cachedListeners.set(type, cachedList);
 					}
 					for (listener in list) {
@@ -161,11 +162,11 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 		if (value == false) { // add event listeners
 			if (_cachedListeners != null) {
 				for (type in _cachedListeners.keys()) {
-					var list:List < Dynamic->Void > = _cachedListeners.get(type);
+					var list:Array < Dynamic->Void > = _cachedListeners.get(type);
 					for (listener in list) {
 						addEventListener(type, listener);
 					}
-					list.clear();
+					list = new Array < Dynamic->Void > ();
 				}
 				_cachedListeners = null;
 			}
@@ -199,15 +200,15 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	//******************************************************************************************
 	// Event dispatcher overrides
 	//******************************************************************************************
-	private var _cachedListeners:StringMap < List < Dynamic->Void >> ; // for disabling
+	private var _cachedListeners:StringMap < Array < Dynamic->Void >> ; // for disabling
 	public override function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
 		if (_disabled == true && disablableEventType(type) == true) {
 			if (_cachedListeners == null) {
-				_cachedListeners = new StringMap < List < Dynamic->Void >> ();
+				_cachedListeners = new StringMap < Array < Dynamic->Void >> ();
 			}
-			var list:List < Dynamic->Void > = _cachedListeners.get(type);
+			var list:Array < Dynamic->Void > = _cachedListeners.get(type);
 			if (list == null) {
-				list = new List < Dynamic->Void > ();
+				list = new Array < Dynamic->Void > ();
 				_cachedListeners.set(type, list);
 			}
 			list.push(listener);
@@ -218,16 +219,17 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	
 	public override function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
 		if (_disabled == true && disablableEventType(type) == true) {
-			if (_cachedListeners != null) {
-				var list:List < Dynamic->Void > = _cachedListeners.get(type);
+			if (_cachedListeners != null && _cachedListeners.exists(type)) {
+				var list:Array < Dynamic->Void > = _cachedListeners.get(type);
 				if (list != null) {
-					list.remove(listener);
+					//list.remove(listener);
+					removeEventFunction(list, listener);
 					if (list.length == 0) {
 						_cachedListeners.remove(type);
 					}
 				}
 			}
-			return;
+			//return;
 		}
 		super.removeEventListener(type, listener, useCapture);
 	}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <vbox>
+	<!--
 	<hbox>
 		<text text="Label 1" />
 		<textinput text="Text input 1" />
@@ -30,4 +31,26 @@
 		<textinput text="Text input 6" />
 		<button text="Button 6" />
 	</hbox>
+	-->
+	<button id="test" text="Test" />
+	<listview id="lv" width="300" height="300" itemRenderer="haxe.ui.toolkit.core.renderers.ComponentItemRenderer">
+		<json>
+			[
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "text 1", "componentType": "button", "componentValue": "Button"}
+			]
+		</json>
+	</listview>
 </vbox>

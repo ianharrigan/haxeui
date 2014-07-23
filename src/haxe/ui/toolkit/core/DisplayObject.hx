@@ -44,7 +44,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _halign:String = "left";
 	private var _valign:String = "top";
 
-	private var _eventListeners:StringMap < List < Dynamic->Void >> ;
+	private var _eventListeners:StringMap < Array < Dynamic->Void >> ;
 	
 	public function new() {
 		_sprite = new Sprite();
@@ -354,24 +354,33 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	//******************************************************************************************
 	// IEventDispatcher
 	//******************************************************************************************
+	private var _interceptMap:Map<String, Int>;
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
 		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
 			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
-			if (getListenerCount(interceptEventType, interceptEvent) == 0) {
+			if (_interceptMap == null) {
+				_interceptMap = new Map<String, Int>();
+			}
+			if (_interceptMap.exists(interceptEventType) == false) {
+				_interceptMap.set(interceptEventType, 0);
+			} else {
+				_interceptMap.set(interceptEventType, _interceptMap.get(interceptEventType) + 1);
+			}
+			if (_interceptMap.get(interceptEventType) == 0) {
 				addEventListener(interceptEventType, interceptEvent, useCapture, priority, useWeakReference);
 			}
 		}
 		
 		if (_eventListeners == null) {
-			_eventListeners = new StringMap < List < Dynamic->Void >> ();
+			_eventListeners = new StringMap < Array < Dynamic->Void >> ();
 		}
 		
-		var list:List < Dynamic->Void > = _eventListeners.get(type);
+		var list:Array < Dynamic->Void > = _eventListeners.get(type);
 		if (list == null) {
-			list = new List < Dynamic->Void > ();
+			list = new Array < Dynamic->Void > ();
 			_eventListeners.set(type, list);
 		}
-		list.add(listener);
+		list.push(listener);
 		
 		_sprite.addEventListener(type, listener, useCapture, priority, useWeakReference);
 	}
@@ -390,15 +399,20 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public function removeEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false):Void {
 		if (StringTools.startsWith(type, UIEvent.PREFIX)) {
 			var interceptEventType:String = type.substr(UIEvent.PREFIX.length, type.length);
-			if (_eventListeners.exists(type) == false || _eventListeners.get(type).length <= 1) {
-				removeEventListener(interceptEventType, interceptEvent, useCapture);
+			if (_interceptMap != null && _interceptMap.exists(interceptEventType)) {
+				_interceptMap.set(interceptEventType, _interceptMap.get(interceptEventType) - 1);
+				if (_interceptMap.get(interceptEventType) <= 0) {
+					_interceptMap.remove(interceptEventType);
+					removeEventListener(interceptEventType, interceptEvent, useCapture);
+				}
 			}
 		}
 		
 		if (_eventListeners != null && _eventListeners.exists(type)) {
-			var list:List < Dynamic->Void > = _eventListeners.get(type);
+			var list:Array < Dynamic->Void > = _eventListeners.get(type);
 			if (list != null) {
-				list.remove(listener);
+				//list.remove(listener);
+				removeEventFunction(list, listener);
 			}
 		}
 		_sprite.removeEventListener(type, listener, useCapture);
@@ -431,10 +445,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	//******************************************************************************************
 	public function removeEventListenerType(eventType:String):Void {
 		if (_eventListeners != null) {
-			var list:List < Dynamic->Void > = _eventListeners.get(eventType);
+			var list:Array < Dynamic->Void > = _eventListeners.get(eventType);
 			if (list != null) {
-				while (list.isEmpty() == false) {
-					removeEventListener(eventType, list.first());
+				while (list.length != 0) {
+					removeEventListener(eventType, list.pop());
 				}
 			}
 		}
@@ -443,9 +457,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private function removeAllEventListeners():Void {
 		if (_eventListeners != null) {
 			for (eventType in _eventListeners.keys()) {
-				var list:List <Dynamic->Void> = _eventListeners.get(eventType);
-				while (list.isEmpty() == false) {
-					removeEventListener(eventType, list.first());
+				var list:Array <Dynamic->Void> = _eventListeners.get(eventType);
+				while (list.length != 0) {
+					removeEventListener(eventType, list.pop());
 					list = _eventListeners.get(eventType);
 				}
 			}
@@ -453,9 +467,12 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function getListenerCount(type:String, listener:Dynamic->Void):Int {
+		#if neko
+			throw "Not supported in neko";
+		#else
 		var count:Int = 0;
 		if (_eventListeners.exists(type)) {
-			var list:List < Dynamic->Void > = _eventListeners.get(type); 
+			var list:Array < Dynamic->Void > = _eventListeners.get(type); 
 			for (l in list) {
 				if (l == listener) {
 					count++;
@@ -463,6 +480,31 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 			}
 		}
 		return count;
+		#end
+	}
+	
+	private inline function removeEventFunction(arr:Array<Dynamic->Void>, fn:Dynamic->Void):Bool {
+		#if !neko
+		
+		return arr.remove(fn);
+		
+		#else
+		var indexToRemove:Int = -1;
+		for (n in 0...arr.length) {
+			if (Reflect.compareMethods(arr[n], fn) == true) {
+				indexToRemove = n;
+				break;
+			}
+		}
+		
+		if (indexToRemove == -1) {
+			return false;
+		}
+		
+		arr.splice(indexToRemove, 1);
+		return true;
+		
+		#end
 	}
 	
 	//******************************************************************************************
