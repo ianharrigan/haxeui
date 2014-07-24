@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.events.UIEvent;
 import openfl.events.MouseEvent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.Toolkit;
@@ -98,6 +99,9 @@ class MenuButton extends Button {
 		hideMenu();
 		var e:MenuEvent = new MenuEvent(MenuEvent.SELECT, event.menuItem);
 		dispatchEvent(e);
+
+		var uiEvent:UIEvent = new UIEvent(UIEvent.MENU_SELECT, event.menuItem);
+		dispatchEvent(uiEvent);
 	}
 
 	private function _onMenuOpen(event:MenuEvent):Void {

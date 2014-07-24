@@ -223,6 +223,9 @@ class PopupManager {
 			if (n & PopupButton.CONFIRM == PopupButton.CONFIRM) {
 				buttons.push(new PopupButtonInfo(PopupButton.CONFIRM));
 			}
+			if (n & PopupButton.CLOSE == PopupButton.CLOSE) {
+				buttons.push(new PopupButtonInfo(PopupButton.CLOSE));
+			}
 		} else if (Std.is(data, Array)) {
 			var arr:Array<Dynamic> = cast data;
 			for (item in arr) {
@@ -249,7 +252,8 @@ class PopupButton {
 	public static inline var NO:Int =      0x00000100;
 	public static inline var CANCEL:Int =  0x00001000;
 	public static inline var CONFIRM:Int = 0x00010000;
-	public static inline var CUSTOM:Int =  0x00100000;
+	public static inline var CLOSE:Int =   0x00100000;
+	public static inline var CUSTOM:Int =  0x01000000;
 }
 
 class PopupButtonInfo {

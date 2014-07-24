@@ -187,6 +187,13 @@ class Popup extends VBox implements IDraggable {
 				clickButton(PopupButton.CONFIRM);
 			});
 		}
+		if (v == PopupButton.CLOSE) {
+			button = new Button();
+			button.text = "Close";
+			button.addEventListener(MouseEvent.CLICK, function(e) {
+				clickButton(PopupButton.CLOSE);
+			});
+		}
 		
 		return button;
 	}

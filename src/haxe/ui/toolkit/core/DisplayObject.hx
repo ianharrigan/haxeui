@@ -18,7 +18,8 @@ import haxe.ui.toolkit.util.StringUtil;
 	"init", "resize", "ready",
 	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change", "scroll", 
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
-	"glyphClick"
+	"glyphClick",
+	"menuSelect", "menuOpen"
 ]))
 @:build(haxe.ui.toolkit.core.Macros.addClonable())
 @:autoBuild(haxe.ui.toolkit.core.Macros.addClonable())

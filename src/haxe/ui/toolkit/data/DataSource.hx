@@ -12,7 +12,8 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	private var allowAdditions:Bool = true;
 	private var allowUpdates:Bool = true;
 	private var allowDeletions:Bool = true;
-	private var allowEvents:Bool = true;
+	private var _allowEvents:Bool = true;
+	private var _hasChanged:Bool = false;
 	
 	public function new() {
 		super();
@@ -28,6 +29,24 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	public function clone():DataSource {
 		var newDS = null;
 		return newDS;
+	}
+
+	//******************************************************************************************
+	// Getters/Settings
+	//******************************************************************************************
+	public var allowEvents(get, set):Bool;
+	private function get_allowEvents():Bool {
+		return _allowEvents;
+	}
+	
+	private function set_allowEvents(value:Bool):Bool {
+		_allowEvents = value;
+		if (_allowEvents == true) {
+			if (_hasChanged == true) {
+				dispatchChanged();
+			}
+		}
+		return value;
 	}
 	
 	//******************************************************************************************
@@ -177,7 +196,9 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	}
 	
 	private function dispatchChanged():Void {
-		if (allowEvents == true) {
+		_hasChanged = true;
+		if (_allowEvents == true) {
+			_hasChanged = false;
 			dispatchEvent(new Event(Event.CHANGE));
 		}
 	}

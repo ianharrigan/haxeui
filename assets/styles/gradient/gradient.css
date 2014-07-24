@@ -525,8 +525,16 @@ ListView #content {
 }
 
 .even #subtext, .odd #subtext {
-	color: 0x888888;
+	color: 0x444444;
 	fontSize: 11;
+}
+
+.even #subtext:over, .odd #subtext:over {
+	color: 0xCCCCCC;
+}
+
+.even #subtext:selected, .odd #subtext:selected {
+	color: 0xCCCCCC;
 }
 
 .even #text:over, .odd #text:over {

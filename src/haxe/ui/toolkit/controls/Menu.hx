@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.events.UIEvent;
 import openfl.events.MouseEvent;
 import haxe.ui.toolkit.containers.VBox;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;

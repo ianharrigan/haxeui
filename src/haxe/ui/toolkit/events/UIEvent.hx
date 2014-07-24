@@ -32,6 +32,9 @@ class UIEvent extends Event {
 	
 	public static inline var GLYPH_CLICK:String = PREFIX + "glyphClick"; // for button images
 	public static inline var COMPONENT_EVENT:String = PREFIX + "componentEvent";
+
+	public static inline var MENU_SELECT:String = PREFIX + "menuSelect";
+	public static inline var MENU_OPEN:String = PREFIX + "menuOpen";
 	
 	public var displayObject(default, default):IDisplayObject;
 	public var component(get, null):Component;

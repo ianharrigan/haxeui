@@ -24,6 +24,12 @@ class ComponentItemRenderer extends BasicItemRenderer {
 				_component = Type.createInstance(cls, []);
 				_component.verticalAlign = VerticalAlign.CENTER;
 				_component.id = "componentValue";
+				_component.styleName = value.controlId;
+				if (value.componentSize != null) {
+					var cx:Int = value.componentSize;
+					_component.autoSize = false;
+					_component.width = cx;
+				}
 				addChildAt(_component, numChildren);
 			}
 		}
