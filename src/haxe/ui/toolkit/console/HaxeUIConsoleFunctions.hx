@@ -79,7 +79,7 @@ class HaxeUIConsoleFunctions {
 	private static function getComponent(target:Dynamic):Component {
 		var obj:Dynamic = null;
 		if (Std.is(target, String)) {
-			obj = DCCommands.getObject(target);
+			obj = DC.instance.commands.getObject(target);
 		} else {
 			obj = target;
 		}
@@ -179,7 +179,7 @@ class HaxeUIConsoleFunctions {
 		}
 		var n:Int = scriptData.lastIndexOf(";");
 		scriptData = scriptData.substr(0, n);
-		DCCommands.evaluate(scriptData);
+		DC.instance.commands.evaluate(scriptData);
 	}
 	
 	public static function viewScript(scriptRes:String):Void {
