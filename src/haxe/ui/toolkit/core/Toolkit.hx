@@ -30,7 +30,7 @@ class Toolkit {
 	}
 	
 	public static function init():Void {
-		#if dconsole
+		#if HXUI_CONSOLE
 		haxe.ui.toolkit.console.HaxeUIConsole.init();
 		#end
 		
