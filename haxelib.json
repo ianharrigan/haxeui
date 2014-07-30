@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.4.9",
-    "releasenote"  : "Fixed neko issues with removing event listeners",
+    "version"      : "1.4.10",
+    "releasenote"  : "Updated dconsole api access (ProG4mr)",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
