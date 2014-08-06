@@ -382,7 +382,7 @@ class Macros {
 			var classArray:Array<String> = cls.split(".");
 			var className = classArray.pop();
 	        var ttype = TPath( { pack : classArray, name : className, params : [], sub : null } );
-			fields.push( { name : id, doc : null, meta : [], access : [APrivate], kind : FVar(ttype, null), pos : pos } );
+			fields.push( { name : id, doc : null, meta : [], access : [APublic], kind : FVar(ttype, null), pos : pos } );
 			
 			var e:Expr = Context.parseInlineString("this." + id + " = getComponentAs(\"" + id + "\", " + cls + ")", Context.currentPos());
 			ctor.expr = switch(ctor.expr.expr) {
