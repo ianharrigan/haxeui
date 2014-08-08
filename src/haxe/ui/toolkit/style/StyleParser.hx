@@ -33,7 +33,7 @@ class StyleParser {
 					var propName = StringTools.trim(temp[0]);
 					propName = StringUtil.capitalizeHyphens(propName);
 					if (Reflect.field(style, "set_" + propName) == null) {
-						trace("Warning: " + propName + " no found");
+						trace("Warning: " + propName + " not found");
 						continue;
 					}
 					
