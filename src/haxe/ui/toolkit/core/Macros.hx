@@ -11,6 +11,28 @@ class Macros {
 	private static var dataSourceClasses:Map<String, String> = new Map<String, String>();
 	private static var themeResources:Map<String, Array<String>> = new Map<String, Array<String>>();
 	
+	macro public static function beginProfile(name:String = null) {
+		#if HXUI_CONSOLE
+			if (name == null) {
+				name = Context.getLocalClass().get().name + "::" + Context.getLocalMethod();
+			}
+			return Context.parseInlineString("function() { pgr.dconsole.DC.beginProfile('" + name + "'); }()", Context.currentPos());
+		#else
+			return Context.parseInlineString("function() { }()", Context.currentPos());
+		#end
+	}
+
+	macro public static function endProfile(name:String = null) {
+		#if HXUI_CONSOLE
+			if (name == null) {
+				name = Context.getLocalClass().get().name + "::" + Context.getLocalMethod();
+			}
+			return Context.parseInlineString("function() { pgr.dconsole.DC.endProfile('" + name + "'); }()", Context.currentPos());
+		#else
+			return Context.parseInlineString("function() { }()", Context.currentPos());
+		#end
+	}
+	
 	macro public static function registerModules() {
 		var code:String = "function() {\n";
 		

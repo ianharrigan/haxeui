@@ -17,6 +17,8 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private var _inlineStyle:Style;
 	//private var _setStyle:Style;
 	
+	private var _lazyLoadStyles:Bool = true;
+	
 	public function new() {
 		super();
 	}
@@ -33,7 +35,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	public override function paint():Void {
 		//super.paint(); // no point in clearing twice
-		if (_width == 0 || _height == 0) { // can happen
+		if (_width == 0 || _height == 0 || _ready == false) { // can happen
 			return;
 		}
 		
@@ -58,7 +60,11 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		var v:String = super.set_id(value);
 		if (_ready) {
-			buildStyles();
+			if (_lazyLoadStyles == false) {
+				buildStyles();
+			} else {
+				clearStyles();
+			}
 			_style = StyleManager.instance.buildStyleFor(this);
 			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
@@ -124,7 +130,11 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private function set_styleName(value:String):String {
 		_styleName = value;
 		if (_ready) {
-			buildStyles();
+			if (_lazyLoadStyles == false) {
+				buildStyles();
+			} else {
+				clearStyles();
+			}
 			_style = StyleManager.instance.buildStyleFor(this);
 			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
@@ -145,7 +155,11 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			_inlineStyle.target = this;
 		}
 		if (_ready) {
-			buildStyles();
+			if (_lazyLoadStyles == false) {
+				buildStyles();
+			} else {
+				clearStyles();
+			}
 			_style = StyleManager.instance.buildStyleFor(this);
 			//_style.merge(_setStyle);
 			invalidate(InvalidationFlag.DISPLAY);
@@ -161,10 +175,20 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	public function retrieveStyle(id:String):Style {
-		if (_storedStyles == null) {
-			return null;
+		var style:Style = null;
+		
+		if (_lazyLoadStyles == false) {
+			if (_storedStyles == null) {
+				return null;
+			}
+			style = _storedStyles.get(id);
+		} else {
+			if (_ready) {
+				style = StyleManager.instance.buildStyleFor(this, id);
+			}
 		}
-		return _storedStyles.get(id);
+		
+		return style;
 	}
 	
 	public function applyStyle():Void {
@@ -205,9 +229,16 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		
 	}
 	
+	private function clearStyles():Void {
+		_storedStyles = new StringMap<Style>();
+	}
+	
 	private function refreshStyle():Void {
+		Macros.beginProfile();
 		//_setStyle = _style;
-		buildStyles();
+		if (_lazyLoadStyles == false) {
+			buildStyles();
+		}
 		if (Std.is(this, StateComponent)) {
 			var state:String = cast(this, StateComponent).state;
 			if (state == null) {
@@ -267,5 +298,6 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		
 		applyStyle();
+		Macros.endProfile();
 	}
 }

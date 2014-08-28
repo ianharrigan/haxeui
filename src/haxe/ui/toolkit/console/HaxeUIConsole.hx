@@ -5,7 +5,7 @@ import pgr.dconsole.DC;
 
 class HaxeUIConsole {
 	public static var scripts:Map<String, String> = new Map<String, String>();
-	
+
 	public static function init():Void {
 		DC.init(.5, "DOWN", HaxeUIConsoleTheme.HAXEUI_THEME);
 		

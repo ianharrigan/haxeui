@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.style;
 
+import haxe.ui.toolkit.core.Macros;
 import openfl.display.BitmapData;
 import openfl.display.GradientType;
 import openfl.display.Graphics;
@@ -22,8 +23,10 @@ class StyleHelper {
 	}
 	
 	public static function paintStyle(g:Graphics, style:Style, rc:Rectangle):Void {
+		Macros.beginProfile();
 		g.clear();
 		if (style == null || rc.width == 0 || rc.height == 0) {
+			Macros.endProfile();
 			return;
 		}
 		
@@ -127,6 +130,7 @@ class StyleHelper {
 				#end
             }
 		}
+		Macros.endProfile();
 	}
 
 	public static function paintScale9(g:Graphics, resourceId:String, resourceRect:Rectangle, scale9:Rectangle, rc:Rectangle):Void {

@@ -477,7 +477,11 @@ class TableViewRow extends HBox implements IStateComponent {
 			_states.push(stateName);
 		}
 		if (_ready) {
-			buildStyles();
+			if (_lazyLoadStyles == false) {
+				buildStyles();
+			} else {
+				clearStyles();
+			}
 		}
 	}
 	

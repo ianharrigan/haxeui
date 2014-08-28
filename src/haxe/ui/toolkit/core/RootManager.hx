@@ -24,6 +24,7 @@ class RootManager {
 	}
 	
 	public function createRoot(options:Dynamic = null, fn:Root->Void = null):Root {
+		Macros.beginProfile();
 		if (options == null) {
 			options = { };
 		}
@@ -53,6 +54,7 @@ class RootManager {
 		root.percentWidth = (options.percentWidth != null) ? options.percentWidth : -1;
 		root.percentHeight = (options.percentHeight != null) ? options.percentHeight : -1;
 		options.parent.addChild(root.sprite);
+		Macros.endProfile();
 		return root;
 	}
 	

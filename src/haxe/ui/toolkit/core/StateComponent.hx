@@ -19,6 +19,7 @@ class StateComponent extends Component implements IStateComponent implements ICl
 	// IStyleable
 	//******************************************************************************************
 	private override function buildStyles():Void {
+		Macros.beginProfile();
 		for (s in states) {
 			var stateStyle:Style = StyleManager.instance.buildStyleFor(this, s);
 			if (stateStyle != null) {
@@ -26,6 +27,7 @@ class StateComponent extends Component implements IStateComponent implements ICl
 				storeStyle(s, stateStyle);
 			}
 		}
+		Macros.endProfile();
 	}
 	
 	public function addStates(stateNames:Array<String>, rebuildStyles:Bool = true):Void {
@@ -33,7 +35,11 @@ class StateComponent extends Component implements IStateComponent implements ICl
 			addState(stateName, false);
 		}
 		if (rebuildStyles == true && _ready) {
-			buildStyles();
+			if (_lazyLoadStyles == false) {
+				buildStyles();
+			} else {
+				clearStyles();
+			}
 		}
 	}
 	
@@ -41,7 +47,11 @@ class StateComponent extends Component implements IStateComponent implements ICl
 		if (hasState(stateName) == false) {
 			_states.push(stateName);
 			if (rebuildStyles == true && _ready) {
-				buildStyles();
+				if (_lazyLoadStyles == false) {
+					buildStyles();
+				} else {
+					clearStyles();
+				}
 			}
 		}
 	}

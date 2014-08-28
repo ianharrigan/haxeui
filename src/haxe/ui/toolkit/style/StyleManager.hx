@@ -6,6 +6,7 @@ import haxe.ui.toolkit.core.DisplayObject;
 import haxe.ui.toolkit.core.DisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.interfaces.IStyleableDisplayObject;
+import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.core.StyleableDisplayObject;
 
@@ -210,6 +211,7 @@ class StyleManager {
 	}
 	
 	public function buildStyleFor(c:IDisplayObjectContainer, state:String = null):Style {
+		Macros.beginProfile();
 		if (state == "normal") {
 			state = null;
 		}
@@ -221,6 +223,7 @@ class StyleManager {
 				_cachedStyles = new Map<String, Style>();
 			}
 			if (_cachedStyles.get(cacheKey) != null) {
+				Macros.endProfile();
 				return _cachedStyles.get(cacheKey);
 			}
 		}
@@ -271,6 +274,7 @@ class StyleManager {
 		
 		style.target = c;
 		style.autoApply = true;
+		Macros.endProfile();
 		return style;
 	}
 	

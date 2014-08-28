@@ -22,7 +22,10 @@
 	<haxelib name="actuate" />
 	<haxelib name="svg" />
 	<haxelib name="hscript" />
+	
+	<!-- for dconsole -->
 	<!--
+	<haxedef name="HXUI_CONSOLE" />
 	<haxelib name="dconsole" />
 	-->
 	
