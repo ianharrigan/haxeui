@@ -11,7 +11,7 @@ import haxe.ui.toolkit.style.StyleHelper;
 import haxe.ui.toolkit.style.StyleManager;
 
 class StyleableDisplayObject extends DisplayObjectContainer implements IStyleableDisplayObject implements IClonable<StyleableDisplayObject>  {
-	private var _mainStyle:Style;
+	private var _baseStyle:Style;
 	private var _storedStyles:StringMap<Style>; // styles stored for ease later
 	private var _styleName:String;
 	private var _inlineStyle:Style;
@@ -37,7 +37,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		
 		var rc:Rectangle = new Rectangle(0, 0, _width, _height); // doesnt like 0 widths/heights
-		StyleHelper.paintStyle(graphics, mainStyle, rc);
+		StyleHelper.paintStyle(graphics, style, rc);
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
@@ -62,7 +62,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			} else {
 				clearStyles();
 			}
-			_mainStyle = StyleManager.instance.buildStyleFor(this);
+			_baseStyle = StyleManager.instance.buildStyleFor(this);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return v;
@@ -70,26 +70,26 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	
 	private override function set_layout(value:ILayout):ILayout {
 		value = super.set_layout(value);
-		if (_mainStyle != null) { // better way/place to do this
+		if (_baseStyle != null) { // better way/place to do this
 			// set layout props from style
 			if (layout != null) {
-				if (_mainStyle.paddingLeft != -1) {
-					layout.padding.left = _mainStyle.paddingLeft;
+				if (_baseStyle.paddingLeft != -1) {
+					layout.padding.left = _baseStyle.paddingLeft;
 				}
-				if (_mainStyle.paddingTop != -1) {
-					layout.padding.top = _mainStyle.paddingTop;
+				if (_baseStyle.paddingTop != -1) {
+					layout.padding.top = _baseStyle.paddingTop;
 				}
-				if (_mainStyle.paddingRight != -1) {
-					layout.padding.right = _mainStyle.paddingRight;
+				if (_baseStyle.paddingRight != -1) {
+					layout.padding.right = _baseStyle.paddingRight;
 				}
-				if (_mainStyle.paddingBottom != -1) {
-					layout.padding.bottom = _mainStyle.paddingBottom;
+				if (_baseStyle.paddingBottom != -1) {
+					layout.padding.bottom = _baseStyle.paddingBottom;
 				}
-				if (_mainStyle.spacingX != -1) {
-					_layout.spacingX = _mainStyle.spacingX;
+				if (_baseStyle.spacingX != -1) {
+					_layout.spacingX = _baseStyle.spacingX;
 				}
-				if (_mainStyle.spacingY != -1) {
-					_layout.spacingY = _mainStyle.spacingY;
+				if (_baseStyle.spacingY != -1) {
+					_layout.spacingY = _baseStyle.spacingY;
 				}
 			}
 		}
@@ -99,22 +99,22 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
-	public var mainStyle(get, set):Style;
+	public var baseStyle(get, set):Style;
 	@:clonable
 	public var styleName(get, set):String;
 	public var style(get, set):Style;
 	
-	private function get_mainStyle():Style {
-		if (_mainStyle == null) {
-			_mainStyle = new Style();
-			_mainStyle.target = this;
+	private function get_baseStyle():Style {
+		if (_baseStyle == null) {
+			_baseStyle = new Style();
+			_baseStyle.target = this;
 		}
-		return _mainStyle;
+		return _baseStyle;
 	}
 	
-	private function set_mainStyle(value:Style):Style {
-		_mainStyle = value;
-		_mainStyle.target = this;
+	private function set_baseStyle(value:Style):Style {
+		_baseStyle = value;
+		_baseStyle.target = this;
 		//applyStyle();
 		return value;
 	}
@@ -131,7 +131,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			} else {
 				clearStyles();
 			}
-			_mainStyle = StyleManager.instance.buildStyleFor(this);
+			_baseStyle = StyleManager.instance.buildStyleFor(this);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return value;
@@ -142,7 +142,11 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			_inlineStyle = new Style();
 			_inlineStyle.target = this;
 		}
-		return _inlineStyle;
+		var temp:Style = new Style();
+		temp.merge(_baseStyle);
+		temp.merge(_inlineStyle);
+		temp.target = this;
+		return temp;
 	}
 	
 	private function set_style(value:Style):Style {
@@ -156,7 +160,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			} else {
 				clearStyles();
 			}
-			_mainStyle = StyleManager.instance.buildStyleFor(this);
+			_baseStyle = StyleManager.instance.buildStyleFor(this);
 			invalidate(InvalidationFlag.DISPLAY);
 		}
 		return value;
@@ -187,30 +191,30 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	public function applyStyle():Void {
-		if (_mainStyle == null) {
+		if (_baseStyle == null) {
 			return;
 		}
 		
 		if (_inlineStyle != null) {
-			_mainStyle.merge(_inlineStyle);
+			_baseStyle.merge(_inlineStyle);
 		}
-		if (_mainStyle != null) {
-			if (_mainStyle.alpha != -1) {
-				_sprite.alpha = _mainStyle.alpha;
+		if (_baseStyle != null) {
+			if (_baseStyle.alpha != -1) {
+				_sprite.alpha = _baseStyle.alpha;
 			} else {
-				_sprite.alpha = 1;
+				_baseStyle.alpha = 1;
 			}
 			
-			if (_mainStyle.horizontalAlignment != null) {
-				this.horizontalAlign = _mainStyle.horizontalAlignment;
+			if (_baseStyle.horizontalAlignment != null) {
+				this.horizontalAlign = _baseStyle.horizontalAlignment;
 			}
-			if (_mainStyle.verticalAlignment != null) {
-				this.verticalAlign = _mainStyle.verticalAlignment;
+			if (_baseStyle.verticalAlignment != null) {
+				this.verticalAlign = _baseStyle.verticalAlignment;
 			}
 			
 			#if !html5
-			if (_mainStyle.filter != null) {
-				_sprite.filters = [_mainStyle.filter];
+			if (_baseStyle.filter != null) {
+				_sprite.filters = [_baseStyle.filter];
 			} else {
 				_sprite.filters = [];
 			}
@@ -238,54 +242,54 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (state == null) {
 				state = "normal";
 			}
-			_mainStyle = retrieveStyle(state);//StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
-			if (_mainStyle == null) {
-				_mainStyle = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			_baseStyle = retrieveStyle(state);//StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
+			if (_baseStyle == null) {
+				_baseStyle = StyleManager.instance.buildStyleFor(this, cast(this, StateComponent).state);
 			}
 		} else {
-			_mainStyle = StyleManager.instance.buildStyleFor(this);
+			_baseStyle = StyleManager.instance.buildStyleFor(this);
 		}
 		
-		_mainStyle.merge(_inlineStyle);
+		_baseStyle.merge(_inlineStyle);
 		
-		if (_mainStyle != null) {
+		if (_baseStyle != null) {
 			// get props from style if they exist
-			if (_mainStyle.width != -1 && width == 0) {
-				width = _mainStyle.width;
+			if (_baseStyle.width != -1 && width == 0) {
+				width = _baseStyle.width;
 			}
-			if (_mainStyle.height != -1 && height == 0) {
-				height = _mainStyle.height;
+			if (_baseStyle.height != -1 && height == 0) {
+				height = _baseStyle.height;
 			}
 
-			if (_mainStyle.percentWidth != -1 && percentWidth == -1) {
-				percentWidth = _mainStyle.percentWidth;
+			if (_baseStyle.percentWidth != -1 && percentWidth == -1) {
+				percentWidth = _baseStyle.percentWidth;
 			}
-			if (_mainStyle.percentHeight != -1 && percentHeight == -1) {
-				percentHeight = _mainStyle.percentHeight;
+			if (_baseStyle.percentHeight != -1 && percentHeight == -1) {
+				percentHeight = _baseStyle.percentHeight;
 			}
-			if (_mainStyle.autoSizeSet) {
-				autoSize = _mainStyle.autoSize;
+			if (_baseStyle.autoSizeSet) {
+				autoSize = _baseStyle.autoSize;
 			}
 			
 			// set layout props from style
 			if (layout != null) {
-				if (_mainStyle.paddingLeft != -1) {
-					layout.padding.left = _mainStyle.paddingLeft;
+				if (_baseStyle.paddingLeft != -1) {
+					layout.padding.left = _baseStyle.paddingLeft;
 				}
-				if (_mainStyle.paddingTop != -1) {
-					layout.padding.top = _mainStyle.paddingTop;
+				if (_baseStyle.paddingTop != -1) {
+					layout.padding.top = _baseStyle.paddingTop;
 				}
-				if (_mainStyle.paddingRight != -1) {
-					layout.padding.right = _mainStyle.paddingRight;
+				if (_baseStyle.paddingRight != -1) {
+					layout.padding.right = _baseStyle.paddingRight;
 				}
-				if (_mainStyle.paddingBottom != -1) {
-					layout.padding.bottom = _mainStyle.paddingBottom;
+				if (_baseStyle.paddingBottom != -1) {
+					layout.padding.bottom = _baseStyle.paddingBottom;
 				}
-				if (_mainStyle.spacingX != -1) {
-					_layout.spacingX = _mainStyle.spacingX;
+				if (_baseStyle.spacingX != -1) {
+					_layout.spacingX = _baseStyle.spacingX;
 				}
-				if (_mainStyle.spacingY != -1) {
-					_layout.spacingY = _mainStyle.spacingY;
+				if (_baseStyle.spacingY != -1) {
+					_layout.spacingY = _baseStyle.spacingY;
 				}
 			}
 		}

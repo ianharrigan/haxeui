@@ -55,9 +55,9 @@ class ListSelector extends Button implements IDataComponent {
 	private override function preInitialize():Void {
 		super.preInitialize();
 		
-		if (_mainStyle != null) {
-			if (_mainStyle.selectionMethod != null) {
-				_method = _mainStyle.selectionMethod;
+		if (_baseStyle != null) {
+			if (_baseStyle.selectionMethod != null) {
+				_method = _baseStyle.selectionMethod;
 			}
 		}
 	}
@@ -79,9 +79,9 @@ class ListSelector extends Button implements IDataComponent {
 	public override function applyStyle():Void {
 		super.applyStyle();
 		
-		if (_mainStyle != null) {
-			if (_mainStyle.selectionMethod != null && _method == null) {
-				_method = _mainStyle.selectionMethod;
+		if (_baseStyle != null) {
+			if (_baseStyle.selectionMethod != null && _method == null) {
+				_method = _baseStyle.selectionMethod;
 			}
 		}
 	}

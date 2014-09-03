@@ -558,26 +558,26 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		// apply style to label
 		if (_label != null) {
 			var labelStyle:Style = new Style();
-			if (_mainStyle != null) {
-				labelStyle.fontName = _mainStyle.fontName;
-				labelStyle.fontSize = _mainStyle.fontSize;
-				labelStyle.fontEmbedded = _mainStyle.fontEmbedded;
-				labelStyle.fontBold = _mainStyle.fontBold;
-				labelStyle.fontItalic = _mainStyle.fontItalic;
-				labelStyle.fontUnderline = _mainStyle.fontUnderline;
-				labelStyle.color = _mainStyle.color;
-				labelStyle.textAlign = _mainStyle.textAlign;
+			if (_baseStyle != null) {
+				labelStyle.fontName = _baseStyle.fontName;
+				labelStyle.fontSize = _baseStyle.fontSize;
+				labelStyle.fontEmbedded = _baseStyle.fontEmbedded;
+				labelStyle.fontBold = _baseStyle.fontBold;
+				labelStyle.fontItalic = _baseStyle.fontItalic;
+				labelStyle.fontUnderline = _baseStyle.fontUnderline;
+				labelStyle.color = _baseStyle.color;
+				labelStyle.textAlign = _baseStyle.textAlign;
 			}
-			_label.mainStyle = labelStyle;
+			_label.baseStyle = labelStyle;
 		}
 		
-		if (_mainStyle != null) {
-			if (_mainStyle.icon != null) {
-				icon = _mainStyle.icon;
+		if (_baseStyle != null) {
+			if (_baseStyle.icon != null) {
+				icon = _baseStyle.icon;
 			}
 			
-			if (_mainStyle.iconPosition != null) {
-				iconPosition = _mainStyle.iconPosition;
+			if (_baseStyle.iconPosition != null) {
+				iconPosition = _baseStyle.iconPosition;
 			}
 		}
 	}

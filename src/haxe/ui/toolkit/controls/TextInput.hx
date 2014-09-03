@@ -152,7 +152,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		
 		// apply style to TextDisplay
 		if (_textDisplay != null) {
-			_textDisplay.style = mainStyle;
+			_textDisplay.style = _baseStyle;
 		}
 		/*
 		if (_textPlaceHolder != null) {

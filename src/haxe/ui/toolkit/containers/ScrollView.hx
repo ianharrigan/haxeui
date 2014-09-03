@@ -59,10 +59,10 @@ class ScrollView extends StateComponent {
 	private override function preInitialize():Void {
 		super.preInitialize();
 		
-		if (_mainStyle != null) {
-			_autoHideScrolls = _mainStyle.autoHideScrolls;
+		if (_baseStyle != null) {
+			_autoHideScrolls = _baseStyle.autoHideScrolls;
 			if (Reflect.getProperty(_layout, "inlineScrolls") != null) {
-				Reflect.setProperty(_layout, "inlineScrolls", _mainStyle.inlineScrolls);
+				Reflect.setProperty(_layout, "inlineScrolls", _baseStyle.inlineScrolls);
 			}
 		}
 	}
