@@ -117,6 +117,7 @@ MenuBar Button:down{backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b
 ListSelector,DateSelector{paddingLeft:8;paddingTop:5;paddingBottom:5;paddingRight:8;backgroundColor:0x606c88;backgroundColorGradientEnd:0x3f4c6b;color:0xFFFFFF;borderColor:0x495267;cornerRadius:3;borderSize:1;fontSize:13;fontName:"_sans";filter:dropShadow(2,45,0x808080,1,4,4,1,3);icon:"styles/gradient/arrow_down.png";iconPosition:"right";textAlign:"left";}
 ListSelector:over,DateSelector:over{backgroundColor:0x4b546a;backgroundColorGradientEnd:0x2c354b;color:0xFFFFFF;borderColor:0x363d4c;}
 ListSelector:down,DateSelector:down{backgroundColor:0x8C95A9;backgroundColorGradientEnd:0x767F95;color:0xFFFFFF;borderColor:0x363d4c;}
+ListSelector.dropUp:down,DateSelector.dropUp:down{backgroundColor:0x8C95A9;backgroundColorGradientEnd:0x767F95;color:0xFFFFFF;borderColor:0x363d4c;icon:"styles/gradient/arrow_up.png";}
 ListSelector:disabled,DateSelector:disabled{color:0xCCCCCC;backgroundColor:0x8C8C8C;backgroundColorGradientEnd:0x6C6C6C;borderColor:0x666666;icon:"styles/gradient/arrow_down_disabled.png";}
 ListSelector.alternate{backgroundColor:0xf4f5f5;backgroundColorGradientEnd:0xdfdddd;color:0x363d4c;borderColor:0xdfdddd;icon:"styles/gradient/arrow_down_dark.png";}
 ListSelector.alternate:over{backgroundColor:0xa5b8da;backgroundColorGradientEnd:0x7089b3;borderColor:0x7d99ca;color:0xFFFFFF;icon:"styles/gradient/arrow_down.png";}

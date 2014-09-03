@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls.selection;
 
+import haxe.ui.toolkit.core.Screen;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 import openfl.filters.DropShadowFilter;
@@ -154,7 +155,13 @@ class ListSelector extends Button implements IDataComponent {
 			var listHeight:Float = n * _list.itemHeight + (_list.layout.padding.top + _list.layout.padding.bottom);
 			_list.height = listHeight;
 			_list.setSelectedIndexNoEvent(_selectedIndex);
-
+			if (_list.stageY + listHeight > Screen.instance.height) {
+				_list.y = this.stageY - _list.height;
+				this.styleName = "dropUp";
+			} else {
+				this.styleName = null;
+			}
+			
 			var transition:String = Toolkit.getTransitionForClass(ListSelector);
 			if (transition == "slide") {
 				_list.clipHeight = 0;

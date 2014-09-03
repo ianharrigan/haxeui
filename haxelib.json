@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.4.11",
-    "releasenote"  : "Improved component creation time",
+    "version"      : "1.4.12",
+    "releasenote"  : "Fixed dropdowns to 'drop up' when list/cal is offscreen",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

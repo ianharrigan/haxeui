@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<absolute width="100%" height="100%">
+		<listSelector x="10" y="10" text="Default Theme" width="140">
+			<json>[{"text":"Default Theme", "id": "default"},{"text":"Gradient Theme", "id":"gradient"}]</json>
+		</listSelector>
+		
+		<listSelector x="10" y="550" text="Default Theme" width="140">
+			<json>[{"text":"Default Theme", "id": "default"},{"text":"Gradient Theme", "id":"gradient"}]</json>
+		</listSelector>
+		
+		<dateSelector x="150" y="10" width="140" />
+
+		<dateSelector x="150" y="550" width="140" />
+</absolute>
+<!--
 <vbox width="100%" height="100%" style="spacing:2;">
+	<image resource="img/slinky_small.jpg" width="50" height="50" autoSize="false" stretch="true" />
 	<bob />
 	<menubar>
 		<menubutton text="Application" id="menuApplication">
@@ -115,3 +130,4 @@
 		</vbox>
 	</tabview>
 </vbox>
+	-->

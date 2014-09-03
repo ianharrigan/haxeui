@@ -871,6 +871,14 @@ ListSelector:down, DateSelector:down {
 	borderColor: 0x363d4c;
 }
 
+ListSelector.dropUp:down, DateSelector.dropUp:down {
+	backgroundColor: 0x8C95A9;
+	backgroundColorGradientEnd: 0x767F95;
+	color: 0xFFFFFF;
+	borderColor: 0x363d4c;
+	icon: "styles/gradient/arrow_up.png";
+}
+
 ListSelector:disabled, DateSelector:disabled {
 	color: 0xCCCCCC;
 	backgroundColor: 0x8C8C8C;
