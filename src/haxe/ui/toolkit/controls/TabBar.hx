@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.core.base.VerticalAlign;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 import haxe.ui.toolkit.containers.HBox;
@@ -81,11 +82,20 @@ class TabBar extends ScrollView {
 		button.text = text;
 		button.toggle = true;
 		button.id = "tabButton";
+		button.verticalAlign = VerticalAlign.BOTTOM;
 		button.allowSelection = false;
 		_content.addChild(button);
 		button.selected = (_content.children.length - 1 == _selectedIndex);
 		button.addEventListener(UIEvent.CLICK, tabButtonClick, false, 1);
 		button.addEventListener(UIEvent.GLYPH_CLICK, tabGlyphClick);
+		button.addEventListener(Event.ADDED_TO_STAGE, function(e) {
+			var cy:Float = this.height;
+			var newCY:Float = button.height + this.style.paddingTop + this.style.paddingBottom;
+			if (newCY > cy) {
+				this.height = newCY;
+			}
+			button.removeEventListenerType(Event.ADDED_TO_STAGE);
+		});
 		return button;
 	}
 	

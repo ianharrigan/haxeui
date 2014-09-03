@@ -50,6 +50,7 @@ class TabView extends Component {
 	public override function initialize():Void {
 		super.initialize();
 		selectedIndex = 0;
+		
 	}
 	
 	public override function addChild(child:IDisplayObject):IDisplayObject {
@@ -62,7 +63,7 @@ class TabView extends Component {
 			if (Std.is(child, Component)) {
 				label = cast(child, Component).text;
 			}
-			_tabs.addTab(label);
+			_tabs.addTab(label).styleName = child.id;
 		}
 		return r;
 	}
@@ -77,7 +78,7 @@ class TabView extends Component {
 			if (Std.is(child, Component)) {
 				label = cast(child, Component).text;
 			}
-			_tabs.addTab(label);
+			_tabs.addTab(label).styleName = child.id;
 		}
 		return r;
 	}
