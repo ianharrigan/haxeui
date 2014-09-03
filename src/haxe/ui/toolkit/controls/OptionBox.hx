@@ -170,13 +170,13 @@ class OptionBox extends Component implements IClonable<OptionBox> {
 		// apply style to label
 		if (_label != null) {
 			var labelStyle:Style = new Style();
-			if (_style != null) {
-				labelStyle.fontName = _style.fontName;
-				labelStyle.fontSize = _style.fontSize;
-				labelStyle.fontEmbedded = _style.fontEmbedded;
-				labelStyle.color = _style.color;
+			if (_mainStyle != null) {
+				labelStyle.fontName = _mainStyle.fontName;
+				labelStyle.fontSize = _mainStyle.fontSize;
+				labelStyle.fontEmbedded = _mainStyle.fontEmbedded;
+				labelStyle.color = _mainStyle.color;
 			}
-			_label.style = labelStyle;
+			_label.mainStyle = labelStyle;
 		}
 	}
 }

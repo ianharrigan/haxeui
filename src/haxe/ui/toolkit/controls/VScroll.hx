@@ -45,8 +45,8 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 	private override function preInitialize():Void {
 		super.preInitialize();
 		
-		if (_style != null) {
-			_hasButtons = _style.hasButtons;
+		if (_mainStyle != null) {
+			_hasButtons = _mainStyle.hasButtons;
 		}
 	}
 	

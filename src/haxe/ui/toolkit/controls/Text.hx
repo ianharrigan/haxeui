@@ -104,7 +104,7 @@ class Text extends StateComponent implements IClonable<Text> {
 
 		// apply style to TextDisplay
 		if (_textDisplay != null) {
-			_textDisplay.style = style;
+			_textDisplay.style = mainStyle;
 			if (autoSize == true) {
 				width = _textDisplay.display.width;
 				height = _textDisplay.display.height;

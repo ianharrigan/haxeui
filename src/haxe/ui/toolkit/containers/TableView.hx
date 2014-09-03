@@ -31,7 +31,7 @@ class TableView extends Component implements IDataComponent {
 		_columnDefs = new TableViewColumnDefs();
 		dataSource = new ArrayDataSource();
 		_scrollView = new ScrollView();
-		_scrollView.style.borderSize = 0;
+		_scrollView.mainStyle.borderSize = 0;
 		
 		_selectedItems = new Array<TableViewRow>();
 		
@@ -499,7 +499,7 @@ class TableViewRow extends HBox implements IStateComponent {
 		if (_state != value) {
 			_state = value;
 			if (retrieveStyle(_state) != null) {
-				style = retrieveStyle(_state);
+				mainStyle = retrieveStyle(_state);
 			} else {
 				invalidate(InvalidationFlag.STATE);
 			}

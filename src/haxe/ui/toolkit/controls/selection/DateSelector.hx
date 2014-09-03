@@ -28,9 +28,9 @@ class DateSelector extends Button {
 	private override function preInitialize():Void {
 		super.preInitialize();
 		
-		if (_style != null) {
-			if (_style.selectionMethod != null) {
-				_method = _style.selectionMethod;
+		if (_mainStyle != null) {
+			if (_mainStyle.selectionMethod != null) {
+				_method = _mainStyle.selectionMethod;
 			}
 		}
 	}
@@ -52,9 +52,9 @@ class DateSelector extends Button {
 	public override function applyStyle():Void {
 		super.applyStyle();
 		
-		if (_style != null) {
-			if (_style.selectionMethod != null && _method == null) {
-				_method = _style.selectionMethod;
+		if (_mainStyle != null) {
+			if (_mainStyle.selectionMethod != null && _method == null) {
+				_method = _mainStyle.selectionMethod;
 			}
 		}
 	}

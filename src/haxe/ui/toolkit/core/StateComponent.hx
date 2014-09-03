@@ -71,7 +71,7 @@ class StateComponent extends Component implements IStateComponent implements ICl
 		if (_state != value) {
 			_state = value;
 			if (retrieveStyle(_state) != null) {
-				style = retrieveStyle(_state);
+				mainStyle = retrieveStyle(_state);
 			} else {
 				invalidate(InvalidationFlag.STATE);
 			}
