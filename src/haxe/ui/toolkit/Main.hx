@@ -19,9 +19,8 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
-			root.addChild(Toolkit.processXmlResource("assets/test2.xml"));
+			//root.addChild(Toolkit.processXmlResource("assets/test2.xml"));
 			
-			/*
 			var button:Button = new Button();
 			button.x = 100;
 			button.y = 100;
@@ -33,7 +32,6 @@ class Main {
 			button.style.iconPosition = "top";
 			button.text = "Styled";
 			root.addChild(button);
-			*/
 		});
 	}
 }

@@ -37,7 +37,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		
 		var rc:Rectangle = new Rectangle(0, 0, _width, _height); // doesnt like 0 widths/heights
-		StyleHelper.paintStyle(graphics, style, rc);
+		StyleHelper.paintStyle(graphics, _baseStyle, rc);
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
@@ -142,11 +142,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			_inlineStyle = new Style();
 			_inlineStyle.target = this;
 		}
-		var temp:Style = new Style();
-		temp.merge(_baseStyle);
-		temp.merge(_inlineStyle);
-		temp.target = this;
-		return temp;
+		return _inlineStyle;
 	}
 	
 	private function set_style(value:Style):Style {
@@ -202,7 +198,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (_baseStyle.alpha != -1) {
 				_sprite.alpha = _baseStyle.alpha;
 			} else {
-				_baseStyle.alpha = 1;
+				_sprite.alpha = 1;
 			}
 			
 			if (_baseStyle.horizontalAlignment != null) {

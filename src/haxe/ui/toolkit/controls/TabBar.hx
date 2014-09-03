@@ -90,7 +90,7 @@ class TabBar extends ScrollView {
 		button.addEventListener(UIEvent.GLYPH_CLICK, tabGlyphClick);
 		button.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			var cy:Float = this.height;
-			var newCY:Float = button.height + this.style.paddingTop + this.style.paddingBottom;
+			var newCY:Float = button.height + this.baseStyle.paddingTop + this.baseStyle.paddingBottom;
 			if (newCY > cy) {
 				this.height = newCY;
 			}
