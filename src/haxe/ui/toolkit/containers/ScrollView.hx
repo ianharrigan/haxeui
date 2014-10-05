@@ -510,6 +510,7 @@ class ScrollView extends StateComponent {
 		var created:Bool = false;
 		if (_hscroll == null) {
 			_hscroll = new HScroll();
+			_hscroll.id = "hscroll";
 			_hscroll.percentWidth = 100;
 			_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
 			if (_showHScroll == false) {
@@ -535,6 +536,7 @@ class ScrollView extends StateComponent {
 		var created:Bool = false;
 		if (_vscroll == null) { // create vscroll
 			_vscroll = new VScroll();
+			_vscroll.id = "vscroll";
 			_vscroll.percentHeight = 100;
 			_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
 			if (_showVScroll == false) {
