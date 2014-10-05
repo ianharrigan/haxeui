@@ -7,4 +7,5 @@ interface IComponent extends IStyleableDisplayObject {
 	public var clipContent(get, set):Bool;
 	public var disabled(get, set):Bool;
 	public var userData(default, default):Dynamic;
+	public function addScriptlet(scriptlet:String):Void;
 }

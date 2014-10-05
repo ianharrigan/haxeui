@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<vbox style="padding:10;border-size:1">
+	<style>
+		.standardButton {
+			width: 50;
+			height: 50;
+			autoSize: false;
+		}
+	</style>
+	<script>
+		var number = 0;
+		var operation;
+		var clear = true;
+		function addDigit(digit) {
+			if (clear == true) {
+				display.text = "";
+				clear = false;
+			}
+			display.text += digit;
+		}
+		
+		function performOperation(op) {
+			if (display.text.length == 0) {
+				return;
+			}
+			
+			if (operation == null) {
+				number = display.text;
+				operation = op;
+				clear = true;
+			} else {
+				calc();
+				performOperation(op);
+			}
+		}
+		
+		function calc() {
+			if (display.text.length == 0) {
+				return;
+			}
+			
+			if (operation != null) {
+				var c;
+				if (operation == "+") {
+					c = Std.parseFloat(number) + Std.parseFloat(display.text);
+				} else if (operation == "-") {
+					c = Std.parseFloat(number) - Std.parseFloat(display.text);
+				} else if (operation == "*") {
+					c = Std.parseFloat(number) * Std.parseFloat(display.text);
+				} else if (operation == "/") {
+					c = Std.parseFloat(number) / Std.parseFloat(display.text);
+				}
+
+				number = c;
+				operation = null;
+				display.text = "" + c;
+				clear = true;
+			}
+		}
+	</script>
+	<textinput id="display" style="width:100%;height:50;font-size:22;text-align:right" text="0" />
+	<hbox>
+		<vbox>
+			<grid columns="4">
+				<button text="7" styleName="standardButton" onClick="addDigit(7)" />
+				<button text="8" styleName="standardButton" onClick="addDigit(8)"/>
+				<button text="9" styleName="standardButton" onClick="addDigit(9)"/>
+				<button text="/" styleName="standardButton" onClick="performOperation('/')"/>
+				
+				<button text="4" styleName="standardButton" onClick="addDigit(4)"/>
+				<button text="5" styleName="standardButton" onClick="addDigit(5)"/>
+				<button text="6" styleName="standardButton" onClick="addDigit(6)"/>
+				<button text="*" styleName="standardButton" onClick="performOperation('*')"/>
+				
+				<button text="1" styleName="standardButton" onClick="addDigit(1)"/>
+				<button text="2" styleName="standardButton" onClick="addDigit(2)"/>
+				<button text="3" styleName="standardButton" onClick="addDigit(3)"/>
+				<button text="-" styleName="standardButton" onClick="performOperation('-')"/>
+			</grid>
+			
+			<hbox>
+				<button text="0" styleName="standardButton" style="width:105;" onClick="addDigit(0)"/>
+				<button text="." styleName="standardButton" style="width:50;" onClick="display.text += '.';"/>
+				<button text="+" styleName="standardButton" style="width:50;" onClick="performOperation('+')"/>
+			</hbox>
+		</vbox>
+		<vbox>
+			<spacer styleName="standardButton" style="height:105;"/>
+			<button text="=" styleName="standardButton" style="height:105;" onClick="calc();" />
+		</vbox>
+	</hbox>
+	
+</vbox>

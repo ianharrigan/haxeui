@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.hscript.ScriptInterp;
 import openfl.events.MouseEvent;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
@@ -30,6 +31,7 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 		if (Std.is(this, IDraggable)) {
 			addEventListener(MouseEvent.MOUSE_DOWN, _onComponentMouseDown);
 		}
+		initScriplet();
 	}
 	
 	private override function postInitialize():Void { 
@@ -244,6 +246,7 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 				|| type == MouseEvent.CLICK
 		);
 	}
+	
 	//******************************************************************************************
 	// Drag functions
 	//******************************************************************************************
@@ -268,5 +271,116 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	private function _onComponentMouseMove(event:MouseEvent):Void {
 		this.x = event.stageX - mouseDownPos.x;
 		this.y = event.stageY - mouseDownPos.y;
+	}
+	
+	//******************************************************************************************
+	// Scriptlet functions
+	//******************************************************************************************
+	public function addScriptlet(scriptlet:String):Void {
+		var found = false;
+		var item:Component = this;
+		while (item != null) {
+			if (item.scriptletSource != null) {
+				found = true;
+				break;
+			}
+			item = cast item.parent;
+		}
+		if (found == false) {
+			item = this;
+		}
+		if (item != null) {
+			if (item.scriptletSource == null) {
+				item.scriptletSource = "";
+			}
+			item.scriptletSource += scriptlet;
+		}
+	}
+	
+	private function findInterp():ScriptInterp {
+		var found = false;
+		var item:Component = this;
+		while (item != null) {
+			if (item._interp != null) {
+				found = true;
+				break;
+			}
+			item = cast item.parent;
+		}
+		if (found == false) {
+			return null;
+		}
+		return item._interp;
+	}
+	
+	public function executeScriptletExpr(expr:String) {
+		try {
+			var parser = new hscript.Parser();
+			var line = parser.parseString(expr);
+			findInterp().expr(line);
+		} catch (e:Dynamic) {
+			trace("Problem executing scriptlet: " + e);
+		}
+	}
+	
+	public function addScriptletEventHandler(event:String, scriptlet:String):Void {
+		event = UIEvent.PREFIX + event;
+		addEventListener(event, function(e) {
+			executeScriptletExpr(scriptlet);
+		});
+	}
+	
+	private var _scriptletSource:String;
+	public var scriptletSource(get, set):String;
+	private function get_scriptletSource():String {
+		return _scriptletSource;
+	}
+	private function set_scriptletSource(value:String):String {
+		_scriptletSource = value;
+		return value;
+	}
+	
+	private var _interp:ScriptInterp;
+	private function initScriplet():Void {
+		if (_scriptletSource != null) { 
+			try {
+				var parser = new hscript.Parser();
+				var program = parser.parseString(_scriptletSource);
+				_interp = new ScriptInterp();
+				
+				var comps:Array<IComponent> = namedComponents;
+				for (comp in comps) {
+					_interp.variables.set(comp.id, comp);
+				}
+
+				_interp.variables.set("Std", Std);
+				_interp.variables.set("Math", Math);
+				
+				_interp.execute(program);
+			} catch (e:Dynamic) {
+				trace("Problem running script: " + e);
+			}
+		}
+	}
+	
+	public var namedComponents(get, null):Array<IComponent>;
+	private function get_namedComponents():Array<IComponent> {
+		var list:Array<IComponent> = new Array<IComponent>();
+		addNamedComponentsFrom(this, list);
+		return list;
+	}
+	
+	private static function addNamedComponentsFrom(parent:IComponent, list:Array<IComponent>):Void {
+		if (parent == null) { 
+			return;
+		}
+		
+		if (parent.id != null) {
+			list.push(parent);
+		}
+		
+		for (child in parent.children) {
+			addNamedComponentsFrom(cast(child, IComponent), list);
+		}
 	}
 }

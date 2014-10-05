@@ -1,4 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
+
+<vbox id="vbox">
+	<script>
+		function test1() {
+			trace("Running test 1");
+			button1.text = "test";
+		}
+		//trace("Script started 1");
+	</script>
+	<hbox id="hbox1">
+		<script>
+			function test2() {
+				trace("Running test 2");
+			}
+			//trace("Script started 2");
+		</script>
+		<button id="button1" text="Button 1" onClick="test3();" />
+		<textinput id="text1" text="Text 1" />
+	</hbox>
+	
+	<hbox id="hbox2">
+		<script>
+			function test3() {
+				trace("Running test 3");
+				text1.text = "DONE!";
+			}
+			//trace("Script started 3");
+		</script>
+		<button id="button2" text="Button 2" onClick="text2.text = 'bobby!';" />
+		<textinput id="text2" text="Text 2" />
+	</hbox>
+</vbox>
+
+<!--button text="Test" x="100" y="100" disabled="true" id="test" /-->
+
+<!--
+<vbox width="200">
+<scrollView id="myScrollview" width="200" height="200">
+	<vbox width="100%">
+		<button id="button1" text="Button 1" width="100%" />
+		<button id="button2" text="Button 2" width="100%" />
+		<button id="button3" text="Button 3" width="100%" />
+		<button id="button4" text="Button 4" width="100%" />
+		<button id="button5" text="Button 5" width="100%" />
+		<button id="button6" text="Button 6" width="100%" />
+		<button id="button7" text="Button 7" width="100%" />
+	</vbox>
+</scrollView>
+<button text="Bob" width="100%" autoSize="true" />
+</vbox>
+-->
+
+<!--
 <tabview id="myTabs" width="100%" height="100%">
 	<style>
 		#myTabs #tabButton {
@@ -31,7 +85,7 @@
 		<button text="Button 4"/>
 	</vbox>
 </tabview>
-
+-->
 <!--
 <absolute width="100%" height="100%">
 		<listSelector x="10" y="10" text="Default Theme" width="140">

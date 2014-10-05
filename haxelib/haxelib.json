@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.4.14",
-    "releasenote"  : "Fixed problems with styling from code",
+    "version"      : "1.5.0",
+    "releasenote"  : "Adding ability to user scripts in xml",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

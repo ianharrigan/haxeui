@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ui.toolkit.core.interfaces.IComponent;
 import openfl.Lib;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.controls.Menu;
@@ -90,6 +91,7 @@ class Toolkit {
 		var result:Dynamic = null;
 		
 		result = processXmlNode(xml.firstElement());
+		postProcessXmlNode(xml.firstElement(), result);
 		
 		return cast result;
 	}
@@ -130,17 +132,6 @@ class Toolkit {
 				}
 			}
 		} else if (nodeName == "script") {
-			var scriptResource = node.get("resource");
-			var scriptData:String = "";
-			if (scriptResource != null) {
-				scriptData += ResourceManager.instance.getText(scriptResource);
-			}
-			var scriptNodeData:String = node.firstChild().nodeValue;
-			if (scriptNodeData != null) {
-				scriptNodeData = StringTools.trim(scriptNodeData);
-				scriptData += "\n\n" + scriptNodeData;
-			}
-			ScriptManager.instance.addScript(scriptData);
 		} else if (nodeName == "style") {
 			var p:IXMLProcessor = new StyleProcessor();
 			result = p.process(node);
@@ -167,6 +158,56 @@ class Toolkit {
 			if (Std.is(childResult, IDisplayObject) && Std.is(result, IDisplayObjectContainer)) {
 				cast(result, IDisplayObjectContainer).addChild(cast(childResult, IDisplayObject));
 			}
+		}
+		
+		return cast result;
+	}
+	
+	private static function postProcessXmlNode<T>(node:Xml, parentObject:Dynamic = null):Null<T> {
+		if (node == null) {
+			return null;
+		}
+		
+		var result:Dynamic = null; 
+		var nodeName:String = node.nodeName;
+		var n:Int = nodeName.indexOf(":");
+		if (n != -1) {
+			nodeName = nodeName.substr(n + 1, nodeName.length);
+		}
+		nodeName = nodeName.toLowerCase();
+
+		var condition:String = node.get("condition");
+		if (condition != null) {
+			var parser = new hscript.Parser();
+			var program = parser.parseString(condition);
+			var interp = new hscript.Interp();
+			var clientWrapper:ClientWrapper = new ClientWrapper();
+			interp.variables.set("Client", clientWrapper);
+			var conditionResult:Bool = interp.execute(program);
+			if (conditionResult == false) {
+				return null;
+			}
+		}
+		
+		if (nodeName == "script") {
+			var scriptResource = node.get("resource");
+			var scriptData:String = "";
+			if (scriptResource != null) {
+				scriptData += ResourceManager.instance.getText(scriptResource);
+				scriptData += "\n\n";
+			}
+			var scriptNodeData:String = node.firstChild().nodeValue;
+			if (scriptNodeData != null) {
+				scriptNodeData = StringTools.trim(scriptNodeData);
+				scriptData += "\n\n" + scriptNodeData;
+			}
+			if (parentObject != null && Std.is(parentObject, IComponent)) {
+				cast(parentObject, IComponent).addScriptlet(scriptData);
+			}
+		}
+		
+		for (child in node.elements()) {
+			var childResult = postProcessXmlNode(child, parentObject);
 		}
 		
 		return cast result;
