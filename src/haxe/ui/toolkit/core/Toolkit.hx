@@ -247,6 +247,10 @@ class Toolkit {
 		_transitionRegister.set(className, transition);
 	}
 	
+	public static function addScriptletClass(name:String, cls:Class<Dynamic>):Void {
+		ScriptManager.instance.addClass(name, cls);
+	}
+	
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************

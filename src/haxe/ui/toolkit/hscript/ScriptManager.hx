@@ -13,32 +13,34 @@ class ScriptManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	private var _scripts:Array<String>;
+	private var _defaultClasses:Map<String, Class<Dynamic>>;
 	
 	public function new() {
-		_scripts = new Array<String>();
+		_defaultClasses = new Map < String, Class<Dynamic> > ();
+		_defaultClasses.set("Std", Std);
+		_defaultClasses.set("Math", Math);
+		_defaultClasses.set("Client", ClientWrapper);
+	}
+
+	public var classes(get, null):Map<String, Class<Dynamic>>;
+	private function get_classes():Map<String, Class<Dynamic>> {
+		return _defaultClasses;
 	}
 	
-	public function addScript(script:String):Void {
-		_scripts.push(script);
+	public function addClass(name:String, cls:Class<Dynamic>):Void {
+		_defaultClasses.set(name, cls);
 	}
 	
 	public function executeScript<T>(script:String):Null<T> {
 		var fullScript:String = "";
-		for (s in _scripts) {
-			fullScript += s + "\n\n";
-		}
 		fullScript += script;
 		var retVal = null;
 		
 		try {
 			var parser = new hscript.Parser();
 			var program = parser.parseString(fullScript);
-			var interp = new hscript.Interp();
+			var interp = new ScriptInterp();
 			
-			var clientWrapper:ClientWrapper = new ClientWrapper();
-			interp.variables.set("Client", clientWrapper);
-
 			retVal = interp.execute(program);
 		} catch (e:Dynamic) {
 			//trace("Problem running script: " + e);

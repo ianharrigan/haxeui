@@ -353,9 +353,6 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 					_interp.variables.set(comp.id, comp);
 				}
 
-				_interp.variables.set("Std", Std);
-				_interp.variables.set("Math", Math);
-				
 				_interp.execute(program);
 			} catch (e:Dynamic) {
 				trace("Problem running script: " + e);

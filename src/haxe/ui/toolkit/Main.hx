@@ -7,6 +7,7 @@ import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.hscript.ClientWrapper;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 
@@ -21,10 +22,11 @@ class Main {
 		Toolkit.theme = "gradient";
 		//Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
+		//Toolkit.addScriptletClass("Client", ClientWrapper);
 		Toolkit.init();
 		
 		Toolkit.openFullscreen(function(root:Root) {
-			var view:IDisplayObject = Toolkit.processXmlResource("assets/calc.xml");
+			var view:IDisplayObject = Toolkit.processXmlResource("assets/test2.xml");
 			root.addChild(view);
 			//root.addChild(new TestController().view);
 		});

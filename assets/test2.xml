@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-
-<vbox id="vbox">
+<hbox>
 	<script>
-		function test1() {
-			trace("Running test 1");
-			button1.text = "test";
+		function foo() {
+			text1.text = "bar";
 		}
-		//trace("Script started 1");
+		
+		trace(Std.parseInt("33"));
+		trace(Client.screenWidth);
 	</script>
-	<hbox id="hbox1">
-		<script>
-			function test2() {
-				trace("Running test 2");
-			}
-			//trace("Script started 2");
-		</script>
-		<button id="button1" text="Button 1" onClick="test3();" />
-		<textinput id="text1" text="Text 1" />
-	</hbox>
+	<textinput id="text1" text="Text 1" />
+	<button id="button2" text="Button 1" onClick="foo();" />
 	
-	<hbox id="hbox2">
-		<script>
-			function test3() {
-				trace("Running test 3");
-				text1.text = "DONE!";
-			}
-			//trace("Script started 3");
-		</script>
-		<button id="button2" text="Button 2" onClick="text2.text = 'bobby!';" />
-		<textinput id="text2" text="Text 2" />
-	</hbox>
-</vbox>
+	<button id="button1" text="Button 1" onClick="button1.text='bar';" />
+</hbox>
 
 <!--button text="Test" x="100" y="100" disabled="true" id="test" /-->
 
