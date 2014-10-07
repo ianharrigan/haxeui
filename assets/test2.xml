@@ -9,10 +9,10 @@
 		trace(Std.parseInt("33"));
 		trace(Client.screenWidth);
 	</script>
-	<textinput id="text1" text="Text 1" />
-	<button id="button2" text="Button 1" onClick="foo();" />
+	<textinput id="text-1" text="Text 1" />
+	<button id="button-2" text="Button 1" onClick="foo();" />
 	
-	<button id="button1" text="Button 1" onClick="button1.text='bar';" />
+	<button id="button-1" text="Button 1" onClick="button1.text='bar';" />
 </hbox>
 
 <!--button text="Test" x="100" y="100" disabled="true" id="test" /-->

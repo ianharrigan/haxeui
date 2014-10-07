@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.hscript.ScriptInterp;
+import haxe.ui.toolkit.util.StringUtil;
 import openfl.events.MouseEvent;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
@@ -350,7 +351,8 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 				
 				var comps:Array<IComponent> = namedComponents;
 				for (comp in comps) {
-					_interp.variables.set(comp.id, comp);
+					var safeId = StringUtil.capitalizeHyphens(comp.id);
+					_interp.variables.set(safeId, comp);
 				}
 
 				_interp.execute(program);

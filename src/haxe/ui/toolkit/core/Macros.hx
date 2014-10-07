@@ -400,13 +400,14 @@ class Macros {
 		
 		var n:Int = 1;
 		for (id in types.keys()) {
+			var safeId:String = StringUtil.capitalizeHyphens(id);
 			var cls:String = types.get(id);
 			var classArray:Array<String> = cls.split(".");
 			var className = classArray.pop();
 	        var ttype = TPath( { pack : classArray, name : className, params : [], sub : null } );
-			fields.push( { name : id, doc : null, meta : [], access : [APublic], kind : FVar(ttype, null), pos : pos } );
+			fields.push( { name : safeId, doc : null, meta : [], access : [APublic], kind : FVar(ttype, null), pos : pos } );
 			
-			var e:Expr = Context.parseInlineString("this." + id + " = getComponentAs(\"" + id + "\", " + cls + ")", Context.currentPos());
+			var e:Expr = Context.parseInlineString("this." + safeId + " = getComponentAs(\"" + id + "\", " + cls + ")", Context.currentPos());
 			ctor.expr = switch(ctor.expr.expr) {
 				case EBlock(el): macro $b{insertExpr(el, n, e)};
 				case _: macro $b { insertExpr([ctor.expr], n, e) }
