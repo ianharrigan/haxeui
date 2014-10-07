@@ -1,4 +1,4 @@
-<ui:vbox xmlns:ui="haxeui::ui">
-	<ui:text text="Hello World from XML!" id="label" />
-	<ui:button text="Click Me!" id="button" />
-</ui:vbox>
+<vbox>
+	<text text="Hello World from XML!" id="label" />
+	<button text="Click Me!" id="button" />
+</vbox>

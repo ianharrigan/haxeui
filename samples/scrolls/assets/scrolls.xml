@@ -1,19 +1,19 @@
-<ui:vbox width="100%" height="100%" xmlns:ui="haxeui::ui">
-	<ui:hscroll pos="25" />
-	<ui:hprogress pos="75" />
-	<ui:hslider pos="50" />
+<vbox width="100%" height="100%" xmlns:ui="haxe:ui">
+	<hscroll pos="25" />
+	<hprogress pos="75" />
+	<hslider pos="50" />
 
-	<ui:hscroll pos="5" height="50" width="100%" max="10" pageSize="5" />
-	<ui:hprogress pos="75" height="50" width="100%" />
-	<ui:hslider pos="50" height="50" width="100%" />
+	<hscroll pos="5" height="50" width="100%" max="10" pageSize="5" />
+	<hprogress pos="75" height="50" width="100%" />
+	<hslider pos="50" height="50" width="100%" />
 	
-	<ui:hbox width="100%" height="100%">
-		<ui:vscroll pos="25" />
-		<ui:vprogress pos="75" />
-		<ui:vslider pos="50" />
+	<hbox width="100%" height="100%">
+		<vscroll pos="25" />
+		<vprogress pos="75" />
+		<vslider pos="50" />
 		
-		<ui:vscroll pos="5" width="50" height="100%" max="10" pageSize="5" />
-		<ui:vprogress pos="75" width="50" height="100%" />
-		<ui:vslider pos="50" width="50" height="100%" />
-	</ui:hbox>
-</ui:vbox>
+		<vscroll pos="5" width="50" height="100%" max="10" pageSize="5" />
+		<vprogress pos="75" width="50" height="100%" />
+		<vslider pos="50" width="50" height="100%" />
+	</hbox>
+</vbox>

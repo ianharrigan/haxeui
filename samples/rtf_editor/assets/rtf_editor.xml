@@ -1,37 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<ui:rtfview width= "100%" height="100%" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
-	<style:css>
-		RTFView #bold {
-			icon: assets/rtfview/edit-bold.png;
-		}
-		
-		RTFView #italic {
-			icon: assets/rtfview/edit-italic.png;
-		}
-
-		RTFView #underline {
-			icon: assets/rtfview/edit-underline.png;
-		}
-
-		RTFView #bullet {
-			icon: assets/rtfview/edit-list.png;
-		}
-
-		RTFView #alignLeft {
-			icon: assets/rtfview/edit-alignment-left.png;
-		}
-
-		RTFView #alignCenter {
-			icon: assets/rtfview/edit-alignment-center.png;
-		}
-
-		RTFView #alignRight {
-			icon: assets/rtfview/edit-alignment-right.png;
-		}
-
-		RTFView #alignJustify {
-			icon: assets/rtfview/edit-alignment-justify.png;
-		}
-	</style:css>
-</ui:rtfview>
+<rtfview width= "100%" height="100%">
+</rtfview>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:tabview width="100%" height="100%" id="main" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
-	<style:css>
+<tabview width="100%" height="100%" id="main" xmlns:ui="haxe:ui" xmlns:style="haxe:style">
+	<style>
 		TabBar #tabButton {
 			icon: assets/fav_16.png
 		}
-	</style:css>
+	</style>
 	
-	<ui:vbox text="Tab 1">
-		<ui:button text="Button 1" />
-	</ui:vbox>
-	<ui:vbox text="Tab 2">
-		<ui:button text="Button 2" />
-	</ui:vbox>
-	<ui:vbox text="Tab 3">
-		<ui:button text="Button 3" />
-	</ui:vbox>
-	<ui:vbox text="Tab 4">
-		<ui:button text="Button 4" />
-	</ui:vbox>
-</ui:tabview>
+	<vbox text="Tab 1">
+		<button text="Button 1" />
+	</vbox>
+	<vbox text="Tab 2">
+		<button text="Button 2" />
+	</vbox>
+	<vbox text="Tab 3">
+		<button text="Button 3" />
+	</vbox>
+	<vbox text="Tab 4">
+		<button text="Button 4" />
+	</vbox>
+</tabview>

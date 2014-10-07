@@ -6,10 +6,11 @@ import haxe.ui.toolkit.controls.Text;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.core.Macros;
+import haxe.ui.toolkit.themes.GradientTheme;
 
 class Main {
 	public static function main() {
-		Macros.addStyleSheet("../../assets/styles/gradient/gradient.css");
+		Toolkit.theme = new GradientTheme();
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			root.addChild(new TabsController().view);

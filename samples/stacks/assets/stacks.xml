@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox width="100%" height="100%" xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
-	<style:css>
+<vbox width="100%" height="100%" xmlns:ui="haxe:ui" xmlns:style="haxe:style">
+	<style>
 		#stack1 {
 			backgroundColor: 0xCC0000;
 		}
-	</style:css>
-	<ui:stack width="100%" height="100%" id="stacks">
+	</style>
+	<stack width="100%" height="100%" id="stacks">
 		
-		<ui:vbox width="100%" height="100%" id="stack1">
-			<ui:button text="Stack 1"/>
-			<ui:image resource="assets/slinky_small.jpg" />
-		</ui:vbox>
+		<vbox width="100%" height="100%" id="stack1">
+			<button text="Stack 1"/>
+			<image resource="assets/slinky_small.jpg" />
+		</vbox>
 
-		<ui:hbox width="100%" height="100%" id="stack2">
-			<ui:button text="Stack 2"/>
-			<ui:image resource="assets/slinky_small.jpg" />
-		</ui:hbox>
+		<hbox width="100%" height="100%" id="stack2">
+			<button text="Stack 2"/>
+			<image resource="assets/slinky_small.jpg" />
+		</hbox>
 
-		<ui:vbox width="100%" height="100%" id="stack3">
-			<ui:image resource="assets/slinky_small.jpg" />
-			<ui:button text="Stack 3"/>
-		</ui:vbox>
+		<vbox width="100%" height="100%" id="stack3">
+			<image resource="assets/slinky_small.jpg" />
+			<button text="Stack 3"/>
+		</vbox>
 
-		<ui:hbox width="100%" height="100%" id="stack4">
-			<ui:image resource="assets/slinky_small.jpg" />
-			<ui:button text="Stack 4"/>
-		</ui:hbox>
+		<hbox width="100%" height="100%" id="stack4">
+			<image resource="assets/slinky_small.jpg" />
+			<button text="Stack 4"/>
+		</hbox>
 		
-	</ui:stack>
+	</stack>
 	
-	<ui:hbox>
-		<ui:button text="Stack 1" id="showStack1" />
-		<ui:button text="Stack 2" id="showStack2" />
-		<ui:button text="Stack 3" id="showStack3" />
-		<ui:button text="Stack 4" id="showStack4" />
-	</ui:hbox>
-</ui:vbox>
+	<hbox>
+		<button text="Stack 1" id="showStack1" />
+		<button text="Stack 2" id="showStack2" />
+		<button text="Stack 3" id="showStack3" />
+		<button text="Stack 4" id="showStack4" />
+	</hbox>
+</vbox>
