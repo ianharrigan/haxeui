@@ -6,6 +6,7 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
+import openfl.Lib;
 import haxe.ui.toolkit.controls.HScroll;
 import haxe.ui.toolkit.controls.VScroll;
 import haxe.ui.toolkit.core.base.State;
@@ -28,6 +29,12 @@ class ScrollView extends StateComponent {
 	
 	private var _eventTarget:Sprite;
 	private var _downPos:Point;
+
+	private var _inertiaSpeed:Point;
+	private var _inertiaTime:Float;
+	private var _inertiaSensitivity:Float = 5;
+	private var _inertialScrolling:Bool = false;
+
 	#if mobile
 	private var _scrollSensitivity:Int = 0;
 	#elseif html5
@@ -38,7 +45,7 @@ class ScrollView extends StateComponent {
 	
 	private var _autoHideScrolls:Bool = false;
 	private var _virtualScrolling:Bool = false;
-	
+
 	public function new() {
 		super();
 		addStates([State.NORMAL, State.DISABLED]);
@@ -124,6 +131,15 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	// Helper props
 	//******************************************************************************************
+	public var inertialScrolling(get, set):Bool;
+	private function get_inertialScrolling():Bool {
+		return _inertialScrolling;
+	}
+	private function set_inertialScrolling(value:Bool):Bool {
+		_inertialScrolling = value;
+		return value;
+	}
+
 	public var virtualScrolling(get, set):Bool;
 	private function get_virtualScrolling():Bool {
 		return _virtualScrolling;
@@ -300,6 +316,40 @@ class ScrollView extends StateComponent {
 	//******************************************************************************************
 	// Event handlers
 	//******************************************************************************************
+	
+	private function _onInertiaEnterFrame(event:Event):Void {
+
+		_eventTarget.visible = true;
+		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
+
+		if (content != null) {
+
+			_inertiaSpeed.x *= 0.8;
+	  	_inertiaSpeed.y *= 0.8;
+
+			if ((content.width > layout.usableWidth || _virtualScrolling == true)) {
+				if (_showHScroll == true && _autoHideScrolls == true) {
+					_hscroll.visible = true;
+				}
+				if (_hscroll != null) {
+					_hscroll.pos -= _inertiaSpeed.x;
+				}
+			}
+
+			if ((content.height > layout.usableHeight || _virtualScrolling == true)) {
+				if (_showVScroll == true && _autoHideScrolls == true) {
+					_vscroll.visible = true;
+				}
+				if (_vscroll != null) {
+					_vscroll.pos -= _inertiaSpeed.y;
+				}
+			}
+
+	  	if ( Math.abs(_inertiaSpeed.x) < 0.1 && Math.abs(_inertiaSpeed.y) < 0.1 )
+	  		Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+		}
+	}
+	
 	private function _onHScrollChange(event:Event):Void {
 		updateScrollRect();
 		var event:UIEvent = new UIEvent(UIEvent.SCROLL);
@@ -346,6 +396,11 @@ class ScrollView extends StateComponent {
 			inScroll = _hscroll.hitTest(event.stageX, event.stageY);
 		}
 		
+		if ( _inertialScrolling == true ) {
+			Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+			_inertiaTime = Lib.getTimer();
+		}
+
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null && inScroll == false && _virtualScrolling == false) {
 			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
@@ -366,13 +421,19 @@ class ScrollView extends StateComponent {
 		if (_downPos != null) {
 			var ypos:Float = event.stageY - _downPos.y;
 			var xpos:Float = event.stageX - _downPos.x;
-			
+
 			var target:DisplayObject =  event.target;
 			while (target != null && Std.is(target, DisplayObject))
 			{
 				xpos /= target.scaleX;
 				ypos /= target.scaleY;
 				target = target.parent;
+			}
+
+			if ( _inertialScrolling == true ) {
+				var time:Float = (Lib.getTimer() - _inertiaTime)/100; // deciseconds
+				_inertiaSpeed = new Point ( xpos / time , ypos / time );
+				_inertiaTime = Lib.getTimer ();
 			}
 			
 			if (Math.abs(xpos) >= _scrollSensitivity  || Math.abs(ypos) >= _scrollSensitivity) {
@@ -404,6 +465,12 @@ class ScrollView extends StateComponent {
 	}
 	
 	private function _onScreenMouseUp(event:MouseEvent):Void {
+
+		if ( _inertialScrolling == true && ( Lib.getTimer() - _inertiaTime ) < 100 ) {
+			if ( Math.abs(_inertiaSpeed.x) > _inertiaSensitivity || Math.abs(_inertiaSpeed.y) > _inertiaSensitivity )
+				Screen.instance.addEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+		}
+
 		_eventTarget.visible = false;
 		_downPos = null;
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
