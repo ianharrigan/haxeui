@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.1",
-    "releasenote"  : "Adding ability to add classes to script interpreter",
+    "version"      : "1.5.2",
+    "releasenote"  : "Allowed using hypens in component ids",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

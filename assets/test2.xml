@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+
+<!--
+<Absolute width="150" height="275" style="backgroundColor:#FF0000">
+    <Absolute x="25" y="25" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:#0000FF">
+    </Absolute>
+    <Absolute x="25" y="150" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:-1">
+    </Absolute>
+</Absolute>
+-->
+
+<!--
+<scrollview width="300" height="300" inertialScrolling="true">
+	<vbox>
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	<button text="bob" />
+	</vbox>
+</scrollview>
+-->
+
+<!--
 <hbox>
 	<script>
 		function foo() {
 			text1.text = "bar";
 		}
-		
-		trace(Std.parseInt("33"));
-		trace(Client.screenWidth);
 	</script>
 	<textinput id="text-1" text="Text 1" />
 	<button id="button-2" text="Button 1" onClick="foo();" />
 	
 	<button id="button-1" text="Button 1" onClick="button1.text='bar';" />
 </hbox>
+-->
 
 <!--button text="Test" x="100" y="100" disabled="true" id="test" /-->
 

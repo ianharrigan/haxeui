@@ -263,6 +263,13 @@ class Toolkit {
 		ClassManager.instance;
 	}
 	
+	public static function open(fn:Root->Void = null, options:Dynamic = null):Root {
+		if (options != null) {
+			return openPopup(options, fn);
+		}
+		return openFullscreen(fn);
+	}
+	
 	public static function openFullscreen(fn:Root->Void = null):Root {
 		var root:Root = RootManager.instance.createRoot({x: 0, y: 0, percentWidth: 100, percentHeight: 100}, fn);
 		return root;
