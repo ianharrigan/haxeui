@@ -13,21 +13,21 @@ class ScriptManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
-	private var _defaultClasses:Map<String, Class<Dynamic>>;
+	private var _defaultClasses:Map<String, Dynamic>;
 	
 	public function new() {
-		_defaultClasses = new Map < String, Class<Dynamic> > ();
+		_defaultClasses = new Map<String, Dynamic>();
 		_defaultClasses.set("Std", Std);
 		_defaultClasses.set("Math", Math);
 		_defaultClasses.set("Client", ClientWrapper);
 	}
 
-	public var classes(get, null):Map<String, Class<Dynamic>>;
-	private function get_classes():Map<String, Class<Dynamic>> {
+	public var classes(get, null):Map<String, Dynamic>;
+	private function get_classes():Map<String, Dynamic> {
 		return _defaultClasses;
 	}
 	
-	public function addClass(name:String, cls:Class<Dynamic>):Void {
+	public function addClass(name:String, cls:Dynamic):Void {
 		_defaultClasses.set(name, cls);
 	}
 	

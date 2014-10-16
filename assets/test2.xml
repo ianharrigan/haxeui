@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 
-<!--
-<Absolute width="150" height="275" style="backgroundColor:#FF0000">
-    <Absolute x="25" y="25" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:#0000FF">
-    </Absolute>
-    <Absolute x="25" y="150" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:-1">
-    </Absolute>
-</Absolute>
--->
+<absolute width="150" height="275" style="backgroundColor:#FF0000">
+	<image resource="img/slinky.jpg" />
+    <absolute x="25" y="25" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:#0000FF">
+    </absolute>
+    <absolute x="25" y="150" width="100" height="100" style="borderSize:1;borderColor:#000000;backgroundColor:-1">
+    </absolute>
+</absolute>
 
 <!--
 <scrollview width="300" height="300" inertialScrolling="true">

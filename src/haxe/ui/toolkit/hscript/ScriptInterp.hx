@@ -5,18 +5,10 @@ import hscript.Interp;
 class ScriptInterp extends Interp {
 	public function new() {
 		super();
-		var defaultClasses:Map<String, Class<Dynamic>> = ScriptManager.instance.classes;
+		var defaultClasses:Map<String, Dynamic> = ScriptManager.instance.classes;
 		for (name in defaultClasses.keys()) {
-			var c:Class<Dynamic> = defaultClasses.get(name);
-			try {
-				var inst = Type.createInstance(c, []);
-				if (Std.is(inst, Std)) {
-					throw "Not sure why";
-				}
-				this.variables.set(name, inst);
-			} catch (e:Dynamic) {
-				this.variables.set(name, c);
-			}
+			var c:Dynamic = defaultClasses.get(name);
+			this.variables.set(name, c);
 		}
 	}
 	
