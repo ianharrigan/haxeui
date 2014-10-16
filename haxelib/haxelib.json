@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.2",
-    "releasenote"  : "Allowed using hypens in component ids",
+    "version"      : "1.5.3",
+    "releasenote"  : "Fixed cpp crash for -1",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
