@@ -1,12 +1,17 @@
 package haxe.ui.toolkit;
 
 import haxe.ui.toolkit.containers.Accordion;
+import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.containers.Stack;
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
+import haxe.ui.toolkit.core.interfaces.IItemRenderer;
+import haxe.ui.toolkit.core.renderers.ComponentItemRenderer;
 import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.hscript.ClientWrapper;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.style.Style;
@@ -28,15 +33,22 @@ class Main {
 		//Toolkit.addScriptletClass("Client", ClientWrapper);
 		Toolkit.init();
 
+		/*
 		var b:Bitmap = new Bitmap(ResourceManager.instance.getBitmapData("img/slinky_small.jpg"));
 		Lib.current.stage.addChild(b);
 		b.width = 800;
 		b.height = 600;
+		*/
 		
 		Toolkit.open(function(root:Root) {
-			var view:IDisplayObject = Toolkit.processXmlResource("assets/test2.xml");
+			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
+			var theList:ListView = view.findChild("theList", null, true);
+			view.findChild("test1", null, true).addEventListener(UIEvent.CLICK, function(e) {
+				var item:ComponentItemRenderer = cast theList.getItem(2);
+				trace(item.component.text);
+			});
 			root.addChild(view);
 			//root.addChild(new TestController().view);
-		}, {width: 300, height: 300});
+		}/*, {width: 300, height: 300}*/);
 	}
 }

@@ -2,6 +2,7 @@ package haxe.ui.toolkit.core.renderers;
 
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.controls.Slider;
+import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
@@ -100,6 +101,9 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 		} else if (Std.is(c, Button)) {
 			c.removeEventListener(UIEvent.CLICK, _onComponentEvent);
 			c.addEventListener(UIEvent.CLICK, _onComponentEvent);
+		} else if (Std.is(c, TextInput)) {
+			c.removeEventListener(UIEvent.CHANGE, _onComponentEvent);
+			c.addEventListener(UIEvent.CHANGE, _onComponentEvent);
 		}
 	}
 	
@@ -172,7 +176,7 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 	}
 	
 	private function isInteractive(c:IDisplayObject):Bool {
-		if (Std.is(c, Button) || Std.is(c, Slider)) {
+		if (Std.is(c, Button) || Std.is(c, Slider) || Std.is(c, TextInput)) {
 			return true;
 		}
 		return false;

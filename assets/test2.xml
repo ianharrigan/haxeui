@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-
+<vbox width="300" height="100%">
+	<listview id="theList" width="300" height="100%" itemRenderer="haxe.ui.toolkit.core.renderers.ComponentItemRenderer">
+		<json>
+			[
+				{"text": "Item 1", "componentType": "button", "componentValue": "Button"},
+				{"text": "Item 2", "componentType": "slider", "componentValue": 50},
+				{"text": "Item 3", "componentType": "textinput", "componentValue": "test"},
+				{"text": "Item 4"}
+			]
+		</json>
+	</listview>
+	<hbox>
+		<button id="test1" text="Test 1" />
+	</hbox>
+</vbox>
 <!--
 <absolute width="150" height="275" style="backgroundColor:#FF0000">
 	<image resource="img/slinky.jpg" />
@@ -11,6 +25,7 @@
 </absolute>
 -->
 
+<!--
 <vbox width="100%" height="100%">
 	<menubar>
 		<menubutton text="Help" id="menuHelp">
@@ -20,6 +35,7 @@
 		</menubutton>
 	</menubar>
 </vbox>
+-->
 
 <!--
 <scrollview width="300" height="300" inertialScrolling="true">
