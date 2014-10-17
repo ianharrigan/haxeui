@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <vbox width="300" height="100%">
-	<listview id="theList" width="300" height="100%" itemRenderer="haxe.ui.toolkit.core.renderers.ComponentItemRenderer">
+	<listview id="theList" width="300" height="100%" itemRenderer="haxe.ui.toolkit.core.renderers.ComponentItemRenderer" allowSelection="false">
 		<json>
 			[
 				{"text": "Item 1", "componentType": "button", "componentValue": "Button"},

@@ -112,6 +112,8 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public var horizontalAlign(get, set):String;
 	@:clonable
 	public var verticalAlign(get, set):String;
+	@:clonable
+	public var useHandCursor(get, set):Bool;
 	
 	private function get_parent():IDisplayObjectContainer {
 		return _parent;
@@ -308,6 +310,16 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_ready) {
 			parent.invalidate(InvalidationFlag.LAYOUT);
 		}
+		return value;
+	}
+	
+	private function get_useHandCursor():Bool {
+		return sprite.useHandCursor;
+	}
+	
+	private function set_useHandCursor(value:Bool):Bool {
+		sprite.useHandCursor = value;
+		sprite.buttonMode = true;
 		return value;
 	}
 	

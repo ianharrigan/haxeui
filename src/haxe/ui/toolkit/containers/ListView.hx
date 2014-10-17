@@ -28,6 +28,7 @@ class ListView extends ScrollView implements IDataComponent {
 	private var _lastSelection:Int = -1;
 	
 	private var _itemRenderer:Dynamic;
+	private var _allowSelection= true;
 	
 	public function new() {
 		super();
@@ -97,6 +98,7 @@ class ListView extends ScrollView implements IDataComponent {
 	public var selectedIndex(get, set):Int;
 	public var content(get, null):Component;
 	public var itemRenderer(get, set):Dynamic;
+	public var allowSelection(get, set):Bool;
 	
 	private function get_listSize():Int {
 		return _content.children.length;
@@ -174,6 +176,15 @@ class ListView extends ScrollView implements IDataComponent {
 	
 	private function set_itemRenderer(value:Dynamic):Dynamic {
 		_itemRenderer = value;
+		return value;
+	}
+	
+	private function get_allowSelection():Bool {
+		return _allowSelection;
+	}
+	
+	private function set_allowSelection(value:Bool):Bool {
+		_allowSelection = value;
 		return value;
 	}
 	
@@ -303,12 +314,20 @@ class ListView extends ScrollView implements IDataComponent {
 	}
 	
 	private function _onListItemMouseOver(event:UIEvent):Void {
+		if (_allowSelection == false) {
+			return;
+		}
+		
 		if (Std.is(event.component, IStateComponent)) {
 			cast(event.component, IStateComponent).state = ItemRenderer.STATE_OVER;
 		}
 	}
 
 	private function _onListItemMouseOut(event:UIEvent):Void {
+		if (_allowSelection == false) {
+			return;
+		}
+		
 		if (Std.is(event.component, IStateComponent)) {
 			var item:IItemRenderer = cast event.component;
 			if (isSelected(item)) {
@@ -320,6 +339,10 @@ class ListView extends ScrollView implements IDataComponent {
 	}
 	
 	private function _onListItemClick(event:UIEvent):Void {
+		if (_allowSelection == false) {
+			return;
+		}
+
 		if (Std.is(event.component, IItemRenderer)) {
 			var item:IItemRenderer = cast event.component;
 			if (item.allowSelection(event.stageX, event.stageY)) {
@@ -448,6 +471,8 @@ class ListView extends ScrollView implements IDataComponent {
 		if (r != null) {
 			r.eventDispatcher = this;
 		}
+		
+		r.useHandCursor = _allowSelection;
 		
 		return r;
 	}

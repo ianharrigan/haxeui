@@ -26,4 +26,5 @@ interface IDisplayObject extends IEventDispatcher extends IClonable<IDisplayObje
 	
 	public var horizontalAlign(get, set):String;
 	public var verticalAlign(get, set):String;
+	public var useHandCursor(get, set):Bool;
 }
