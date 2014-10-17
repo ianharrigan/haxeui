@@ -5,6 +5,7 @@ import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.containers.ScrollView;
 import haxe.ui.toolkit.containers.Stack;
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IItemRenderer;
@@ -43,9 +44,19 @@ class Main {
 		Toolkit.open(function(root:Root) {
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
 			var theList:ListView = view.findChild("theList", null, true);
+			var text1:TextInput = view.findChild("text1", null, true);
+			/*
+			text1.onClick = function(e) {
+				if (text1.text == "") {
+					text1.text = " ";
+					text1.text = "";
+				}
+			};
+			*/
 			view.findChild("test1", null, true).addEventListener(UIEvent.CLICK, function(e) {
-				var item:ComponentItemRenderer = cast theList.getItem(2);
-				trace(item.component.text);
+				//var item:ComponentItemRenderer = cast theList.getItem(2);
+				//trace(item.component.text);
+				text1.text = "bob";
 			});
 			root.addChild(view);
 			//root.addChild(new TestController().view);

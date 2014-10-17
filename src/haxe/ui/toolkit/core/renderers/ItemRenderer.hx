@@ -124,6 +124,7 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 			var uiEvent:UIEvent = new UIEvent(type, c);
 			uiEvent.data = _data;
 			uiEvent.data.update = this.update;
+			uiEvent.data.itemRenderer = this;
 			eventDispatcher.dispatchEvent(uiEvent);
 		}
 	}

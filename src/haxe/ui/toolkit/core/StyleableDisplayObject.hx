@@ -129,7 +129,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (_lazyLoadStyles == false) {
 				buildStyles();
 			} else {
-				clearStyles();
+				//clearStyles();
 			}
 			_baseStyle = StyleManager.instance.buildStyleFor(this);
 			invalidate(InvalidationFlag.DISPLAY);

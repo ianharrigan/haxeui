@@ -13,6 +13,7 @@
 	</listview>
 	<hbox>
 		<button id="test1" text="Test 1" />
+		<textinput id="text1" />
 	</hbox>
 </vbox>
 <!--

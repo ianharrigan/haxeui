@@ -259,17 +259,17 @@ class ListView extends ScrollView implements IDataComponent {
 			removeListViewItem(n);
 		}
 		
-		/*
-		var n:Int = 0; // set id's for styling
+		var n:Int = 0; // set styles
 		for (child in _content.children) {
 			var item:IItemRenderer = cast(child, IItemRenderer);
 			if (Std.is(item, StyleableDisplayObject)) {
 				var styleName:String = (n % 2 == 0) ? "even" : "odd";
-				cast(item, StyleableDisplayObject).styleName = styleName;
+				if (!isSelected(item) && cast(item, StyleableDisplayObject).styleName != styleName)  {
+					cast(item, StyleableDisplayObject).styleName = styleName;	
+				}
 			}
 			n++;
 		}
-		*/
 	}
 	
 	private function addListViewItem(dataHash:String, data:Dynamic, index:Int = -1):Void {

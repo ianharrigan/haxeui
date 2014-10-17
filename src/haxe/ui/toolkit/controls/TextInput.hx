@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.events.UIEvent;
 import openfl.display.DisplayObject;
 import openfl.events.Event;
 import openfl.text.TextField;
@@ -64,6 +65,15 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 			_textPlaceHolder.textAlign = _textDisplay.textAlign;
 			setChildIndex(_textPlaceHolder, 0);
 		}
+
+		#if (cpp || neko) // work around to make the caret appear when you click the field
+		addEventListener(UIEvent.CLICK, function(e) {
+			if (this.text == "") {
+				this.text = " ";
+				this.text = "";
+			}
+		});
+		#end
 	}
 
 	public override function dispose() {
