@@ -922,6 +922,7 @@ class Style implements IClonable<Style> {
 		}
 		*/
 		if (with._backgroundColor != -1) this._backgroundColor = with._backgroundColor;
+		if (with._backgroundColor != -1) this._backgroundColorGradientEnd = with._backgroundColor;
 		if (with._backgroundColorGradientEnd != -1) this._backgroundColorGradientEnd = with._backgroundColorGradientEnd;
 		if (with._borderColor != -1) this._borderColor = with._borderColor;
 		if (with._borderSize != -1) this._borderSize = with._borderSize;
