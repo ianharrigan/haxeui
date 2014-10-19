@@ -108,6 +108,7 @@ class UIProcessor extends XMLProcessor {
 						var style:Style = inlineStyles.getStyle("_temp");
 						if (style != null) {
 							cast(c, StyleableDisplayObject).style = style;
+							cast(c, StyleableDisplayObject).styleString = value;
 						}
 					}
 				}

@@ -43,8 +43,10 @@ class Main {
 		
 		Toolkit.open(function(root:Root) {
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
+			/*
 			var theList:ListView = view.findChild("theList", null, true);
 			var text1:TextInput = view.findChild("text1", null, true);
+			*/
 			/*
 			text1.onClick = function(e) {
 				if (text1.text == "") {
@@ -53,11 +55,13 @@ class Main {
 				}
 			};
 			*/
+			/*
 			view.findChild("test1", null, true).addEventListener(UIEvent.CLICK, function(e) {
 				//var item:ComponentItemRenderer = cast theList.getItem(2);
 				//trace(item.component.text);
 				text1.text = "bob";
 			});
+			*/
 			root.addChild(view);
 			//root.addChild(new TestController().view);
 		}/*, {width: 300, height: 300}*/);

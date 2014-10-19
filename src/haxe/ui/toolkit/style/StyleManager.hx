@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.style;
 
+import haxe.crypto.Md5;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.DisplayObject;
@@ -289,8 +290,10 @@ class StyleManager {
 
 		var id:String = c.id;
 		var styleName:String = null;
+		var styleString:String = null;
 		if (Std.is(c, IStyleableDisplayObject)) {
 			styleName = cast(c, IStyleableDisplayObject).styleName;
+			styleString = cast(c, IStyleableDisplayObject).styleString;
 		}
 		
 		var s:String = className;
@@ -303,6 +306,10 @@ class StyleManager {
 		if (state != null) {
 			s += ":" + state;
 		}
+		if (styleString != null) {
+			s += "{" + styleString + "}";
+		}
+		//s = Md5.encode(s);
 		return s;
 	}
 	

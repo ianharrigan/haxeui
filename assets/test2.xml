@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!--
 <vbox width="300" height="100%">
 	<listview id="theList" width="300" height="100%" itemRenderer="haxe.ui.toolkit.core.renderers.ComponentItemRenderer" allowSelection="false">
 		<json>
@@ -16,6 +17,17 @@
 		<textinput id="text1" />
 	</hbox>
 </vbox>
+-->
+
+<hbox>
+	
+	<button text="Button 1" />
+	<button text="Button 2" />
+	<button text="Button 3" style="backgroundColor: #FF0000;" />
+	<button text="Button 4" />
+	<button text="Button 5" />
+</hbox>
+
 <!--
 <absolute width="150" height="275" style="backgroundColor:#FF0000">
 	<image resource="img/slinky.jpg" />

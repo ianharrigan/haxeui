@@ -14,6 +14,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	private var _baseStyle:Style;
 	private var _storedStyles:StringMap<Style>; // styles stored for ease later
 	private var _styleName:String;
+	private var _styleString:String;
 	private var _inlineStyle:Style;
 	
 	private var _lazyLoadStyles:Bool = true;
@@ -103,6 +104,8 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	@:clonable
 	public var styleName(get, set):String;
 	public var style(get, set):Style;
+	@:clonable
+	public var styleString(get, set):String;
 	
 	private function get_baseStyle():Style {
 		if (_baseStyle == null) {
@@ -137,6 +140,15 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		return value;
 	}
 
+	private function get_styleString():String {
+		return _styleString;
+	}
+	
+	private function set_styleString(value:String):String {
+		_styleString = value;
+		return value;
+	}
+	
 	private function get_style():Style {
 		if (_inlineStyle == null) {
 			_inlineStyle = new Style();

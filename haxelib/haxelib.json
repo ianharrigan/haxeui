@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.6",
-    "releasenote"  : "Work around for caret problems in neko/cpp",
+    "version"      : "1.5.7",
+    "releasenote"  : "Fixed problems with style cache when using inline styles",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
