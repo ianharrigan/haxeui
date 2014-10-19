@@ -230,6 +230,17 @@ class ListSelector extends Button implements IDataComponent {
 		return value;
 	}
 	
+	public var listSize(get, set):Int;
+	
+	private function get_listSize():Int {
+		return _maxListSize;
+	}
+	
+	private function set_listSize(value:Int):Int {
+		_maxListSize = value;
+		return value;
+	}
+	
 	//******************************************************************************************
 	// ListView props
 	//******************************************************************************************
