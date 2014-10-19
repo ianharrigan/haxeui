@@ -19,6 +19,18 @@
 </vbox>
 -->
 
+<!--
+<hbox width="100" height="100%" style="backgroundColor:#FF0000;" autoSize="false">
+	<text text="bob" />
+</hbox>
+-->
+    <vbox width="100%" height="100" style="backgroundColor:111111" autoSize="false">    
+      
+        <text text="Text"/>     
+      
+    </vbox>   
+
+<!--
 <hbox>
 	
 	<button text="Button 1" />
@@ -27,6 +39,7 @@
 	<button text="Button 4" />
 	<button text="Button 5" />
 </hbox>
+-->
 
 <!--
 <absolute width="150" height="275" style="backgroundColor:#FF0000">

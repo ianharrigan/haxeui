@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.7",
-    "releasenote"  : "Fixed bug with style cache when using inline styles",
+    "version"      : "1.5.8",
+    "releasenote"  : "Fixed problem with autosizing and percent sizes",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
