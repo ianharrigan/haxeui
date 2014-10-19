@@ -5,7 +5,7 @@
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
     "version"      : "1.5.7",
-    "releasenote"  : "Fixed problems with style cache when using inline styles",
+    "releasenote"  : "Fixed bug with style cache when using inline styles",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

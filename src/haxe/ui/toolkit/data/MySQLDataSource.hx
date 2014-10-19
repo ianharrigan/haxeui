@@ -1,10 +1,16 @@
 package haxe.ui.toolkit.data;
 
+/*
+ * Class not implemented. Leaving as reference/reminder
+ * /
+
+/* 
 #if (neko || cpp) // not suported on all platforms/targets
 import sys.db.Connection;
 import sys.db.Mysql;
 import sys.db.ResultSet;
 #end
+*/
 
 class MySQLDataSource extends DataSource {
 	/*
