@@ -6,13 +6,13 @@ import haxe.ui.toolkit.util.FilterParser;
 import haxe.ui.toolkit.util.StringUtil;
 
 class StyleParser {
-	public static function fromString(styleString:String):Styles {
+	
+	public static function fromString(styleString:String, storeRaw:Bool = false):Styles {
 		if (styleString == null || styleString.length == 0) {
 			return new Styles();
 		}
 		
 		var styles = new Styles();
-
 		var n1:Int = -1;
 		var n2:Int = styleString.indexOf("{", 0);
 		while (n2 > -1) {
@@ -24,8 +24,11 @@ class StyleParser {
 			var props:Array<String> = styleData.split(";");
 			for (prop in props) {
 				prop = StringTools.trim(prop);
-				if (StringTools.startsWith(prop, "//")) {
+				if (prop.length == 0 || StringTools.startsWith(prop, "//")) {
 					continue;
+				}
+				if (storeRaw == true) {
+					style.addRawProperty(prop);
 				}
 
 				if (prop != null && prop.length > 0) {

@@ -90,6 +90,19 @@ class StyleManager {
 		StyleHelper.clearCache();
 	}
 	
+	public var useCache(get, set):Bool;
+	private function get_useCache():Bool {
+		return _cacheStyles;
+	}
+	private function set_useCache(value:Bool):Bool {
+		_cacheStyles = false;
+		return value;
+	}
+	
+	public function clearCache():Void {
+		_cachedStyles = new Map<String, Style>();
+	}
+	
 	private function findAncestor(c:IDisplayObjectContainer, rulePart:StyleRulePart):IDisplayObjectContainer {
 		var a:IDisplayObjectContainer = null;
 		var t:IDisplayObjectContainer = c;

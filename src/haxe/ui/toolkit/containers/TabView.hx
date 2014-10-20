@@ -98,6 +98,7 @@ class TabView extends Component {
 	//******************************************************************************************
 	public var selectedIndex(get, set):Int;
 	public var pageCount(get, null):Int;
+	public var selectedPage(get, null):Component;
 	
 	private function get_selectedIndex():Int {
 		return _tabs.selectedIndex;
@@ -110,6 +111,10 @@ class TabView extends Component {
 	
 	private function get_pageCount():Int {
 		return _stack.numChildren;
+	}
+	
+	private function get_selectedPage():Component {
+		return getTabPage(selectedIndex);
 	}
 	
 	//******************************************************************************************
@@ -126,6 +131,10 @@ class TabView extends Component {
 	
 	public function getTabButton(index:Int):Button {
 		return cast _tabs.getTabButton(index);
+	}
+	
+	public function getTabPage(index:Int):Component {
+		return cast _stack.getChildAt(index);
 	}
 	
 	public function removeAllTabs():Void {

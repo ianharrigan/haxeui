@@ -17,6 +17,8 @@
 	<!-- classpath, haxe libs -->
 	<source path="src" />
 	<classpath name="assets" />
+
+	<haxedef name="dom" />
 	
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
@@ -28,7 +30,7 @@
 	<haxedef name="HXUI_CONSOLE" />
 	<haxelib name="dconsole" />
 	-->
-	
+
 	<assets path="assets/styles" rename="styles" />
 	<assets path="assets/img" rename="img" />
 	<assets path="assets/fonts" rename="fonts" />

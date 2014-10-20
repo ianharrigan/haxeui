@@ -979,6 +979,19 @@ class Style implements IClonable<Style> {
 		return s;
 	}
 	
+	private var _rawProperties:Array<String>;
+	public function addRawProperty(prop:String):Void {
+		if (_rawProperties == null) {
+			_rawProperties = new Array<String>();
+		}
+		_rawProperties.push(prop);
+	}
+	
+	public var rawProperties(get, null):Array<String>;
+	private function get_rawProperties():Array<String> {
+		return _rawProperties;
+	}
+	
 	//******************************************************************************************
 	// Clone
 	//******************************************************************************************

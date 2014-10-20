@@ -47,6 +47,8 @@ class Main {
 			var theList:ListView = view.findChild("theList", null, true);
 			var text1:TextInput = view.findChild("text1", null, true);
 			*/
+			//view.sprite.scaleX = 2;
+			//view.sprite.scaleY = 2;
 			/*
 			text1.onClick = function(e) {
 				if (text1.text == "") {

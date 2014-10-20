@@ -24,11 +24,21 @@
 	<text text="bob" />
 </hbox>
 -->
-    <vbox width="100%" height="100" style="backgroundColor:111111" autoSize="false">    
+<!--
+    <vbox width="100" height="100" style="backgroundColor:111111" autoSize="false">    
       
         <text text="Text"/>     
       
     </vbox>   
+-->
+
+	<button text="Button 1" />
+
+	<!--
+<vbox style="padding:10">
+	<button text="100x100" width="100" height="100" autoSize="false" style="icon:img/slinky_tiny.jpg;iconPosition:top" />
+</vbox>
+-->
 
 <!--
 <hbox>

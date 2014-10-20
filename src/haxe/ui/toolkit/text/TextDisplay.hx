@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.text;
 
+import haxe.ui.toolkit.util.CallStackHelper;
 import openfl.display.DisplayObject;
 import openfl.text.TextField;
 import openfl.text.TextFieldAutoSize;
@@ -63,6 +64,11 @@ class TextDisplay implements ITextDisplay {
 		}
 		
 		style = _style;
+		
+		#if (html5)
+		_tf.height = _tf.textHeight;
+		#end
+		
 		return value;
 	}
 	
