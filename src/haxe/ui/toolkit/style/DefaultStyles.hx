@@ -603,5 +603,22 @@ class DefaultStyles extends Styles {
 		addStyle("MenuItem.expandable", new Style( {
 			icon: "styles/default/expand.png",
 		} ));
+		
+
+		addStyle("Divider", new Style( {
+			paddingTop: 5,
+			percentWidth: 100,
+		} ));
+		
+		addStyle("Divider #text", new Style( {
+			fontSize: 16,
+			fontBold: true,
+			color: 0xffa84c,
+		} ));
+		
+		addStyle("Divider #line", new Style( {
+			height: 2,
+			backgroundColor: 0x666666,
+		} ));
 	}
 }
