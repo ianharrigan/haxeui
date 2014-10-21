@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.containers;
 
+import haxe.ui.toolkit.controls.Divider;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 import haxe.ui.toolkit.core.Component;
@@ -262,7 +263,7 @@ class ListView extends ScrollView implements IDataComponent {
 		var n:Int = 0; // set styles
 		for (child in _content.children) {
 			var item:IItemRenderer = cast(child, IItemRenderer);
-			if (Std.is(item, StyleableDisplayObject)) {
+			if (Std.is(item, StyleableDisplayObject) == true && Std.is(item, Divider) == false) {
 				var styleName:String = (n % 2 == 0) ? "even" : "odd";
 				if (!isSelected(item) && cast(item, StyleableDisplayObject).styleName != styleName)  {
 					cast(item, StyleableDisplayObject).styleName = styleName;	
@@ -277,28 +278,39 @@ class ListView extends ScrollView implements IDataComponent {
 			return;
 		}
 
-		var item:IItemRenderer = createRendererInstance();
-		item.autoSize = true;
-		item.hash = dataHash;
-		item.percentWidth = 100;
-		//item.height = 100;
-		item.data = data;
-		if (Std.is(item, StyleableDisplayObject)) {
-			var styleName:String = (_content.numChildren % 2 == 0) ? "even" : "odd";
-			cast(item, StyleableDisplayObject).styleName = styleName;
+		var item:IItemRenderer = null;
+		if (data.divider == true) {
+			item = new Divider();
+			item.hash = dataHash;
+			item.data = data;
+		} else {
+			item = createRendererInstance();
+			item.autoSize = true;
+			item.hash = dataHash;
+			item.percentWidth = 100;
+			//item.height = 100;
+			item.data = data;
+			if (Std.is(item, StyleableDisplayObject)) {
+				var styleName:String = (_content.numChildren % 2 == 0) ? "even" : "odd";
+				cast(item, StyleableDisplayObject).styleName = styleName;
+			}
 		}
 		
-		if (index == -1) {
-			_content.addChild(item);
-		} else {
-			_content.addChildAt(item, index);
+		if (item != null) {
+			if (index == -1) {
+				_content.addChild(item);
+			} else {
+				_content.addChildAt(item, index);
+			}
 		}
 		
 		invalidate(InvalidationFlag.SIZE);
 		
-		cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OVER, _onListItemMouseOver);
-		cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OUT, _onListItemMouseOut);
-		cast(item, IDisplayObject).addEventListener(UIEvent.CLICK, _onListItemClick);
+		if (data.divider == null || data.divider == false) {
+			cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OVER, _onListItemMouseOver);
+			cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OUT, _onListItemMouseOut);
+			cast(item, IDisplayObject).addEventListener(UIEvent.CLICK, _onListItemClick);
+		}
 	}
 	
 	private function removeListViewItem(index:Int):Void {

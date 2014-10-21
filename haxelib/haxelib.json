@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.9",
-    "releasenote"  : "Auto scales based on DPI",
+    "version"      : "1.5.10",
+    "releasenote"  : "Added divider component",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

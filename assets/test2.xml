@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!--
 <accordion width="100%" height="100%">
 	<vbox text="Dummy 0">
 	</vbox>
@@ -16,3 +17,101 @@
 		<button text="Demo" />
 	</vbox>
 </accordion>
+-->
+
+<vbox width="100%" height="100%" style="padding:10">
+	<style>
+		Text.header {
+			fontSize: 16;
+			fontBold: true;
+			fontItalic: true;
+			fontUnderline: true;
+			color: 0x606c88;
+		}
+	</style>
+	<hbox width="100%">
+		<text text="VBox" styleName="header" width="33%" />
+		<text text="ScrollView" styleName="header" width="34%" />
+		<text text="ListView" styleName="header" width="33%" />
+	</hbox>
+	
+	<hbox width="100%" height="100%">
+		<vbox width="33%" height="100%">
+			<divider text="Test Divider" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+			<divider text="Test Divider" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+			<divider text="Test Divider" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+			<button text="Button" width="100%" />
+		</vbox>
+		
+		<scrollview width="34%" height="100%">
+			<vbox width="100%" style="padding:3">
+				<divider text="Test Divider" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<divider text="Test Divider" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<divider text="Test Divider" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+				<button text="Button" width="100%" />
+			</vbox>
+		</scrollview>
+		
+		<listview width="34%" height="100%">
+			<json>
+				[
+					{"text": "Test Divider", "divider": true},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					
+					{"text": "Test Divider", "divider": true},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					
+					{"text": "Test Divider", "divider": true},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"},
+					{"text": "List view item"}
+					
+				]
+			</json>
+		</listview>
+	</hbox>
+</vbox>

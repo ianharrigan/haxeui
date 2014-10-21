@@ -1244,3 +1244,18 @@ TableViewRow Text:over, TableViewRow Text:selected {
 	color: 0xFFFFFF;
 }
 
+Divider {
+	paddingTop: 5;
+	width: 100%;
+}
+
+Divider #text {
+	fontSize: 13;
+	fontBold: true;
+	color: 0x606c88;
+}
+
+Divider #line {
+	height: 2;
+	backgroundColor: 0x3f4c6b;
+}

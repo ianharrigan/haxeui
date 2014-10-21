@@ -92,14 +92,12 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 	}		
 	
-	override public function dispose():Void {
-		
+	public override function dispose():Void {
 		// removes this component from groups list.
 		if (group != null) {
 			var arr:Array<Button> = _groups.get(_group);
 			arr.remove(this);
 		}
-		
 		super.dispose();
 	}
 	

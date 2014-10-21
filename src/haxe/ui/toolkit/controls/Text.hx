@@ -3,6 +3,7 @@ package haxe.ui.toolkit.controls;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.layout.BoxLayout;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
 
