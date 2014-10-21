@@ -613,7 +613,7 @@ class DefaultStyles extends Styles {
 		addStyle("Divider #text", new Style( {
 			fontSize: 16,
 			fontBold: true,
-			color: 0xffa84c,
+			color: 0x666666,
 		} ));
 		
 		addStyle("Divider #line", new Style( {

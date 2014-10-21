@@ -26,7 +26,6 @@
 			fontBold: true;
 			fontItalic: true;
 			fontUnderline: true;
-			color: 0x606c88;
 		}
 	</style>
 	<hbox width="100%">
