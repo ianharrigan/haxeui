@@ -163,7 +163,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function get_width():Float {
-		return _width;
+		return _width / sprite.scaleX;
 	}
 	
 	private function set_width(value:Float):Float {
@@ -185,7 +185,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function get_height():Float {
-		return _height;
+		return _height / sprite.scaleY;
 	}
 	
 	private function set_height(value:Float):Float {

@@ -78,6 +78,11 @@ class Toolkit {
 	//******************************************************************************************
 	public static var useDefaultTheme(default, default):Bool = true;
 	public static var theme(default, default):Dynamic;
+
+	//******************************************************************************************
+	// Toolkit settings
+	//******************************************************************************************
+	public static var autoScale(default, default):Bool = true;
 	
 	//******************************************************************************************
 	// Processes a chunk of xml, return values depend on what comes in, could return IDisplayObject, IDataSource
@@ -287,4 +292,27 @@ class Toolkit {
 		var root:Root = RootManager.instance.createRoot(options, fn);
 		return root;
 	}
+	
+	private static var _scaleFactor:Float = 0;
+	public static var scaleFactor(get, set):Float;
+	private static function get_scaleFactor():Float {
+		if (_scaleFactor == 0) {
+			if (autoScale == true) {
+				scaleFactor = openfl.system.Capabilities.screenDPI;
+				if (_scaleFactor > 120) {
+					_scaleFactor /= 120;
+				} else {
+					_scaleFactor = 1;
+				}
+			} else {
+				_scaleFactor = 1;
+			}
+		}
+		return _scaleFactor;
+	}
+	private static function set_scaleFactor(value:Float):Float {
+		_scaleFactor = value;
+		return value;
+	}
+	
 }

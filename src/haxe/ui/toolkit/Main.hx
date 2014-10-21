@@ -40,7 +40,7 @@ class Main {
 		b.width = 800;
 		b.height = 600;
 		*/
-		
+		//Toolkit.scaleFactor = 2;
 		Toolkit.open(function(root:Root) {
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
 			/*

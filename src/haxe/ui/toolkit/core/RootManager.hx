@@ -32,6 +32,7 @@ class RootManager {
 		options.parent = (options.parent != null) ? options.parent : Lib.current.stage;
 
 		var root:Root = new Root();
+		root.sprite.scaleX = root.sprite.scaleY = Toolkit.scaleFactor;
 		_roots.push(root);
 		root.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			if (fn != null) {
