@@ -18,6 +18,8 @@ interface IDisplayObject extends IEventDispatcher extends IClonable<IDisplayObje
 	public var stageX(get, null):Float;
 	public var stageY(get, null):Float;
 	public var visible(get, set):Bool;
+	public var alpha(get, set):Float;
+	public var includeInLayout(get, set):Bool;
 	
 	public function hitTest(stageX:Float, stageY:Float):Bool;
 	

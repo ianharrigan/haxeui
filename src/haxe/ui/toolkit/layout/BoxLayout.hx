@@ -19,7 +19,7 @@ class BoxLayout extends Layout {
 		var totalHeight:Float = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -62,7 +62,7 @@ class BoxLayout extends Layout {
 		super.repositionChildren();
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

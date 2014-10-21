@@ -14,7 +14,7 @@ class AbsoluteLayout extends Layout {
 		var ucy:Float = usableHeight;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

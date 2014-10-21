@@ -20,7 +20,7 @@ class HorizontalLayout extends Layout {
 		
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -67,7 +67,7 @@ class HorizontalLayout extends Layout {
 		var xpos:Float = padding.left;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -108,7 +108,7 @@ class HorizontalLayout extends Layout {
 		
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

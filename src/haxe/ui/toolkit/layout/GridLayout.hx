@@ -41,7 +41,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		var columnIndex:Int = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -106,7 +106,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -169,7 +169,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		var columnIndex:Int = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -189,7 +189,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		columnIndex = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -237,7 +237,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		var columnIndex:Int = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -257,7 +257,7 @@ class GridLayout extends Layout implements IClonable<Layout> {
 		columnIndex = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

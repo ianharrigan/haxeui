@@ -20,7 +20,7 @@ class VerticalLayout extends Layout {
 		
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -67,7 +67,7 @@ class VerticalLayout extends Layout {
 		var ypos:Float = padding.top;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -108,7 +108,7 @@ class VerticalLayout extends Layout {
 		
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

@@ -26,7 +26,7 @@ class HorizontalContinuousLayout extends Layout {
 		}
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

@@ -16,7 +16,7 @@ class DefaultLayout extends Layout {
 		var totalHeight:Float = 0;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			
@@ -53,7 +53,7 @@ class DefaultLayout extends Layout {
 		var ypos:Float = padding.top;
 		for (child in container.children) {
 			
-			if (child.visible == false) {
+			if (child.visible == false || child.includeInLayout == false) {
 				continue; // ignore invisible.
 			}
 			

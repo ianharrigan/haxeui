@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+
+<button text="Bob" alpha=".7" />
 <!--
 <accordion width="100%" height="100%">
 	<vbox text="Dummy 0">
@@ -19,6 +21,7 @@
 </accordion>
 -->
 
+<!--
 <vbox width="100%" height="100%" style="padding:10">
 	<style>
 		Text.header {
@@ -114,3 +117,4 @@
 		</listview>
 	</hbox>
 </vbox>
+-->

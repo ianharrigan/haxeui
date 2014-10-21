@@ -210,7 +210,7 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (_baseStyle.alpha != -1) {
 				_sprite.alpha = _baseStyle.alpha;
 			} else {
-				_sprite.alpha = 1;
+				_sprite.alpha = alpha;
 			}
 			
 			if (_baseStyle.horizontalAlignment != null) {
