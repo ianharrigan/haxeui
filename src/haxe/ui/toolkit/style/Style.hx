@@ -610,10 +610,10 @@ class Style implements IClonable<Style> {
 	
 	private function set_filter(value:BitmapFilter):BitmapFilter {
 		_filterSet = true;
-		if (value != _filter) {
+		//if (value != _filter) {
 			_filter = value;
 			apply();
-		}
+		//}
 		return _filter;
 	}
 	
@@ -939,7 +939,10 @@ class Style implements IClonable<Style> {
 		if (with._cornerRadiusTopRight != -1) this._cornerRadiusTopRight = with._cornerRadiusTopRight;
 		if (with._cornerRadiusBottomLeft != -1) this._cornerRadiusBottomLeft = with._cornerRadiusBottomLeft;
 		if (with._cornerRadiusBottomRight != -1) this._cornerRadiusBottomRight = with._cornerRadiusBottomRight;
-		if (with._filterSet == true) this._filter = with._filter;
+		if (with._filterSet == true) {
+			this._filter = with._filter;
+			this._filterSet = with._filterSet;
+		}
 		if (with._alpha != -1) this._alpha = with._alpha;
 		if (with._fontName != null) this._fontName = with._fontName;
 		if (with._fontSize != -1) this._fontSize = with._fontSize;

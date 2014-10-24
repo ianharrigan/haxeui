@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.10",
-    "releasenote"  : "Added divider component",
+    "version"      : "1.5.11",
+    "releasenote"  : "Fixed problem with style cache returning reference to style",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!-- hbox width="300" height="200" autoSize="false" -->
+<hbox style="backgroundColor:0xFF0000;padding:10">
+	<style>
+		.big {
+			fontSize: 20;
+		}
+	</style>
+	<button id="b1" text="Test 1" width="100" autoSize="false" />
+	<button id="b2" text="Test 2" />
+	<button id="b3" text="Test 2" />
+	
+	<hscroll />
+	
+	<listSelector text="bob" width="100" autoSize="false">
+		<array>1,2,3,4,5,6,6,7</array>
+	</listSelector>
+	
+</hbox>
 
-<button text="Bob" alpha=".7" />
+	<!--
+<vbox width="100%" height="100%">
+    <style>
+        .hbItem {
+            width: 100%;
+            height: 100;
+            padding: 10;
+            spacing: 0;
+            autoSize: false;
+        }
+    </style>
+    <hbox style="width: 100%; height: 45; backgroundColor: 0x2471F5; autoSize: false;">
+    </hbox>
+    <scrollview style="width: 100%; height: 100%; borderSize: 0;">
+        <vbox style="width: 100%;">
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xadd8e6"></hbox>
+            <hbox styleName="hbItem" style="backgroundColor: 0xffe4b5"></hbox>
+        </vbox>
+    </scrollview>
+</vbox>
+	-->
 <!--
 <accordion width="100%" height="100%">
 	<vbox text="Dummy 0">

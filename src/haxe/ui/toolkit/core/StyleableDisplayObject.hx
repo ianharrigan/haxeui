@@ -132,10 +132,10 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 			if (_lazyLoadStyles == false) {
 				buildStyles();
 			} else {
-				//clearStyles();
+				clearStyles();
 			}
 			_baseStyle = StyleManager.instance.buildStyleFor(this);
-			invalidate(InvalidationFlag.DISPLAY);
+			invalidate(InvalidationFlag.STYLE | InvalidationFlag.DISPLAY);
 		}
 		return value;
 	}
@@ -182,20 +182,26 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	public function retrieveStyle(id:String):Style {
-		var style:Style = null;
+		var storedStyle:Style = null;
 		
 		if (_lazyLoadStyles == false) {
 			if (_storedStyles == null) {
 				return null;
 			}
-			style = _storedStyles.get(id);
+			storedStyle = _storedStyles.get(id);
 		} else {
 			if (_ready) {
-				style = StyleManager.instance.buildStyleFor(this, id);
+				if (_storedStyles != null) {
+					storedStyle = _storedStyles.get(id);
+				}
+				if (storedStyle == null) {
+					storedStyle = StyleManager.instance.buildStyleFor(this, id);
+					storeStyle(id, storedStyle);
+				}
 			}
 		}
 		
-		return style;
+		return storedStyle;
 	}
 	
 	public function applyStyle():Void {

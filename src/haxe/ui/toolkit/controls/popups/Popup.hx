@@ -54,7 +54,7 @@ class Popup extends VBox implements IDraggable {
 
 		_buttonBar = new Box();
 		_buttonBar.id = "buttonBar";
-		_buttonBar.percentWidth = 100;
+		//_buttonBar.percentWidth = 100;
 		_buttonBar.horizontalAlign = "center";
 		
 		_config = config;

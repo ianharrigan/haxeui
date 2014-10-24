@@ -6,6 +6,7 @@ import haxe.ui.toolkit.controls.popups.PopupContent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
 import haxe.ui.toolkit.core.PopupManager.PopupButton;
+import haxe.ui.toolkit.events.UIEvent;
 
 class Controller {
 	private var _view:IDisplayObjectContainer;
@@ -38,6 +39,16 @@ class Controller {
 		}
 		
 		refereshNamedComponents();
+		
+		_view.addEventListener(UIEvent.ADDED_TO_STAGE, function(e) {
+			if (_view.width != 0 && _view.height != 0) {
+				onReady();
+			}
+		});
+	}
+	
+	private function onReady():Void {
+		
 	}
 	
 	public function addChild<T>(child:Dynamic = null, options:Dynamic = null):Null<T> {
@@ -66,6 +77,11 @@ class Controller {
 		var retVal:IDisplayObject = _view.addChild(childObject);
 		refereshNamedComponents();
 		return cast retVal;
+	}
+	
+	public function attachView(newView:IDisplayObjectContainer):Void {
+		_view = newView;
+		refereshNamedComponents();
 	}
 	
 	public function attachEvent(id:String, type:String, listener:Dynamic->Void):Void {

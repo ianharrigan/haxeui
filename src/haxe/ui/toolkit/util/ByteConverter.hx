@@ -11,4 +11,12 @@ class ByteConverter {
 		}
 		return ba;
 	}
+	
+	public static function toHaxeBytes(ba:ByteArray):Bytes {
+		var bytes:Bytes = Bytes.alloc(ba.length);
+		for (a in 0...ba.length) {
+			bytes.set(a, ba.readByte());
+		}
+		return bytes;
+	}
 }
