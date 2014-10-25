@@ -247,7 +247,6 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	}
 	
 	private function refreshStyle():Void {
-		Macros.beginProfile();
 		if (_lazyLoadStyles == false) {
 			buildStyles();
 		}
@@ -309,6 +308,5 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 		}
 		
 		applyStyle();
-		Macros.endProfile();
 	}
 }

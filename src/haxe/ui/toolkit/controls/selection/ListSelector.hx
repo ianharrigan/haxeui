@@ -140,9 +140,9 @@ class ListSelector extends Button implements IDataComponent {
 			
 			_list.x = this.stageX - root.stageX;
 			_list.y = this.stageY + this.height - root.stageY;
-			if (_list.width == 0) {
+			//if (_list.width == 0) {
 				_list.width = this.width;
-			}
+			//}
 			#if !html5
 			_list.sprite.filters = [ new DropShadowFilter (4, 45, 0x808080, 1, 4, 4, 1, 3) ];
 			#end

@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.11",
-    "releasenote"  : "Fixed problem with style cache returning reference to style",
+    "version"      : "1.5.12",
+    "releasenote"  : "Fixed problems with having to explicitly set height and widths if autoSize is false",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

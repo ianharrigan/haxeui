@@ -45,11 +45,12 @@ class Main {
 		b.height = 600;
 		*/
 		//Toolkit.scaleFactor = 2;
+		
 		Toolkit.open(function(root:Root) {
-			/*
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
 			root.addChild(view);
 			
+			/*
 			var b1:Button = view.findChild("b1");
 			b1.onClick = function(e) {
 				b1.style.color = 0xFF0000;
@@ -59,7 +60,8 @@ class Main {
 				b2.styleName = "big";
 			};
 			*/
-			
+
+			/*	
     var xml:Xml = Xml.parse(ResourceManager.instance.getText("assets/test2.xml"));
     var ui:IDisplayObjectContainer = Toolkit.processXml(xml);
     root.addChild(ui);
@@ -96,7 +98,7 @@ class Main {
     vbox.addChild(t1);
     vbox.addChild(t2);
     vbox.addChild(t3);
-			
+			*/
 		}/*, {width: 300, height: 300}*/);
 	}
 }

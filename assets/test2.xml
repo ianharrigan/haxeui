@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!-- hbox width="300" height="200" autoSize="false" -->
-<!--
+
 <hbox style="backgroundColor:0xFF0000;padding:10">
 	<style>
 		.big {
 			fontSize: 20;
 		}
 	</style>
-	<button id="b1" text="Test 1" width="100" autoSize="false" />
+	<button id="b1" text="Test 1" width="150" autoSize="false" />
 	<button id="b2" text="Test 2" />
 	<button id="b3" text="Test 2" />
 	
 	<hscroll />
 	
-	<listSelector text="bob" width="100" autoSize="false">
+	<listSelector text="bob" width="200" autoSize="false">
 		<array>1,2,3,4,5,6,6,7</array>
 	</listSelector>
 
-	<listSelector text="bob2" width="100" height="50" autoSize="false">
+	<listSelector text="bob2" width="200" height="50" autoSize="false">
 		<array>1,2,3,4,5,6,6,7</array>
 	</listSelector>
 </hbox>
+
+<!--
+<vbox width="100%" height="100%">    
+    <style>  
+        #header {    
+            backgroundColor: 0x4a87ee;    
+            autoSize: false;    
+            height: 200;    
+        }    
+    </style>  
+    <box id="header" width="100%">    
+        <text text="Text" horizontalAlign="center" verticalAlign="center" />    
+    </box>    
+</vbox>    
 -->
 
-<vbox width="100%" height="100%">
-</vbox>
-<!--
+	<!--
 <vbox width="100%" height="100%">
     <style>
         .hbItem {

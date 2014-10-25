@@ -39,23 +39,8 @@ class BoxLayout extends Layout {
 				totalHeight = child.height;
 			}
 		}
-		
-		if (container.autoSize) {
-			if (totalWidth > 0  && totalWidth != innerWidth && container.percentWidth == -1) {
-				container.width = totalWidth + (padding.left + padding.right);
-			}
-			if (totalHeight > 0 && totalHeight != innerHeight && container.percentHeight == -1) {
-				container.height = totalHeight + (padding.top + padding.bottom);
-			}
-		} else {
-			if (totalWidth > 0 && container.height == 0 && container.percentWidth > -1) {
-				container.width = totalWidth + (padding.left + padding.right);
-				container.height = totalHeight + (padding.top + padding.bottom);
-			} else if (totalHeight > 0 && container.width == 0 && container.percentHeight > -1) {
-				container.width = totalWidth + (padding.left + padding.right);
-				container.height = totalHeight + (padding.top + padding.bottom);
-			}
-		}
+
+		autoSize(totalWidth, totalHeight);
 	}
 
 	private override function repositionChildren():Void {

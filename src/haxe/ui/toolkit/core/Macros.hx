@@ -11,6 +11,7 @@ class Macros {
 	private static var dataSourceClasses:Map<String, String> = new Map<String, String>();
 	private static var themeResources:Map<String, Array<String>> = new Map<String, Array<String>>();
 	
+	/*
 	macro public static function beginProfile(name:String = null) {
 		#if HXUI_CONSOLE
 			if (name == null) {
@@ -32,6 +33,7 @@ class Macros {
 			return Context.parseInlineString("function() { }()", Context.currentPos());
 		#end
 	}
+	*/
 	
 	macro public static function registerModules() {
 		var code:String = "function() {\n";

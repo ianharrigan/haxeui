@@ -297,7 +297,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		}
 		return _autoSize;
 	}
-	
+
 	//******************************************************************************************
 	// IDisplayObject
 	//******************************************************************************************

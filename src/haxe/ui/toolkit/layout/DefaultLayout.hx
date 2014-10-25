@@ -36,6 +36,7 @@ class DefaultLayout extends Layout {
 			}
 		}
 		
+		/*
 		if (container.autoSize) {
 			if (totalWidth > 0  && totalWidth != innerWidth && container.percentWidth == -1) {
 				container.width = totalWidth + (padding.left + padding.right);
@@ -45,6 +46,8 @@ class DefaultLayout extends Layout {
 			}
 		} else {
 		}
+		*/
+		autoSize(totalWidth, totalHeight);
 	}
 	
 	private override function repositionChildren():Void {

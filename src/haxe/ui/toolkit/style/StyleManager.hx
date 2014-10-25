@@ -226,7 +226,6 @@ class StyleManager {
 	}
 	
 	public function buildStyleFor(c:IDisplayObjectContainer, state:String = null):Style {
-		Macros.beginProfile();
 		if (state == "normal") {
 			state = null;
 		}
@@ -238,7 +237,6 @@ class StyleManager {
 				_cachedStyles = new Map<String, Style>();
 			}
 			if (_cachedStyles.get(cacheKey) != null) {
-				Macros.endProfile();
 				return _cachedStyles.get(cacheKey).clone();
 			}
 		}
@@ -289,7 +287,6 @@ class StyleManager {
 		
 		style.target = c;
 		style.autoApply = true;
-		Macros.endProfile();
 		return style.clone();
 	}
 	

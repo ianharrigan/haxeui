@@ -81,6 +81,31 @@ class Layout implements ILayout implements IClonable<Layout> {
 	private function repositionChildren():Void {
 	}
 
+	private function autoSize(totalWidth:Float, totalHeight:Float):Void {
+		if (container.autoSize) {
+			if (totalWidth > 0  && totalWidth != innerWidth && container.percentWidth == -1) {
+				container.width = totalWidth + (padding.left + padding.right);
+			}
+			if (totalHeight > 0 && totalHeight != innerHeight && container.percentHeight == -1) {
+				container.height = totalHeight + (padding.top + padding.bottom);
+			}
+		} else {
+			if (totalWidth > 0 && container.height == 0 && container.percentWidth > -1) {
+				container.width = totalWidth + (padding.left + padding.right);
+				container.height = totalHeight + (padding.top + padding.bottom);
+			} else if (totalHeight > 0 && container.width == 0 && container.percentHeight > -1) {
+				container.width = totalWidth + (padding.left + padding.right);
+				container.height = totalHeight + (padding.top + padding.bottom);
+			} else {
+				if (totalWidth > 0 && container.height == 0) {
+					container.height = totalHeight + (padding.top + padding.bottom);
+				} else if (totalHeight > 0 && container.width == 0) {
+					container.width = totalWidth + (padding.left + padding.right);
+				}
+			}
+		}
+	}
+	
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
