@@ -239,7 +239,7 @@ class StyleManager {
 			}
 			if (_cachedStyles.get(cacheKey) != null) {
 				Macros.endProfile();
-				return _cachedStyles.get(cacheKey);
+				return _cachedStyles.get(cacheKey).clone();
 			}
 		}
 		

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!-- hbox width="300" height="200" autoSize="false" -->
+<!--
 <hbox style="backgroundColor:0xFF0000;padding:10">
 	<style>
 		.big {
@@ -16,10 +17,16 @@
 	<listSelector text="bob" width="100" autoSize="false">
 		<array>1,2,3,4,5,6,6,7</array>
 	</listSelector>
-	
-</hbox>
 
-	<!--
+	<listSelector text="bob2" width="100" height="50" autoSize="false">
+		<array>1,2,3,4,5,6,6,7</array>
+	</listSelector>
+</hbox>
+-->
+
+<vbox width="100%" height="100%">
+</vbox>
+<!--
 <vbox width="100%" height="100%">
     <style>
         .hbItem {

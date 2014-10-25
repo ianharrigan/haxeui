@@ -46,6 +46,7 @@ class Main {
 		*/
 		//Toolkit.scaleFactor = 2;
 		Toolkit.open(function(root:Root) {
+			/*
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
 			root.addChild(view);
 			
@@ -57,8 +58,8 @@ class Main {
 			b2.onClick = function(e) {
 				b2.styleName = "big";
 			};
+			*/
 			
-	/*		
     var xml:Xml = Xml.parse(ResourceManager.instance.getText("assets/test2.xml"));
     var ui:IDisplayObjectContainer = Toolkit.processXml(xml);
     root.addChild(ui);
@@ -70,7 +71,7 @@ class Main {
     t1.text = "Some info about something";
     t1.style.fontSize = 16;
     t1.style.color = 0xff0000;
-	t1.style.backgroundColor = 0x880000;
+	//t1.style.backgroundColor = 0x880000;
     t1.percentWidth = 100;
 	//t1.id = "bob";
 
@@ -79,7 +80,7 @@ class Main {
     t2.text = "other new info";
     t2.style.fontSize = 12;
     t2.style.color = 0x0000ee;
-	t2.style.backgroundColor = 0x000088;
+	//t2.style.backgroundColor = 0x000088;
     t2.percentWidth = 100;
 	//t2.id = "bob2";
 
@@ -88,14 +89,13 @@ class Main {
     t3.text = "something new";
     t3.style.fontSize = 12;
     t3.style.color = 0xffa500;
-    t3.style.backgroundColor = 0x88a500;
+    //t3.style.backgroundColor = 0x88a500;
     t3.percentWidth = 100;
 	//t3.id = "bob3";
 
     vbox.addChild(t1);
     vbox.addChild(t2);
-    //vbox.addChild(t3);
-		*/	
+    vbox.addChild(t3);
 			
 		}/*, {width: 300, height: 300}*/);
 	}
