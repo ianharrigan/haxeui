@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+
+<listview width="100%" height="100%">
+	<itemrenderer>
+		<hbox>
+			<image id="thumbnail" />
+			<grid columns="2">
+				<button id="some1" />
+				<button id="some2" />
+				<button id="some3" />
+				<button id="some4" />
+				<checkbox text="Nothing" />
+			</grid>
+		</hbox>
+	</itemrenderer>
+	<json>
+		[
+			{"text": "The Group 1", "divider": true},
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1a", "some2": "thing2a", "some3": "thing3a", "some4": "thing4a" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1b", "some2": "thing2b", "some3": "thing3b", "some4": "thing4b" },
+			{"text": "The Group 2", "divider": true},
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1d", "some2": "thing2d", "some3": "thing3d", "some4": "thing4d" }
+			
+		]
+	</json>
+</listview>
+
 <!-- hbox width="300" height="200" autoSize="false" -->
 
+<!--
 <hbox style="backgroundColor:0xFF0000;padding:10">
 	<style>
 		.big {
@@ -22,6 +50,13 @@
 		<array>1,2,3,4,5,6,6,7</array>
 	</listSelector>
 </hbox>
+-->
+
+<!--
+<listSelector text="aaa" width="300" autoSize="false" style="fontSize:20;">
+    <array>aaa,bbb,ccc</array>
+</listSelector>
+-->
 
 <!--
 <vbox width="100%" height="100%">    
@@ -29,12 +64,12 @@
         #header {    
             backgroundColor: 0x4a87ee;    
             autoSize: false;    
-            height: 200;    
+            fsdheight: 200;    
         }    
     </style>  
-    <box id="header" width="100%">    
-        <text text="Text" horizontalAlign="center" verticalAlign="center" />    
-    </box>    
+    <vbox id="header" width="100%">    
+        <text text="Text" horizontalAlign="center" verticalAlign="center" style="2backgroundColor: 0xFF0000" />    
+    </vbox>    
 </vbox>    
 -->
 

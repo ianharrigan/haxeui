@@ -10,6 +10,11 @@ class DefaultStyles extends Styles {
 		var f = Assets.getFont("fonts/Oxygen.ttf");
 		var fb = Assets.getFont("fonts/Oxygen-Bold.ttf");
 		
+		addStyle("Root", new Style( {
+			padding: 0,
+			backgroundColor: 0x888888,
+		} ));
+
 		addStyle("Component", new Style( {
 			padding: 0,
 			backgroundColor: 0x888888,
@@ -36,7 +41,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle("Container", new Style( {
 			spacing: 5,
-			backgroundColor: 0x888888,
+			//backgroundColor: 0x888888,
 		} ));
 		
 		addStyle("Accordion", new Style( {
@@ -45,7 +50,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle(".page", new Style( {
 			padding: 5,
-			backgroundColor: -2,
+			backgroundColor: -1,
 		} ));
 
 		addStyle("Button", new Style( {
@@ -77,6 +82,13 @@ class DefaultStyles extends Styles {
 			color: 0x444444,
 		} ));
 
+		addStyle("Button:disabled", new Style( {
+			backgroundColor: 0x8C8C8C,
+			backgroundColorGradientEnd: 0x6C6C6C,
+			color: 0xCCCCCC,
+			borderColor: 0x666666,
+		} ));
+		
 		
 		addStyle("Button.expandable", new Style( {
 			icon: "styles/default/expand.png",
@@ -501,7 +513,7 @@ class DefaultStyles extends Styles {
 		} ));
 
 		addStyle("Popup Container", new Style( {
-			backgroundColor: -2,
+			backgroundColor: 0xcccccc,
 		} ));
 		
 		
@@ -524,6 +536,7 @@ class DefaultStyles extends Styles {
 			paddingBottom: 5,
 			height: 55,
 			backgroundColor: 0xcccccc,
+			percentWidth: 100,
 		} ));
 		
 		addStyle("Popup #titleBar #title", new Style( {
