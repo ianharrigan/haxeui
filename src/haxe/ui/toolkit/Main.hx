@@ -32,7 +32,7 @@ class Main {
 		//Toolkit.theme = new DefaultTheme();
 		//Toolkit.theme = new GradientTheme();
 		//Toolkit.theme = new WindowsTheme();
-		//Toolkit.theme = "gradient";
+		Toolkit.theme = "gradient";
 		//Macros.addStyleSheet("assets/test.css");
 		Toolkit.setTransitionForClass(Stack, "none");
 		//Toolkit.addScriptletClass("Client", ClientWrapper);

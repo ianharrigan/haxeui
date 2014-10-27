@@ -190,7 +190,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				_label.textAlign = "center";
 			} else {
 				_label.percentWidth = -1;
-				//_label.autoSize = true;
+				_label.autoSize = true;
 				_label.textAlign = "center";
 			}
 		}

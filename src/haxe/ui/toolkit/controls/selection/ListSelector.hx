@@ -47,6 +47,7 @@ class ListSelector extends Button implements IDataComponent {
 		toggle = true;
 		allowSelection = false;
 		dispatchChangeEvents = false;
+		autoSize = false;
 	}
 	
 	//******************************************************************************************
@@ -64,7 +65,6 @@ class ListSelector extends Button implements IDataComponent {
 	
 	private override function initialize():Void {
 		super.initialize();
-		autoSize = false;
 	}
 	
 	private override function _onMouseClick(event:MouseEvent):Void {

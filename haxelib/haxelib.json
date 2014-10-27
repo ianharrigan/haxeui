@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.12",
-    "releasenote"  : "Fixed problems with having to explicitly set height and widths if autoSize is false",
+    "version"      : "1.5.13",
+    "releasenote"  : "Fixed drop down autosize problem",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
