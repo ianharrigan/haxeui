@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 
-<!--
 <listview width="100%" height="100%">
 	<itemrenderer>
 		<hbox>
@@ -22,21 +21,39 @@
 			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1b", "some2": "thing2b", "some3": "thing3b", "some4": "thing4b" },
 			{"text": "The Group 2", "divider": true},
 			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
+			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1c", "some2": "thing2c", "some3": "thing3c", "some4": "thing4c" },
 			{"thumbnail": "img/slinky_small.jpg", "some1": "thing1d", "some2": "thing2d", "some3": "thing3d", "some4": "thing4d" }
 			
 		]
 	</json>
 </listview>
--->
 
 <!--
 <vbox x="20" y="20" width="200" height="200" style="backgroundColor: 0xFF0000;cornerRadiusBottomRight: 10">
 </vbox>
 -->
 
+<!--
 <listSelector x="350" y="50" text="aaa" width="300" autoSize="true" style="fontSize:30;">  
     <array>aaa,bbb,ccc</array>  
 </listSelector> 
+-->
 
 <!-- hbox width="300" height="200" autoSize="false" -->
 

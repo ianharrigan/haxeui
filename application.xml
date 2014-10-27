@@ -39,9 +39,7 @@
 	<assets path="assets/ui" rename="ui" />
 	
 	<!-- optimize output -->
-	<!--
-	<haxeflag name="-D openfl-next" />
-	-->
+	<haxeflag name="-D next" />
 	<haxeflag name="-dce std" if="haxe3" />
 	<!--haxeflag name="-xml" value="docs/haxe-ui-toolkit.xml" /-->
 </project>
