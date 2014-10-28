@@ -16,23 +16,23 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,1" />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,1,4" />
+    <class path="C:\Servers\Haxe\haxe\lib\lime\2,0,0-alpha,2" />
     <class path="C:\Servers\Haxe\haxe\lib\actuate\1,7,5" />
     <class path="C:\Servers\Haxe\haxe\lib\svg\1,0,8" />
-    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,1" />
+    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,4" />
     <class path="src" />
     <class path="assets" />
-    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,0,1\backends\flash" />
-    <class path="bin\flash\haxe" />
+    <class path="bin\html5\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="openfl=2.0.1&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.1&#xA;tools=1.5.7&#xA;openfl-flash&#xA;display&#xA;web" />
+    <option directives="openfl=2.1.4&#xA;lime=2.0.0-alpha.2&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.4&#xA;dom&#xA;tools=2.0.0-alpha.2&#xA;no-compilation&#xA;openfl-html5&#xA;canvas&#xA;lime-html5&#xA;html5&#xA;web&#xA;html5&#xA;js-flatten" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;-swf-version 11.2" />
+    <option additional="--remap flash:openfl&#xA;--macro allowPackage(&quot;flash&quot;)" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.5.13",
-    "releasenote"  : "Fixed drop down autosize problem",
+    "version"      : "1.6.0",
+    "releasenote"  : "Basic html5 support",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

@@ -30,15 +30,6 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		super.initialize();
 		
 		_layout.container = this;
-		
-		#if html5
-		if (_childrenToAdd != null) {
-			for (child in _childrenToAdd) {
-				addChild(child);
-			}
-			_childrenToAdd = null;
-		}
-		#end
 	}
 	
 	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
@@ -72,21 +63,11 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	
 	private function get_numChildren():Int {
 		var arr = _children;
-		#if html5
-		if (_childrenToAdd != null) {
-			arr = arr.concat(_childrenToAdd);
-		}
-		#end
 		return arr.length;
 	}
 	
 	private function get_children():Array<IDisplayObject> {
 		var arr = _children;
-		#if html5
-		if (_childrenToAdd != null) {
-			arr = arr.concat(_childrenToAdd);
-		}
-		#end
 		return arr;
 	}
 	
@@ -99,24 +80,10 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		return children[index];
 	}
 	
-	#if html5
-	private var _childrenToAdd:Array<IDisplayObject>;
-	#end
-	
 	public function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
 		if (child == null) {
 			return null;
 		}
-		
-		#if html5	
-		if (_ready == false) {
-			if (_childrenToAdd == null) {
-				_childrenToAdd = new Array<IDisplayObject>();
-			}
-			_childrenToAdd.insert(index, child);
-			return child;
-		}
-		#end
 		
 		var childSprite:Sprite = child.sprite;
 		
@@ -135,16 +102,6 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		if (child == null) {
 			return null;
 		}
-		
-		#if html5
-		if (_ready == false) {
-			if (_childrenToAdd == null) {
-				_childrenToAdd = new Array<IDisplayObject>();
-			}
-			_childrenToAdd.push(child);
-			return child;
-		}
-		#end
 		
 		var childSprite:Sprite = child.sprite;
 		
@@ -173,14 +130,6 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 			}
 			invalidate(InvalidationFlag.LAYOUT);
 		//}
-		#if html5
-		if (_childrenToAdd != null) {
-			var success = _childrenToAdd.remove(child);
-			if (dispose && success) {
-				child.dispose();
-			}
-		}
-		#end
 		return child;
 	}
 	
@@ -197,20 +146,12 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		while (sprite.numChildren > 0) {
 			sprite.removeChildAt(0);
 		}
-		#if html5
-		_childrenToAdd = null;
-		#end
 	}
 	
 	public function contains(child:IDisplayObject):Bool {
 		if (child == null) {
 			return false;
 		}
-		#if html5
-		if (_childrenToAdd != null) {
-			return std.Lambda.has(_childrenToAdd, child);
-		}
-		#end
 
 		return sprite.contains(child.sprite);
 	}
@@ -219,12 +160,6 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 		if (child != null) {
 			sprite.setChildIndex(child.sprite, index);
 		}
-		#if html5
-		if (_childrenToAdd != null) {
-			_childrenToAdd.remove(child);
-			_childrenToAdd.insert(index, child);
-		}
-		#end
 	}
 	
 	public function findChildAs<T>(type:Class<T>):Null<T> {

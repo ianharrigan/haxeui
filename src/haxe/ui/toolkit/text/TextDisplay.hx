@@ -65,8 +65,16 @@ class TextDisplay implements ITextDisplay {
 		
 		style = _style;
 		
-		#if (html5)
-		_tf.height = _tf.textHeight;
+		#if (html5 && !dom)
+		if (_tf.height - 2 != _tf.textHeight) {
+			_tf.height = _tf.textHeight - 2;
+		}
+		#end
+
+		#if (html5 && dom)
+		if (Std.int(_tf.height) != Std.int(_tf.textHeight)) {
+			_tf.height = Std.int(_tf.textHeight);
+		}
 		#end
 		
 		return value;
@@ -83,9 +91,15 @@ class TextDisplay implements ITextDisplay {
 
 		_style = value;
 		var format:TextFormat = _tf.getTextFormat();
-		if (_style.fontName != null) {
+		var fontName:String = _style.fontName;
+		if (fontName != null) {
+			#if html5
+			if (fontName == "_sans") {
+				fontName = "Tahoma";
+			}
+			#end
 			_tf.embedFonts = _style.fontEmbedded;
-			format.font = _style.fontName;
+			format.font = fontName;
 		}
 		if (_style.fontSize != -1) {
 			format.size = _style.fontSize;

@@ -17,7 +17,11 @@ class Root extends Component {
 	public function new() {
 		super();
 		_layout = new AbsoluteLayout();
+		#if !html5
 		_clipContent = true;
+		#else
+		_clipContent = false;
+		#end
 		_mousePos = new Point(0, 0);
 		Screen.instance.addEventListener(Event.RESIZE, _onScreenResize);
 	}

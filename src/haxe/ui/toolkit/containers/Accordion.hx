@@ -43,12 +43,6 @@ class Accordion extends VBox implements IClonable<Accordion> {
 	 Adds a panel to the accordion, the childs `text` property will be used as the title
 	 **/
 	public override function addChild(child:IDisplayObject):IDisplayObject {
-		#if html5
-		if (_ready == false) {
-			return super.addChild(child);
-		}
-		#end
-		
 		var r = null;
 		if (Std.is(child, AccordionButton)) {
 			r = super.addChild(child);

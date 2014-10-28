@@ -22,6 +22,8 @@ import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleManager;
 import openfl.display.Bitmap;
+import openfl.events.MouseEvent;
+import openfl.geom.Rectangle;
 import openfl.Lib;
 
 class Main {
@@ -49,6 +51,14 @@ class Main {
 		Toolkit.open(function(root:Root) {
 			var view:Component = Toolkit.processXmlResource("assets/test2.xml");
 			root.addChild(view);
+			
+			var sv:ScrollView = cast view;
+			var ypos = 0;
+			root.addEventListener(MouseEvent.CLICK, function(e) {
+				trace("bob");
+				//sv._container.sprite.scrollRect = new Rectangle(0, ypos, sv.layout.usableWidth, ypos + 75);
+				//ypos += 10;
+			});
 			
 			/*
 			var b1:Button = view.findChild("b1");

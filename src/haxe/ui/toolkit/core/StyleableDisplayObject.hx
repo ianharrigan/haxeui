@@ -226,13 +226,13 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 				this.verticalAlign = _baseStyle.verticalAlignment;
 			}
 			
-			#if !html5
+			//#if !html5
 			if (_baseStyle.filter != null) {
 				_sprite.filters = [_baseStyle.filter];
 			} else {
 				_sprite.filters = [];
 			}
-			#end
+			//#end
 		}
 		
 		invalidate(InvalidationFlag.DISPLAY);

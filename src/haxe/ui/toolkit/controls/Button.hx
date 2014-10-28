@@ -236,7 +236,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private override function preInitialize():Void {
 		super.preInitialize();
 	}
-	
+
+	#if html5
+	private var _mouseIn:Bool = false;
+	#end
 	private override function initialize():Void {
 		super.initialize();
 		
@@ -246,8 +249,44 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 
+		#if html5
+		addEventListener(MouseEvent.MOUSE_MOVE, function(e:MouseEvent) {
+			if (_mouseIn == false) {
+				_mouseIn = true;
+				var mouseEvent = new MouseEvent(MouseEvent.MOUSE_OVER,
+												false, e.cancelable,
+												e.localX, e.localY,
+												e.relatedObject, e.ctrlKey,
+												e.altKey, e.shiftKey,
+												e.buttonDown, e.delta,
+												e.commandKey, e.clickCount);
+				dispatchEvent(mouseEvent);
+				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, __onScreenMouseMove);
+			}
+		});
+		#end
+		
 		organiseChildren();
 	}
+	
+	#if html5
+	private function __onScreenMouseMove(e:MouseEvent):Void {
+		if (_mouseIn == true) {
+			if (hitTest(e.stageX, e.stageY) == false) {
+				Screen.instance.removeEventListener(MouseEvent.MOUSE_MOVE, __onScreenMouseMove);
+				_mouseIn = false;
+				var mouseEvent = new MouseEvent(MouseEvent.MOUSE_OUT,
+												false, e.cancelable,
+												e.localX, e.localY,
+												e.relatedObject, e.ctrlKey,
+												e.altKey, e.shiftKey,
+												e.buttonDown, e.delta,
+												e.commandKey, e.clickCount);
+				dispatchEvent(mouseEvent);
+			}
+		}
+	}
+	#end
 	
 	private override function set_disabled(value:Bool):Bool {
 		super.set_disabled(value);

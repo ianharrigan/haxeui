@@ -37,10 +37,6 @@ class StyleHelper {
 				if (borderSize > 0) {
 					g.lineStyle(borderSize, style.borderColor);
 					rc.inflate( -(borderSize / 2), -(borderSize / 2));
-					#if html5
-						rc.x = Std.int(rc.x);
-						rc.y = Std.int(rc.y);
-					#end
 				}
 			}
 			
@@ -94,6 +90,9 @@ class StyleHelper {
 				#else
 					if (Std.int(radiusTopLeft) & Std.int(radiusTopRight) & Std.int(radiusBottomLeft) & Std.int(radiusBottomRight) == radiusTopLeft) {
 						// this line will kill andriod 2.x based apps!
+						#if html5
+							radiusTopLeft -= 2;
+						#end
 						g.drawRoundRect(rc.left, rc.top, rc.width, rc.height, radiusTopLeft + 2, radiusTopLeft + 2);
 						//g.drawRect(rc.left, rc.top, rc.width, rc.height);
 					} else {
