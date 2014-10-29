@@ -2,11 +2,7 @@
 <project>
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
-	<assets path="assets" rename="assets"/>
-	<assets path="assets/styles" exclude="*.css" rename="styles" if="html5" />
-	<assets path="assets/styles" rename="styles" unless="html5"/>
-	<assets path="assets/fonts" rename="fonts"/>
-	<classpath name="styles" />
-	<classpath name="fonts" />
-	<!--classpath name="haxe" /-->
+	<assets path="assets" rename="assets" />
+	<assets path="assets/styles" rename="styles" />
+	<assets path="assets/fonts" rename="fonts" />
 </project>
