@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.Json;
 import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.ui.toolkit.hscript.ScriptUtils;
@@ -34,6 +35,21 @@ class Macros {
 		#end
 	}
 	*/
+	
+	macro public static function readVersionInfo() {
+		var code:String = "function() {\n";
+		var paths:Array<String> = Context.getClassPath();
+		for (p in paths) {
+			var descriptor:String = p + "/haxelib.json";
+			if (sys.FileSystem.exists(descriptor)) {
+				var content:String = sys.io.File.getContent(descriptor);
+				var json:Dynamic = Json.parse(content);
+				code += "\t_versionInfo.set('" + json.name + "', haxe.Json.parse(" + Json.stringify(content) +"));\n";
+			}
+		}
+		code += "}()\n";
+		return Context.parseInlineString(code, Context.currentPos());
+	}
 	
 	macro public static function registerModules() {
 		var code:String = "function() {\n";

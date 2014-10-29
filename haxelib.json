@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.2",
-    "releasenote"  : "Add FD project files to samples",
+    "version"      : "1.6.3",
+    "releasenote"  : "Embed version info",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

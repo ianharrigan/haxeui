@@ -32,7 +32,12 @@ class Toolkit {
 		return _instance;
 	}
 	
+	//******************************************************************************************
+	// Instance functions
+	//******************************************************************************************
 	public static function init():Void {
+		Macros.readVersionInfo();
+		
 		#if HXUI_CONSOLE
 		haxe.ui.toolkit.console.HaxeUIConsole.init();
 		#end
@@ -65,6 +70,21 @@ class Toolkit {
 		}
 	}
 
+	private static var _versionInfo:Map<String, Dynamic> = new Map<String, Dynamic>();
+	public static var versionInfo(get, null):Map<String, Dynamic>;
+	private static function get_versionInfo():Map<String, Dynamic> {
+		return _versionInfo;
+	}
+	
+	public static var versionString(get, null):String;
+	private static function get_versionString():String {
+		var s:String = "";
+		for (lib in _versionInfo.keys()) {
+			s += lib + " [" + _versionInfo.get(lib).version + "]\n";
+		}
+		return s;
+	}
+	
 	private static var _registeredProcessors:StringMap<String>;
 	public static function registerXMLProcessor(cls:Class<IXMLProcessor>, prefix:String):Void {
 		if (_registeredProcessors == null) {
