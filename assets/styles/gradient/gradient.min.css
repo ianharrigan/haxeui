@@ -1,5 +1,5 @@
-Root{backgroundColor:0xFFFFFF;borderColor:0xa5b8da;paddingLeft:10;paddingTop:10;paddingBottom:10;paddingRight:10;spacingY:0;}
-Root.popup{cornerRadius:3;filter:dropShadow(4,45,0x808080,1,4,4,1,3);}
+Root{backgroundColor:0xFFFFFF;paddingLeft:0;paddingTop:0;paddingBottom:0;paddingRight:0;spacingY:0;}
+Root.popup{cornerRadius:3;filter:dropShadow(4,45,0x808080,1,4,4,1,3);borderColor:0xa5b8da;}
 #modalOverlay{backgroundColor:0xE9EDF5;filter:blur;alpha:.6;}
 Text{fontSize:13;fontName:"_sans";}
 VBox,ContinuousHBox,ContinuousVBox,Box,HBox,Grid{borderColor:0xa5b8da;padding:0;spacing:5;cornerRadius:2;borderSize:0;}
