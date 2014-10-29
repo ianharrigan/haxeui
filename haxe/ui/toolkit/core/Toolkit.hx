@@ -1,6 +1,8 @@
 package haxe.ui.toolkit.core;
 
 import haxe.ui.toolkit.core.interfaces.IComponent;
+import haxe.ui.toolkit.style.StyleManager;
+import haxe.ui.toolkit.style.StyleParser;
 import openfl.Lib;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.controls.Menu;
@@ -274,6 +276,10 @@ class Toolkit {
 	
 	public static function addScriptletClass(name:String, cls:Class<Dynamic>):Void {
 		ScriptManager.instance.addClass(name, cls);
+	}
+	
+	public static function addStyleSheet(resourceId:String):Void {
+		StyleManager.instance.addStyles(StyleParser.fromString(ResourceManager.instance.getText(resourceId)));
 	}
 	
 	//******************************************************************************************

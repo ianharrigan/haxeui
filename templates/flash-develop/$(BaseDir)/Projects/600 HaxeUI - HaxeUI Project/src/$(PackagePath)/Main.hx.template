@@ -8,6 +8,7 @@ class Main {
 	public static function main() {
 		Toolkit.theme = new GradientTheme();
 		Toolkit.init();
+		Toolkit.addStyleSheet("css/main.css");
 		Toolkit.open(function(root:Root) {
 			root.addChild(new MainController().view);
 		});

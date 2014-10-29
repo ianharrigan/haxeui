@@ -14,6 +14,7 @@
 	
 	<icon path="assets/haxeui.png" />
 	<assets path="assets" rename="assets" />
+	<assets path="assets/css" rename="css" />
 	<assets path="assets/ui" rename="ui" />
 	
 	<!-- optimize output
