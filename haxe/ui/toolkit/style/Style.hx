@@ -22,8 +22,10 @@ class Style implements IClonable<Style> {
 	private var _backgroundImageRect:Rectangle;
 	private var _backgroundColor:Int = -1;
 	private var _backgroundColorGradientEnd:Int = -1;
+	private var _backgroundAlpha:Float = -1;
 	private var _borderColor:Int = -1;
 	private var _borderSize:Int = -1;
+	private var _borderAlpha:Float = -1;
 	private var _color:Int = -1;
 	private var _paddingLeft:Int = -1;
 	private var _paddingRight:Int = -1;
@@ -67,8 +69,10 @@ class Style implements IClonable<Style> {
 	public var backgroundImageRect(get, set):Rectangle;
 	public var backgroundColor(get, set):Int;
 	public var backgroundColorGradientEnd(get, set):Int;
+	public var backgroundAlpha(get, set):Float;
 	public var borderColor(get, set):Int;
 	public var borderSize(get, set):Int;
+	public var borderAlpha(get, set):Float;
 	public var color(get, set):Int;
 	public var paddingLeft(get, set):Int;
 	public var paddingRight(get, set):Int;
@@ -293,6 +297,21 @@ class Style implements IClonable<Style> {
 		}
 		return value;
 	}
+
+	private function get_backgroundAlpha():Float {
+		if (hasDynamicValue("backgroundAlpha")) {
+			return getDynamicValue("backgroundAlpha");
+		}
+		return _backgroundAlpha;
+	}
+	
+	private function set_backgroundAlpha(value:Float):Float {
+		if (value != _backgroundAlpha) {
+			_backgroundAlpha = value;
+			apply();
+		}
+		return value;
+	}
 	
 	private function get_borderColor():Int {
 		if (hasDynamicValue("borderColor")) {
@@ -324,6 +343,21 @@ class Style implements IClonable<Style> {
 		return value;
 	}
 
+	private function get_borderAlpha():Float {
+		if (hasDynamicValue("borderAlpha")) {
+			return getDynamicValue("borderAlpha");
+		}
+		return _borderAlpha;
+	}
+	
+	private function set_borderAlpha(value:Float):Float {
+		if (value != _borderAlpha) {
+			_borderAlpha = value;
+			apply();
+		}
+		return value;
+	}
+	
 	private function get_color():Int {
 		if (hasDynamicValue("color")) {
 			return getDynamicValue("color");
@@ -911,21 +945,14 @@ class Style implements IClonable<Style> {
 			this._backgroundImageRect = null;
 		}
 		if (with._backgroundImageScale9 != null) this._backgroundImageScale9 = with._backgroundImageScale9;
-		if (with ._backgroundImageRect != null) this._backgroundImageRect = with ._backgroundImageRect;
-		/*
-		if (with._backgroundColor == NONE) {
-			this._backgroundColor = -1;
-			this._backgroundColorGradientEnd = -1;
-		} else if (with._backgroundColor != -1) {
-			this._backgroundColor = with._backgroundColor;
-			this._backgroundColorGradientEnd = -1;
-		}
-		*/
+		if (with._backgroundImageRect != null) this._backgroundImageRect = with._backgroundImageRect;
 		if (with._backgroundColor != -1) this._backgroundColor = with._backgroundColor;
 		if (with._backgroundColor != -1) this._backgroundColorGradientEnd = with._backgroundColor;
 		if (with._backgroundColorGradientEnd != -1) this._backgroundColorGradientEnd = with._backgroundColorGradientEnd;
+		if (with._backgroundAlpha != -1) this._backgroundAlpha = with._backgroundAlpha;
 		if (with._borderColor != -1) this._borderColor = with._borderColor;
 		if (with._borderSize != -1) this._borderSize = with._borderSize;
+		if (with._borderAlpha != -1) this._borderAlpha = with._borderAlpha;
 		if (with._color != -1) this._color = with._color;
 		if (with._paddingLeft != -1) this._paddingLeft = with._paddingLeft;
 		if (with._paddingRight != -1) this._paddingRight = with._paddingRight;

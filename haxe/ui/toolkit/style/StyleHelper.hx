@@ -35,17 +35,26 @@ class StyleHelper {
 					borderSize = style.borderSize;
 				}
 				if (borderSize > 0) {
-					g.lineStyle(borderSize, style.borderColor);
+					var borderAlpha:Float = 1;
+					if (style.borderAlpha != -1) {
+						borderAlpha = style.borderAlpha;
+					}
+					g.lineStyle(borderSize, style.borderColor, borderAlpha);
 					rc.inflate( -(borderSize / 2), -(borderSize / 2));
 				}
 			}
 			
 			if (style.backgroundColor != -1) {
+				var backgroundAlpha:Float = 1;
+				if (style.backgroundAlpha != -1) {
+					backgroundAlpha = style.backgroundAlpha;
+				}
+				
 				if (style.backgroundColorGradientEnd != -1) {
 					var w:Int = Std.int(rc.width);
 					var h:Int = Std.int(rc.height);
 					var colors:Array<UInt> = [style.backgroundColor, style.backgroundColorGradientEnd];
-					var alphas:Array<Int> = [1, 1];
+					var alphas:Array<Float> = [backgroundAlpha, backgroundAlpha];
 					var ratios:Array<Int> = [0, 255];
 					var matrix:Matrix = new Matrix();
 					
@@ -70,10 +79,10 @@ class StyleHelper {
 													InterpolationMethod.LINEAR_RGB, 
 													0);
 					#else
-					g.beginFill(style.backgroundColor);
+					g.beginFill(style.backgroundColor, backgroundAlpha);
 					#end
 				} else {
-					g.beginFill(style.backgroundColor);
+					g.beginFill(style.backgroundColor, backgroundAlpha);
 				}
 			}
 			

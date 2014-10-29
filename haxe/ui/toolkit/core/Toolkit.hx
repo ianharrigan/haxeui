@@ -296,7 +296,7 @@ class Toolkit {
 	}
 	
 	public static function openFullscreen(fn:Root->Void = null):Root {
-		var root:Root = RootManager.instance.createRoot({x: 0, y: 0, percentWidth: 100, percentHeight: 100}, fn);
+		var root:Root = RootManager.instance.createRoot({x: 0, y: 0, percentWidth: 100, percentHeight: 100, styleName: "fullscreen"}, fn);
 		return root;
 	}
 	

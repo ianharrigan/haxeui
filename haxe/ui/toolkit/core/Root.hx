@@ -18,7 +18,7 @@ class Root extends Component {
 		super();
 		_layout = new AbsoluteLayout();
 		#if !html5
-		_clipContent = true;
+		_clipContent = false;
 		#else
 		_clipContent = false;
 		#end

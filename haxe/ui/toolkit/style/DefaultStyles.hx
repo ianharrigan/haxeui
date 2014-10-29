@@ -12,9 +12,17 @@ class DefaultStyles extends Styles {
 		
 		addStyle("Root", new Style( {
 			padding: 0,
-			backgroundColor: 0x888888,
 		} ));
 
+		addStyle("Root.popup", new Style( {
+			padding: 0,
+		} ));
+
+		addStyle("Root.fullscreen", new Style( {
+			padding: 0,
+			backgroundColor: 0x888888,
+		} ));
+		
 		addStyle("Component", new Style( {
 			padding: 0,
 			backgroundColor: 0x888888,

@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import openfl.events.Event;
 import openfl.Lib;
 import haxe.ui.toolkit.core.Root;
@@ -36,9 +37,10 @@ class RootManager {
 		root.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			if (fn != null) {
 				#if ios
-					haxe.Timer.delay(function() fn(root), 100); // iOS 6
+					haxe.Timer.delay(function() { fn(root); root.invalidate(InvalidationFlag.STYLE); }, 100); // iOS 6
 				#else
 					fn(root);
+					root.invalidate(InvalidationFlag.STYLE);
 				#end
 			}
 			root.removeEventListenerType(Event.ADDED_TO_STAGE);
