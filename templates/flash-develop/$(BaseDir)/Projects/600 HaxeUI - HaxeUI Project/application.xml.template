@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<meta title="$(ProjectName)" package="$(PackageDot)$(ProjectID)" version="1.0.0" company="$(DefaultUser)" />
+	<app main="$(PackageDot)Main" file="$(ProjectID)" path="bin" preloader="haxe.ui.HaxeUIPreloader" />
+	
+	<window background="#FFFFFF" fps="60" />
+	<window width="800" height="600" unless="mobile" />
+	
+	<!-- classpath, haxe libs -->
+	<source path="src" />
+	<classpath name="assets" />
+	
+	<haxelib name="haxeui" />
+	
+	<icon path="assets/haxeui.png" />
+	<assets path="assets" rename="assets" />
+	<assets path="assets/ui" rename="ui" />
+	
+	<!-- optimize output
+	<haxeflag name="-dce std" /> -->
+</project>
