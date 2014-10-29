@@ -186,8 +186,21 @@ class Controller {
 		return PopupManager.instance.showList(items, selectedIndex, title, fn);
 	}
 	
+	private var _currentBusyPopup:Popup;
 	private function showBusyPopup(text:String, delay:Int = -1, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
-		return PopupManager.instance.showBusy(text, delay, title, config, fn);
+		hideBusy();
+		return _currentBusyPopup = PopupManager.instance.showBusy(text, delay, title, config, fn);
+	}
+	
+	private function showBusy(text:String, delay:Int = -1, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
+		return showBusyPopup(text, delay, title, config, fn);
+	}
+	
+	private function hideBusy() {
+		if (_currentBusyPopup != null) {
+			PopupManager.instance.hidePopup(_currentBusyPopup);
+			_currentBusyPopup = null;
+		}
 	}
 	
 	public function showCalendarPopup(title:String = null, fn:Dynamic->Date->Void = null):Popup {
