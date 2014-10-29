@@ -79,7 +79,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	
 	public function new() {
 		super();	
-
+trace("BUTTON!!!!");
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		state = STATE_NORMAL;

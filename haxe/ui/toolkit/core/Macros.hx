@@ -75,7 +75,6 @@ class Macros {
 		}
 		
 		code += "}()\n";
-		//trace(code);
 		return Context.parseInlineString(code, Context.currentPos());
 	}
 	
@@ -409,12 +408,16 @@ class Macros {
 	        var ttype = TPath( { pack : classArray, name : className, params : [], sub : null } );
 			fields.push( { name : safeId, doc : null, meta : [], access : [APublic], kind : FVar(ttype, null), pos : pos } );
 			
+			trace(">>>>>>>>>>>>>>>>>> id = " + id);
+			trace(">>>>>>>>>>>>>>>>>> cls = " + cls);
 			var e:Expr = Context.parseInlineString("this." + safeId + " = getComponentAs(\"" + id + "\", " + cls + ")", Context.currentPos());
 			ctor.expr = switch(ctor.expr.expr) {
 				case EBlock(el): macro $b{insertExpr(el, n, e)};
 				case _: macro $b { insertExpr([ctor.expr], n, e) }
 			}
 		}
+		
+		trace(fields);
 		
 		return fields;
 	}
