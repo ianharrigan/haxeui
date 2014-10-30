@@ -456,8 +456,8 @@ class ListView extends ScrollView implements IDataComponent {
 		if (_vscroll != null) {
 			vpos = _vscroll.pos;
 		}
-		if (item.y + item.height > vpos + _content.clipHeight) {
-			_vscroll.pos = ((item.y + item.height) - _content.clipHeight);
+		if (item.y + item.height > vpos + _container.clipHeight) {
+			_vscroll.pos = ((item.y + item.height) - _container.clipHeight);
 		} else if (item.y < vpos) {
 			_vscroll.pos = item.y;
 		}

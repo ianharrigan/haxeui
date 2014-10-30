@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.4",
-    "releasenote"  : "Added backgroundAlpha and borderAlpha styles",
+    "version"      : "1.6.5",
+    "releasenote"  : "Fix for ListView::ensureVisible",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
