@@ -1,17 +1,18 @@
 package haxe.ui.toolkit.controls;
 
-import haxe.ui.toolkit.events.UIEvent;
-import openfl.display.DisplayObject;
-import openfl.events.Event;
-import openfl.text.TextField;
-import openfl.text.TextFormat;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.StateComponent;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.text.ITextDisplay;
 import haxe.ui.toolkit.text.TextDisplay;
+import openfl.display.DisplayObject;
+import openfl.events.Event;
+import openfl.events.KeyboardEvent;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 
 /**
  Generic editable text component (supports multiline text)
@@ -73,10 +74,29 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 				this.text = "";
 			}
 		});
+		
+		_textDisplay.display.addEventListener(KeyboardEvent.KEY_DOWN, _onTextDisplayKeyDown);
 		#end
 	}
 
+	#if (cpp || neko) // work around for pressing enter on multiline - not perfect, but better
+	private var _lastKeyCode:Int = -1;
+	private function _onTextDisplayKeyDown(event:KeyboardEvent):Void {
+		if (event.keyCode == 13 && multiline == true) {
+			if (_lastKeyCode != 13) {
+				_textDisplay.text = StringTools.rtrim(_textDisplay.text);
+			}
+			_textDisplay.text = _textDisplay.text + "\r";
+		}
+		
+		_lastKeyCode = event.keyCode;
+	}
+	#end
+	
 	public override function dispose() {
+		#if (cpp || neko)
+		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextDisplayKeyDown);
+		#end
 		_textDisplay.display.removeEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextScroll);
 		sprite.removeChild(_textDisplay.display);
