@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.5",
-    "releasenote"  : "Work around for using enter on multiline text fields",
+    "version"      : "1.6.6",
+    "releasenote"  : "Dropdown lists now obey styles",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

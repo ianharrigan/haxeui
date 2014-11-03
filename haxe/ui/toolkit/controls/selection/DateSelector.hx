@@ -1,15 +1,14 @@
 package haxe.ui.toolkit.controls.selection;
 
-import haxe.ui.toolkit.core.Screen;
-import openfl.events.Event;
-import openfl.events.MouseEvent;
-import openfl.filters.DropShadowFilter;
 import haxe.ui.toolkit.containers.CalendarView;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.PopupManager;
+import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 
 class DateSelector extends Button {
 	private var _cal:CalendarView;
@@ -74,6 +73,10 @@ class DateSelector extends Button {
 		} else {
 			if (_cal == null) {
 				_cal = new CalendarView();
+				_cal.styleName = "dropDown";
+				if (this.id != null) {
+					_cal.id = this.id + "_dropDown";
+				}
 				_cal.addEventListener(Event.CHANGE, onDateChange);
 				_cal.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 					showCalendar();
@@ -87,7 +90,6 @@ class DateSelector extends Button {
 
 			_cal.x = this.stageX - root.stageX;
 			_cal.y = this.stageY + this.height - root.stageY;
-			_cal.sprite.filters = [ new DropShadowFilter (4, 45, 0x808080, 1, 4, 4, 1, 3) ];
 			if (_cal.stageY + _cal.height > Screen.instance.height) {
 				_cal.y = this.stageY - _cal.height;
 				this.styleName = "dropUp";

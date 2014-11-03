@@ -1,20 +1,19 @@
 package haxe.ui.toolkit.controls.selection;
 
-import haxe.ui.toolkit.core.Screen;
-import openfl.events.Event;
-import openfl.events.MouseEvent;
-import openfl.filters.DropShadowFilter;
 import haxe.ui.toolkit.containers.ListView;
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IItemRenderer;
 import haxe.ui.toolkit.core.PopupManager;
+import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 
 /**
  Allows the user to select an item from a list
@@ -126,6 +125,10 @@ class ListSelector extends Button implements IDataComponent {
 		} else {
 			if (_list == null) {
 				_list = new ListView();
+				_list.styleName = "dropDown";
+				if (this.id != null) {
+					_list.id = this.id + "_dropDown";
+				}
 				_list.addEventListener(UIEvent.CHANGE, _onListChange);
 				_list.content.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 					showList();
@@ -143,9 +146,6 @@ class ListSelector extends Button implements IDataComponent {
 			//if (_list.width == 0) {
 				_list.width = this.width;
 			//}
-			#if !html5
-			_list.sprite.filters = [ new DropShadowFilter (4, 45, 0x808080, 1, 4, 4, 1, 3) ];
-			#end
 			
 			var n:Int = _maxListSize;
 			if (n > _list.listSize) {
