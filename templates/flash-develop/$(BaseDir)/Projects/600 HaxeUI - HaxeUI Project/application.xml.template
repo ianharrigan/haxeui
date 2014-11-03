@@ -19,4 +19,15 @@
 	
 	<!-- optimize output
 	<haxeflag name="-dce std" /> -->
+	
+	<!--  set the filter quality to low for mobiles for better performance, values are:
+		
+		* filters-none
+		* filters-low
+		* filters-medium
+		* filters-high
+		
+		Remove flag to use whatever values are specified in the styles. 
+	-->
+	<haxedef name="filters-low" if="mobile" />
 </project>

@@ -96,11 +96,6 @@ class Root extends Component {
 		for (child in children) {
 			if (Std.is(child, Popup) == false && child.id != "modalOverlay") {
 				var c:Component = cast(child, Component);
-				#if !html5
-				if (_modalOverlay.baseStyle.filter != null) {
-					//c.sprite.filters = [_modalOverlay.style.filter];
-				}
-				#end
 			}
 		}
 		#end
@@ -117,9 +112,6 @@ class Root extends Component {
 			for (child in children) {
 				if (Std.is(child, Popup) == false && child.id != "modalOverlay") {
 					var c:Component = cast(child, Component);
-					#if !html5
-					c.sprite.filters = null;
-					#end
 				}
 			}
 			#end

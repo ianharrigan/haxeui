@@ -120,4 +120,15 @@ class FilterParser {
 		
 		return copy;
 	}
+	
+	public static function changeFilterQuality(filter:BitmapFilter, quality:Int):BitmapFilter {
+		if (Std.is(filter, BlurFilter)) {
+			cast(filter, BlurFilter).quality = quality;
+		} else if (Std.is(filter, DropShadowFilter)) {
+			cast(filter, DropShadowFilter).quality = quality;
+		} else if (Std.is(filter, GlowFilter)) {
+			cast(filter, GlowFilter).quality = quality;
+		}
+		return filter;
+	}
 }

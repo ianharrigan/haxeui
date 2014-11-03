@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.6",
-    "releasenote"  : "Dropdown lists now obey styles",
+    "version"      : "1.6.7",
+    "releasenote"  : "Filter quality can now be overridden",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

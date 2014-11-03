@@ -1,6 +1,8 @@
 package haxe.ui.toolkit.style;
 
+import haxe.ui.toolkit.util.FilterParser;
 import openfl.filters.BitmapFilter;
+import openfl.filters.BitmapFilterQuality;
 import openfl.geom.Rectangle;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
@@ -636,10 +638,30 @@ class Style implements IClonable<Style> {
 	}
 	
 	private function get_filter():BitmapFilter {
+		#if (filters_none)
+			return null;
+		#end
+		var filter:BitmapFilter = null;
 		if (hasDynamicValue("filter")) {
-			return getDynamicValue("filter");
+			filter = getDynamicValue("filter");
+		} else {
+			filter = _filter;
 		}
-		return _filter;
+		
+		var overrideQuality:Int = -1;
+		#if (filters_high)
+			overrideQuality = BitmapFilterQuality.HIGH;
+		#end
+		#if (filters_medium)
+			overrideQuality = BitmapFilterQuality.MEDIUM;
+		#end
+		#if (filters_low)
+			overrideQuality = BitmapFilterQuality.LOW;
+		#end
+		if (overrideQuality != -1) {
+			filter = FilterParser.changeFilterQuality(filter, overrideQuality);
+		}
+		return filter;
 	}
 	
 	private function set_filter(value:BitmapFilter):BitmapFilter {
