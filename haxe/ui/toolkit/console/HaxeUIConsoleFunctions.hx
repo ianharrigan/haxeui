@@ -1,5 +1,7 @@
 package haxe.ui.toolkit.console;
 
+#if !doc
+
 import haxe.ui.toolkit.console.ui.ScriptEditor;
 import haxe.ui.toolkit.core.ClassManager;
 import haxe.ui.toolkit.core.Component;
@@ -271,3 +273,5 @@ class HaxeUIConsoleFunctions {
 		}
 	}
 }
+
+#end

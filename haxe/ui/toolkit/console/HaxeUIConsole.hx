@@ -1,4 +1,7 @@
 package haxe.ui.toolkit.console;
+
+#if !doc
+
 import haxe.ui.toolkit.resources.ResourceManager;
 import openfl.Assets;
 import pgr.dconsole.DC;
@@ -21,3 +24,5 @@ class HaxeUIConsole {
 		}
 	}
 }
+
+#end

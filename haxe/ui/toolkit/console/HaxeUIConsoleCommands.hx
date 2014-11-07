@@ -1,5 +1,7 @@
 package haxe.ui.toolkit.console;
 
+#if !doc
+
 import haxe.ui.toolkit.console.ui.ScriptEditor;
 import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.resources.ResourceManager;
@@ -77,3 +79,5 @@ class HaxeUIConsoleCommands {
 		*/
 	}
 }
+
+#end

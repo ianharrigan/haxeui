@@ -1,0 +1,30 @@
+::use 'main.mtt'::
+	<div class="header">
+		<span ::cond api.isDefined("source-path"):: class="viewsource">
+			<a href="::api.getSourceLink(type)::">View source</a>
+		</span>
+		<h1>
+			<code>
+				<span class="directive">typedef </span>
+				<span class="type">::type.path::</span>
+				$$printTypeParams(::type.params::)
+				::switch type.type:: = $$printLinkedType(::type.type::)
+				::case 5::
+				::end::
+			</code>
+		</h1>
+	</div>
+	<div class="body">
+		$$printModule(::type.module::)
+		$$printPlatforms(::type.platforms::)
+		<div class="doc" ::cond type.doc != null::>
+			::raw type.doc::
+		</div>
+		::switch type.type::
+		::case 5::
+			::foreach field args[0]::
+				::use "class_field.mtt"::::end::
+			::end::
+		::end::
+	</div>
+::end::

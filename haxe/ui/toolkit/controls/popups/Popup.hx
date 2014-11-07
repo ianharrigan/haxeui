@@ -198,7 +198,7 @@ class Popup extends VBox implements IDraggable {
 		return button;
 	}
 	
-	@exclude
+	@:dox(hide)
 	public function clickButton(button:Int):Void {
 		if (_content.onButtonClicked(button) == true) {
 			PopupManager.instance.hidePopup(this);

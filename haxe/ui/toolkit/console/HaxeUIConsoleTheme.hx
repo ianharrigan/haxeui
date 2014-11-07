@@ -1,5 +1,7 @@
 package haxe.ui.toolkit.console;
 
+#if !doc
+
 import pgr.dconsole.DCThemes.Theme;
 
 class HaxeUIConsoleTheme {
@@ -23,3 +25,5 @@ class HaxeUIConsoleTheme {
 		LOG_CON	: 0x00FF00, // Confirmation messages color;
 	}
 }
+
+#end

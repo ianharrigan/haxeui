@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'/>
+	::raw api.config.getHeaderIncludes()::
+	<script type="text/javascript">var dox = {
+		rootPath: "::api.config.rootPath::",
+		platforms: [
+			::foreach pf api.config.platforms::
+				"::pf::"
+				::if !repeat.pf.last::,::end::
+			::end::
+		]
+	};</script>
+	<title>::api.currentPageName::::if api.config.pageTitle !=null:: - ::api.config.pageTitle::::end::</title>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<form class="navbar-search pull-left" id="searchForm">
+				<input id="search" type="text" class="search-query" placeholder="Filter" autocomplete="off"/>
+			</form>
+			<ul class="nav">
+				<li id="select-platform" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li data="all"><a href="#">All Platforms</a></li>
+						::foreach i api.config.platforms::
+							<li data="::i::"><a href="#">::i::</a></li>
+						::end::
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="container">
+		<div id="nav"></div>
+		<div id="content"><div style="float:right"><img src="::api.config.rootPath::/haxe.png"/></div>::raw __content__::</div>
+	</div>
+</body>
+</html>

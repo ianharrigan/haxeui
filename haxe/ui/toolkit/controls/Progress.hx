@@ -167,7 +167,7 @@ class Progress extends StateComponent implements IScrollable implements IDirecti
 	}
 }
 
-@exclude
+@:dox(hide)
 class HProgressLayout extends DefaultLayout {
 	public function new() {
 		super();
@@ -235,7 +235,7 @@ class HProgressLayout extends DefaultLayout {
 	}
 }
 
-@exclude
+@:dox(hide)
 class VProgressLayout extends DefaultLayout {
 	public function new() {
 		super();

@@ -1,0 +1,16 @@
+::use 'main.mtt'::
+	::if full == ""::<h1>top level</h1>
+	::else::<h1><span class="directive">package</span> ::full::</h1>
+	::end::
+	<table class="table table-condensed">
+		<tbody>
+			::foreach tree subs::
+				::set name = api.getTreeName(tree)::
+				<tr ::cond name.charAt(0) != "_"::>
+					<td width="200"><a href="::api.getTreeUrl(tree)::">::name::</a></td>
+					<td>::raw api.getTreeShortDesc(tree)::</td>
+				</tr>
+			::end::
+		</tbody>
+	</table>
+::end::

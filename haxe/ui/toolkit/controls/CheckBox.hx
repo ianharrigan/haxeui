@@ -107,7 +107,7 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	}
 }
 
-@exclude
+@:dox(hide)
 class CheckBoxValue extends Value implements IClonable<CheckBoxValue> {
 	public function new() {
 		super();

@@ -1,0 +1,22 @@
+::raw info.doc::
+
+<table class="table table-condensed" ::cond info.params.length > 0 || info.returns != null || info.defaultValue != null::>
+	<tbody>
+		<col width="10%"/>
+  		<col width="100%"/>
+		::foreach param info.params::
+			<tr>
+				<td>::raw param.value::</td>
+				<td>::raw param.doc::</td>
+			</tr>
+		::end::
+		<tr ::cond info.defaultValue != null::>
+			<td>default value</td>
+			<td>::raw info.defaultValue.doc::</td>
+		</tr>
+		<tr ::cond info.returns != null::>
+			<td>returns</td>
+			<td>::raw info.returns.doc::</td>
+		</tr>
+	</tbody>
+</table>

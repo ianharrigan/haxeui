@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link href="./bootstrap-combined.min.css" rel="stylesheet" /><script type="text/javascript" src="./jquery-1.9.1.min.js"></script><script type="text/javascript" src="./bootstrap.min.js"></script><link href="./styles.css" rel="stylesheet" /><link href="./custom.css" rel="stylesheet" /><link rel="icon" href="./favicon.ico" type="image/x-icon"></link><script type="text/javascript" src="./nav.js"></script><script type="text/javascript" src="./index.js"></script><script type="text/javascript">var dox = {rootPath: "./",platforms: ["haxe-ui-toolkit"]};</script><title>EReg</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Filter" autocomplete="off"/></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="haxe-ui-toolkit"><a href="#">haxe-ui-toolkit</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div style="float:right"><img src=".//haxe.png"/></div><div class="header"><h1><code><span class="directive">class </span><span class="type">EReg</span></code></h1></div><div class="body"><p class="availability">Available on all platforms</p><div class="doc"><p>The EReg class represents regular expressions.</p>
+<p>While basic usage and patterns consistently work across platforms, some more
+complex operations may yield different results. This is a necessary trade-
+off to retain a certain level of performance.</p>
+<p>EReg instances can be created by calling the constructor, or with the
+special syntax ~/pattern/modifier</p>
+<p>EReg instances maintain an internal state, which is affected by several of
+its methods.</p>
+<p>A detailed explanation of the supported operations is available at
+http://haxe.org/doc/cross/regexp</p></div><h2>Instance Fields</h2><div class="platform platform-haxe-ui-toolkit"><a name="new"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#new"><span class="identifier">new</span></a>(r:<a class="type" href="./String.html">String</a>, opt:<a class="type" href="./String.html">String</a>):<a class="type" href="./Void.html">Void</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Creates a new regular expression with pattern <code>r</code> and modifiers <code>opt</code>.</p>
+<p>This is equivalent to the shorthand syntax <code>~/r/opt</code></p>
+<p>If <code>r</code> or <code>opt</code> are null, the result is unspecified.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="map"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#map"><span class="identifier">map</span></a>(s:<a class="type" href="./String.html">String</a>, f:<a class="type" href="./EReg.html">EReg</a> -&gt;<a class="type" href="./String.html">String</a>):<a class="type" href="./String.html">String</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Calls the function <code>f</code> for the substring of <code>s</code> which <code>this</code> EReg matches
+and replaces that substring with the result of <code>f</code> call.</p>
+<p>The <code>f</code> function takes <code>this</code> EReg object as its first argument and should
+return a replacement string for the substring matched.</p>
+<p>If <code>this</code> EReg does not match any substring, the result is <code>s</code>.</p>
+<p>By default, this method replaces only the first matched substring. If
+the global g modifier is in place, all matched substrings are replaced.</p>
+<p>If <code>s</code> or <code>f</code> are null, the result is unspecified.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="match"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#match"><span class="identifier">match</span></a>(s:<a class="type" href="./String.html">String</a>):<a class="type" href="./Bool.html">Bool</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Tells if <code>this</code> regular expression matches String <code>s</code>.</p>
+<p>This method modifies the internal state.</p>
+<p>If <code>s</code> is <code><a href="./Null.html">null</a></code>, the result is unspecified.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="matchSub"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#matchSub"><span class="identifier">matchSub</span></a>(s:<a class="type" href="./String.html">String</a>, pos:<a class="type" href="./Int.html">Int</a>, ?len:<a class="type" href="./Int.html">Int</a> = -1):<a class="type" href="./Bool.html">Bool</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Tells if <code>this</code> regular expression matches a substring of String <code>s</code>.</p>
+<p>This function expects <code>pos</code> and <code>len</code> to describe a valid substring of
+<code>s</code>, or else the result is unspecified. To get more robust behavior,
+<code>this.<a href="#match">match</a>(s.substr(pos,len))</code> can be used instead.</p>
+<p>This method modifies the internal state.</p>
+<p>If <code>s</code> is null, the result is unspecified.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="matched"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#matched"><span class="identifier">matched</span></a>(n:<a class="type" href="./Int.html">Int</a>):<a class="type" href="./String.html">String</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Returns the matched sub-group <code>n</code> of <code>this</code> EReg.</p>
+<p>This method should only be called after <code>this.<a href="#match">match</a></code> or
+<code>this.<a href="#matchSub">matchSub</a></code>, and then operates on the String of that operation.</p>
+<p>The index <code>n</code> corresponds to the n-th set of parentheses in the pattern
+of <code>this</code> EReg. If no such sub-group exists, an exception is thrown.</p>
+<p>If <code>n</code> equals 0, the whole matched substring is returned.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="matchedLeft"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#matchedLeft"><span class="identifier">matchedLeft</span></a>():<a class="type" href="./String.html">String</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Returns the part to the left of the last matched substring.</p>
+<p>If the most recent call to <code>this.<a href="#match">match</a></code> or <code>this.<a href="#matchSub">matchSub</a></code> did not
+match anything, the result is unspecified.</p>
+<p>If the global g modifier was in place for the matching, only the
+substring to the left of the leftmost match is returned.</p>
+<p>The result does not include the matched part.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="matchedPos"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#matchedPos"><span class="identifier">matchedPos</span></a>():{pos:<a class="type" href="./Int.html">Int</a>, len:<a class="type" href="./Int.html">Int</a>}</code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Returns the position and length of the last matched substring, within
+the String which was last used as argument to <code>this.<a href="#match">match</a></code> or
+<code>this.<a href="#matchSub">matchSub</a></code>.</p>
+<p>If the most recent call to <code>this.<a href="#match">match</a></code> or <code>this.<a href="#matchSub">matchSub</a></code> did not
+match anything, the result is unspecified.</p>
+<p>If the global g modifier was in place for the matching, the position and
+length of the leftmost substring is returned.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="matchedRight"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#matchedRight"><span class="identifier">matchedRight</span></a>():<a class="type" href="./String.html">String</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Returns the part to the right of the last matched substring.</p>
+<p>If the most recent call to <code>this.<a href="#match">match</a></code> or <code>this.<a href="#matchSub">matchSub</a></code> did not
+match anything, the result is unspecified.</p>
+<p>If the global g modifier was in place for the matching, only the
+substring to the right of the leftmost match is returned.</p>
+<p>The result does not include the matched part.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="replace"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#replace"><span class="identifier">replace</span></a>(s:<a class="type" href="./String.html">String</a>, by:<a class="type" href="./String.html">String</a>):<a class="type" href="./String.html">String</a></code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Replaces the first substring of <code>s</code> which <code>this</code> EReg matches with <code>by</code>.</p>
+<p>If <code>this</code> EReg does not match any substring, the result is <code>s</code>.</p>
+<p>By default, this method replaces only the first matched substring. If
+the global g modifier is in place, all matched substrings are replaced.</p>
+<p>If <code>by</code> contains <code>$1</code> to <code>$9</code>, the digit corresponds to number of a
+matched sub-group and its value is used instead. If no such sub-group
+exists, the replacement is unspecified. The string <code>$$</code> becomes <code>$</code>.</p>
+<p>If <code>s</code> or <code>by</code> are null, the result is unspecified.</p></div></div><div class="platform platform-haxe-ui-toolkit"><a name="split"></a><h3 style="line-height: 15px;"><p><code style="margin-left: -5px;"><span class="keyword">function</span> <a href="#split"><span class="identifier">split</span></a>(s:<a class="type" href="./String.html">String</a>):<a class="type" href="./Array.html">Array</a>&lt;<a class="type" href="./String.html">String</a>&gt;</code></p></h3><div class="doc" style="margin-bottom: 0px;margin-top: 0px;"><p>Splits String <code>s</code> at all substrings <code>this</code> EReg matches.</p>
+<p>If a match is found at the start of <code>s</code>, the result contains a leading
+empty String "" entry.</p>
+<p>If a match is found at the end of <code>s</code>, the result contains a trailing
+empty String "" entry.</p>
+<p>If two matching substrings appear next to each other, the result
+contains the empty String "" between them.</p>
+<p>By default, this method splits <code>s</code> into two parts at the first matched
+substring. If the global g modifier is in place, <code>s</code> is split at each
+matched substring.</p>
+<p>If <code>s</code> is null, the result is unspecified.</p></div></div></div></div></div></body></html>

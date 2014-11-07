@@ -1,0 +1,29 @@
+::if type.superClass != null::
+	::set superType = api.resolveType(type.superClass.path)::
+
+	::if superType.fields != null::
+		<table class="super-types toggle" style="margin-top:-5px;margin-bottom:10px;">
+			<tbody>
+				<tr>
+					<td width="12" style="vertical-align:top;">
+						<a href="#" onclick="toggleInherited(this)">
+							<img style="padding-top:0px;margin-top:-2px;" src="::api.config.rootPath::/triangle-closed.png"></img>
+						</a>
+					</td>
+					<td class="toggle-hide">
+						<a href="#" onclick="toggleInherited(this)">Show inherited public instance fields</a>
+					</td>
+					<td class="toggle-show">
+						<a href="#" onclick="toggleInherited(this)">Hide inherited public instance fields</a>
+						
+						<table class="table table-condensed" width="500">
+							<tbody>
+								::use "super_fields.mtt"::::end::
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	::end::
+::end::

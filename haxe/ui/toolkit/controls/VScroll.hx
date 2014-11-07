@@ -304,7 +304,7 @@ class VScroll extends Scroll implements IScrollable implements IClonable<VScroll
 	}
 }
 
-@exclude
+@:dox(hide)
 class VScrollLayout extends DefaultLayout {
 	public function new() {
 		super();

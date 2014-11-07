@@ -304,7 +304,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 }
 
-@exclude
+@:dox(hide)
 class HScrollLayout extends DefaultLayout {
 	public function new() {
 		super();

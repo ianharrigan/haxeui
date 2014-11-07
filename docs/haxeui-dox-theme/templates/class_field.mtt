@@ -1,0 +1,17 @@
+<div ::attr class api.getPlatformClassString(field.platforms)::>
+	<a ::attr name field.name::></a>
+	<h3 style="line-height: 15px;">
+		<p><code style="margin-left: -5px;">$$printFieldSignature(::field::,::isStatic::)</code></p>
+		::if field.overloads != null::
+			::foreach field field.overloads::
+				<p><code>$$printFieldSignature(::field::,::isStatic::)</code></p>
+			::end::
+		::end::
+	</h3>
+	::if field.platforms.length != type.platforms.length && field.platforms.length > 0 && field.platforms.length < api.config.platforms.length::
+		$$printPlatforms(::field.platforms::)
+	::end::
+	::if field.doc != null::
+		<div class="doc" style="margin-bottom: 0px;margin-top: 0px;">::raw field.doc::</div>
+	::end::
+</div>

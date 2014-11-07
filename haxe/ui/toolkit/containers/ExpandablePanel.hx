@@ -107,7 +107,7 @@ class ExpandablePanel extends VBox {
 	}
 }
 
-@exclude
+@:dox(hide)
 class ExpandableButton extends Button {
 	public function new () {
 		super();

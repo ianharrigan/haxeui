@@ -1,4 +1,6 @@
-package haxe.ui ;
+package haxe.ui;
+
+#if !doc
 
 import motion.Actuate;
 import motion.easing.Linear;
@@ -89,3 +91,5 @@ class HaxeUIPreloader extends NMEPreloader {
 		_bar.graphics.endFill();
 	}
 }
+
+#end

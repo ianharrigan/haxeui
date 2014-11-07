@@ -1,4 +1,7 @@
 package haxe.ui.toolkit.console;
+
+#if !doc
+
 import openfl.Lib;
 import pgr.dconsole.DC;
 import pgr.dconsole.DConsole;
@@ -23,3 +26,5 @@ class ConsoleWrapper {
 		return value;
 	}
 }
+
+#end

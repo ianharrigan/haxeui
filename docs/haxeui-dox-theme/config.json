@@ -1,0 +1,6 @@
+{
+	"name": "HaxeUI Theme",
+	"author": "ianharrigan",
+	"parentTheme": "default",
+	"headerIncludes": ["bootstrap-combined.min.css", "jquery-1.9.1.min.js", "bootstrap.min.js", "styles.css", "custom.css", "favicon.ico", "nav.js", "index.js"]
+}

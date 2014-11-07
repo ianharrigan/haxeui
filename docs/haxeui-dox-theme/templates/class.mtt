@@ -1,0 +1,62 @@
+::use 'main.mtt'::
+	<div class="header">
+		<span ::cond api.isDefined("source-path"):: class="viewsource">
+			<a href="::api.getSourceLink(type)::">View source</a>
+		</span>
+		<h1>
+			<code>
+				<span class="directive">::if type.isInterface::interface::else::class::end:: </span>
+				<span class="type">::type.path::</span>
+				$$printTypeParams(::type.params::)
+				::if type.superClass != null::
+					<span class="keyword"> extends</span> $$printLinkedPath(::type.superClass.path::,::type.superClass.params::)
+				::end::
+				::foreach i type.interfaces::
+					<!--span class="keyword"> implements</span> $$printLinkedPath(::i.path::,::i.params::) -->
+				::end::
+			</code>
+		</h1>
+	</div>
+	<div class="body">
+		$$printModule(::type.module::)
+		$$printPlatforms(::type.platforms::)
+
+		<div ::cond type.interfaces != null && type.interfaces.length > 0::>
+			::set title = "Interfaces"::
+			::set infos = type.interfaces::
+			::use "related_interfaces.mtt"::::end::
+		</div>
+
+		<div ::cond subClasses !=null::>
+			::set title = "Sub classes"::
+			::set infos = subClasses::
+			::use "related_types.mtt"::::end::
+		</div>
+		
+		<div ::cond implementors !=null::>
+			::set title = "Implementors"::
+			::set infos = implementors::
+			::use "related_types.mtt"::::end::
+		</div>
+		
+		<div class="doc" ::cond type.doc != null::>
+			::raw type.doc::
+		</div>
+		
+		<h2 ::cond type.statics.length > 0::>Class Fields</h2>
+		
+		::foreach field type.statics::
+			::set isStatic = true::
+			::use "class_field.mtt"::::end::
+		::end::
+
+		<h2 ::cond type.fields.length > 0::>Instance Fields</h2>
+		
+		::use "super_class.mtt"::::end::
+		
+		::foreach field type.fields::
+			::set isStatic = false::
+			::use "class_field.mtt"::::end::
+		::end::
+	</div>
+::end::

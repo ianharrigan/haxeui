@@ -1,0 +1,23 @@
+::if superType != null::
+	<tr>
+		<td width="200"><p>Inherited from <a href="::api.pathToUrl(superType.path)::">::api.getPathName(superType.path)::</a></p><p></p>
+			::foreach field superType.fields::
+				::if field.isPublic && field.name != 'new'::
+					<table width="100%">
+						<tr>
+							<td>
+								<code>$$printFieldSignatureFromClass(::field::,::false::,::superType::)</code>
+								<!--p style="margin-bottom: 0;margin-left: 15px;font-size: 12px;">::raw api.getShortDesc(field)::</p-->
+							</td>
+						</tr>
+					</table>
+				::end::
+			::end::
+		</td>
+	</tr>
+	
+	::if superType.superClass != null::
+		::set superType = api.resolveType(superType.superClass.path)::
+		::use "super_fields.mtt"::::end::
+	::end::
+::end::
