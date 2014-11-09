@@ -15,6 +15,7 @@ import haxe.ui.toolkit.core.PopupManager;
 class Popup extends VBox implements IDraggable {
 	private var _titleBar:Box;
 	private var _title:Text;
+	private var _exitButton:Button;
 	private var _content:PopupContent;
 	private var _buttonBar:Box;
 	private var _config:Dynamic;
@@ -81,6 +82,22 @@ class Popup extends VBox implements IDraggable {
 		if (_titleBar != null) {
 			_titleBar.percentWidth = 100;
 			_titleBar.addChild(_title);
+			if (_config.closeButton == true) {
+				_exitButton = new Button();
+				_exitButton.text = "x";
+				var stl = _exitButton.style;
+				stl.horizontalAlignment = "right";
+				stl.autoSize = false;
+				var size = 20;
+				stl.height = size;
+				stl.width = size;
+				stl.padding = 0;
+				_titleBar.style.paddingRight = 6;
+				_exitButton.addEventListener(MouseEvent.CLICK, function(e) {
+					PopupManager.instance.hidePopup(this);
+				});
+				_titleBar.addChild(_exitButton);
+			}
 			_titleBar.sprite.buttonMode = true;
 			_titleBar.sprite.useHandCursor = true;
 			addChild(_titleBar);
