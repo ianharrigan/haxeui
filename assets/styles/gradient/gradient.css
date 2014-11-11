@@ -1024,6 +1024,24 @@ Popup #titleBar {
 	height: 30;
 	paddingTop: 4;
 	paddingLeft: 5;
+	paddingRight: 6;
+}
+
+Popup #titleBar Button.close {
+	autoSize: false;
+	width: 10;
+	height: 10;
+	horizontalAlignment: right;
+	verticalAlignment: center;
+	filter: none;
+	backgroundImage: "styles/gradient/cross_light_small.png";
+	backgroundColor: -1;
+	borderColor: -1;
+}
+
+Popup #titleBar Button.close:over {
+	backgroundColor: -1;
+	borderColor: -1;
 }
 
 Popup #popupContent {

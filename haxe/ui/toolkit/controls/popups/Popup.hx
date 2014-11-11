@@ -85,14 +85,8 @@ class Popup extends VBox implements IDraggable {
 			if (_config.closeButton == true) {
 				_exitButton = new Button();
 				_exitButton.text = "x";
-				var stl = _exitButton.style;
-				stl.horizontalAlignment = "right";
-				stl.autoSize = false;
-				var size = 20;
-				stl.height = size;
-				stl.width = size;
-				stl.padding = 0;
-				_titleBar.style.paddingRight = 6;
+				_exitButton.id = "close";
+				_exitButton.styleName = "close";
 				_exitButton.addEventListener(MouseEvent.CLICK, function(e) {
 					PopupManager.instance.hidePopup(this);
 				});

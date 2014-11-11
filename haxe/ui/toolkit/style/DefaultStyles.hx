@@ -534,6 +534,18 @@ class DefaultStyles extends Styles {
 			paddingRight: 5,
 		} ));
 		
+		addStyle("Popup #titleBar Button.close", new Style( {
+			autoSize: false,
+			width: 23,
+			height: 24,
+			horizontalAlignment: "left",
+			verticalAlignment: "center",
+			filter: null,
+			backgroundImage: "styles/default/cross.png",
+			backgroundColor: 0xcccccc,
+			borderColor: 0xcccccc,
+		} ));
+		
 		addStyle("Popup #popupContent", new Style( {
 			padding: 5,
 			backgroundColor: 0xcccccc,

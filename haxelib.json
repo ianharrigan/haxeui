@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.7",
-    "releasenote"  : "Filter quality can now be overridden",
+    "version"      : "1.6.8",
+    "releasenote"  : "Popup close button styled better",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
