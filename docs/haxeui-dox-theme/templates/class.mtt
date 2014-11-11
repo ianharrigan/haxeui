@@ -43,6 +43,8 @@
 			::raw type.doc::
 		</div>
 		
+		::use "related_events.mtt"::::end::
+		
 		<h2 ::cond type.statics.length > 0::>Class Fields</h2>
 		
 		::foreach field type.statics::

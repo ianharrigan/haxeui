@@ -122,6 +122,9 @@ class FilterParser {
 	}
 	
 	public static function changeFilterQuality(filter:BitmapFilter, quality:Int):BitmapFilter {
+		if (filter == null) {
+			return null;
+		}
 		if (Std.is(filter, BlurFilter)) {
 			cast(filter, BlurFilter).quality = quality;
 		} else if (Std.is(filter, DropShadowFilter)) {

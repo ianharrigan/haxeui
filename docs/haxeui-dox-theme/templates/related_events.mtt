@@ -1,0 +1,33 @@
+<table class="related-types toggle" style="margin-top:16px; width:100%">
+	<tbody>
+		<tr>
+			<td width="12" style="vertical-align:top;">
+				<a href="#" onclick="toggleInherited(this)">
+					<img style="padding-top:4px;" src="::api.config.rootPath::/triangle-closed.png"></img>
+				</a>
+			</td>
+			<td class="toggle-hide">
+				<a href="#" onclick="toggleInherited(this)">Show Events</a>
+			</td>
+			<td class="toggle-show">
+				<a href="#" onclick="toggleInherited(this)">Hide Events</a>
+				<div style="background-color: #FFFFFF !important;box-shadow: 1px 1px 1px #888888;border-radius: 4px;padding:10px;border: 1px solid rgba(0, 0, 0, 0.15);margin-left: -16px;margin-top: 5px;">
+				<table border="0" cellpadding="3" style="width:100%">
+					<tr>
+						<td><b><u><font size="-1">Event</font></u></b></td>
+						<td><b><u><font size="-1">Summary</font></u></b></td>
+						<td><b><u><font size="-1">Type</font></u></b></td>
+						<td><b><u><font size="-1">Defined By</font></u></b></td>
+					</tr>
+					::foreach m type.meta::
+						::if m.name == ":event"::
+						<tr>
+						</tr>
+						::end
+					::end::
+				</table>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

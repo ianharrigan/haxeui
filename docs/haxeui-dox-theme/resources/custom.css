@@ -96,3 +96,6 @@ h3 p {
 	margin: 0 0 5px !important;
 }
 
+a {
+	outline: none !important; 
+}
