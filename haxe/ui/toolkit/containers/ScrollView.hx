@@ -30,7 +30,7 @@ class ScrollView extends StateComponent {
 	private var _eventTarget:Sprite;
 	private var _downPos:Point;
 
-	private var _inertiaSpeed:Point;
+	private var _inertiaSpeed:Point = new Point(0, 0);
 	private var _inertiaTime:Float;
 	private var _inertiaSensitivity:Float = 5;
 	private var _inertialScrolling:Bool = false;
