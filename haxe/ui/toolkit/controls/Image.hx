@@ -29,9 +29,14 @@ class Image extends Component implements IClonable<Image> {
 		super.initialize();
 		
 		if (_bmp != null) {
-			sprite.addChild(_bmp);
+			//sprite.addChild(_bmp);
 			if (this.height > _bmp.height) {
 				_bmp.y = Std.int((this.height / 2) - (_bmp.height / 2));
+			}
+			
+			if (autoSize == true) {
+				this.width = _bmp.bitmapData.width;
+				this.height = _bmp.bitmapData.height;
 			}
 		}
 	}
@@ -108,9 +113,9 @@ class Image extends Component implements IClonable<Image> {
 		if (bmpData != null) {
 			_bmp = new Bitmap(bmpData);
 			sprite.addChild(_bmp);
-			if (autoSize == true) {
-				this.width = bmpData.width;
-				this.height = bmpData.height;
+			if (autoSize == true && ready) {
+				this.width = _bmp.bitmapData.width;
+				this.height = _bmp.bitmapData.height;
 			}
 		}
 		
@@ -126,6 +131,7 @@ class Image extends Component implements IClonable<Image> {
 		if (_stretch == value) {
 			return value;
 		}
+		_autoSize = !value;
 		_stretch = value;
 		invalidate(InvalidationFlag.SIZE);
 		return value;
