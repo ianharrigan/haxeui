@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.8",
-    "releasenote"  : "Popup close button styled better",
+    "version"      : "1.6.9",
+    "releasenote"  : "Added SpriteContainer component",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
