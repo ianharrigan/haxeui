@@ -8,6 +8,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 
 class HaxeUIPreloader extends NMEPreloader {
+	public static var OFFSET:Float = 1;
 	private var _outline:Sprite;
 	private var _bar:Sprite;
 	
@@ -18,14 +19,14 @@ class HaxeUIPreloader extends NMEPreloader {
 		
 		_outline = new Sprite();
 		_outline.graphics.lineStyle (1, getOutlineColor(), 1, true);
-		_outline.graphics.drawRoundRect (.5, .5, getPreloaderWidth() - .5, getPreloaderHeight() - .5, getCornerRadius(), getCornerRadius());
+		_outline.graphics.drawRoundRect (OFFSET, OFFSET, getPreloaderWidth() - OFFSET, getPreloaderHeight() - OFFSET, getCornerRadius(), getCornerRadius());
 		_outline.x = (getWidth() / 2) - (getPreloaderWidth() / 2);
 		_outline.y = (getHeight() / 2) - (getPreloaderHeight() / 2);
 		addChild (_outline);
 		
 		_bar = new Sprite();
-		_bar.x = _outline.x + 2;
-		_bar.y = _outline.y + 2;
+		_bar.x = _outline.x + OFFSET + 2;
+		_bar.y = _outline.y + OFFSET + 2 - (OFFSET / 2);
 		addChild (_bar);
 	}
 	
@@ -84,10 +85,10 @@ class HaxeUIPreloader extends NMEPreloader {
 	
 	private function drawBarPercent(percent:Float):Void {
 		//percent = 100;
-		var cx = ((getPreloaderWidth() - 4) * percent) / 100;
+		var cx = ((getPreloaderWidth() - (OFFSET * 4)) * percent) / 100;
 		_bar.graphics.clear();
 		_bar.graphics.beginFill(getBarColor());
-		_bar.graphics.drawRect(0, 0, cx, getPreloaderHeight() - 4);
+		_bar.graphics.drawRect(0, 0, cx, getPreloaderHeight() - (OFFSET * 4));
 		_bar.graphics.endFill();
 	}
 }
