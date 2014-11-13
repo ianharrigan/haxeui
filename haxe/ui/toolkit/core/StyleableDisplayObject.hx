@@ -100,9 +100,11 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 	//******************************************************************************************
 	// IStyleable
 	//******************************************************************************************
+	@clonable
 	public var baseStyle(get, set):Style;
 	@:clonable
 	public var styleName(get, set):String;
+	@clonable
 	public var style(get, set):Style;
 	@:clonable
 	public var styleString(get, set):String;

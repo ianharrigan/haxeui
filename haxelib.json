@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.9",
-    "releasenote"  : "Added SpriteContainer component",
+    "version"      : "1.6.10",
+    "releasenote"  : "Fixed clonable properties",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
