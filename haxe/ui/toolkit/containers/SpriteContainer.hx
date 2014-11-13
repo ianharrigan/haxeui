@@ -3,8 +3,9 @@ package haxe.ui.toolkit.containers;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import openfl.display.Sprite;
+import haxe.ui.toolkit.core.interfaces.IClonable;
 
-class SpriteContainer extends Component {
+class SpriteContainer extends Component implements IClonable<SpriteContainer> {
 	private var _childSprite:Sprite;
 	private var _spriteClass:String;
 	private var _stretch:Bool;
@@ -47,6 +48,7 @@ class SpriteContainer extends Component {
 		}
 	}
 	
+	@:clonable
 	public var childSprite(get, set):Sprite;
 	private function get_childSprite():Sprite {
 		return _childSprite;
@@ -73,6 +75,7 @@ class SpriteContainer extends Component {
 		return value;
 	}
 	
+	@:clonable
 	public var spriteClass(get, set):String;
 	private function get_spriteClass():String {
 		return _spriteClass;
@@ -99,6 +102,7 @@ class SpriteContainer extends Component {
 		return value;
 	}
 	
+	@:clonable
 	public var stretch(get, set):Bool;
 	private function get_stretch():Bool {
 		return _stretch;
