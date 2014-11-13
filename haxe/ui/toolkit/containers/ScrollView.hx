@@ -587,6 +587,7 @@ class ScrollView extends StateComponent {
 			} else {
 				_hscroll.visible = true;
 			}
+			invalidateLayout = true;
 			addChild(_hscroll);
 			created = true;
 		}
@@ -613,6 +614,7 @@ class ScrollView extends StateComponent {
 			} else {
 				_vscroll.visible = true;
 			}
+			invalidateLayout = true;
 			addChild(_vscroll);
 		}
 				

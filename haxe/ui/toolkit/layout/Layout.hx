@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.layout;
 
+import haxe.ui.toolkit.containers.Container;
 import openfl.geom.Rectangle;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
@@ -82,6 +83,19 @@ class Layout implements ILayout implements IClonable<Layout> {
 	}
 
 	private function autoSize(totalWidth:Float, totalHeight:Float):Void {
+		/*
+		if (Std.is(container, Container)) {
+			if (container.getChildAt(container.numChildren - 1) != null) {
+				var delta:Float = (container.width - totalWidth) - (padding.left + padding.right);
+				container.getChildAt(container.numChildren - 1).width += delta;
+				totalWidth += delta;
+				var delta:Float = (container.height - totalHeight) - (padding.top + padding.bottom);
+				container.getChildAt(container.numChildren - 1).height += delta;
+				totalHeight += delta;
+			}
+		}
+		*/
+		
 		if (container.autoSize) {
 			if (totalWidth > 0  && totalWidth != innerWidth && container.percentWidth == -1) {
 				container.width = totalWidth + (padding.left + padding.right);

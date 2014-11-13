@@ -173,7 +173,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_width(value:Float):Float {
-		value = Std.int(value);
+		value = Math.fround(value);
 		if (_width == value) {
 			return value;
 		}
@@ -195,7 +195,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_height(value:Float):Float {
-		value = Std.int(value);
+		value = Math.fround(value);
 		if (_height == value) {
 			return value;
 		}
