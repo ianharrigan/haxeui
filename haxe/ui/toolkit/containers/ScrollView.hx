@@ -593,7 +593,9 @@ class ScrollView extends StateComponent {
 		}
 		
 		if (invalidateLayout) {
-			_invalidating = false;
+			if (percentWidth == -1) {
+				_invalidating = false;
+			}
 			invalidate(InvalidationFlag.LAYOUT);
 		}
 		
@@ -616,10 +618,13 @@ class ScrollView extends StateComponent {
 			}
 			invalidateLayout = true;
 			addChild(_vscroll);
+			created = true;
 		}
 				
 		if (invalidateLayout) {
-			_invalidating = false;
+			if (percentHeight == -1) {
+				_invalidating = false;
+			}
 			invalidate(InvalidationFlag.LAYOUT);
 		}
 		return created;
