@@ -139,7 +139,7 @@ ListView VBox ListSelector:down,TableView #tableContent ListSelector:down{backgr
 ListView VBox ListSelector:disabled,TableView #tableContent ListSelector:disabled{color:0xCCCCCC;backgroundColor:0x8C8C8C;backgroundColorGradientEnd:0x6C6C6C;borderColor:0x666666;icon:"styles/gradient/arrow_down_disabled.png";}
 Popup{backgroundColor:0xE9EDF5;filter:dropShadow(2,45,0x808080,1,4,4,1,3);borderColor:0x495267;borderSize:1;cornerRadius:3;paddingLeft:2;paddingRight:2;paddingTop:2;paddingBottom:2;width:300;spacing:1;}
 Popup #titleBar{backgroundColor:0x4b546a;height:30;paddingTop:4;paddingLeft:5;paddingRight:6;}
-Popup #titleBar Button.close{autoSize:false;width:10;height:10;horizontalAlignment:right;verticalAlignment:center;filter:none;backgroundImage:"styles/gradient/cross_light_small.png";backgroundColor:-1;borderColor:-1;}
+Popup #titleBar Button.close{autoSize:false;width:10;height:10;horizontalAlignment:"right";verticalAlignment:"center";filter:none;backgroundImage:"styles/gradient/cross_light_small.png";backgroundColor:-1;borderColor:-1;}
 Popup #titleBar Button.close:over{backgroundColor:-1;borderColor:-1;}
 Popup #popupContent{paddingLeft:5;paddingRight:5;paddingTop:5;paddingBottom:5;}
 Popup #titleBar Text{color:0xFFFFFF;}

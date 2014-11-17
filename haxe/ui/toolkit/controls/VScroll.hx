@@ -334,7 +334,9 @@ class VScrollLayout extends DefaultLayout {
 			} else if (thumbHeight > ucy) {
 				thumbHeight = ucy;
 			}
-			thumb.height = thumbHeight;
+			if (thumbHeight > 0 && Math.isNaN(thumbHeight) == false) {
+				thumb.height = thumbHeight;
+			}
 		}
 	}
 	

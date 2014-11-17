@@ -1031,8 +1031,8 @@ Popup #titleBar Button.close {
 	autoSize: false;
 	width: 10;
 	height: 10;
-	horizontalAlignment: right;
-	verticalAlignment: center;
+	horizontalAlignment: "right";
+	verticalAlignment: "center";
 	filter: none;
 	backgroundImage: "styles/gradient/cross_light_small.png";
 	backgroundColor: -1;

@@ -334,7 +334,9 @@ class HScrollLayout extends DefaultLayout {
 			} else if (thumbWidth > ucx) {
 				thumbWidth = ucx;
 			}
-			thumb.width = thumbWidth;
+			if (thumbWidth > 0 && Math.isNaN(thumbWidth) == false) {
+				thumb.width = thumbWidth;
+			}
 		}
 	}
 	
