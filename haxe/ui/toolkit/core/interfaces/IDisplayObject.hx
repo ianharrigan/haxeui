@@ -13,6 +13,8 @@ interface IDisplayObject extends IEventDispatcher extends IClonable<IDisplayObje
 	public var height(get, set):Float;
 	public var percentWidth(get, set):Float;
 	public var percentHeight(get, set):Float;
+	public var minWidth(get, set):Float;
+	public var minHeight(get, set):Float;
 	public var ready(get, null):Bool;
 	public var sprite(get, null):Sprite; // make this private, should never access the sprite
 	public var stageX(get, null):Float;

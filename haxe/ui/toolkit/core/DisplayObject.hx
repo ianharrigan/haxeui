@@ -39,6 +39,8 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _height:Float = 0;
 	private var _percentWidth:Float = -1;
 	private var _percentHeight:Float = -1;
+	private var _minWidth:Float = 0;
+	private var _minHeight:Float = 0;
 	private var _ready:Bool = false;
 	private var _invalidating:Bool = false;
 	private var _sprite:Sprite;
@@ -105,6 +107,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public var percentWidth(get, set):Float;
 	@:clonable
 	public var percentHeight(get, set):Float;
+	@:clonable
+	public var minWidth(get, set):Float;
+	@:clonable
+	public var minHeight(get, set):Float;
 	public var ready(get, null):Bool;
 	public var sprite(get, null):Sprite;
 	public var stageX(get, null):Float;
@@ -243,6 +249,24 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_parent != null) {
 			_parent.invalidate(InvalidationFlag.LAYOUT);
 		}
+		return value;
+	}
+
+	private function get_minWidth():Float {
+		return _minWidth;
+	}
+	
+	private function set_minWidth(value:Float):Float {
+		_minWidth = value;
+		return value;
+	}
+	
+	private function get_minHeight():Float {
+		return _minHeight;
+	}
+	
+	private function set_minHeight(value:Float):Float {
+		_minHeight = value;
 		return value;
 	}
 	
