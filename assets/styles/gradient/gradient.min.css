@@ -174,3 +174,14 @@ TableViewRow Text:over,TableViewRow Text:selected{color:0xFFFFFF;}
 Divider{paddingTop:5;width:100%;}
 Divider #text{fontSize:13;fontBold:true;color:0x606c88;}
 Divider #line{height:2;backgroundColor:0x3f4c6b;}
+HSplitter,VSplitter{backgroundColor:-1;spacing:0;}
+HSplitterGripper{backgroundColor:0xDDDDDD;filter:none;cornerRadius:0;borderSize:0;icon:"styles/gradient/hsplitter_gripper.png";padding:0;width:7;autoSize:false;height:100%;iconPosition:center;}
+HSplitterGripper:over{backgroundColor:0xCCCCCC;}
+HSplitterGripper:down{backgroundColor:0xBBBBBB;}
+VSplitterGripper{backgroundColor:0xDDDDDD;filter:none;cornerRadius:0;borderSize:0;icon:"styles/gradient/vsplitter_gripper.png";padding:0;width:100%;autoSize:false;height:7;iconPosition:center;}
+VSplitterGripper:over{backgroundColor:0xCCCCCC;}
+VSplitterGripper:down{backgroundColor:0xBBBBBB;}
+Link{backgroundColor:-1;color:0x4b546a;fontUnderline:false;}
+Link:over{color:0x2c354b;fontUnderline:true;}
+Link:down{color:0x606c88;fontUnderline:true;}
+

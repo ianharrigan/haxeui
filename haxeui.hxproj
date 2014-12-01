@@ -15,16 +15,23 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="." />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\2,1,5" />
+    <class path="C:\Servers\Haxe\haxe\lib\lime\2,0,0-alpha,2" />
+    <class path="C:\Servers\Haxe\haxe\lib\actuate\1,7,5" />
+    <class path="C:\Servers\Haxe\haxe\lib\svg\1,0,8" />
+    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,4" />
+    <class path="haxe" />
+    <class path="assets" />
+    <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="" />
+    <option directives="openfl=2.1.5&#xA;lime=2.0.0-alpha.2&#xA;actuate=1.7.5&#xA;svg=1.0.8&#xA;hscript=2.0.4&#xA;dom&#xA;tools=2.0.0-alpha.2&#xA;no-compilation&#xA;openfl-flash&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="" />
+    <option additional="-swf-version 11.2" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

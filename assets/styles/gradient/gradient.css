@@ -1329,3 +1329,19 @@ VSplitterGripper:over {
 VSplitterGripper:down {
 	backgroundColor: 0xBBBBBB;
 }
+
+Link {
+	backgroundColor: -1;
+	color: 0x4b546a;
+	fontUnderline: false;
+}
+
+Link:over {
+	color: 0x2c354b;
+	fontUnderline: true;
+}
+
+Link:down {
+	color: 0x606c88;
+	fontUnderline: true;
+}
