@@ -171,7 +171,12 @@ class PopupManager {
 	}
 	
 	private function buildConfig(config:Dynamic):Dynamic {
-		var c:Dynamic = Reflect.copy(config);
+		var c:Dynamic;
+		if (Std.is(config, Int) || Std.is(config, Array)) {
+			c = { };
+		} else {
+			c = Reflect.copy(config);
+		}
 		c.id = null;
 		c.styleName = null;
 		c.modal = true;
