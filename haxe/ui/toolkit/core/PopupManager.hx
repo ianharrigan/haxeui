@@ -184,7 +184,7 @@ class PopupManager {
 		c.useDefaultTitle = true;
 		c.root = RootManager.instance.currentRoot;
 
-		if (config != null && Std.is(config, Int) == false) {
+		if (config != null && !Std.is(config, Int) && !Std.is(config, Array)) {
 			c.id = (config.id != null) ? config.id : null;
 			c.styleName = (config.styleName != null) ? config.styleName : null;
 			c.modal = (config.modal != null) ? config.modal : true;
