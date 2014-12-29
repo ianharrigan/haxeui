@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/ianharrigan/haxeui.png?label=ready&title=Ready)](https://waffle.io/ianharrigan/haxeui)
 Haxe UI
 ================================
 Cross platform Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
