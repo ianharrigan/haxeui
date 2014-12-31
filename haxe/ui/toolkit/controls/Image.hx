@@ -7,6 +7,14 @@ import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
 
+#if yagp
+import com.yagp.GifDecoder;
+import com.yagp.Gif;
+import com.yagp.GifPlayer;
+import com.yagp.GifPlayerWrapper;
+import com.yagp.GifRenderer;
+#end
+
 /**
  General purpose image control
  **/
@@ -15,6 +23,10 @@ class Image extends Component implements IClonable<Image> {
 	private var _resource:Dynamic;
 	private var _stretch:Bool;
 	private var _autoDisposeBitmapData:Bool = false;
+	
+	#if yagp
+	private var _gifWrapper:GifPlayerWrapper;
+	#end
 	
 	public function new() {
 		super();
@@ -39,6 +51,13 @@ class Image extends Component implements IClonable<Image> {
 				this.height = _bmp.bitmapData.height;
 			}
 		}
+		
+		#if yagp
+		if (_gifWrapper != null && autoSize == true) {
+			this.width = _gifWrapper.width;
+			this.height = _gifWrapper.height;
+		}
+		#end
 	}
 	
 	/**
@@ -101,9 +120,32 @@ class Image extends Component implements IClonable<Image> {
 			_bmp = null;
 		}
 		
+		#if yagp
+		if (_gifWrapper != null && sprite.contains(_gifWrapper)) {
+			_gifWrapper.dispose();
+			sprite.removeChild(_gifWrapper);
+		}
+		#end
+		
 		var bmpData:BitmapData = null;
 		if (Std.is(value, String)) {
-			bmpData = ResourceManager.instance.getBitmapData(cast(value, String));
+			var res:String = value;
+			if (StringTools.endsWith(res, ".gif")) {
+				#if yagp
+					var gif:Gif = GifDecoder.parseByteArray(ResourceManager.instance.getBytes(res));
+					var player:GifPlayer = new GifPlayer(gif);
+					_gifWrapper = new GifPlayerWrapper(player);
+					sprite.addChild(_gifWrapper);
+					if (autoSize == true && ready) {
+						this.width = _gifWrapper.width;
+						this.height = _gifWrapper.height;
+					}
+				#else
+					trace("YAGP lib not found for .gif decoding");
+				#end
+			} else {
+				bmpData = ResourceManager.instance.getBitmapData(res);
+			}
 		} else if (Std.is(value, Bitmap)) {
 			bmpData = cast(value, Bitmap).bitmapData;
 		} else if (Std.is(value, BitmapData)) {

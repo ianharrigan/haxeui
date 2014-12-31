@@ -84,6 +84,10 @@ class ResourceManager {
 		return bmp;
 	}
 	
+	public function getBytes(resourceId:String, locale:String = null):ByteArray {
+		return Assets.getBytes(resourceId);
+	}
+	
 	public function reset():Void {
 	}
 }
