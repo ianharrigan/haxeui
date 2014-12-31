@@ -35,7 +35,9 @@ class Menu extends VBox {
 			cast(child, MenuItem).addEventListener(MouseEvent.MOUSE_OVER, buildMouseOverFunction(this.numChildren));
 			cast(child, MenuItem).addEventListener(MouseEvent.CLICK, buildMouseClickFunction(this.numChildren));
 			r = super.addChild(child);
-		} else if (Std.is(child, Menu)) {
+		} else if (Std.is(child, MenuSeparator)) {
+			r = super.addChild(child);
+		}  else if (Std.is(child, Menu)) {
 			var item:MenuItem = new MenuItem();
 			cast(child, Menu)._parentMenu = this;
 			item.text = cast(child, Menu).text;

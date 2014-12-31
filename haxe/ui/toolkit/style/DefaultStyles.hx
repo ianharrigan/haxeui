@@ -639,7 +639,20 @@ class DefaultStyles extends Styles {
 			icon: "styles/default/expand.png",
 		} ));
 		
+		addStyle("MenuSeparator", new Style( {
+			backgroundColor: 0x888888,
+			percentWidth: 100,
+			paddingTop: 2,
+			paddingLeft: 5,
+			paddingBottom: 3,
+			paddingRight: 5,
+		} ));
 
+		addStyle("MenuSeparator #line", new Style( {
+			height: 0,
+			backgroundColor: 0x888888
+		} ));
+		
 		addStyle("Divider", new Style( {
 			paddingTop: 5,
 			percentWidth: 100,

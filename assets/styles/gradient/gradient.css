@@ -841,6 +841,19 @@ MenuBar Button:down {
 	borderColor: 0x495267;
 }
 
+MenuSeparator {
+	width: 100%;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+}
+
+MenuSeparator #line {
+	height: 1;
+	backgroundColor: 0xCCCCCC;
+}
+
 ListSelector, DateSelector {
 	paddingLeft: 8;
 	paddingTop: 5;
