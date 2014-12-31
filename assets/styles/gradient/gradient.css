@@ -74,6 +74,7 @@ Button {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3);
 	fontScale: 1;
 	spacing: 5;
+	textAlign: "center";
 }
 
 Button:over {
@@ -764,6 +765,7 @@ MenuItem {
 	borderSize: 0;
 	backgroundColor: 0xE9EDF5;
 	color: 0x000000;
+	textAlign: "left";
 }
 
 MenuItem:over {

@@ -12,6 +12,7 @@ Button {
 	iconPosition: "left";
 	labelPosition: "center";
 	spacing: 5;
+	textAlign: "center";
 }
 
 Button:over {

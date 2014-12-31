@@ -75,8 +75,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	private var _group:String;
 	private static var _groups:StringMap<Array<Button>>;
 	
-	private var _spacers:Array<Spacer>;
-	
 	public function new() {
 		super();	
 
@@ -86,7 +84,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		_layout = new HorizontalLayout();
 		autoSize = true;
 		
-		_spacers = new Array<Spacer>();
 		if (_groups == null) {
 			_groups = new StringMap<Array<Button>>();
 		}
@@ -154,29 +151,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			return;
 		}
 		removeAllChildren(false);
-		for (s in _spacers) {
-			s.dispose();
-		}
-		_spacers = new Array<Spacer>();
-		
-		if (_iconPosition == "left" || _iconPosition == "right") {
-			layout = new HorizontalLayout();
-		} else if (_iconPosition == "top" || _iconPosition == "bottom") {
-			if (_label != null && _icon != null && _label.width < _icon.width) {
-				_label.autoSize = false;
-				_label.width = _icon.width;
-				//_label.textAlign = "center";
-			}
-			layout = new VerticalLayout();
-			if (_autoSize == false) {
-				var spacer:Spacer = new Spacer();
-				spacer.percentHeight = 50;
-				addChild(spacer);
-				_spacers.push(spacer);
-			}
-		} else {
-			layout = new BoxLayout();
-		}
 		
 		if (_icon != null) {
 			_icon.horizontalAlign = HorizontalAlign.CENTER;
@@ -184,50 +158,58 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 		
 		if (_label != null) {
-			if (autoSize == false) {
+			_label.horizontalAlign = HorizontalAlign.CENTER;
+			_label.verticalAlign = VerticalAlign.CENTER;
+		}
+		
+		if (autoSize == false || percentWidth > 0) {
+			if (_label != null) {
 				_label.percentWidth = 100;
 				_label.autoSize = false;
-				_label.textAlign = "center";
-			} else {
-				_label.percentWidth = -1;
-				_label.autoSize = true;
-				_label.textAlign = "center";
 			}
 		}
 		
-		if (_iconPosition == "left" || _iconPosition == "top") {
+		if (_iconPosition == "left") {
+			layout = new HorizontalLayout();
 			addChild(_icon);
 			addChild(_label);
-		} else if (_iconPosition == "right" || _iconPosition == "bottom") {
+		} else if (_iconPosition == "right") {
+			layout = new HorizontalLayout();
 			addChild(_label);
-			if (_autoSize == true && _iconPosition == "right") {
-				var spacer:Spacer = new Spacer();
-				spacer.percentWidth = 100;
-				addChild(spacer);
-				_spacers.push(spacer);
-			}
 			addChild(_icon);
-		} else {
+		} else if (_iconPosition == "top") {
+			layout = new VerticalLayout();
 			addChild(_icon);
 			addChild(_label);
+		} else if (_iconPosition == "bottom") {
+			layout = new VerticalLayout();
+			addChild(_label);
+			addChild(_icon);
+		} else if (_iconPosition == "center") {
+			layout = new BoxLayout();
+			addChild(_label);
+			addChild(_icon);
 		}
 		
-		if (_iconPosition == "top" || _iconPosition == "bottom") {
-			if (_autoSize == false) {
-				var spacer:Spacer = new Spacer();
-				spacer.percentHeight = 50;
-				addChild(spacer);
-				_spacers.push(spacer);
-			}
-		}
-
         if (_iconPosition == "fill" && _icon != null) {
           _icon.stretch = true;
           _icon.width = width;
           _icon.height = height;
         }
 		
-		invalidate(InvalidationFlag.STYLE);
+		if (layout.usableHeight <= 0) {
+			var cy:Float = 0;
+			if (_label != null) {
+				cy = _label.height + layout.padding.top + layout.padding.bottom;
+			}
+			if (_icon != null) {
+				var temp:Float = _icon.height + layout.padding.top + layout.padding.bottom;
+				if (temp > cy) {
+					cy = temp;
+				}
+			}
+			height = cy;
+		}
 	}
 	
 	//******************************************************************************************

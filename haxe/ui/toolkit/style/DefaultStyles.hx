@@ -74,7 +74,8 @@ class DefaultStyles extends Styles {
 			borderSize: 1,
 			cornerRadius: 2,
 			filter: new DropShadowFilter(2, 45, 0x444444, 1, 2, 2, 1, 3),
-			spacing: 5
+			spacing: 5,
+			textAlign: "center"
 		} ));
 		
 		
@@ -619,6 +620,7 @@ class DefaultStyles extends Styles {
 			cornerRadius: 0,
 			backgroundColor: 0xcccccc,
 			color: 0x222222,
+			textAlign: "left"
 		} ));
 
 		addStyle("MenuItem:over", new Style( {

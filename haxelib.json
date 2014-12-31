@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.12",
-    "releasenote"  : "Added link component",
+    "version"      : "1.6.13",
+    "releasenote"  : "Simplified button control",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
