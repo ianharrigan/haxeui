@@ -101,6 +101,7 @@ class DefaultStyles extends Styles {
 		
 		addStyle("Button.expandable", new Style( {
 			icon: "styles/default/expand.png",
+			textAlign: "left",
 		} ));
 		
 		addStyle("Button.expandable:down", new Style( {
