@@ -210,6 +210,8 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			}
 			height = cy;
 		}
+		
+		invalidate(InvalidationFlag.STYLE);
 	}
 	
 	//******************************************************************************************

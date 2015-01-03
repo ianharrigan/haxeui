@@ -98,6 +98,9 @@ class ScrollView extends StateComponent {
 		if (child == _container || child == _hscroll || child == _vscroll) {
 			r = super.addChild(child);
 		} else {
+			if (_container.numChildren >= 1) {
+				trace("WARNING: ScrollView will only use the first child as the scroll content");
+			}
 			r = _container.addChild(child);
 		}
 		return r;
@@ -108,6 +111,9 @@ class ScrollView extends StateComponent {
 		if (child == _container || child == _hscroll || child == _vscroll) {
 			r = super.addChildAt(child, index);
 		} else {
+			if (_container.numChildren >= 1) {
+				trace("WARNING: ScrollView will only use the first child as the scroll content");
+			}
 			r = _container.addChildAt(child, index);
 		}
 		return r;
