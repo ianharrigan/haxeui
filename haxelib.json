@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.15",
-    "releasenote"  : "Added gif support via YAGP",
+    "version"      : "1.6.16",
+    "releasenote"  : "Embedded resources and other build options",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

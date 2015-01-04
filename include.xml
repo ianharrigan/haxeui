@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
+	<!-- dependencies -->
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
-	<assets path="assets" rename="assets" />
-	<assets path="assets/styles" rename="styles" />
-	<assets path="assets/fonts" rename="fonts" />
+	<haxelib name="yagp" unless="haxeui-no-gif-support" />
+	
+	<!-- Embed resources in final output -->
+	<section if="haxeui-embed-resources">
+		<assets path="assets" rename="assets" embed="true" />
+		<assets path="assets/styles" rename="styles" embed="true" />
+		<assets path="assets/fonts" rename="fonts" embed="true" />
+		<haxedef name="haxeui-embed-resources" />
+	</section>
+
+	<!-- External resources to final output -->
+	<section unless="haxeui-embed-resources">
+		<assets path="assets" rename="assets" embed="false"/>
+		<assets path="assets/styles" rename="styles" embed="false"/>
+		<assets path="assets/fonts" rename="fonts" embed="false"/>
+	</section>
+	
+	<!-- Override quality of bitmap filters, useful for mobiles -->
+	<haxedef name="filters-none" if="haxeui-filters-off" />
+	<haxedef name="filters-high" if="haxeui-filters-high" />
+	<haxedef name="filters-medium" if="haxeui-filters-medium" />
+	<haxedef name="filters-low" if="haxeui-filters-low" />
 </project>

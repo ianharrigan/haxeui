@@ -10,24 +10,44 @@
 	<source path="src" />
 	<classpath name="assets" />
 	
+	<!-- set haxeui options, these should be before the haxelib line in order to take effect -->
+	<!-- set the filter quality to low for mobiles for better performance, values are:
+		
+		* haxeui-filters-off
+		* haxeui-filters-low
+		* haxeui-filters-medium
+		* haxeui-filters-high
+		
+		Remove flag to use whatever values are specified in the styles. 
+	-->
+	<set name="haxeui-filters-low" if="mobile" />
+	
+	<!-- embed resources in final exe, you will also need to honour this flag in your
+	     application.xml if you want your app specific assets to be embedded also (see below)
+	<set name="haxeui-embed-resources" />
+	-->
+
+	<!-- remove gif support and dependancy
+	<set name="haxeui-no-gif-support" />
+	-->
+	
 	<haxelib name="haxeui" />
 	
 	<icon path="assets/haxeui.png" />
-	<assets path="assets" rename="assets" />
-	<assets path="assets/css" rename="css" />
-	<assets path="assets/ui" rename="ui" />
+	<!-- normal resources, external to final output -->
+	<section unless="haxeui-embed-resources">
+		<assets path="assets" rename="assets" embed="false" />
+		<assets path="assets/css" rename="css" embed="false" />
+		<assets path="assets/ui" rename="ui" embed="false" />
+	</section>
+	<!-- embedded resources, inside final output -->
+	<section if="haxeui-embed-resources">
+		<assets path="assets" rename="assets" embed="true" />
+		<assets path="assets/css" rename="css" embed="true" />
+		<assets path="assets/ui" rename="ui" embed="true" />
+	</section>
 	
 	<!-- optimize output
 	<haxeflag name="-dce std" /> -->
 	
-	<!--  set the filter quality to low for mobiles for better performance, values are:
-		
-		* filters-none
-		* filters-low
-		* filters-medium
-		* filters-high
-		
-		Remove flag to use whatever values are specified in the styles. 
-	-->
-	<haxedef name="filters-low" if="mobile" />
 </project>
