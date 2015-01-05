@@ -11,6 +11,7 @@
         "openfl"        : "",
         "actuate"       : "",
         "hscript"       : "",
-        "svg"           : ""
+        "svg"           : "",
+        "yagp"          : ""
     }
 }
