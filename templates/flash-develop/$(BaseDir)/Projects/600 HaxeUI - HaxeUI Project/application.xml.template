@@ -36,9 +36,9 @@
 	<icon path="assets/haxeui.png" />
 	<!-- normal resources, external to final output -->
 	<section unless="haxeui-embed-resources">
-		<assets path="assets" rename="assets" embed="false" />
-		<assets path="assets/css" rename="css" embed="false" />
-		<assets path="assets/ui" rename="ui" embed="false" />
+		<assets path="assets" rename="assets" />
+		<assets path="assets/css" rename="css" />
+		<assets path="assets/ui" rename="ui" />
 	</section>
 	<!-- embedded resources, inside final output -->
 	<section if="haxeui-embed-resources">

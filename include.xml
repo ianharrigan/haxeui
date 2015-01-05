@@ -15,9 +15,9 @@
 
 	<!-- External resources to final output -->
 	<section unless="haxeui-embed-resources">
-		<assets path="assets" rename="assets" embed="false"/>
-		<assets path="assets/styles" rename="styles" embed="false"/>
-		<assets path="assets/fonts" rename="fonts" embed="false"/>
+		<assets path="assets" rename="assets"/>
+		<assets path="assets/styles" rename="styles"/>
+		<assets path="assets/fonts" rename="fonts"/>
 	</section>
 	
 	<!-- Override quality of bitmap filters, useful for mobiles -->
