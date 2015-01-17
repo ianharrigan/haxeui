@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.6.17",
-    "releasenote"  : "Fixed issue with embedding on flash",
+    "version"      : "1.7.0",
+    "releasenote"  : "Added ability to rotate and transform components",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",

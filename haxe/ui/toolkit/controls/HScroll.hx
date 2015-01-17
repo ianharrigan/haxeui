@@ -98,6 +98,9 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 		Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
+		
+		event.stopImmediatePropagation();
+		event.stopPropagation();
 	}
 	
 	private function _onScreenMouseMove(event:MouseEvent):Void {
@@ -143,6 +146,9 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		}
 		_scrollTimer.reset();
 		_scrollTimer.start();
+		
+		event.stopImmediatePropagation();
+		event.stopPropagation();
 	}
 	
 	private function _onInc(event:MouseEvent):Void {
@@ -155,6 +161,9 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		}
 		_scrollTimer.reset();
 		_scrollTimer.start();
+		
+		event.stopImmediatePropagation();
+		event.stopPropagation();
 	}
 	
 	private function _onScrollTimerComplete(event:TimerEvent):Void {
@@ -170,19 +179,10 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 	
 	private function _onMouseDown(event:MouseEvent):Void {
-		var performPaging:Bool = !_thumb.hitTest(event.stageX, event.stageY);
-		if (_deincButton != null && _deincButton.hitTest(event.stageX, event.stageY) == true) {
-			performPaging = false;
-		}
-		if (_incButton != null && _incButton.hitTest(event.stageX, event.stageY) == true) {
-			performPaging = false;
-		}
-		if (performPaging == true) {
-			if (event.localX > _thumb.x) { // page down
-				pos += pageSize;
-			} else { // page up
-				pos -= pageSize;
-			}
+		if (event.localX > _thumb.x) { // page down
+			pos += pageSize;
+		} else { // page up
+			pos -= pageSize;
 		}
 	}
 	

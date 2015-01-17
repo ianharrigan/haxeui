@@ -35,6 +35,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _id:String;
 	private var _x:Float = 0;
 	private var _y:Float = 0;
+	private var _z:Float = 0;
 	private var _width:Float = 0;
 	private var _height:Float = 0;
 	private var _percentWidth:Float = -1;
@@ -99,6 +100,14 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public var x(get, set):Float;
 	@:clonable
 	public var y(get, set):Float;
+	@:clonable
+	public var z(get, set):Float;
+	@:clonable
+	public var rotationX(get, set):Float;
+	@:clonable
+	public var rotationY(get, set):Float;
+	@:clonable
+	public var rotationZ(get, set):Float;
 	@:clonable
 	public var width(get, set):Float;
 	@:clonable
@@ -171,6 +180,62 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private function set_y(value:Float):Float {
 		_y = Std.int(value);
 		_sprite.y = _y;
+		return value;
+	}
+
+	
+	private function get_z():Float {
+		return _z;
+	}
+	
+	private function set_z(value:Float):Float {
+		_z = Std.int(value);
+		_sprite.z = _z;
+		return value;
+	}
+	
+	private function get_rotationX():Float {
+		#if flash
+		return _sprite.rotationX;
+		#else
+		return 0;
+		#end
+	}
+	
+	private function set_rotationX(value:Float):Float {
+		#if flash
+		_sprite.rotationX = value;
+		#end
+		return value;
+	}
+	
+	private function get_rotationY():Float {
+		#if flash
+		return _sprite.rotationY;
+		#else
+		return 0;
+		#end
+	}
+	
+	private function set_rotationY(value:Float):Float {
+		#if flash
+		_sprite.rotationY = value;
+		#end
+		return value;
+	}
+
+	private function get_rotationZ():Float {
+		#if flash
+		return _sprite.rotationZ;
+		#else
+		return 0;
+		#end
+	}
+	
+	private function set_rotationZ(value:Float):Float {
+		#if flash
+		_sprite.rotationZ = value;
+		#end
 		return value;
 	}
 	

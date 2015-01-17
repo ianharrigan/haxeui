@@ -35,6 +35,9 @@ class Style implements IClonable<Style> {
 	private var _paddingBottom:Int = -1;
 	private var _spacingX:Int = -1;
 	private var _spacingY:Int = -1;
+	private var _rotationX:Float = -1;
+	private var _rotationY:Float = -1;
+	private var _rotationZ:Float = -1;
 	private var _verticalAlignment:String;
 	private var _horizontalAlignment:String;
 	private var _cornerRadiusTopLeft:Int = -1;
@@ -517,6 +520,51 @@ class Style implements IClonable<Style> {
 		return value;
 	}
 
+	private function get_rotationX():Float {
+		if (hasDynamicValue("rotationX")) {
+			return getDynamicValue("rotationX");
+		}
+		return _rotationX;
+	}
+	
+	private function set_rotationX(value:Float):Float {
+		if (value != _rotationX) {
+			_rotationX = value;
+			apply();
+		}
+		return value;
+	}
+	
+	private function get_rotationY():Float {
+		if (hasDynamicValue("rotationY")) {
+			return getDynamicValue("rotationY");
+		}
+		return _rotationY;
+	}
+	
+	private function set_rotationY(value:Float):Float {
+		if (value != _rotationY) {
+			_rotationY = value;
+			apply();
+		}
+		return value;
+	}
+	
+	private function get_rotationZ():Float {
+		if (hasDynamicValue("rotationZ")) {
+			return getDynamicValue("rotationZ");
+		}
+		return _rotationY;
+	}
+	
+	private function set_rotationZ(value:Float):Float {
+		if (value != _rotationZ) {
+			_rotationZ = value;
+			apply();
+		}
+		return value;
+	}
+	
 	private function get_horizontalAlignment():String {
 		if (hasDynamicValue("horizontalAlignment")) {
 			return getDynamicValue("horizontalAlignment");
