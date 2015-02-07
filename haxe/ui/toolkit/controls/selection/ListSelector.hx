@@ -83,8 +83,8 @@ class ListSelector extends Button implements IDataComponent {
 				_method = _baseStyle.selectionMethod;
 			}
 			
-			if (_baseStyle.dropDownSize != -1) {
-				dropDownSize = _baseStyle.dropDownSize;
+			if (_baseStyle.listSize != -1) {
+				listSize = _baseStyle.listSize;
 			}
 		}
 	}
@@ -234,13 +234,13 @@ class ListSelector extends Button implements IDataComponent {
 		return value;
 	}
 	
-	public var dropDownSize(get, set):Int;
+	public var listSize(get, set):Int;
 	
-	private function get_dropDownSize():Int {
+	private function get_listSize():Int {
 		return _maxListSize;
 	}
 	
-	private function set_dropDownSize(value:Int):Int {
+	private function set_listSize(value:Int):Int {
 		_maxListSize = value;
 		return value;
 	}
