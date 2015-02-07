@@ -62,6 +62,8 @@ class Style implements IClonable<Style> {
 	private var _selectionMethod:String;
 	private var _autoHideScrolls:Int = -1;
 	private var _inlineScrolls:Int = -1;
+	
+	private var _dropDownSize:Int = -1;
 
 	public var width(get, set):Int;
 	public var height(get, set):Int;
@@ -114,6 +116,8 @@ class Style implements IClonable<Style> {
 	
 	public var target(get, set):IDisplayObject;
 	public var autoApply(get, set):Bool;
+	
+	public var dropDownSize(get, set):Int;
 	
 	public function new(defaults:Dynamic = null) {
 		for (field in Reflect.fields(defaults)) {
@@ -971,7 +975,22 @@ class Style implements IClonable<Style> {
 		apply();
 		return value;
 	}
-
+	
+	private function get_dropDownSize():Int {
+		if (hasDynamicValue("dropDownSize")) {
+			return getDynamicValue("dropDownSize");
+		}
+		
+		return _dropDownSize;
+	}
+	
+	private function set_dropDownSize(value:Int):Int {
+		_dropDownSize = value;
+		apply();
+		
+		return value;
+	}
+	
 	private function apply():Void {
 		if (_target != null && _autoApply == true) {
 			if (Std.is(_target, StyleableDisplayObject)) {
@@ -1056,6 +1075,9 @@ class Style implements IClonable<Style> {
 		if (with._selectionMethod != null) this._selectionMethod = with._selectionMethod;
 		if (with._autoHideScrolls != -1) this._autoHideScrolls = with._autoHideScrolls;
 		if (with._inlineScrolls != -1) this._inlineScrolls = with ._inlineScrolls;
+		
+		if (with ._dropDownSize != -1) this._dropDownSize = with ._dropDownSize;
+		
 		if (with._dynamicValues != null) {
 			if (_dynamicValues == null) {
 				_dynamicValues = new Map<String, String>();
@@ -1065,6 +1087,7 @@ class Style implements IClonable<Style> {
 				_dynamicValues.set(property, script);
 			}
 		}
+		
 	}
 	
 	public function toString():String {
