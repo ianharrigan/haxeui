@@ -100,8 +100,12 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	public var x(get, set):Float;
 	@:clonable
 	public var y(get, set):Float;
+	
+	#if !html5
 	@:clonable
 	public var z(get, set):Float;
+	#end
+	
 	@:clonable
 	public var rotationX(get, set):Float;
 	@:clonable
@@ -183,7 +187,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		return value;
 	}
 
-	
+	#if !html5
 	private function get_z():Float {
 		return _z;
 	}
@@ -193,6 +197,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		_sprite.z = _z;
 		return value;
 	}
+	#end
 	
 	private function get_rotationX():Float {
 		#if flash
