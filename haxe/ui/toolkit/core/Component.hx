@@ -1,11 +1,5 @@
 package haxe.ui.toolkit.core;
 
-import haxe.ui.toolkit.events.UIEvent;
-import haxe.ui.toolkit.hscript.ScriptInterp;
-import haxe.ui.toolkit.util.StringUtil;
-import openfl.events.MouseEvent;
-import openfl.geom.Point;
-import openfl.geom.Rectangle;
 import haxe.ds.StringMap.StringMap;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.Client;
@@ -13,7 +7,15 @@ import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IComponent;
 import haxe.ui.toolkit.core.interfaces.IDraggable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
+import haxe.ui.toolkit.core.ToolTipManager.ToolTipPosition;
+import haxe.ui.toolkit.core.ToolTipManager.ToolTipRelativeTo;
+import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.hscript.ScriptInterp;
 import haxe.ui.toolkit.resources.ResourceManager;
+import haxe.ui.toolkit.util.StringUtil;
+import openfl.events.MouseEvent;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 
 class Component extends StyleableDisplayObject implements IComponent implements IClonable<StyleableDisplayObject> {
 	private var _text:String;
@@ -198,6 +200,72 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	private function set_value(newValue:Dynamic):Dynamic {
 		text = "" + newValue;
 		return newValue;
+	}
+	
+	//******************************************************************************************
+	// Tooltip methods/properties
+	//******************************************************************************************
+	private var _toolTip:Dynamic;
+	
+	@:clonable
+	public var toolTip(get, set):Dynamic;
+	public var toolTipPosition(default, default):ToolTipPosition;
+	public var toolTipRelativeTo(default, default):ToolTipRelativeTo;
+	public var toolTipOffsetX(default, default):Null<Float>;
+	public var toolTipOffsetY(default, default):Null<Float>;
+	public var toolTipCenter(default, default):Null<Bool>;
+	public var toolTipFollow(default, default):Null<Bool>;
+	
+	private function get_toolTip():Dynamic {
+		return _toolTip;
+	}
+	
+	private function set_toolTip(value:Dynamic):Dynamic {
+		_toolTip = value;
+		removeEventListener(UIEvent.MOUSE_OVER, _onComponentMouseOver);
+		removeEventListener(UIEvent.MOUSE_OUT, _onComponentMouseOut);
+		removeEventListener(UIEvent.CLICK, _onComponentClick);
+		removeEventListener(UIEvent.CHANGE, _onComponentClick);
+		if (_toolTip != null) {
+			addEventListener(UIEvent.MOUSE_OVER, _onComponentMouseOver);
+			addEventListener(UIEvent.MOUSE_OUT, _onComponentMouseOut);
+			addEventListener(UIEvent.CLICK, _onComponentClick);
+			addEventListener(UIEvent.CHANGE, _onComponentClick);
+		}
+		return value;
+	}
+
+	private var _toolTipTimer:Timer = null;
+	private function _onComponentMouseOver(event:UIEvent) {
+		if (_toolTipTimer != null) {
+			_toolTipTimer.stop();
+			_toolTipTimer = null;
+		}
+		if (_toolTipTimer == null) {
+			_toolTipTimer = Timer.delay(function() {
+				ToolTipManager.instance.showToolTip(this, null, event);
+			}, ToolTipManager.instance.defaults.delay);
+		}
+	}
+	
+	private function _onComponentMouseOut(event:UIEvent) {
+		if (_toolTipTimer != null) {
+			_toolTipTimer.stop();
+			_toolTipTimer = null;
+		}
+		if (ToolTipManager.instance.toolTipVisible(this) == true && hitTest(event.stageX, event.stageY) == false) {
+			ToolTipManager.instance.hideCurrentToolTip();
+		}
+	}
+	
+	private function _onComponentClick(event:UIEvent) {
+		if (_toolTipTimer != null) {
+			_toolTipTimer.stop();
+			_toolTipTimer = null;
+		}
+		if (ToolTipManager.instance.toolTipVisible(this) == true) {
+			ToolTipManager.instance.hideCurrentToolTip();
+		}
 	}
 	
 	//******************************************************************************************

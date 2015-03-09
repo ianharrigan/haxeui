@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core;
 
 import openfl.Lib;
+import openfl.events.MouseEvent;
 
 class Screen {
 	private static var _instance:Screen;
@@ -15,11 +16,16 @@ class Screen {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
+	private var _cursorX:Float = -1;
+	private var _cursorY:Float = -1;
+	
 	public var width(get, null):Float;
 	public var height(get, null):Float;
+	public var cursorX(get, null):Float;
+	public var cursorY(get, null):Float;
 	
 	public function new() {
-		
+		addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 	}
 	
 	public function addEventListener(type:String, listener:Dynamic->Void, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void {
@@ -38,5 +44,18 @@ class Screen {
 	
 	private function get_height():Float {
 		return Lib.current.stage.stageHeight;
+	}
+
+	private function get_cursorX():Float {
+		return _cursorX;
+	}
+	
+	private function get_cursorY():Float {
+		return _cursorY;
+	}
+	
+	private function _onScreenMouseMove(event:MouseEvent):Void {
+		_cursorX = event.stageX;
+		_cursorY = event.stageY;
 	}
 }

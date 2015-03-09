@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.7.0",
-    "releasenote"  : "Added ability to rotate and transform components",
+    "version"      : "1.7.1",
+    "releasenote"  : "Added text only tooltips",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
