@@ -140,9 +140,10 @@ class Popup extends VBox implements IDraggable {
 	//******************************************************************************************
 	/**
 	 Determines if the popup can be dragged by ensuring the mouse is in the title bar
+	 or that dragging outside the title bar is allowed.
 	 **/
 	public function allowDrag(event:MouseEvent):Bool {
-		return _titleBar.hitTest(event.stageX, event.stageY);
+		return _config.dragAnywhere || (_titleBar == null ? false : _titleBar.hitTest(event.stageX, event.stageY));
 	}
 
 	//******************************************************************************************
