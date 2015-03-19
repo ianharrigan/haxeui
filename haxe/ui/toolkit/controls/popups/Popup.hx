@@ -69,6 +69,11 @@ class Popup extends VBox implements IDraggable {
 		if (_config.styleName != null) {
 			this.styleName = _config.styleName;
 		}
+		if (_config.dismiss & Dismiss.CLICK_INSIDE > 0)
+			addEventListener(MouseEvent.CLICK, function(e) {
+				PopupManager.instance.hidePopup(this);
+				callClosingCallback(PopupButton.CANCEL);
+			});
 		
 		_fn = fn;
 	}
@@ -218,5 +223,10 @@ class Popup extends VBox implements IDraggable {
 		if (_fn != null) {
 			_fn(button);
 		}
+	}
+	
+	public function callClosingCallback(button:Dynamic) {
+		if (_fn != null)
+			_fn(button);
 	}
 }
