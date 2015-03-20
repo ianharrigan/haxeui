@@ -14,6 +14,9 @@ import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import motion.Actuate;
 import motion.easing.Linear;
+import openfl.events.KeyboardEvent;
+import openfl.Lib;
+import openfl.ui.Keyboard;
 
 class PopupManager {
 	private static var _instance:PopupManager;
@@ -30,9 +33,18 @@ class PopupManager {
 	//******************************************************************************************
 	public var defaultTitle(default, default):String = "HaxeUI";
 	public var defaultWidth(default, default):Int = 300;
+	private var _modalPopups = new List<Popup>();	//List of currently visible modal popups
 	
 	public function new() {
 		
+	}
+	
+	private function onKeyPress(e:KeyboardEvent):Void {
+		e.stopImmediatePropagation(); //Needed on Windows (and maybe other platforms) to prevent popups created in callbacks of other popups to be dismissed immediatly. Since the listener is removed and immediatly added it would apparently catch the same event again.
+		if (e.keyCode == Keyboard.ESCAPE)
+			dismissModal(Dismiss.ESCAPE | Dismiss.ANYKEY);
+		else 
+			dismissModal(Dismiss.ANYKEY);
 	}
 	
 	public function showSimple(text:String, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
@@ -113,6 +125,9 @@ class PopupManager {
 			modal = p.config.modal;
 		}
 		if (modal == true) {
+			if (_modalPopups.length == 0)	//Start listening for attempts to dismiss popups
+				Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			_modalPopups.push(p);
 			p.root.showModalOverlay();
 		}
 		p.root.addChild(p);
@@ -136,6 +151,10 @@ class PopupManager {
 	}
 	
 	public function hidePopup(p:Popup, dispose:Bool = true):Void {
+		_modalPopups.remove(p);
+		if (_modalPopups.length == 0)
+			Lib.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		
 		var transition:String = Toolkit.getTransitionForClass(Popup);
 		if (transition == "slide") {
 			Actuate.tween(p, .2, { y: p.root.height }, true).ease(Linear.easeNone).onComplete(function() {
@@ -156,6 +175,16 @@ class PopupManager {
 	public function centerPopup(p:Popup):Void {
 		p.x = Std.int((p.root.width / 2) - (p.width / 2));
 		p.y = Std.int((p.root.height / 2) - (p.height / 2));
+	}
+	
+	public function dismissModal(action:Int) {
+		if (_modalPopups.length == 0)
+			return;
+		var p = _modalPopups.first();	//Try to close latest added popup
+		if (p.config.dismiss & action > 0) {
+			hidePopup(p);
+			p.callClosingCallback(PopupButton.CANCEL);
+		}
 	}
 	
 	private function buildPopup(content:PopupContent, title:String = null, config:Dynamic = null, fn:Dynamic->Void = null):Popup {
@@ -271,4 +300,12 @@ class PopupButtonInfo {
 		this.text = text;
 		this.fn = fn;
 	}
+}
+
+class Dismiss {
+	public static inline var ESCAPE:Int =         0x0001;
+	public static inline var ANYKEY:Int =         0x0010;
+	public static inline var CLICK_OUTSIDE:Int =  0x0100;
+	public static inline var CLICK_INSIDE:Int =   0x1000;
+	public static inline var CLICK:Int =          0x1100;
 }

@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.core;
 
+import haxe.ui.toolkit.core.PopupManager.Dismiss;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 import openfl.geom.Point;
@@ -86,6 +87,9 @@ class Root extends Component {
 			_modalOverlay = new Component();
 			_modalOverlay.id = "modalOverlay";
 			_modalOverlay.percentWidth = _modalOverlay.percentHeight = 100;
+			_modalOverlay.onClick = function(e) {
+				PopupManager.instance.dismissModal(Dismiss.CLICK_OUTSIDE);
+			};
 		}
 		if (findChild("modalOverlay") == null) {
 			addChild(_modalOverlay);
