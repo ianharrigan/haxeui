@@ -190,7 +190,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	private function set_z(value:Float):Float {
 		_z = Std.int(value);
+		#if flash
 		_sprite.z = _z;
+		#end
 		return value;
 	}
 	
