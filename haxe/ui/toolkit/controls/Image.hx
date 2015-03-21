@@ -6,6 +6,7 @@ import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
+import openfl.display.Sprite;
 
 #if yagp
 import com.yagp.GifDecoder;
@@ -13,6 +14,10 @@ import com.yagp.Gif;
 import com.yagp.GifPlayer;
 import com.yagp.GifPlayerWrapper;
 import com.yagp.GifRenderer;
+#end
+
+#if svg
+import format.SVG;
 #end
 
 /**
@@ -26,6 +31,10 @@ class Image extends Component implements IClonable<Image> {
 	
 	#if yagp
 	private var _gifWrapper:GifPlayerWrapper;
+	#end
+	
+	#if svg
+	private var _svgSprite:Sprite;
 	#end
 	
 	public function new() {
@@ -43,7 +52,7 @@ class Image extends Component implements IClonable<Image> {
 		if (_bmp != null) {
 			//sprite.addChild(_bmp);
 			if (this.height > _bmp.height) {
-				_bmp.y = Std.int((this.height / 2) - (_bmp.height / 2));
+				//_bmp.y = Std.int((this.height / 2) - (_bmp.height / 2));
 			}
 			
 			if (autoSize == true) {
@@ -56,6 +65,13 @@ class Image extends Component implements IClonable<Image> {
 		if (_gifWrapper != null && autoSize == true) {
 			this.width = _gifWrapper.width;
 			this.height = _gifWrapper.height;
+		}
+		#end
+
+		#if svg
+		if (_svgSprite != null && autoSize == true) {
+			this.width = _svgSprite.width;
+			this.height = _svgSprite.height;
 		}
 		#end
 	}
@@ -71,6 +87,20 @@ class Image extends Component implements IClonable<Image> {
 			sprite.removeChild(_bmp);
 			_bmp = null;
 		}
+		
+		#if yagp
+		if (_gifWrapper != null && sprite.contains(_gifWrapper)) {
+			_gifWrapper.dispose();
+			sprite.removeChild(_gifWrapper);
+		}
+		#end
+		
+		#if svg
+		if (_svgSprite != null && sprite.contains(_svgSprite)) {
+			sprite.removeChild(_svgSprite);
+		}
+		#end
+		
 		super.dispose();
 	}
 	
@@ -82,6 +112,18 @@ class Image extends Component implements IClonable<Image> {
 				_bmp.width = width;
 				_bmp.height = height;
 			}
+			#if yagp
+			if (_stretch && _gifWrapper != null && sprite.contains(_gifWrapper)) {
+				_gifWrapper.width = width;
+				_gifWrapper.height = height;
+			}
+			#end
+			#if svg
+			if (_stretch && _svgSprite != null && sprite.contains(_svgSprite)) {
+				_svgSprite.width = width;
+				_svgSprite.height = height;
+			}
+			#end
 		}
 	}
 	
@@ -127,6 +169,12 @@ class Image extends Component implements IClonable<Image> {
 		}
 		#end
 		
+		#if svg
+		if (_svgSprite != null && sprite.contains(_svgSprite)) {
+			sprite.removeChild(_svgSprite);
+		}
+		#end
+		
 		var bmpData:BitmapData = null;
 		if (Std.is(value, String)) {
 			var res:String = value;
@@ -143,6 +191,21 @@ class Image extends Component implements IClonable<Image> {
 				#else
 					trace("YAGP lib not found for .gif decoding");
 				#end
+			} else if (StringTools.endsWith(res, ".svg")) {
+				#if svg
+					var svg:SVG = ResourceManager.instance.getSVG(res);
+					_svgSprite = new Sprite();
+					//bmpData = new BitmapData(cast svg.data.width, cast svg.data.width);
+					//_bmp = new Bitmap(bmpData);
+					svg.render(_svgSprite.graphics);
+					_svgSprite.width = svg.data.width;
+					_svgSprite.height = svg.data.height;
+					sprite.addChild(_svgSprite);
+					if (autoSize == true && ready) {
+						this.width = _svgSprite.width;
+						this.height = _svgSprite.height;
+					}
+				#end
 			} else {
 				bmpData = ResourceManager.instance.getBitmapData(res);
 			}
@@ -153,7 +216,9 @@ class Image extends Component implements IClonable<Image> {
 		}
 		
 		if (bmpData != null) {
-			_bmp = new Bitmap(bmpData);
+			if (_bmp == null) {
+				_bmp = new Bitmap(bmpData);
+			}
 			sprite.addChild(_bmp);
 			if (autoSize == true && ready) {
 				this.width = _bmp.bitmapData.width;
