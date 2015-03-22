@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.7.2",
-    "releasenote"  : "Image component supports SVG",
+    "version"      : "1.7.3",
+    "releasenote"  : "Use legacy version of openfl",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
