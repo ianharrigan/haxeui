@@ -2,20 +2,18 @@ package haxe.ui.toolkit.controls;
 
 import haxe.Http;
 import haxe.io.Bytes;
-import haxe.ui.toolkit.util.ByteConverter;
-import openfl.display.Bitmap;
-import openfl.display.BitmapData;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.resources.ResourceManager;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
 import openfl.display.Loader;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.net.URLLoader;
 import openfl.net.URLLoaderDataFormat;
 import openfl.net.URLRequest;
-import openfl.utils.ByteArray;
 
 #if yagp
 import com.yagp.GifDecoder;
