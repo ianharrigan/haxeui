@@ -1314,7 +1314,7 @@ HSplitterGripper {
 	width: 7;
 	autoSize: false;
 	height: 100%;
-	iconPosition: center;
+	iconPosition: "center";
 }
 
 HSplitterGripper:over {
@@ -1335,7 +1335,7 @@ VSplitterGripper {
 	width: 100%;
 	autoSize: false;
 	height: 7;
-	iconPosition: center;
+	iconPosition: "center";
 }
 
 VSplitterGripper:over {

@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "getUserData bundler to link to specific lib versions",
-    "version": "1.7.5",
+    "releasenote": "Added ability to load images over http",
+    "version": "1.7.6",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",
