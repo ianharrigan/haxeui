@@ -3,27 +3,27 @@
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
 	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
-	<meta title="haxeui" package="haxe.ui.toolkit" version="1.0.0" company="" />
+	<meta package="haxe.ui.toolkit" version="1.0.0" company="" title="haxeui"/>
 	
 	<!-- output -->
-	<app main="haxe.ui.Main" file="haxeui" path="bin" preloader="haxe.ui.HaxeUIPreloader" />
+	<app file="haxeui" main="haxe.ui.Main" path="bin" preloader="haxe.ui.HaxeUIPreloader"/>
 	
-	<window background="#FFFFFF" fps="60" />
-	<window width="800" height="600" unless="mobile" />
-	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
+	<window fps="60" background="#FFFFFF"/>
+	<window width="800" unless="mobile" height="600"/>
+	<window antialiasing="0" orientation="landscape" if="cpp" vsync="false"/>
 
-	<assets path="assets" rename="assets" />
+	<assets path="assets" rename="assets"/>
 	
 	<!-- classpath, haxe libs -->
-	<source path="haxe" />
-	<classpath name="assets" />
+	<source path="haxe"/>
+	<classpath name="assets"/>
 
-	<haxedef name="dom" />
+	<haxedef name="dom"/>
 	
-	<haxelib name="openfl" />
-	<haxelib name="actuate" />
-	<haxelib name="svg" />
-	<haxelib name="hscript" />
+	<haxelib name="openfl" version="3.0.0-beta"/>
+	<haxelib name="actuate" version="1.8.3"/>
+	<haxelib name="svg" version="1.0.8"/>
+	<haxelib name="hscript" version="2.0.4"/>
 	
 	<!-- for dconsole -->
 	<!--
@@ -31,8 +31,8 @@
 	<haxelib name="dconsole" />
 	-->
 
-	<assets path="assets/styles" rename="styles" />
-	<assets path="assets/fonts" rename="fonts" />
+	<assets path="assets/styles" rename="styles"/>
+	<assets path="assets/fonts" rename="fonts"/>
 	
 	<!-- optimize output -->
 	<!--

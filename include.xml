@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<set name="openfl-legacy" unless="web" />
+	<set name="openfl-legacy" unless="web"/>
 	<!-- dependencies -->
-	<haxelib name="openfl" />
-	<haxelib name="actuate" />
-	<haxelib name="yagp" unless="haxeui-no-gif-support" />
+	<haxelib name="openfl" version="3.0.0-beta"/>
+	<haxelib name="actuate" version="1.8.3"/>
+	<haxelib name="yagp" unless="haxeui-no-gif-support" version="1.1.4"/>
 	
 	<!-- Embed resources in final output -->
 	<section if="haxeui-embed-resources">
-		<assets path="assets" rename="assets" embed="true" />
-		<assets path="assets/styles" rename="styles" embed="true" />
-		<assets path="assets/fonts" rename="fonts" embed="true" />
-		<haxedef name="haxeui-embed-resources" />
+		<assets path="assets" embed="true" rename="assets"/>
+		<assets path="assets/styles" embed="true" rename="styles"/>
+		<assets path="assets/fonts" embed="true" rename="fonts"/>
+		<haxedef name="haxeui-embed-resources"/>
 	</section>
 
 	<!-- External resources to final output -->
@@ -22,8 +22,8 @@
 	</section>
 	
 	<!-- Override quality of bitmap filters, useful for mobiles -->
-	<haxedef name="filters-none" if="haxeui-filters-off" />
-	<haxedef name="filters-high" if="haxeui-filters-high" />
-	<haxedef name="filters-medium" if="haxeui-filters-medium" />
-	<haxedef name="filters-low" if="haxeui-filters-low" />
+	<haxedef name="filters-none" if="haxeui-filters-off"/>
+	<haxedef name="filters-high" if="haxeui-filters-high"/>
+	<haxedef name="filters-medium" if="haxeui-filters-medium"/>
+	<haxedef name="filters-low" if="haxeui-filters-low"/>
 </project>
