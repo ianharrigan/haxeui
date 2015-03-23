@@ -100,6 +100,22 @@ class OptionBox extends Component implements IClonable<OptionBox> {
 			return value;
 		}
 		
+		if (_group != null && value == false) { // dont allow false if no other group selection
+			var arr:Array<OptionBox> = _groups.get(_group);
+			var hasSelection:Bool = false;
+			if (arr != null) {
+				for (option in arr) {
+					if (option != this && option.selected == true) {
+						hasSelection = true;
+						break;
+					}
+				}
+			}
+			if (hasSelection == false) {
+				return value;
+			}
+		}
+		
 		_value.value = (value == true) ? "selected" : "unselected";
 		if (_group != null && value == true) { // set all the others in group
 			var arr:Array<OptionBox> = _groups.get(_group);

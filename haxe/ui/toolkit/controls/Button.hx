@@ -478,7 +478,23 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	
 	private function set_selected(value:Bool):Bool {
 		if (_toggle == true && _selected != value) {
+			if (_group != null && value == false) { // dont allow false if no other group selection
+				var arr:Array<Button> = _groups.get(_group);
+				var hasSelection:Bool = false;
+				if (arr != null) {
+					for (button in arr) {
+						if (button != this && button.selected == true) {
+							hasSelection = true;
+							break;
+						}
+					}
+				}
+				if (hasSelection == false) {
+					return value;
+				}
+			}
 			
+			_selected = value; // makes sense to update selected before dispatching event.
 			/** If toggle button state has changed, 
 			 * unselect other buttons in the same group */
 			if (_group != null && value == true) {
@@ -492,7 +508,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				}
 			}
 			
-			_selected = value; // makes sense to update selected before dispatching event.
 			if (dispatchChangeEvents == true) {
 				var event:UIEvent = new UIEvent(UIEvent.CHANGE);
 				dispatchEvent(event);

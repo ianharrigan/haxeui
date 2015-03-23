@@ -4,8 +4,8 @@
     "license"      : "MIT",
     "tags"         : ["rich", "ui"],
     "description"  : "Styleable application centric rich UI",
-    "version"      : "1.7.3",
-    "releasenote"  : "Use legacy version of openfl",
+    "version"      : "1.7.4",
+    "releasenote"  : "Dont allow selection to be false if no other group is selected",
     "contributors" : ["ianharrigan"],
     "dependencies" : {
         "openfl"        : "",
