@@ -620,6 +620,12 @@ class Macros {
 				} else if (propName == "backgroundImageRect") {
 					var arr:Array<String> = propValue.split(",");
 					propValue = "new openfl.geom.Rectangle(" + Std.parseInt(arr[0]) + "," + Std.parseInt(arr[1]) + "," + Std.parseInt(arr[2]) + "," + Std.parseInt(arr[3]) + ")";
+				} else if (propName == "backgroundImage" || propName == "verticalAlignment" || propName == "horizontalAlignment"
+								|| propName == "fontName" || propName == "textAlign" || propName == "iconPosition"
+								|| propName == "icon" || propName == "gradientType" || propName == "selectionMethod") { // string values
+					propValue = StringTools.replace(propValue, "\"", "");
+					propValue = StringTools.replace(propValue, "'", "");
+					propValue = "'" + propValue + "'";
 				}
 				
 				if (StringTools.startsWith(propValue, "#")) { // lazyness
