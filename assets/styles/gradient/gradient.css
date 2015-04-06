@@ -655,6 +655,7 @@ TextInput {
 	filter: dropShadow(2, 45, 0x808080, 1, 4, 4, 1, 3, true);
 	fontSize: 13;
 	fontName: "_sans";
+	color: 0x000000;
 }
 
 TextInput:disabled {
