@@ -206,7 +206,7 @@ class Image extends Component implements IClonable<Image> {
 	
 	private function loadBitmap(res:String, callback:BitmapData->Void):Void {
 		if (StringTools.startsWith(res, "http://")) {
-			#if flash
+			#if (flash || html5)
 				var l:Loader = new Loader(); 
 				l.load(new URLRequest(res)); 
 				l.contentLoaderInfo.addEventListener(Event.INIT, function(dyn) { 
