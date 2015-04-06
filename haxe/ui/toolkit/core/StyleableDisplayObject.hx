@@ -235,6 +235,10 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 				_sprite.filters = [];
 			}
 			//#end
+			
+			if (_baseStyle.visibleSet == true) {
+				this.visible = _baseStyle.visible;
+			}
 		}
 		
 		invalidate(InvalidationFlag.DISPLAY);

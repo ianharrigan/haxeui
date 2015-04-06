@@ -14,6 +14,7 @@ class Style implements IClonable<Style> {
 	private var _target:IDisplayObject;
 	private var _autoApply:Bool = true;
 	
+	private var _visible:Float = -1;
 	private var _width:Int = -1;
 	private var _height:Int = -1; 
 	private var _percentWidth:Int = -1; 
@@ -65,6 +66,8 @@ class Style implements IClonable<Style> {
 	
 	private var _listSize:Int = -1;
 
+	public var visible(get, set):Bool;
+	public var visibleSet(get, null):Bool;
 	public var width(get, set):Int;
 	public var height(get, set):Int;
 	public var percentWidth(get, set):Int;
@@ -144,6 +147,32 @@ class Style implements IClonable<Style> {
 	private function set_autoApply(value:Bool):Bool {
 		_autoApply = value;
 		return value;
+	}
+	
+	private function get_visible():Bool {
+		if (hasDynamicValue("visible")) {
+			return getDynamicValue("visible");
+		}
+		if (_visible == -1) {
+			return false;
+		}
+		return _visible == 1;
+	}
+	
+	private function set_visible(value:Bool):Bool {
+		_visible = value ? 1 : 0;
+		apply();
+		return value;
+	}
+	
+	private function get_visibleSet():Bool {
+		if (hasDynamicValue("visible")) {
+			return true;
+		}
+		if (_visible != -1) {
+			return true;
+		}
+		return false;
 	}
 	
 	private function get_width():Int {
@@ -1023,6 +1052,7 @@ class Style implements IClonable<Style> {
 		if (with == null) {
 			return;
 		}
+		if (with._visible != -1) this._visible = with._visible;
 		if (with._width != -1) this._width = with._width;
 		if (with._height != -1) this._height = with._height;
 		if (with._percentWidth != -1) this._percentWidth = with._percentWidth;

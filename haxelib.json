@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Added ability to load images over http",
-    "version": "1.7.6",
+    "releasenote": "Added visibility to styles",
+    "version": "1.7.8",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",
