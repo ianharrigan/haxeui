@@ -267,14 +267,14 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _gifWrapper.width / _gifWrapper.height;
+					var ratio = _gifWrapper.height > 0 ? _gifWrapper.width / _gifWrapper.height : 0;
 					if (_autoWidth) {
 						this.width = this.height * ratio;
 						this._autoWidth = true;
 						_gifWrapper.height = this.height;
 						_gifWrapper.scaleX = _gifWrapper.scaleY;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 ? this.width / ratio : 0;
+						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
 						this._autoHeight = true;
 						_gifWrapper.width = this.width;
 						_gifWrapper.scaleY = _gifWrapper.scaleX;
@@ -299,14 +299,14 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _svgSprite.width / _svgSprite.height;
+					var ratio = _svgSprite.height > 0 ? _svgSprite.width / _svgSprite.height : 0;
 					if (_autoWidth) {
 						this.width = this.height * ratio;
 						this._autoWidth = true;
 						_svgSprite.height = this.height;
 						_svgSprite.scaleX = _svgSprite.scaleY;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 ? this.width / ratio : 0;
+						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
 						this._autoHeight = true;
 						_svgSprite.width = this.width;
 						_svgSprite.scaleY = _svgSprite.scaleX;
