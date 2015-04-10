@@ -245,8 +245,16 @@ class Image extends Component implements IClonable<Image> {
 		_bmp = new Bitmap(bmpData);
 		updateContent();
 	}
+
+	private var _updating_content:Bool = false; // to prevent recursion
 	
 	private function updateContent():Void {
+		if (_updating_content) {
+			return;
+		}
+
+		_updating_content = true;
+
 		#if yagp
 		if (_gifWrapper != null) {
 			if (sprite.contains(_gifWrapper) == false) {
@@ -322,14 +330,14 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _bmp.width / _bmp.height;
+					var ratio = _bmp.bitmapData.height > 0 ? _bmp.bitmapData.width / _bmp.bitmapData.height : 0;
 					if (_autoWidth) {
 						this.width = this.height * ratio;
 						this._autoWidth = true;
 						_bmp.height = this.height;
 						_bmp.scaleX = _bmp.scaleY;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 ? this.width / ratio : 0;
+						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
 						this._autoHeight = true;
 						_bmp.width = this.width;
 						_bmp.scaleY = _bmp.scaleX;
@@ -340,6 +348,8 @@ class Image extends Component implements IClonable<Image> {
 				}
 			}
 		}
+
+		_updating_content = false;
 	}
 	
 	private function get_autoDisposeBitmapData():Bool {
