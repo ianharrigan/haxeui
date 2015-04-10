@@ -33,7 +33,8 @@ import format.SVG;
 class Image extends Component implements IClonable<Image> {
 	private var _bmp:Bitmap;
 	private var _resource:Dynamic;
-	private var _stretch:Bool;
+	private var _autoWidth:Bool = true;
+	private var _autoHeight:Bool = true;
 	private var _autoDisposeBitmapData:Bool = false;
 	
 	#if yagp
@@ -107,6 +108,21 @@ class Image extends Component implements IClonable<Image> {
 		resource = newValue;
 		return newValue;
 	}
+
+	//******************************************************************************************
+	// Component overrides
+	//******************************************************************************************
+	private override function set_width(value:Float):Float {
+		_autoWidth = false;
+		_autoSize = false;
+		return super.set_width(value);
+	}
+
+	private override function set_height(value:Float):Float {
+		_autoHeight = false;
+		_autoSize = false;
+		return super.set_height(value);
+	}
 	
 	//******************************************************************************************
 	// Methods/props
@@ -116,8 +132,6 @@ class Image extends Component implements IClonable<Image> {
 	 **/
 	@:clonable
 	public var resource(get, set):Dynamic;
-	@:clonable
-	public var stretch(get, set):Bool;
 	@:clonable
 	public var autoDisposeBitmapData(get, set):Bool;
 	
@@ -239,12 +253,27 @@ class Image extends Component implements IClonable<Image> {
 				sprite.addChild(_gifWrapper);
 			}
 			if (ready) {
-				if (autoSize == true) {
+				if (_autoWidth && _autoHeight) {
 					this.width = _gifWrapper.width;
 					this.height = _gifWrapper.height;
-				} else if (_stretch == true) {
-					_gifWrapper.width = width;
-					_gifWrapper.height = height;
+					this._autoWidth = true;
+					this._autoHeight = true;
+				} else {
+					var ratio = _gifWrapper.width / _gifWrapper.height;
+					if (_autoWidth) {
+						this.width = this.height * ratio;
+						this._autoWidth = true;
+						_gifWrapper.height = this.height;
+						_gifWrapper.scaleX = _gifWrapper.scaleY;
+					} else if (_autoHeight) {
+						this.height = this.width > 0 ? this.width / ratio : 0;
+						this._autoHeight = true;
+						_gifWrapper.width = this.width;
+						_gifWrapper.scaleY = _gifWrapper.scaleX;
+					} else {
+						_gifWrapper.width = this.width;
+						_gifWrapper.height = this.height;
+					}
 				}
 			}
 		}
@@ -256,12 +285,27 @@ class Image extends Component implements IClonable<Image> {
 				sprite.addChild(_svgSprite);
 			}
 			if (ready) {
-				if (autoSize == true) {
+				if (_autoWidth && _autoHeight) {
 					this.width = _svgSprite.width;
 					this.height = _svgSprite.height;
-				} else if (_stretch == true) {
-					_svgSprite.width = width;
-					_svgSprite.height = height;
+					this._autoWidth = true;
+					this._autoHeight = true;
+				} else {
+					var ratio = _svgSprite.width / _svgSprite.height;
+					if (_autoWidth) {
+						this.width = this.height * ratio;
+						this._autoWidth = true;
+						_svgSprite.height = this.height;
+						_svgSprite.scaleX = _svgSprite.scaleY;
+					} else if (_autoHeight) {
+						this.height = this.width > 0 ? this.width / ratio : 0;
+						this._autoHeight = true;
+						_svgSprite.width = this.width;
+						_svgSprite.scaleY = _svgSprite.scaleX;
+					} else {
+						_svgSprite.width = this.width;
+						_svgSprite.height = this.height;
+					}
 				}
 			}
 		}
@@ -272,29 +316,30 @@ class Image extends Component implements IClonable<Image> {
 				sprite.addChild(_bmp);
 			}
 			if (ready) {
-				if (autoSize == true) {
+				if (_autoWidth && _autoHeight) {
 					this.width = _bmp.bitmapData.width;
 					this.height = _bmp.bitmapData.height;
-				} else if (_stretch == true) {
-					_bmp.width = width;
-					_bmp.height = height;
+					this._autoWidth = true;
+					this._autoHeight = true;
+				} else {
+					var ratio = _bmp.width / _bmp.height;
+					if (_autoWidth) {
+						this.width = this.height * ratio;
+						this._autoWidth = true;
+						_bmp.height = this.height;
+						_bmp.scaleX = _bmp.scaleY;
+					} else if (_autoHeight) {
+						this.height = this.width > 0 ? this.width / ratio : 0;
+						this._autoHeight = true;
+						_bmp.width = this.width;
+						_bmp.scaleY = _bmp.scaleX;
+					} else {
+						_bmp.width = this.width;
+						_bmp.height = this.height;
+					}
 				}
 			}
 		}
-	}
-	
-	private function get_stretch():Bool {
-		return _stretch;
-	}
-	
-	private function set_stretch(value:Bool):Bool {
-		if (_stretch == value) {
-			return value;
-		}
-		_autoSize = !value;
-		_stretch = value;
-		invalidate(InvalidationFlag.SIZE);
-		return value;
 	}
 	
 	private function get_autoDisposeBitmapData():Bool {
