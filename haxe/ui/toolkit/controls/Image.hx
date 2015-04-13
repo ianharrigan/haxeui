@@ -266,17 +266,16 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _gifWrapper.height > 0 ? _gifWrapper.width / _gifWrapper.height : 0;
 					if (_autoWidth) {
-						this.width = this.height * ratio;
-						this._autoWidth = true;
 						_gifWrapper.height = this.height;
 						_gifWrapper.scaleX = _gifWrapper.scaleY;
+						this.width = _gifWrapper.width;
+						this._autoWidth = true;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
-						this._autoHeight = true;
 						_gifWrapper.width = this.width;
 						_gifWrapper.scaleY = _gifWrapper.scaleX;
+						this.height = _gifWrapper.height;
+						this._autoHeight = true;
 					} else {
 						_gifWrapper.width = this.width;
 						_gifWrapper.height = this.height;
@@ -298,17 +297,16 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _svgSprite.height > 0 ? _svgSprite.width / _svgSprite.height : 0;
 					if (_autoWidth) {
-						this.width = this.height * ratio;
-						this._autoWidth = true;
 						_svgSprite.height = this.height;
 						_svgSprite.scaleX = _svgSprite.scaleY;
+						this.width = _svgSprite.width;
+						this._autoWidth = true;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
-						this._autoHeight = true;
 						_svgSprite.width = this.width;
 						_svgSprite.scaleY = _svgSprite.scaleX;
+						this.height = _svgSprite.height;
+						this._autoHeight = true;
 					} else {
 						_svgSprite.width = this.width;
 						_svgSprite.height = this.height;
@@ -329,17 +327,16 @@ class Image extends Component implements IClonable<Image> {
 					this._autoWidth = true;
 					this._autoHeight = true;
 				} else {
-					var ratio = _bmp.bitmapData.height > 0 ? _bmp.bitmapData.width / _bmp.bitmapData.height : 0;
 					if (_autoWidth) {
-						this.width = this.height * ratio;
-						this._autoWidth = true;
 						_bmp.height = this.height;
 						_bmp.scaleX = _bmp.scaleY;
+						this.width = _bmp.width;
+						this._autoWidth = true;
 					} else if (_autoHeight) {
-						this.height = this.width > 0 && ratio > 0 ? this.width / ratio : 0;
-						this._autoHeight = true;
 						_bmp.width = this.width;
 						_bmp.scaleY = _bmp.scaleX;
+						this.height = _bmp.height;
+						this._autoHeight = true;
 					} else {
 						_bmp.width = this.width;
 						_bmp.height = this.height;
