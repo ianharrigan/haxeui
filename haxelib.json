@@ -9,14 +9,14 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "@ProPuke added correct Image scaling",
-    "version": "1.7.9",
+    "releasenote": "Use newer version of OpenFL ",
+    "version": "1.7.10",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",
         "actuate": "1.8.3",
         "svg": "1.0.8",
-        "openfl": "3.0.0-beta",
+        "openfl": "3.0.1",
         "hscript": "2.0.4"
     }
 }
