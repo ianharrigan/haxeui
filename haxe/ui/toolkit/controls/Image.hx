@@ -246,14 +246,13 @@ class Image extends Component implements IClonable<Image> {
 		updateContent();
 	}
 
-	private var _updating_content:Bool = false; // to prevent recursion
-	
+	private var _updatingContent:Bool = false; // to prevent recursion
 	private function updateContent():Void {
-		if (_updating_content) {
+		if (_updatingContent) {
 			return;
 		}
 
-		_updating_content = true;
+		_updatingContent = true;
 
 		#if yagp
 		if (_gifWrapper != null) {
@@ -349,7 +348,7 @@ class Image extends Component implements IClonable<Image> {
 			}
 		}
 
-		_updating_content = false;
+		_updatingContent = false;
 	}
 	
 	private function get_autoDisposeBitmapData():Bool {

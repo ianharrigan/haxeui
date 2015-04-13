@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Added visibility to styles",
-    "version": "1.7.8",
+    "releasenote": "@ProPuke added correct Image scaling",
+    "version": "1.7.9",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",
