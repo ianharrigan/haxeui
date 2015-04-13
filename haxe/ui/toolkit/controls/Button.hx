@@ -192,7 +192,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 		
         if (_iconPosition == "fill" && _icon != null) {
-          _icon.stretch = true;
           _icon.width = width;
           _icon.height = height;
         }
