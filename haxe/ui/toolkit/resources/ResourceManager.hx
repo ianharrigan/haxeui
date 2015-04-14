@@ -44,7 +44,16 @@ class ResourceManager {
 	}
 	
 	public function getText(resourceId:String, locale:String = null):String {
-		var str:String = Resource.getString(resourceId);
+		var str:String = null;
+
+		if (resourceHook != null) {
+			str = resourceHook.getText(resourceId, locale);
+			if (str != null) {
+				return str;
+			}
+		}
+		
+		str = Resource.getString(resourceId);
 		if (str == null) {
 			str = Assets.getText(resourceId);
 		}
@@ -95,7 +104,17 @@ class ResourceManager {
 	}
 	
 	public function getBytes(resourceId:String, locale:String = null):ByteArray {
-		return Assets.getBytes(resourceId);
+		var ba:ByteArray = null;
+
+		if (resourceHook != null) {
+			ba = resourceHook.getBytes(resourceId, locale);
+			if (ba != null) {
+				return ba;
+			}
+		}
+		
+		ba = Assets.getBytes(resourceId);
+		return ba;
 	}
 	
 	public function reset():Void {
