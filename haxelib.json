@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Use newer version of OpenFL ",
-    "version": "1.7.10",
+    "releasenote": "Added resource hooks",
+    "version": "1.7.11",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",

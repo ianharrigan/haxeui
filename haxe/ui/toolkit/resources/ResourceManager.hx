@@ -24,6 +24,8 @@ class ResourceManager {
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
+	public var resourceHook(default, default):IResourceHook;
+	
 	public function new() {
 		
 	}
@@ -66,6 +68,14 @@ class ResourceManager {
 		}
 		
 		var bmp:BitmapData = null;
+		
+		if (resourceHook != null) {
+			bmp = resourceHook.getBitmapData(resourceId, locale);
+			if (bmp != null) {
+				return bmp;
+			}
+		}
+		
 		#if !(flash)
 			var bytes:haxe.io.Bytes = Resource.getBytes(resourceId);
 			if (bytes != null) {
