@@ -325,10 +325,26 @@ class Macros {
 			processThemeStyles(e);
 		}
 	}
+
+	private static function processThemeParents(themeName:String, parentTheme:String, themes:Xml):Void {
+		if (parentTheme == null) {
+			return;
+		}
+		
+		var themeXML:Xml = themes.elementsNamed(parentTheme).next();
+		processThemeParents(themeName, themeXML.get("parent"), themes);
+		addThemeResources(themeName, themeXML);
+	}
 	
 	private static function processThemeStyles(parent:Xml):Void {
+		var parentTheme:String = parent.get("parent");
 		var themeName:String = parent.nodeName;
-		for (styles in parent.elementsNamed("styles")) {
+		processThemeParents(themeName, parentTheme, parent.parent);
+		addThemeResources(themeName, parent);
+	}
+	
+	private static function addThemeResources(themeName:String, node:Xml):Void {
+		for (styles in node.elementsNamed("styles")) {
 			var stylesPath:String = styles.get("path");
 			var stylesClass:String = styles.get("class");
 			

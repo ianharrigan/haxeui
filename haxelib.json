@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Added resource hooks",
-    "version": "1.7.11",
+    "releasenote": "Basic theme inheritance",
+    "version": "1.7.12",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",
