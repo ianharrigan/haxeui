@@ -40,11 +40,21 @@ class PopupManager {
 	}
 	
 	private function onKeyPress(e:KeyboardEvent):Void {
-		e.stopImmediatePropagation(); //Needed on Windows (and maybe other platforms) to prevent popups created in callbacks of other popups to be dismissed immediatly. Since the listener is removed and immediatly added it would apparently catch the same event again.
-		if (e.keyCode == Keyboard.ESCAPE)
-			dismissModal(Dismiss.ESCAPE | Dismiss.ANYKEY);
-		else 
-			dismissModal(Dismiss.ANYKEY);
+		if (_modalPopups.length == 0)
+			return;
+		var p = _modalPopups.first();	// Get latest
+		if (p.config.dismiss != null) {
+			if (e.keyCode == Keyboard.ESCAPE && p.config.dismiss == Dismiss.ESCAPE) {
+				e.stopImmediatePropagation(); //Needed on Windows (and maybe other platforms) to prevent popups created in callbacks of other popups to be dismissed immediatly. Since the listener is removed and immediatly added it would apparently catch the same event again.
+				dismissModal(Dismiss.ESCAPE | Dismiss.ANYKEY);
+			} else if (e.keyCode == Keyboard.ENTER && p.config.dismiss == Dismiss.ENTER) {
+				e.stopImmediatePropagation(); //Needed on Windows (and maybe other platforms) to prevent popups created in callbacks of other popups to be dismissed immediatly. Since the listener is removed and immediatly added it would apparently catch the same event again.
+				dismissModal(Dismiss.ENTER | Dismiss.ANYKEY);
+			} else if (p.config.dismiss == Dismiss.ANYKEY) {
+				e.stopImmediatePropagation(); //Needed on Windows (and maybe other platforms) to prevent popups created in callbacks of other popups to be dismissed immediatly. Since the listener is removed and immediatly added it would apparently catch the same event again.
+				dismissModal(Dismiss.ANYKEY);
+			}
+		}
 	}
 	
 	public function showSimple(text:String, title:String = null, config:Dynamic = PopupButton.OK, fn:Dynamic->Void = null):Popup {
@@ -181,7 +191,7 @@ class PopupManager {
 		if (_modalPopups.length == 0)
 			return;
 		var p = _modalPopups.first();	//Try to close latest added popup
-		if (p.config.dismiss & action > 0) {
+		if (p.config.dismiss != null && (p.config.dismiss & action > 0)) {
 			hidePopup(p);
 			p.callClosingCallback(PopupButton.CANCEL);
 		}
@@ -303,9 +313,10 @@ class PopupButtonInfo {
 }
 
 class Dismiss {
-	public static inline var ESCAPE:Int =         0x0001;
-	public static inline var ANYKEY:Int =         0x0010;
-	public static inline var CLICK_OUTSIDE:Int =  0x0100;
-	public static inline var CLICK_INSIDE:Int =   0x1000;
-	public static inline var CLICK:Int =          0x1100;
+	public static inline var ESCAPE:Int =         0x00001;
+	public static inline var ENTER:Int =          0x00010;
+	public static inline var ANYKEY:Int =         0x00100;
+	public static inline var CLICK_OUTSIDE:Int =  0x01000;
+	public static inline var CLICK_INSIDE:Int =   0x10000;
+	public static inline var CLICK:Int =          0x11000;
 }
