@@ -1,0 +1,7 @@
+#-cmd rm haxeui.zip
+--next
+-cmd zip -r haxeui.zip haxe haxelib.json
+--next
+-cmd haxelib remove haxeui
+--next
+-cmd haxelib local haxeui.zip
