@@ -413,7 +413,7 @@ class Style implements IClonable<Style> {
 
 	private function get_paddingLeft():Int {
 		if (hasDynamicValue("paddingLeft")) {
-			return getDynamicValue("paddingRight");
+			return getDynamicValue("paddingLeft");
 		}
 		if (hasDynamicValue("padding")) {
 			return getDynamicValue("padding");
