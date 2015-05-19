@@ -36,6 +36,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	private var _x:Float = 0;
 	private var _y:Float = 0;
 	private var _z:Float = 0;
+	private var _rotationX:Float = 0;
+	private var _rotationY:Float = 0;
+	private var _rotationZ:Float = 0;
 	private var _width:Float = 0;
 	private var _height:Float = 0;
 	private var _percentWidth:Float = -1;
@@ -193,6 +196,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_z(value:Float):Float {
+		if (_z == Std.int(value)) {
+			return value;
+		}
 		_z = Std.int(value);
 		#if flash
 		_sprite.z = _z;
@@ -210,6 +216,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_rotationX(value:Float):Float {
+		if (value == _rotationX) {
+			return value;
+		}
+		_rotationX = value;
 		#if flash
 		_sprite.rotationX = value;
 		#end
@@ -225,6 +235,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_rotationY(value:Float):Float {
+		if (value == _rotationY) {
+			return value;
+		}
+		_rotationY = value;
 		#if flash
 		_sprite.rotationY = value;
 		#end
@@ -240,6 +254,10 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 	
 	private function set_rotationZ(value:Float):Float {
+		if (value == _rotationZ) {
+			return value;
+		}
+		_rotationZ = value;
 		#if flash
 		_sprite.rotationZ = value;
 		#end

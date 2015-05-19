@@ -198,7 +198,11 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	}
 	
 	private function set_value(newValue:Dynamic):Dynamic {
-		text = "" + newValue;
+		if (value != null) {
+			text = "" + newValue;
+		} else {
+			text = newValue;
+		}
 		return newValue;
 	}
 	

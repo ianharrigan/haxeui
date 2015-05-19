@@ -212,6 +212,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		
 		if (_ready == true) {
+			_content.removeAllChildren();
 			syncUI();
 		}
 		_lastSelection = -1;
