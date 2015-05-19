@@ -191,6 +191,7 @@ class Image extends Component implements IClonable<Image> {
 	private function updateGif(gif:Gif):Void {
 		var player:GifPlayer = new GifPlayer(gif);
 		_gifWrapper = new GifPlayerWrapper(player);
+		_gifWrapper.smoothing = true;
 		updateContent();
 	}
 	#end
@@ -243,6 +244,7 @@ class Image extends Component implements IClonable<Image> {
 	
 	private function updateBitmap(bmpData:BitmapData):Void {
 		_bmp = new Bitmap(bmpData);
+		_bmp.smoothing = true;
 		updateContent();
 	}
 
