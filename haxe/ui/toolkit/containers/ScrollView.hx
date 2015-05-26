@@ -331,7 +331,7 @@ class ScrollView extends StateComponent {
 		if (content != null) {
 
 			_inertiaSpeed.x *= 0.8;
-	  	_inertiaSpeed.y *= 0.8;
+			_inertiaSpeed.y *= 0.8;
 
 			if ((content.width > layout.usableWidth || _virtualScrolling == true)) {
 				if (_showHScroll == true && _autoHideScrolls == true) {
@@ -351,8 +351,16 @@ class ScrollView extends StateComponent {
 				}
 			}
 
-	  	if ( Math.abs(_inertiaSpeed.x) < 0.1 && Math.abs(_inertiaSpeed.y) < 0.1 )
-	  		Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+			if ( Math.abs(_inertiaSpeed.x) < 0.1 && Math.abs(_inertiaSpeed.y) < 0.1 ){
+				_eventTarget.visible = false;
+				if (_hscroll != null && _showHScroll == true && _autoHideScrolls == true) {
+					_hscroll.visible = false;
+				}
+				if (_vscroll != null && _showVScroll == true && _autoHideScrolls == true) {
+					_vscroll.visible = false;
+				}
+				Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+			}
 		}
 	}
 	
