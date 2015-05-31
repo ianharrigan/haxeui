@@ -14,6 +14,7 @@ import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import motion.Actuate;
 import motion.easing.Linear;
+import openfl.events.Event;
 import openfl.events.KeyboardEvent;
 import openfl.Lib;
 import openfl.ui.Keyboard;
@@ -158,6 +159,8 @@ class PopupManager {
 		} else {
 			p.visible = true;
 		}
+		
+		Screen.instance.addEventListener(Event.RESIZE, _onScreenResize);
 	}
 	
 	public function hidePopup(p:Popup, dispose:Bool = true):Void {
@@ -180,10 +183,22 @@ class PopupManager {
 			p.root.removeChild(p, dispose);
 			p.root.hideModalOverlay();
 		}
+		
+		Screen.instance.removeEventListener(Event.RESIZE, _onScreenResize);
+	}
+	
+	private function _onScreenResize(event:Event):Void {
+		for (p in _modalPopups) {
+			centerPopup(p);
+		}
 	}
 	
 	public function centerPopup(p:Popup):Void {
-		p.x = Std.int((p.root.width / 2) - (p.width / 2));
+		var cx:Float = p.width;
+		if (p.percentWidth > 0) {
+			cx = (p.root.width * p.percentWidth) / 100;
+		}
+		p.x = Std.int((p.root.width / 2) - (cx / 2));
 		p.y = Std.int((p.root.height / 2) - (p.height / 2));
 	}
 	

@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.containers;
 
+import haxe.ui.toolkit.core.Toolkit;
 import openfl.display.DisplayObject;
 import openfl.display.Sprite;
 import openfl.events.Event;
@@ -58,6 +59,9 @@ class ScrollView extends StateComponent {
 		_container.id = "container";
 		_container.percentWidth = _container.percentHeight = 100;
 		addChild(_container);
+		#if mobile
+		_scrollSensitivity = Std.int(Toolkit.scaleFactor * 2);
+		#end
 	}
 	
 	//******************************************************************************************

@@ -129,6 +129,12 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	}
 	
 	private function set_icon(value:Dynamic):Dynamic {
+		if (value == "none") { // TODO: hack!
+            if (_icon != null) {
+			    _icon.visible = false;
+            }
+			return value;
+		}
 		if (value != null) {
 			if (_icon == null) {
 				_icon = new Image();

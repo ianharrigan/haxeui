@@ -21,7 +21,7 @@ import haxe.ui.toolkit.themes.DefaultTheme;
 import haxe.ui.toolkit.themes.Theme;
 
 class Toolkit {
-	private static inline var DPI_THRESHOLD:Int = 120;
+	private static inline var DPI_THRESHOLD:Int = 140;
 	
 	private static var _instance:Toolkit;
 	public static var instance(get, null):Toolkit;

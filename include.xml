@@ -2,7 +2,7 @@
 <project>
 	<set name="openfl-legacy" unless="web"/>
 	<!-- dependencies -->
-	<haxelib name="openfl" version="3.0.3"/>
+	<haxelib name="openfl" version="3.0.6"/>
 	<haxelib name="actuate" version="1.8.3"/>
 	<haxelib name="yagp" unless="haxeui-no-gif-support" version="1.1.4"/>
 	
