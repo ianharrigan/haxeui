@@ -1,4 +1,5 @@
 package haxe.ui.toolkit.hscript;
+import haxe.ui.toolkit.core.Client;
 
 class ScriptManager {
 	private static var _instance:ScriptManager;
@@ -19,7 +20,7 @@ class ScriptManager {
 		_defaultClasses = new Map<String, Dynamic>();
 		_defaultClasses.set("Std", Std);
 		_defaultClasses.set("Math", Math);
-		_defaultClasses.set("Client", new ClientWrapper());
+		_defaultClasses.set("Client", Client.instance);
 	}
 
 	public var classes(get, null):Map<String, Dynamic>;
