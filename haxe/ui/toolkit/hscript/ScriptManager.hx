@@ -19,7 +19,7 @@ class ScriptManager {
 		_defaultClasses = new Map<String, Dynamic>();
 		_defaultClasses.set("Std", Std);
 		_defaultClasses.set("Math", Math);
-		_defaultClasses.set("Client", ClientWrapper);
+		_defaultClasses.set("Client", new ClientWrapper());
 	}
 
 	public var classes(get, null):Map<String, Dynamic>;

@@ -142,7 +142,7 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 	}
 	
 	private function updateComponentValue(c:IDisplayObject, value:Dynamic):Void {
-		if (Std.is(c, Component)) {
+		if (Std.is(c, Component) && value != cast(c, Component).value) {
 			cast(c, Component).value = value;
 		}
 	}
