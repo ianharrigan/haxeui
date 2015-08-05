@@ -6,6 +6,9 @@ import haxe.ui.toolkit.style.StyleParser;
 import openfl.Lib;
 import haxe.ds.StringMap;
 import haxe.ui.toolkit.controls.Menu;
+import haxe.ui.toolkit.controls.popups.Popup;
+import haxe.ui.toolkit.controls.selection.DateSelector;
+import haxe.ui.toolkit.controls.selection.ListSelector;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
@@ -51,10 +54,23 @@ class Toolkit {
 		registerXMLProcessor(StyleProcessor, "style");
 		registerXMLProcessor(DataProcessor, "data");
 
-		if (_defaultTransition != "none" && _transitionRegister != null &&  _transitionRegister.get(Type.getClassName(Menu)) == null) {
-			setTransitionForClass(Menu, "fade"); // fade looks nicer
+		function setDefaultTransition(cls:Class<IDisplayObject>, transition:String, time:Float){
+			var className:String = Type.getClassName(cls);
+
+			if(_transitionRegister == null || _transitionRegister.get(className) == null){
+				setTransitionForClass(cls, transition);
+
+				if(_transitionTimeRegister == null || _transitionTimeRegister.get(className) == null){
+					setTransitionTimeForClass(cls, time);
+				}
+			}
 		}
-		
+
+		setDefaultTransition(Menu, "fade", 0.1); // fade looks nicer
+		setDefaultTransition(DateSelector, "slide", 0.15);
+		setDefaultTransition(ListSelector, "slide", 0.15);
+		setDefaultTransition(Popup, "slide", 0.3);
+
 		var t:Theme = null;
 		if (Std.is(theme, Theme)) {
 			t = cast theme;
@@ -244,7 +260,9 @@ class Toolkit {
 	// Animation defaults
 	//******************************************************************************************
 	private static var _defaultTransition:String = "slide";
+	private static var _defaultTransitionTime:Float = .3;
 	private static var _transitionRegister:StringMap<String>;
+	private static var _transitionTimeRegister:StringMap<Float>;
 	
 	public static var defaultTransition(get, set):String;
 	
@@ -254,6 +272,15 @@ class Toolkit {
 	
 	private static function set_defaultTransition(value:String):String {
 		_defaultTransition = value;
+		return value;
+	}
+
+	private static function get_defaultTransitionTime():Float {
+		return _defaultTransitionTime;
+	}
+	
+	private static function set_defaultTransitionTime(value:Float):Float {
+		_defaultTransitionTime = value;
 		return value;
 	}
 
@@ -272,6 +299,23 @@ class Toolkit {
 		}
 		var className:String = Type.getClassName(cls);
 		_transitionRegister.set(className, transition);
+	}
+
+	public static function getTransitionTimeForClass(cls:Class<IDisplayObject>):Float {
+		var s = _defaultTransitionTime;
+		var className:String = Type.getClassName(cls);
+		if (_transitionTimeRegister != null && _transitionTimeRegister.get(className) != null) {
+			s = _transitionTimeRegister.get(className);
+		}
+		return s;
+	}
+	
+	public static function setTransitionTimeForClass(cls:Class<IDisplayObject>, transitionTime:Float):Void {
+		if (_transitionTimeRegister == null) {
+			_transitionTimeRegister = new StringMap<Float>();
+		}
+		var className:String = Type.getClassName(cls);
+		_transitionTimeRegister.set(className, transitionTime);
 	}
 	
 	public static function addScriptletClass(name:String, cls:Class<Dynamic>):Void {

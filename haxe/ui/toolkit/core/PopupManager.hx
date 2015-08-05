@@ -14,6 +14,7 @@ import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 import openfl.events.Event;
 import openfl.events.KeyboardEvent;
 import openfl.Lib;
@@ -145,16 +146,17 @@ class PopupManager {
 		centerPopup(p);
 
 		var transition:String = Toolkit.getTransitionForClass(Popup);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Popup);
 		if (transition == "slide") {
 			var ypos:Float = p.y;
 			p.y = -p.height;
 			p.visible = true;
-			Actuate.tween(p, .2, { y: ypos }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(p, transitionTime, { y: ypos }, true).ease(Quart.easeOut).onComplete(function() {
 			});
 		} else if (transition == "fade") {
 			p.sprite.alpha = 0;
 			p.visible = true;
-			Actuate.tween(p.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(p.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
 			});
 		} else {
 			p.visible = true;
@@ -169,13 +171,14 @@ class PopupManager {
 			Lib.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		
 		var transition:String = Toolkit.getTransitionForClass(Popup);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Popup);
 		if (transition == "slide") {
-			Actuate.tween(p, .2, { y: p.root.height }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(p, transitionTime, { y: p.root.height }, true).ease(Quart.easeOut).onComplete(function() {
 				p.root.removeChild(p, dispose);
 				p.root.hideModalOverlay();
 			});
 		} else if (transition == "fade") {
-			Actuate.tween(p.sprite, .2, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(p.sprite, transitionTime, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 				p.root.removeChild(p, dispose);
 				p.root.hideModalOverlay();
 			});

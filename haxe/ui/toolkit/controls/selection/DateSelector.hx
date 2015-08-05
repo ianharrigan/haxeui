@@ -7,6 +7,7 @@ import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 
@@ -98,17 +99,18 @@ class DateSelector extends Button {
 			}
 			
 			var transition:String = Toolkit.getTransitionForClass(DateSelector);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(DateSelector);
 			if (transition == "slide") {
 				_cal.clipHeight = 0;
 				_cal.sprite.alpha = 1;
 				_cal.visible = true;
-				Actuate.tween(_cal, .1, { clipHeight: _cal.height }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_cal, transitionTime, { clipHeight: _cal.height }, true).ease(Quart.easeOut).onComplete(function() {
 					_cal.clearClip();
 				});
 			} else if (transition == "fade") {
 				_cal.sprite.alpha = 0;
 				_cal.visible = true;
-				Actuate.tween(_cal.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_cal.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
 				});
 			} else {
 				_cal.sprite.alpha = 1;
@@ -122,14 +124,15 @@ class DateSelector extends Button {
 	public function hideCalendar():Void {
 		if (_cal != null) {
 			var transition:String = Toolkit.getTransitionForClass(DateSelector);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(DateSelector);
 			if (transition == "slide") {
 				_cal.sprite.alpha = 1;
-				Actuate.tween(_cal, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_cal, transitionTime, { clipHeight: 0 }, true).ease(Quart.easeOut).onComplete(function() {
 					_cal.visible = false;
 					_cal.clearClip();
 				});
 			} else if (transition == "fade") {
-				Actuate.tween(_cal.sprite, .2, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_cal.sprite, transitionTime, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 					_cal.visible = false;
 				});
 			} else {

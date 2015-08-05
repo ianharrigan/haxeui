@@ -9,7 +9,7 @@ import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
-import motion.easing.Linear;
+import motion.easing.Quart;
 
 /**
  * @author TiagoLr
@@ -75,6 +75,7 @@ class ExpandablePanel extends VBox {
 	public function showPanel() {
 		
 		var transition:String = Toolkit.getTransitionForClass(ExpandablePanel);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Stack);
 		if (transition == "slide") {
 			
 			var startH = _panel.height; 
@@ -85,7 +86,7 @@ class ExpandablePanel extends VBox {
 			
 			Reflect.setField(_panel, "_height", startH);
 			_panel.clipHeight = startH;
-			Actuate.tween(_panel, .2, { _height:finalH, clipHeight:finalH }, true).ease(Linear.easeNone)
+			Actuate.tween(_panel, transitionTime, { _height:finalH, clipHeight:finalH }, true).ease(Quart.easeOut)
 							.onUpdate(function() { invalidate(InvalidationFlag.SIZE); } );
 							
 		} else {
@@ -97,8 +98,9 @@ class ExpandablePanel extends VBox {
 	public function hidePanel() {
 		
 		var transition:String = Toolkit.getTransitionForClass(ExpandablePanel);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Stack);
 		if (transition == "slide") {
-			Actuate.tween(_panel, .2, { _height: 0, clipHeight:0 }, true).ease(Linear.easeNone)
+			Actuate.tween(_panel, transitionTime, { _height: 0, clipHeight:0 }, true).ease(Quart.easeOut)
 							.onUpdate(function() { invalidate(InvalidationFlag.SIZE); } )
 							.onComplete(function() { _panel.visible = false; } );
 		} else {

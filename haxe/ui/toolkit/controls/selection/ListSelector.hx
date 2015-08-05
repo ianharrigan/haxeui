@@ -12,6 +12,7 @@ import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 
@@ -167,17 +168,18 @@ class ListSelector extends Button implements IDataComponent {
 			}
 			
 			var transition:String = Toolkit.getTransitionForClass(ListSelector);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(ListSelector);
 			if (transition == "slide") {
 				_list.clipHeight = 0;
 				_list.sprite.alpha = 1;
 				_list.visible = true;
-				Actuate.tween(_list, .1, { clipHeight: listHeight }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_list, transitionTime, { clipHeight: listHeight }, true).ease(Quart.easeOut).onComplete(function() {
 					_list.clearClip();
 				});
 			} else if (transition == "fade") {
 				_list.sprite.alpha = 0;
 				_list.visible = true;
-				Actuate.tween(_list.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_list.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
 				});
 			} else {
 				_list.sprite.alpha = 1;
@@ -194,14 +196,15 @@ class ListSelector extends Button implements IDataComponent {
 	public function hideList():Void {
 		if (_list != null) {
 			var transition:String = Toolkit.getTransitionForClass(ListSelector);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(ListSelector);
 			if (transition == "slide") {
 				_list.sprite.alpha = 1;
-				Actuate.tween(_list, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_list, transitionTime, { clipHeight: 0 }, true).ease(Quart.easeOut).onComplete(function() {
 					_list.visible = false;
 					_list.clearClip();
 				});
 			} else if (transition == "fade") {
-				Actuate.tween(_list.sprite, .2, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(_list.sprite, transitionTime, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 					_list.visible = false;
 				});
 			} else {

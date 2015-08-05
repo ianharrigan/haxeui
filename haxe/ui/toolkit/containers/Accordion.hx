@@ -10,6 +10,7 @@ import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.events.UIEvent;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 
 /**
  Basic, animated accordion container
@@ -149,11 +150,12 @@ class Accordion extends VBox implements IClonable<Accordion> {
 			}
 		}
 		var transition:String = Toolkit.getTransitionForClass(Accordion);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Accordion);
 		if (transition == "slide") {
 			panel.percentHeight = -1;
 			panel.height = 0;
 			panel.visible = true;
-			Actuate.tween(panel, .2, { height: ucy, clipHeight: ucy }, true).ease(Linear.easeNone)
+			Actuate.tween(panel, transitionTime, { height: ucy, clipHeight: ucy }, true).ease(Quart.easeOut)
 				.onUpdate(_onTweenUpdate, [ucy, panel, panelOld])
 				.onComplete(_onTweenComplete, [panel, panelOld, buttonOld]);
 		} else if (transition == "fade") {
@@ -163,7 +165,7 @@ class Accordion extends VBox implements IClonable<Accordion> {
 				unselectButton(buttonOld);
 				panelOld.visible = false;
 			}
-			Actuate.tween(panel.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone);
+			Actuate.tween(panel.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone);
 		} else {
 			panel.visible = true;
 			if (panelOld != null) {
