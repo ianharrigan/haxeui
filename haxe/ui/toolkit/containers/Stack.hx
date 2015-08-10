@@ -6,6 +6,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.Toolkit;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 
 class Stack extends Component {
 	#if !html5
@@ -46,6 +47,7 @@ class Stack extends Component {
 	private function set_selectedIndex(value:Int):Int {
 		if (value != _selectedIndex) {
 			var transition:String = Toolkit.getTransitionForClass(Stack);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(Stack);
 			for (n in 0...children.length) {
 				var item:IDisplayObject = children[n];
 				if (n == value) {
@@ -54,20 +56,20 @@ class Stack extends Component {
 							item.sprite.alpha = 1;
 							item.visible = true;
 							item.x = -item.width;
-							Actuate.tween(item, .2, { x: this.layout.padding.left }, true).ease(Linear.easeNone).onComplete(function() {
+							Actuate.tween(item, transitionTime, { x: this.layout.padding.left }, true).ease(Quart.easeOut).onComplete(function() {
 							});
 						} else {
 							item.sprite.alpha = 1;
 							item.visible = true;
 							item.x = this.width;
-							Actuate.tween(item, .2, { x: this.layout.padding.left }, true).ease(Linear.easeNone).onComplete(function() {
+							Actuate.tween(item, transitionTime, { x: this.layout.padding.left }, true).ease(Quart.easeOut).onComplete(function() {
 							});
 						}
 					} else if (transition == "fade") {
 						item.x = this.layout.padding.left;
 						item.sprite.alpha = 0;
 						item.visible = true;
-						Actuate.tween(item.sprite, .2, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+						Actuate.tween(item.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
 						});
 					} else {
 						item.x = this.layout.padding.left;
@@ -79,17 +81,17 @@ class Stack extends Component {
 						if (transition == "slide") {
 							item.sprite.alpha = 1;
 							if (value < _selectedIndex) {
-								Actuate.tween(item, .2, { x: this.width }, true).ease(Linear.easeNone).onComplete(function() {
+								Actuate.tween(item, transitionTime, { x: this.width }, true).ease(Quart.easeOut).onComplete(function() {
 									item.visible = false;
 								});
 							} else {
-								Actuate.tween(item, .2, { x: -item.width }, true).ease(Linear.easeNone).onComplete(function() {
+								Actuate.tween(item, transitionTime, { x: -item.width }, true).ease(Quart.easeOut).onComplete(function() {
 									item.visible = false;
 								});
 							}
 						} else if (transition == "fade") {
 							item.x = this.layout.padding.left;
-							Actuate.tween(item.sprite, .2, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+							Actuate.tween(item.sprite, transitionTime, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 								item.visible = false;
 							});
 						} else {

@@ -8,6 +8,7 @@ import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.events.MenuEvent;
 import motion.Actuate;
 import motion.easing.Linear;
+import motion.easing.Quart;
 
 class Menu extends VBox {
 	private var _subMenus:Map<MenuItem, Menu>;
@@ -122,17 +123,18 @@ class Menu extends VBox {
 			_currentSubMenu = subMenu;
 
 			var transition:String = Toolkit.getTransitionForClass(Menu);
+			var transitionTime:Float = Toolkit.getTransitionTimeForClass(Menu);
 			if (transition == "slide") {
 				subMenu.clipHeight = 0;
 				subMenu.sprite.alpha = 1;
 				subMenu.visible = true;
-				Actuate.tween(subMenu, .1, { clipHeight: subMenu.height }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(subMenu, transitionTime, { clipHeight: subMenu.height }, true).ease(Quart.easeOut).onComplete(function() {
 					subMenu.clearClip();
 				});
 			} else if (transition == "fade") {
 				subMenu.sprite.alpha = 0;
 				subMenu.visible = true;
-				Actuate.tween(subMenu.sprite, .1, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
+				Actuate.tween(subMenu.sprite, transitionTime, { alpha: 1 }, true).ease(Linear.easeNone).onComplete(function() {
 				});
 			} else {
 				subMenu.sprite.alpha = 1;
@@ -153,9 +155,10 @@ class Menu extends VBox {
 		var ref:Menu = _currentSubMenu;
 		ref.hideSubMenus();
 		var transition:String = Toolkit.getTransitionForClass(Menu);
+		var transitionTime:Float = Toolkit.getTransitionTimeForClass(Menu);
 		if (transition == "slide") {
 			_currentSubMenu.sprite.alpha = 1;
-			Actuate.tween(ref, .1, { clipHeight: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(ref, transitionTime, { clipHeight: 0 }, true).ease(Quart.easeOut).onComplete(function() {
 				ref.visible = false;
 				ref.clearClip();
 				root.removeChild(ref, false);
@@ -163,7 +166,7 @@ class Menu extends VBox {
 				ref.hideSubMenus();
 			});
 		} else if (transition == "fade") {
-			Actuate.tween(ref.sprite, .1, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
+			Actuate.tween(ref.sprite, transitionTime, { alpha: 0 }, true).ease(Linear.easeNone).onComplete(function() {
 				ref.visible = false;
 				root.removeChild(ref, false);
 				_currentSubMenu = null;
