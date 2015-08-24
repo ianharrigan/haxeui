@@ -23,7 +23,7 @@ class HSlider extends Slider implements IClonable<HSlider> {
 
 	private override function _onScreenMouseMove(event:MouseEvent):Void {
 		var xpos:Float = event.stageX - this.stageX - _mouseDownOffset;
-		pos = Std.int(calcPosFromCoord(xpos));
+		pos = calcPosFromCoord(xpos);
 	}
 	
 	private override function _onBackgroundMouseDown(event:MouseEvent):Void {

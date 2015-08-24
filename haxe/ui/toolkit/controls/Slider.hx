@@ -43,7 +43,11 @@ class Slider extends Progress {
 	}
 	
 	private override function set_value(newValue:Dynamic):Dynamic {
-		pos = Std.parseFloat(newValue);
+		if (Std.is(newValue, String)) {
+			pos = Std.parseFloat(newValue);
+		} else {
+			pos = newValue;
+		}
 		return newValue;
 	}
 	

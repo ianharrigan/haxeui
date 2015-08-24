@@ -23,7 +23,7 @@ class VSlider extends Slider implements IClonable<VSlider> {
 
 	private override function _onScreenMouseMove(event:MouseEvent):Void {
 		var ypos:Float = event.stageY - this.stageY - _mouseDownOffset;
-		pos = Std.int(calcPosFromCoord(ypos));
+		pos = calcPosFromCoord(ypos);
 	}
 	
 	private override function _onBackgroundMouseDown(event:MouseEvent):Void {

@@ -153,7 +153,11 @@ class UIProcessor extends XMLProcessor {
 			} else {
 				try {
 					if (Std.parseInt(value) != null) {
-						Reflect.setProperty(c, attr, Std.parseInt(value));
+						if (value.indexOf(".") == -1) {
+							Reflect.setProperty(c, attr, Std.parseInt(value));
+						} else {
+							Reflect.setProperty(c, attr, Std.parseFloat(value));
+						}
 					} else if (value == "true" || value == "yes" || value == "false" || value == "no") {
 						Reflect.setProperty(c, attr, TypeParser.parseBool(value));
 					} else {
