@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Slider fixes",
-    "version": "1.7.15",
+    "releasenote": "Added checkboxes to item renderers",
+    "version": "1.7.16",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "yagp": "1.1.4",

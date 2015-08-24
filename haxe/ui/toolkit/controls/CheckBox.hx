@@ -60,6 +60,19 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 		return value;
 	}
 	
+	private override function get_value():Dynamic {
+		return selected;
+	}
+	
+	private override function set_value(newValue:Dynamic):Dynamic {
+		if (Std.is(newValue, String)) {
+			selected = (newValue == "true");
+		} else {
+			selected = newValue;
+		}
+		return newValue;
+	}
+	
 	//******************************************************************************************
 	// Component getters/setters
 	//******************************************************************************************

@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core.renderers;
 
 import haxe.ui.toolkit.controls.Button;
+import haxe.ui.toolkit.controls.CheckBox;
 import haxe.ui.toolkit.controls.Slider;
 import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.core.Component;
@@ -104,6 +105,9 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 		} else if (Std.is(c, TextInput)) {
 			c.removeEventListener(UIEvent.CHANGE, _onComponentEvent);
 			c.addEventListener(UIEvent.CHANGE, _onComponentEvent);
+		} else if (Std.is(c, CheckBox)) {
+			c.removeEventListener(UIEvent.CHANGE, _onComponentEvent);
+			c.addEventListener(UIEvent.CHANGE, _onComponentEvent);
 		}
 	}
 	
@@ -177,7 +181,7 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 	}
 	
 	private function isInteractive(c:IDisplayObject):Bool {
-		if (Std.is(c, Button) || Std.is(c, Slider) || Std.is(c, TextInput)) {
+		if (Std.is(c, Button) || Std.is(c, Slider) || Std.is(c, TextInput) || Std.is(c, CheckBox)) {
 			return true;
 		}
 		return false;

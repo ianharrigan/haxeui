@@ -592,7 +592,7 @@ CheckBoxValue #selected:disabled {
 	backgroundColor: 0xCCCCCC;
 	backgroundColorGradientEnd: 0xCCCCCC;
 	borderColor: 0x666666;
-	icon: "styles/gradient/cross_dark_disabled.png";
+	icon: "styles/gradient/cross_dark.png";
 }
 
 OptionBox {
