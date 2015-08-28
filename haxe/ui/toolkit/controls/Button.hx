@@ -171,7 +171,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		if (autoSize == false || percentWidth > 0) {
 			if (_label != null) {
 				_label.percentWidth = 100;
-				_label.autoSize = false;
+				_label.autoSize = _multiline; //if multiline maintain autoSize so Text has the correct height
 			}
 		}
 		
