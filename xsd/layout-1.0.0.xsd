@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Example Usage:
+	<vbox
+		xmlns="http://haxeui.org/layout/1.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://haxeui.org/layout/1.0.0 http://haxeui.org/xsd/layout-1.0.0.xsd"
+	>
+	</vbox>
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://haxeui.org/layout/1.0.0" xmlns:tns="http://haxeui.org/layout/1.0.0"
+	elementFormDefault="qualified" version="1.0.0">
+
+	<!-- ===================================== -->
+	<!-- containers -->
+	<!-- ===================================== -->
+	<element name="absolute" type="tns:Container" />
+
+	<element name="accordion" type="tns:Accordion" />
+	<complexType name="Accordion">
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="selectedIndex" type="int" />
+	</complexType>
+
+	<element name="box" type="tns:Container" />
+
+	<element name="calendarview" type="tns:Container" />
+
+	<element name="container" type="tns:Container" />
+	<complexType name="Container">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IContainer" />
+	</complexType>
+	<attributeGroup name="IContainer">
+		<attributeGroup ref="tns:IStateComponent" />
+	</attributeGroup>
+
+	<element name="continuousHBox" type="tns:Container" />
+
+	<element name="continuousVBox" type="tns:Container" />
+
+	<element name="expandablepanel" type="tns:ExpandablePanel" />
+	<complexType name="ExpandablePanel">
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="startExpanded" type="boolean" default="true" />
+	</complexType>
+
+	<element name="grid" type="tns:Grid" />
+	<complexType name="Grid">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="columns" type="tns:natural-number" />
+	</complexType>
+
+	<element name="hbox" type="tns:Container" />
+
+	<element name="hsplitter" type="tns:Container" />
+
+	<element name="listview" type="tns:ListView" />
+	<complexType name="ListView">
+		<choice minOccurs="0" maxOccurs="1">
+			<element name="array" type="string" />
+		</choice>
+		<attributeGroup ref="tns:IScrollView" />
+		<attribute name="selectedItem" type="tns:natural-number" />
+		<attribute name="allowSelection" type="boolean" default="true" />
+	</complexType>
+
+	<element name="menubar" type="tns:Container" />
+
+	<element name="scrollview" type="tns:ScrollView" />
+	<complexType name="ScrollView">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IScrollView" />
+	</complexType>
+	<attributeGroup name="IScrollView">
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="inertialScrolling" type="boolean" default="false" />
+		<attribute name="virtualScrolling" type="boolean" default="false" />
+		<attribute name="showHScroll" type="boolean" default="true" />
+		<attribute name="showVScroll" type="boolean" default="true" />
+		<attribute name="hscrollPos" type="float" />
+		<attribute name="hscrollMin" type="float" />
+		<attribute name="hscrollMax" type="float" />
+		<attribute name="hscrollPageSize" type="float" />
+		<attribute name="vscrollPos" type="float" />
+		<attribute name="vscrollMin" type="float" />
+		<attribute name="vscrollMax" type="float" />
+		<attribute name="vscrollPageSize" type="float" />
+	</attributeGroup>
+
+	<element name="stack" type="tns:Stack" />
+	<complexType name="Stack">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="selectedIndex" type="int" />
+	</complexType>
+
+	<element name="tabview" type="tns:TabView" />
+	<complexType name="TabView">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IContainer" />
+		<attribute name="selectedIndex" type="int" />
+	</complexType>
+
+	<element name="vbox" type="tns:Container" />
+
+	<element name="vsplitter" type="tns:Container" />
+
+	<!-- ===================================== -->
+	<!-- controls -->
+	<!-- ===================================== -->
+	<element name="button" type="tns:Button" />
+	<complexType name="Button">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IFocusable" />
+		<attribute name="allowSelection" type="boolean" default="true" />
+		<attribute name="group" type="string" />
+		<attribute name="icon" type="string" />
+		<attribute name="iconPosition" default="left">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="left" />
+					<enumeration value="right" />
+					<enumeration value="top" />
+					<enumeration value="bottom" />
+					<enumeration value="center" />
+					<enumeration value="fill" />
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="multiline" type="boolean" default="false" />
+		<attribute name="remainPressed" type="boolean" default="false" />
+		<attribute name="selected" type="boolean" default="false" />
+		<attribute name="toggle" type="boolean" default="false" />
+	</complexType>
+
+	<element name="calendar" type="tns:Calendar" />
+	<complexType name="Calendar">
+		<attributeGroup ref="tns:IComponent" />
+	</complexType>
+
+	<element name="checkbox" type="tns:Calendar" />
+	<complexType name="Checkbox">
+		<attributeGroup ref="tns:IComponent" />
+		<attribute name="selected" type="boolean" default="false" />
+	</complexType>
+
+	<element name="divider" type="tns:Divider" />
+	<complexType name="Divider">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attribute name="selected" type="boolean" default="false" />
+	</complexType>
+
+	<element name="hprogress" type="tns:HProgress" />
+	<complexType name="HProgress">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<element name="hscroll" type="tns:HScroll" />
+	<complexType name="HScroll">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<element name="hslider" type="tns:HSlider" />
+	<complexType name="HSlider">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<element name="image" type="tns:Image" />
+	<complexType name="Image">
+		<attributeGroup ref="tns:IComponent" />
+		<attribute name="resource" type="tns:string-min-len-1" use="required" />
+		<attribute name="autoWidth" type="boolean" default="true" />
+		<attribute name="autoHeight" type="boolean" default="true" />
+		<attribute name="autoDisposeBitmapData" type="boolean" default="false" />
+	</complexType>
+
+	<element name="link" type="tns:Link" />
+	<complexType name="Link">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attribute name="url" type="string" />
+	</complexType>
+
+	<!-- TODO Menu -->
+
+	<element name="optionbox" type="tns:OptionBox" />
+	<complexType name="OptionBox">
+		<attributeGroup ref="tns:IComponent" />
+		<attribute name="selected" type="boolean" default="false" />
+		<attribute name="group" type="string" />
+	</complexType>
+
+	<element name="spacer" type="tns:Spacer" />
+	<complexType name="Spacer">
+		<attributeGroup ref="tns:IComponent" />
+	</complexType>
+
+	<element name="tabbar" type="tns:TabBar" />
+	<complexType name="TabBar">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<any processContents="lax" />
+		</choice>
+		<attributeGroup ref="tns:IScrollView" />
+		<attribute name="numTabs" type="tns:natural-number" />
+		<attribute name="selectedIndex" type="int" />
+	</complexType>
+
+	<element name="text" type="tns:Text" />
+	<complexType name="Text">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attribute name="multiline" type="boolean" default="false" />
+		<attribute name="selectable" type="boolean" />
+		<attribute name="textAlign" type="string" />
+		<attribute name="wrapLines" type="boolean" />
+	</complexType>
+
+	<element name="textInput" type="tns:TextInput" />
+	<complexType name="TextInput">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attribute name="displayAsPassword" type="boolean" default="false" />
+		<attribute name="maxChars" type="int" />
+		<attribute name="placeholderText" type="string" />
+		<attribute name="restrictChars" type="string" />
+		<attribute name="textAlign" type="string" />
+		<attribute name="vscrollMax" type="float" />
+		<attribute name="vscrollMin" type="float" />
+		<attribute name="vscrollPos" type="float" />
+		<attribute name="wrapLines" type="boolean" />
+	</complexType>
+
+	<element name="tooltip" type="tns:Container" />
+
+	<element name="value" type="tns:Value" />
+	<complexType name="Value">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attribute name="interactive" type="boolean" default="true" />
+	</complexType>
+
+	<element name="vprogress" type="tns:VProgress" />
+	<complexType name="VProgress">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<element name="vslider" type="tns:VSlider" />
+	<complexType name="VSlider">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<element name="vscroll" type="tns:VScroll" />
+	<complexType name="VScroll">
+		<attributeGroup ref="tns:IStateComponent" />
+		<attributeGroup ref="tns:IScrollable" />
+	</complexType>
+
+	<!-- ===================================== -->
+	<!-- base classes -->
+	<!-- ===================================== -->
+	<attributeGroup name="IScrollable">
+		<attribute name="incrementSize" type="float" />
+		<attribute name="max" type="float" />
+		<attribute name="min" type="float" />
+		<attribute name="pageSize" type="float" />
+		<attribute name="pos" type="float" />
+	</attributeGroup>
+
+	<attributeGroup name="IStateComponent">
+		<attributeGroup ref="tns:IComponent" />
+		<attribute name="state" type="string" />
+	</attributeGroup>
+
+	<attributeGroup name="IComponent">
+		<attributeGroup ref="tns:IStyleableDisplayObject" />
+		<attribute name="text" type="string" />
+		<attribute name="clipWidth" type="float" />
+		<attribute name="clipHeigh" type="float" />
+		<attribute name="clipContent" type="boolean" default="false" />
+		<attribute name="disabled" type="boolean" default="false" />
+	</attributeGroup>
+
+	<attributeGroup name="IStyleableDisplayObject">
+		<attributeGroup ref="tns:IDisplayObjectContainer" />
+		<attribute name="style" type="string" />
+		<attribute name="styleName" type="string" />
+		<attribute name="lazyLoadStyles" type="boolean" default="true" />
+	</attributeGroup>
+
+	<element name="baseStyle" />
+	<element name="style" />
+	<complexType name="Style">
+		<simpleContent>
+			<extension base="string">
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<attributeGroup name="IDisplayObjectContainer">
+		<attributeGroup ref="tns:IDisplayObject" />
+		<attribute name="autoSize" type="boolean" default="false" />
+	</attributeGroup>
+
+	<attributeGroup name="IDisplayObject">
+		<attribute name="id" type="string" />
+		<attribute name="x" type="string" />
+		<attribute name="y" type="string" />
+		<attribute name="width" type="string" />
+		<attribute name="height" type="string" />
+		<attribute name="minWidth" type="string" />
+		<attribute name="minHeight" type="string" />
+		<attribute name="visible" type="boolean" />
+		<attribute name="alpha" type="float" />
+		<attribute name="includeInLayout" type="boolean" />
+		<attribute name="horizontalAlign" type="string" />
+		<attribute name="verticalAlign" type="string" />
+		<attribute name="useHandCursor" type="boolean" />
+		<anyAttribute processContents="lax" />
+	</attributeGroup>
+
+	<attributeGroup name="IFocusable">
+		<attribute name="allowFocus" type="boolean" default="true" />
+	</attributeGroup>
+
+	<simpleType name="natural-number">
+		<restriction base="string">
+			<pattern value="[0-9]+" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="string-min-len-1">
+		<restriction base="string">
+			<minLength value="1" />
+		</restriction>
+	</simpleType>
+</schema>
