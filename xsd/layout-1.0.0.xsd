@@ -4,7 +4,7 @@
 	<vbox
 		xmlns="http://haxeui.org/layout/1.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://haxeui.org/layout/1.0.0 http://haxui.org/xsd/layout-1.0.0.xsd"
+		xsi:schemaLocation="http://haxeui.org/layout/1.0.0 http://haxeui.org/xsd/layout-1.0.0.xsd"
 	>
 	</vbox>
 -->
