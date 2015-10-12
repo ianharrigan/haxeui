@@ -1,6 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/ianharrigan/haxeui.png?label=ready&title=Ready)](https://waffle.io/ianharrigan/haxeui)
 Haxe UI
 ================================
+
+[![Join the chat at https://gitter.im/ianharrigan/haxeui](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ianharrigan/haxeui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Cross platform Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg" />
