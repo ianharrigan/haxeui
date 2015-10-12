@@ -28,6 +28,15 @@ class StyleHelper {
 			return;
 		}
 		
+		/*
+		if (style.backgroundColor != -1) {
+			g.beginFill(style.backgroundColor);
+			g.drawRect(rc.left, rc.top, rc.width, rc.height);
+			g.endFill();
+			return;
+		}
+		*/
+		
 		if (style.backgroundColor != -1 || style.borderColor != -1) {
 			if (style.borderColor != -1) {
 				var borderSize:Int = 1;

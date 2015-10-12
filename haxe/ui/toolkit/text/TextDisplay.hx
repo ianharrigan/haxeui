@@ -102,7 +102,7 @@ class TextDisplay implements ITextDisplay {
 			format.font = fontName;
 		}
 		if (_style.fontSize != -1) {
-			format.size = _style.fontSize;
+			format.size = cast _style.fontSize;
 		}
 		if (_style.color != -1) {
 			format.color = _style.color;

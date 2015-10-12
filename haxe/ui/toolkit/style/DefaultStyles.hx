@@ -7,8 +7,10 @@ class DefaultStyles extends Styles {
 	public function new() {
 		super();
 
+		#if !html5
 		var f = Assets.getFont("fonts/Oxygen.ttf");
 		var fb = Assets.getFont("fonts/Oxygen-Bold.ttf");
+		#end
 		
 		addStyle("Root", new Style( {
 			padding: 0,
@@ -35,7 +37,9 @@ class DefaultStyles extends Styles {
 		
 		addStyle("Text", new Style( {
 			fontSize: 14,
+			#if !html5
 			fontName: f.fontName,
+			#end
 			fontEmbedded: true,
 			color: 0x444444
 		} ));
@@ -63,7 +67,9 @@ class DefaultStyles extends Styles {
 
 		addStyle("Button", new Style( {
 			fontSize: 14,
+			#if !html5
 			fontName: f.fontName,
+			#end
 			fontEmbedded: true,
 			
 			backgroundColor: 0xffa84c,
@@ -111,7 +117,9 @@ class DefaultStyles extends Styles {
 		addStyle("CheckBox, OptionBox", new Style( {
 			spacingX: 2,
 			fontSize: 14,
+			#if !html5
 			fontName: f.fontName,
+			#end
 			fontEmbedded: true,
 			color: 0x444444
 		} ));
@@ -162,7 +170,9 @@ class DefaultStyles extends Styles {
 			cornerRadius: 2,
 			filter: new DropShadowFilter(2, 45, 0xBFBFBF, 1, 2, 2, 1, 3, true),
 			fontSize: 14,
+			#if !html5
 			fontName: f.fontName,
+			#end
 			fontEmbedded: true,
 		} ));
 
@@ -217,7 +227,9 @@ class DefaultStyles extends Styles {
 		
 		addStyle("Calendar #selectedDay", new Style( {
 			fontSize: 14,
+			#if !html5
 			fontName: f.fontName,
+			#end
 			fontEmbedded: true,
 			
 			backgroundColor: 0xffa84c,
@@ -562,7 +574,9 @@ class DefaultStyles extends Styles {
 		} ));
 		
 		addStyle("Popup #titleBar #title", new Style( {
+			#if !html5
 			fontName: fb.fontName,
+			#end
 			fontEmbedded: true,
 			fontSize: 24,
 			color: 0x888888,
