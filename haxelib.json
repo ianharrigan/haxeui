@@ -9,13 +9,13 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Added checkboxes to item renderers",
-    "version": "1.7.17",
+    "releasenote": "Fixed issues with grid layout",
+    "version": "1.7.18",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "2.6.8",
         "actuate": "1.8.6",
         "openfl": "3.3.8",
-        "hscript": "2.0.5"
+        "hscript": "2.0.4"
     }
 }

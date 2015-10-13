@@ -172,7 +172,8 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		if (autoSize == false || percentWidth > 0) {
 			if (_label != null) {
 				_label.percentWidth = 100;
-				_label.autoSize = false;
+				//_label.autoSize = false;
+				_label.autoSize = _multiline; //if multiline maintain autoSize so Text has the correct height
 			}
 		}
 		
@@ -227,11 +228,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		super.preInitialize();
 	}
 
-	/*
 	#if html5
 	private var _mouseIn:Bool = false;
 	#end
-	*/
+
 	private override function initialize():Void {
 		super.initialize();
 		
@@ -241,7 +241,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 
-		/*
 		#if html5
 		addEventListener(MouseEvent.MOUSE_MOVE, function(e:MouseEvent) {
 			if (_mouseIn == false) {
@@ -259,12 +258,10 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			}
 		});
 		#end
-		*/
 		
 		organiseChildren();
 	}
 	
-	/*
 	#if html5
 	private function __onScreenMouseMove(e:MouseEvent):Void {
 		if (_mouseIn == true) {
@@ -283,7 +280,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 	}
 	#end
-	*/
 	
 	private override function set_disabled(value:Bool):Bool {
 		super.set_disabled(value);
@@ -333,7 +329,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 	// Event handlers
 	//******************************************************************************************
 	private function _onMouseOver(event:MouseEvent):Void {
-		trace("over - " + (event.target == this.sprite));
 		if (_selected == false) {
 			if (event.buttonDown == false || _down == false) {
 				state = STATE_OVER;
