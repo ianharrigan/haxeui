@@ -4,6 +4,7 @@ import openfl.events.MouseEvent;
 import haxe.ui.toolkit.core.interfaces.Direction;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.Screen;
+import haxe.ui.toolkit.core.Toolkit;
 
 /**
  Vertical slider bar control
@@ -18,17 +19,17 @@ class VSlider extends Slider implements IClonable<VSlider> {
 	// Event handler overrides
 	//******************************************************************************************
 	private override function _onMouseDown(event:MouseEvent):Void {
-		startTracking(event.stageY - _thumb.stageY);
+		startTracking(event.stageY/Toolkit.scaleFactor - _thumb.stageY);
 	}
 
 	private override function _onScreenMouseMove(event:MouseEvent):Void {
-		var ypos:Float = event.stageY - this.stageY - _mouseDownOffset;
+		var ypos:Float = event.stageY/Toolkit.scaleFactor - this.stageY - _mouseDownOffset;
 		pos = calcPosFromCoord(ypos);
 	}
 	
 	private override function _onBackgroundMouseDown(event:MouseEvent):Void {
 		if (_thumb.hitTest(event.stageX, event.stageY) == false) {
-			var ypos:Float = event.stageY - this.stageY;
+			var ypos:Float = event.stageY/Toolkit.scaleFactor - this.stageY;
 			ypos -= _thumb.height / 2;
 			pos = Std.int(calcPosFromCoord(ypos));
 			_thumb.state = Button.STATE_DOWN;
