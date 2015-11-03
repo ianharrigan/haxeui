@@ -78,6 +78,15 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 		}
 		return newValue;
 	}
+
+	private override function get_height():Float {
+		var height = super.get_height();
+		if(autoSize){
+			return height;
+		}else{
+			return Math.max(height, _label.height);
+		}
+	}
 	
 	//******************************************************************************************
 	// Component getters/setters
