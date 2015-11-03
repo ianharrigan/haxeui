@@ -100,8 +100,7 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	}
 	
 	private function set_multiline(value:Bool):Bool {
-		_label.multiline = value;
-		return value;
+		return _label.multiline = value;
 	}
 
 	private function get_wrapLines():Bool {
@@ -109,8 +108,7 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	}
 	
 	private function set_wrapLines(value:Bool):Bool {
-		_label.wrapLines = value;
-		return value;
+		return _label.wrapLines = value;
 	}
 	
 	private function get_selected():Bool {
