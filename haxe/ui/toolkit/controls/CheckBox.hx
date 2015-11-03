@@ -20,12 +20,12 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	
 	public function new() {
 		super();
-		autoSize = true;
 		sprite.buttonMode = true;
 		sprite.useHandCursor = true;
 		_value = new CheckBoxValue();
 		_label = new Text();
 		layout = new HorizontalLayout();
+		autoSize = true;
 	}
 
 	//******************************************************************************************
@@ -35,7 +35,6 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 		super.initialize();
 
 		_value.verticalAlign = VerticalAlign.CENTER;
-		_label.percentWidth = 100;
 		addChild(_value);
 		addChild(_label);
 		
@@ -51,6 +50,12 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	//******************************************************************************************
 	// Component overrides
 	//******************************************************************************************
+	private override function set_autoSize(value:Bool):Bool {
+		value = super.set_autoSize(value);
+		_label.percentWidth = value?-1:100;
+		return value;
+	}
+
 	private override function get_text():String {
 		return _label.text;
 	}
