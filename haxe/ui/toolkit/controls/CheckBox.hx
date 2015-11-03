@@ -35,6 +35,7 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 		super.initialize();
 
 		_value.verticalAlign = VerticalAlign.CENTER;
+		_label.percentWidth = 100;
 		addChild(_value);
 		addChild(_label);
 		
@@ -77,10 +78,35 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 	// Component getters/setters
 	//******************************************************************************************
 	/**
+	 Defines whether or not the text can span more than a single line
+	 **/
+	@:clonable
+	public var multiline(get, set):Bool;
+	@:clonable
+	public var wrapLines(get, set):Bool;
+	/**
 	 Defines whether the checkbox is checked or not
 	 **/
 	@:clonable
 	public var selected(get, set):Bool;
+
+	private function get_multiline():Bool {
+		return _label.multiline;
+	}
+	
+	private function set_multiline(value:Bool):Bool {
+		_label.multiline = value;
+		return value;
+	}
+
+	private function get_wrapLines():Bool {
+		return _label.wrapLines;
+	}
+	
+	private function set_wrapLines(value:Bool):Bool {
+		_label.wrapLines = value;
+		return value;
+	}
 	
 	private function get_selected():Bool {
 		return _selected;
