@@ -10,7 +10,6 @@
 	
 	<!-- Embed resources in final output -->
 	<section if="haxeui-embed-resources">
-		<assets path="assets" embed="true" rename="assets"/>
 		<assets path="assets/styles" embed="true" rename="styles"/>
 		<assets path="assets/fonts" embed="true" rename="fonts"/>
 		<haxedef name="haxeui-embed-resources"/>
@@ -18,7 +17,6 @@
 
 	<!-- External resources to final output -->
 	<section unless="haxeui-embed-resources">
-		<assets path="assets" rename="assets"/>
 		<assets path="assets/styles" rename="styles"/>
 		<assets path="assets/fonts" rename="fonts"/>
 	</section>
