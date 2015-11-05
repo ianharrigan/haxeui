@@ -56,11 +56,7 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_text(value:String):String {
 		if (value != null) {
-			if (_tf.multiline == false) {
-				_tf.text = StringTools.replace(value, "\\n", "\n");
-			} else {
-				_tf.text = StringTools.replace(value, "\\n", "\n");
-			}
+			_tf.text = StringTools.replace(value, "\\n", "\n");
 		}
 		
 		style = _style;
