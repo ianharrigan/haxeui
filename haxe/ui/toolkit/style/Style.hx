@@ -58,6 +58,8 @@ class Style implements IClonable<Style> {
 	private var _textAlign:String;
 	private var _iconPosition:String;
 	private var _icon:String;
+	private var _iconWidth:Float = -1;
+	private var _iconHeight:Float = -1;
 	private var _hasButtons:Int = -1;
 	private var _gradientType:String;
 	private var _selectionMethod:String;
@@ -111,6 +113,8 @@ class Style implements IClonable<Style> {
 	public var textAlign(get, set):String;
 	public var iconPosition(get, set):String;
 	public var icon(get, set):String;
+	public var iconWidth(get, set):Float;
+	public var iconHeight(get, set):Float;
 	public var hasButtons(get, set):Bool;
 	public var gradientType(get, set):String;
 	public var selectionMethod(get, set):String;
@@ -927,6 +931,36 @@ class Style implements IClonable<Style> {
 		return value;
 	}
 
+	private function get_iconWidth():Float {
+		if (hasDynamicValue("iconWidth")) {
+			return getDynamicValue("iconWidth");
+		}
+		return _iconWidth;
+	}
+	
+	private function set_iconWidth(value:Float):Float {
+		if (value != _iconWidth) {
+			_iconWidth = value;
+			apply();
+		}
+		return value;
+	}
+
+	private function get_iconHeight():Float {
+		if (hasDynamicValue("iconHeight")) {
+			return getDynamicValue("iconHeight");
+		}
+		return _iconHeight;
+	}
+	
+	private function set_iconHeight(value:Float):Float {
+		if (value != _iconHeight) {
+			_iconHeight = value;
+			apply();
+		}
+		return value;
+	}
+
 	private function get_hasButtons():Bool {
 		if (hasDynamicValue("hasButtons")) {
 			return getDynamicValue("hasButtons");
@@ -1100,6 +1134,8 @@ class Style implements IClonable<Style> {
 		if (with._textAlign != null) this._textAlign = with._textAlign;
 		if (with._iconPosition != null) this._iconPosition = with._iconPosition;
 		if (with._icon != null) this._icon = with._icon;
+		if (with._iconWidth != -1) this._iconWidth = with._iconWidth;
+		if (with._iconHeight != -1) this._iconHeight = with._iconHeight;
 		if (with._hasButtons != -1) this._hasButtons = with._hasButtons;
 		if (with._gradientType != null) this._gradientType = with._gradientType;
 		if (with._selectionMethod != null) this._selectionMethod = with._selectionMethod;

@@ -139,6 +139,12 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			if (_icon == null) {
 				_icon = new Image();
 				_icon.id = "icon";
+				if (_iconWidth != -1) {
+					_icon.width = _iconWidth;
+				}
+				if (_iconHeight != -1) {
+					_icon.height = _iconHeight;
+				}
 			}
 			if (_icon.resource != value) {
 				_icon.resource = value;
@@ -151,6 +157,43 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		}
 		return value;
 	}
+	
+	private var _iconWidth:Float = -1;
+	public var iconWidth(get, set):Float;
+	private function get_iconWidth():Float {
+		return _iconWidth;
+	}
+	private function set_iconWidth(value:Float):Float {
+		if (value == _iconWidth) {
+			return value;
+		}
+		
+		_iconWidth = value;
+		if (_icon != null) {
+			_icon.width = _iconWidth;
+		}
+		
+		return value;
+	}
+	
+	private var _iconHeight:Float = -1;
+	public var iconHeight(get, set):Float;
+	private function get_iconHeight():Float {
+		return _iconHeight;
+	}
+	private function set_iconHeight(value:Float):Float {
+		if (value == _iconHeight) {
+			return value;
+		}
+		
+		_iconHeight = value;
+		if (_icon != null) {
+			_icon.height = _iconHeight;
+		}
+		
+		return value;
+	}
+	
 	
 	private function organiseChildren():Void {
 		if (_ready == false) {
@@ -626,6 +669,14 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			
 			if (_baseStyle.iconPosition != null) {
 				iconPosition = _baseStyle.iconPosition;
+			}
+			
+			if (_baseStyle.iconWidth != -1) {
+				iconWidth = _baseStyle.iconWidth;
+			}
+			
+			if (_baseStyle.iconHeight != -1) {
+				iconHeight = _baseStyle.iconHeight;
 			}
 		}
 	}
