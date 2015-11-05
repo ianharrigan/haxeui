@@ -20,10 +20,10 @@
 
 	<haxedef name="dom"/>
 	
-	<haxelib name="openfl" version="3.3.8"/>
+	<haxelib name="openfl" version="3.4.0"/>
 	<haxelib name="actuate" version="1.8.6"/>
 	<haxelib name="svg" version="1.0.8"/>
-	<haxelib name="hscript" version="2.0.4"/>
+	<haxelib name="hscript" version="2.0.5"/>
 	
 	<!-- for dconsole -->
 	<!--
