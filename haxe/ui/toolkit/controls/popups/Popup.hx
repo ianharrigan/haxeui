@@ -97,8 +97,10 @@ class Popup extends VBox implements IDraggable {
 				});
 				_titleBar.addChild(_exitButton);
 			}
-			_titleBar.sprite.buttonMode = true;
-			_titleBar.sprite.useHandCursor = true;
+			if (_config.disableDrag == false || _config.disableDrag == null) {
+				_titleBar.sprite.buttonMode = true;
+				_titleBar.sprite.useHandCursor = true;
+			}
 			addChild(_titleBar);
 		}
 		
@@ -148,6 +150,9 @@ class Popup extends VBox implements IDraggable {
 	 or that dragging outside the title bar is allowed.
 	 **/
 	public function allowDrag(event:MouseEvent):Bool {
+		if (_config.disableDrag == true) {
+			return false;
+		}
 		return _config.dragAnywhere || (_titleBar == null ? false : _titleBar.hitTest(event.stageX, event.stageY));
 	}
 
