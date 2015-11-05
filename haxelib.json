@@ -9,7 +9,7 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "iconWidth/Height button properties and css",
+    "releasenote": "Dont include top level assets",
     "version": "1.7.20",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
