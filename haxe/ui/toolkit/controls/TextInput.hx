@@ -170,6 +170,9 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	private override function set_text(value:String):String {
 		value = super.set_text(value);
 		_textDisplay.text = value;
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.visible = (value.length == 0);
+		}
 		
 		return value;
 	}

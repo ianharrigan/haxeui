@@ -271,16 +271,20 @@ class ListSelector extends Button implements IDataComponent {
 			_list.selectedIndex = value;
 			_selectedItems = _list.selectedItems;
 		}
-		if (_selectedIndex > -1 && _dataSource != null) {
-			var n:Int = 0;
-			if (dataSource.moveFirst()) {
-				do {
-					if (n == _selectedIndex) {
-						this.text = _dataSource.get().text;
-						break;
-					}
-					n++;
-				} while (dataSource.moveNext()); 
+		if (_selectedIndex < 0) {
+			this.text = '';
+		}else {
+			if (_dataSource != null) {
+				var n:Int = 0;
+				if (dataSource.moveFirst()) {
+					do {
+						if (n == _selectedIndex) {
+							this.text = _dataSource.get().text;
+							break;
+						}
+						n++;
+					} while (dataSource.moveNext()); 
+				}
 			}
 		}
 		return value;
