@@ -160,7 +160,7 @@ class ListSelector extends Button implements IDataComponent {
 			var listHeight:Float = n * _list.itemHeight + (_list.layout.padding.top + _list.layout.padding.bottom);
 			_list.height = listHeight;
 			_list.setSelectedIndexNoEvent(_selectedIndex);
-			if (_list.stageY + listHeight > Screen.instance.height) {
+			if (_list.stageY + listHeight > Screen.instance.height/Toolkit.scaleFactor) {
 				_list.y = this.stageY - _list.height;
 				this.styleName = "dropUp";
 			} else {
