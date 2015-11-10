@@ -238,7 +238,10 @@ class Image extends Component implements IClonable<Image> {
 				r.request();
 			#end
 		} else {
-			callback(ResourceManager.instance.getBitmapData(res));
+			var data = ResourceManager.instance.getBitmapData(res);
+			if (data == null)
+				throw 'Image [$res] not found!';
+			callback(data);
 		}
 	}
 	
