@@ -20,6 +20,7 @@ import haxe.ui.toolkit.layout.VerticalLayout;
 import haxe.ui.toolkit.style.Style;
 import haxe.ui.toolkit.style.StyleParser;
 import haxe.ui.toolkit.style.Styles;
+import haxe.ui.toolkit.util.Types;
 import haxe.ui.toolkit.util.TypeParser;
 
 class UIProcessor extends XMLProcessor {
@@ -35,7 +36,7 @@ class UIProcessor extends XMLProcessor {
 			nodeName = nodeName.substr(n + 1, nodeName.length);
 		}
 		nodeName = nodeName.toLowerCase();
-		
+
 		var className:String = ClassManager.instance.getComponentClassName(nodeName);
 		var direction:String = node.get("direction");
 		if (direction != null) {
@@ -51,20 +52,20 @@ class UIProcessor extends XMLProcessor {
 		}
 		return result;
 	}
-	
+
 	private static function createComponent(className, config:Xml):IDisplayObject {
-		var c:Component = Type.createInstance(Type.resolveClass(className), []);
+		var c:Component = Type.createInstance(Types.resolveClass(className), []);
 
 		for (attr in config.attributes()) {
 			if (StringTools.startsWith(attr, "xmlns:")) {
 				continue;
 			}
-			
+
 			var value:String = config.get(attr);
 			if (ScriptUtils.isScript(value)) {
 				value = ScriptManager.instance.executeScript(value);
 			}
-			
+
 			if (attr == "width") { // special case for width, want to be able to specify % values
 				var width:Float = 0;
 				var percentWidth:Float = -1;
@@ -76,7 +77,7 @@ class UIProcessor extends XMLProcessor {
 						percentWidth = Std.parseFloat(widthString.substr(0, widthString.length - 1));
 					}
 				}
-				
+
 				if (width != 0) {
 					c.width = width;
 				}
@@ -94,7 +95,7 @@ class UIProcessor extends XMLProcessor {
 						percentHeight = Std.parseFloat(heightString.substr(0, heightString.length - 1));
 					}
 				}
-				
+
 				if (height != 0) {
 					c.height = height;
 				}
@@ -136,7 +137,7 @@ class UIProcessor extends XMLProcessor {
 							var proto:String = value.substr(0, n);
 							value = value.substr(n + 3, value.length);
 							var className:String = ClassManager.instance.getDataSourceClassName(proto);
-							var ds:IDataSource = Type.createInstance(Type.resolveClass(className), []);
+							var ds:IDataSource = Type.createInstance(Types.resolveClass(className), []);
 							if (ds != null) {
 								ds.createFromResource(value);
 								DataManager.instance.registerDataSource(ds);
@@ -168,7 +169,7 @@ class UIProcessor extends XMLProcessor {
 				}
 			}
 		}
-		
+
 		return c;
 	}
 }
