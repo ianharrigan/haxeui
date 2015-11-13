@@ -16,21 +16,22 @@ import haxe.ui.toolkit.core.StyleableDisplayObject;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
 import haxe.ui.toolkit.events.UIEvent;
+import haxe.ui.toolkit.util.Types;
 
 @:build(haxe.ui.toolkit.core.Macros.addEvents([
 	"componentEvent"
 ]))
 class ListView extends ScrollView implements IDataComponent {
 	private var _dataSource:IDataSource;
-	
+
 	private var _content:VBox;
-	
+
 	private var _selectedItems:Array<IItemRenderer>;
 	private var _lastSelection:Int = -1;
-	
+
 	private var _itemRenderer:Dynamic;
 	private var _allowSelection= true;
-	
+
 	public function new() {
 		super();
 		autoSize = false;
@@ -53,9 +54,9 @@ class ListView extends ScrollView implements IDataComponent {
 		if (_dataSource == null) { // create a default data source
 			dataSource = new ArrayDataSource();
 		}
-		
+
 		_dataSource.open();
-		
+
 		syncUI();
 		checkScrolls();
 	}
@@ -64,20 +65,20 @@ class ListView extends ScrollView implements IDataComponent {
 		if (!_ready || _invalidating) {
 			return;
 		}
-		
+
 		super.invalidate(type, recursive);
 		if (type & InvalidationFlag.DATA == InvalidationFlag.DATA) {
 			syncUI();
 		}
 	}
-	
+
 	public override function dispose():Void {
 		if (_dataSource != null) {
 			_dataSource.close();
 		}
 		super.dispose();
 	}
-	
+
 	public override function addChild(child:IDisplayObject):IDisplayObject {
 		if (Std.is(child, IItemRenderer)) {
 			_itemRenderer = child;
@@ -89,7 +90,7 @@ class ListView extends ScrollView implements IDataComponent {
 	public override function addChildAt(child:IDisplayObject, index:Int):IDisplayObject {
 		return super.addChildAt(child, index);
 	}
-	
+
 	//******************************************************************************************
 	// Instance properties
 	//******************************************************************************************
@@ -100,11 +101,11 @@ class ListView extends ScrollView implements IDataComponent {
 	public var content(get, null):Component;
 	public var itemRenderer(get, set):Dynamic;
 	public var allowSelection(get, set):Bool;
-	
+
 	private function get_listSize():Int {
 		return _content.children.length;
 	}
-	
+
 	private function get_itemHeight():Float {
 		if (_content.children.length == 0) {
 			return 0;
@@ -124,11 +125,11 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		return (cy / n);
 	}
-	
+
 	public function getItem(index:Int):IItemRenderer {
 		return cast(_content.children[index], IItemRenderer);
 	}
-	
+
 	private function get_selectedItems():Array<IItemRenderer> {
 		return _selectedItems;
 	}
@@ -140,7 +141,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		return index;
 	}
-	
+
 	private function set_selectedIndex(value:Int):Int {
 		if (_ready == false) {
 			return value;
@@ -159,10 +160,10 @@ class ListView extends ScrollView implements IDataComponent {
 				}
 			}
 		}
-		
+
 		return value;
 	}
-	
+
 	private function get_content():Component {
 		var c:Component = null;
 		if (numChildren > 0) {
@@ -170,47 +171,47 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		return c;
 	}
-	
+
 	private function get_itemRenderer():Dynamic {
 		return _itemRenderer;
 	}
-	
+
 	private function set_itemRenderer(value:Dynamic):Dynamic {
 		_itemRenderer = value;
 		return value;
 	}
-	
+
 	private function get_allowSelection():Bool {
 		return _allowSelection;
 	}
-	
+
 	private function set_allowSelection(value:Bool):Bool {
 		_allowSelection = value;
 		return value;
 	}
-	
+
 	//******************************************************************************************
 	// IDataComponent
 	//******************************************************************************************
 	public var dataSource(get, set):IDataSource;
-	
+
 	private function get_dataSource():IDataSource {
 		return _dataSource;
 	}
-	
+
 	private function set_dataSource(value:IDataSource):IDataSource {
 		if (_dataSource != null) { // clean up if has ds
 			if (Std.is(_dataSource, IEventDispatcher)) {
 				cast(_dataSource, IEventDispatcher).removeEventListener(Event.CHANGE, _onDataSourceChanged);
 			}
 		}
-		
+
 		_dataSource = value;
-		
+
 		if (Std.is(_dataSource, IEventDispatcher)) {
 			cast(_dataSource, IEventDispatcher).addEventListener(Event.CHANGE, _onDataSourceChanged);
 		}
-		
+
 		if (_ready == true) {
 			_content.removeAllChildren();
 			syncUI();
@@ -218,11 +219,11 @@ class ListView extends ScrollView implements IDataComponent {
 		_lastSelection = -1;
 		return value;
 	}
-	
+
 	private function _onDataSourceChanged(event:Event):Void {
 		syncUI();
 	}
-	
+
 	//******************************************************************************************
 	// Add/removes/updates ui items in the underlying scrollview based on the datasource
 	//******************************************************************************************
@@ -237,7 +238,7 @@ class ListView extends ScrollView implements IDataComponent {
 					if (_content.getChildAt(pos) != null) {
 						item = cast(_content.getChildAt(pos), IItemRenderer);
 					}
-					
+
 					if (item == null) { // add item
 						addListViewItem(dataHash, data, pos);
 						pos++;
@@ -253,27 +254,27 @@ class ListView extends ScrollView implements IDataComponent {
 							pos++;
 						}
 					}
-				} while (dataSource.moveNext()); 
+				} while (dataSource.moveNext());
 			}
 		}
-		
+
 		for (n in pos..._content.children.length) { // remove anything left over
 			removeListViewItem(n);
 		}
-		
+
 		var n:Int = 0; // set styles
 		for (child in _content.children) {
 			var item:IItemRenderer = cast(child, IItemRenderer);
 			if (Std.is(item, StyleableDisplayObject) == true && Std.is(item, Divider) == false) {
 				var styleName:String = (n % 2 == 0) ? "even" : "odd";
 				if (!isSelected(item) && cast(item, StyleableDisplayObject).styleName != styleName)  {
-					cast(item, StyleableDisplayObject).styleName = styleName;	
+					cast(item, StyleableDisplayObject).styleName = styleName;
 				}
 			}
 			n++;
 		}
 	}
-	
+
 	private function addListViewItem(dataHash:String, data:Dynamic, index:Int = -1):Void {
 		if (data == null) {
 			return;
@@ -296,7 +297,7 @@ class ListView extends ScrollView implements IDataComponent {
 				cast(item, StyleableDisplayObject).styleName = styleName;
 			}
 		}
-		
+
 		if (item != null) {
 			if (index == -1) {
 				_content.addChild(item);
@@ -304,16 +305,16 @@ class ListView extends ScrollView implements IDataComponent {
 				_content.addChildAt(item, index);
 			}
 		}
-		
+
 		invalidate(InvalidationFlag.SIZE);
-		
+
 		if (data.divider == null || data.divider == false) {
 			cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OVER, _onListItemMouseOver);
 			cast(item, IDisplayObject).addEventListener(UIEvent.MOUSE_OUT, _onListItemMouseOut);
 			cast(item, IDisplayObject).addEventListener(UIEvent.CLICK, _onListItemClick);
 		}
 	}
-	
+
 	private function removeListViewItem(index:Int):Void {
 		var item:IItemRenderer = cast(_content.getChildAt(index), IItemRenderer);
 		var sIndex:Int = Lambda.indexOf(_selectedItems, item);
@@ -325,12 +326,12 @@ class ListView extends ScrollView implements IDataComponent {
 			invalidate(InvalidationFlag.SIZE);
 		}
 	}
-	
+
 	private function _onListItemMouseOver(event:UIEvent):Void {
 		if (_allowSelection == false) {
 			return;
 		}
-		
+
 		if (Std.is(event.component, IStateComponent)) {
 			cast(event.component, IStateComponent).state = ItemRenderer.STATE_OVER;
 		}
@@ -340,7 +341,7 @@ class ListView extends ScrollView implements IDataComponent {
 		if (_allowSelection == false) {
 			return;
 		}
-		
+
 		if (Std.is(event.component, IStateComponent)) {
 			var item:IItemRenderer = cast event.component;
 			if (isSelected(item)) {
@@ -350,7 +351,7 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 		}
 	}
-	
+
 	private function _onListItemClick(event:UIEvent):Void {
 		if (_allowSelection == false) {
 			return;
@@ -364,21 +365,21 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 		}
 	}
-	
+
 	private function handleListSelection(item:IItemRenderer, event:UIEvent, raiseEvent:Bool = true):Void {
 		var shiftPressed:Bool = false;
 		var ctrlPressed:Bool = false;
-		
+
 		if (event != null && Std.is(event, MouseEvent)) {
 			var mouseEvent:MouseEvent = cast(event, MouseEvent);
 			shiftPressed = mouseEvent.shiftKey;
 			ctrlPressed = mouseEvent.ctrlKey;
 		}
-		
+
 		if (ctrlPressed == true) {
 			// do nothing
 		} else if (shiftPressed == true) {
-			
+
 		} else {
 			for (selectedItem in _selectedItems) {
 				if (selectedItem != item) {
@@ -387,7 +388,7 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 			_selectedItems = new Array<IItemRenderer>();
 		}
-		
+
 		if (isSelected(item)) {
 			_selectedItems.remove(item);
 			item.state = ItemRenderer.STATE_OVER;
@@ -397,7 +398,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 
 		ensureVisible(item);
-		
+
 		if (raiseEvent == true) {
 			if (selectedIndex != -1) {
 				var item:ItemRenderer = cast _content.getChildAt(selectedIndex);
@@ -409,7 +410,7 @@ class ListView extends ScrollView implements IDataComponent {
 			}
 		}
 	}
-	
+
 	private function handleClick(item:IItemRenderer):Void {
 		var index:Int = Lambda.indexOf(_content.children, item);
 		if (_lastSelection == index) {
@@ -420,11 +421,11 @@ class ListView extends ScrollView implements IDataComponent {
 			_lastSelection = index;
 		}
 	}
-	
+
 	public function isSelected(item:IItemRenderer):Bool {
 		return Lambda.indexOf(_selectedItems, item) != -1;
 	}
-	
+
 	//******************************************************************************************
 	// Helpers
 	//******************************************************************************************
@@ -435,7 +436,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		return index;
 	}
-	
+
 	public function setSelectedIndexNoEvent(value:Int):Int {
 		if (_ready == false) {
 			return value;
@@ -448,7 +449,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 		return value;
 	}
-	
+
 	public function ensureVisible(item:IItemRenderer):Void {
 		if (item == null) {
 			return;
@@ -463,13 +464,13 @@ class ListView extends ScrollView implements IDataComponent {
 			_vscroll.pos = item.y;
 		}
 	}
-	
+
 	private function createRendererInstance():IItemRenderer {
 		var r:IItemRenderer = null;
 		if (_itemRenderer == null) {
 			return null;
 		}
-		
+
 		if (Std.is(_itemRenderer, IItemRenderer)) {
 			r = cast(_itemRenderer, IItemRenderer).clone();
 		} else if (Std.is(_itemRenderer, Class)) {
@@ -477,16 +478,16 @@ class ListView extends ScrollView implements IDataComponent {
 			r = Type.createInstance(cls, []);
 		} else if (Std.is(_itemRenderer, String)) {
 			var classString = cast(_itemRenderer, String);
-			var cls:Class<Dynamic> = Type.resolveClass(classString);
+			var cls:Class<Dynamic> = Types.resolveClass(classString);
 			r = Type.createInstance(cls, []);
 		}
-		
+
 		if (r != null) {
 			r.eventDispatcher = this;
 		}
-		
+
 		r.useHandCursor = _allowSelection;
-		
+
 		return r;
 	}
 }
