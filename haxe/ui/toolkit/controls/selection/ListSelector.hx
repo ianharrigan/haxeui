@@ -160,7 +160,7 @@ class ListSelector extends Button implements IDataComponent {
 			var listHeight:Float = n * _list.itemHeight + (_list.layout.padding.top + _list.layout.padding.bottom);
 			_list.height = listHeight;
 			_list.setSelectedIndexNoEvent(_selectedIndex);
-			if (_list.stageY + listHeight > Screen.instance.height) {
+			if (_list.stageY + listHeight > Screen.instance.height/Toolkit.scaleFactor) {
 				_list.y = this.stageY - _list.height;
 				this.styleName = "dropUp";
 			} else {
@@ -271,16 +271,20 @@ class ListSelector extends Button implements IDataComponent {
 			_list.selectedIndex = value;
 			_selectedItems = _list.selectedItems;
 		}
-		if (_selectedIndex > -1 && _dataSource != null) {
-			var n:Int = 0;
-			if (dataSource.moveFirst()) {
-				do {
-					if (n == _selectedIndex) {
-						this.text = _dataSource.get().text;
-						break;
-					}
-					n++;
-				} while (dataSource.moveNext()); 
+		if (_selectedIndex < 0) {
+			this.text = '';
+		}else {
+			if (_dataSource != null) {
+				var n:Int = 0;
+				if (dataSource.moveFirst()) {
+					do {
+						if (n == _selectedIndex) {
+							this.text = _dataSource.get().text;
+							break;
+						}
+						n++;
+					} while (dataSource.moveNext()); 
+				}
 			}
 		}
 		return value;

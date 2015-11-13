@@ -91,7 +91,7 @@ class DateSelector extends Button {
 
 			_cal.x = this.stageX - root.stageX;
 			_cal.y = this.stageY + this.height - root.stageY;
-			if (_cal.stageY + _cal.height > Screen.instance.height) {
+			if (_cal.stageY + _cal.height > Screen.instance.height/Toolkit.scaleFactor) {
 				_cal.y = this.stageY - _cal.height;
 				this.styleName = "dropUp";
 			} else {
