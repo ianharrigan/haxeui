@@ -15,18 +15,18 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="C:\Servers\Haxe\haxe\lib\openfl\3,3,8" />
-    <class path="C:\Servers\Haxe\haxe\lib\lime\2,6,8" />
+    <class path="C:\Servers\Haxe\haxe\lib\openfl\3,4,0" />
+    <class path="C:\Servers\Haxe\haxe\lib\lime\2,7,0" />
     <class path="C:\Servers\Haxe\haxe\lib\actuate\1,8,6" />
     <class path="C:\Servers\Haxe\haxe\lib\svg\1,0,8" />
-    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,4" />
+    <class path="C:\Servers\Haxe\haxe\lib\hscript\2,0,5" />
     <class path="haxe" />
     <class path="assets" />
     <class path="bin\html5\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="openfl=3.3.8&#xA;lime=2.6.8&#xA;actuate=1.8.6&#xA;svg=1.0.8&#xA;hscript=2.0.4&#xA;dom&#xA;openfl-next&#xA;tools=2.6.8&#xA;no-compilation&#xA;openfl-html5&#xA;canvas&#xA;lime-html5&#xA;html5&#xA;web&#xA;html5&#xA;display" />
+    <option directives="openfl=3.4.0&#xA;lime=2.7.0&#xA;actuate=1.8.6&#xA;svg=1.0.8&#xA;hscript=2.0.5&#xA;dom&#xA;openfl-next&#xA;tools=2.7.0&#xA;no-compilation&#xA;openfl-html5&#xA;canvas&#xA;lime-html5&#xA;html5&#xA;web&#xA;html5&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
