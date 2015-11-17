@@ -9,6 +9,7 @@ import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.RootManager;
 import haxe.ui.toolkit.resources.ResourceManager;
 import haxe.ui.toolkit.util.Identifier;
+import haxe.ui.toolkit.util.Types;
 import pgr.dconsole.DC;
 import pgr.dconsole.DCCommands;
 
@@ -24,13 +25,13 @@ class HaxeUIConsoleFunctions {
 		DC.registerFunction(listScripts, "listScripts");
 		DC.registerFunction(removeScript, "removeScript");
 	}
-	
+
 	public static function create(type:String, text:String = null, id:String = null, width:Float = -1, height:Float = -1, x:Float = -1, y:Float = -1):Component {
 		var comp:Component = null;
 		if (type != null) {
 			var className:String = ClassManager.instance.getComponentClassName(type);
 			if (className != null) {
-				comp = Type.createInstance(Type.resolveClass(className), []);
+				comp = Type.createInstance(Types.resolveClass(className), []);
 				if (id == null) {
 					id = Identifier.createObjectId(comp);
 					id = id.substr(id.lastIndexOf(".") + 1, id.length).toLowerCase();
@@ -38,14 +39,14 @@ class HaxeUIConsoleFunctions {
 				if (text == null) {
 					text = id;
 				}
-				
+
 				if (width == -1) {
 					width = 100;
 				}
 				if (height == -1) {
 					height = 100;
 				}
-				
+
 				comp.id = id;
 				comp.text = text;
 				if (width  != -1) {
@@ -55,14 +56,14 @@ class HaxeUIConsoleFunctions {
 					comp.height = height;
 				}
 				RootManager.instance.currentRoot.addChild(comp);
-				
+
 				DC.logConfirmation("Created '" + id + "'");
 				DC.registerObject(comp, id);
 			}
 		}
 		return comp;
 	}
-	
+
 	public static function dispose(target:Dynamic):Void {
 		var c:Component = getComponent(target);
 		if (c != null) {
@@ -70,7 +71,7 @@ class HaxeUIConsoleFunctions {
 			c.parent.removeChild(c);
 		}
 	}
-	
+
 	public static function inspect(target:Dynamic, verbose:Bool = false):Void {
 		var c:Component = getComponent(target);
 		if (c != null) {
@@ -93,11 +94,11 @@ class HaxeUIConsoleFunctions {
 			DC.logError(target + " is not a haxeui component");
 			return null;
 		}
-		
+
 		var c:Component = cast obj;
 		return c;
 	}
-	
+
 	private static function inspectComponent(c:Component, indent:Int, verbose:Bool = false):Void {
 		var s:String = "";
 		var n:Int = indent - 1;
@@ -109,7 +110,7 @@ class HaxeUIConsoleFunctions {
 			} else {
 				arr.push(" │ ");
 			}
-			
+
 			n--;
 			t = cast t.parent;
 		}
@@ -161,18 +162,18 @@ class HaxeUIConsoleFunctions {
 				s += " [" + verboseDetails.join(", ") + "]";
 			}
 		}
-		
+
 		DC.logInfo(s);
 		for (child in c.children) {
 			inspectComponent(cast child, indent + 1, verbose);
 		}
 	}
-	
+
 	private static function isLastChild(c:Component):Bool {
 		var index:Int = c.parent.indexOfChild(c);
 		return (index == c.parent.numChildren - 1);
 	}
-	
+
 	public static function runScript(scriptRes:String):Void {
 		var scriptData:String = getScriptData(scriptRes);
 		if (scriptData == null) {
@@ -183,7 +184,7 @@ class HaxeUIConsoleFunctions {
 		scriptData = scriptData.substr(0, n);
 		DC.instance.commands.evaluate(scriptData);
 	}
-	
+
 	public static function viewScript(scriptRes:String):Void {
 		var scriptData:String = getScriptData(scriptRes);
 		if (scriptData == null) {
@@ -210,14 +211,14 @@ class HaxeUIConsoleFunctions {
 			}
 		});
 	}
-	
+
 	public static function editScript(scriptRes:String):Void {
 		var scriptData:String = getScriptData(scriptRes);
 		if (scriptData == null) {
 			DC.logError("Script '" + scriptRes + "' not found");
 			return;
 		}
-		
+
 		var config:Dynamic = {
 			width: 500,
 			buttons: PopupButton.CANCEL | PopupButton.CONFIRM,
@@ -228,22 +229,22 @@ class HaxeUIConsoleFunctions {
 			}
 		});
 	}
-	
+
 	public static function removeScript(scriptRes:String):Void {
 		if (HaxeUIConsole.scripts.exists(scriptRes) == false) {
 			DC.logError("'" + scriptRes + "' doesnt exist");
 			return;
 		}
-		
+
 		HaxeUIConsole.scripts.remove(scriptRes);
 	}
-	
+
 	public static function listScripts():Void {
 		for (r in HaxeUIConsole.scripts.keys()) {
 			DC.logInfo(r);
 		}
 	}
-	
+
 	private static function getScriptData(scriptRes:String):String {
 		var scriptData:String = null;
 		if (HaxeUIConsole.scripts.exists(scriptRes)) {
@@ -253,21 +254,21 @@ class HaxeUIConsoleFunctions {
 		}
 		return scriptData;
 	}
-	
+
 	private static function setScriptData(scriptRes:String, scriptData:String):Void {
 		HaxeUIConsole.scripts.set(scriptRes, scriptData);
 		DC.logConfirmation("Script '" + scriptRes + "' saved");
 	}
-	
+
 	private static function unregisterObjects(parent:Component):Void {
 		if (parent == null) {
 			return;
 		}
-		
+
 		if (parent.id != null) {
 			DC.unregisterObject(parent.id);
 		}
-		
+
 		for (child in parent.children) {
 			unregisterObjects(cast child);
 		}

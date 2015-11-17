@@ -8,10 +8,10 @@ Cross platform Haxe/OpenFL set of styleable application centric rich UI componen
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg" />
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/extended.jpg" />
 
-<b>Demos</b> (May be out of date): 
-<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">SWF</a> | 
-<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Windows</a> | 
-<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Neko</a> | 
+<b>Demos</b> (May be out of date):
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/haxeuitestapp.swf?raw=true">SWF</a> |
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/windows/haxeuitestapp.zip?raw=true">Windows</a> |
+<a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/neko/haxeuitestapp.zip?raw=true">Neko</a> |
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/android/haxeuitestapp.apk?raw=true">Android</a> |
 <a href="https://github.com/ianharrigan/haxeui-test-app/blob/master/docs/demo/air/haxeuitestapp.air?raw=true">AIR</a> | <a href="http://haxeui.org/examples/html/showcase/index.html">HTML</a>
 
@@ -37,12 +37,12 @@ First install haxeui via haxelib:
 haxelib install haxeui
 ```
 
-Once installed add 
+Once installed add
 ```
 <haxelib name="haxeui" />
 ```
 to your openfl application.xml. Finally, create a basic application with:
-	
+
 ```haxe
 import haxe.ui.toolkit.core.Macros;
 import haxe.ui.toolkit.core.Toolkit;
@@ -62,7 +62,9 @@ class Main {
 }
 ```
 
-Note: haxeui comes with some styles ready for use, if no styles are added a default one is used.
+**Note:** haxeui comes with some styles ready for use, if no styles are added a default one is used.
+
+If you created your own style/theme from scratch and don't want to include the built-in styles in your build result, specify the flag `<haxdef name="haxeui-exclude-resources" />` before the `<haxelib name="haxeui" />` directive in your project configuration file.
 
 Components
 -------------------------
@@ -78,7 +80,7 @@ General components
 - Text (static, input, multiline)
 - List selection (drop downs, popup lists)
 - Date selection (drop downs, popup calendar)
-- Calendar 
+- Calendar
 - Menus
 
 Extended components
@@ -121,10 +123,10 @@ An experimental html5 demo is available <a href="http://haxeui.org/examples/html
 Licence
 -------------------------
     Unless indicated otherwise, this code was created by Ian Harrigan and
-    provided under a MIT-style license. 
+    provided under a MIT-style license.
     Copyright (c) Ian Harrigan. All rights reserved.
 
-    Permission is hereby granted, free of charge, to any person obtaining a 
+    Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
     to deal in the Software without restriction, including without limitation
     the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -136,7 +138,7 @@ Licence
 
     THE SOFTWARE IS PROVIDED ?AS IS?, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
