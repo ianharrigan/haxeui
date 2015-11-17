@@ -287,7 +287,6 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		#if html5
 		addEventListener(MouseEvent.MOUSE_MOVE, function(e:MouseEvent) {
 			if (_mouseIn == false) {
-			trace("bob");
 				_mouseIn = true;
 				var mouseEvent = new MouseEvent(MouseEvent.MOUSE_OVER,
 												false, e.cancelable,
