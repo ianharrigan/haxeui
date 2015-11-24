@@ -442,6 +442,8 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		super.set_state(value);
 		if (value == STATE_DOWN) {
 			_down = true;
+		} else {
+			_down = false;
 		}
 		return value;
 	}
