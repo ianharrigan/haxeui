@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Dont include top level assets",
-    "version": "1.7.20",
+    "releasenote": "Bugfixes",
+    "version": "1.7.21",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "2.7.0",
