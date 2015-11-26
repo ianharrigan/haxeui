@@ -467,7 +467,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	
 	private function set_useHandCursor(value:Bool):Bool {
 		sprite.useHandCursor = value;
-		sprite.buttonMode = true;
+		sprite.buttonMode = value;
 		return value;
 	}
 	

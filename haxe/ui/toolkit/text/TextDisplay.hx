@@ -27,7 +27,7 @@ class TextDisplay implements ITextDisplay {
 		_tf.type = TextFieldType.DYNAMIC;
 		_tf.selectable = false;
 		_tf.multiline = false;
-		_tf.mouseEnabled = true;
+		_tf.mouseEnabled = false;
 		_tf.wordWrap = false;
 		_tf.autoSize = TextFieldAutoSize.LEFT;
 		_tf.text = "";
