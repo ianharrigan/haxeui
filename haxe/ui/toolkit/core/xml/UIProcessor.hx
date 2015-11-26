@@ -149,7 +149,7 @@ class UIProcessor extends XMLProcessor {
 			} else if (attr == "text") {
 				c.text = value;
 			} else if (StringTools.startsWith(attr.toLowerCase(), "on")) {
-				var event = attr.substr(2, attr.length).toLowerCase();
+				var event = attr.substr(2, 1).toLowerCase()+attr.substr(3);
 				c.addScriptletEventHandler(event, value);
 			} else {
 				try {
