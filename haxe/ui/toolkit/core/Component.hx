@@ -390,7 +390,9 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 		try {
 			var parser = new hscript.Parser();
 			var line = parser.parseString(expr);
-			findInterp().expr(line);
+			var interp = findInterp();
+			interp.variables.set("this", this);
+			interp.expr(line);
 		} catch (e:Dynamic) {
 			trace("Problem executing scriptlet: " + e);
 		}
@@ -426,6 +428,7 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 					var safeId = StringUtil.capitalizeHyphens(comp.id);
 					_interp.variables.set(safeId, comp);
 				}
+				_interp.variables.set("this", this);
 
 				_interp.execute(program);
 			} catch (e:Dynamic) {
