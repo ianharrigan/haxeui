@@ -404,9 +404,6 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 
 	private function get_visible():Bool {
 		var v = _sprite.visible;
-		if (v == true && parent != null && parent.visible == false) { // lets make sure no ancestors are hidden
-			v = false;
-		}
 		return v;
 	}
 	
