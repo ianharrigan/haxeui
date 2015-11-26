@@ -425,6 +425,7 @@ class ScrollView extends StateComponent {
 				_downPos = new Point(event.stageX, event.stageY);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
 			}
 		}
 		
@@ -432,6 +433,7 @@ class ScrollView extends StateComponent {
 			_downPos = new Point(event.stageX, event.stageY);
 			Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 			Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
+			dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
 		}
 	}
 	
@@ -500,6 +502,8 @@ class ScrollView extends StateComponent {
 		if (_vscroll != null && _showVScroll == true && _autoHideScrolls == true) {
 			_vscroll.visible = false;
 		}
+
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
 	}
 	
 	//******************************************************************************************
@@ -598,6 +602,12 @@ class ScrollView extends StateComponent {
 			_hscroll.id = "hscroll";
 			_hscroll.percentWidth = 100;
 			_hscroll.addEventListener(Event.CHANGE, _onHScrollChange);
+			_hscroll.addEventListener(UIEvent.SCROLL_START, function(event):Void {
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
+			});
+			_hscroll.addEventListener(UIEvent.SCROLL_STOP, function(event):Void {
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+			});
 			if (_showHScroll == false) {
 				_hscroll.visible = false;
 			} else if (_autoHideScrolls == true) {
@@ -627,6 +637,12 @@ class ScrollView extends StateComponent {
 			_vscroll.id = "vscroll";
 			_vscroll.percentHeight = 100;
 			_vscroll.addEventListener(Event.CHANGE, _onVScrollChange);
+			_vscroll.addEventListener(UIEvent.SCROLL_START, function(event):Void {
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
+			});
+			_vscroll.addEventListener(UIEvent.SCROLL_STOP, function(event):Void {
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+			});
 			if (_showVScroll == false) {
 				_vscroll.visible = false;
 			} else if (_autoHideScrolls == true) {

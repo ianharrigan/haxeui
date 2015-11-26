@@ -16,8 +16,9 @@ import haxe.ui.toolkit.util.StringUtil;
 
 @:build(haxe.ui.toolkit.core.Macros.addEvents([
 	"init", "resize", "ready",
-	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change", "scroll", 
+	"click", "mouseDown", "mouseUp", "mouseOver", "mouseOut", "mouseMove", "doubleClick", "rollOver", "rollOut", "change",
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
+	"scroll", "scrollStart", "scrollStop",
 	"glyphClick",
 	"menuSelect", "menuOpen"
 ]))
@@ -28,6 +29,9 @@ import haxe.ui.toolkit.util.StringUtil;
 @:event("UIEvent.ADDED_TO_STAGE", "Dispatched when a display object is added to the on stage display list")
 @:event("UIEvent.REMOVED_FROM_STAGE", "Dispatched when a display object is about to be removed from the display list")
 @:event("UIEvent.RESIZE", "Dispatched when the display object has been resized")
+@:event("UIEvent.SCROLL", "Dispatched every time the scroll position changes")
+@:event("UIEvent.SCROLL_START", "Dispatched when the user begins scrolling")
+@:event("UIEvent.SCROLL_STOP", "Dispatched when the user stops scrolling")
 class DisplayObject implements IEventDispatcher implements IDisplayObject implements IDrawable implements IClonable<DisplayObject> {
 	// used in IDisplayObject getters/setters
 	private var _parent:IDisplayObjectContainer;

@@ -10,6 +10,7 @@ import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.interfaces.IScrollable;
 import haxe.ui.toolkit.core.Screen;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 
 /**
@@ -98,6 +99,8 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 		Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
+
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
 		
 		event.stopImmediatePropagation();
 		event.stopPropagation();
@@ -132,11 +135,15 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		if (_scrollTimer != null) {
 			_scrollTimer.stop();
 		}
+
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
 	}
 	
 	private function _onDeinc(event:MouseEvent):Void {
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
 		deincrementValue();
 		_scrollDirection = 0;
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
@@ -152,6 +159,7 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 	
 	private function _onInc(event:MouseEvent):Void {
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
 		incrementValue();
 		_scrollDirection = 1;
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
@@ -179,11 +187,14 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 	}
 	
 	private function _onMouseDown(event:MouseEvent):Void {
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_START));
+
 		if (event.localX > _thumb.x) { // page down
 			pos += pageSize;
 		} else { // page up
 			pos -= pageSize;
 		}
+		dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
 	}
 	
 	//******************************************************************************************
@@ -228,8 +239,8 @@ class HScroll extends Scroll implements IScrollable implements IClonable<HScroll
 		}
 		if (value != _pos) {
 			_pos = value;
-			var changeEvent:Event = new Event(Event.CHANGE);
-			dispatchEvent(changeEvent);
+			dispatchEvent(new Event(Event.CHANGE));
+			dispatchEvent(new UIEvent(UIEvent.SCROLL));
 			invalidate(InvalidationFlag.LAYOUT);
 		}
 		return value;
