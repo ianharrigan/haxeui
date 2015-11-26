@@ -7,6 +7,8 @@
 		<component package="haxe.ui.toolkit.core" />
 		<component package="haxe.ui.toolkit.core.renderers" />
 		<dataSource package="haxe.ui.toolkit.data" />
+		<component class="haxe.ui.toolkit.containers.ScrollView.ScrollViewRefreshPrompt" alias="refreshprompt" />
+		<component class="haxe.ui.toolkit.containers.ScrollView.ScrollViewRefreshing" alias="refreshing" />
 	</exports>
 	<themes>
 		<default>

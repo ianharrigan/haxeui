@@ -1378,3 +1378,25 @@ ToolTip {
 ToolTip Text {
 	fontSize: 10;
 }
+
+DefaultScrollViewRefreshPrompt {
+	width: 100%;
+	padding: 10;
+}
+
+DefaultScrollViewRefreshPrompt Text {
+	horizontalAlignment: center;
+	color: 0x606c88;
+	font-italic: true;
+}
+
+DefaultScrollViewRefreshing {
+	width: 100%;
+	padding: 10;
+}
+
+DefaultScrollViewRefreshing Text {
+	horizontalAlignment: center;
+	color: 0x606c88;
+	font-italic: true;
+}

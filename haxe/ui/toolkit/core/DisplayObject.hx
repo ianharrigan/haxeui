@@ -20,7 +20,8 @@ import haxe.ui.toolkit.util.StringUtil;
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
 	"scroll", "scrollStart", "scrollStop",
 	"glyphClick",
-	"menuSelect", "menuOpen"
+	"menuSelect", "menuOpen",
+	"refresh"
 ]))
 @:build(haxe.ui.toolkit.core.Macros.addClonable())
 @:autoBuild(haxe.ui.toolkit.core.Macros.addClonable())

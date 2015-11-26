@@ -1,5 +1,9 @@
 package haxe.ui.toolkit.containers;
 
+import haxe.ui.toolkit.controls.Text;
+import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.interfaces.IClonable;
+import haxe.ui.toolkit.core.interfaces.IComponent;
 import haxe.ui.toolkit.core.Toolkit;
 import openfl.display.DisplayObject;
 import openfl.display.Sprite;
@@ -101,6 +105,14 @@ class ScrollView extends StateComponent {
 		var r = null;
 		if (child == _container || child == _hscroll || child == _vscroll) {
 			r = super.addChild(child);
+		} else if (Std.is(child, ScrollViewRefreshPrompt)) {
+			_refreshPromptView = cast child;
+			_refreshPromptView.alpha = 0;
+			r = super.addChildAt(child, 0);
+		} else if (Std.is(child, ScrollViewRefreshing)) {
+			_refreshingView = cast child;
+			_refreshingView.visible = false;
+			r = super.addChildAt(child, 0);
 		} else {
 			if (_container.numChildren >= 1) {
 				trace("WARNING: ScrollView will only use the first child as the scroll content");
@@ -125,7 +137,7 @@ class ScrollView extends StateComponent {
 	
 	public override function removeChild(child:IDisplayObject, dispose:Bool = true):IDisplayObject {
 		var r = null;
-		if (child == _container || child == _hscroll || child == _vscroll) {
+		if (child == _container || child == _hscroll || child == _vscroll || child == _refreshPromptView || child == _refreshingView) {
 			r = super.removeChild(child, dispose);
 		} else {
 			r = _container.removeChild(child, dispose);
@@ -437,6 +449,38 @@ class ScrollView extends StateComponent {
 		}
 	}
 	
+	private var _pulling:Bool = false;
+	
+	private var _refreshPromptView:ScrollViewRefreshPrompt;
+	private var _refreshString:String;
+	public var refreshString(get, set):String;
+	private function get_refreshString():String {
+		return _refreshString;
+	}
+	private function set_refreshString(value:String):String {
+		if (_refreshPromptView == null) {
+			_refreshPromptView = new DefaultScrollViewRefreshPrompt();
+			addChild(_refreshPromptView);
+		}
+		_refreshPromptView.text = value;
+		return value;
+	}
+	
+	private var _refreshingView:ScrollViewRefreshing;
+	private var _refreshingString:String;
+	public var refreshingString(get, set):String;
+	private function get_refreshingString():String {
+		return _refreshingString;
+	}
+	private function set_refreshingString(value:String):String {
+		if (_refreshingView == null) {
+			_refreshingView = new DefaultScrollViewRefreshing();
+			addChild(_refreshingView);
+		}
+		_refreshingView.text = value;
+		return value;
+	}
+	
 	private function _onScreenMouseMove(event:MouseEvent):Void {
 		if (_downPos != null) {
 			var ypos:Float = event.stageY - _downPos.y;
@@ -460,7 +504,7 @@ class ScrollView extends StateComponent {
 				_eventTarget.visible = true;
 				var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 				if (content != null) {
-					if (xpos != 0 && (content.width > layout.usableWidth || _virtualScrolling == true)) {
+					if (xpos != 0 && (content.width > layout.usableWidth || _virtualScrolling == true) && _pulling == false) {
 						if (_showHScroll == true && _autoHideScrolls == true) {
 							_hscroll.visible = true;
 						}
@@ -469,13 +513,25 @@ class ScrollView extends StateComponent {
 						}
 					}
 					
-					if (ypos != 0 && (content.height > layout.usableHeight || _virtualScrolling == true)) {
+					if (ypos != 0 && (content.height > layout.usableHeight || _virtualScrolling == true) && _pulling == false) {
 						if (_showVScroll == true && _autoHideScrolls == true) {
 							_vscroll.visible = true;
 						}
 						if (_vscroll != null) {
 							_vscroll.pos -= ypos;
 						}
+					}
+					
+					if (_vscroll == null || _vscroll.pos == 0 && _refreshPromptView != null) {
+						_refreshingView.visible = false;
+						_pulling = true;
+						content.y += ypos;
+						if (content.y > _refreshPromptView.height) {
+							content.y = _refreshPromptView.height;
+						} else if (content.y < 0) {
+							content.y = 0;
+						}
+						_refreshPromptView.alpha = content.y / _refreshPromptView.height;
 					}
 					
 					_downPos = new Point(event.stageX, event.stageY);
@@ -504,6 +560,26 @@ class ScrollView extends StateComponent {
 		}
 
 		dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+		
+		if (_pulling == true && _refreshPromptView != null) {
+			if (_refreshPromptView.alpha < 1) {
+				_pulling = false;
+				_refreshPromptView.alpha = 0;
+				_refreshingView.visible = false;
+				this.invalidate();
+			} else {
+				_refreshPromptView.alpha = 0;
+				_refreshingView.visible = true;
+				dispatchEvent(new UIEvent(UIEvent.REFRESH));
+			}
+		}
+	}
+	
+	public function refreshComplete():Void {
+		_pulling = false;
+		_refreshPromptView.alpha = 0;
+		_refreshingView.visible = false;
+		this.invalidate();
 	}
 	
 	//******************************************************************************************
@@ -708,6 +784,60 @@ class ScrollView extends StateComponent {
 		_eventTarget.graphics.lineStyle(0);
 		_eventTarget.graphics.drawRect(targetX, targetY, targetCX, targetCY);
 		_eventTarget.graphics.endFill();
+	}
+}
+
+@:dox(hide)
+class ScrollViewRefreshPrompt extends VBox implements IComponent implements IClonable<VBox> {
+	public function new() {
+		super();
+	}
+	
+}
+
+@:dox(hide)
+class DefaultScrollViewRefreshPrompt extends ScrollViewRefreshPrompt {
+	private var _textComponent:Text;
+	public function new() {
+		super();
+		text = "Release to refresh";
+	}
+	
+	private override function set_text(value:String):String {
+		value = super.set_text(value);
+		if (_textComponent == null) {
+			_textComponent = new Text();
+			addChild(_textComponent);
+		}
+		_textComponent.text = value;
+		return value;
+	}
+}
+
+@:dox(hide)
+class ScrollViewRefreshing extends VBox implements IComponent implements IClonable<VBox> {
+	public function new() {
+		super();
+	}
+	
+}
+
+@:dox(hide)
+class DefaultScrollViewRefreshing extends ScrollViewRefreshing {
+	private var _textComponent:Text;
+	public function new() {
+		super();
+		text = "Refreshing";
+	}
+	
+	private override function set_text(value:String):String {
+		value = super.set_text(value);
+		if (_textComponent == null) {
+			_textComponent = new Text();
+			addChild(_textComponent);
+		}
+		_textComponent.text = value;
+		return value;
 	}
 }
 
