@@ -549,6 +549,7 @@ ListView #content {
 
 CheckBox {
 	spacingX: 2;
+	color: 0x000000;
 }
 
 CheckBoxValue {
@@ -597,6 +598,7 @@ CheckBoxValue #selected:disabled {
 
 OptionBox {
 	spacingX: 2;
+	color: 0x000000;
 }
 
 OptionBoxValue {

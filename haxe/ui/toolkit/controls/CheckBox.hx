@@ -1,19 +1,34 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.core.Screen;
 import openfl.events.Event;
 import haxe.ui.toolkit.core.base.VerticalAlign;
-import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.HorizontalLayout;
 import haxe.ui.toolkit.style.Style;
+import openfl.events.MouseEvent;
 
 /**
  Simple two state checkbox control
  **/
 
 @:event("UIEvent.CHANGE", "Dispatched when the value of the checkbox is modified") 
-class CheckBox extends Component implements IClonable<CheckBox> {
+class CheckBox extends StateComponent implements IClonable<CheckBox> {
+	/**
+	 Checkbox state is "normal" (default state)
+	 **/
+	public static inline var STATE_NORMAL = "normal";
+	/**
+	 Checkbox state is "over"
+	 **/
+	public static inline var STATE_OVER = "over";
+	/**
+	 Checkbox state is "down"
+	 **/
+	public static inline var STATE_DOWN = "down";
+	
 	private var _value:CheckBoxValue;
 	private var _label:Text;
 	private var _selected:Bool;
@@ -45,6 +60,49 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 		_value.addEventListener(UIEvent.CHANGE, function (e) {
 			selected = _value.value == "selected"; // updates checkbox state.
 		}); 
+		
+		addEventListener(MouseEvent.MOUSE_OVER, _onMouseOver);
+		addEventListener(MouseEvent.MOUSE_OUT, _onMouseOut);
+		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
+		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+	}
+	
+	//******************************************************************************************
+	// Event handlers
+	//******************************************************************************************
+	private function _onMouseOver(event:MouseEvent):Void {
+		if (event.buttonDown == false) {
+			state = STATE_OVER;
+		} else {
+			state = STATE_DOWN;
+		}
+	}
+	
+	private function _onMouseOut(event:MouseEvent):Void {
+		if (event.buttonDown == false) {
+			state = STATE_NORMAL;
+		} else {
+			//Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+		}
+	}
+	
+	private function _onMouseDown(event:MouseEvent):Void {
+		state = STATE_DOWN;
+		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+	}
+	
+	private function _onMouseUp(event:MouseEvent):Void {
+		if (hitTest(event.stageX, event.stageY)) {
+			#if !(android)
+				state = STATE_OVER;
+			#else
+				state = STATE_NORMAL;
+			#end
+		} else {
+			state = STATE_NORMAL;
+		}
+
+		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 	}
 	
 	//******************************************************************************************
@@ -155,6 +213,13 @@ class CheckBox extends Component implements IClonable<CheckBox> {
 			}
 			_label.baseStyle = labelStyle;
 		}
+	}
+	
+	//******************************************************************************************
+	// IState
+	//******************************************************************************************
+	private override function get_states():Array<String> {
+		return [STATE_NORMAL, STATE_OVER, STATE_DOWN];
 	}
 }
 
