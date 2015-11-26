@@ -130,7 +130,7 @@ class TextDisplay implements ITextDisplay {
 		} else {
 			_tf.type = TextFieldType.DYNAMIC;
 			_tf.selectable = false;
-			_tf.mouseEnabled = true;
+			_tf.mouseEnabled = false;
 		}
 		return value;
 	}
