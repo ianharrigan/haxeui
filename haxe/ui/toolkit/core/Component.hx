@@ -317,6 +317,13 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 				|| type == MouseEvent.MOUSE_UP
 				|| type == MouseEvent.MOUSE_WHEEL
 				|| type == MouseEvent.CLICK
+				
+				|| type == UIEvent.MOUSE_DOWN
+				|| type == UIEvent.MOUSE_MOVE
+				|| type == UIEvent.MOUSE_OVER
+				|| type == UIEvent.MOUSE_OUT
+				|| type == UIEvent.MOUSE_UP
+				|| type == UIEvent.CLICK
 		);
 	}
 	
