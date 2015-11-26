@@ -402,7 +402,11 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 	}
 
 	private function get_visible():Bool {
-		return _sprite.visible;
+		var v = _sprite.visible;
+		if (v == true && parent != null && parent.visible == false) { // lets make sure no ancestors are hidden
+			v = false;
+		}
+		return v;
 	}
 	
 	private function set_visible(value:Bool):Bool {

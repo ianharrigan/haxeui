@@ -39,6 +39,10 @@ class Link extends Text {
 	}
 	
 	private function _onScreenMouseDown(e:MouseEvent):Void {
+		if (visible == false) {
+			return;
+		}
+		
 		if (hitTest(e.stageX, e.stageY) == true) {
 			_isDown = true;
 			state = STATE_DOWN;
@@ -47,6 +51,10 @@ class Link extends Text {
 	}
 
 	private function _onScreenMouseMove(e:MouseEvent):Void {
+		if (visible == false) {
+			return;
+		}
+		
 		if (hitTest(e.stageX, e.stageY) == true) {
 			if (_isDown == true) {
 				state = STATE_DOWN;
@@ -61,6 +69,10 @@ class Link extends Text {
 	}
 	
 	private function _onScreenMouseUp(e:MouseEvent):Void {
+		if (visible == false) {
+			return;
+		}
+		
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 		if (hitTest(e.stageX, e.stageY) == true && _isDown == true) {
 			_isDown = false;
