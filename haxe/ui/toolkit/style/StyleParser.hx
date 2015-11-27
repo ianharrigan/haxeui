@@ -119,7 +119,7 @@ class StyleParser {
 				var arr:Array<String> = styleName.split(",");
 				for (s in arr) {
 					s = StringTools.trim(s);
-					styles.addStyle(s, style);
+					styles.addStyle(s, style.clone());
 				}
 			}
 			
