@@ -35,6 +35,8 @@ class OptionBox extends StateComponent implements IClonable<OptionBox> {
 	private var _group:String;
 	private static var _groups:StringMap<Array<OptionBox>>;
 	
+	private var _down:Bool = false;
+	
 	public function new() {
 		super();
 		sprite.buttonMode = true;
@@ -89,7 +91,7 @@ class OptionBox extends StateComponent implements IClonable<OptionBox> {
 	private function _onMouseOver(event:MouseEvent):Void {
 		if (event.buttonDown == false) {
 			state = STATE_OVER;
-		} else {
+		} else if (_down == true) {
 			state = STATE_DOWN;
 		}
 	}
@@ -103,12 +105,14 @@ class OptionBox extends StateComponent implements IClonable<OptionBox> {
 	}
 	
 	private function _onMouseDown(event:MouseEvent):Void {
+		_down = true;
 		state = STATE_DOWN;
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 	}
 	
 	private function _onMouseUp(event:MouseEvent):Void {
 		if (hitTest(event.stageX, event.stageY)) {
+			_down = false;
 			#if !(android)
 				state = STATE_OVER;
 			#else
