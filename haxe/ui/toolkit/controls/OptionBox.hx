@@ -111,8 +111,8 @@ class OptionBox extends StateComponent implements IClonable<OptionBox> {
 	}
 	
 	private function _onMouseUp(event:MouseEvent):Void {
+		_down = false;
 		if (hitTest(event.stageX, event.stageY)) {
-			_down = false;
 			#if !(android)
 				state = STATE_OVER;
 			#else
