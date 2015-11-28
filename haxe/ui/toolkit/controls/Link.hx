@@ -1,12 +1,9 @@
 package haxe.ui.toolkit.controls;
 
 import haxe.ui.toolkit.controls.Text;
-import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Screen;
 import haxe.ui.toolkit.events.UIEvent;
-import lime.math.Rectangle;
 import openfl.events.MouseEvent;
-import openfl.geom.Point;
 import openfl.Lib;
 import openfl.net.URLRequest;
 
@@ -45,9 +42,7 @@ class Link extends Text {
 			return;
 		}
 		
-		if (hitTest(e.stageX, e.stageY) == true
-				&& hitTestLocal(e.localX, e.localY) == true
-				&& parent.hitTest(e.stageX, e.stageY) == true) {
+		if (hitTest(e.stageX, e.stageY) == true && parent.hitTest(e.stageX, e.stageY) == true) {
 			_isDown = true;
 			state = STATE_DOWN;
 			Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
@@ -59,9 +54,7 @@ class Link extends Text {
 			return;
 		}
 
-		if (hitTest(e.stageX, e.stageY) == true
-				&& hitTestLocal(e.localX, e.localY) == true
-				&& parent.hitTest(e.stageX, e.stageY) == true) {
+		if (hitTest(e.stageX, e.stageY) == true	&& parent.hitTest(e.stageX, e.stageY) == true) {
 			if (_isDown == true) {
 				state = STATE_DOWN;
 			} else {
@@ -80,10 +73,7 @@ class Link extends Text {
 		}
 		
 		Screen.instance.removeEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
-		if (hitTest(e.stageX, e.stageY) == true
-					&& hitTestLocal(e.localX, e.localY) == true
-					&& parent.hitTest(e.stageX, e.stageY) == true
-					&& _isDown == true) {
+		if (hitTest(e.stageX, e.stageY) == true && parent.hitTest(e.stageX, e.stageY) == true && _isDown == true) {
 			_isDown = false;
 			state = STATE_OVER;
 			
@@ -126,12 +116,5 @@ class Link extends Text {
 		}
 		
 		return true;
-	}
-	
-	private function hitTestLocal(xpos:Float, ypos:Float):Bool {
-		if (_textDisplay == null || _textDisplay.display == null) {
-			return false;
-		}
-		return (sprite.getObjectsUnderPoint(new Point(xpos, ypos)).indexOf(_textDisplay.display) != -1); 
 	}
 }
