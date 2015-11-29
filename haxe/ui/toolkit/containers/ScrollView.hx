@@ -433,7 +433,7 @@ class ScrollView extends StateComponent {
 
 		var content:IDisplayObject = _container.getChildAt(0); // assume first child is content
 		if (content != null && inScroll == false && _virtualScrolling == false) {
-			if (content.width > layout.usableWidth || content.height > layout.usableHeight) {
+			if (content.width > layout.usableWidth || content.height > layout.usableHeight || allowPull()) {
 				_downPos = new Point(event.stageX, event.stageY);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onScreenMouseUp);
 				Screen.instance.addEventListener(MouseEvent.MOUSE_MOVE, _onScreenMouseMove);
@@ -522,7 +522,7 @@ class ScrollView extends StateComponent {
 						}
 					}
 					
-					if (_vscroll == null || _vscroll.pos == 0 && _refreshPromptView != null) {
+					if (allowPull()) {
 						_refreshingView.visible = false;
 						_pulling = true;
 						content.y += ypos;
@@ -538,6 +538,13 @@ class ScrollView extends StateComponent {
 				}
 			}
 		}
+	}
+	
+	private function allowPull() {
+		if ((_vscroll == null || _vscroll.pos == 0) && _refreshPromptView != null) {
+			return true;
+		}
+		return false;
 	}
 	
 	private function _onScreenMouseUp(event:MouseEvent):Void {
