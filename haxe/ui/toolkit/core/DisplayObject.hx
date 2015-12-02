@@ -20,7 +20,8 @@ import haxe.ui.toolkit.util.StringUtil;
 	"added", "addedToStage", "removed", "removedFromStage", "activate", "deactivate",
 	"scroll", "scrollStart", "scrollStop",
 	"glyphClick",
-	"menuSelect", "menuOpen"
+	"menuSelect", "menuOpen",
+	"refresh"
 ]))
 @:build(haxe.ui.toolkit.core.Macros.addClonable())
 @:autoBuild(haxe.ui.toolkit.core.Macros.addClonable())
@@ -403,9 +404,6 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 
 	private function get_visible():Bool {
 		var v = _sprite.visible;
-		if (v == true && parent != null && parent.visible == false) { // lets make sure no ancestors are hidden
-			v = false;
-		}
 		return v;
 	}
 	

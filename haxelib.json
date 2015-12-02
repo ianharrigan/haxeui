@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Bugfixes",
-    "version": "1.7.21",
+    "releasenote": "Pull to refresh on all scrollviews",
+    "version": "1.8.0",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "2.7.0",

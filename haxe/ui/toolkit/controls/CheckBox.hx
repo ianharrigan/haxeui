@@ -33,6 +33,8 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	private var _label:Text;
 	private var _selected:Bool;
 	
+	private var _down:Bool = false;
+	
 	public function new() {
 		super();
 		sprite.buttonMode = true;
@@ -73,7 +75,7 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	private function _onMouseOver(event:MouseEvent):Void {
 		if (event.buttonDown == false) {
 			state = STATE_OVER;
-		} else {
+		} else if (_down == true) {
 			state = STATE_DOWN;
 		}
 	}
@@ -87,11 +89,13 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	}
 	
 	private function _onMouseDown(event:MouseEvent):Void {
+		_down = true;
 		state = STATE_DOWN;
 		Screen.instance.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
 	}
 	
 	private function _onMouseUp(event:MouseEvent):Void {
+		_down = false;
 		if (hitTest(event.stageX, event.stageY)) {
 			#if !(android)
 				state = STATE_OVER;

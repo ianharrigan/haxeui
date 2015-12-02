@@ -83,7 +83,7 @@ CheckBoxValue #unselected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0x
 CheckBoxValue #unselected:disabled{backgroundColor:0xCCCCCC;backgroundColorGradientEnd:0xCCCCCC;borderColor:0x666666;}
 CheckBoxValue #selected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);icon:"styles/gradient/cross_dark.png";iconPosition:"center";}
 CheckBoxValue #selected:disabled{backgroundColor:0xCCCCCC;backgroundColorGradientEnd:0xCCCCCC;borderColor:0x666666;icon:"styles/gradient/cross_dark.png";}
-OptionBox{spacingX:2;}
+OptionBox{spacingX:2;color:0x000000;}
 OptionBoxValue{width:18;height:18;}
 OptionBoxValue #unselected{backgroundColor:0xFFFFFF;backgroundColorGradientEnd:0xFFFFFF;borderColor:0x363d4c;paddingTop:1;paddingLeft:1;paddingBottom:1;paddingRight:1;cornerRadius:3;filter:dropShadow(2,45,0x808080,1,4,4,1,3,true);}
 OptionBoxValue #unselected:disabled{backgroundColor:0xCCCCCC;backgroundColorGradientEnd:0xCCCCCC;borderColor:0x666666;}
@@ -188,4 +188,7 @@ Link:over{color:0x2c354b;fontUnderline:true;}
 Link:down{color:0x606c88;fontUnderline:true;}
 ToolTip{borderColor:0x495267;borderSize:1;backgroundColor:0xFFFFFF;backgroundAlpha:1;cornerRadius:2;padding:2;filter:dropShadow(1,45,0x808080,1,2,2,1,3);}
 ToolTip Text{fontSize:10;}
-
+DefaultScrollViewRefreshPrompt{width:100%;padding:10;}
+DefaultScrollViewRefreshPrompt Text{horizontalAlignment:center;color:0x606c88;font-italic:true;}
+DefaultScrollViewRefreshing{width:100%;padding:10;}
+DefaultScrollViewRefreshing Text{horizontalAlignment:center;color:0x606c88;font-italic:true;}

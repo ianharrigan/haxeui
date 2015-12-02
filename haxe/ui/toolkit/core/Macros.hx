@@ -260,7 +260,7 @@ class Macros {
 			var types:Array<haxe.macro.Type> = null;
 			
 			if (className != null) {
-				types = Context.getModule(className);
+				types = [Context.getType(className)];
 			} else if (classPackage != null) {
 				types = getTypesFromPackage(classPackage);
 			}
@@ -269,9 +269,6 @@ class Macros {
 				for (t in types) {
 					if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
 						var resolvedClass:String = getClassNameFromType(t);
-						if (className != null && resolvedClass != className) {
-							continue;
-						}
 						if (classAlias == null) {
 							classAlias = resolvedClass.substr(resolvedClass.lastIndexOf(".") + 1, resolvedClass.length);
 						}

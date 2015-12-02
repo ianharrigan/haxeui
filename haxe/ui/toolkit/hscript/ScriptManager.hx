@@ -21,6 +21,7 @@ class ScriptManager {
 		_defaultClasses.set("Std", Std);
 		_defaultClasses.set("Math", Math);
 		_defaultClasses.set("Client", Client.instance);
+		_defaultClasses.set("Timer", Timer);
 	}
 
 	public var classes(get, null):Map<String, Dynamic>;
