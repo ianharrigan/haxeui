@@ -55,7 +55,7 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 		addChild(_value);
 		addChild(_label);
 		
-		_label.addEventListener(UIEvent.CLICK, function(e) {
+		addEventListener(UIEvent.CLICK, function(e) {
 			_value.cycleValues();
 		});
 		
