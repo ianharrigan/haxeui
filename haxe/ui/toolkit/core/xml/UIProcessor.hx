@@ -170,13 +170,6 @@ class UIProcessor extends XMLProcessor {
 			}
 		}
 
-		if (config.firstChild() != null) {
-			var text = config.firstChild().nodeValue;
-			if (text != null && StringTools.trim(text).length > 0) {
-				c.text = text;
-			}
-		}
-		
 		return c;
 	}
 }

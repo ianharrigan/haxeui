@@ -358,6 +358,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				_label.wrapLines = _multiline;
 			}
 			_label.value = value;
+			_label.visible = true;
 			organiseChildren();
 		} else {
 			if (_label != null) {
