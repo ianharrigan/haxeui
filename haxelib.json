@@ -15,7 +15,7 @@
     "dependencies": {
         "lime": "2.8.1",
         "actuate": "1.8.6",
-        "openfl": "3.5.1",
+        "openfl": "3.5.2",
         "hscript": "2.0.5"
     }
 }
