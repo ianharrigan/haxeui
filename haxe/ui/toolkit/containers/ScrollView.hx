@@ -376,8 +376,6 @@ class ScrollView extends StateComponent {
 					if (_inertiaSpeed.y > 0 && _vscroll.pos <= _vscroll.min || _inertiaSpeed.y < 0 && _vscroll.pos >= _vscroll.max) {
 						_inertiaSpeed.y = 0;
 					}
-
-					trace(_vscroll.pos, _vscroll.min);
 				}
 			} else {
 				_inertiaSpeed.y = 0;
