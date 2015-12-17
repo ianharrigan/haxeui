@@ -37,7 +37,7 @@ class ScrollView extends StateComponent {
 
 	private var _inertiaSpeed:Point = new Point(0, 0);
 	private var _inertiaTime:Float;
-	private var _inertiaSensitivity:Float = 0.5;
+	private var _inertiaSensitivity:Float = 50;
 	private var _inertialScrolling:Bool = false;
 
 	#if mobile
@@ -357,7 +357,13 @@ class ScrollView extends StateComponent {
 				}
 				if (_hscroll != null) {
 					_hscroll.pos -= _inertiaSpeed.x / frameRate;
+
+					if (_inertiaSpeed.x < 0 && _hscroll.pos <= _hscroll.min || _inertiaSpeed.x > 0 && _hscroll.pos >= _hscroll.max) {
+						_inertiaSpeed.x = 0;
+					}
 				}
+			} else {
+				_inertiaSpeed.x = 0;
 			}
 
 			if ((content.height > layout.usableHeight || _virtualScrolling == true)) {
@@ -366,10 +372,18 @@ class ScrollView extends StateComponent {
 				}
 				if (_vscroll != null) {
 					_vscroll.pos -= _inertiaSpeed.y / frameRate;
+
+					if (_inertiaSpeed.y > 0 && _vscroll.pos <= _vscroll.min || _inertiaSpeed.y < 0 && _vscroll.pos >= _vscroll.max) {
+						_inertiaSpeed.y = 0;
+					}
+
+					trace(_vscroll.pos, _vscroll.min);
 				}
+			} else {
+				_inertiaSpeed.y = 0;
 			}
 
-			if ( Math.abs(_inertiaSpeed.x) < 0.1 && Math.abs(_inertiaSpeed.y) < 0.1 ){
+			if ( Math.abs(_inertiaSpeed.x) < 15 && Math.abs(_inertiaSpeed.y) < 15 ){
 				_eventTarget.visible = false;
 				if (_hscroll != null && _showHScroll == true && _autoHideScrolls == true) {
 					_hscroll.visible = false;
