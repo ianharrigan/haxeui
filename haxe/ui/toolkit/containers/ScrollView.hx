@@ -37,7 +37,7 @@ class ScrollView extends StateComponent {
 
 	private var _inertiaSpeed:Point = new Point(0, 0);
 	private var _inertiaTime:Float;
-	private var _inertiaSensitivity:Float = 5;
+	private var _inertiaSensitivity:Float = 50;
 	private var _inertialScrolling:Bool = false;
 
 	#if mobile
@@ -346,16 +346,24 @@ class ScrollView extends StateComponent {
 
 		if (content != null) {
 
-			_inertiaSpeed.x *= 0.8;
-			_inertiaSpeed.y *= 0.8;
+			var frameRate = openfl.Lib.current.stage.frameRate;
+
+			_inertiaSpeed.x -= _inertiaSpeed.x * (5.0 / frameRate);
+			_inertiaSpeed.y -= _inertiaSpeed.y * (5.0 / frameRate);
 
 			if ((content.width > layout.usableWidth || _virtualScrolling == true)) {
 				if (_showHScroll == true && _autoHideScrolls == true) {
 					_hscroll.visible = true;
 				}
 				if (_hscroll != null) {
-					_hscroll.pos -= _inertiaSpeed.x;
+					_hscroll.pos -= _inertiaSpeed.x / frameRate;
+
+					if (_inertiaSpeed.x < 0 && _hscroll.pos <= _hscroll.min || _inertiaSpeed.x > 0 && _hscroll.pos >= _hscroll.max) {
+						_inertiaSpeed.x = 0;
+					}
 				}
+			} else {
+				_inertiaSpeed.x = 0;
 			}
 
 			if ((content.height > layout.usableHeight || _virtualScrolling == true)) {
@@ -363,11 +371,17 @@ class ScrollView extends StateComponent {
 					_vscroll.visible = true;
 				}
 				if (_vscroll != null) {
-					_vscroll.pos -= _inertiaSpeed.y;
+					_vscroll.pos -= _inertiaSpeed.y / frameRate;
+
+					if (_inertiaSpeed.y > 0 && _vscroll.pos <= _vscroll.min || _inertiaSpeed.y < 0 && _vscroll.pos >= _vscroll.max) {
+						_inertiaSpeed.y = 0;
+					}
 				}
+			} else {
+				_inertiaSpeed.y = 0;
 			}
 
-			if ( Math.abs(_inertiaSpeed.x) < 0.1 && Math.abs(_inertiaSpeed.y) < 0.1 ){
+			if ( Math.abs(_inertiaSpeed.x) < 15 && Math.abs(_inertiaSpeed.y) < 15 ){
 				_eventTarget.visible = false;
 				if (_hscroll != null && _showHScroll == true && _autoHideScrolls == true) {
 					_hscroll.visible = false;
@@ -428,6 +442,8 @@ class ScrollView extends StateComponent {
 		
 		if ( _inertialScrolling == true ) {
 			Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+			_inertiaSpeed.x = 0;
+			_inertiaSpeed.y = 0;
 			_inertiaTime = Lib.getTimer();
 		}
 
@@ -495,9 +511,11 @@ class ScrollView extends StateComponent {
 			}
 
 			if ( _inertialScrolling == true ) {
-				var time:Float = (Lib.getTimer() - _inertiaTime)/100; // deciseconds
-				_inertiaSpeed = new Point ( xpos / time , ypos / time );
-				_inertiaTime = Lib.getTimer ();
+				var now = Lib.getTimer();
+				var delta = (now - _inertiaTime) / 1000; // seconds
+				_inertiaSpeed.x = _inertiaSpeed.x*0.3 + xpos*0.7 / delta;
+				_inertiaSpeed.y = _inertiaSpeed.y*0.3 + ypos*0.7 / delta;
+				_inertiaTime = now;
 			}
 			
 			if (Math.abs(xpos) >= _scrollSensitivity  || Math.abs(ypos) >= _scrollSensitivity) {
