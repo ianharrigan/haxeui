@@ -9,13 +9,13 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Fix parsing bug introduced in previous version",
-    "version": "1.8.3",
+    "releasenote": "Stop fixing openfl/lime versions",
+    "version": "1.8.4",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
-        "lime": "2.8.1",
-        "actuate": "1.8.6",
-        "openfl": "3.5.2",
-        "hscript": "2.0.5"
+        "lime": "",
+        "actuate": "",
+        "openfl": "",
+        "hscript": ""
     }
 }

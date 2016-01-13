@@ -1,22 +1,11 @@
 @echo OFF
 IF "%~1"=="" GOTO install
-IF "%~1"=="bundle" GOTO bundle
 IF "%~1"=="build" GOTO build
 IF "%~1"=="install" GOTO install
 IF "%~1"=="submit" GOTO submit
 
 
-:bundle
-	echo Bundling HaxeUI
-	neko haxebundler.n bundle -openfl
-	neko haxebundler.n bundle -haxelib
-GOTO end
-
 :build
-	echo Bundling HaxeUI
-	neko haxebundler.n bundle -openfl
-	neko haxebundler.n bundle -haxelib
-	
 	echo Building HaxeUI haxelib
 
 	del bin\haxeui.zip
@@ -24,10 +13,6 @@ GOTO end
 GOTO end
 
 :install
-	echo Bundling HaxeUI
-	neko haxebundler.n bundle -openfl
-	neko haxebundler.n bundle -haxelib
-	
 	echo Installing HaxeUI haxelib
 
 	del bin\haxeui.zip
@@ -37,10 +22,6 @@ GOTO end
 GOTO end
 
 :submit
-	echo Bundling HaxeUI
-	neko haxebundler.n bundle -openfl
-	neko haxebundler.n bundle -haxelib
-	
 	echo Submitting HaxeUI haxelib
 
 	del bin\haxeui.zip
