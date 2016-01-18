@@ -136,6 +136,9 @@ class Component extends StyleableDisplayObject implements IComponent implements 
 	}
 	
 	private function set_disabled(value:Bool):Bool {
+        if(_disabled == value)
+            return value;
+
 		if (value == true) {
 			if (_cachedListeners == null) {
 				_cachedListeners = new StringMap < Array < Dynamic->Void >> ();
