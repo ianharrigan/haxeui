@@ -1,6 +1,8 @@
 package haxe.ui.toolkit.controls;
 
+import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.Screen;
+import openfl.display.Sprite;
 import openfl.events.Event;
 import haxe.ui.toolkit.core.base.VerticalAlign;
 import haxe.ui.toolkit.core.StateComponent;
@@ -32,6 +34,7 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	private var _value:CheckBoxValue;
 	private var _label:Text;
 	private var _selected:Bool;
+	private var _eventTarget:Sprite;
 	
 	private var _down:Bool = false;
 	
@@ -41,6 +44,7 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 		sprite.useHandCursor = true;
 		_value = new CheckBoxValue();
 		_label = new Text();
+		_eventTarget = new Sprite();
 		layout = new HorizontalLayout();
 		autoSize = true;
 	}
@@ -67,6 +71,26 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 		addEventListener(MouseEvent.MOUSE_OUT, _onMouseOut);
 		addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+
+		sprite.addChild(_eventTarget);
+	}
+
+	public override function invalidate(type:Int = InvalidationFlag.ALL, recursive:Bool = false):Void {
+		if (!_ready || _invalidating) {
+			return;
+		}
+
+		super.invalidate(type, recursive);
+		_invalidating = true;
+		if (type & InvalidationFlag.SIZE == InvalidationFlag.SIZE) {
+			resizeEventTarget();
+		}
+		_invalidating = false;
+	}
+
+	public override function dispose():Void {
+		sprite.removeChild(_eventTarget);
+		super.dispose();
 	}
 	
 	//******************************************************************************************
@@ -224,6 +248,23 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	//******************************************************************************************
 	private override function get_states():Array<String> {
 		return [STATE_NORMAL, STATE_OVER, STATE_DOWN];
+	}
+
+	//******************************************************************************************
+	// Helpers
+	//******************************************************************************************
+	private function resizeEventTarget():Void {
+		var targetX:Float = layout.padding.left;
+		var targetY:Float = layout.padding.top;
+		var targetCX:Float = width - (layout.padding.left + layout.padding.right);
+		var targetCY:Float = height - (layout.padding.top + layout.padding.bottom);
+		
+		_eventTarget.alpha = 0;
+		_eventTarget.graphics.clear();
+		_eventTarget.graphics.beginFill(0xFF00FF);
+		_eventTarget.graphics.lineStyle(0);
+		_eventTarget.graphics.drawRect(targetX, targetY, targetCX, targetCY);
+		_eventTarget.graphics.endFill();
 	}
 }
 
