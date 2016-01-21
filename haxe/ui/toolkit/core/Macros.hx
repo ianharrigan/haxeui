@@ -411,13 +411,13 @@ class Macros {
 		}
 
 		if (ctor == null) Context.error("A class building a controller must have a constructor", Context.currentPos());
-		
+
+        var relativePath = resourcePath;
 		resourcePath = resolveResource(resourcePath, Context.getClassPath());
 		if (sys.FileSystem.exists(resourcePath) == false) {
 			Context.error("XML file not found", Context.currentPos());
 		}
-		
-		var e:Expr = Context.parseInlineString("super(\"" + resourcePath + "\")", Context.currentPos());
+        var e:Expr = Context.parseInlineString("super(\"" + relativePath + "\")", Context.currentPos());
 		ctor.expr = switch(ctor.expr.expr) {
 			case EBlock(el): macro $b{insertExpr(el, 0, e)};
 			case _: macro $b { insertExpr([ctor.expr], 0, e) }
@@ -749,6 +749,11 @@ class Macros {
 		var subs = ["/"];
 		var candidates:Array<String> = ["project.xml", "application.xml"];
 		for (c in candidates) {
+            #if macro
+            if(!sys.FileSystem.exists(c)) {
+                c = Context.resolvePath(c);
+            }
+            #end
 			if (sys.FileSystem.exists(c)) {
 				var xml:Xml = Xml.parse(sys.io.File.getContent(c));
 				var assetPaths:Array<String> = XmlUtil.getPathValues(xml.firstElement(), "/project/assets/@path");
