@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Fixed issues with IClonable for cpp",
-    "version": "1.8.5",
+    "releasenote": "Filter and alpha fix",
+    "version": "1.8.6",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",
