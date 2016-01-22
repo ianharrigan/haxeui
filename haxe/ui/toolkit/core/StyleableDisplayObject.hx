@@ -253,9 +253,6 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
         if (_sprite.filters != null && _sprite.filters.length > 0) {
             _sprite.filters = _sprite.filters;
         }
-        if (_sprite.alpha >= 1) { // is only an issue if alpha is less than 1
-            return;
-        }
         for (c in _children) {
             if (Std.is(c, StyleableDisplayObject)) {
                 cast(c, StyleableDisplayObject).reapplyFilters();
