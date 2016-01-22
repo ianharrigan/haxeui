@@ -237,7 +237,9 @@ class StyleableDisplayObject extends DisplayObjectContainer implements IStyleabl
 				_sprite.filters = [];
 			}
             #if !flash
-            reapplyFilters();
+            if (_sprite.alpha < 1) {
+                reapplyFilters();
+            }   
             #end
 			//#end
 			
