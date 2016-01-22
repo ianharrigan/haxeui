@@ -750,7 +750,7 @@ class Macros {
 		var candidates:Array<String> = ["project.xml", "application.xml"];
 		for (c in candidates) {
 			#if macro
-			if(!sys.FileSystem.exists(c)) {
+			if(sys.FileSystem.exists(c)) {
 				c = Context.resolvePath(c);
 			}
             #end
