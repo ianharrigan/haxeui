@@ -750,9 +750,11 @@ class Macros {
 		var candidates:Array<String> = ["project.xml", "application.xml"];
 		for (c in candidates) {
 			#if macro
-			if(sys.FileSystem.exists(c)) {
+			try {
 				c = Context.resolvePath(c);
-			}
+			} catch (e:Dynamic) {
+                continue;
+            }
             #end
 			if (sys.FileSystem.exists(c)) {
 				var xml:Xml = Xml.parse(sys.io.File.getContent(c));
