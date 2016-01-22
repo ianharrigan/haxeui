@@ -751,7 +751,9 @@ class Macros {
 		for (c in candidates) {
 			#if macro
 			try {
-				c = Context.resolvePath(c);
+                if(!sys.FileSystem.exists(c)) {
+				    c = Context.resolvePath(c);
+                }
 			} catch (e:Dynamic) {
                 continue;
             }
