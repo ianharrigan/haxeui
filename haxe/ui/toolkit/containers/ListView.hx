@@ -472,7 +472,7 @@ class ListView extends ScrollView implements IDataComponent {
 		}
 
 		if (Std.is(_itemRenderer, IItemRenderer)) {
-			r = cast(_itemRenderer, IItemRenderer).clone();
+			r = cast(_itemRenderer, ItemRenderer).clone();
 		} else if (Std.is(_itemRenderer, Class)) {
 			var cls:Class<Dynamic> = cast(_itemRenderer, Class<Dynamic>);
 			r = Type.createInstance(cls, []);

@@ -1,6 +1,6 @@
 package haxe.ui.toolkit.core.interfaces;
 
-interface IItemRenderer extends IStateComponent extends IClonable<IItemRenderer> {
+interface IItemRenderer extends IStateComponent {
 	public var hash(default, default):String;
 	public var eventDispatcher(default, default):IEventDispatcher;
 	public var data(get, set):Dynamic;

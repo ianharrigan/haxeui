@@ -2,6 +2,7 @@ package haxe.ui.toolkit.containers;
 
 import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.Component;
+import haxe.ui.toolkit.core.DisplayObject;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
 import haxe.ui.toolkit.core.interfaces.IDisplayObjectContainer;
@@ -211,7 +212,7 @@ class Accordion extends VBox implements IClonable<Accordion> {
 		c.removeAllChildren();
 		for (child in this.children) {
 			if (Std.is(child, AccordionButton) == false) {
-				c.addChild(child.clone());
+				c.addChild(cast(child, DisplayObject).clone());
 			}
 		}
 	}

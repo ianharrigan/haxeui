@@ -192,7 +192,7 @@ class ItemRenderer extends StateComponent implements IItemRenderer implements IC
 	//******************************************************************************************
 	public override function clone():ItemRenderer {
 		for (child in this.children) {
-			c.addChild(child.clone());
+			c.addChild(cast(child, DisplayObject).clone());
 		}
 	}
 }
