@@ -42,6 +42,8 @@ class ListSelector extends Button implements IDataComponent {
 	
 	//private var _transition:String = "slide";
 	
+    public var lazyLoad:Bool = true;
+    
 	public function new() {
 		super();
 		toggle = true;
@@ -65,6 +67,22 @@ class ListSelector extends Button implements IDataComponent {
 	
 	private override function initialize():Void {
 		super.initialize();
+        if (lazyLoad == false && _list == null) {
+            _list = new ListView();
+            _list.styleName = "dropDown";
+            _list.visible = false;
+            if (this.id != null) {
+                _list.id = this.id + "_dropDown";
+            }
+            _list.addEventListener(UIEvent.CHANGE, _onListChange);
+            _list.content.addEventListener(Event.ADDED_TO_STAGE, function(e) {
+                if (_dataSourceDirty == true) {
+                    _list.dataSource = _dataSource;
+                    _dataSourceDirty = false;
+                }
+            });
+            root.addChild(_list);
+        }
 	}
 	
 	private override function _onMouseClick(event:MouseEvent):Void {
@@ -93,6 +111,7 @@ class ListSelector extends Button implements IDataComponent {
 	//******************************************************************************************
 	// IDataComponent
 	//******************************************************************************************
+    private var _dataSourceDirty:Bool = true; // we'll start off as dirty so we get the first set
 	/**
 	 Specifies the data source where the list will get its options from
 	 **/
@@ -107,6 +126,7 @@ class ListSelector extends Button implements IDataComponent {
 	
 	private function set_dataSource(value:IDataSource):IDataSource {
 		_dataSource = value;
+        _dataSourceDirty = true;
 		return value;
 	}
 	
@@ -142,7 +162,10 @@ class ListSelector extends Button implements IDataComponent {
 				return;
 			}
 
-			_list.dataSource = _dataSource;
+            if (_dataSourceDirty == true) {
+                _list.dataSource = _dataSource;
+                _dataSourceDirty = false;
+            }
 			root.addEventListener(MouseEvent.MOUSE_DOWN, _onRootMouseDown);
 			root.addEventListener(MouseEvent.MOUSE_WHEEL, _onRootMouseDown);
 			
