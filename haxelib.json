@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Only remove text input if sprite contains it already",
-    "version": "1.8.7",
+    "releasenote": "Workaround for dropdown performance",
+    "version": "1.8.8",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",
