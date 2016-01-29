@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Workaround for dropdown performance",
-    "version": "1.8.8",
+    "releasenote": "Workaround for html5 issues",
+    "version": "1.8.9",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

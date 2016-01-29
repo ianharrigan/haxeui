@@ -88,7 +88,14 @@ class StyleHelper {
 													InterpolationMethod.LINEAR_RGB, 
 													0);
 					#else
-					g.beginFill(style.backgroundColor, backgroundAlpha);
+					g.beginGradientFill(GradientType.LINEAR, 
+													colors,
+													alphas,
+													ratios, 
+													matrix, 
+													SpreadMethod.PAD, 
+													InterpolationMethod.LINEAR_RGB, 
+													0);
 					#end
 				} else {
 					g.beginFill(style.backgroundColor, backgroundAlpha);

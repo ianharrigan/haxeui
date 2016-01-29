@@ -12,7 +12,13 @@ import haxe.ui.toolkit.text.TextDisplay;
  **/
 class Text extends StateComponent implements IClonable<Text> {
 	private var _textDisplay:ITextDisplay;
-	
+
+	#if html5
+    private static inline var HEIGHT_FIX:Int = 4;
+    #else
+    private static inline var HEIGHT_FIX:Int = 0;
+    #end
+    
 	public function new() {
 		super();
 		_valign = "center";
@@ -75,7 +81,7 @@ class Text extends StateComponent implements IClonable<Text> {
 		_textDisplay.text = value;
 		if (autoSize == true) {
 			width = _textDisplay.display.width;
-			height = _textDisplay.display.height;
+			height = _textDisplay.display.height + HEIGHT_FIX;
 		} 
 		return value;
 	}
@@ -92,7 +98,7 @@ class Text extends StateComponent implements IClonable<Text> {
 		super.set_width(value);
 		_textDisplay.display.width = value;
 		_textDisplay.text = text;
-		height = _textDisplay.display.height;
+		height = _textDisplay.display.height + HEIGHT_FIX;
 		//trace(height);
 		return value;
 	}
@@ -108,7 +114,7 @@ class Text extends StateComponent implements IClonable<Text> {
 			_textDisplay.style = _baseStyle;
 			if (autoSize == true) {
 				width = _textDisplay.display.width;
-				height = _textDisplay.display.height;
+				height = _textDisplay.display.height + HEIGHT_FIX;
 			}
 		}
 	}

@@ -260,7 +260,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 			}
 			height = cy;
 		}
-		
+        
 		invalidate(InvalidationFlag.STYLE);
 	}
 	
@@ -658,7 +658,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 				labelStyle.color = _baseStyle.color;
 				labelStyle.textAlign = _baseStyle.textAlign;
 				#if html5
-				labelStyle.backgroundColor = _baseStyle.backgroundColor;
+				//labelStyle.backgroundColor = _baseStyle.backgroundColor;
 				#end
 			}
 			_label.baseStyle = labelStyle;
