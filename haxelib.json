@@ -10,7 +10,7 @@
         "ianharrigan"
     ],
     "releasenote": "Workaround for html5 issues",
-    "version": "1.8.9",
+    "version": "1.8.10",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",
