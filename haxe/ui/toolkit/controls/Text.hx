@@ -14,7 +14,7 @@ class Text extends StateComponent implements IClonable<Text> {
 	private var _textDisplay:ITextDisplay;
 
 	#if html5
-    private static inline var HEIGHT_FIX:Int = 4;
+    private static inline var HEIGHT_FIX:Int = 2;
     #else
     private static inline var HEIGHT_FIX:Int = 0;
     #end
