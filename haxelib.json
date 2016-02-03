@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Text fix for pixi",
-    "version": "1.8.12",
+    "releasenote": "More text 'fixes' (hacks) for html5",
+    "version": "1.8.13",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

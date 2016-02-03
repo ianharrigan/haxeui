@@ -13,13 +13,15 @@ import haxe.ui.toolkit.text.TextDisplay;
 class Text extends StateComponent implements IClonable<Text> {
 	private var _textDisplay:ITextDisplay;
 
+    /*
 	#if (html5 && dom)
     private static inline var HEIGHT_FIX:Int = 2;
 	#elseif (html5 && !dom)
-    private static inline var HEIGHT_FIX:Int = 6;
+    private static inline var HEIGHT_FIX:Int = 2;
     #else
     private static inline var HEIGHT_FIX:Int = 0;
     #end
+    */
     
 	public function new() {
 		super();
@@ -83,7 +85,7 @@ class Text extends StateComponent implements IClonable<Text> {
 		_textDisplay.text = value;
 		if (autoSize == true) {
 			width = _textDisplay.display.width;
-			height = _textDisplay.display.height + HEIGHT_FIX;
+			height = _textDisplay.display.height + heightFix();
 		} 
 		return value;
 	}
@@ -100,7 +102,7 @@ class Text extends StateComponent implements IClonable<Text> {
 		super.set_width(value);
 		_textDisplay.display.width = value;
 		_textDisplay.text = text;
-		height = _textDisplay.display.height + HEIGHT_FIX;
+		height = _textDisplay.display.height + heightFix();
 		//trace(height);
 		return value;
 	}
@@ -116,11 +118,37 @@ class Text extends StateComponent implements IClonable<Text> {
 			_textDisplay.style = _baseStyle;
 			if (autoSize == true) {
 				width = _textDisplay.display.width;
-				height = _textDisplay.display.height + HEIGHT_FIX;
+				height = _textDisplay.display.height + heightFix();
 			}
 		}
 	}
 	
+    private function heightFix():Float {
+        var fs:Float = -1;
+        if (_baseStyle != null) {
+            fs = _baseStyle.fontSize;
+        }
+        var fix:Float = 0;
+
+        #if (html5 && dom)
+        
+        fix = 2;
+        
+        #elseif (html5 && !dom)
+        
+        if (fs <= 14) {
+            fix = 2;
+        } else if (fs > 14 && fs <= 18) {
+            fix = 4;
+        } else if (fs > 18) {
+            fix = 6;
+        }
+        
+        #end
+        
+        return fix;
+    }
+    
 	//******************************************************************************************
 	// Getters/setters
 	//******************************************************************************************
