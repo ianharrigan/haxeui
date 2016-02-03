@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Only add breaks for html5 dom",
-    "version": "1.8.11",
+    "releasenote": "Text fix for pixi",
+    "version": "1.8.12",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

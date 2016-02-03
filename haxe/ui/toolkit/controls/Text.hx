@@ -13,8 +13,10 @@ import haxe.ui.toolkit.text.TextDisplay;
 class Text extends StateComponent implements IClonable<Text> {
 	private var _textDisplay:ITextDisplay;
 
-	#if html5
+	#if (html5 && dom)
     private static inline var HEIGHT_FIX:Int = 2;
+	#elseif (html5 && !dom)
+    private static inline var HEIGHT_FIX:Int = 6;
     #else
     private static inline var HEIGHT_FIX:Int = 0;
     #end
