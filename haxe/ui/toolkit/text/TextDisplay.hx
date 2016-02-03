@@ -56,7 +56,7 @@ class TextDisplay implements ITextDisplay {
 	
 	private function set_text(value:String):String {
 		if (value != null) {
-            #if html5
+            #if (html5 && dom)
 			value = StringTools.replace(value, "\\n", "\n");
             if (multiline == true) {
 			    value = StringTools.replace(value, "\n", "<br/>");
