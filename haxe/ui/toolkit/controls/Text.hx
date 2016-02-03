@@ -139,7 +139,7 @@ class Text extends StateComponent implements IClonable<Text> {
         if (fs <= 14) {
             fix = 2;
         } else if (fs > 14 && fs <= 18) {
-            fix = 4;
+            fix = 6;
         } else if (fs > 18) {
             fix = 6;
         }
