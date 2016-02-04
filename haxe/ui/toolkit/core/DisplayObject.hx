@@ -576,8 +576,9 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 		if (_eventListeners != null && _eventListeners.exists(type)) {
 			var list:Array < Dynamic->Void > = _eventListeners.get(type);
 			if (list != null) {
-				//list.remove(listener);
-				removeEventFunction(list, listener);
+                while (list.length != 0) {
+    				removeEventFunction(list, list.pop());
+                }
 			}
 		}
 		_sprite.removeEventListener(type, listener, useCapture);

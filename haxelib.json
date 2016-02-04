@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "More text 'fixes' (hacks) for html5",
-    "version": "1.8.13",
+    "releasenote": "Fixed issue with disabling events when more than one listener",
+    "version": "1.8.14",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",
