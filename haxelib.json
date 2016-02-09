@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Fixed issue with disabling events when more than one listener",
-    "version": "1.8.14",
+    "releasenote": "Fixed checkbox dispose issue",
+    "version": "1.8.15",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

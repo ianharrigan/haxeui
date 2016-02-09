@@ -89,7 +89,9 @@ class CheckBox extends StateComponent implements IClonable<CheckBox> {
 	}
 
 	public override function dispose():Void {
-		sprite.removeChild(_eventTarget);
+        if (sprite.contains(_eventTarget) == true) {
+		    sprite.removeChild(_eventTarget);
+        }
 		super.dispose();
 	}
 	
