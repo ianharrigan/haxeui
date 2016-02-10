@@ -137,12 +137,14 @@ class Text extends StateComponent implements IClonable<Text> {
         #elseif (html5 && !dom)
         
         if (fs <= 14) {
-            fix = 2;
+            fix = 6;
         } else if (fs > 14 && fs <= 18) {
             fix = 6;
         } else if (fs > 18) {
             fix = 6;
         }
+        
+        fix -= 4;
         
         #end
         

@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Fixed checkbox dispose issue",
-    "version": "1.8.15",
+    "releasenote": "More bizarre text fixes for html5",
+    "version": "1.8.16",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

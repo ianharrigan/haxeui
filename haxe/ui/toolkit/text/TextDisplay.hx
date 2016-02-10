@@ -70,8 +70,8 @@ class TextDisplay implements ITextDisplay {
 		style = _style;
 		
 		#if (html5 && !dom)
-		if (_tf.height - 2 != _tf.textHeight) {
-			_tf.height = _tf.textHeight - 2;
+		if (_tf.height != _tf.textHeight) {
+			_tf.height = _tf.textHeight + 2;
 		}
 		#end
 
