@@ -117,7 +117,7 @@ class DisplayObjectContainer extends DisplayObject implements IDisplayObjectCont
 	}
 	
 	public function removeChild(child:IDisplayObject, dispose:Bool = true):IDisplayObject {
-		if (child == null) {
+		if (child == null || contains(child) == false) {
 			return null;
 		}
 		

@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "More bizarre text fixes for html5",
-    "version": "1.8.16",
+    "releasenote": "Ensure child is available before removing",
+    "version": "1.8.17",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",
