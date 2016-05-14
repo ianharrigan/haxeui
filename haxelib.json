@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Ensure child is available before removing",
-    "version": "1.8.17",
+    "releasenote": "Fix divide by zero in for inertial scrolling",
+    "version": "1.8.18",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "",

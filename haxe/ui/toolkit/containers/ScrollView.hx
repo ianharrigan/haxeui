@@ -513,6 +513,9 @@ class ScrollView extends StateComponent {
 			if ( _inertialScrolling == true ) {
 				var now = Lib.getTimer();
 				var delta = (now - _inertiaTime) / 1000; // seconds
+                if (delta == 0) {
+                    delta = 0.1;
+                }
 				_inertiaSpeed.x = _inertiaSpeed.x*0.3 + xpos*0.7 / delta;
 				_inertiaSpeed.y = _inertiaSpeed.y*0.3 + ypos*0.7 / delta;
 				_inertiaTime = now;
