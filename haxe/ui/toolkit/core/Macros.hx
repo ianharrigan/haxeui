@@ -556,7 +556,7 @@ class Macros {
 
 	public static function removeStyleComments(styleString:String):String
 	{
-		return ~/\/\*[\w\s\{\}:;\-\(\),\.]*\*\//g.map(styleString,
+		return ~/\/\*[\w\s\{\}:;\-\(\),\.#%+\-\[\]]*\*\//g.map(styleString,
 			function(re:EReg):String
 			{
 				return "";
