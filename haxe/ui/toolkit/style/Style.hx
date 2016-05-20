@@ -131,9 +131,9 @@ class Style implements IClonable<Style> {
 			if (Reflect.getProperty(this, "set_" + field) != null) {
 				Reflect.setProperty(this, field, Reflect.field(defaults, field));
 			}
-            else {
-                addDynamicValue(field, Reflect.field(defaults, field));
-            }
+			else {
+				addDynamicValue(field, Reflect.field(defaults, field));
+			}
 		}
 	}
 
@@ -1079,7 +1079,7 @@ class Style implements IClonable<Style> {
 		return _dynamicValues.get(property) != null;
 	}
 
-    public function getDynamicValue<T>(property:String):Null<T> {
+	public function getDynamicValue<T>(property:String):Null<T> {
 		var script:String = _dynamicValues.get(property);
 		var retVal = ScriptManager.instance.executeScript(script);
 		return retVal;
