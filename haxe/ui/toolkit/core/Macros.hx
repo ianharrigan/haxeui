@@ -221,7 +221,7 @@ class Macros {
 						} else {
 							subDir = path + subDir;
 						}
-						
+
 						if (sys.FileSystem.isDirectory(subDir)) {
 							paths.insert(0, subDir);
 						} else {
@@ -258,13 +258,13 @@ class Macros {
 			var classPackage:String = c.get("package");
 			
 			var types:Array<haxe.macro.Type> = null;
-			
+
 			if (className != null) {
 				types = [Context.getType(className)];
 			} else if (classPackage != null) {
 				types = getTypesFromPackage(classPackage);
 			}
-			
+
 			if (types != null) {
 				for (t in types) {
 					if (hasInterface(t, "haxe.ui.toolkit.core.interfaces.IDisplayObject")) {
@@ -553,6 +553,15 @@ class Macros {
 		}
 		return arr;
 	}
+
+	public static function removeStyleComments(styleString:String):String
+	{
+		return ~/\/\*[\w\s\{\}:;\-\(\),\.]*\*\//g.map(styleString,
+			function(re:EReg):String
+			{
+				return "";
+			});
+	}
 	
 	macro public static function addStyleSheet(resourcePath:String):Expr {
 		if (sys.FileSystem.exists(resourcePath) == false) {
@@ -567,6 +576,7 @@ class Macros {
 		}
 		
 		var contents:String = sys.io.File.getContent(resourcePath);
+		contents = removeStyleComments(contents);
 		var code:String = "function() {\n";
 		var arr:Array<String> = contents.split("}");
 		
@@ -644,7 +654,7 @@ class Macros {
 				if (StringTools.startsWith(propValue, "#")) { // lazyness
 					propValue = "0x" + propValue.substr(1, propValue.length - 1);
 				}
-				
+
 				code += "\t\t" + propName + ":" + propValue + ",\n";
 			}
 		}
