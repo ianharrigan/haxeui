@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.style;
 
+import haxe.ui.toolkit.core.Macros;
 import openfl.geom.Rectangle;
 import haxe.ui.toolkit.hscript.ScriptUtils;
 import haxe.ui.toolkit.util.FilterParser;
@@ -13,18 +14,7 @@ class StyleParser {
 		}
 		
 		// strip out any comments
-		var n1:Int = styleString.indexOf("/*"); 
-		while (n1 != -1) {
-			var n2:Int = styleString.indexOf("*/", n1);
-			if (n2 == -1) {
-				break;
-			}
-			
-			var before:String = styleString.substring(0, n1);
-			var after:String = styleString.substring(n2 + 2, styleString.length);
-			styleString = before + after;
-			n1 = styleString.indexOf("/*");
-		}
+		styleString = Macros.removeStyleComments(styleString);
 		
 		var styles = new Styles();
 		var n1:Int = -1;
