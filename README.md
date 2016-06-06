@@ -1,4 +1,11 @@
 [![Stories in Ready](https://badge.waffle.io/ianharrigan/haxeui.png?label=ready&title=Ready)](https://waffle.io/ianharrigan/haxeui)
+
+Important note about OpenFl/Lime
+================================
+OpenFL has dropped legacy support in versions after `3.6.1`. Since HaxeUI (version 1) is tied to legacy versions of OpenFL/Lime the following are the maximum versions that can be used with it:
+- OpenFL: 3.6.1
+- Lime: 2.9.1
+
 Haxe UI
 ================================
 
