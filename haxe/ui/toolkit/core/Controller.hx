@@ -40,13 +40,22 @@ class Controller {
 		
 		refereshNamedComponents();
 		
-		_view.addEventListener(UIEvent.ADDED_TO_STAGE, function(e) {
-			if (_view.width != 0 && _view.height != 0) {
-				onReady();
-			}
-		});
+        _view.addEventListener(UIEvent.READY, function(e) {
+            if (_view.width != 0 && _view.height != 0) {
+                onReady();
+            } else {
+                _view.addEventListener(UIEvent.RESIZE, onFirstResize);
+            }
+        });
 	}
 	
+    private function onFirstResize(event:UIEvent):Void {
+        if (_view.width != 0 && _view.height != 0) {
+            _view.removeEventListener(UIEvent.RESIZE, onFirstResize);
+            onReady();
+        }
+    }
+    
 	private function onReady():Void {
 		
 	}
