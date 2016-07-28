@@ -44,7 +44,7 @@ class ScriptManager {
 			
 			retVal = interp.execute(program);
 			
-			#if (cpp && haxe_ver >= 3.5)
+			#if (cpp && haxe_ver >= 3.3)
 			    // workaround for https://github.com/HaxeFoundation/hxcpp/issues/489
 			    if (retVal == null) retVal = cast script;
 			#end
