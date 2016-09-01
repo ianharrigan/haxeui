@@ -34,16 +34,20 @@ class ScriptManager {
 	}
 	
 	public function executeScript<T>(script:String):Null<T> {
-		var fullScript:String = "";
-		fullScript += script;
+		if(script == null) return null;
 		var retVal = null;
 		
 		try {
 			var parser = new hscript.Parser();
-			var program = parser.parseString(fullScript);
+			var program = parser.parseString(script);
 			var interp = new ScriptInterp();
 			
 			retVal = interp.execute(program);
+			
+			#if (cpp && haxe_ver >= 3.3)
+			    // workaround for https://github.com/HaxeFoundation/hxcpp/issues/489
+			    if (retVal == null) retVal = cast script;
+			#end
 		} catch (e:Dynamic) {
 			//trace("Problem running script: " + e);
 			//trace(script);
