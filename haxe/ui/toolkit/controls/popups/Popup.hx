@@ -127,6 +127,9 @@ class Popup extends VBox implements IDraggable {
 					var button:Button = new Button();
 					button.text = info.text;
 					button.addEventListener(MouseEvent.CLICK, function(e) {
+                        if (info.fn != null) {
+                            info.fn(button);
+                        }
 						clickButton(info.type);
 					});
 					box.addChild(button);
