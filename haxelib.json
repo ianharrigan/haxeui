@@ -9,8 +9,8 @@
     "contributors": [
         "ianharrigan"
     ],
-    "releasenote": "Haxe 3.3 compatibility",
-    "version": "1.8.20",
+    "releasenote": "Allow custom dialog buttons to use callbacks",
+    "version": "1.8.21",
     "url": "https://github.com/ianharrigan/haxeui",
     "dependencies": {
         "lime": "2.9.1",
