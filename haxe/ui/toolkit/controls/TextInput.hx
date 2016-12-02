@@ -1,5 +1,6 @@
 package haxe.ui.toolkit.controls;
 
+import openfl.events.FocusEvent;
 import haxe.ui.toolkit.core.base.State;
 import haxe.ui.toolkit.core.interfaces.IClonable;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
@@ -23,6 +24,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	
 	private var _vscroll:VScroll;
 	private var _hscroll:HScroll;
+    private var _focused:Bool = false;
 	
 	public function new() {
 		super();
@@ -53,7 +55,9 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		
 		_textDisplay.display.addEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.addEventListener(Event.SCROLL, _onTextScroll);
-		checkScrolls();	
+		_textDisplay.display.addEventListener(FocusEvent.FOCUS_IN, _onTextFocusIn);
+		_textDisplay.display.addEventListener(FocusEvent.FOCUS_OUT, _onTextFocusOut);
+		checkScrolls();
 		
 		if (_textPlaceHolder != null && contains(_textPlaceHolder) == false) {
 			addChild(_textPlaceHolder);
@@ -99,6 +103,8 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		#end
 		_textDisplay.display.removeEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextScroll);
+        _textDisplay.display.removeEventListener(FocusEvent.FOCUS_IN, _onTextFocusIn);
+        _textDisplay.display.removeEventListener(FocusEvent.FOCUS_OUT, _onTextFocusOut);
         if (sprite.contains(_textDisplay.display)) {
 		    sprite.removeChild(_textDisplay.display);
         }
@@ -139,9 +145,23 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	private function _onTextChange(event:Event):Void {
 		checkScrolls();
 		if (_textPlaceHolder != null) {
-			_textPlaceHolder.visible = (text.length == 0);
+			_textPlaceHolder.visible = (text.length == 0 && !_focused);
 		}
 	}
+
+    private function _onTextFocusIn(event:FocusEvent):Void {
+        _focused = true;
+        if (_textPlaceHolder != null) {
+            _textPlaceHolder.visible = false;
+        }
+    }
+
+    private function _onTextFocusOut(event:FocusEvent):Void {
+        _focused = false;
+        if (_textPlaceHolder != null) {
+            _textPlaceHolder.visible = (text.length == 0);
+        }
+    }
 
 	private function _onTextScroll(event:Event):Void {
 		checkScrolls();
@@ -173,7 +193,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		value = super.set_text(value);
 		_textDisplay.text = value;
 		if (_textPlaceHolder != null) {
-			_textPlaceHolder.visible = (value.length == 0);
+			_textPlaceHolder.visible = (value.length == 0 && !_focused);
 		}
 		
 		return value;
@@ -310,7 +330,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 			_textPlaceHolder = null;
 		}
 		if (_textPlaceHolder != null) {
-			_textPlaceHolder.visible = (text.length == 0);
+			_textPlaceHolder.visible = (text.length == 0 && !_focused);
 		}
 		return value;
 	}
