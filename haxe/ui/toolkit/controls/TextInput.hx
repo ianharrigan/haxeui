@@ -24,7 +24,7 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 	
 	private var _vscroll:VScroll;
 	private var _hscroll:HScroll;
-    private var _focused:Bool = false;
+	private var _focused:Bool = false;
 	
 	public function new() {
 		super();
@@ -103,11 +103,11 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		#end
 		_textDisplay.display.removeEventListener(Event.CHANGE, _onTextChange);
 		_textDisplay.display.removeEventListener(Event.SCROLL, _onTextScroll);
-        _textDisplay.display.removeEventListener(FocusEvent.FOCUS_IN, _onTextFocusIn);
-        _textDisplay.display.removeEventListener(FocusEvent.FOCUS_OUT, _onTextFocusOut);
-        if (sprite.contains(_textDisplay.display)) {
-		    sprite.removeChild(_textDisplay.display);
-        }
+		_textDisplay.display.removeEventListener(FocusEvent.FOCUS_IN, _onTextFocusIn);
+		_textDisplay.display.removeEventListener(FocusEvent.FOCUS_OUT, _onTextFocusOut);
+		if (sprite.contains(_textDisplay.display)) {
+			sprite.removeChild(_textDisplay.display);
+		}
 		if (_textPlaceHolder != null && contains(_textPlaceHolder)) {
 			removeChild(_textPlaceHolder);
 		}
@@ -149,19 +149,19 @@ class TextInput extends StateComponent implements IClonable<TextInput> {
 		}
 	}
 
-    private function _onTextFocusIn(event:FocusEvent):Void {
-        _focused = true;
-        if (_textPlaceHolder != null) {
-            _textPlaceHolder.visible = false;
-        }
-    }
+	private function _onTextFocusIn(event:FocusEvent):Void {
+		_focused = true;
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.visible = false;
+		}
+	}
 
-    private function _onTextFocusOut(event:FocusEvent):Void {
-        _focused = false;
-        if (_textPlaceHolder != null) {
-            _textPlaceHolder.visible = (text.length == 0);
-        }
-    }
+	private function _onTextFocusOut(event:FocusEvent):Void {
+		_focused = false;
+		if (_textPlaceHolder != null) {
+			_textPlaceHolder.visible = (text.length == 0);
+		}
+	}
 
 	private function _onTextScroll(event:Event):Void {
 		checkScrolls();
