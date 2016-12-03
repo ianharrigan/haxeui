@@ -390,8 +390,8 @@ class ScrollView extends StateComponent {
 					_vscroll.visible = false;
 				}
 				Screen.instance.removeEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
-                dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
-            }
+				dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+			}
 		}
 	}
 	
@@ -583,11 +583,11 @@ class ScrollView extends StateComponent {
 			_vscroll.visible = false;
 		}
 
-        if ( _inertialScrolling == true && ( Lib.getTimer() - _inertiaTime ) < 100
-            && ( Math.abs(_inertiaSpeed.x) > _inertiaSensitivity || Math.abs(_inertiaSpeed.y) > _inertiaSensitivity ) )
-                Screen.instance.addEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
-        else
-		    dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
+		if ( _inertialScrolling == true && ( Lib.getTimer() - _inertiaTime ) < 100
+			&& ( Math.abs(_inertiaSpeed.x) > _inertiaSensitivity || Math.abs(_inertiaSpeed.y) > _inertiaSensitivity ) )
+				Screen.instance.addEventListener(Event.ENTER_FRAME, _onInertiaEnterFrame);
+		else
+			dispatchEvent(new UIEvent(UIEvent.SCROLL_STOP));
 		
 		if (_pulling == true && _refreshPromptView != null) {
 			if (_refreshPromptView.alpha < 1) {
