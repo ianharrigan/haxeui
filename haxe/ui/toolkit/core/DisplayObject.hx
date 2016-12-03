@@ -376,7 +376,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 
 	private function get_stageX():Float {
 		var c:IDisplayObject = cast(this, IDisplayObject);
-		var xpos:Float = 0;
+		var xpos:Float = root.sprite.parent.x;
 		while (c != null) {
 			xpos += c.x;
 			if (c.sprite.scrollRect != null) {
@@ -390,7 +390,7 @@ class DisplayObject implements IEventDispatcher implements IDisplayObject implem
 
 	private function get_stageY():Float {
 		var c:IDisplayObject = cast(this, IDisplayObject);
-		var ypos:Float = 0;
+		var ypos:Float = root.sprite.parent.y;
 		while (c != null) {
 			ypos += c.y;
 			if (c.sprite.scrollRect != null) {
