@@ -1,3 +1,9 @@
+HaxeUI Version 2
+================================
+If you are writing a new application, or are considering moving a version 1 application across to version, check out the repository here: https://github.com/haxeui/haxeui-core
+
+Although version 2 is still currently in alpha it will eventually superceed version 1 entirely 
+
 [![Stories in Ready](https://badge.waffle.io/ianharrigan/haxeui.png?label=ready&title=Ready)](https://waffle.io/ianharrigan/haxeui)
 
 Important note about OpenFl/Lime
