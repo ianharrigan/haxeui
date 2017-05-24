@@ -503,7 +503,7 @@ class ScrollView extends StateComponent {
 			var ypos:Float = event.stageY - _downPos.y;
 			var xpos:Float = event.stageX - _downPos.x;
 
-			var target:DisplayObject =  event.target;
+			var target:DisplayObject = cast event.target;
 			while (target != null && Std.is(target, DisplayObject))
 			{
 				xpos /= target.scaleX;
