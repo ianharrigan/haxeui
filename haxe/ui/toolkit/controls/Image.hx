@@ -233,7 +233,11 @@ class Image extends Component implements IClonable<Image> {
 			#else
 				var r:Http = new Http(res);
 				r.onData = function(imageData) {
+					#if (openfl >= "4.0.0")
+					BitmapData.loadFromBytes(Bytes.ofString(imageData)).onComplete(callback);
+					#else
 					callback(BitmapData.loadFromHaxeBytes(Bytes.ofString(imageData)));
+					#end
 				}
 				r.request();
 			#end
