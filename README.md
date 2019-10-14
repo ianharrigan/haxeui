@@ -4,7 +4,7 @@ If you are writing a new application, or are considering moving a legacy applica
 
 Important note about OpenFl/Lime
 ================================
-OpenFL has dropped legacy support in versions after `3.6.1`. Since HaxeUI (version 1) is tied to legacy versions of OpenFL/Lime the following are the maximum versions that can be used with it:
+OpenFL has dropped legacy support in versions after `3.6.1`. Since this version of HaxeUI is tied to legacy versions of OpenFL/Lime the following are the maximum versions that can be used with it:
 - OpenFL: 3.6.1
 - Lime: 2.9.1
 
