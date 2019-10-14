@@ -11,7 +11,6 @@ OpenFL has dropped legacy support in versions after `3.6.1`. Since this version 
 Haxe UI
 ================================
 
-[![Join the chat at https://gitter.im/ianharrigan/haxeui](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ianharrigan/haxeui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Cross platform Haxe/OpenFL set of styleable application centric rich UI components to be used "out the box". Supports css type styling/skinning.
 
 <img src="https://raw.github.com/ianharrigan/haxeui-test-app/master/docs/screenshots/main.jpg" />
@@ -152,11 +151,3 @@ Licence
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ianharrigan/haxeui/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ianharrigan/haxeui/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
